@@ -39,8 +39,38 @@ def get_tripinfos(tree):
 
 def get_stats():
     l = []
+    l.append(('Total Time-loss: ',
+              lambda infos: funcs.reduce(ops.add, [info.timeLoss for info in infos])))
     l.append(('Average Time-loss: ',
               lambda infos: funcs.reduce(ops.add, [info.timeLoss for info in infos])/len(infos)))
+    l.append(('Max Time-loss: ',
+              lambda infos: max([info.timeLoss for info in infos])))
+    l.append(('Minimum Time-loss: ',
+              lambda infos: min([info.timeLoss for info in infos])))
+    l.append(('Total waitSteps: ',
+              lambda infos: funcs.reduce(ops.add, [info.waitSteps for info in infos])))
+    l.append(('Average waitSteps: ',
+              lambda infos: funcs.reduce(ops.add, [info.waitSteps for info in infos]) / len(infos)))
+    l.append(('Max waitSteps: ',
+              lambda infos: max([info.waitSteps for info in infos])))
+    l.append(('Minimum waitSteps: ',
+              lambda infos: min([info.waitSteps for info in infos])))
+    l.append(('Total duration: ',
+              lambda infos: funcs.reduce(ops.add, [info.duration for info in infos])))
+    l.append(('Average duration: ',
+              lambda infos: funcs.reduce(ops.add, [info.duration for info in infos]) / len(infos)))
+    l.append(('Max duration: ',
+              lambda infos: max([info.duration for info in infos])))
+    l.append(('Minimum duration: ',
+              lambda infos: min([info.duration for info in infos])))
+    l.append(('Total routeLength: ',
+              lambda infos: funcs.reduce(ops.add, [info.routeLength for info in infos])))
+    l.append(('Average routeLength: ',
+              lambda infos: funcs.reduce(ops.add, [info.routeLength for info in infos]) / len(infos)))
+    l.append(('Max routeLength: ',
+              lambda infos: max([info.routeLength for info in infos])))
+    l.append(('Minimum routeLength: ',
+              lambda infos: min([info.routeLength for info in infos])))
 
     return l
 
@@ -55,4 +85,5 @@ if __name__ == '__main__':
     for msg, f in statistics_lambdas:
         statistics[msg] = f(tripinfos)
 
-    print(statistics)
+    for s_key, s_val in statistics.items():
+        print(s_key+str(s_val))
