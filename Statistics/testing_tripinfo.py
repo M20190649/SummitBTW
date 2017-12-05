@@ -39,8 +39,18 @@ def get_tripinfos(tree):
 
 def get_stats():
     l = []
+    l.append(('Total Time-loss: ',
+              lambda infos: funcs.reduce(ops.add, [info.timeLoss for info in infos])))
     l.append(('Average Time-loss: ',
               lambda infos: funcs.reduce(ops.add, [info.timeLoss for info in infos])/len(infos)))
+    l.append(('Max Time-loss: ',
+              lambda infos: max([info.timeLoss for info in infos])))
+    l.append(('Total waitSteps: ',
+              lambda infos: funcs.reduce(ops.add, [info.waitSteps for info in infos])))
+    l.append(('Average waitSteps: ',
+              lambda infos: funcs.reduce(ops.add, [info.waitSteps for info in infos]) / len(infos)))
+    l.append(('Max waitSteps: ',
+              lambda infos: max([info.waitSteps for info in infos])))
 
     return l
 
@@ -55,4 +65,5 @@ if __name__ == '__main__':
     for msg, f in statistics_lambdas:
         statistics[msg] = f(tripinfos)
 
-    print(statistics)
+    for s_key, s_val in statistics.items():
+        print(s_key+str(s_val))
