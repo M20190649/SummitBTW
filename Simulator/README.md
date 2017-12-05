@@ -30,4 +30,4 @@ this page assumes SUMO is already installed.
 --------------------------
 
 * for additional data such as data for traffic lights, you need to run the next line of code:
-`sumo-gui -c <sumo_cfg_filename.sumocfg --tripinfo-output <simulation_out_filename>.xml --additional-files <additional_file_name>`.xml`
+`sumo-gui -c <sumo_cfg_filename.sumocfg --tripinfo-output <simulation_out_filename>.xml --additional-files <additional_file_name>.xml`
