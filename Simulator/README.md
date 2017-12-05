@@ -26,3 +26,8 @@ this page assumes SUMO is already installed.
 * a sumocfg file is the file used for running the simulation and contains links to the net file, the route file and the detector file.
 
 `sumo-gui -c <sumo_cfg_filename>.sumocfg --tripinfo-output <simulation_out_filename>.xml`
+
+--------------------------
+
+* for additional data such as data for traffic lights, you need to run the next line of code:
+`sumo-gui -c <sumo_cfg_filename.sumocfg --tripinfo-output <simulation_out_filename>.xml --additional-files <additional_file_name>`.xml`
