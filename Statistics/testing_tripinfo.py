@@ -2,6 +2,8 @@ import xml.etree.ElementTree as Et
 import sys
 import functools as funcs
 import operator as ops
+import logging
+import time
 
 
 class Tripinfo(object):
@@ -28,17 +30,23 @@ class Tripinfo(object):
         self.vaporized = bool(parsed_info['vaporized'])
 
 
-def get_tripinfos(tree):
+def get_tripinfos(filename):
     """Initialize a tripinfo list from the tree object"""
     tripinfos = []
+    try:
+        tree = Et.parse(filename)
+    except FileNotFoundError:
+        logging.debug("Couldn't find given file")
+        exit(-1)
     root = tree.getroot()
     for child in root:
         tripinfos.append(Tripinfo(child.attrib))
+    logging.info('Parsed {} tripinfos from file'.format(len(tripinfos)))
     return tripinfos
 
 
 def get_stats():
-    l = []
+    l = list()
     l.append(('Total Time-loss: ',
               lambda infos: funcs.reduce(ops.add, [info.timeLoss for info in infos])))
     l.append(('Average Time-loss: ',
@@ -75,11 +83,15 @@ def get_stats():
     return l
 
 
-if __name__ == '__main__':
+def main():
     if len(sys.argv) < 2:
         print('Wrong usage, Please enter an xml filename!')
         exit(-1)
-    tripinfos = get_tripinfos(Et.parse(sys.argv[1]))
+
+    log_filename = 'logger_{stamp}.log'.format(stamp=str(time.time()).replace(".", ""))
+    logging.basicConfig(filename=log_filename, level=logging.DEBUG)
+
+    tripinfos = get_tripinfos(sys.argv[1])
     statistics_lambdas = get_stats()
     statistics = dict()
     for msg, f in statistics_lambdas:
@@ -87,3 +99,6 @@ if __name__ == '__main__':
 
     for s_key, s_val in statistics.items():
         print(s_key+str(s_val))
+
+if __name__ == '__main__':
+    main()
