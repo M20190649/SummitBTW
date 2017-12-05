@@ -71,7 +71,6 @@ def get_stats():
               lambda infos: max([info.routeLength for info in infos])))
     l.append(('Minimum routeLength: ',
               lambda infos: min([info.routeLength for info in infos])))
-
     return l
 
 
