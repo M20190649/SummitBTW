@@ -39,9 +39,6 @@ def run():
 
         step += 1
 
-    traci.close()
-    sys.stdout.flush()
-
 
 if __name__ == "__main__":
     options = get_options()
@@ -64,3 +61,5 @@ if __name__ == "__main__":
 
     run()
 
+    traci.close()
+    sys.stdout.flush()
