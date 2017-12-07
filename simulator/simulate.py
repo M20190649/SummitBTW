@@ -1,5 +1,4 @@
 """
-File Name: simulate.py
 Author: EylonSho
 
 Main simulator script.
