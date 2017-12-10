@@ -3,6 +3,7 @@ This is an API for the Junction class. It is built for the scheduling algorithm,
 and it encapsulates every junction's traffic light logic and contains its different detectors.
 """
 
+__author__ = "Yair Feldman"
 
 class Junction(object):
     """A junction containing traffic lights and vehicle detectors.
