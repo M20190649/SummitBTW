@@ -144,7 +144,7 @@ if __name__ == "__main__":
             detector_xml.setAttribute("file", options.results)
             detector_xml.setAttribute("freq", str(options.frequency))
             detector_xml.setAttribute("friendlyPos", "x")
-            detector_xml.setAttribute("id", "e2det_" + str(lane_id))
+            detector_xml.setAttribute("id", "{}_e2det_{}".format(str(tls.getID()), str(lane_id)))
             detector_xml.setAttribute("lane", str(lane_id))
             detector_xml.setAttribute("length", str(final_detector_length))
             detector_xml.setAttribute("pos", str(final_detector_position))

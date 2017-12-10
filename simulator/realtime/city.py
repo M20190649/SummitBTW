@@ -9,6 +9,7 @@ __author__ = "Yair Feldman"
 import traci
 from .junction import Junction
 
+
 class City(object):
     """A city, containing all of the traffic lights currently loaded to the simulator.
 

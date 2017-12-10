@@ -6,6 +6,9 @@ and it encapsulates every junction's traffic light logic and contains its differ
 __author__ = "Yair Feldman"
 
 
+import traci
+
+
 class Junction(object):
     """A junction containing traffic lights and vehicle detectors.
 
