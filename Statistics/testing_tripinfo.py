@@ -42,7 +42,7 @@ def get_tripinfos(filename):
     root = tree.getroot()
     for child in root:
         tripinfos.append(Tripinfo(child.attrib))
-    logging.info('Parsed {} tripinfos from file'.format(len(tripinfos)))
+    logging.info(f'Parsed {len(tripinfos)} tripinfos from file')
     return tripinfos
 
 
@@ -81,7 +81,7 @@ def get_stats():
               lambda infos: max([info.routeLength for info in infos])))
     l.append(('Minimum routeLength: ',
               lambda infos: min([info.routeLength for info in infos])))
-    logging.info("Added {} statistics".format(len(l)))
+    logging.info(f"Added {len(l)} statistics")
     return l
 
 
@@ -90,7 +90,7 @@ def main():
         print('Wrong usage, Please enter an xml filename!')
         exit(-1)
 
-    log_filename = 'logger_{stamp}.log'.format(stamp=str(time.time()).replace(".", ""))
+    log_filename = f'logger_{str(time.time()).replace(".", "")}.log'
     logging.basicConfig(filename=log_filename, level=logging.DEBUG)
 
     tripinfos = get_tripinfos(sys.argv[1])
@@ -100,7 +100,7 @@ def main():
         try:
             statistics[msg] = f(tripinfos)
         except:
-            logging.debug("Evaluation of statistic {} failed".format(msg))
+            logging.debug(f"Evaluation of statistic {msg} failed")
 
     for s_key, s_val in statistics.items():
         print(s_key + str(s_val))
