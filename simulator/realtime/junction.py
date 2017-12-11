@@ -3,12 +3,18 @@ This is an API for the Junction class. It is built for the scheduling algorithm,
 and it encapsulates every junction's traffic light logic and contains its different detectors.
 """
 
+__author__ = "Yair Feldman"
+
+
+import traci
+
 
 class Junction(object):
     """A junction containing traffic lights and vehicle detectors.
 
     """
-    def __init__(self):
+    def __init__(self, traffic_light_id):
+        self._traffic_light_id = traffic_light_id
         raise NotImplementedError
 
     def get_lights(self):
