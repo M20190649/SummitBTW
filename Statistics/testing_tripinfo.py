@@ -8,6 +8,7 @@ import time
 
 class Tripinfo(object):
     """A class to represent a tripinfo object"""
+
     def __init__(self, parsed_info):
         self.id = parsed_info['id']
         self.depart = float(parsed_info['depart'])
@@ -47,10 +48,11 @@ def get_tripinfos(filename):
 
 def get_stats():
     l = list()
+    logging.debug("Starting the statistics evaluations")
     l.append(('Total Time-loss: ',
               lambda infos: funcs.reduce(ops.add, [info.timeLoss for info in infos])))
     l.append(('Average Time-loss: ',
-              lambda infos: funcs.reduce(ops.add, [info.timeLoss for info in infos])/len(infos)))
+              lambda infos: funcs.reduce(ops.add, [info.timeLoss for info in infos]) / len(infos)))
     l.append(('Max Time-loss: ',
               lambda infos: max([info.timeLoss for info in infos])))
     l.append(('Minimum Time-loss: ',
@@ -79,7 +81,7 @@ def get_stats():
               lambda infos: max([info.routeLength for info in infos])))
     l.append(('Minimum routeLength: ',
               lambda infos: min([info.routeLength for info in infos])))
-
+    logging.info("Added {} statistics".format(len(l)))
     return l
 
 
@@ -95,10 +97,14 @@ def main():
     statistics_lambdas = get_stats()
     statistics = dict()
     for msg, f in statistics_lambdas:
-        statistics[msg] = f(tripinfos)
+        try:
+            statistics[msg] = f(tripinfos)
+        except:
+            logging.debug("Evaluation of statistic {} failed".format(msg))
 
     for s_key, s_val in statistics.items():
-        print(s_key+str(s_val))
+        print(s_key + str(s_val))
+
 
 if __name__ == '__main__':
     main()
