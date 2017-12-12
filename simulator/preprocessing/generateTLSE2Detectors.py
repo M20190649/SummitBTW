@@ -69,6 +69,7 @@ if __name__ == "__main__":
     logging.basicConfig(level="INFO")
 
     option_parser = optparse.OptionParser()
+    #you can add any of these arguments as input, just follow the instructions
     option_parser.add_option("-n", "--net-file",
                              dest="net_file",
                              help="Network file to work with. Mandatory.",
