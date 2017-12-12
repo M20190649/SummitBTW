@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-
+#input: <file_name>.net.xml
+#output: an additinal file that will add detectors to the file
 from __future__ import absolute_import
 from __future__ import print_function
 
@@ -68,6 +69,7 @@ if __name__ == "__main__":
     logging.basicConfig(level="INFO")
 
     option_parser = optparse.OptionParser()
+    #you can add any of these arguments as input, just follow the instructions
     option_parser.add_option("-n", "--net-file",
                              dest="net_file",
                              help="Network file to work with. Mandatory.",
