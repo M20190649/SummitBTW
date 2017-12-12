@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-
+#input: <file_name>.net.xml
+#output: an additinal file that will add detectors to the file
 from __future__ import absolute_import
 from __future__ import print_function
 
