@@ -16,14 +16,13 @@ class Junction(object):
     def __init__(self, traffic_light_id, detectors):
         self._traffic_light_id = traffic_light_id
         self._detectors = detectors
-        raise NotImplementedError
 
     def get_lights(self):
         """Returns an list containing the different traffic light detectors in the junction.
 
-        :return: list of <TODO: replace with the class name of the detectors>
+        :return: list of Detectors
         """
-        raise NotImplementedError
+        return self._detectors
 
     def get_mutual_lights(self, light):
         """return a list of lights in the same junction that can turn green with the given light.
