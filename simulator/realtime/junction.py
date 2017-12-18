@@ -13,8 +13,9 @@ class Junction(object):
     """A junction containing traffic lights and vehicle detectors.
 
     """
-    def __init__(self, traffic_light_id):
+    def __init__(self, traffic_light_id, detectors):
         self._traffic_light_id = traffic_light_id
+        self._detectors = detectors
         raise NotImplementedError
 
     def get_lights(self):
