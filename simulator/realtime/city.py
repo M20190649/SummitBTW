@@ -19,7 +19,7 @@ class City(object):
         self._traffic_light_ids = traci.trafficlights.getIDList()
         self._detector_ids = traci.lanearea.getIDList()
         junction_detector_dict = self._get_junction_detector_dict()
-        self._junctions = {i: Junction(traffic_light_id=i, detectors=junction_detector_dict[i])
+        self._junctions = {i: Junction(traffic_light_id=i, detector_ids=junction_detector_dict[i])
                            for i in self._traffic_light_ids}
 
     def _get_junction_detector_dict(self):
@@ -29,7 +29,7 @@ class City(object):
         """
         junction_detector_dict = defaultdict(list)
         for det_id in self._detector_ids:
-            junction_detector_dict[det_id.split('_')[0]].append(Detector(det_id))
+            junction_detector_dict[det_id.split('_')[0]].append(det_id)
         return junction_detector_dict
 
     def get_junctions(self):

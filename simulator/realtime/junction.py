@@ -13,9 +13,10 @@ class Junction(object):
     """A junction containing traffic lights and vehicle detectors.
 
     """
-    def __init__(self, traffic_light_id, detectors):
+    def __init__(self, traffic_light_id, detector_ids):
         self._traffic_light_id = traffic_light_id
-        self._detectors = detectors
+        self._detector_ids = detector_ids
+
 
     def get_lights(self):
         """Returns an list containing the different traffic light detectors in the junction.
@@ -24,14 +25,14 @@ class Junction(object):
         """
         return self._detectors
 
-    def get_mutual_lights(self, light):
+    def get_mutual_lights(self, detector_id):
         """return a list of lights in the same junction that can turn green with the given light.
 
-        Given a certain traffic light in a junction, we would like to get all of the lights that can
-        logically be green together with that light.
+        Given a certain traffic light in a junction, which is represented by the appropriate detector,
+        we would like to get all of the lights that can logically be green together with that light.
 
-        :param light: (TODO: traffic light type) the traffic light we want to turn green
-        :return: list of possible lights in the same junction
+        :param detector_id: (string) the traffic light we want to turn green
+        :return: list of detectors which represent the possible lights in the same junction
         """
         raise NotImplementedError
 
