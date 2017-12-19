@@ -8,7 +8,6 @@ __author__ = "Yair Feldman"
 from collections import defaultdict
 import traci
 from .junction import Junction
-from .detector import Detector
 
 
 class City(object):
