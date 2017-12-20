@@ -2,10 +2,13 @@ import xml.etree.ElementTree as Et
 import sys
 import functools as funcs
 import operator as ops
-
+import logging
+import time
+from statistic_printer import TablePrinter
 
 class Tripinfo(object):
     """A class to represent a tripinfo object"""
+
     def __init__(self, parsed_info):
         self.id = parsed_info['id']
         self.depart = float(parsed_info['depart'])
@@ -28,61 +31,86 @@ class Tripinfo(object):
         self.vaporized = bool(parsed_info['vaporized'])
 
 
-def get_tripinfos(tree):
+def get_tripinfos(filename):
     """Initialize a tripinfo list from the tree object"""
     tripinfos = []
+    try:
+        tree = Et.parse(filename)
+    except FileNotFoundError:
+        logging.debug("Couldn't find given file")
+        exit(-1)
     root = tree.getroot()
     for child in root:
         tripinfos.append(Tripinfo(child.attrib))
+    logging.info(f'Parsed {len(tripinfos)} tripinfos from file {filename}')
     return tripinfos
 
 
 def get_stats():
-    l = []
-    l.append(('Total Time-loss: ',
+    l = list()
+    logging.debug("Starting the statistics evaluations")
+    l.append(('Total Time-Loss',
               lambda infos: funcs.reduce(ops.add, [info.timeLoss for info in infos])))
-    l.append(('Average Time-loss: ',
-              lambda infos: funcs.reduce(ops.add, [info.timeLoss for info in infos])/len(infos)))
-    l.append(('Max Time-loss: ',
+    l.append(('Average Time-Loss',
+              lambda infos: funcs.reduce(ops.add, [info.timeLoss for info in infos]) / len(infos)))
+    l.append(('Max Time-Loss',
               lambda infos: max([info.timeLoss for info in infos])))
-    l.append(('Minimum Time-loss: ',
+    l.append(('Minimum Time-Loss',
               lambda infos: min([info.timeLoss for info in infos])))
-    l.append(('Total waitSteps: ',
+    l.append(('Total waitSteps',
               lambda infos: funcs.reduce(ops.add, [info.waitSteps for info in infos])))
-    l.append(('Average waitSteps: ',
+    l.append(('Average waitSteps',
               lambda infos: funcs.reduce(ops.add, [info.waitSteps for info in infos]) / len(infos)))
-    l.append(('Max waitSteps: ',
+    l.append(('Max waitSteps',
               lambda infos: max([info.waitSteps for info in infos])))
-    l.append(('Minimum waitSteps: ',
+    l.append(('Minimum waitSteps',
               lambda infos: min([info.waitSteps for info in infos])))
-    l.append(('Total duration: ',
+    l.append(('Total Duration',
               lambda infos: funcs.reduce(ops.add, [info.duration for info in infos])))
-    l.append(('Average duration: ',
+    l.append(('Average Duration',
               lambda infos: funcs.reduce(ops.add, [info.duration for info in infos]) / len(infos)))
-    l.append(('Max duration: ',
+    l.append(('Max Duration',
               lambda infos: max([info.duration for info in infos])))
-    l.append(('Minimum duration: ',
+    l.append(('Minimum Duration',
               lambda infos: min([info.duration for info in infos])))
-    l.append(('Total routeLength: ',
+    l.append(('Total routeLength',
               lambda infos: funcs.reduce(ops.add, [info.routeLength for info in infos])))
-    l.append(('Average routeLength: ',
+    l.append(('Average routeLength',
               lambda infos: funcs.reduce(ops.add, [info.routeLength for info in infos]) / len(infos)))
-    l.append(('Max routeLength: ',
+    l.append(('Max routeLength',
               lambda infos: max([info.routeLength for info in infos])))
-    l.append(('Minimum routeLength: ',
+    l.append(('Minimum routeLength',
               lambda infos: min([info.routeLength for info in infos])))
+
+    logging.info(f"Added {len(l)} statistics")
     return l
 
 
-if __name__ == '__main__':
+def main():
     if len(sys.argv) < 2:
         print('Wrong usage, Please enter an xml filename!')
         exit(-1)
-    tripinfos = get_tripinfos(Et.parse(sys.argv[1]))
-    statistics_lambdas = get_stats()
-    statistics = dict()
-    for msg, f in statistics_lambdas:
-        statistics[msg] = f(tripinfos)
 
-    for s_key, s_val in statistics.items():
-        print(s_key+str(s_val))
+    log_filename = f'logger_{str(time.time()).replace(".", "")}.log'
+    logging.basicConfig(filename=log_filename, level=logging.DEBUG)
+
+    tripinfos = []
+    statistics = {}
+    statistics_lambdas = get_stats()
+    for filename in sys.argv[1:]:
+        curr_info = get_tripinfos(filename)
+        tripinfos.append(curr_info)
+        for msg, f in statistics_lambdas:
+            if msg not in statistics:
+                statistics[msg] = []
+            try:
+                statistics[msg].append(f(curr_info))
+            except:
+                logging.debug(f"Evaluation of statistic {msg} failed")
+
+    printer = TablePrinter(sys.argv[1:], statistics)
+    printer.print()
+
+
+if __name__ == '__main__':
+    main()

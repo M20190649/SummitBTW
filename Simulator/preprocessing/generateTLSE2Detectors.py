@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-
+#input: <file_name>.net.xml
+#output: an additinal file that will add detectors to the file
 from __future__ import absolute_import
 from __future__ import print_function
 
@@ -68,6 +69,7 @@ if __name__ == "__main__":
     logging.basicConfig(level="INFO")
 
     option_parser = optparse.OptionParser()
+    #you can add any of these arguments as input, just follow the instructions
     option_parser.add_option("-n", "--net-file",
                              dest="net_file",
                              help="Network file to work with. Mandatory.",
@@ -144,7 +146,7 @@ if __name__ == "__main__":
             detector_xml.setAttribute("file", options.results)
             detector_xml.setAttribute("freq", str(options.frequency))
             detector_xml.setAttribute("friendlyPos", "x")
-            detector_xml.setAttribute("id", "e2det_" + str(lane_id))
+            detector_xml.setAttribute("id", "{}_e2det_{}".format(str(tls.getID()), str(lane_id)))
             detector_xml.setAttribute("lane", str(lane_id))
             detector_xml.setAttribute("length", str(final_detector_length))
             detector_xml.setAttribute("pos", str(final_detector_position))

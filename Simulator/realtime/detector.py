@@ -10,8 +10,15 @@ class Detector(object):
     """Detector class which contains real-time information about loads on them.
     """
 
-    def __init__(self, identifier):
-        self.identifier = identifier
+    def __init__(self, identifier, link_index, green_phases):
+        """
+
+        :param identifier: the detector's ID
+        :param link_index: the link index on the traffic light state
+        """
+        self._identifier = identifier
+        self._link_index = link_index
+        self._green_phases = green_phases
         raise NotImplementedError
 
     def get_length(self):
