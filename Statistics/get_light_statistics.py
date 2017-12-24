@@ -63,8 +63,8 @@ def get_lightinfos(filename):
 def get_stats():
     l = list()
     logging.debug("Starting the statistics evaluations")
-    l.append(('Total Time-Loss',
-              lambda infos: funcs.reduce(ops.add, [data.maxJamLengthInMeters for _, info in infos for data in info])))
+    l.append(('Max Jam Length In Meters',
+              lambda infos: max([data.maxJamLengthInMeters for _, info in infos for data in info])))
 
     logging.info(f"Added {len(l)} statistics")
     return l
