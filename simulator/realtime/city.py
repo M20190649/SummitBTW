@@ -11,7 +11,7 @@ from .junction import Junction
 
 
 class City(object):
-    """A city, containing all of the traffic lights currently loaded to the Simu.
+    """A city, containing all of the traffic lights currently loaded to the simulator.
 
     """
     def __init__(self):
