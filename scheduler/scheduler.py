@@ -8,7 +8,7 @@ Assumptions:
 
 """
 Public Methods:
-Scheduler.schedule(): called every iteration of the simulator.
+Scheduler.schedule(): called every iteration of the Simu.
 """
 
 
