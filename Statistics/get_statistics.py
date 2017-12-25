@@ -94,12 +94,10 @@ def main():
     log_filename = f'logger_{str(time.time()).replace(".", "")}.log'
     logging.basicConfig(filename=log_filename, level=logging.DEBUG)
 
-    tripinfos = []
     statistics = {}
     statistics_lambdas = get_stats()
     for filename in sys.argv[1:]:
         curr_info = get_tripinfos(filename)
-        tripinfos.append(curr_info)
         for msg, f in statistics_lambdas:
             if msg not in statistics:
                 statistics[msg] = []
