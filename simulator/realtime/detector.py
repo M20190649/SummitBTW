@@ -22,6 +22,7 @@ class Detector(object):
         self._link_index = link_index
         self._green_phases = green_phases
 
+
     def get_length(self):
         """Get the length of a detector.
 
@@ -41,7 +42,7 @@ class Detector(object):
         :return: Occupancy percentage
         """
 
-        raise NotImplementedError
+        return traci.lanearea.getLastStepOccupancy(self._identifier)
 
     def get_mean_speed(self):
         """Querying a detector for the mean speed in it, as it was during the last simulation step.
