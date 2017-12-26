@@ -1,9 +1,11 @@
 """
-Author: EylonSho
-
 API for detectors, which represent physical sensors in junctions.
 Those can be queried for information about traffic.
 """
+
+__author__ = "Eylon Shoshan"
+
+import traci
 
 
 class Detector(object):
@@ -19,7 +21,6 @@ class Detector(object):
         self._identifier = identifier
         self._link_index = link_index
         self._green_phases = green_phases
-        raise NotImplementedError
 
     def get_length(self):
         """Get the length of a detector.
@@ -28,8 +29,7 @@ class Detector(object):
 
         :return: Detector length
         """
-
-        raise NotImplementedError
+        return traci.lanearea.getLength(self._identifier)
 
     def get_occupancy(self):
         """Query a detector for the occupancy in it, as it was during the last simulation step.
