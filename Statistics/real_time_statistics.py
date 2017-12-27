@@ -29,12 +29,12 @@ def get_detectors_and_junctions_infos(filename):
     root = tree.getroot()
     for child in root:
         d = get_detector_from_info(child.attrib)
-        detector_dict[d.get_identifier()] = d
+        detector_dict[d._identifier] = d
     for detector in detector_dict.values():
-        tls_id = detector.get_identifier().split('_')[0]
+        tls_id = detector._identifier.split('_')[0]
         if tls_id not in junction_dict_val_list:
             junction_dict_val_list[tls_id] = []
-        junction_dict_val_list[tls_id].append(detector.get_identifier())
+        junction_dict_val_list[tls_id].append(detector._identifier)
     for k in junction_dict_val_list.keys():
         junction_dict_res[k] = Jn.Junction(k, junction_dict_val_list[k])
     return detector_dict, junction_dict_res
@@ -53,7 +53,7 @@ def main():
     logging.basicConfig(filename=log_filename, level=logging.DEBUG)
     detector_dict, junction_dict = get_detectors_and_junctions_infos(sys.argv[2])
     for d in detector_dict.values():
-        print(d.get_identifier())
+        print(d._identifier)
     for j in junction_dict.values():
         print(j._traffic_light_id +" and " +j._detectors)
 
