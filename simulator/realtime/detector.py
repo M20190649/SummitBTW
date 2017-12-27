@@ -22,9 +22,6 @@ class Detector(object):
         self._link_index = link_index
         self._green_phases = green_phases
 
-    def get_identifier(self):
-        return self._identifier
-
     def get_length(self):
         """Get the length of a detector.
 
