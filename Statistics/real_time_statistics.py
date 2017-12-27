@@ -56,6 +56,17 @@ def main():
         print(d._identifier)
     for j in junction_dict.values():
         print(j._traffic_light_id +" and " +j._detectors)
+    while True:
+        id = input("Write id of object you are interested for. Write exit to stop the program\n")
+        if id in detector_dict:
+            print(detector_dict[id])
+        elif id in junction_dict:
+            print(junction_dict[id])
+        elif id == "exit":
+            print("Bye Bye!\n")
+            break;
+        else:
+            print("The id was not found. try again.\n")
 
 
 if __name__ == '__main__':
