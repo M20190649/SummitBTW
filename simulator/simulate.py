@@ -11,6 +11,8 @@ import sys
 import traci
 from sumolib import checkBinary
 
+from simulator.realtime.city import City
+
 
 def get_options():
     """
@@ -31,6 +33,7 @@ def run():
     """
 
     step = 0
+    city = City()
     while traci.simulation.getMinExpectedNumber() > 0:
         traci.simulationStep()
 
