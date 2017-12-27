@@ -27,8 +27,12 @@ class Junction(object):
 
         :return: list of strings, each string representing a phase
         """
-        return [x._phaseDef for x in
+        try:
+            return [x._phaseDef for x in
                 traci.trafficlights.getCompleteRedYellowGreenDefinition(self._traffic_light_id)[0]._phases]
+        except AttributeError:
+            return "did not get phases"
+
 
     def _get_green_phases_for_detector(self, detector_link_index):
         """returns the phase indexes in which the given link can be green.
@@ -44,13 +48,16 @@ class Junction(object):
         :param detector_ids: list of detector IDs linked to the traffic light
         :return: list of Detectors
         """
-        detector_links = traci.trafficlights.getControlledLanes(self._traffic_light_id)
-        detectors = [Detector(identifier=det_id,
-                              link_index=detector_links.index(traci.lanearea.getLaneID(det_id)),
-                              green_phases=self._get_green_phases_for_detector(
-                                  detector_links.index(traci.lanearea.getLaneID(det_id))))
-                     for det_id in detector_ids]
-        return detectors
+        try:
+            detector_links = traci.trafficlights.getControlledLanes(self._traffic_light_id)
+            detectors = [Detector(identifier=det_id,
+                                  link_index=detector_links.index(traci.lanearea.getLaneID(det_id)),
+                                  green_phases=self._get_green_phases_for_detector(
+                                      detector_links.index(traci.lanearea.getLaneID(det_id))))
+                         for det_id in detector_ids]
+            return detectors
+        except AttributeError:
+            return ', '.join(detector_ids)
 
     def get_lights(self):
         """Returns an list containing the different traffic light detectors in the junction.
