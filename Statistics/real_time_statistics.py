@@ -18,9 +18,9 @@ def get_detector_from_info(parsed_info):
 
 def get_detectors_and_junctions_infos(filename):
     """Initialize a detectors list from the tree object"""
-    detector_infos = []
-    junction_dict = {}
-    junction_info = []
+    detector_dict = {}
+    junction_dict_val_list = {}
+    junction_dict_res = {}
     try:
         tree = Et.parse(filename)
     except FileNotFoundError:
@@ -28,15 +28,16 @@ def get_detectors_and_junctions_infos(filename):
         exit(-1)
     root = tree.getroot()
     for child in root:
-        detector_infos.append(get_detector_from_info(child.attrib))
-    for detector in detector_infos:
+        d = get_detector_from_info(child.attrib)
+        detector_dict[d.get_identifier()] = d
+    for detector in detector_dict.values():
         tls_id = detector.get_identifier().split('_')[0]
-        if tls_id not in junction_dict:
-            junction_dict[tls_id] = []
-        junction_dict[tls_id].append(detector.get_identifier())
-    for k in junction_dict.keys():
-        junction_info.append(Jn.Junction(k, junction_dict[k]))
-    return (detector_infos, junction_info)
+        if tls_id not in junction_dict_val_list:
+            junction_dict_val_list[tls_id] = []
+        junction_dict_val_list[tls_id].append(detector.get_identifier())
+    for k in junction_dict_val_list.keys():
+        junction_dict_res[k] = Jn.Junction(k, junction_dict_val_list[k])
+    return detector_dict, junction_dict_res
 
     logging.info(f'Parsed {len(detector_infos)} detector_infos from file {filename}')
     return detector_infos
@@ -50,8 +51,10 @@ def main():
 
     log_filename = f'logger_{str(time.time()).replace(".", "")}.log'
     logging.basicConfig(filename=log_filename, level=logging.DEBUG)
-    detector_infos, junction_infos = get_detectors_and_junctions_infos(sys.argv[2])
-    for j in  junction_infos:
+    detector_dict, junction_dict = get_detectors_and_junctions_infos(sys.argv[2])
+    for d in detector_dict.values():
+        print(d.get_identifier())
+    for j in junction_dict.values():
         print(j._traffic_light_id +" and " +j._detectors)
 
 
