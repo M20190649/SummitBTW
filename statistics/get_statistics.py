@@ -4,7 +4,7 @@ import functools as funcs
 import operator as ops
 import logging
 import time
-from statistic_printer import TablePrinter
+from Statistics.statistic_printer import TablePrinter
 
 class Tripinfo(object):
     """A class to represent a tripinfo object"""
