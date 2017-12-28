@@ -1,5 +1,6 @@
 from prettytable import PrettyTable
 
+
 class StatisticsPrinter(object):
 
     def print(self, *args):
@@ -25,4 +26,3 @@ class TablePrinter(StatisticsPrinter):
 
     def print(self):
         print(self._t)
-
