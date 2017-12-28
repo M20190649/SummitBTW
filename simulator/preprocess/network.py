@@ -15,7 +15,7 @@ def generate_net(resource_path="./city.net.xml", size=30):
     Size is configurable.
     :param resource_path: folder path where the exported network will be located
     :param size: network size
-    :return:
+    :return: None
     """
     cmd = ['netgenerate',
            '-o ' + resource_path,
