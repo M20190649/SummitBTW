@@ -17,6 +17,9 @@ def generate_net(resource_path="./city.net.xml", size=30):
     :param size: network size
     :return: None
     """
+
+    logging.info('Starting to generate SUMO network')
+
     cmd = ['netgenerate',
            '-o ' + resource_path,
            '--tls.guess',
