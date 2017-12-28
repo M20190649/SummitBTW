@@ -5,7 +5,6 @@ and it encapsulates every junction's traffic light logic and contains its differ
 
 __author__ = "Yair Feldman"
 
-
 import traci
 from .detector import Detector
 
@@ -14,6 +13,7 @@ class Junction(object):
     """A junction containing traffic lights and vehicle detectors.
 
     """
+
     def __init__(self, traffic_light_id, detector_ids):
         self._traffic_light_id = traffic_light_id
         self._phases = self._get_phases()
@@ -29,8 +29,6 @@ class Junction(object):
         """
         return [x._phaseDef for x in
                 traci.trafficlights.getCompleteRedYellowGreenDefinition(self._traffic_light_id)[0]._phases]
-
-
 
     def _get_green_phases_for_detector(self, detector_link_index):
         """returns the phase indexes in which the given link can be green.
@@ -53,7 +51,6 @@ class Junction(object):
                                   detector_links.index(traci.lanearea.getLaneID(det_id))))
                      for det_id in detector_ids]
         return detectors
-
 
     def get_lights(self):
         """Returns an list containing the different traffic light detectors in the junction.
