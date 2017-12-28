@@ -9,7 +9,7 @@ import subprocess
 import logging
 
 
-def generate_net(resource_path=".", size=30):
+def generate_net(resource_path="./city.net.xml", size=30):
     """
     Generating .net.xml that represents the a city SUMO network for simulation.
     Size is configurable.
@@ -18,7 +18,7 @@ def generate_net(resource_path=".", size=30):
     :return:
     """
     cmd = ['netgenerate',
-           '-o' + resource_path + '/city.net.xml',
+           '-o' + resource_path,
            '--tls.guess',
            '--tls.left-green.time', '0',
            '--rand',
