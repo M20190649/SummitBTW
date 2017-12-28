@@ -1,7 +1,4 @@
-import sys
 import logging
-import functools as funcs
-import operator as ops
 import time
 
 from SummitBTW.simulator.realtime.city import City
@@ -21,9 +18,24 @@ def main():
     while True:
         id_desired = input("Write id of object you are interested for. Write exit to stop the program\n")
         if id_desired in detector_dict:
-            print(detector_dict[id_desired])
+            info_desired = input("Write the information you desire about the detector:\n"
+                                 "'get_length'/'get_occupancy'/'get_mean_speed'\n")
+            if info_desired is 'get_length':
+                print(detector_dict[id_desired].get_length())
+                continue
+            elif info_desired is 'get_occupancy':
+                print(detector_dict[id_desired].get_occupancy())
+            elif info_desired is 'get_mean_speed':
+                print(detector_dict[id_desired].get_mean_speed())
+            print("Wrote function inappropriately.")
+            continue
+
         elif id_desired in junction_dict:
-            print(junction_dict[id_desired])
+            info_desired = input("Write the information you desire about the junction:\n"
+                                 "\n")
+            # TODO: needs some functions
+            print("Wrote function inappropriately.")
+            continue
         elif id_desired == "exit":
             print("Bye Bye!\n")
             break
