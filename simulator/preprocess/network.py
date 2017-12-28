@@ -9,11 +9,11 @@ import subprocess
 import logging
 
 
-def generate_net(resource_path="./city.net.xml", size=30):
+def generate_net(sumo_network_path=".", size=30):
     """
     Generating .net.xml that represents the a city SUMO network for simulation.
     Size is configurable.
-    :param resource_path: folder path where the exported network will be located
+    :param sumo_network_path: folder path where the exported network will be located
     :param size: network size
     :return: None
     """
@@ -21,7 +21,7 @@ def generate_net(resource_path="./city.net.xml", size=30):
     logging.info('Starting to generate SUMO network')
 
     cmd = ['netgenerate',
-           '-o ' + resource_path,
+           '-o', sumo_network_path,
            '--tls.guess',
            '--tls.left-green.time', '0',
            '--rand',
