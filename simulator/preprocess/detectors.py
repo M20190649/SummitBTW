@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-#input: <file_name>.net.xml
-#output: an additinal file that will add detectors to the file
+# input: <file_name>.net.xml
+# output: an additinal file that will add detectors to the file
 from __future__ import absolute_import
 from __future__ import print_function
 
@@ -63,27 +63,27 @@ def adjust_detector_position(final_detector_length,
     return max(0,
                lane_length - final_detector_length - requested_distance_to_tls)
 
-if __name__ == "__main__":
-    # pylint: disable-msg=C0103
 
+def add_detectors(sumo_network=None):
     logging.basicConfig(level="INFO")
 
     option_parser = optparse.OptionParser()
-    #you can add any of these arguments as input, just follow the instructions
+    # you can add any of these arguments as input, just follow the instructions
     option_parser.add_option("-n", "--net-file",
                              dest="net_file",
                              help="Network file to work with. Mandatory.",
-                             type="string")
+                             type="string",
+                             default=sumo_network)
     option_parser.add_option("-l", "--detector-length",
                              dest="requested_detector_length",
                              help="Length of the detector in meters "
-                             "(-1 for maximal length).",
+                                  "(-1 for maximal length).",
                              type="int",
-                             default=250)
+                             default=60)
     option_parser.add_option("-d", "--distance-to-TLS",
                              dest="requested_distance_to_tls",
                              help="Distance of the detector to the traffic "
-                             "light in meters. Defaults to 0.1m.",
+                                  "light in meters. Defaults to 0.1m.",
                              type="float",
                              default=.1)
     option_parser.add_option("-f", "--frequency",
@@ -94,23 +94,19 @@ if __name__ == "__main__":
     option_parser.add_option("-o", "--output",
                              dest="output",
                              help="The name of the file to write the detector "
-                             "definitions into. Defaults to e2.add.xml.",
+                                  "definitions into. Defaults to e2.add.xml.",
                              type="string",
                              default="e2.add.xml")
     option_parser.add_option("-r", "--results-file",
                              dest="results",
                              help="The name of the file the detectors write "
-                             "their output into. Defaults to e2output.xml.",
+                                  "their output into. Defaults to e2output.xml.",
                              type="string",
-                             default="e2output.xml")
+                             default="e2.output.xml")
     option_parser.set_usage("detectors.py -n example.net.xml "
                             "-l 250 -d .1 -f 60")
 
     (options, args) = option_parser.parse_args()
-    if not options.net_file:
-        print("Missing arguments")
-        option_parser.print_help()
-        exit()
 
     logging.info("Reading net...")
     net = sumolib.net.readNet(options.net_file)
@@ -127,8 +123,7 @@ if __name__ == "__main__":
             logging.debug("Creating detector for lane %s" % (str(lane_id)))
 
             if lane_id in lanes_with_detectors:
-                logging.warn("Detector for lane %s already generated" %
-                             (str(lane_id)))
+                logging.warning("Detector for lane %s already generated" % (str(lane_id)))
                 continue
 
             lanes_with_detectors.add(lane_id)
@@ -158,3 +153,7 @@ if __name__ == "__main__":
     detector_file.close()
 
     logging.info("%d e2 detectors generated!" % len(lanes_with_detectors))
+
+
+if __name__ == "__main__":
+    add_detectors()
