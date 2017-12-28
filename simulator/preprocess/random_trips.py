@@ -44,16 +44,18 @@ SINK_SUFFIX = ".dst.xml"
 VIA_SUFFIX = ".via.xml"
 
 
-def get_options(args=None):
+def get_options(sumo_network, output_path, args=None):
     optParser = optparse.OptionParser()
     optParser.add_option("-n", "--net-file", dest="netfile",
-                         help="define the net file (mandatory)")
+                         help="define the net file (mandatory)",
+                         default=sumo_network)
     optParser.add_option("-a", "--additional-files", dest="additional",
                          help="define additional files to be loaded by the router")
     optParser.add_option("-o", "--output-trip-file", dest="tripfile",
-                         default="trips.trips.xml", help="define the output trip filename")
+                         default=output_path + "/trips.trips.xml", help="define the output trip filename")
     optParser.add_option("-r", "--route-file", dest="routefile",
-                         help="generates route file with duarouter")
+                         help="generates route file with duarouter",
+                         default=output_path+"/routes.rou.xml")
     optParser.add_option("--weights-prefix", dest="weightsprefix",
                          help="loads probabilities for being source, destination and via-edge from the files named <prefix>.src.xml, <prefix>.sink.xml and <prefix>.via.xml")
     optParser.add_option("--weights-output-prefix", dest="weights_outprefix",
@@ -112,7 +114,7 @@ def get_options(args=None):
     optParser.add_option("-v", "--verbose", action="store_true",
                          default=False, help="tell me what you are doing")
     (options, args) = optParser.parse_args(args=args)
-    if not options.netfile:
+    if not options.netfile and __name__ == "main":
         optParser.print_help()
         sys.exit(1)
 
@@ -360,15 +362,15 @@ def prependSpace(s):
         return " " + s
 
 
-def generate_trips():
-    options = get_options()
+def generate_trips(sumo_network=None, output_path=None):
+    options = get_options(sumo_network, output_path)
     if options.seed:
         random.seed(options.seed)
 
     net = sumolib.net.readNet(options.netfile)
+
     if options.min_distance > net.getBBoxDiameter() * (options.intermediate + 1):
-        options.intermediate = int(
-            math.ceil(options.min_distance / net.getBBoxDiameter())) - 1
+        options.intermediate = int(math.ceil(options.min_distance / net.getBBoxDiameter())) - 1
         print(
             "Warning: setting number of intermediate waypoints to %s to achieve a minimum trip length of %s in a "
             "network with diameter %.2f." % (
