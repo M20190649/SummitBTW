@@ -103,7 +103,7 @@ if __name__ == "__main__":
                              "their output into. Defaults to e2output.xml.",
                              type="string",
                              default="e2output.xml")
-    option_parser.set_usage("add_detectors.py -n example.net.xml "
+    option_parser.set_usage("detectors.py -n example.net.xml "
                             "-l 250 -d .1 -f 60")
 
     (options, args) = option_parser.parse_args()
