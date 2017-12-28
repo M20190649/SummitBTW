@@ -360,7 +360,8 @@ def prependSpace(s):
         return " " + s
 
 
-def main(options):
+def generate_trips():
+    options = get_options()
     if options.seed:
         random.seed(options.seed)
 
@@ -476,5 +477,5 @@ def main(options):
 
 
 if __name__ == "__main__":
-    if not main(get_options()):
+    if not generate_trips():
         sys.exit(1)
