@@ -14,6 +14,7 @@ class City(object):
     """A city, containing all of the traffic lights currently loaded to the simulator.
 
     """
+
     def __init__(self):
         self._traffic_light_ids = traci.trafficlights.getIDList()
         self._detector_ids = traci.lanearea.getIDList()
@@ -40,3 +41,18 @@ class City(object):
 
     def get_junction_by_id(self, junction_id):
         return self._junctions[junction_id]
+
+    def get_detectors_dict(self):
+        """returns a full dictionary of all detectors in the city: key is detector id and value is the appropriate Detector object.
+
+        :return: dictionary of Detectors
+        """
+        pass
+
+    def get_junctions_dict(self):
+        """returns a full dictionary of all junctions in the city: key is junction id and value is the appropriate
+        Junction object.
+
+        :return: dictionary of Junctions
+        """
+        pass
