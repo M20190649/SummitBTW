@@ -18,7 +18,7 @@ def generate_net(resource_path="./city.net.xml", size=30):
     :return:
     """
     cmd = ['netgenerate',
-           '-o' + resource_path,
+           '-o ' + resource_path,
            '--tls.guess',
            '--tls.left-green.time', '0',
            '--rand',
