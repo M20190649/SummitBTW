@@ -121,6 +121,17 @@ class Scheduler(object):
                 self.epoch[light] += 1
 
     """
+    find the best traffic light to schedule with best_tl.
+    input: best_tl - a traffic light that is the best choice to schedule.
+    output: a traffic light that is best to schedule simultaneously with best_tl.
+            if not such traffic light exist, then return None.
+    """
+    def find_best_partner(self, best_tl):
+        if len(self.mutual_lights[best_tl]) != 0:
+            return self.mutual_lights[best_tl][0]
+        else:
+            return None
+    """
     the main function that is called every iteration.
     input: none
     returns: True if a context switch has occurred (and else returns False).
@@ -129,7 +140,10 @@ class Scheduler(object):
         best_tl = self.get_best_traffic_to_schedule()
         if best_tl is not None:
             best_partner_tl = self.find_best_partner(best_tl)
-            self.context_switch([best_tl, best_partner_tl])
+            to_schedule = [best_tl]
+            if best_partner_tl is not None:
+                to_schedule += [best_partner_tl]
+            self.context_switch(to_schedule)
 
         # TODO: can find the best partner to schedule to the best light if there wan't a context switch.
         # (This is good if len(mutual_lights[best_light]) > 1).
