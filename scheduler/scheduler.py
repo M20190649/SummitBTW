@@ -8,14 +8,21 @@ This is the main scheduler file.
 Assumptions:
 1) traffic light is a Detector object. This is because there is no Taffic_Light class.
 2) is_green method to Detector object. no input, output boolean True iff the traffic light is green.
-3) The Scheduler class is responsible to schedule only one junction!
+3) The SchedulerJunction class is responsible to schedule only one junction!
+4) Scheduler object is responsible for scheduling the entire city.
+5) Scheduling a junction is independent of the other junctions.
 
 Public Methods:
 Scheduler.schedule(): called every iteration of the simulator.
 """
 
+"""
+The class SchedulerJunction that schedules one junction.
+Since scheduling different junction is independent this is where all of the logic happens
+"""
 
-class Scheduler(object):
+
+class SchedulerJunction(object):
     def __init__(self, junction):
         # the junction to schedule
         self.junction = junction
@@ -105,6 +112,7 @@ class Scheduler(object):
     input: list of lights to turn green.
     output: None
     """
+
     def context_switch(self, lights):
         self.junction.set_green(lights)
 
@@ -113,6 +121,7 @@ class Scheduler(object):
     input: none
     output: none
     """
+
     def update_epoch(self):
         for light in self.lights:
             if light.is_green():
@@ -126,16 +135,19 @@ class Scheduler(object):
     output: a traffic light that is best to schedule simultaneously with best_tl.
             if not such traffic light exist, then return None.
     """
+
     def find_best_partner(self, best_tl):
         if len(self.mutual_lights[best_tl]) != 0:
             return self.mutual_lights[best_tl][0]
         else:
             return None
+
     """
     the main function that is called every iteration.
     input: none
     returns: True if a context switch has occurred (and else returns False).
     """
+
     def schedule(self):
         best_tl = self.get_best_traffic_to_schedule()
         if best_tl is not None:
@@ -150,3 +162,34 @@ class Scheduler(object):
 
         self.update_epoch()
         return True if best_tl is not None else False
+
+
+"""
+class Scheduler is the main class that is scheduling all the junctions in a city.
+Scheduler.scheduler() is called every iteration of the simulator in busy wait.
+"""
+
+
+class Scheduler(object):
+    def __init__(self, city):
+        self.schedulers = []
+        for junction in city:
+            junction_scheduler = SchedulerJunction(junction)
+            self.schedulers += junction_scheduler
+
+        self.num_junctions = len(self.schedulers)
+        self.junction_to_schedule = 0
+
+    """
+    The function that is called with busy wait in the simulator.
+    schedule each junction in a round robin way.
+    Each junction is scheduled independent of the other junctions using SchedulerJunction.schedule()
+    
+    input: none
+    output: True if a context_switch has occured and Flase otherwise.
+    """
+
+    def schedule(self):
+        context_switch_occurred = self.schedulers[self.junction_to_schedule].schedule()
+        self.junction_to_schedule = (self.junction_to_schedule + 1) % self.num_junctions
+        return context_switch_occurred
