@@ -18,6 +18,7 @@ class Junction(object):
         self._traffic_light_id = traffic_light_id
         self._phases = self._get_phases()
         self._detectors = self._get_detectors(detector_ids)
+        self._mutual_lights = self._get_mutual_lights_dict()
 
     def _get_phases(self):
         """returns the phases of the traffic light, sorted by their index number
@@ -37,6 +38,16 @@ class Junction(object):
         :return: list of integers representing the phases' indexes
         """
         return [i for i, phase in enumerate(self._phases) if phase[detector_link_index] in ['g', 'G']]
+
+    def _get_mutual_lights_dict(self):
+        """returns a dictionary mapping each light to the possible mutual lights in the junction.
+
+        :return: a dict with key=id (string) -> value=list of detectors
+        """
+        return {light.get_id(): [mutual for mutual in self._detectors
+                                 if mutual != light and
+                                 any(p in mutual.get_green_phases() for p in light.get_green_phases())]
+                for light in self._detectors}
 
     def _get_detectors(self, detector_ids):
         """creates and returns the list of Detector for this traffic light
@@ -68,7 +79,7 @@ class Junction(object):
         :param detector_id: (string) the traffic light we want to turn green
         :return: list of Detectors which represent the possible lights in the same junction
         """
-        raise NotImplementedError
+        return self._mutual_lights[detector_id]
 
     def set_green(self, lights):
         """turns the given traffic lights to green.
