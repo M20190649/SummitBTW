@@ -31,6 +31,12 @@ class Detector(object):
         """
         return self._identifier
 
+    def get_green_phases(self):
+        """ returns a list of phases in which the detector's traffic light is green.
+
+        :return: list of integers representing the green phases.
+        """
+
     def get_length(self):
         """Get the length of a detector.
 
