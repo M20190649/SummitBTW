@@ -17,10 +17,19 @@ class Detector(object):
 
         :param identifier: the detector's ID
         :param link_index: the link index on the traffic light state
+        :param green_phases: a list of the possible phases of the detector's traffic light
+            refer to the documentation on Junction for further description of the phases.
         """
         self._identifier = identifier
         self._link_index = link_index
         self._green_phases = green_phases
+
+    def get_id(self):
+        """returns the id of the detector.
+
+        :return: the detector's identifier (string)
+        """
+        return self._identifier
 
     def get_length(self):
         """Get the length of a detector.
