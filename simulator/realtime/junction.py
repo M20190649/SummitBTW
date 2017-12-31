@@ -57,9 +57,9 @@ class Junction(object):
         """
         detector_links = traci.trafficlights.getControlledLanes(self._traffic_light_id)
         detectors = {det_id: Detector(identifier=det_id,
-                              link_index=detector_links.index(traci.lanearea.getLaneID(det_id)),
-                              green_phases=self._get_green_phases_for_detector(
-                                  detector_links.index(traci.lanearea.getLaneID(det_id))))
+                                      link_index=detector_links.index(traci.lanearea.getLaneID(det_id)),
+                                      green_phases=self._get_green_phases_for_detector(
+                                          detector_links.index(traci.lanearea.getLaneID(det_id))))
                      for det_id in detector_ids}
         return detectors
 

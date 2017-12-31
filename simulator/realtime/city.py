@@ -23,7 +23,7 @@ class City(object):
                            for i in self._traffic_light_ids}
 
     def _get_junction_detector_dict(self):
-        """returns a dictionary of juntion_id -> list of detector id's
+        """returns a dictionary of junction_id -> list of detector id's
 
         :return: a dictionary
         """
@@ -45,14 +45,17 @@ class City(object):
     def get_detectors_dict(self):
         """returns a full dictionary of all detectors in the city: key is detector id and value is the appropriate Detector object.
 
-        :return: dictionary of Detectors
+        :return: dictionary of id (string) -> Detector
         """
-        pass
+        det_dict = {}
+        for junction in self._junctions.values():
+            det_dict.update(junction._detectors)
+        return det_dict
 
     def get_junctions_dict(self):
         """returns a full dictionary of all junctions in the city: key is junction id and value is the appropriate
         Junction object.
 
-        :return: dictionary of Junctions
+        :return: dictionary of id (string) -> Junction
         """
-        pass
+        return self._junctions
