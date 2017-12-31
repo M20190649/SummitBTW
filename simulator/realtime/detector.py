@@ -36,6 +36,7 @@ class Detector(object):
 
         :return: list of integers representing the green phases.
         """
+        return self._green_phases
 
     def get_length(self):
         """Get the length of a detector.

@@ -44,23 +44,23 @@ class Junction(object):
 
         :return: a dict with key=id (string) -> value=list of detectors
         """
-        return {light.get_id(): [mutual for mutual in self._detectors
+        return {light.get_id(): [mutual for mutual in self._detectors.values()
                                  if mutual != light and
                                  any(p in mutual.get_green_phases() for p in light.get_green_phases())]
-                for light in self._detectors}
+                for light in self._detectors.values()}
 
     def _get_detectors(self, detector_ids):
-        """creates and returns the list of Detector for this traffic light
+        """creates and returns the dictionary of Detectors for this traffic light
 
         :param detector_ids: list of detector IDs linked to the traffic light
-        :return: list of Detectors
+        :return: dict of id (string) -> Detector
         """
         detector_links = traci.trafficlights.getControlledLanes(self._traffic_light_id)
-        detectors = [Detector(identifier=det_id,
-                              link_index=detector_links.index(traci.lanearea.getLaneID(det_id)),
-                              green_phases=self._get_green_phases_for_detector(
-                                  detector_links.index(traci.lanearea.getLaneID(det_id))))
-                     for det_id in detector_ids]
+        detectors = {det_id: Detector(identifier=det_id,
+                                      link_index=detector_links.index(traci.lanearea.getLaneID(det_id)),
+                                      green_phases=self._get_green_phases_for_detector(
+                                          detector_links.index(traci.lanearea.getLaneID(det_id))))
+                     for det_id in detector_ids}
         return detectors
 
     def get_lights(self):
@@ -68,7 +68,7 @@ class Junction(object):
 
         :return: list of Detectors
         """
-        return self._detectors
+        return list(self._detectors.values())
 
     def get_mutual_lights(self, detector_id):
         """return a list of lights in the same junction that can turn green with the given light.
@@ -81,14 +81,17 @@ class Junction(object):
         """
         return self._mutual_lights[detector_id]
 
-    def set_green(self, lights):
+    def set_green(self, light_ids):
         """turns the given traffic lights to green.
 
         This function currently assumes that there is exactly one possible phase for the traffic lights
         such that the given lights are green together. It will raise an error otherwise, and will
         also raise an error if it is not possible for the given lights to be green at the same time.
 
-        :param lights: (list of traffic lights) the traffic lights in the junction to turn green
+        :param light_ids: (list of traffic lights id's (strings)) the traffic lights in the junction to turn green
         :return: None
         """
-        raise NotImplementedError
+        mutual_phases = list(set.intersection(*[set(self._detectors[light].get_green_phases()) for light in light_ids]))
+        if len(mutual_phases) == 0:
+            raise ValueError("Given lights can't be green together!")
+        traci.trafficlights.setPhase(self._traffic_light_id, mutual_phases[0])
