@@ -16,7 +16,7 @@ class City(object):
     """
 
     def __init__(self):
-        self._traffic_light_ids = traci.trafficlights.getIDList()
+        self._traffic_light_ids = traci.trafficlight.getIDList()
         self._detector_ids = traci.lanearea.getIDList()
         junction_detector_dict = self._get_junction_detector_dict()
         self._junctions = {i: Junction(traffic_light_id=i, detector_ids=junction_detector_dict[i])

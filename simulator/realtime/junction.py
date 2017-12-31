@@ -29,7 +29,7 @@ class Junction(object):
         :return: list of strings, each string representing a phase
         """
         return [x._phaseDef for x in
-                traci.trafficlights.getCompleteRedYellowGreenDefinition(self._traffic_light_id)[0]._phases]
+                traci.trafficlight.getCompleteRedYellowGreenDefinition(self._traffic_light_id)[0]._phases]
 
     def _get_green_phases_for_detector(self, detector_link_index):
         """returns the phase indexes in which the given link can be green.
@@ -55,7 +55,7 @@ class Junction(object):
         :param detector_ids: list of detector IDs linked to the traffic light
         :return: dict of id (string) -> Detector
         """
-        detector_links = traci.trafficlights.getControlledLanes(self._traffic_light_id)
+        detector_links = traci.trafficlight.getControlledLanes(self._traffic_light_id)
         detectors = {det_id: Detector(identifier=det_id,
                                       link_index=detector_links.index(traci.lanearea.getLaneID(det_id)),
                                       green_phases=self._get_green_phases_for_detector(
@@ -94,4 +94,4 @@ class Junction(object):
         mutual_phases = list(set.intersection(*[set(self._detectors[light].get_green_phases()) for light in light_ids]))
         if len(mutual_phases) == 0:
             raise ValueError("Given lights can't be green together!")
-        traci.trafficlights.setPhase(self._traffic_light_id, mutual_phases[0])
+        traci.trafficlight.setPhase(self._traffic_light_id, mutual_phases[0])
