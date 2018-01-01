@@ -1,7 +1,7 @@
 import logging
 import time
 
-from SummitBTW.simulator.realtime.city import City
+from simulator.realtime.city import City
 
 
 def main():
