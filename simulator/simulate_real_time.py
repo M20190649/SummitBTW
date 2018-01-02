@@ -11,6 +11,8 @@ import threading
 
 import traci
 from sumolib import checkBinary
+import functools as funcs
+import operator as ops
 
 from simulator.realtime.city import City
 
@@ -24,40 +26,32 @@ class RealTime(threading.Thread):
         self.lock = lock
         self.event = event
 
+    def get_detector_info_by_id(self, id_of_detector):
+        detector = self.detectors_dict[id_of_detector]
+        return [("detector "+id_of_detector+" length: ", detector.get_length()), ("detector "+id_of_detector+" mean speed: ", detector.get_mean_speed()), ("detector "+id_of_detector+" occupancy: ", detector.get_occupancy())]
+
+    def get_junction_info_by_id(self, id_of_junction):
+        junction = self.junctions_dict[id_of_junction]
+        list_detectors_of_junction = junction.get_lights()
+        avg_mean_speed = funcs.reduce(ops.add, [detector.get_mean_speed() for detector in list_detectors_of_junction]) / len(list_detectors_of_junction)
+        avg_occupancy = funcs.reduce(ops.add, [detector.get_occupancy() for detector in list_detectors_of_junction]) / len(list_detectors_of_junction)
+        return [("junction "+id_of_junction+" avg mean speed: ", avg_mean_speed), ("junction "+id_of_junction+" avg occupancy: ", avg_occupancy)]
+
     def run(self):
         while True:
             try:
                 self.lock.release()
             except ValueError:
                 pass
+            id_desired = input("Write id of object you are interested for\n")
             if self.event.is_set() is True:
-                exit()
-            id_desired = input("Write id of object you are interested for. Write exit to stop the program\n")
-            if self.event.is_set() is True:
+                print("It seems that the simulation has ended. Please exit the simulation program.")
                 exit()
             self.lock.acquire()
             if id_desired in self.detectors_dict:
-                info_desired = input("Write the information you desire about the detector:\n"
-                                     "'get_length'/'get_occupancy'/'get_mean_speed'\n")
-                if info_desired == 'get_length':
-                    print(self.detectors_dict[id_desired].get_length())
-                    continue
-                elif info_desired == 'get_occupancy':
-                    print(self.detectors_dict[id_desired].get_occupancy())
-                elif info_desired == 'get_mean_speed':
-                    print(self.detectors_dict[id_desired].get_mean_speed())
-                print("Wrote function inappropriately.")
-                continue
-
+                print(self.get_detector_info_by_id(id_desired))
             elif id_desired in self.junctions_dict:
-                info_desired = input("Write the information you desire about the junction:\n"
-                                     "\n")
-                # TODO: needs some functions
-                print("Wrote function inappropriately.")
-                continue
-            elif id_desired == "exit":
-                print("Bye Bye!\n")
-                exit()
+                print(self.get_junction_info_by_id(id_desired))
             else:
                 print("The id was not found. Please try again.\n")
 
