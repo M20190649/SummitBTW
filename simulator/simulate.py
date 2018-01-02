@@ -4,7 +4,6 @@ Author: EylonSho
 Main simulator script.
 Initializes SUMO and its dependencies, and applies the scheduler.
 """
-
 import optparse
 import sys
 
@@ -12,6 +11,7 @@ import traci
 from sumolib import checkBinary
 
 from simulator.realtime.city import City
+from statistics.realtime import RealTime
 
 
 def get_options():
@@ -26,20 +26,27 @@ def get_options():
     return opts
 
 
-def run():
+def run_simulate():
     """
     Execute the simulation loop, and applying the scheduler in each step.
     :return: None
     """
 
-    step = 0
     city = City()
-    while traci.simulation.getMinExpectedNumber() > 0:
-        traci.simulationStep()
-
-        # TODO: Here we are going to call the scheduler algorithm.
-
-        step += 1
+    thread = RealTime(city)
+    thread.start()
+    simulation_ended = False
+    while simulation_ended is False:
+        thread.lock.acquire()
+        if traci.simulation.getMinExpectedNumber() > 0:
+            # Todo: add simulator algorithm
+            traci.simulationStep()
+        else:
+            thread.end_simulation_event.set()
+            simulation_ended = True
+        thread.lock.release()
+    thread.join()
+    return
 
 
 if __name__ == "__main__":
@@ -59,9 +66,10 @@ if __name__ == "__main__":
 
     # this is the normal way of using traci. sumo is started as a
     # subprocess and then the python script connects and runs
-    traci.start([sumo_binary, "-c", sumo_config, "--tripinfo-output", "tripinfo.xml"])
+    traci.start([sumo_binary, "-c", sumo_config, "--tripinfo-output", "tripinfo_realtime.xml"])
 
-    run()
-
+    run_simulate()
     traci.close()
     sys.stdout.flush()
+    print("Simulation ended successfully!")
+    sys.exit()
