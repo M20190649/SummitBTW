@@ -26,6 +26,14 @@ class RealTime(threading.Thread):
         self.lock = lock
         self.event = event
 
+    def get_info_by_id(self, id_desired):
+        if id_desired in self.detectors_dict:
+            return self.get_detector_info_by_id(id_desired)
+        elif id_desired in self.junctions_dict:
+            return self.get_junction_info_by_id(id_desired)
+        else:
+            return "The id was not found. Please try again.\n"
+
     def get_detector_info_by_id(self, id_of_detector):
         detector = self.detectors_dict[id_of_detector]
         return [("detector "+id_of_detector+" length: ", detector.get_length()), ("detector "+id_of_detector+" mean speed: ", detector.get_mean_speed()), ("detector "+id_of_detector+" occupancy: ", detector.get_occupancy())]
@@ -48,12 +56,7 @@ class RealTime(threading.Thread):
                 print("It seems that the simulation has ended. Please exit the simulation program.")
                 exit()
             self.lock.acquire()
-            if id_desired in self.detectors_dict:
-                print(self.get_detector_info_by_id(id_desired))
-            elif id_desired in self.junctions_dict:
-                print(self.get_junction_info_by_id(id_desired))
-            else:
-                print("The id was not found. Please try again.\n")
+            print(self.get_info_by_id(id_desired))
 
 
 def get_options():
