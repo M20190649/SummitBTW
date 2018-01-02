@@ -1,62 +1,17 @@
 """
-Author: TomerKay
+Author: EylonSho
 
 Main simulator script.
 Initializes SUMO and its dependencies, and applies the scheduler.
 """
-import multiprocessing
 import optparse
 import sys
-import threading
 
 import traci
 from sumolib import checkBinary
-import functools as funcs
-import operator as ops
 
 from simulator.realtime.city import City
-
-
-class RealTime(threading.Thread):
-    def __init__(self, city, lock, event):
-        threading.Thread.__init__(self)
-        self.city = city
-        self.junctions_dict = city.get_junctions_dict()
-        self.detectors_dict = city.get_detectors_dict()
-        self.lock = lock
-        self.event = event
-
-    def get_info_by_id(self, id_desired):
-        if id_desired in self.detectors_dict:
-            return self.get_detector_info_by_id(id_desired)
-        elif id_desired in self.junctions_dict:
-            return self.get_junction_info_by_id(id_desired)
-        else:
-            return "The id was not found. Please try again.\n"
-
-    def get_detector_info_by_id(self, id_of_detector):
-        detector = self.detectors_dict[id_of_detector]
-        return [("detector "+id_of_detector+" length: ", detector.get_length()), ("detector "+id_of_detector+" mean speed: ", detector.get_mean_speed()), ("detector "+id_of_detector+" occupancy: ", detector.get_occupancy())]
-
-    def get_junction_info_by_id(self, id_of_junction):
-        junction = self.junctions_dict[id_of_junction]
-        list_detectors_of_junction = junction.get_lights()
-        avg_mean_speed = funcs.reduce(ops.add, [detector.get_mean_speed() for detector in list_detectors_of_junction]) / len(list_detectors_of_junction)
-        avg_occupancy = funcs.reduce(ops.add, [detector.get_occupancy() for detector in list_detectors_of_junction]) / len(list_detectors_of_junction)
-        return [("junction "+id_of_junction+" avg mean speed: ", avg_mean_speed), ("junction "+id_of_junction+" avg occupancy: ", avg_occupancy)]
-
-    def run(self):
-        while True:
-            try:
-                self.lock.release()
-            except ValueError:
-                pass
-            id_desired = input("Write id of object you are interested for\n")
-            if self.event.is_set() is True:
-                print("It seems that the simulation has ended. Please exit the simulation program.")
-                exit()
-            self.lock.acquire()
-            print(self.get_info_by_id(id_desired))
+from statistics.realtime import RealTime
 
 
 def get_options():
@@ -71,32 +26,25 @@ def get_options():
     return opts
 
 
-def run():
+def run_simulate():
     """
     Execute the simulation loop, and applying the scheduler in each step.
     :return: None
     """
 
-    step = 0
     city = City()
-    lock = multiprocessing.Lock()
-    event = threading.Event()
-    thread = RealTime(city, lock, event)
+    thread = RealTime(city)
     thread.start()
-    while True:
-        try:
-            lock.release()
-        except ValueError:
-            pass
-        lock.acquire()
+    simulation_ended = False
+    while simulation_ended is False:
+        thread.lock.acquire()
         if traci.simulation.getMinExpectedNumber() > 0:
-            traci.simulationStep()
             # Todo: add simulator algorithm
-            step += 1
+            traci.simulationStep()
         else:
-            lock.release()
-            event.set()
-            break
+            thread.end_simulation_event.set()
+            simulation_ended = True
+        thread.lock.release()
     thread.join()
     return
 
@@ -120,7 +68,7 @@ if __name__ == "__main__":
     # subprocess and then the python script connects and runs
     traci.start([sumo_binary, "-c", sumo_config, "--tripinfo-output", "tripinfo_realtime.xml"])
 
-    run()
+    run_simulate()
     traci.close()
     sys.stdout.flush()
     print("Simulation ended successfully!")
