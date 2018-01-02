@@ -4,7 +4,7 @@ import functools as funcs
 import operator as ops
 import logging
 import time
-from SummitBTW.statistics.statistic_printer import TablePrinter
+from statistics.statistic_printer import TablePrinter
 
 
 class Tripinfo(object):

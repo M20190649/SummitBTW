@@ -2,7 +2,7 @@ import xml.etree.ElementTree as Et
 import sys
 import logging
 import time
-from SummitBTW.statistics.statistic_printer import TablePrinter
+from statistics.statistic_printer import TablePrinter
 
 
 class Lightinfo(object):
