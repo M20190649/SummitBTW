@@ -56,7 +56,6 @@ class Detector(object):
 
         :return: Occupancy percentage
         """
-
         return traci.lanearea.getLastStepOccupancy(self._identifier)
 
     def get_mean_speed(self):
@@ -67,5 +66,11 @@ class Detector(object):
 
         :return: Mean speed
         """
-
         return traci.lanearea.getLastStepMeanSpeed(self._identifier)
+
+    def get_jam_length(self):
+        """ query a detector for the jam length (in vehicles) within the last simulation step.
+
+        :return: number of vehicles in the jam (int)
+        """
+        return traci.lanearea.getJamLengthVehicle(self._identifier)
