@@ -81,18 +81,26 @@ class Junction(object):
         """
         return self._mutual_lights[detector.get_id()]
 
-    def set_green(self, lights):
-        """turns the given traffic lights to green.
+    def is_light_green(self, detector):
+        """check whether the traffic light connected to the given detector is green
+
+        :param detector: the detector to inspect
+        :return: bool
+        """
+        return traci.trafficlight.getPhase(self._traffic_light_id) in detector.get_green_phases()
+
+    def set_green(self, detectors):
+        """turns the given traffic lights (given as detectors) to green.
 
         This function currently assumes that there is exactly one possible phase for the traffic lights
         such that the given lights are green together. It will raise an error otherwise, and will
         also raise an error if it is not possible for the given lights to be green at the same time.
 
-        :param lights: (list of Detectors) the traffic lights in the junction to turn green
+        :param detectors: (list of Detectors) the traffic lights in the junction to turn green
         :return: None
         """
         mutual_phases = list(set.intersection(*[set(self._detectors[light.get_id()].get_green_phases())
-                                                for light in lights]))
+                                                for light in detectors]))
         if len(mutual_phases) == 0:
             raise ValueError("Given lights can't be green together!")
         traci.trafficlight.setPhase(self._traffic_light_id, mutual_phases[0])
