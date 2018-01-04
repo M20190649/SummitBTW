@@ -2,6 +2,8 @@
 Main menu for the city management tool.
 """
 
+__author__ = "Eylon Shoshan"
+
 import sys
 
 from PyQt5 import QtWidgets
