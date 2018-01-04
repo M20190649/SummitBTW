@@ -89,13 +89,15 @@ class Junction(object):
         """
         return traci.trafficlight.getPhase(self._traffic_light_id) in detector.get_green_phases()
 
-    def set_green(self, detectors):
+    def set_green(self, detectors, phase_duration=100):
         """turns the given traffic lights (given as detectors) to green.
 
         This function currently assumes that there is exactly one possible phase for the traffic lights
         such that the given lights are green together. It will raise an error otherwise, and will
         also raise an error if it is not possible for the given lights to be green at the same time.
 
+        :param phase_duration: phase duration of the next phase in seconds.
+            default is 100, which practically means that it won't change by itself for enough time.
         :param detectors: (list of Detectors) the traffic lights in the junction to turn green
         :return: None
         """
@@ -104,3 +106,5 @@ class Junction(object):
         if len(mutual_phases) == 0:
             raise ValueError("Given lights can't be green together!")
         traci.trafficlight.setPhase(self._traffic_light_id, mutual_phases[0])
+        traci.trafficlight.setPhaseDuration(self._traffic_light_id, phase_duration)
+
