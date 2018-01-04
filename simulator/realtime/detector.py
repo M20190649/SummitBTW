@@ -74,3 +74,10 @@ class Detector(object):
         :return: number of vehicles in the jam (int)
         """
         return traci.lanearea.getJamLengthVehicle(self._identifier)
+
+    def get_halting_count(self):
+        """ query a detector for the number of halting vehicles during the last simulation step.
+
+        :return: number of halting vehicles (int)
+        """
+        return traci.lanearea.getLastStepHaltingNumber(self._identifier)
