@@ -1,5 +1,7 @@
 import operator
 
+from scheduler.abstract_scheduler import AbstractScheduler
+
 """
 Author: Ran Yeheskel
 
@@ -65,7 +67,9 @@ class SchedulerJunction(object):
     def get_starved_light(self):
         occupied_lanes = self.get_non_empty_lanes()
         waiting_queues = {light: self.epoch[light] for light in occupied_lanes}  # from non-empty TL to the time waiting
-        max_starved, time = max(waiting_queues.iteritems(), key=operator.itemgetter(1))
+        if not waiting_queues:
+            return None
+        max_starved, time = max(waiting_queues.items(), key=operator.itemgetter(1))
         if time > self.starve_time:
             return max_starved
         else:
@@ -100,8 +104,10 @@ class SchedulerJunction(object):
         queue_length = {light: self.length[light] * light.get_occupancy() + self.green_bonus(light) for light in
                         self.lights}
         green_lights = self.get_green_lights()
+        if not green_lights:
+            return None
         max_green_queue = max([queue_length[light] for light in green_lights])
-        max_busy_light, max_queue_len = max(queue_length.iteritems(), key=operator.itemgetter(1))
+        max_busy_light, max_queue_len = max(queue_length.items(), key=operator.itemgetter(1))
 
         if max_queue_len - self.context_switch_penalty > max_green_queue:
             return max_busy_light
@@ -170,12 +176,13 @@ Scheduler.scheduler() is called every iteration of the simulator in busy wait.
 """
 
 
-class Scheduler(object):
+class Scheduler(AbstractScheduler):
     def __init__(self, city):
+        super(Scheduler, self).__init__(city)
         self.schedulers = []
-        for junction in city:
+        for junction in city.get_junctions():
             junction_scheduler = SchedulerJunction(junction)
-            self.schedulers += junction_scheduler
+            self.schedulers += [junction_scheduler]
 
         self.num_junctions = len(self.schedulers)
         self.junction_to_schedule = 0
