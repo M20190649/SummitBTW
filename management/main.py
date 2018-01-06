@@ -16,8 +16,8 @@ class App(QWidget):
     def __init__(self):
         super().__init__()
         self.title = 'City Management Tool'
-        self.left = 10
-        self.top = 10
+        self.left = 20
+        self.top = 20
         self.width = 400
         self.height = 200
         self.init_ui()
