@@ -1,7 +1,7 @@
-import multiprocessing
-import threading
 import functools as funcs
+import multiprocessing
 import operator as ops
+import threading
 
 
 class RealTime(threading.Thread):
@@ -15,9 +15,9 @@ class RealTime(threading.Thread):
 
     def run(self):
         while True:
-            id_desired = input("Write id of object you are interested for\n")
+            id_desired = input("## Write id of object you are interested for >>\n")
             if self.end_simulation_event.is_set() is True:
-                print("It seems that the simulation has ended. Please exit the simulation program.")
+                print("## It seems that the simulation has ended. Please exit the simulation program.")
                 exit()
             self.lock.acquire()
             print(self.get_info_by_id(id_desired))
