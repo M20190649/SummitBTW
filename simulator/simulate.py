@@ -4,6 +4,7 @@ Author: EylonSho
 Main simulator script.
 Initializes SUMO and its dependencies, and applies the scheduler.
 """
+import logging
 import optparse
 import sys
 
@@ -33,12 +34,14 @@ def run_simulate():
     Execute the simulation loop, and applying the scheduler in each step.
     :return: None
     """
-
+    logging.info('Initializes simulation data')
     city = City()
     my_scheduler = Scheduler(city)
     thread = RealTime(city)
     thread.start()
     simulation_ended = False
+
+    logging.info('Starting simulation')
     while not simulation_ended:
         thread.lock.acquire()
         if traci.simulation.getMinExpectedNumber() > 0:
@@ -47,8 +50,10 @@ def run_simulate():
         else:
             thread.end_simulation_event.set()
             simulation_ended = True
+
         thread.lock.release()
-    thread.join()
+    logging.info('Simulation is finished')
+    thread._delete()
 
 
 if __name__ == "__main__":
