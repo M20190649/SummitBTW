@@ -1,6 +1,7 @@
 import operator
 
 #from scheduler.abstract_scheduler import AbstractScheduler
+from scheduler.abstract_scheduler import AbstractScheduler
 
 """
 Author: Ran Yeheskel
@@ -176,7 +177,7 @@ Scheduler.scheduler() is called every iteration of the simulator in busy wait.
 """
 
 
-class Scheduler(object):
+class Scheduler(AbstractScheduler):
     def __init__(self, city):
         self.schedulers = []
         for junction in city.get_junctions():
