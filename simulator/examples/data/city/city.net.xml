@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on Sun Dec 31 20:58:49 2017 by SUMO netgenerate Version 0.30.0
+<!-- generated on Mon Jan  8 22:28:44 2018 by SUMO netgenerate Version 0.30.0
 <?xml version="1.0" encoding="UTF-8"?>
 
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netgenerateConfiguration.xsd">
@@ -13,7 +13,7 @@
     </random_network>
 
     <output>
-        <output-file value="/Users/eylonsho/Dropbox/Technion/Semester7/YearlyProject/SummitBTW/simulator/examples/data/city/city.net.xml"/>
+        <output-file value="../examples/data/city/city.net.xml"/>
     </output>
 
     <tls_building>
