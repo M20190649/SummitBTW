@@ -121,7 +121,7 @@ def main():
             except:
                 logging.debug(f"Evaluation of statistic {msg} failed")
     printer = TablePrinter(sys.argv[1:], statistics)
-    # printer.print()
+    printer.print()
     create_csv(statistics)
 
 

@@ -85,6 +85,21 @@ def get_specific_stats():
     return l
 
 
+def create_csv(statistics):
+    into_cvs = "Statistics,"
+    for filename in sys.argv[1:]:
+        into_cvs += str(filename) + ","
+    into_cvs = into_cvs[:len(into_cvs) - 1] + "\n"
+    for stat in statistics.keys():
+        into_cvs += str(stat) + ","
+        for vals in statistics[stat]:
+            into_cvs += str(vals) + ","
+        into_cvs = into_cvs[:len(into_cvs) - 1] + "\n"
+    text_file = open("Output.csv", "w")
+    text_file.write(into_cvs)
+    text_file.close()
+
+
 def main():
     if len(sys.argv) < 2:
         print('Wrong usage, Please enter an xml filename!')
@@ -120,6 +135,7 @@ def main():
 
     printer = TablePrinter(sys.argv[1:], statistics)
     printer.print()
+    create_csv(statistics)
 
 
 if __name__ == '__main__':
