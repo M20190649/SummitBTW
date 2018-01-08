@@ -42,7 +42,6 @@ def run_simulate():
     while not simulation_ended:
         thread.lock.acquire()
         if traci.simulation.getMinExpectedNumber() > 0:
-            # Todo: add simulator algorithm
             my_scheduler.schedule()
             traci.simulationStep()
         else:
