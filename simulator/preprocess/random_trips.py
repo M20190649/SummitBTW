@@ -19,16 +19,17 @@ the Free Software Foundation; either version 3 of the License, or
 (at your option) any later version.
 """
 
-from __future__ import print_function
 from __future__ import absolute_import
-import os
-import sys
-import random
+from __future__ import print_function
+
 import bisect
-import subprocess
-from collections import defaultdict
 import math
 import optparse
+import os
+import random
+import subprocess
+import sys
+from collections import defaultdict
 
 SUMO_HOME = os.environ.get('SUMO_HOME',
                            os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
@@ -72,7 +73,7 @@ def get_options(sumo_network, output_path, args=None):
     optParser.add_option(
         "-b", "--begin", type="float", default=0, help="begin time")
     optParser.add_option(
-        "-e", "--end", type="float", default=3600, help="end time (default 3600)")
+        "-e", "--end", type="float", default=500, help="end time (default 500)")
     optParser.add_option(
         "-p", "--period", type="float", default=1,
         help="Generate vehicles with equidistant departure times and period=FLOAT (default 1.0). If option --binomial is used, the expected arrival rate is set to 1/period.")
