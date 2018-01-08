@@ -10,6 +10,9 @@ import sys
 import traci
 from sumolib import checkBinary
 
+from scheduler.max_occupancy_scheduler import MaxOccupancyScheduler
+#from scheduler.scheduler import Scheduler
+from scheduler.scheduler import Scheduler
 from simulator.realtime.city import City
 from statistics.realtime import RealTime
 
@@ -33,6 +36,7 @@ def run_simulate():
     """
 
     city = City()
+    my_scheduler = Scheduler(city)
     thread = RealTime(city)
     thread.start()
     simulation_ended = False
@@ -40,6 +44,7 @@ def run_simulate():
         thread.lock.acquire()
         if traci.simulation.getMinExpectedNumber() > 0:
             # Todo: add simulator algorithm
+            my_scheduler.schedule()
             traci.simulationStep()
         else:
             thread.end_simulation_event.set()

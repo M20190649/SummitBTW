@@ -1,6 +1,6 @@
 import operator
 
-from scheduler.abstract_scheduler import AbstractScheduler
+#from scheduler.abstract_scheduler import AbstractScheduler
 
 """
 Author: Ran Yeheskel
@@ -81,14 +81,14 @@ class SchedulerJunction(object):
     """
 
     def green_bonus(self, light):
-        return self.green_bonus_scheduling if light.is_green() else 0
+        return self.green_bonus_scheduling if self.junction.is_light_green(light) else 0
 
     """
     returns: the list of green lights in the junction
     """
 
     def get_green_lights(self):
-        return [light for light in self.lights if light.is_green()]
+        return [light for light in self.lights if self.junction.is_light_green(light)]
 
     """
     returns the best traffic light to schedule at the current time.
@@ -130,7 +130,7 @@ class SchedulerJunction(object):
 
     def update_epoch(self):
         for light in self.lights:
-            if light.is_green():
+            if self.junction.is_light_green(light):
                 self.epoch[light] = 0
             else:
                 self.epoch[light] += 1
@@ -176,9 +176,8 @@ Scheduler.scheduler() is called every iteration of the simulator in busy wait.
 """
 
 
-class Scheduler(AbstractScheduler):
+class Scheduler(object):
     def __init__(self, city):
-        super(Scheduler, self).__init__(city)
         self.schedulers = []
         for junction in city.get_junctions():
             junction_scheduler = SchedulerJunction(junction)
