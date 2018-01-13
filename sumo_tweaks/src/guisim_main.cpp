@@ -49,6 +49,7 @@
 #include <utils/gui/windows/GUIAppEnum.h>
 #include <utils/gui/settings/GUICompleteSchemeStorage.h>
 #include <traci-server/TraCIServer.h>
+#include <utils/statistics_proxy/StatisticsProxy.h>
 
 
 // ===========================================================================
@@ -97,6 +98,7 @@ main(int argc, char** argv) {
             window->loadOnStartup();
         }
         // Run
+        StatisticsProxy::setup_server("127.0.0.1", 1482);
         ret = application.run();
     } catch (const ProcessError& e) {
         if (std::string(e.what()) != std::string("Process Error") && std::string(e.what()) != std::string("")) {

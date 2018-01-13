@@ -50,6 +50,7 @@
 #include <utils/gui/div/GUIParameterTableWindow.h>
 #include <utils/gui/div/GLHelper.h>
 #include <utils/gui/globjects/GLIncludes.h>
+#include <utils/statistics_proxy/StatisticsProxy.h>
 
 //#define GUIJunctionWrapper_DEBUG_DRAW_NODE_SHAPE_VERTICES
 
@@ -99,18 +100,16 @@ GUIJunctionWrapper::getPopUpMenu(GUIMainWindow& app,
     return ret;
 }
 
-void GUIGlObject::buildPopupStatistics(GUIGLObjectPopupMenu* ret, GUIMainWindow& app,
-                          bool addSeparator) {
-    new FXMenuCaption(ret, "Number of Waiting Vehicles:");
-    new FXMenuCaption(ret, "5");
-    new FXMenuSeparator(ret);
-    new FXMenuCaption(ret, "Average Wait-time:");
-    new FXMenuCaption(ret, "10");
-    new FXMenuSeparator(ret);
-    new FXMenuCaption(ret, "Amount of Dor-Gever:");
-    new FXMenuCaption(ret, "9001");
-    if (addSeparator)
+void GUIGlObject::buildPopupStatistics(GUIGLObjectPopupMenu *ret, GUIMainWindow &app) {
+    std::map<std::string, double> stats =
+            StatisticsProxy::get_junction_statistics(getMicrosimID()).get_stats();
+    for(auto& stat : stats) {
+        new FXMenuCaption(ret, stat.first.c_str());
+        std::ostringstream strs;
+        strs << stat.second;
+        new FXMenuCaption(ret, strs.str().c_str());
         new FXMenuSeparator(ret);
+    }
 }
 
 GUIGLObjectPopupMenu*
