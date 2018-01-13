@@ -1,0 +1,9 @@
+# tests for ignoring keepClear rules
+ignoreKeepClear
+driveAfterRedTime
+
+# tests for ignoring right of way
+ignoreRightOfWay
+
+# configure timegap to observe when passing a minor link
+timegapMinor

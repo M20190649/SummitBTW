@@ -1,0 +1,58 @@
+/media/gdor80/851a8b20-d038-4b5f-b834-0d9716e499c0/home/gdor80/Programs/JetBrains/clion-2016.3.2/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /media/gdor80/851a8b20-d038-4b5f-b834-0d9716e499c0/home/gdor80/Desktop/SummitBTW/sumo_tweaks
+-- The C compiler identification is GNU 5.4.0
+-- The CXX compiler identification is GNU 5.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- CMAKE_BUILD_TYPE: Debug
+-- CMAKE_BINARY_DIR: /media/gdor80/851a8b20-d038-4b5f-b834-0d9716e499c0/home/gdor80/Desktop/SummitBTW/sumo_tweaks/cmake-build-debug
+-- CMAKE_SOURCE_DIR: /media/gdor80/851a8b20-d038-4b5f-b834-0d9716e499c0/home/gdor80/Desktop/SummitBTW/sumo_tweaks
+-- 
+-- Platform: 
+--     Host: Linux4.13.0-26-genericx86_64
+--     CMake: 3.7.2
+--     CMake generator: Unix Makefiles
+--     CMake build tool: /usr/bin/make
+--     Configuration: Debug
+-- 
+-- Found XercesC: /usr/lib/x86_64-linux-gnu/libxerces-c.so (found version "3.1.3") 
+-- Found Proj: /usr/lib/x86_64-linux-gnu/libproj.so
+-- Found GDAL: /usr/lib/libgdal.so  
+-- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so
+-- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so - found
+-- Looking for gethostbyname
+-- Looking for gethostbyname - found
+-- Looking for connect
+-- Looking for connect - found
+-- Looking for remove
+-- Looking for remove - found
+-- Looking for shmat
+-- Looking for shmat - found
+-- Found X11: /usr/lib/x86_64-linux-gnu/libX11.so
+-- Could NOT find osgGA (missing:  OSGGA_LIBRARY OSGGA_INCLUDE_DIR) 
+-- Could NOT find osgViewer (missing:  OSGVIEWER_LIBRARY OSGVIEWER_INCLUDE_DIR) 
+-- Could NOT find osgUtil (missing:  OSGUTIL_LIBRARY OSGUTIL_INCLUDE_DIR) 
+-- Could NOT find osgDB (missing:  OSGDB_LIBRARY OSGDB_INCLUDE_DIR) 
+-- Could NOT find osgText (missing:  OSGTEXT_LIBRARY OSGTEXT_INCLUDE_DIR) 
+-- Could NOT find osg (missing:  OSG_LIBRARY OSG_INCLUDE_DIR) 
+-- Could NOT find OpenThreads (missing:  OPENTHREADS_LIBRARY OPENTHREADS_INCLUDE_DIR) 
+-- Could NOT find OpenSceneGraph (missing:  OPENSCENEGRAPH_LIBRARIES OPENSCENEGRAPH_INCLUDE_DIR) (Required is at least version "3.4.0")
+-- Could NOT find GL2PS (missing:  GL2PS_LIBRARY GL2PS_INCLUDE_DIR) 
+-- Could NOT find SWIG (missing:  SWIG_EXECUTABLE SWIG_DIR) 
+-- Could NOT find GTest (missing:  GTEST_LIBRARY GTEST_INCLUDE_DIR GTEST_MAIN_LIBRARY) 
+-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.5m.so (found version "3.5.2") 
+-- Python: 3.5.2
+-- Python include dirs:/usr/include/python3.5m
+-- Python libs:/usr/lib/x86_64-linux-gnu/libpython3.5m.so
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /media/gdor80/851a8b20-d038-4b5f-b834-0d9716e499c0/home/gdor80/Desktop/SummitBTW/sumo_tweaks/cmake-build-debug

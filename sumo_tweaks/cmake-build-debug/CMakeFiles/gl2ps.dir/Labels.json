@@ -1,0 +1,51 @@
+
+{
+	"sources" : 
+	[
+		
+		{
+			"file" : "/media/gdor80/851a8b20-d038-4b5f-b834-0d9716e499c0/home/gdor80/Desktop/SummitBTW/sumo_tweaks/cmake-build-debug/CMakeFiles/gl2ps"
+		},
+		
+		{
+			"file" : "/media/gdor80/851a8b20-d038-4b5f-b834-0d9716e499c0/home/gdor80/Desktop/SummitBTW/sumo_tweaks/cmake-build-debug/CMakeFiles/gl2ps.rule"
+		},
+		
+		{
+			"file" : "/media/gdor80/851a8b20-d038-4b5f-b834-0d9716e499c0/home/gdor80/Desktop/SummitBTW/sumo_tweaks/cmake-build-debug/CMakeFiles/gl2ps-complete.rule"
+		},
+		
+		{
+			"file" : "/media/gdor80/851a8b20-d038-4b5f-b834-0d9716e499c0/home/gdor80/Desktop/SummitBTW/sumo_tweaks/cmake-build-debug/gl2ps/src/gl2ps-stamp/gl2ps-install.rule"
+		},
+		
+		{
+			"file" : "/media/gdor80/851a8b20-d038-4b5f-b834-0d9716e499c0/home/gdor80/Desktop/SummitBTW/sumo_tweaks/cmake-build-debug/gl2ps/src/gl2ps-stamp/gl2ps-mkdir.rule"
+		},
+		
+		{
+			"file" : "/media/gdor80/851a8b20-d038-4b5f-b834-0d9716e499c0/home/gdor80/Desktop/SummitBTW/sumo_tweaks/cmake-build-debug/gl2ps/src/gl2ps-stamp/gl2ps-download.rule"
+		},
+		
+		{
+			"file" : "/media/gdor80/851a8b20-d038-4b5f-b834-0d9716e499c0/home/gdor80/Desktop/SummitBTW/sumo_tweaks/cmake-build-debug/gl2ps/src/gl2ps-stamp/gl2ps-update.rule"
+		},
+		
+		{
+			"file" : "/media/gdor80/851a8b20-d038-4b5f-b834-0d9716e499c0/home/gdor80/Desktop/SummitBTW/sumo_tweaks/cmake-build-debug/gl2ps/src/gl2ps-stamp/gl2ps-patch.rule"
+		},
+		
+		{
+			"file" : "/media/gdor80/851a8b20-d038-4b5f-b834-0d9716e499c0/home/gdor80/Desktop/SummitBTW/sumo_tweaks/cmake-build-debug/gl2ps/src/gl2ps-stamp/gl2ps-configure.rule"
+		},
+		
+		{
+			"file" : "/media/gdor80/851a8b20-d038-4b5f-b834-0d9716e499c0/home/gdor80/Desktop/SummitBTW/sumo_tweaks/cmake-build-debug/gl2ps/src/gl2ps-stamp/gl2ps-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : [ "gl2ps" ],
+		"name" : "gl2ps"
+	}
+}
