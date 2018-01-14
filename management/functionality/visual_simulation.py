@@ -4,14 +4,15 @@ from scheduler.scheduler_constants import schedulers_name_map
 from simulator.simulate import run_sumo
 
 
-def run_visual_simulation(config_file, scheduler_name):
+def run_visual_simulation(config_file, scheduler_name, real_time=True):
     """
     runs a visual simulation with real-time statistics
+    :param real_time: activating real time statistics
     :param config_file: the config file for the simulation
     :param scheduler_name: the name of the scheduler for the simulation
     :return:
     """
-    run_sumo(config_file, schedulers_name_map[scheduler_name], real_time=True,
+    run_sumo(config_file, schedulers_name_map[scheduler_name], real_time,
              gui=True, output_file=None)
 
 
