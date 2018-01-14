@@ -13,11 +13,9 @@ class RealTime(threading.Thread):
         self.detectors_dict = city.get_detectors_dict()
         self.lock = multiprocessing.Lock()
         self.end_simulation_event = threading.Event()
-        self.sock = socket.socket(
-            socket.AF_INET, socket.SOCK_STREAM)
+        self.sock = socket.socket()
 
     def run(self):
-        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.bind(("0.0.0.0", 1482))
         self.sock.listen(1)
         conn, _ = self.sock.accept()
