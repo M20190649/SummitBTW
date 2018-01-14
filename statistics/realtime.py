@@ -23,20 +23,16 @@ class RealTime(threading.Thread):
             if self.end_simulation_event.is_set() is True:
                 conn.close()
                 exit()
-            id_desired = conn.recv(1024).decode("utf-8")
-            self.lock.acquire()
-            conn.send(str.encode(self.get_info_by_id_string(id_desired)))
-            self.lock.release()
-
-        # If we want to receive input from console:
-        # while True:
-        #     id_desired = input("## Write id of object you are interested for >>\n")
-        #     if self.end_simulation_event.is_set() is True:
-        #         print("## It seems that the simulation has ended. Please exit the simulation program.")
-        #         exit()
-        #     self.lock.acquire()
-        #     print(self.get_info_by_id_list(id_desired))
-        #     self.lock.release()
+            id_desired = ""
+            conn.settimeout(0.5)
+            try:
+                id_desired = conn.recv(1024).decode("utf-8")
+            except:
+                pass
+            if id_desired is not "":
+                self.lock.acquire()
+                conn.send(str.encode(self.get_info_by_id_string(id_desired)))
+                self.lock.release()
 
     def get_info_by_id_list(self, id_desired):
         if id_desired in self.detectors_dict:

@@ -60,7 +60,7 @@ def run_simulate(scheduler_algorithm=Scheduler, real_time=True):
             thread.lock.release()
     logging.info('Simulation is finished')
     if real_time:
-        thread._delete()
+        thread.join()
 
 
 def run_sumo(config_file, scheduler, real_time=True, gui=False, output_file="tripinfo_realtime.xml"):
