@@ -1,9 +1,9 @@
 __author__ = "Eylon Shoshan"
 
-from flask import Flask, request, render_template
+from flask import Flask, render_template
 
 # set the project root directory as the static folder, you can set others.
-app = Flask(__name__, static_url_path='/web')
+app = Flask(__name__, static_url_path='')
 
 
 @app.route('/')
