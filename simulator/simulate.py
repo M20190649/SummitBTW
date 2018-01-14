@@ -78,7 +78,10 @@ def run_sumo(config_file, scheduler, real_time=True, gui=False, output_file="tri
     else:
         _sumo_binary = checkBinary('sumo-gui')
 
-    traci.start([_sumo_binary, "-c", config_file, "--tripinfo-output", output_file])
+    if output_file:
+        traci.start([_sumo_binary, "-c", config_file, "--tripinfo-output", output_file])
+    else:
+        traci.start([_sumo_binary, "-c", config_file])
 
     run_simulate(scheduler_algorithm=scheduler, real_time=real_time)
     traci.close()
