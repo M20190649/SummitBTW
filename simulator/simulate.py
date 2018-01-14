@@ -63,6 +63,28 @@ def run_simulate(scheduler_algorithm=Scheduler, real_time=True):
         thread._delete()
 
 
+def run_sumo(config_file, scheduler, real_time=True, gui=False, output_file="tripinfo_realtime.xml"):
+    """
+    run a full sumo simulation.
+    :param config_file: the config file for the simulation
+    :param real_time: whether to use real time statistics or not
+    :param scheduler: the scheduling algorithm to simulate with
+    :param gui: whether to run a gui simulation or not
+    :param output_file: the file path for the simulation's output
+    :return: None
+    """
+    if not gui:
+        _sumo_binary = checkBinary('sumo')
+    else:
+        _sumo_binary = checkBinary('sumo-gui')
+
+    traci.start([_sumo_binary, "-c", config_file, "--tripinfo-output", output_file])
+
+    run_simulate(scheduler_algorithm=scheduler, real_time=real_time)
+    traci.close()
+    sys.stdout.flush()
+
+
 if __name__ == "__main__":
     options = get_options()
 
