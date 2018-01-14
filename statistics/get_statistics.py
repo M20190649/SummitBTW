@@ -87,9 +87,9 @@ def get_stats():
     return l
 
 
-def create_csv(statistics):
+def create_csv(statistics, tripinfo_files, output_filename):
     into_cvs = "Statistics,"
-    for filename in sys.argv[1:]:
+    for filename in tripinfo_files:
         into_cvs += str(filename) + ","
     into_cvs = into_cvs[:len(into_cvs) - 1]+"\n"
     for stat in statistics.keys():
@@ -97,21 +97,27 @@ def create_csv(statistics):
         for vals in statistics[stat]:
             into_cvs += str(vals) + ","
         into_cvs = into_cvs[:len(into_cvs) - 1] + "\n"
-    text_file = open("Output.csv", "w")
+    text_file = open(output_filename, "w")
     text_file.write(into_cvs)
     text_file.close()
 
 
-def main():
-    if len(sys.argv) < 2:
-        print('Wrong usage, Please enter an xml filename!')
-        exit(-1)
+def create_statistics(to_csv=None, to_print=True, *tripinfo_files):
+    """
+    create statistics for the tripinfo files received as parameters
+    :param to_csv: path to csv output file, default is None (no csv output)
+    :param to_print: whether to print the statistics to stdout or not
+    :param tripinfo_files: .xml files of simulation outputs
+    :return: None
+    """
+    if len(tripinfo_files) < 1:
+        raise ValueError('Wrong usage, Please enter an xml filename!')
 
     log_filename = f'logger_{str(time.time()).replace(".", "")}.log'
     logging.basicConfig(filename=log_filename, level=logging.DEBUG)
     statistics = {}
     statistics_lambdas = get_stats()
-    for filename in sys.argv[1:]:
+    for filename in tripinfo_files:
         curr_info = get_tripinfos(filename)
         for msg, f in statistics_lambdas:
             if msg not in statistics:
@@ -120,10 +126,12 @@ def main():
                 statistics[msg].append(f(curr_info))
             except:
                 logging.debug(f"Evaluation of statistic {msg} failed")
-    printer = TablePrinter(sys.argv[1:], statistics)
-    printer.print()
-    create_csv(statistics)
+    if to_print:
+        printer = TablePrinter(tripinfo_files, statistics)
+        printer.print()
+    if to_csv is not None:
+        create_csv(statistics, tripinfo_files, to_csv)
 
 
 if __name__ == '__main__':
-    main()
+    create_statistics("output.csv", True, *sys.argv[1:])

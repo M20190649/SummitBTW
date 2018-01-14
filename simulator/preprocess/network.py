@@ -34,5 +34,6 @@ def generate_net(sumo_network_path=".", size=30):
 
     out = subprocess.check_output(cmd)
 
-    logging.info('Finished generating SUMO network')
     logging.info(out)
+    logging.info('Finished generating SUMO network')
+

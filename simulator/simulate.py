@@ -29,31 +29,63 @@ def get_options():
     return opts
 
 
-def run_simulate():
+def run_simulate(scheduler_algorithm=Scheduler, real_time=True):
     """
     Execute the simulation loop, and applying the scheduler in each step.
+    :type scheduler_algorithm: AbstractScheduler
+    :param scheduler_algorithm: the scheduling algorithm to simulate with
+    :param real_time: whether to use real time statistics or not
     :return: None
     """
     logging.info('Initializes simulation data')
     city = City()
-    my_scheduler = Scheduler(city)
-    thread = RealTime(city)
-    thread.start()
+    my_scheduler = scheduler_algorithm(city)
+    if real_time:
+        thread = RealTime(city)
+        thread.start()
     simulation_ended = False
 
     logging.info('Starting simulation')
     while not simulation_ended:
-        thread.lock.acquire()
+        if real_time:
+            thread.lock.acquire()
         if traci.simulation.getMinExpectedNumber() > 0:
             my_scheduler.schedule()
             traci.simulationStep()
         else:
-            thread.end_simulation_event.set()
+            if real_time:
+                thread.end_simulation_event.set()
             simulation_ended = True
-
-        thread.lock.release()
+        if real_time:
+            thread.lock.release()
     logging.info('Simulation is finished')
-    thread._delete()
+    if real_time:
+        thread.join()
+
+
+def run_sumo(config_file, scheduler, real_time=True, gui=False, output_file="tripinfo_realtime.xml"):
+    """
+    run a full sumo simulation.
+    :param config_file: the config file for the simulation
+    :param real_time: whether to use real time statistics or not
+    :param scheduler: the scheduling algorithm to simulate with
+    :param gui: whether to run a gui simulation or not
+    :param output_file: the file path for the simulation's output
+    :return: None
+    """
+    if not gui:
+        _sumo_binary = checkBinary('sumo')
+    else:
+        _sumo_binary = checkBinary('sumo-gui')
+
+    if output_file:
+        traci.start([_sumo_binary, "-c", config_file, "--tripinfo-output", output_file])
+    else:
+        traci.start([_sumo_binary, "-c", config_file])
+
+    run_simulate(scheduler_algorithm=scheduler, real_time=real_time)
+    traci.close()
+    sys.stdout.flush()
 
 
 if __name__ == "__main__":

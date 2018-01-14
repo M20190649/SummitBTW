@@ -20,7 +20,7 @@ class NormalPrinter(StatisticsPrinter):
 class TablePrinter(StatisticsPrinter):
 
     def __init__(self, filenames, statistics):
-        self._t = PrettyTable(['Statistic'] + filenames)
+        self._t = PrettyTable(['Statistic'] + list(filenames))
         for k, v in statistics.items():
             self._t.add_row([k] + v)
 
