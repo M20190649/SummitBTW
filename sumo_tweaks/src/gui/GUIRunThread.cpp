@@ -49,6 +49,7 @@
 #include <utils/iodevices/OutputDevice.h>
 #include <traci-server/TraCIServer.h>
 #include <libsumo/Simulation.h>
+#include <utils/statistics_proxy/StatisticsProxy.h>
 
 
 // ===========================================================================
@@ -172,6 +173,7 @@ GUIRunThread::makeStep() {
     try {
         mySimulationLock.lock();
         myNet->simulationStep();
+        StatisticsProxy::setup_server("127.0.0.1", 1482);
         myNet->guiSimulationStep();
         mySimulationLock.unlock();
 

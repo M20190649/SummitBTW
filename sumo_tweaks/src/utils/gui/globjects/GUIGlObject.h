@@ -196,8 +196,7 @@ protected:
      */
     void buildPopupHeader(GUIGLObjectPopupMenu* ret, GUIMainWindow& app, bool addSeparator = true);
 
-    virtual void buildPopupStatistics(GUIGLObjectPopupMenu* ret, GUIMainWindow& app,
-                                      bool addSeparator = true);
+    virtual void buildPopupStatistics(GUIGLObjectPopupMenu *ret, GUIMainWindow &app);
 
     /** @brief Builds an entry which allows to center to the object
      * @param[in, filled] ret The popup menu to add the entry to

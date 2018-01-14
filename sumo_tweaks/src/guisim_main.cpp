@@ -49,6 +49,7 @@
 #include <utils/gui/windows/GUIAppEnum.h>
 #include <utils/gui/settings/GUICompleteSchemeStorage.h>
 #include <traci-server/TraCIServer.h>
+#include <utils/statistics_proxy/StatisticsProxy.h>
 
 
 // ===========================================================================

@@ -44,20 +44,20 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
             microsim/MSMoveReminder.cpp microsim/MSMoveReminder.h
             gui/GUIManipulator.h gui/GUIManipulator.cpp
             gui/GUITLLogicPhasesTrackerWindow.h gui/GUITLLogicPhasesTrackerWindow.cpp
-            mesosim/MEVehicleControl.h mesosim/MEVehicleControl.cpp)
+            mesosim/MEVehicleControl.h mesosim/MEVehicleControl.cpp utils/statistics_proxy/StatisticsProxy.cpp utils/statistics_proxy/StatisticsProxy.h)
 else ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
     set(sumoexec
-            sumo_main.cpp)
+            sumo_main.cpp utils/statistics_proxy/StatisticsProxy.cpp utils/statistics_proxy/StatisticsProxy.h)
     set(sumoguiexec
-            guisim_main.cpp)
+            guisim_main.cpp utils/statistics_proxy/StatisticsProxy.cpp utils/statistics_proxy/StatisticsProxy.h utils/statistics_proxy/JunctionStatistics.cpp utils/statistics_proxy/JunctionStatistics.h)
 endif ()
 
 add_executable(sumo version.h ${sumoexec})
 set_target_properties(sumo PROPERTIES OUTPUT_NAME_DEBUG sumoD)
 target_link_libraries(sumo ${sumolibs})
 
-add_executable(sumo-gui version.h ${sumoguiexec} guisim.rc)
-set_target_properties(sumo-gui PROPERTIES OUTPUT_NAME_DEBUG sumo-guiD)
+add_executable(sumo-gui version.h ${sumoguiexec} guisim.rc utils/statistics_proxy/StatisticsProxy.cpp utils/statistics_proxy/JunctionStatistics.cpp)
+set_target_properties(sumo-gui PROPERTIES OUTPUT_NAME_DEBUG sumo-gui)
 target_link_libraries(sumo-gui gui guinetload guisim gui_dialogs
         utils_gui_windows utils_gui_globjects utils_gui_div utils_gui_settings
         utils_gui_images utils_gui_tracker utils_foxtools osgview ${sumolibs} mesogui
