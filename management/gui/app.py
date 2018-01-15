@@ -26,7 +26,7 @@ def run_simulation():
     """
     simulations_examples = "../../simulator/examples/data/"
     run_visual_simulation(simulations_examples + request.args['simulation_example'], "Scheduler", True)
-    return "Running simulation at background..."
+    return "Simulation has finished."
 
 
 if __name__ == "__main__":
