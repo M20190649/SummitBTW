@@ -14,7 +14,6 @@ def run_visual_simulation(simulation_example, scheduler_name, real_time=True):
     :return:
     """
     try:
-        # print(os.listdir(simulation_example))
         sumocfg = [f for f in os.listdir(simulation_example) if f.endswith('.sumocfg.xml')][0]
         run_sumo(simulation_example + "/" + sumocfg,schedulers_name_map[scheduler_name], real_time,
                  gui=True, output_file=None)
