@@ -4,10 +4,12 @@ Author: EylonSho
 Main simulator script.
 Initializes SUMO and its dependencies, and applies the scheduler.
 """
+import inspect
 import logging
 import optparse
 import sys
 
+import os
 import traci
 from sumolib import checkBinary
 
@@ -92,6 +94,24 @@ def run_sumo(config_file, scheduler, real_time=True, gui=False, output_file="tri
 
     except FatalTraCIError:
         logging.info("Simulation has been closed.")
+
+
+def run_simulation_example(simulation_example, *args, **kwargs):
+    """
+    Run full simulation example given the folder of the simulation files.
+    As long as it contains sumocfg file.
+    :param simulation_example: path to folder of simulation files
+    :param args: other arguments as defined in run_sumo() function
+    :return: None
+    """
+    try:
+        simulator_path = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+        examples_path = simulator_path + "/examples/data/" + simulation_example
+        sumocfg = [f for f in os.listdir(examples_path) if f.endswith('.sumocfg.xml')][0]
+        run_sumo(examples_path + "/" + sumocfg, *args, **kwargs)
+    except IndexError:
+        logging.error("No sumocfg file in this simulation example")
+        raise ValueError("Insert example with sumocfg file")
 
 
 if __name__ == "__main__":

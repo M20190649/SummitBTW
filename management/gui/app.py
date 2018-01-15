@@ -1,4 +1,5 @@
 from management.functionality.visual_simulation import run_visual_simulation
+from simulator.simulate import run_simulation_example
 
 __author__ = "Eylon Shoshan"
 
@@ -21,11 +22,10 @@ def root():
 @app.route('/run_simulation', methods=['GET', 'POST'])
 def run_simulation():
     """
-    Running simulation
+    Running simulation at background
     :return: Simulation page
     """
-    simulations_examples = "../../simulator/examples/data/"
-    run_visual_simulation(simulations_examples + request.args['simulation_example'], "Scheduler", True)
+    run_simulation_example(request.args['simulation_example'], "Scheduler", gui=True)
     return "Simulation has finished."
 
 
