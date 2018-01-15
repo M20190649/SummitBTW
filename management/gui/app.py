@@ -1,5 +1,6 @@
-from management.functionality.visual_simulation import run_visual_simulation
+from management.functionality.algorithm_compare import compare_algorithms
 from simulator.simulate import run_simulation_example
+import pandas as pd
 
 __author__ = "Eylon Shoshan"
 
@@ -27,6 +28,20 @@ def run_simulation():
     """
     run_simulation_example(request.args['simulation_example'], "Scheduler", gui=True)
     return "Simulation has finished."
+
+
+@app.route('/compare_schedulers', methods=['GET', 'POST'])
+def compare_schedulers():
+    """
+    Compare scheduling algorithms and present results
+    :return: Result statistics
+    """
+    simulation_example = request.args['simulation_example']
+    schedulers = dict(request.args)['schedulers']
+    compare_algorithms(simulation_example, *schedulers)
+    df = pd.read_csv('./temp_outputs/stats.csv')  # TODO: use path as defined in algorithm_compare
+    print(df.to_html())
+    return "Completed comparison"
 
 
 if __name__ == "__main__":

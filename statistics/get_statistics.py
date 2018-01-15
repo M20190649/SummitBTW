@@ -108,7 +108,7 @@ def create_statistics(to_csv=None, to_print=True, *tripinfo_files):
     :param to_csv: path to csv output file, default is None (no csv output)
     :param to_print: whether to print the statistics to stdout or not
     :param tripinfo_files: .xml files of simulation outputs
-    :return: None
+    :return: Statistics dictionary
     """
     if len(tripinfo_files) < 1:
         raise ValueError('Wrong usage, Please enter an xml filename!')
@@ -131,6 +131,7 @@ def create_statistics(to_csv=None, to_print=True, *tripinfo_files):
         printer.print()
     if to_csv is not None:
         create_csv(statistics, tripinfo_files, to_csv)
+    return statistics
 
 
 if __name__ == '__main__':
