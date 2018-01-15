@@ -5,7 +5,7 @@ from scheduler.scheduler_constants import schedulers_name_map
 from simulator.simulate import run_simulation_example
 from statistics.get_statistics import create_statistics
 
-TEMP_OUT_DIR = "./temp_outputs"
+TEMP_OUT_DIR = "./temp_outputs/"  # TODO: define in constants file of this module
 
 
 def compare_algorithms(simulation_example, *scheduler_names):
@@ -25,7 +25,7 @@ def compare_algorithms(simulation_example, *scheduler_names):
     output_files = [os.path.join(TEMP_OUT_DIR, scheduler_name) for
                     scheduler_name in scheduler_names]
 
-    return create_statistics(TEMP_OUT_DIR + "/stats.csv", True, *output_files)
+    return create_statistics(TEMP_OUT_DIR + "stats.csv", True, *output_files)
 
 
 if __name__ == '__main__':
