@@ -24,10 +24,8 @@ def run_simulation():
     Running simulation
     :return: Simulation page
     """
-    print("HHHH")
-    # print(request.form['junction'])
-    print(request.args)
-    run_visual_simulation("../../simulator/examples/data/" + request.args['simulation_example'], "Scheduler", True)
+    simulations_examples = "../../simulator/examples/data/"
+    run_visual_simulation(simulations_examples + request.args['simulation_example'], "Scheduler", True)
     return "Running simulation at background..."
 
 
