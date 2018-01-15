@@ -2,7 +2,7 @@ from management.functionality.visual_simulation import run_visual_simulation
 
 __author__ = "Eylon Shoshan"
 
-from flask import Flask, render_template
+from flask import Flask, request, render_template
 
 # set the project root directory as the static folder, you can set others.
 app = Flask(__name__, static_url_path='')
@@ -24,7 +24,10 @@ def run_simulation():
     Running simulation
     :return: Simulation page
     """
-    run_visual_simulation("../../simulator/examples/data/small_city/city.sumocfg.xml", "Scheduler", True)
+    print("HHHH")
+    # print(request.form['junction'])
+    print(request.args)
+    run_visual_simulation("../../simulator/examples/data/" + request.args['simulation_example'], "Scheduler", True)
     return "Running simulation at background..."
 
 
