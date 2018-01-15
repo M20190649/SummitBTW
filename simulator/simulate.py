@@ -12,6 +12,8 @@ import traci
 from sumolib import checkBinary
 
 # from scheduler.scheduler import Scheduler
+from traci import FatalTraCIError
+
 from scheduler.scheduler import Scheduler
 from simulator.realtime.city import City
 from statistics.realtime import RealTime
@@ -73,19 +75,23 @@ def run_sumo(config_file, scheduler, real_time=True, gui=False, output_file="tri
     :param output_file: the file path for the simulation's output
     :return: None
     """
-    if not gui:
-        _sumo_binary = checkBinary('sumo')
-    else:
-        _sumo_binary = checkBinary('sumo-gui')
+    try:
+        if not gui:
+            _sumo_binary = checkBinary('sumo')
+        else:
+            _sumo_binary = checkBinary('sumo-gui')
 
-    if output_file:
-        traci.start([_sumo_binary, "-c", config_file, "--tripinfo-output", output_file])
-    else:
-        traci.start([_sumo_binary, "-c", config_file])
+        if output_file:
+            traci.start([_sumo_binary, "-c", config_file, "--tripinfo-output", output_file])
+        else:
+            traci.start([_sumo_binary, "-c", config_file])
 
-    run_simulate(scheduler_algorithm=scheduler, real_time=real_time)
-    traci.close()
-    sys.stdout.flush()
+        run_simulate(scheduler_algorithm=scheduler, real_time=real_time)
+        traci.close()
+        sys.stdout.flush()
+
+    except FatalTraCIError:
+        logging.info("Simulation has been closed.")
 
 
 if __name__ == "__main__":
