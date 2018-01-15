@@ -1,3 +1,5 @@
+from management.functionality.visual_simulation import run_visual_simulation
+
 __author__ = "Eylon Shoshan"
 
 from flask import Flask, render_template
@@ -14,6 +16,7 @@ def root():
 
 @app.route('/run_simulation', methods=['GET', 'POST'])
 def run_simulation():
+    run_visual_simulation("../../simulator/examples/data/small_city/city.sumocfg.xml", "Scheduler", True)
     return "Running simulation at background..."
 
 
