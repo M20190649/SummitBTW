@@ -56,7 +56,7 @@
                 <div class="user-info">
                     <img src="images/face.jpg" alt="">
                     <p class="name">Richard V.Welsh</p>
-                    <p class="designation">Manager</p>
+                    <p class="designation">Traffic Manager</p>
                     <span class="online"></span>
                 </div>
                 <ul class="nav">
@@ -89,28 +89,92 @@
 
                             <form action="/run_simulation" target="_blank">
                                 <div class="text-center">
-                                    <div class="btn-group btn-group-lg" data-toggle="buttons" >
+                                    <div class="btn-group btn-group-lg" data-toggle="buttons">
                                         <label class="btn btn-primary active">
-                                            <input type="radio" checked autocomplete="off" id="cross" value="cross" name="simulation_example"> Single Junction
+                                            <input type="radio" checked autocomplete="off" value="cross"
+                                                   name="simulation_example"> Single Junction
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="radio" autocomplete="off" id="small_city" value="small_city" name="simulation_example"> Neighborhood
+                                            <input type="radio" autocomplete="off" value="small_city"
+                                                   name="simulation_example"> Neighborhood
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="radio" autocomplete="off" id="city" value="city" name="simulation_example"> Big City
+                                            <input type="radio" autocomplete="off" value="city"
+                                                   name="simulation_example"> Big City
                                         </label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     &nbsp;
                                 </div>
+                                 <div class="row">
+                                    &nbsp;
+                                </div>
                                 <div class="text-center">
-                                    <!--<form action="/run_simulation" method="post">-->
                                     <button type="submit" class="btn btn-success btn-lg">
                                         <span class="caret"></span>
                                         Run Simulation
                                     </button>
-                                    <!--</form>-->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card-deck">
+                    <div class="card col-lg-12 px-0 mb-4">
+                        <div class="card-body">
+                            <h4 class="card-title">Compare Schedulers</h4>
+
+                            <form action="/compare_schedulers" target="_blank">
+                                <div class="text-center">
+                                    <div class="btn-group btn-group-lg" data-toggle="buttons">
+                                        <label class="btn btn-info active">
+                                            <input type="radio" checked autocomplete="off" value="Scheduler"
+                                                   name="schedulers"> Advanced Scheduler
+                                        </label>
+                                        <label class="btn btn-info">
+                                            <input type="radio" autocomplete="off" value="MaxOccupancyScheduler"
+                                                   name="schedulers"> Max Occupancy
+                                        </label>
+                                        <label class="btn btn-info">
+                                            <input type="radio" autocomplete="off" value="StaticScheduler"
+                                                   name="schedulers"> Static Schduler
+                                        </label>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    &nbsp;
+                                </div>
+                                <div class="text-center">
+                                    <div class="btn-group btn-group-lg" data-toggle="buttons">
+                                        <label class="btn btn-primary active">
+                                            <input type="radio" checked autocomplete="off" value="cross"
+                                                   name="simulation_example"> Single Junction
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="radio" autocomplete="off" value="small_city"
+                                                   name="simulation_example"> Neighborhood
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="radio" autocomplete="off" value="city"
+                                                   name="simulation_example"> Big City
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    &nbsp;
+                                </div>
+                                <div class="row">
+                                    &nbsp;
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-success btn-lg">
+                                        <span class="caret"></span>
+                                        Compare
+                                    </button>
                                 </div>
                             </form>
                         </div>
