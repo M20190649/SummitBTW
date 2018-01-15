@@ -1,4 +1,5 @@
 from management.functionality.algorithm_compare import compare_algorithms
+from scheduler.scheduler_constants import schedulers_name_map
 from simulator.simulate import run_simulation_example
 import pandas as pd
 
@@ -26,7 +27,8 @@ def run_simulation():
     Running simulation at background
     :return: Simulation page
     """
-    run_simulation_example(request.args['simulation_example'], "Scheduler", gui=True)
+    scheduler = schedulers_name_map["Scheduler"]
+    run_simulation_example(request.args['simulation_example'], scheduler, gui=True)
     return "Simulation has finished."
 
 
