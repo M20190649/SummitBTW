@@ -163,13 +163,13 @@
                 <div class="card-deck">
                     <div class="card col-lg-12 px-0 mb-4">
                         <div class="card-body">
-                            <h5 class="card-title">Simulation Zone</h5>
+                            <h4 class="card-title">Simulation Zone</h4>
 
 
                             <div class="text-center">
                                 <div class="btn-group btn-group-lg" data-toggle="buttons">
                                     <label class="btn btn-primary active">
-                                        <input type="radio" checked autocomplete="off"> Single Cross
+                                        <input type="radio" checked autocomplete="off"> Single Junction
                                     </label>
                                     <label class="btn btn-primary">
                                         <input type="radio" autocomplete="off"> Neighborhood
@@ -179,9 +179,15 @@
                                     </label>
                                 </div>
                             </div>
+                            <div class="row">
+                                &nbsp;
+                            </div>
                             <div class="text-center">
                                 <form action="/run_simulation" method="post">
-                                    <button type="submit" class="btn btn-primary mr-2">Run Simulation</button>
+                                    <button type="submit" class="btn btn-success btn-lg">
+                                        <span class="caret"></span>
+                                        Run Simulation
+                                    </button>
                                 </form>
                             </div>
                         </div>
