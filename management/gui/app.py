@@ -11,11 +11,19 @@ app = Flask(__name__, static_url_path='')
 @app.route('/')
 @app.route('/index.html')
 def root():
+    """
+    Loading home page
+    :return: html page of the dashboard
+    """
     return render_template('index.html')
 
 
 @app.route('/run_simulation', methods=['GET', 'POST'])
 def run_simulation():
+    """
+    Running simulation
+    :return: Simulation page
+    """
     run_visual_simulation("../../simulator/examples/data/small_city/city.sumocfg.xml", "Scheduler", True)
     return "Running simulation at background..."
 
