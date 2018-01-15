@@ -13,7 +13,7 @@ def compare_algorithms(simulation_example, *scheduler_names):
     runs a simulation with both schedulers and compares their performance
     :param simulation_example: the config file for running the simulation
     :param scheduler_names: the schedulers to compare
-    :return:
+    :return: statistics dictionary
     """
     if not os.path.exists(TEMP_OUT_DIR):
         os.makedirs(TEMP_OUT_DIR)
@@ -25,7 +25,7 @@ def compare_algorithms(simulation_example, *scheduler_names):
     output_files = [os.path.join(TEMP_OUT_DIR, scheduler_name) for
                     scheduler_name in scheduler_names]
 
-    create_statistics(None, True, *output_files)
+    return create_statistics(TEMP_OUT_DIR + "/stats.csv", True, *output_files)
 
 
 if __name__ == '__main__':
