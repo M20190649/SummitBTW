@@ -4,8 +4,10 @@ $(function() {
    * -------
    * Data and config for chartjs
    */
+
+
   var data = {
-    labels: ["2013", "2014", "2014", "2015", "2016", "2017"],
+    labels: ["Advanced Scheduler", "Max Occupancy", "Static Scheduler"],
     datasets: [{
       label: '# of Votes',
       data: [10, 19, 3, 5, 2, 3],
@@ -114,7 +116,7 @@ $(function() {
   };
 
   var areaData = {
-    labels: ["2013", "2014", "2015", "2016", "2017"],
+    labels: ["Advanced Scheduler", "Max Occupancy", "Static Scheduler"],
     datasets: [{
       label: '# of Votes',
       data: [12, 19, 3, 5, 2, 3],

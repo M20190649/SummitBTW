@@ -26,13 +26,13 @@ def root():
     return render_template('index.html')
 
 
-@app.route('/pages/charts/index.html')
+@app.route('/pages/forms/index.html')
 def load_charts():
     """
 
     :return:
     """
-    return render_template('/pages/charts/index.html')
+    return render_template('/pages/forms/index.html')
 
 
 @app.route('/pages/widgets.html')
