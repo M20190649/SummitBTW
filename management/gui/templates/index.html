@@ -107,7 +107,7 @@
                                 <div class="row">
                                     &nbsp;
                                 </div>
-                                 <div class="row">
+                                <div class="row">
                                     &nbsp;
                                 </div>
                                 <div class="text-center">
@@ -127,7 +127,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Compare Schedulers</h4>
 
-                            <form action="/compare_schedulers" target="_blank">
+                            <form action="/compare_schedulers">
                                 <div class="text-center">
                                     <div class="btn-group btn-group-lg" data-toggle="buttons">
                                         <label class="btn btn-info active">
@@ -171,10 +171,16 @@
                                     &nbsp;
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-success btn-lg">
+                                    <button id="comparealgos" type="submit" class="btn btn-success btn-lg">
                                         <span class="caret"></span>
                                         Compare
                                     </button>
+                                </div>
+                                <div class="row">
+                                    &nbsp;
+                                </div>
+                                <div class="text-center">
+                                    {{ stats_table }}
                                 </div>
                             </form>
                         </div>
@@ -525,6 +531,7 @@
 <script src="js/misc.js"></script>
 <script src="js/chart.js"></script>
 <script src="js/maps.js"></script>
+<script src="js/simulations-statistics.js"></script>
 </body>
 
 </html>
