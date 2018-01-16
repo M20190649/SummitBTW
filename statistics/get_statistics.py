@@ -118,6 +118,7 @@ def create_statistics(to_csv=None, to_print=True, *tripinfo_files):
     statistics = {}
     statistics_lambdas = get_stats()
     for filename in tripinfo_files:
+        print(filename)
         curr_info = get_tripinfos(filename)
         for msg, f in statistics_lambdas:
             if msg not in statistics:
