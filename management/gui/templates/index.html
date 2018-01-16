@@ -518,6 +518,7 @@
     </div>
 
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
@@ -532,6 +533,14 @@
 <script src="js/chart.js"></script>
 <script src="js/maps.js"></script>
 <script src="js/simulations-statistics.js"></script>
+
+<script>
+    var submitButt = $("button[id='comparealgos']");
+    $(document).on('change', 'input[name="schedulers"]', function() {
+        var checked = $("input[name='schedulers']:checked").length;
+        submitButt.attr("disabled", checked<1);
+    });
+</script>
 </body>
 
 </html>
