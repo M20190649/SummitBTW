@@ -41,13 +41,13 @@ def load_widgets():
 
     :return:
     """
-    # is_3_algo = False
 
     files = ['../../statistics/resources/tripinfo.xml', '../../statistics/resources/tripinfo1.xml', '../../statistics/resources/tripinfo2.xml']
 
     stat = create_statistics('output.csv', True, *files)
     algo = ['1', '2', '3']
     values = {}
+
     for i in range(1, len(files)+1):
         values['Algo_' + str(i)] = algo[i - 1]
 
