@@ -1,11 +1,11 @@
 from flask import render_template
 __authot__ = "Liran Farhi"
 
-def load_statistics_widgets(stats):
+def load_statistics_widgets(stats, schedulers):
     """
-    @Author Liran Farhi
-    # TODO: fill @LiranFarhi
+    # TODO: fill documentation
     :param stats:
+    :param schedulers:
     :return:
     """
     # files = [f for f in os.listdir(TEMP_OUT_DIR) if not f.endswith('.csv')]

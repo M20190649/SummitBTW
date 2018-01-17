@@ -48,7 +48,7 @@ def compare_schedulers():
     schedulers = dict(request.args)['schedulers']
 
     stats = compare_algorithms(simulation_example, *schedulers)
-    return load_statistics_widgets(stats)
+    return load_statistics_widgets(stats, schedulers)
 
 
 if __name__ == "__main__":
