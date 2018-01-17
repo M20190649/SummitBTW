@@ -56,8 +56,9 @@ def load_widgets():
             key = param.replace("-","").replace(" ","").replace("waitSteps","WaitSteps").replace("routeLength","RouteLength")
             value = 'stat[\'' + param +'\'][' + (str(i - 1)) + ']'
             values[key + '_' + str(i)] = int(eval(value))
-            values[key + 'Bar_' + str(i)] = 'width:' + str(eval(value) / (max(stat[param]) if max(stat[param]) != 0 else 1)*100) + '%'
+            values[key + 'Bar_' + str(i)] = 'width:' + str(((eval(value) / max(stat[param])) if max(stat[param]) != 0 else 1)*100) + '%'
 
+    print(values)
     values['AlgoNum'] = ''
 
     if len(files) == 2 :
