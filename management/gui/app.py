@@ -1,8 +1,11 @@
+import os
 import pandas as pd
 
 from management.functionality.algorithm_compare import compare_algorithms, TEMP_OUT_DIR
+from management.gui.visual_statistics import load_statistics_widgets
 from scheduler.scheduler_constants import schedulers_name_map
 from simulator.simulate import run_simulation_example
+from statistics.get_statistics import create_statistics
 
 __author__ = "Eylon Shoshan"
 
@@ -11,6 +14,7 @@ from flask import Markup
 
 # set the project root directory as the static folder, you can set others.
 app = Flask(__name__, static_url_path='')
+last_compare_stats = None
 
 
 @app.route('/')
@@ -42,13 +46,9 @@ def compare_schedulers():
     """
     simulation_example = request.args['simulation_example']
     schedulers = dict(request.args)['schedulers']
-    compare_algorithms(simulation_example, *schedulers)
-    df = pd.read_csv(TEMP_OUT_DIR + 'stats.csv')
-    stats = df.to_html()
-    stats = stats.replace(TEMP_OUT_DIR, '')
-    stats = stats.replace('right;', 'center;')
-    stats = stats.replace('<table border="1" class="dataframe">', '<table border="1" class="dataframe" align=center>')
-    return render_template('index.html', stats_table=Markup(stats))
+
+    stats = compare_algorithms(simulation_example, *schedulers)
+    return load_statistics_widgets(stats)
 
 
 if __name__ == "__main__":
