@@ -28,12 +28,12 @@ def generate_net(sumo_network_path=".", size=30):
            '--rand.iterations=' + str(size),
            '--rand.neighbor-dist5', '0',
            '--rand.neighbor-dist6', '0',
-           '--default.lanenumber', '2',
-           '--no-turnarounds'
+           '--default.lanenumber', '1',
+           '--no-turnarounds',
+           '--no-left-connections'  # To prevent collisions
            ]
 
     out = subprocess.check_output(cmd)
 
     logging.info(out)
     logging.info('Finished generating SUMO network')
-
