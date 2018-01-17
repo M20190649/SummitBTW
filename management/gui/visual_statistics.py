@@ -11,15 +11,13 @@ def load_statistics_widgets(stats, schedulers):
     # files = [f for f in os.listdir(TEMP_OUT_DIR) if not f.endswith('.csv')]
     # TODO: change to positive condition with .tripinfo.xml extension
 
-    print(stats)
     statistics_keys = stats.keys()
 
-    algo = ['Advanced Scheduler', 'Max Occupancy', 'Static Scheduler']
     values = {}
-    num_algos = len(list(stats.values())[0])
+    num_algos = len(schedulers)
 
     for i in range(1, num_algos + 1):
-        values['Algo_' + str(i)] = algo[i - 1]
+        values['Algo_' + str(i)] = schedulers[i - 1]
         for param in statistics_keys:
             key = param.replace("-", "").replace(" ", "").replace("waitSteps", "WaitSteps").replace("routeLength",
                                                                                                     "RouteLength")
@@ -30,7 +28,7 @@ def load_statistics_widgets(stats, schedulers):
 
     values['AlgoNum'] = ''
 
-    if num_algos == 1:
+    if len(schedulers) == 2:
         values['AlgoNum'] = 'display: none'
 
     return render_template('/pages/widgets.html', **values)
