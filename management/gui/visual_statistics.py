@@ -23,9 +23,17 @@ def load_statistics_widgets(stats, schedulers):
             values[key + 'Bar_' + str(i)] = 'width:' + str(
                 ((eval(value) / max(stats[param])) if max(stats[param]) != 0 else 1) * 100) + '%'
 
-    values['AlgoNum'] = ''
 
-    if len(schedulers) == 2:
-        values['AlgoNum'] = 'display: none'
+    values['AlgoNum_1'] = ''
+    values['AlgoNum_2'] = ''
+
+    if num_algos == 1:
+        values['AlgoNum_1'] = 'display: none'
+        values['AlgoNum_2'] = 'display: none'
+
+
+    if num_algos == 2:
+        values['AlgoNum_1'] = 'display: none'
+
 
     return render_template('/pages/widgets.html', **values)
