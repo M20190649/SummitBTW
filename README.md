@@ -25,7 +25,7 @@ Summit-Better Than WAZE (SummitBTW) is a revolutionary smart city for better nav
 * Next run "requirements.py" python script for installing all the python modules needed. If there are any problems make sure your PATH Environment variable includes a link to the "pip" package.
 * Don't forget to download our project too obviously
 
-Finally you are ready to use SummitBTW! just run python -m management.gui.app from the command line in the project directory :)
+Finally you are ready to use SummitBTW! just run `python -m management.gui.app` from the command line in the project directory :)
 
 --------------------------
 
