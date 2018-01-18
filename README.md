@@ -19,8 +19,8 @@ Summit-Better Than WAZE (SummitBTW) is a revolutionary smart city for better nav
 * Now please download sumo that is suitable for your OS from this link:
 
 `http://www.sumo.dlr.de/userdoc/Downloads.html`
-* Make sure you have Environment variable for SUMO_HOME that links to your sumo directory
-* also add "sumo_tweaks/tools" path as the environment variable `PYTHONPATH`
+* Make sure you have environment variable for `SUMO_HOME` that links to your sumo directory.
+* also add `sumo_tweaks/tools` path as the environment variable `PYTHONPATH`.
 * Next run "requirements.py" python script for installing all the python modules needed. If there are any problems make sure your PATH Environment variable includes a link to the "pip" package.
 * Don't forget to download our project too obviously
 
