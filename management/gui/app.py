@@ -33,7 +33,7 @@ def run_simulation():
     Running simulation at background
     :return: Simulation page
     """
-    scheduler = schedulers_name_map["Scheduler"]
+    scheduler = schedulers_name_map["AdvancedScheduler"]
     run_simulation_example(request.args['simulation_example'], scheduler, gui=True)
     return "Simulation has finished."
 

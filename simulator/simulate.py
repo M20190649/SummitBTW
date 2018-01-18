@@ -13,10 +13,9 @@ import os
 import traci
 from sumolib import checkBinary
 
-# from scheduler.scheduler import Scheduler
 from traci import FatalTraCIError
 
-from scheduler.scheduler import Scheduler
+from scheduler.scheduler import AdvancedScheduler
 from simulator.realtime.city import City
 from statistics.realtime import RealTime
 
@@ -33,7 +32,7 @@ def get_options():
     return opts
 
 
-def run_simulate(scheduler_algorithm=Scheduler, real_time=True):
+def run_simulate(scheduler_algorithm=AdvancedScheduler, real_time=True):
     """
     Execute the simulation loop, and applying the scheduler in each step.
     :type scheduler_algorithm: AbstractScheduler
