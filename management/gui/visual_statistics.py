@@ -8,11 +8,8 @@ def load_statistics_widgets(stats, schedulers):
     :param schedulers:
     :return:
     """
-    # files = [f for f in os.listdir(TEMP_OUT_DIR) if not f.endswith('.csv')]
-    # TODO: change to positive condition with .tripinfo.xml extension
 
     statistics_keys = stats.keys()
-
     values = {}
     num_algos = len(schedulers)
 

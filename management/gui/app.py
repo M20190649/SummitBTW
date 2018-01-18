@@ -1,4 +1,6 @@
 import os
+from re import finditer
+
 import pandas as pd
 
 from management.functionality.algorithm_compare import compare_algorithms, TEMP_OUT_DIR
@@ -38,6 +40,11 @@ def run_simulation():
     return "Simulation has finished."
 
 
+def _camel_case_to_name(identifier):
+    matches = finditer('.+?(?:(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])|$)', identifier)
+    return ' '.join([m.group(0) for m in matches])
+
+
 @app.route('/compare_schedulers', methods=['GET', 'POST'])
 def compare_schedulers():
     """
@@ -48,7 +55,8 @@ def compare_schedulers():
     schedulers = dict(request.args)['schedulers']
 
     stats = compare_algorithms(simulation_example, *schedulers)
-    return load_statistics_widgets(stats, schedulers)
+    schedulers_names = [_camel_case_to_name(s) for s in schedulers]
+    return load_statistics_widgets(stats, schedulers_names)
 
 
 if __name__ == "__main__":
