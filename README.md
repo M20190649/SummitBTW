@@ -8,14 +8,16 @@
 --->
 
 
-Better Than WAZE (BTW) is a revolutionary smart city for better navigation through the city for all drivers. It is built and managed by the municipalities that can monitor the traffic lights of the city and manage them with smart algorithms rather than a simple static algorithm as it is today. In the future BTW will also provide services that are similar to those of popular navigation applications, such as Waze or Google Maps, with the significant advantage - the ability to control the traffic lights in real-time. This functionality can prove vital in an age where self-driving autonomous cars are gaining popularity and slowly changing the face of modern transportation.
+Summit-Better Than WAZE (SummitBTW) is a revolutionary smart city for better navigation through the city for all drivers. It is built and managed by the municipalities that can monitor the traffic lights of the city and manage them with smart algorithms rather than a simple static algorithm as it is today. In the future BTW will also provide services that are similar to those of popular navigation applications, such as Waze or Google Maps, with the significant advantage - the ability to control the traffic lights in real-time. This functionality can prove vital in an age where self-driving autonomous cars are gaining popularity and slowly changing the face of modern transportation.
 
 --------------------------
 
 # Download instructions for user (for Windows):
 * First of all you need to make sure you have Python 3.6 on your computer. If not, it is recommended to download it with Anaconda:
+
 `https://www.anaconda.com/download/`
 * Now please download sumo that is suitable for your OS from this link:
+
 `http://www.sumo.dlr.de/userdoc/Downloads.html`
 * Please unzip the "tools.zip" from here and replace it with the tools directory that is currently in the sumo directory.
 * Make sure you have Environment variable for SUMO_HOME that links to your sumo directory
@@ -27,9 +29,12 @@ Finally you are ready to use SummitBTW! just run python -m management.gui.app fr
 
 --------------------------
 
-* The only difference for a developer is downloading PyCharm from this link:
+# Download instructions for developer (for Windows):
+* It is most recommended for a developer to download PyCharm from this link for keep our work:
+
 `https://www.jetbrains.com/pycharm/download/#section=windows`
 
+Brief explanation of our different packages:
 * In the management and materials packages you'll find the GUI for the user
 * In the scheduler package you'll find the algorithm for the traffic lights
 * In the simulator package you'll find the heart of the project - running the simulation
