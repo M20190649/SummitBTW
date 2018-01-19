@@ -33,7 +33,7 @@ def load_statistics_widgets(stats, schedulers):
 
 
     if num_algos == 2:
-        values['AlgoNum_1'] = 'display: none'
+        values['AlgoNum_2'] = 'display: none'
 
 
     return render_template('/pages/widgets.html', **values)
