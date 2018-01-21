@@ -3,7 +3,7 @@ API for detectors, which represent physical sensors in junctions.
 Those can be queried for information about traffic.
 """
 
-__author__ = "Eylon Shoshan"
+__author__ = "Eylon Shoshan, Yair Feldman"
 
 import traci
 

@@ -3,6 +3,7 @@ from sys import argv
 from scheduler.scheduler_constants import schedulers_name_map
 from simulator.simulate import run_sumo
 
+__author__ = "Yair Feldman"
 
 def run_visual_simulation(config_file, scheduler_name):
     """
