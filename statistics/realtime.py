@@ -2,6 +2,9 @@ import functools as funcs
 import multiprocessing
 import operator as ops
 import threading
+import socket
+
+from gevent import select
 
 
 class RealTime(threading.Thread):
@@ -12,24 +15,47 @@ class RealTime(threading.Thread):
         self.detectors_dict = city.get_detectors_dict()
         self.lock = multiprocessing.Lock()
         self.end_simulation_event = threading.Event()
+        self.sock = socket.socket()
 
     def run(self):
+        self.sock.bind(("0.0.0.0", 1482))
+        self.sock.listen(1)
+        read_list = [self.sock]
         while True:
-            id_desired = input("## Write id of object you are interested for >>\n")
             if self.end_simulation_event.is_set() is True:
-                print("## It seems that the simulation has ended. Please exit the simulation program.")
                 exit()
-            self.lock.acquire()
-            print(self.get_info_by_id(id_desired))
-            self.lock.release()
+            ready, _, _ = select.select(read_list, [], [], 0.5)
+            if ready:
+                conn, _ = self.sock.accept()
+                break
 
-    def get_info_by_id(self, id_desired):
+        while True:
+            if self.end_simulation_event.is_set() is True:
+                conn.close()
+                exit()
+            id_desired = ""
+            conn.settimeout(0.5)
+            try:
+                id_desired = conn.recv(1024).decode("utf-8")
+            except:
+                pass
+            if id_desired is not "":
+                self.lock.acquire()
+                conn.send(str.encode(self.get_info_by_id_string(id_desired)))
+                self.lock.release()
+
+    def get_info_by_id_list(self, id_desired):
         if id_desired in self.detectors_dict:
             return self.get_detector_info_by_id(id_desired)
         elif id_desired in self.junctions_dict:
             return self.get_junction_info_by_id(id_desired)
         else:
-            return "The id was not found. Please try again.\n"
+            return [("The id was not found", " Please try again.")]
+
+    def get_info_by_id_string(self, id_desired):
+        res_list = self.get_info_by_id_list(id_desired)
+        res = funcs.reduce(ops.add, [name + "," + str(stat) + "," for name, stat in res_list])
+        return res[:len(res) - 1]
 
     def get_detector_info_by_id(self, id_of_detector):
         detector = self.detectors_dict[id_of_detector]

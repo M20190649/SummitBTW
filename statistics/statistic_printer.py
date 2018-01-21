@@ -1,4 +1,6 @@
+
 from prettytable import PrettyTable
+
 
 
 class StatisticsPrinter(object):
