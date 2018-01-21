@@ -5,6 +5,8 @@ from scheduler.scheduler_constants import schedulers_name_map
 from simulator.simulate import run_simulation_example
 from statistics.get_statistics import create_statistics
 
+__author__ = "Yair Feldman"
+
 TEMP_OUT_DIR = "./temp_outputs/"  # TODO: define in constants file of this module
 
 

@@ -4,6 +4,7 @@ import logging
 from scheduler.scheduler_constants import schedulers_name_map
 from simulator.simulate import run_sumo
 
+__author__ = "Yair Feldman"
 
 def run_visual_simulation(simulation_example, scheduler_name, real_time=True):
     """
