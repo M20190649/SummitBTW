@@ -363,8 +363,14 @@ def prependSpace(s):
         return " " + s
 
 
-def generate_trips(sumo_network=None, output_path=None):
+def generate_trips(sumo_network=None, output_path=None, **kwargs):
     options = get_options(sumo_network, output_path)
+
+    for key, item in kwargs.items():
+        if key not in options.__dict__:
+            raise ValueError(f"No option named {key} for randomTrips.py")
+        options.__dict__[key] = item
+
     if options.seed:
         random.seed(options.seed)
 

@@ -25,5 +25,5 @@ def run_visual_simulation(simulation_example, scheduler_name, real_time=True):
 
 if __name__ == '__main__':
     if len(argv) < 3:
-        raise ValueError('bad input. should be: <config_file> <scheduler_name>')
+        raise ValueError('bad input. should be: <simulation folder> <scheduler_name>')
     run_visual_simulation(argv[1], argv[2])

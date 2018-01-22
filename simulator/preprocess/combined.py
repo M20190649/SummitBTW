@@ -27,10 +27,11 @@ def _configuration_file(path):
     config_tree.write(config_path)
 
 
-def prepare_simulation(path="."):
+def prepare_simulation(path=".", **kwargs):
     """
     Preparing a full SUMO simulation with traffic lights, detectors and trips files.
     :param path: folder to output all simulation files
+    :param kwargs: keyword arguments to be passed to the random trip generator
     :return: None
     """
 
@@ -39,7 +40,13 @@ def prepare_simulation(path="."):
     sumo_network = path + "/city.net.xml"
     generate_net(sumo_network)
     add_detectors(sumo_network)
-    generate_trips(sumo_network, path)
+    generate_trips(sumo_network, path, **kwargs)
     _configuration_file(path)
 
     logging.info('Finished to prepare simulation. All relevant files were created.')
+
+
+if __name__ == '__main__':
+    prepare_simulation(path="../examples/data/cross")
+                       # , fringe_factor=10000)  # uncomment to use, see further documentation in random_trips.py
+                       # binomial=10000, period=5)
