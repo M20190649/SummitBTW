@@ -173,7 +173,8 @@ GUIRunThread::makeStep() {
     try {
         mySimulationLock.lock();
         myNet->simulationStep();
-        StatisticsProxy::setup_server("127.0.0.1", 1482);
+        StatisticsProxy::setup_server("127.0.0.1", 1482, this);
+        StatisticsProxy::request_junction_statistics();
         myNet->guiSimulationStep();
         mySimulationLock.unlock();
 

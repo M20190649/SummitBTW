@@ -8,15 +8,19 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 #include <utils/common/MsgHandler.h>
+#include <utils/gui/globjects/GUIGlObjectStorage.h>
+#include <guisim/GUINet.h>
 
 #include "StatisticsProxy.h"
 
 int StatisticsProxy::sock = 0;
 bool StatisticsProxy::is_sock_set = false;
 std::map<std::string, JunctionStatistics> StatisticsProxy::junctions;
+int StatisticsProxy::request_counter = 0;
+std::vector<std::string> StatisticsProxy::junction_ids = std::vector<std::string>();
 
-void StatisticsProxy::request_junction_statistics_from_server(std::string id) {
-    WRITE_MESSAGE("Trying to send statistics request");
+void StatisticsProxy::request_junction_statistics_by_id(std::string id) {
+    WRITE_MESSAGE("Trying to send statistics request, junction_id: " + id);
     send(StatisticsProxy::sock, id.c_str(), id.length(), 0);
     WRITE_MESSAGE("Sent junction id to statistics server, trying to read");
     char buff[1000] = { '\0' };
@@ -24,11 +28,22 @@ void StatisticsProxy::request_junction_statistics_from_server(std::string id) {
     StatisticsProxy::junctions[id] = JunctionStatistics(id, buff);
 }
 
+void StatisticsProxy::request_junction_statistics() {
+    if (++StatisticsProxy::request_counter > 10)
+        StatisticsProxy::request_counter = 0;
+    else
+        return;
+
+    for(auto& id : junction_ids) {
+        request_junction_statistics_by_id(id);
+    }
+}
+
 JunctionStatistics StatisticsProxy::get_junction_statistics(std::string id) {
     return StatisticsProxy::junctions[id];
 }
 
-void StatisticsProxy::setup_server(std::string addr, uint16_t port) {
+void StatisticsProxy::setup_server(std::string addr, uint16_t port, const GUIRunThread *grt) {
     if(StatisticsProxy::is_sock_set)
         return;
 
@@ -57,4 +72,11 @@ void StatisticsProxy::setup_server(std::string addr, uint16_t port) {
     StatisticsProxy::sock = sock;
     StatisticsProxy::is_sock_set = true;
     WRITE_MESSAGE("Connected to statistics server!");
+
+    auto junctions = grt->getNet().getJunctionIDs(false);
+    for (auto& j : junctions) {
+        std::string microsim_id = GUIGlObjectStorage::gIDStorage.getObjectBlocking(j)->getMicrosimID();
+        GUIGlObjectStorage::gIDStorage.unblockObject(j);
+        StatisticsProxy::junction_ids.push_back(microsim_id);
+    }
 }

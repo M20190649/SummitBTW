@@ -177,7 +177,7 @@ Scheduler.scheduler() is called every iteration of the simulator in busy wait.
 """
 
 
-class Scheduler(AbstractScheduler):
+class AdvancedScheduler(AbstractScheduler):
     def __init__(self, city):
         self.schedulers = []
         for junction in city.get_junctions():

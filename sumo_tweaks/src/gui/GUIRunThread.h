@@ -124,14 +124,17 @@ public:
         return myApplicationSnapshotsLock;
     }
 
+    /// the loaded simulation network
+    GUINet* myNet;
+
 protected:
     void makeStep();
 
     void waitForSnapshots(SUMOTime snapShotTime);
 
 protected:
-    /// the loaded simulation network
-    GUINet* myNet;
+//    /// the loaded simulation network
+//    GUINet* myNet;
 
     /// the times the simulation starts and ends with
     SUMOTime mySimStartTime, mySimEndTime;
