@@ -58,6 +58,7 @@
 #include <microsim/MSRouteHandler.h>
 #include <mesogui/GUIMEVehicleControl.h>
 #include <traci-server/TraCIServer.h>
+#include <utils/statistics_proxy/StatisticsProxy.h>
 #include "TraCIServerAPI_GUI.h"
 #include "GUIApplicationWindow.h"
 #include "GUILoadThread.h"

@@ -57,7 +57,7 @@ set_target_properties(sumo PROPERTIES OUTPUT_NAME_DEBUG sumoD)
 target_link_libraries(sumo ${sumolibs})
 
 add_executable(sumo-gui version.h ${sumoguiexec} guisim.rc utils/statistics_proxy/StatisticsProxy.cpp utils/statistics_proxy/JunctionStatistics.cpp)
-set_target_properties(sumo-gui PROPERTIES OUTPUT_NAME_DEBUG sumo-guiD)
+set_target_properties(sumo-gui PROPERTIES OUTPUT_NAME_DEBUG sumo-gui)
 target_link_libraries(sumo-gui gui guinetload guisim gui_dialogs
         utils_gui_windows utils_gui_globjects utils_gui_div utils_gui_settings
         utils_gui_images utils_gui_tracker utils_foxtools osgview ${sumolibs} mesogui

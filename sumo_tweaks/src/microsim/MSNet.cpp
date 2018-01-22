@@ -86,6 +86,7 @@
 #include <microsim/pedestrians/MSPerson.h>
 #include <microsim/traffic_lights/MSTrafficLightLogic.h>
 #include <microsim/trigger/MSChargingStation.h>
+#include <utils/statistics_proxy/StatisticsProxy.h>
 
 #include "MSTransportableControl.h"
 #include "MSEdgeControl.h"

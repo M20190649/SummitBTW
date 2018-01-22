@@ -11,6 +11,7 @@
 class StatisticsProxy {
     static std::map<std::string, JunctionStatistics> junctions;
     static int sock;
+    static bool is_sock_set;
 
     static void request_junction_statistics_from_server(std::string id);
 

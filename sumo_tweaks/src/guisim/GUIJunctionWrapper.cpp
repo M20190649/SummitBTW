@@ -103,13 +103,18 @@ GUIJunctionWrapper::getPopUpMenu(GUIMainWindow& app,
 void GUIGlObject::buildPopupStatistics(GUIGLObjectPopupMenu *ret, GUIMainWindow &app) {
     std::map<std::string, double> stats =
             StatisticsProxy::get_junction_statistics(getMicrosimID()).get_stats();
-    for(auto& stat : stats) {
-        new FXMenuCaption(ret, stat.first.c_str());
-        std::ostringstream strs;
-        strs << stat.second;
-        new FXMenuCaption(ret, strs.str().c_str());
-        new FXMenuSeparator(ret);
-    }
+//    for(auto& stat : stats) {
+//        new FXMenuCaption(ret, stat.first.c_str());
+//        std::ostringstream strs;
+//        strs << stat.second;
+//        new FXMenuCaption(ret, strs.str().c_str());
+//        new FXMenuSeparator(ret);
+//    }
+    new FXMenuCaption(ret, "How cool is this:");
+    new FXMenuCaption(ret, "9000");
+    new FXMenuSeparator(ret);
+    new FXMenuCaption(ret, "How not cool is this:");
+    new FXMenuCaption(ret, "-9000");
 }
 
 GUIGLObjectPopupMenu*
