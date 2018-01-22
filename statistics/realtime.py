@@ -4,6 +4,8 @@ import operator as ops
 import threading
 import socket
 
+from gevent import select
+
 
 class RealTime(threading.Thread):
     def __init__(self, city):
@@ -18,7 +20,15 @@ class RealTime(threading.Thread):
     def run(self):
         self.sock.bind(("0.0.0.0", 1482))
         self.sock.listen(1)
-        conn, _ = self.sock.accept()
+        read_list = [self.sock]
+        while True:
+            if self.end_simulation_event.is_set() is True:
+                exit()
+            ready, _, _ = select.select(read_list, [], [], 0.5)
+            if ready:
+                conn, _ = self.sock.accept()
+                break
+
         while True:
             if self.end_simulation_event.is_set() is True:
                 conn.close()
