@@ -18,6 +18,7 @@ from traci import FatalTraCIError
 from scheduler.scheduler import AdvancedScheduler
 from simulator.realtime.city import City
 from statistics.realtime import RealTime
+from simulator.streaming.screenshot import get_screenshot
 
 
 def get_options():
@@ -32,7 +33,7 @@ def get_options():
     return opts
 
 
-def run_simulate(scheduler_algorithm=AdvancedScheduler, real_time=True):
+def run_simulate(scheduler_algorithm=AdvancedScheduler, real_time=True, take_screenshots=False):
     """
     Execute the simulation loop, and applying the scheduler in each step.
     :type scheduler_algorithm: AbstractScheduler
@@ -55,6 +56,9 @@ def run_simulate(scheduler_algorithm=AdvancedScheduler, real_time=True):
         if traci.simulation.getMinExpectedNumber() > 0:
             my_scheduler.schedule()
             traci.simulationStep()
+            # TODO: allow scheduling screenshots such that they're not taken every timestep
+            if take_screenshots:
+                get_screenshot()
         else:
             if real_time:
                 thread.end_simulation_event.set()
