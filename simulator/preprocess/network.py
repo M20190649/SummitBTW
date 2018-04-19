@@ -20,17 +20,28 @@ def generate_net(sumo_network_path=".", size=30):
 
     logging.info('Starting to generate SUMO network')
 
+    # cmd = ['netgenerate',
+    #        '-o', sumo_network_path,
+    #        '--tls.guess',
+    #        '--tls.left-green.time', '0',
+    #        '--rand',
+    #        '--rand.iterations=' + str(size),
+    #        '--rand.neighbor-dist5', '0',
+    #        '--rand.neighbor-dist6', '0',
+    #        '--default.lanenumber', '1',
+    #        '--no-turnarounds',
+    #        '--no-left-connections'  # To prevent collisions
+    #        ]
+
     cmd = ['netgenerate',
            '-o', sumo_network_path,
            '--tls.guess',
-           '--tls.left-green.time', '0',
            '--rand',
            '--rand.iterations=' + str(size),
            '--rand.neighbor-dist5', '0',
            '--rand.neighbor-dist6', '0',
            '--default.lanenumber', '1',
            '--no-turnarounds',
-           '--no-left-connections'  # To prevent collisions
            ]
 
     out = subprocess.check_output(cmd)
