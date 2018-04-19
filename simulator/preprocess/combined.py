@@ -18,11 +18,11 @@ def _configuration_file(path):
     config_xml = Element('configuration')
 
     input_element = SubElement(config_xml, "input")
-    SubElement(input_element, "net-file").set("value", "city.net.xml")
+    SubElement(input_element, "net-file").set("value", "tomer.net.xml")
     SubElement(input_element, "route-files").set("value", "routes.rou.alt.xml")
     SubElement(input_element, "additional-files").set("value", "e2.add.xml")
 
-    config_path = os.path.join(path, "city.sumocfg.xml")
+    config_path = os.path.join(path, "tomer.sumocfg.xml")
     config_tree = et.ElementTree(config_xml)
     config_tree.write(config_path)
 
@@ -37,7 +37,7 @@ def prepare_simulation(path=".", **kwargs):
 
     logging.info('Starting to generate full simulation')
 
-    sumo_network = path + "/city.net.xml"
+    sumo_network = path + "/tomer.net.xml"
     generate_net(sumo_network)
     add_detectors(sumo_network)
     generate_trips(sumo_network, path, **kwargs)
@@ -47,6 +47,6 @@ def prepare_simulation(path=".", **kwargs):
 
 
 if __name__ == '__main__':
-    prepare_simulation(path="../examples/data/cross")
+    prepare_simulation(path="../examples/data/tomer", fringe_factor=10000)
                        # , fringe_factor=10000)  # uncomment to use, see further documentation in random_trips.py
                        # binomial=10000, period=5)
