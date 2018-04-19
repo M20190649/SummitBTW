@@ -86,7 +86,8 @@ def run_sumo(config_file, scheduler, real_time=True, gui=False, output_file="tri
         else:
             _sumo_binary = checkBinary('sumo-gui')
 
-        sumo_parameters = [_sumo_binary, '-c', config_file, '--no-warnings']
+        # sumo_parameters = [_sumo_binary, '-c', config_file, '--no-warnings']
+        sumo_parameters = [_sumo_binary, '-c', config_file]
 
         if output_file:
             sumo_parameters += ['--tripinfo-output', output_file]
@@ -136,7 +137,8 @@ if __name__ == "__main__":
 
     # this is the normal way of using traci. sumo is started as a
     # subprocess and then the python script connects and runs
-    traci.start([sumo_binary, '-c', sumo_config, '--tripinfo-output', 'tripinfo_realtime.xml', '--no-warnings'])
+    # traci.start([sumo_binary, '-c', sumo_config, '--tripinfo-output', 'tripinfo_realtime.xml', '--no-warnings'])
+    traci.start([sumo_binary, '-c', sumo_config, '--tripinfo-output', 'tripinfo_realtime.xml'])
 
     run_simulate()
     traci.close()
