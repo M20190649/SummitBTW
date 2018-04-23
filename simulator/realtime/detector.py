@@ -88,3 +88,12 @@ class Detector(object):
         :return: number of vehicles (int)
         """
         return traci.lanearea.getLastStepVehicleNumber(self._identifier)
+
+    def lane_has_several_phases(self):
+        """ Checks whether the lane has several phases, e.g. one for straight and one for left
+
+        :return: bool
+        """
+        if self.get_green_phases() > 1:
+            return True
+        return False
