@@ -143,7 +143,9 @@ class Junction(object):
         :param phase: the current active phase
         :return: None
         """
-        traci.trafficlight.setPhase(self._traffic_light_id, phase+1)
+        if phase % 2 != 0:
+            raise ValueError("not a green phase!")
+        traci.trafficlight.setPhase(self._traffic_light_id, phase + 1)
         traci.trafficlight.setPhaseDuration(self._traffic_light_id, phase_duration)
 
     def set_green(self, detectors, phase_duration=33):
@@ -166,4 +168,3 @@ class Junction(object):
         phase = self._get_green_phases_for_detector(detectors._link_index)[0]
         traci.trafficlight.setPhase(self._traffic_light_id, phase)
         traci.trafficlight.setPhaseDuration(self._traffic_light_id, phase_duration)
-
