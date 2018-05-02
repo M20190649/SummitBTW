@@ -12,17 +12,18 @@ class Detector(object):
     """Detector class which contains real-time information about loads on them.
     """
 
-    def __init__(self, identifier, link_index, green_phases):
+    def __init__(self, identifier, link_indexes, green_phases):
         """
 
         :param identifier: the detector's ID
-        :param link_index: the link index on the traffic light state
+        :param link_indexes: the link indexes on the traffic light state
         :param green_phases: a list of the possible phases of the detector's traffic light
             refer to the documentation on Junction for further description of the phases.
         """
         self._identifier = identifier
-        self._link_index = link_index
+        self._link_indexes = link_indexes
         self._green_phases = green_phases
+        self._index_of_green_phase = -1
 
     def get_id(self):
         """returns the id of the detector.
@@ -97,3 +98,9 @@ class Detector(object):
         if self.get_green_phases() > 1:
             return True
         return False
+
+    def get_phase_to_activate(self):
+        self._index_of_green_phase += 1
+        if self._index_of_green_phase == len(self._green_phases):
+            self._index_of_green_phase = 0
+        return self._index_of_green_phase

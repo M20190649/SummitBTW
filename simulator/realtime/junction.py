@@ -6,6 +6,7 @@ and it encapsulates every junction's traffic light logic and contains its differ
 __author__ = "Yair Feldman"
 
 import traci
+import random
 from .detector import Detector
 
 
@@ -35,13 +36,26 @@ class Junction(object):
         return [x._phaseDef for x in
                 traci.trafficlight.getCompleteRedYellowGreenDefinition(self._traffic_light_id)[0]._phases]
 
-    def _get_green_phases_for_detector(self, detector_link_index):
+    @staticmethod
+    def _phase_green_in_detector_link_indexes(phase, detector_link_indexes):
+        """
+        :param phase:
+        :param detector_link_indexes:
+        :return: checks whether the phase is green for one of the indexes
+        """
+        for link_index in detector_link_indexes:
+            if phase[link_index] in ['G', 'g']:
+                return True
+        return False
+
+    def _get_green_phases_for_detector(self, detector_link_indexes):
         """returns the phase indexes in which the given link can be green.
 
-        :param detector_link_index: the detector's link index
+        :param detector_link_indexes: the detector's link indexes
         :return: list of integers representing the phases' indexes
         """
-        return [i for i, phase in enumerate(self._phases) if phase[detector_link_index] in ['g', 'G']]
+        return [i for i, phase in enumerate(self._phases) if
+                self._phase_green_in_detector_link_indexes(phase, detector_link_indexes)]
 
     def _create_mutual_lights_dict(self):
         """returns a dictionary mapping each light to the possible mutual lights in the junction.
@@ -61,9 +75,11 @@ class Junction(object):
         """
         detector_links = traci.trafficlight.getControlledLanes(self._traffic_light_id)
         detectors = {det_id: Detector(identifier=det_id,
-                                      link_index=detector_links.index(traci.lanearea.getLaneID(det_id)),
+                                      link_indexes=[i for i, x in enumerate(detector_links) if
+                                                    x == traci.lanearea.getLaneID(det_id)],
                                       green_phases=self._get_green_phases_for_detector(
-                                          detector_links.index(traci.lanearea.getLaneID(det_id))))
+                                          [i for i, x in enumerate(detector_links) if
+                                           x == traci.lanearea.getLaneID(det_id)]))
                      for det_id in detector_ids}
         return detectors
 
@@ -128,7 +144,7 @@ class Junction(object):
         returns: bool
         """
         green_lights = self.get_green_lights()
-        if green_lights is None:
+        if not green_lights:
             return False
         for light in green_lights:
             if light.get_occupancy() > self.eps:
@@ -148,7 +164,7 @@ class Junction(object):
         traci.trafficlight.setPhase(self._traffic_light_id, phase + 1)
         traci.trafficlight.setPhaseDuration(self._traffic_light_id, phase_duration)
 
-    def set_green(self, detectors, phase_duration=33):
+    def set_green(self, detector, phase_duration=33):
         """turns the given traffic lights (given as detectors) to green.
 
         This function currently assumes that there is exactly one possible phase for the traffic lights
@@ -157,7 +173,7 @@ class Junction(object):
 
         :param phase_duration: phase duration of the next phase in seconds.
             default is 33, which is one of SUMO defaults.
-        :param detectors: (list of Detectors) the traffic lights in the junction to turn green
+        :param detector: (list of Detectors) the traffic lights in the junction to turn green
         :return: None
         """
         # mutual_phases = list(set.intersection(*[set(self._detectors[light.get_id()].get_green_phases())
@@ -165,6 +181,7 @@ class Junction(object):
         # if len(mutual_phases) == 0:
         #     raise ValueError("Given lights can't be green together!")
         # traci.trafficlight.setPhase(self._traffic_light_id, mutual_phases[0])
-        phase = self._get_green_phases_for_detector(detectors._link_index)[0]
+
+        phase = self._get_green_phases_for_detector(detector._link_indexes)[detector.get_phase_to_activate()]
         traci.trafficlight.setPhase(self._traffic_light_id, phase)
-        traci.trafficlight.setPhaseDuration(self._traffic_light_id, phase_duration)
+        # traci.trafficlight.setPhaseDuration(self._traffic_light_id, phase_duration)

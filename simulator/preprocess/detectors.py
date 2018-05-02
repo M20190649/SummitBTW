@@ -64,7 +64,7 @@ def adjust_detector_position(final_detector_length,
                lane_length - final_detector_length - requested_distance_to_tls)
 
 
-def add_detectors(sumo_network=None):
+def add_detectors(sumo_network):
     logging.basicConfig(level="INFO")
 
     option_parser = optparse.OptionParser()
@@ -154,6 +154,3 @@ def add_detectors(sumo_network=None):
 
     logging.info("%d e2 detectors generated!" % len(lanes_with_detectors))
 
-
-if __name__ == "__main__":
-    add_detectors()

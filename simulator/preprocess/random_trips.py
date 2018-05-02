@@ -363,7 +363,7 @@ def prependSpace(s):
         return " " + s
 
 
-def generate_trips(sumo_network=None, output_path=None, **kwargs):
+def generate_trips(sumo_network, output_path, **kwargs):
     options = get_options(sumo_network, output_path)
 
     for key, item in kwargs.items():
@@ -484,7 +484,3 @@ def generate_trips(sumo_network=None, output_path=None, **kwargs):
     # return wether trips could be genreated as requested
     return trip_generator is not None
 
-
-if __name__ == "__main__":
-    if not generate_trips():
-        sys.exit(1)

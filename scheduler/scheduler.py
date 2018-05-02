@@ -50,7 +50,7 @@ class SchedulerJunction(object):
         # penalty for switching a currently green light by another.
         self.context_switch_penalty = 10
 
-        self.yellow_phase_done = False
+        self.yellow_phase_count = 3
 
     def get_starved_light(self):
         """
@@ -86,10 +86,11 @@ class SchedulerJunction(object):
         # get the most busy lane:
         queue_length = {light: self.length[light] * light.get_occupancy() + self.green_bonus(light) for light in
                         self.lights}
-        green_lights = self.junction.get_green_lights()
-        max_green_queue = max([queue_length[light] for light in green_lights])
         max_busy_light, max_queue_len = max(queue_length.items(), key=operator.itemgetter(1))
-
+        green_lights = self.junction.get_green_lights()
+        if not green_lights:
+            return max_busy_light
+        max_green_queue = max([queue_length[light] for light in green_lights])
         if max_queue_len - self.context_switch_penalty > max_green_queue:
             return max_busy_light
         return None
@@ -124,24 +125,21 @@ class SchedulerJunction(object):
         input: none
         returns: none
         """
-        if not self.junction.is_yellow_phase():
+        if self.junction.is_yellow_phase():
+            self.yellow_phase_count -= 1
+            if self.yellow_phase_count == 0:
+                best_tl = self.get_best_traffic_to_schedule()
+                if best_tl is None:
+                    raise ValueError("It should had return a lane")
+                self.junction.set_green(best_tl)
+
+        else:
             best_tl = self.get_best_traffic_to_schedule()  # None if it is a yellow phase
             if best_tl is not None and not self.junction.is_light_green(best_tl):
-                # best_partner_tl = self.find_best_partner(best_tl)
-                # to_schedule = [best_tl]
-                # if best_partner_tl is not None:
-                #     to_schedule += [best_partner_tl]
-                # self.context_switch(to_schedule)
-                if self.yellow_phase_done is False:
-                        self.junction.set_yellow(self.junction.get_active_phase())
-                        self.yellow_phase_done = True
-                else:
-                    self.yellow_phase_done = False
-                    self.junction.set_green(best_tl)
-            else:
-                self.yellow_phase_done = False
+                self.junction.set_yellow(self.junction.get_active_phase())
+                self.yellow_phase_count = 3
 
-            # can find the best partner to schedule to the best light if there wan't a context switch.
+        # can find the best partner to schedule to the best light if there wan't a context switch.
             # (This is good if len(mutual_lights[best_light]) > 1).
         self.update_epoch()
         # return True if best_tl is not None else False

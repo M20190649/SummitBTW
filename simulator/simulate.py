@@ -56,7 +56,6 @@ def run_simulate(scheduler_algorithm=AdvancedScheduler, real_time=True, take_scr
         if traci.simulation.getMinExpectedNumber() > 0:
             my_scheduler.schedule()
             traci.simulationStep()
-            # TODO: allow scheduling screenshots such that they're not taken every timestep
             if take_screenshots:
                 get_screenshot()
         else:
