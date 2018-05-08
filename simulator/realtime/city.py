@@ -21,6 +21,10 @@ class City(object):
         junction_detector_dict = self._get_junction_detector_dict()
         self._junctions = {i: Junction(traffic_light_id=i, detector_ids=junction_detector_dict[i])
                            for i in self._traffic_light_ids}
+        self._add_neighbors_to_junctions()
+
+    def _add_neighbors_to_junctions(self):
+        pass
 
     def _get_junction_detector_dict(self):
         """returns a dictionary of junction_id -> list of detector id's

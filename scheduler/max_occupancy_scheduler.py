@@ -1,28 +1,66 @@
-"""
-Code for a simple scheduler which chooses which traffic light to turn green based only on the
-current occupancy of the detectors.
-"""
-
-__author__ = "Yair Feldman"
-
 from scheduler.abstract_scheduler import AbstractScheduler
+
+
+class SchedulerJunctionMaxOccupancy(object):
+    """
+    The class SchedulerJunction that schedules one junction.
+    Since scheduling different junction is independent this is where all of the logic happens
+    """
+
+    def __init__(self, junction):
+        # the junction to schedule
+        self.junction = junction
+        self.yellow_phase_count = 3
+
+    def get_most_occupied_traffic_to_schedule(self):
+        max_occupancy_det = None
+        max_occupancy = -1
+        for light in self.junction.get_lights():
+            if light.get_occupancy() > max_occupancy:
+                max_occupancy = light.get_occupancy()
+                max_occupancy_det = light
+        return max_occupancy_det
+
+    def schedule(self):
+        """
+        the main function that is called every iteration.
+        input: none
+        returns: none
+        """
+        if self.junction.is_yellow_phase():
+            self.yellow_phase_count -= 1
+            if self.yellow_phase_count == 0:
+                best_tl = self.get_most_occupied_traffic_to_schedule()
+                if best_tl is None:
+                    raise ValueError("It should had return a detector")
+                self.junction.set_green(best_tl)
+
+        else:
+            best_tl = self.get_most_occupied_traffic_to_schedule()  # None if it is a yellow phase
+            if best_tl is not None and not self.junction.is_light_green(best_tl):
+                self.junction.set_yellow(self.junction.get_active_phase())
+                self.yellow_phase_count = 3
 
 
 class MaxOccupancyScheduler(AbstractScheduler):
     """
-    This class implements a very simple optimization algorithm:
-        For each junction, choose the most occupied traffic light, and set it to green.
+    class Scheduler is the main class that is scheduling all the junctions in a city.
+    Scheduler.scheduler() is called every iteration of the simulator in busy wait.
     """
+
     def __init__(self, city):
-        self.junctions = city.get_junctions()
+        self.schedulers = []
+        for junction in city.get_junctions():
+            self.schedulers.append(SchedulerJunctionMaxOccupancy(junction))
 
     def schedule(self):
-        for junction in self.junctions:
-            max_occupancy_det = None
-            max_occupancy = -1
-            for light in junction.get_lights():
-                if light.get_occupancy() > max_occupancy:
-                    max_occupancy = light.get_occupancy()
-                    max_occupancy_det = light
-            mutual = junction.get_mutual_lights(max_occupancy_det)
-            junction.set_green([max_occupancy_det, mutual[0]])
+        """
+        The function that is called with busy wait in the simulator.
+        schedule each junction.
+        Each junction is scheduled using SchedulerJunctionMaxOccupancy.schedule()
+
+        input: none
+        output: none
+        """
+        for sched_junc in self.schedulers:
+            sched_junc.schedule()

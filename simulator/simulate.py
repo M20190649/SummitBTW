@@ -15,6 +15,8 @@ from sumolib import checkBinary
 
 from traci import FatalTraCIError
 
+from scheduler.max_occupancy_scheduler import MaxOccupancyScheduler
+from scheduler.mixed_scheduler import MixedScheduler
 from scheduler.scheduler import AdvancedScheduler
 from simulator.realtime.city import City
 from statistics.realtime import RealTime

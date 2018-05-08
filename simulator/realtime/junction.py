@@ -6,7 +6,6 @@ and it encapsulates every junction's traffic light logic and contains its differ
 __author__ = "Yair Feldman"
 
 import traci
-import random
 from .detector import Detector
 
 
@@ -20,10 +19,14 @@ class Junction(object):
         self._phases = self._get_phases()
         self._detectors = self._create_detectors(detector_ids)
         self._mutual_lights = self._create_mutual_lights_dict()
+        self._lights = list(self._detectors.values())
+        # map from TL to it's detector's length
+        self._length = {light: light.get_length() for light in self._lights}
 
         """constants"""
         # occupancy's measurement error.
         self.eps = 0.00001
+        self.neighbors = []
 
     def _get_phases(self):
         """returns the phases of the traffic light, sorted by their index number
@@ -83,12 +86,18 @@ class Junction(object):
                      for det_id in detector_ids}
         return detectors
 
+    def add_neighbor(self, junction):
+        self.neighbors.append(junction)
+
     def get_lights(self):
         """Returns an list containing the different traffic light detectors in the junction.
 
         :return: list of Detectors
         """
-        return list(self._detectors.values())
+        return self._lights
+
+    def get_length(self):
+        return self._length
 
     def get_mutual_lights(self, detector):
         """return a list of lights in the same junction that can turn green with the given light.
@@ -151,7 +160,7 @@ class Junction(object):
                 return False
         return True
 
-    def set_yellow(self, phase, phase_duration=3):
+    def set_yellow(self, phase):
         """turns the given active phase to a yellow phase.
 
         :param phase_duration: phase duration of the yellow phase in seconds.
@@ -162,9 +171,8 @@ class Junction(object):
         if phase % 2 != 0:
             raise ValueError("not a green phase!")
         traci.trafficlight.setPhase(self._traffic_light_id, phase + 1)
-        traci.trafficlight.setPhaseDuration(self._traffic_light_id, phase_duration)
 
-    def set_green(self, detector, phase_duration=33):
+    def set_green(self, detector, phase_duration=None):
         """turns the given traffic lights (given as detectors) to green.
 
         This function currently assumes that there is exactly one possible phase for the traffic lights
@@ -172,8 +180,7 @@ class Junction(object):
         also raise an error if it is not possible for the given lights to be green at the same time.
 
         :param phase_duration: phase duration of the next phase in seconds.
-            default is 33, which is one of SUMO defaults.
-        :param detector: (list of Detectors) the traffic lights in the junction to turn green
+        :param detector: the traffic lights in the junction to turn green
         :return: None
         """
         # mutual_phases = list(set.intersection(*[set(self._detectors[light.get_id()].get_green_phases())
@@ -182,6 +189,7 @@ class Junction(object):
         #     raise ValueError("Given lights can't be green together!")
         # traci.trafficlight.setPhase(self._traffic_light_id, mutual_phases[0])
 
-        phase = self._get_green_phases_for_detector(detector._link_indexes)[detector.get_phase_to_activate()]
+        phase = detector.get_green_phases()[detector.get_phase_to_activate()]
         traci.trafficlight.setPhase(self._traffic_light_id, phase)
-        # traci.trafficlight.setPhaseDuration(self._traffic_light_id, phase_duration)
+        if phase_duration is not None:
+            traci.trafficlight.setPhaseDuration(self._traffic_light_id, phase_duration)

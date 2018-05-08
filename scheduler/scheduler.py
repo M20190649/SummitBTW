@@ -20,7 +20,7 @@ Scheduler.schedule(): called every iteration of the simulator.
 """
 
 
-class SchedulerJunction(object):
+class SchedulerJunctionAdvanced(object):
     """
     The class SchedulerJunction that schedules one junction.
     Since scheduling different junction is independent this is where all of the logic happens
@@ -30,17 +30,11 @@ class SchedulerJunction(object):
         # the junction to schedule
         self.junction = junction
 
-        # the traffic lights in the junction
-        self.lights = junction.get_lights()
-
-        # map from traffic light, to its mutual traffic lights
-        self.mutual_lights = {light: junction.get_mutual_lights(light) for light in self.lights}
-
-        # map from TL to it's detector's length
-        self.length = {light: light.get_length() for light in self.lights}
+        # # map from traffic light, to its mutual traffic lights
+        # self.mutual_lights = {light: junction.get_mutual_lights(light) for light in self.lights}
 
         # how many cycles each traffic hasn't been scheduled. prevents starvation
-        self.epoch = {light: 0 for light in self.lights}
+        self.epoch = {light: 0 for light in self.junction.get_lights()}
 
         """constants"""
         # starving time threshold
@@ -49,8 +43,9 @@ class SchedulerJunction(object):
         self.green_bonus_scheduling = 10
         # penalty for switching a currently green light by another.
         self.context_switch_penalty = 10
-
         self.yellow_phase_count = 3
+        self.neighbors = []
+        self.lights_fixed = False
 
     def get_starved_light(self):
         """
@@ -84,8 +79,8 @@ class SchedulerJunction(object):
             return starved_light
 
         # get the most busy lane:
-        queue_length = {light: self.length[light] * light.get_occupancy() + self.green_bonus(light) for light in
-                        self.lights}
+        queue_length = {light: self.junction.get_length()[light] * light.get_occupancy() + self.green_bonus(light) for light in
+                        self.junction.get_lights()}
         max_busy_light, max_queue_len = max(queue_length.items(), key=operator.itemgetter(1))
         green_lights = self.junction.get_green_lights()
         if not green_lights:
@@ -101,7 +96,7 @@ class SchedulerJunction(object):
         input: none
         output: none
         """
-        for light in self.lights:
+        for light in self.junction.get_lights():
             if self.junction.is_light_green(light):
                 self.epoch[light] = 0
             else:
@@ -125,12 +120,13 @@ class SchedulerJunction(object):
         input: none
         returns: none
         """
+        self.lights_fixed = True
         if self.junction.is_yellow_phase():
             self.yellow_phase_count -= 1
             if self.yellow_phase_count == 0:
                 best_tl = self.get_best_traffic_to_schedule()
                 if best_tl is None:
-                    raise ValueError("It should had return a lane")
+                    raise ValueError("It should had return a detector")
                 self.junction.set_green(best_tl)
 
         else:
@@ -153,21 +149,34 @@ class AdvancedScheduler(AbstractScheduler):
 
     def __init__(self, city):
         self.schedulers = []
+        key_jucn_val_sched_junc = {}
         for junction in city.get_junctions():
-            junction_scheduler = SchedulerJunction(junction)
-            self.schedulers += [junction_scheduler]
-
-        self.num_junctions = len(self.schedulers)
-        self.junction_to_schedule = 0
+            sched_junc = SchedulerJunctionAdvanced(junction)
+            self.schedulers += [sched_junc]
+            key_jucn_val_sched_junc[junction] = sched_junc
+        for sched_junc in self.schedulers:
+            for neighbor in sched_junc.junction.neighbors:
+                sched_junc.neigbours.append(key_jucn_val_sched_junc[neighbor])
 
     def schedule(self):
         """
         The function that is called with busy wait in the simulator.
         schedule each junction.
-        Each junction is scheduled independent of the other junctions using SchedulerJunction.schedule()
+        Each junction is scheduled using SchedulerJunction.schedule()
 
         input: none
         output: none
         """
-        for junction in self.schedulers:
-            junction.schedule()
+
+        lights_to_fix = []
+        for sched_junc in self.schedulers:
+            if not sched_junc.lights_fixed:
+                lights_to_fix.append(sched_junc)
+                while lights_to_fix:
+                    curr = lights_to_fix.pop()
+                    curr.schedule()
+                    for neighbor in curr.neighbors:
+                        if not neighbor.lights_fixed:
+                            lights_to_fix.append(neighbor)
+        for sched_junc in self.schedulers:
+            sched_junc.lights_fixed = False
