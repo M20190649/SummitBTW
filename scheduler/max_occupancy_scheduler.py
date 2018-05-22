@@ -27,7 +27,7 @@ class SchedulerJunctionMaxOccupancy(object):
         input: none
         returns: none
         """
-        if self.junction.is_yellow_phase():
+        if self.junction.is_yellow_or_red_phase():
             self.yellow_phase_count -= 1
             if self.yellow_phase_count == 0:
                 best_tl = self.get_most_occupied_traffic_to_schedule()

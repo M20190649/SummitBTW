@@ -1,3 +1,0 @@
-repository='http://gitlab.onelab.info/gl2ps/gl2ps.git'
-module=''
-tag=''

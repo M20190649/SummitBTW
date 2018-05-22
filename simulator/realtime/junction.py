@@ -14,7 +14,8 @@ class Junction(object):
 
     """
 
-    def __init__(self, traffic_light_id, detector_ids):
+    def __init__(self, sumo_network_path, traffic_light_id, detector_ids):
+        self._sumo_network_path = sumo_network_path
         self._traffic_light_id = traffic_light_id
         self._phases = self._get_phases()
         self._detectors = self._create_detectors(detector_ids)
@@ -22,11 +23,31 @@ class Junction(object):
         self._lights = list(self._detectors.values())
         # map from TL to it's detector's length
         self._length = {light: light.get_length() for light in self._lights}
+        self._key_green_phase_value_detector = self._phase_to_detector()
+        self._next_me_neighbors = []
+        self._me_next_neighbors = []
+
 
         """constants"""
         # occupancy's measurement error.
         self.eps = 0.00001
-        self.neighbors = []
+
+    def add_neighbor_me_next(self, junction):
+        if junction not in self._me_next_neighbors:
+            self._me_next_neighbors.append(junction)
+
+    def add_neighbor_next_me(self, junction):
+        if junction not in self._next_me_neighbors:
+            self._next_me_neighbors.append(junction)
+
+    def get_detectors(self):
+        return self._detectors
+
+    def get_next_me_neighbors(self):
+        return self._next_me_neighbors
+
+    def get_me_next_neighbors(self):
+        return self._me_next_neighbors
 
     def _get_phases(self):
         """returns the phases of the traffic light, sorted by their index number
@@ -86,8 +107,14 @@ class Junction(object):
                      for det_id in detector_ids}
         return detectors
 
-    def add_neighbor(self, junction):
-        self.neighbors.append(junction)
+    def _phase_to_detector(self):
+        res = {}
+        for detector in self._detectors.values():
+            for g_p in detector.get_green_phases():
+                if res.get(g_p) is None:
+                    res[g_p] = []
+                res[g_p].append(detector)
+        return res
 
     def get_lights(self):
         """Returns an list containing the different traffic light detectors in the junction.
@@ -118,6 +145,12 @@ class Junction(object):
         """
         return traci.trafficlight.getPhase(self._traffic_light_id) in detector.get_green_phases()
 
+    def is_there_full_light(self):
+        for light in self._lights:
+            if light.get_occupancy() > 50:
+                return True
+        return False
+
     def get_non_empty_lanes(self):
         """
         returns the set of detectors with occupancy > 0
@@ -136,7 +169,7 @@ class Junction(object):
         """
         return traci.trafficlight.getPhase(self._traffic_light_id)
 
-    def is_yellow_phase(self):
+    def is_yellow_or_red_phase(self):
         """
         checks whether it is a yellow phase
         :return: bool

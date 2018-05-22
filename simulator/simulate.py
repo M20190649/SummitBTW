@@ -35,7 +35,7 @@ def get_options():
     return opts
 
 
-def run_simulate(scheduler_algorithm=AdvancedScheduler, real_time=True, take_screenshots=False):
+def run_simulate(sumo_network_path, scheduler_algorithm=MixedScheduler, real_time=True, take_screenshots=False):
     """
     Execute the simulation loop, and applying the scheduler in each step.
     :type scheduler_algorithm: AbstractScheduler
@@ -44,7 +44,7 @@ def run_simulate(scheduler_algorithm=AdvancedScheduler, real_time=True, take_scr
     :return: None
     """
     logging.info('Initializes simulation data')
-    city = City()
+    city = City(sumo_network_path)
     my_scheduler = scheduler_algorithm(city)
     if real_time:
         thread = RealTime(city)
@@ -141,7 +141,7 @@ if __name__ == "__main__":
     # traci.start([sumo_binary, '-c', sumo_config, '--tripinfo-output', 'tripinfo_realtime.xml', '--no-warnings'])
     traci.start([sumo_binary, '-c', sumo_config, '--tripinfo-output', 'tripinfo_realtime.xml'])
 
-    run_simulate()
+    run_simulate(sumo_config[0:sumo_config.find(".sumocfg.xml")]+".net.xml")
     traci.close()
     sys.stdout.flush()
     print("Simulation ended successfully!")

@@ -44,7 +44,7 @@ class SchedulerJunctionAdvanced(object):
         # penalty for switching a currently green light by another.
         self.context_switch_penalty = 10
         self.yellow_phase_count = 3
-        self.neighbors = []
+        self._me_next_neighbors = []
         self.lights_fixed = False
 
     def get_starved_light(self):
@@ -114,6 +114,12 @@ class SchedulerJunctionAdvanced(object):
     #     else:
     #         return None
 
+    def get_me_next_neighbors(self):
+        return self._me_next_neighbors
+
+    def add_me_next_neighbors(self, sched_junc):
+        self._me_next_neighbors.append(sched_junc)
+
     def schedule(self):
         """
         the main function that is called every iteration.
@@ -121,7 +127,7 @@ class SchedulerJunctionAdvanced(object):
         returns: none
         """
         self.lights_fixed = True
-        if self.junction.is_yellow_phase():
+        if self.junction.is_yellow_or_red_phase():
             self.yellow_phase_count -= 1
             if self.yellow_phase_count == 0:
                 best_tl = self.get_best_traffic_to_schedule()
@@ -155,8 +161,15 @@ class AdvancedScheduler(AbstractScheduler):
             self.schedulers += [sched_junc]
             key_jucn_val_sched_junc[junction] = sched_junc
         for sched_junc in self.schedulers:
-            for neighbor in sched_junc.junction.neighbors:
-                sched_junc.neigbours.append(key_jucn_val_sched_junc[neighbor])
+            for neighbor in sched_junc.junction.get_me_next_neighbors():
+                sched_junc.add_me_next_neighbors(key_jucn_val_sched_junc[neighbor])
+
+    def start_green_wave(self):
+        res = []
+        for sched_junc in self.schedulers:
+            if sched_junc.junction.is_there_full_light():
+                res.append(sched_junc)
+        return res
 
     def schedule(self):
         """
@@ -168,15 +181,15 @@ class AdvancedScheduler(AbstractScheduler):
         output: none
         """
 
-        lights_to_fix = []
+        lights_to_fix = self.start_green_wave()
         for sched_junc in self.schedulers:
-            if not sched_junc.lights_fixed:
+            if sched_junc not in lights_to_fix:
                 lights_to_fix.append(sched_junc)
-                while lights_to_fix:
-                    curr = lights_to_fix.pop()
-                    curr.schedule()
-                    for neighbor in curr.neighbors:
-                        if not neighbor.lights_fixed:
-                            lights_to_fix.append(neighbor)
+            while lights_to_fix:
+                curr = lights_to_fix.pop()
+                curr.schedule()
+                for neighbor in curr.get_me_next_neighbors():
+                    if not neighbor.lights_fixed:
+                        lights_to_fix.append(neighbor)
         for sched_junc in self.schedulers:
             sched_junc.lights_fixed = False

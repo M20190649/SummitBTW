@@ -24,6 +24,7 @@ class Detector(object):
         self._link_indexes = link_indexes
         self._green_phases = green_phases
         self._index_of_green_phase = -1
+        self._next_detectors = []
 
     def get_id(self):
         """returns the id of the detector.
@@ -31,6 +32,9 @@ class Detector(object):
         :return: the detector's identifier (string)
         """
         return self._identifier
+
+    def add_next_detector(self, detector):
+        self._next_detectors.append(detector)
 
     def get_green_phases(self):
         """ returns a list of phases in which the detector's traffic light is green.
