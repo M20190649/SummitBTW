@@ -49,6 +49,7 @@ class SchedulerJunctionAdvanced(object):
         self._before_me_neighbors = []
         self.lights_fixed = False
         self.green_wave = False
+        self.max_green_queue_index = -1
 
     def get_starved_light(self):
         """
@@ -104,11 +105,15 @@ class SchedulerJunctionAdvanced(object):
         max_green_queue = max([queue_length[detector] for detector in green_detectors])
         if max_queue_len - self.context_switch_penalty > max_green_queue:
             return max_busy_detector
+        max_green_detector = []
         for detector in green_detectors:
             if queue_length[detector] == max_green_queue:
-                return detector
-        raise ValueError("It should had return a detector")
-        return None
+                max_green_detector.append(detector)
+        self.max_green_queue_index += 1
+        if self.max_green_queue_index < len(max_green_detector):
+            return max_green_detector[self.max_green_queue_index]
+        self.max_green_queue_index = -1
+        return max_green_detector[0]
 
     def update_epoch(self):
         """
