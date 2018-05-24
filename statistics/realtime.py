@@ -65,7 +65,7 @@ class RealTime(threading.Thread):
 
     def get_junction_info_by_id(self, id_of_junction):
         junction = self.junctions_dict[id_of_junction]
-        list_detectors_of_junction = junction.get_lights()
+        list_detectors_of_junction = junction.get_detectors()
         avg_mean_speed = funcs.reduce(ops.add,
                                       [detector.get_mean_speed() for detector in list_detectors_of_junction]) / len(
             list_detectors_of_junction)

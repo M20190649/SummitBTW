@@ -25,6 +25,8 @@ class Detector(object):
         self._green_phases = green_phases
         self._index_of_green_phase = -1
         self._next_detectors = []
+        self.previously_occupancy = 0
+        self.stuck = 0
 
     def get_id(self):
         """returns the id of the detector.
@@ -35,6 +37,9 @@ class Detector(object):
 
     def add_next_detector(self, detector):
         self._next_detectors.append(detector)
+
+    def get_next_detectors(self):
+        return self._next_detectors
 
     def get_green_phases(self):
         """ returns a list of phases in which the detector's traffic light is green.
@@ -51,6 +56,19 @@ class Detector(object):
         :return: Detector length
         """
         return traci.lanearea.getLength(self._identifier)
+
+    def not_stuck(self):
+        if self.previously_occupancy <= self.get_occupancy():
+            self.stuck += 1
+            if self.stuck == 7:
+                self.stuck = 0
+                self.previously_occupancy = 0
+                return False
+            self.previously_occupancy = self.get_occupancy()
+        else:
+            self.stuck = 0
+            self.previously_occupancy = 0
+        return True
 
     def get_occupancy(self):
         """Query a detector for the occupancy in it, as it was during the last simulation step.

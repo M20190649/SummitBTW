@@ -18,10 +18,12 @@ import logging
 #         return False
 #     return True
 
-def change_g_to_r(text, i):
+def change_g_to_y(text, i):
     if text[i - 1] is 'o':
         return False
-    return True
+    if text[text.find('duration=', i) + 9:text.find('duration=', i) + 12] != '"3"':
+        return True
+    return False
 
 
 def fix_traffic_lights(sumo_network_path):
@@ -34,10 +36,8 @@ def fix_traffic_lights(sumo_network_path):
             if i < start:
                 list_text.append(text[i])
             elif i < end:
-                if text[i] == '6' and text[i-10:i-2] == "duration":
-                    list_text.append('15')
-                elif text[i] == 'g' and change_g_to_r(text, i):
-                    list_text.append('r')
+                if text[i] == 'g' and change_g_to_y(text, i):
+                    list_text.append('y')
                 else:
                     list_text.append(text[i])
             else:
@@ -56,18 +56,18 @@ def generate_net(sumo_network_path, size=50):
     :return: None
     """
 
-    # logging.info('Starting to generate SUMO network')
-    #     # cmd = ['netgenerate',
-    #     #        '-o', sumo_network_path,
-    #     #        '--default-junction-type', 'traffic_light_right_on_red',
-    #     #        '--rand',
-    #     #        '--rand.iterations=' + str(size),
-    #     #        '--default.lanenumber', '3',
-    #     #        '--rand.random-lanenumber',
-    #     #        '--no-turnarounds',
-    #     #        ]
-    #     # out = subprocess.check_output(cmd)
-    #     # logging.info(out)
+    logging.info('Starting to generate SUMO network')
+    cmd = ['netgenerate',
+           '-o', sumo_network_path,
+           '--default-junction-type', 'traffic_light_right_on_red',
+           '--rand',
+           '--rand.iterations=' + str(size),
+           '--default.lanenumber', '3',
+           '--rand.random-lanenumber',
+           '--no-turnarounds',
+           ]
+    out = subprocess.check_output(cmd)
+    logging.info(out)
 
     fix_traffic_lights(sumo_network_path)
     logging.info('Finished generating SUMO network')

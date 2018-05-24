@@ -34,7 +34,7 @@ class SchedulerJunctionAdvanced(object):
         # self.mutual_lights = {light: junction.get_mutual_lights(light) for light in self.lights}
 
         # how many cycles each traffic hasn't been scheduled. prevents starvation
-        self.epoch = {light: 0 for light in self.junction.get_lights()}
+        self.epoch = {light: 0 for light in self.junction.get_detectors()}
 
         """constants"""
         # starving time threshold
@@ -42,10 +42,13 @@ class SchedulerJunctionAdvanced(object):
         # bonus for scheduling the current green light
         self.green_bonus_scheduling = 10
         # penalty for switching a currently green light by another.
-        self.context_switch_penalty = 10
-        self.yellow_phase_count = 3
+        self.context_switch_penalty = 1000
+        self.green_wave_bonus = 1000
+        self.yellow_phase_count = 0
         self._me_next_neighbors = []
+        self._before_me_neighbors = []
         self.lights_fixed = False
+        self.green_wave = False
 
     def get_starved_light(self):
         """
@@ -67,7 +70,7 @@ class SchedulerJunctionAdvanced(object):
         input: a detector
         returns: the constant green_bonus_scheduling iff the light is green.
         """
-        return self.green_bonus_scheduling if self.junction.is_light_green(light) else 0
+        return self.green_bonus_scheduling if self.junction.is_detector_green(light) else 0
 
     def get_best_traffic_to_schedule(self):
         """
@@ -78,16 +81,33 @@ class SchedulerJunctionAdvanced(object):
         if starved_light is not None:
             return starved_light
 
+        my_detectors_green_wave_bonus = {}
+        for sched_junc in self.get_before_me_neighbors():
+            if sched_junc.lights_fixed and sched_junc.green_wave and \
+                    sched_junc.junction.get_key_green_phase_value_detector().get(sched_junc.junction.get_active_phase()):
+                before_green_detectors = sched_junc.junction.get_key_green_phase_value_detector()[sched_junc.junction.get_active_phase()]
+                for before_detector in before_green_detectors:
+                    for my_detector in before_detector.get_next_detectors():
+                        my_detectors_green_wave_bonus[my_detector] = self.green_wave_bonus
+        for detector in self.junction.get_detectors():
+            if my_detectors_green_wave_bonus.get(detector) is None:
+                my_detectors_green_wave_bonus[detector] = 0
+
         # get the most busy lane:
-        queue_length = {light: self.junction.get_length()[light] * light.get_occupancy() + self.green_bonus(light) for light in
-                        self.junction.get_lights()}
-        max_busy_light, max_queue_len = max(queue_length.items(), key=operator.itemgetter(1))
-        green_lights = self.junction.get_green_lights()
-        if not green_lights:
-            return max_busy_light
-        max_green_queue = max([queue_length[light] for light in green_lights])
+        queue_length = {detector: self.junction.get_length()[detector] * detector.get_occupancy()
+                                  + self.green_bonus(detector) + my_detectors_green_wave_bonus[detector] for detector in
+                        self.junction.get_detectors()}
+        max_busy_detector, max_queue_len = max(queue_length.items(), key=operator.itemgetter(1))
+        green_detectors = self.junction.get_green_detectors()
+        if not green_detectors:
+            return max_busy_detector
+        max_green_queue = max([queue_length[detector] for detector in green_detectors])
         if max_queue_len - self.context_switch_penalty > max_green_queue:
-            return max_busy_light
+            return max_busy_detector
+        for detector in green_detectors:
+            if queue_length[detector] == max_green_queue:
+                return detector
+        raise ValueError("It should had return a detector")
         return None
 
     def update_epoch(self):
@@ -96,8 +116,8 @@ class SchedulerJunctionAdvanced(object):
         input: none
         output: none
         """
-        for light in self.junction.get_lights():
-            if self.junction.is_light_green(light):
+        for light in self.junction.get_detectors():
+            if self.junction.is_detector_green(light):
                 self.epoch[light] = 0
             else:
                 self.epoch[light] += 1
@@ -117,8 +137,14 @@ class SchedulerJunctionAdvanced(object):
     def get_me_next_neighbors(self):
         return self._me_next_neighbors
 
+    def get_before_me_neighbors(self):
+        return self._before_me_neighbors
+
     def add_me_next_neighbors(self, sched_junc):
         self._me_next_neighbors.append(sched_junc)
+
+    def add_before_me_neighbors(self, sched_junc):
+        self._before_me_neighbors.append(sched_junc)
 
     def schedule(self):
         """
@@ -131,13 +157,13 @@ class SchedulerJunctionAdvanced(object):
             self.yellow_phase_count -= 1
             if self.yellow_phase_count == 0:
                 best_tl = self.get_best_traffic_to_schedule()
-                if best_tl is None:
-                    raise ValueError("It should had return a detector")
-                self.junction.set_green(best_tl)
+                self.junction.set_green(best_tl, 1000)
 
         else:
-            best_tl = self.get_best_traffic_to_schedule()  # None if it is a yellow phase
-            if best_tl is not None and not self.junction.is_light_green(best_tl):
+            best_tl = self.get_best_traffic_to_schedule()
+            if self.junction.is_detector_green(best_tl) and best_tl.not_stuck():
+                self.junction.turn_simulator_on(1000)
+            else:
                 self.junction.set_yellow(self.junction.get_active_phase())
                 self.yellow_phase_count = 3
 
@@ -163,11 +189,14 @@ class AdvancedScheduler(AbstractScheduler):
         for sched_junc in self.schedulers:
             for neighbor in sched_junc.junction.get_me_next_neighbors():
                 sched_junc.add_me_next_neighbors(key_jucn_val_sched_junc[neighbor])
+            for neighbor in sched_junc.junction.get_before_me_neighbors():
+                sched_junc.add_before_me_neighbors(key_jucn_val_sched_junc[neighbor])
 
     def start_green_wave(self):
         res = []
         for sched_junc in self.schedulers:
-            if sched_junc.junction.is_there_full_light():
+            if sched_junc.junction.is_there_full_detector():
+                sched_junc.green_wave = True
                 res.append(sched_junc)
         return res
 
@@ -183,13 +212,14 @@ class AdvancedScheduler(AbstractScheduler):
 
         lights_to_fix = self.start_green_wave()
         for sched_junc in self.schedulers:
-            if sched_junc not in lights_to_fix:
+            if sched_junc not in lights_to_fix and not sched_junc.lights_fixed:
                 lights_to_fix.append(sched_junc)
             while lights_to_fix:
                 curr = lights_to_fix.pop()
                 curr.schedule()
                 for neighbor in curr.get_me_next_neighbors():
-                    if not neighbor.lights_fixed:
+                    if neighbor not in lights_to_fix and not neighbor.lights_fixed:
                         lights_to_fix.append(neighbor)
         for sched_junc in self.schedulers:
             sched_junc.lights_fixed = False
+            sched_junc.green_wave = False

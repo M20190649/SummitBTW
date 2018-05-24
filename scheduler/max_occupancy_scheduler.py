@@ -15,7 +15,7 @@ class SchedulerJunctionMaxOccupancy(object):
     def get_most_occupied_traffic_to_schedule(self):
         max_occupancy_det = None
         max_occupancy = -1
-        for light in self.junction.get_lights():
+        for light in self.junction.get_detectors():
             if light.get_occupancy() > max_occupancy:
                 max_occupancy = light.get_occupancy()
                 max_occupancy_det = light
@@ -37,7 +37,7 @@ class SchedulerJunctionMaxOccupancy(object):
 
         else:
             best_tl = self.get_most_occupied_traffic_to_schedule()  # None if it is a yellow phase
-            if best_tl is not None and not self.junction.is_light_green(best_tl):
+            if best_tl is not None and not self.junction.is_detector_green(best_tl):
                 self.junction.set_yellow(self.junction.get_active_phase())
                 self.yellow_phase_count = 3
 

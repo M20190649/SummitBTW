@@ -35,7 +35,7 @@ def get_options():
     return opts
 
 
-def run_simulate(sumo_network_path, scheduler_algorithm=MixedScheduler, real_time=True, take_screenshots=False):
+def run_simulate(sumo_network_path, scheduler_algorithm=MixedScheduler, real_time=False, take_screenshots=False):
     """
     Execute the simulation loop, and applying the scheduler in each step.
     :type scheduler_algorithm: AbstractScheduler

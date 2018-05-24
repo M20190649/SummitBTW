@@ -69,8 +69,8 @@ class City(object):
                     add_len = len(to_str) + len(tl_from_str) + len('edge id="" from="" to="')
                     tl_to_str = text[tl_to_index + add_len:text.find('"', tl_to_index + add_len)]
                     detector_to = tl_to_str + "_e2det_"+to_str+"_"+toLane_str
-                    if self._detectors_dict.get(detector_from) is not None and self._detectors_dict.get(detector_to) is not None:
-                        self._junctions[tl_to_str].add_neighbor_next_me(self._junctions[tl_from_str])
+                    if self._detectors_dict.get(detector_from) and self._detectors_dict.get(detector_to):
+                        self._junctions[tl_to_str].add_neighbor_before_me(self._junctions[tl_from_str])
                         self._junctions[tl_from_str].add_neighbor_me_next(self._junctions[tl_to_str])
                         self._detectors_dict[detector_to].add_next_detector(self._detectors_dict[detector_from])
                 i += len(connection)
@@ -102,7 +102,8 @@ class City(object):
     def _cal_detectors_dict(self):
         det_dict = {}
         for junction in self._junctions.values():
-            det_dict.update(junction._detectors)
+            for detector in junction.get_detectors():
+                det_dict[detector.get_id()] = detector
         return det_dict
 
     def get_detectors_dict(self):

@@ -15,20 +15,22 @@ class MixedScheduler(AbstractScheduler):
     def __init__(self, city):
         self.schedulers = []
         key_jucn_val_sched_junc = {}
-        for junction in city.get_smart_junctions():
+        for junction in city.get_junctions():
             sched_junc = SchedulerJunctionAdvanced(junction)
-            self.schedulers += [sched_junc]
             key_jucn_val_sched_junc[junction] = sched_junc
+        for junction in city.get_smart_junctions():
+            sched_junc = key_jucn_val_sched_junc[junction]
+            self.schedulers += [sched_junc]
             for neighbor in sched_junc.junction.get_me_next_neighbors():
-                if key_jucn_val_sched_junc.get(neighbor) is None:
-                    sched_neig = SchedulerJunctionAdvanced(neighbor)
-                    key_jucn_val_sched_junc[neighbor] = sched_neig
                 sched_junc.add_me_next_neighbors(key_jucn_val_sched_junc[neighbor])
+            for neighbor in sched_junc.junction.get_before_me_neighbors():
+                sched_junc.add_before_me_neighbors(key_jucn_val_sched_junc[neighbor])
 
     def start_green_wave(self):
         res = []
         for sched_junc in self.schedulers:
-            if sched_junc.junction.is_there_full_light():
+            if sched_junc.junction.is_there_full_detector():
+                sched_junc.green_wave = True
                 res.append(sched_junc)
         return res
 
@@ -44,17 +46,18 @@ class MixedScheduler(AbstractScheduler):
 
         lights_to_fix = self.start_green_wave()
         for sched_junc in self.schedulers:
-            if sched_junc not in lights_to_fix:
+            if sched_junc not in lights_to_fix and not sched_junc.lights_fixed:
                 lights_to_fix.append(sched_junc)
             while lights_to_fix:
                 curr = lights_to_fix.pop()
                 curr.schedule()
                 for neighbor in curr.get_me_next_neighbors():
-                    if not neighbor.lights_fixed:
+                    if neighbor not in lights_to_fix and not neighbor.lights_fixed:
                         lights_to_fix.append(neighbor)
 
         for sched_junc in self.schedulers:
             sched_junc.lights_fixed = False
+            sched_junc.green_wave = False
             for neighbor in sched_junc.get_me_next_neighbors():
                 neighbor.lights_fixed = False
 
