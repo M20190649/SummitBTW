@@ -171,6 +171,14 @@ class Junction(object):
         """
         return [detector for detector in self.get_detectors() if self.is_detector_green(detector)]
 
+    def get_red_detectors(self):
+        green_detectors = self.get_green_detectors()
+        res = []
+        for detector in self._detectors:
+            if detector not in green_detectors:
+                res.append(detector)
+        return res
+
     def get_active_phase(self):
         """
         :return: the current active phase

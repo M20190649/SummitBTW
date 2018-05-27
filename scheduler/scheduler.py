@@ -41,8 +41,8 @@ class SchedulerJunctionAdvanced(object):
         # self.green_bonus_scheduling = 10
         # penalty for switching a currently green light by another.
         self.starve_time = 100
-        self.context_switch_penalty = 10000
-        self.green_wave_bonus = 5000
+        self.context_switch_penalty = 3000
+        self.green_wave_bonus = 500
         self.yellow_phase_count = 0
         self._me_next_neighbors = []
         self._before_me_neighbors = []
@@ -95,24 +95,32 @@ class SchedulerJunctionAdvanced(object):
         queue_length = {detector: self.junction.get_length()[detector] * detector.get_occupancy()
                                   + my_detectors_green_wave_bonus[detector] for detector in
                         self.junction.get_detectors()}
-        max_busy_detector, max_queue_len = max(queue_length.items(), key=operator.itemgetter(1))
-        if max_queue_len <= 0:
-            return self.check_green_wave(self.junction.get_detectors()[0])
         green_detectors = self.junction.get_green_detectors()
-        if not green_detectors:
-            return self.check_green_wave(max_busy_detector)
-        max_green_queue = max([queue_length[detector] for detector in green_detectors])
-        if max_queue_len - self.context_switch_penalty > max_green_queue or max_green_queue == 0:
-            return self.check_green_wave(max_busy_detector)
-        max_green_detector = []
-        for detector in green_detectors:
-            if queue_length[detector] == max_green_queue:
-                max_green_detector.append(detector)
-        self.max_green_queue_index += 1
-        if self.max_green_queue_index < len(max_green_detector):
-            return self.check_green_wave(max_green_detector[self.max_green_queue_index])
-        self.max_green_queue_index = -1
-        return self.check_green_wave(max_green_detector[0])
+        red_detectors = self.junction.get_red_detectors()
+        max_busy_green_detector = None
+        max_busy_red_detector = None
+        max_queue_green_len = 0
+        max_queue_red_len = 0
+        if green_detectors:
+            max_queue_green_len = max([queue_length[detector] for detector in green_detectors])
+            for detector in green_detectors:
+                if queue_length[detector] == max_queue_green_len:
+                    max_busy_green_detector = detector
+                    break
+        if red_detectors:
+            max_queue_red_len = max([queue_length[detector] for detector in red_detectors])
+            for detector in red_detectors:
+                if queue_length[detector] == max_queue_red_len:
+                    max_busy_red_detector = detector
+        if not max_busy_green_detector and not max_busy_red_detector or (max_queue_green_len <= 0 and max_queue_red_len <= 0):
+            return self.check_green_wave(self.junction.get_detectors()[0])
+        elif not max_busy_green_detector or max_queue_green_len <= 0:
+            return self.check_green_wave(max_busy_red_detector)
+        elif not max_busy_red_detector or max_queue_red_len <= 0:
+            return self.check_green_wave(max_busy_green_detector)
+        elif max_queue_red_len - self.context_switch_penalty > max_queue_green_len:
+            return self.check_green_wave(max_busy_red_detector)
+        return self.check_green_wave(max_busy_green_detector)
 
     def update_epoch(self):
         """

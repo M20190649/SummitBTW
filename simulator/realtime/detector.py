@@ -62,7 +62,7 @@ class Detector(object):
             return True
         if self.previously_occupancy <= self.get_occupancy() or self.get_mean_speed() == 0:
             self.stuck += 1
-            if self.stuck == 7:
+            if self.stuck == 8:
                 self.stuck = 0
                 self.previously_occupancy = 0
                 return False
