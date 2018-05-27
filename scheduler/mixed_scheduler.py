@@ -60,4 +60,5 @@ class MixedScheduler(AbstractScheduler):
             sched_junc.green_wave = False
             for neighbor in sched_junc.get_me_next_neighbors():
                 neighbor.lights_fixed = False
+                neighbor.green_wave = False
 

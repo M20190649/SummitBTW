@@ -74,6 +74,12 @@ class Junction(object):
                 return True
         return False
 
+    def is_empty(self):
+        for detector in self._detectors:
+            if detector.get_occupancy() > self.eps:
+                return False
+        return True
+
     def _get_green_phases_for_detector(self, detector_link_indexes):
         """returns the phase indexes in which the given link can be green.
 

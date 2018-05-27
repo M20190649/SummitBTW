@@ -37,51 +37,48 @@ class SchedulerJunctionAdvanced(object):
         self.epoch = {light: 0 for light in self.junction.get_detectors()}
 
         """constants"""
-        # starving time threshold
-        self.starve_time = 20 * 10 ** 6
         # bonus for scheduling the current green light
-        self.green_bonus_scheduling = 10
+        # self.green_bonus_scheduling = 10
         # penalty for switching a currently green light by another.
-        self.context_switch_penalty = 1000
-        self.green_wave_bonus = 1000000
+        self.starve_time = 100
+        self.context_switch_penalty = 10000
+        self.green_wave_bonus = 5000
         self.yellow_phase_count = 0
         self._me_next_neighbors = []
         self._before_me_neighbors = []
         self.lights_fixed = False
         self.green_wave = False
         self.max_green_queue_index = -1
+        self.eps = 0.00001
 
-    def get_starved_light(self):
+    def get_starved_detector(self):
         """
         returns the detector with maximum starvation time if it's lane not empty and starved for time > threshold.
         if there is no such detector, returns None
         """
         occupied_lanes = self.junction.get_non_empty_lanes()
-        waiting_queues = {light: self.epoch[light] for light in occupied_lanes}  # from non-empty TL to the time waiting
+        waiting_queues = {detector: self.epoch[detector] for detector in occupied_lanes}  # from non-empty TL to the time waiting
         if not waiting_queues:
             return None
         max_starved, time = max(waiting_queues.items(), key=operator.itemgetter(1))
-        if time > self.starve_time or self.junction.green_lanes_empty():
+        if time > self.starve_time:
             return max_starved
         else:
             return None
 
-    def green_bonus(self, light):
-        """
-        input: a detector
-        returns: the constant green_bonus_scheduling iff the light is green.
-        """
-        return self.green_bonus_scheduling if self.junction.is_detector_green(light) else 0
+    def check_green_wave(self, detector):
+        if detector.get_occupancy() >= 25:
+            self.green_wave = True
+        return detector
 
     def get_best_traffic_to_schedule(self):
         """
         returns the best traffic light to schedule at the current time.
         """
-        # check starvation
-        starved_light = self.get_starved_light()
-        if starved_light is not None:
-            return starved_light
 
+        starved_detector = self.get_starved_detector()
+        if starved_detector:
+            return starved_detector
         my_detectors_green_wave_bonus = {}
         for sched_junc in self.get_before_me_neighbors():
             if sched_junc.lights_fixed and sched_junc.green_wave and \
@@ -96,24 +93,26 @@ class SchedulerJunctionAdvanced(object):
 
         # get the most busy lane:
         queue_length = {detector: self.junction.get_length()[detector] * detector.get_occupancy()
-                                  + self.green_bonus(detector) + my_detectors_green_wave_bonus[detector] for detector in
+                                  + my_detectors_green_wave_bonus[detector] for detector in
                         self.junction.get_detectors()}
         max_busy_detector, max_queue_len = max(queue_length.items(), key=operator.itemgetter(1))
+        if max_queue_len <= 0:
+            return self.check_green_wave(self.junction.get_detectors()[0])
         green_detectors = self.junction.get_green_detectors()
         if not green_detectors:
-            return max_busy_detector
+            return self.check_green_wave(max_busy_detector)
         max_green_queue = max([queue_length[detector] for detector in green_detectors])
-        if max_queue_len - self.context_switch_penalty > max_green_queue:
-            return max_busy_detector
+        if max_queue_len - self.context_switch_penalty > max_green_queue or max_green_queue == 0:
+            return self.check_green_wave(max_busy_detector)
         max_green_detector = []
         for detector in green_detectors:
             if queue_length[detector] == max_green_queue:
                 max_green_detector.append(detector)
         self.max_green_queue_index += 1
         if self.max_green_queue_index < len(max_green_detector):
-            return max_green_detector[self.max_green_queue_index]
+            return self.check_green_wave(max_green_detector[self.max_green_queue_index])
         self.max_green_queue_index = -1
-        return max_green_detector[0]
+        return self.check_green_wave(max_green_detector[0])
 
     def update_epoch(self):
         """
@@ -121,23 +120,11 @@ class SchedulerJunctionAdvanced(object):
         input: none
         output: none
         """
-        for light in self.junction.get_detectors():
-            if self.junction.is_detector_green(light):
-                self.epoch[light] = 0
+        for detector in self.junction.get_detectors():
+            if self.junction.is_detector_green(detector) or detector.get_occupancy() < self.eps:
+                self.epoch[detector] = 0
             else:
-                self.epoch[light] += 1
-
-    # def find_best_partner(self, best_tl):
-    #     """
-    #     find the best traffic light to schedule with best_tl.
-    #     input: best_tl - a traffic light that is the best choice to schedule.
-    #     output: a traffic light that is best to schedule simultaneously with best_tl.
-    #             if not such traffic light exist, then return None.
-    #     """
-    #     if len(self.mutual_lights[best_tl]) != 0:
-    #         return self.mutual_lights[best_tl][0]
-    #     else:
-    #         return None
+                self.epoch[detector] += 1
 
     def get_me_next_neighbors(self):
         return self._me_next_neighbors
@@ -201,7 +188,6 @@ class AdvancedScheduler(AbstractScheduler):
         res = []
         for sched_junc in self.schedulers:
             if sched_junc.junction.is_there_full_detector():
-                sched_junc.green_wave = True
                 res.append(sched_junc)
         return res
 

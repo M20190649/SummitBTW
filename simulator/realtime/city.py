@@ -72,7 +72,7 @@ class City(object):
                     if self._detectors_dict.get(detector_from) and self._detectors_dict.get(detector_to):
                         self._junctions[tl_to_str].add_neighbor_before_me(self._junctions[tl_from_str])
                         self._junctions[tl_from_str].add_neighbor_me_next(self._junctions[tl_to_str])
-                        self._detectors_dict[detector_to].add_next_detector(self._detectors_dict[detector_from])
+                        self._detectors_dict[detector_from].add_next_detector(self._detectors_dict[detector_to])
                 i += len(connection)
 
 

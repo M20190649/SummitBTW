@@ -58,7 +58,9 @@ class Detector(object):
         return traci.lanearea.getLength(self._identifier)
 
     def not_stuck(self):
-        if self.previously_occupancy <= self.get_occupancy():
+        if self.get_occupancy() == 0:
+            return True
+        if self.previously_occupancy <= self.get_occupancy() or self.get_mean_speed() == 0:
             self.stuck += 1
             if self.stuck == 7:
                 self.stuck = 0
@@ -126,3 +128,4 @@ class Detector(object):
         if self._index_of_green_phase == len(self._green_phases):
             self._index_of_green_phase = 0
         return self._index_of_green_phase
+
