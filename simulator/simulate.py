@@ -139,7 +139,7 @@ if __name__ == "__main__":
     # this is the normal way of using traci. sumo is started as a
     # subprocess and then the python script connects and runs
     # traci.start([sumo_binary, '-c', sumo_config, '--tripinfo-output', 'tripinfo_realtime.xml', '--no-warnings'])
-    traci.start([sumo_binary, '-c', sumo_config, '--tripinfo-output', 'tripinfo_realtime.xml'])
+    traci.start([sumo_binary, '-c', sumo_config, '--full-output', 'full_output.xml'])
 
     run_simulate(sumo_config[0:sumo_config.find(".sumocfg.xml")]+".net.xml")
     traci.close()

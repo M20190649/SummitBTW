@@ -43,7 +43,7 @@ class SchedulerJunctionAdvanced(object):
         self.green_bonus_scheduling = 10
         # penalty for switching a currently green light by another.
         self.context_switch_penalty = 1000
-        self.green_wave_bonus = 1000
+        self.green_wave_bonus = 1000000
         self.yellow_phase_count = 0
         self._me_next_neighbors = []
         self._before_me_neighbors = []
