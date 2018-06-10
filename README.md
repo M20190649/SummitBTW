@@ -20,8 +20,9 @@ Summit-Better Than WAZE (SummitBTW) is a revolutionary smart city for better nav
 
 `http://www.sumo.dlr.de/userdoc/Downloads.html`
 * Clone the project repository.
-* Make sure you have environment variable for `SUMO_HOME` that links to your sumo directory.
-* Add `sumo_tweaks/tools` path as the environment variable `PYTHONPATH`.
+* Make sure you have environment variable for `SUMO_HOME` that links to your sumo root directory (inside the directory there are bin, data, docs, tools directories)
+* Add the path for 'tools' directory to the environment variable `PYTHONPATH`
+* Add the path for 'tools', 'bin', and root directories to the PATH environment variable
 * Install python depencies using `pip install -r requirements.txt`. If there are any problems make sure your PATH Environment variable includes a link to the "pip" package.
 
 
