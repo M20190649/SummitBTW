@@ -18,6 +18,8 @@ from traci import FatalTraCIError
 from scheduler.max_occupancy_scheduler import MaxOccupancyScheduler
 from scheduler.mixed_scheduler import MixedScheduler
 from scheduler.scheduler import AdvancedScheduler
+from scheduler.scheduler_constants import schedulers_name_map
+from scheduler.static_scheduler import StaticScheduler
 from simulator.realtime.city import City
 from statistics.realtime import RealTime
 from simulator.streaming.screenshot import get_screenshot
@@ -35,7 +37,7 @@ def get_options():
     return opts
 
 
-def run_simulate(sumo_network_path, scheduler_algorithm=MixedScheduler, real_time=False, take_screenshots=False):
+def run_simulate(sumo_network_path, scheduler_algorithm, real_time=False, take_screenshots=False):
     """
     Execute the simulation loop, and applying the scheduler in each step.
     :type scheduler_algorithm: AbstractScheduler
@@ -131,17 +133,26 @@ if __name__ == "__main__":
     else:
         sumo_binary = checkBinary('sumo-gui')
 
-    if len(sys.argv) != 2:
-        sys.exit('Usage: python simulate.py <<*.sumocfg config file>>')
+    if len(sys.argv) < 3:
+        sys.exit('Need path for directory of sumocfg.net and for scheduler algorithm')
 
-    sumo_config = sys.argv[1]
+    splited = sys.argv[1].split("/")
+    dir_name = splited[len(splited) - 1]
+    sumo_config = dir_name + ".sumocfg.xml"
+    if len(sys.argv) == 3:
+        output_dir = sys.argv[1]
+    else:
+        output_dir = sys.argv[3]
 
     # this is the normal way of using traci. sumo is started as a
     # subprocess and then the python script connects and runs
-    # traci.start([sumo_binary, '-c', sumo_config, '--tripinfo-output', 'tripinfo_realtime.xml', '--no-warnings'])
-    traci.start([sumo_binary, '-c', sumo_config, '--full-output', 'full_output.xml'])
 
-    run_simulate(sumo_config[0:sumo_config.find(".sumocfg.xml")]+".net.xml")
+    #run with statistics output
+    # traci.start([sumo_binary, '-c', sumo_config, '--tripinfo-output', output_dir + '/tripinfo-output_' + dir_name + "_" + sys.argv[2] + ".xml"])
+    #run with full output for Unity
+    traci.start([sumo_binary, '-c', sumo_config, '--full-output', output_dir + '/full-output'+dir_name+"_"+sys.argv[2]+".xml"])
+
+    run_simulate(sumo_config[0:sumo_config.find(".sumocfg.xml")]+".net.xml", schedulers_name_map[sys.argv[2]])
     traci.close()
     sys.stdout.flush()
     print("Simulation ended successfully!")

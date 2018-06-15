@@ -6,6 +6,7 @@ from simulator.simulate import run_sumo
 
 __author__ = "Yair Feldman"
 
+
 def run_visual_simulation(simulation_example, scheduler_name, real_time=True):
     """
     runs a visual simulation with real-time statistics
@@ -16,7 +17,7 @@ def run_visual_simulation(simulation_example, scheduler_name, real_time=True):
     """
     try:
         sumocfg = [f for f in os.listdir(simulation_example) if f.endswith('.sumocfg.xml')][0]
-        run_sumo(simulation_example + "/" + sumocfg,schedulers_name_map[scheduler_name], real_time,
+        run_sumo(simulation_example + "/" + sumocfg, schedulers_name_map[scheduler_name], real_time,
                  gui=True, output_file=None)
     except IndexError:
         logging.error("No sumocfg file in this simulation example")

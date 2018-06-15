@@ -51,7 +51,8 @@ class MaxOccupancyScheduler(AbstractScheduler):
     def __init__(self, city):
         self.schedulers = []
         for junction in city.get_junctions():
-            self.schedulers.append(SchedulerJunctionMaxOccupancy(junction))
+            if junction.detectors_ok():
+                self.schedulers.append(SchedulerJunctionMaxOccupancy(junction))
 
     def schedule(self):
         """

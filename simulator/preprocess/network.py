@@ -2,21 +2,13 @@
 Generating SUMO network which represents a city, with multiple junctions.
 Automatically adding traffic lights to junctions as well as their logic.
 """
+import sys
 
 __author__ = "Eylon Shoshan"
 
 import subprocess
 import logging
 
-
-# def change_g_to_y(text, i):
-#     if text[i - 1] is 'o':
-#         return False
-#     duration = text.find("duration", i)
-#     num = text[duration + 9] + text[duration + 10] + text[duration + 11]
-#     if num == '"3"':
-#         return False
-#     return True
 
 def change_g_to_y(text, i):
     if text[i - 1] is 'o':
@@ -47,27 +39,37 @@ def fix_traffic_lights(sumo_network_path):
     net_file.close()
 
 
-def generate_net(sumo_network_path, size=50):
+def generate_net(sumo_network_path, net_exists, size=50):
     """
     Generating .net.xml that represents the a city SUMO network for simulation.
     Size is configurable.
+    :param net_exists: if net already exists
     :param sumo_network_path: folder path where the exported network will be located
     :param size: network size
     :return: None
     """
 
-    logging.info('Starting to generate SUMO network')
-    cmd = ['netgenerate',
-           '-o', sumo_network_path,
-           '--default-junction-type', 'traffic_light_right_on_red',
-           '--rand',
-           '--rand.iterations=' + str(size),
-           '--default.lanenumber', '3',
-           '--rand.random-lanenumber',
-           '--no-turnarounds',
-           ]
-    out = subprocess.check_output(cmd)
-    logging.info(out)
-
+    if not net_exists:
+        logging.info('Starting to generate SUMO network')
+        cmd = ['netgenerate',
+               '-o', sumo_network_path,
+               '--default-junction-type', 'traffic_light_right_on_red',
+               '--rand',
+               '--rand.iterations=' + str(size),
+               '--default.lanenumber', '3',
+               '--rand.random-lanenumber',
+               '--no-turnarounds',
+               ]
+        out = subprocess.check_output(cmd)
+        logging.info(out)
+    logging.info('Starting to fix traffic_lights')
     fix_traffic_lights(sumo_network_path)
-    logging.info('Finished generating SUMO network')
+    logging.info('Finished fixing traffic_lights')
+
+    if not net_exists:
+        logging.info('Finished generating SUMO network')
+
+
+if __name__ == "__main__":
+    splited = sys.argv[1].split("/")
+    generate_net(sys.argv[1]+"/"+splited[len(splited)-1]+".net.xml", False)

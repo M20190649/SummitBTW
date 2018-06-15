@@ -159,6 +159,12 @@ class Junction(object):
                 return True
         return False
 
+    def detectors_ok(self):
+        for detector in self._detectors:
+            if detector.get_length() <= 10:
+                return False
+        return True
+
     def get_non_empty_lanes(self):
         """
         returns the set of detectors with occupancy > 0
@@ -220,7 +226,7 @@ class Junction(object):
         if phase % 2 != 0:
             raise ValueError("not a green phase!")
         traci.trafficlight.setPhase(self._traffic_light_id, phase + 1)
-        traci.trafficlight.setPhaseDuration(self._traffic_light_id, 1000)
+        traci.trafficlight.setPhaseDuration(self._traffic_light_id, 10000)
 
     def set_green(self, detector, phase_duration=None):
         """turns the given traffic lights (given as detectors) to green.

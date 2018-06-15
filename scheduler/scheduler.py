@@ -157,12 +157,12 @@ class SchedulerJunctionAdvanced(object):
             self.yellow_phase_count -= 1
             if self.yellow_phase_count == 0:
                 best_tl = self.get_best_traffic_to_schedule()
-                self.junction.set_green(best_tl, 1000)
+                self.junction.set_green(best_tl, 10000)
 
         else:
             best_tl = self.get_best_traffic_to_schedule()
             if self.junction.is_detector_green(best_tl) and best_tl.not_stuck():
-                self.junction.turn_simulator_on(1000)
+                self.junction.turn_simulator_on(10000)
             else:
                 self.junction.set_yellow(self.junction.get_active_phase())
                 self.yellow_phase_count = 3
@@ -184,13 +184,16 @@ class AdvancedScheduler(AbstractScheduler):
         key_jucn_val_sched_junc = {}
         for junction in city.get_junctions():
             sched_junc = SchedulerJunctionAdvanced(junction)
-            self.schedulers += [sched_junc]
+            if sched_junc.junction.detectors_ok():
+                self.schedulers += [sched_junc]
             key_jucn_val_sched_junc[junction] = sched_junc
         for sched_junc in self.schedulers:
             for neighbor in sched_junc.junction.get_me_next_neighbors():
-                sched_junc.add_me_next_neighbors(key_jucn_val_sched_junc[neighbor])
+                if neighbor.detectors_ok():
+                    sched_junc.add_me_next_neighbors(key_jucn_val_sched_junc[neighbor])
             for neighbor in sched_junc.junction.get_before_me_neighbors():
-                sched_junc.add_before_me_neighbors(key_jucn_val_sched_junc[neighbor])
+                if neighbor.detectors_ok():
+                    sched_junc.add_before_me_neighbors(key_jucn_val_sched_junc[neighbor])
 
     def start_green_wave(self):
         res = []

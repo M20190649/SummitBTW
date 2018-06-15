@@ -20,11 +20,14 @@ class MixedScheduler(AbstractScheduler):
             key_jucn_val_sched_junc[junction] = sched_junc
         for junction in city.get_smart_junctions():
             sched_junc = key_jucn_val_sched_junc[junction]
-            self.schedulers += [sched_junc]
+            if sched_junc.junction.detectors_ok():
+                self.schedulers += [sched_junc]
             for neighbor in sched_junc.junction.get_me_next_neighbors():
-                sched_junc.add_me_next_neighbors(key_jucn_val_sched_junc[neighbor])
+                if neighbor.detectors_ok():
+                    sched_junc.add_me_next_neighbors(key_jucn_val_sched_junc[neighbor])
             for neighbor in sched_junc.junction.get_before_me_neighbors():
-                sched_junc.add_before_me_neighbors(key_jucn_val_sched_junc[neighbor])
+                if neighbor.detectors_ok():
+                    sched_junc.add_before_me_neighbors(key_jucn_val_sched_junc[neighbor])
 
     def start_green_wave(self):
         res = []
