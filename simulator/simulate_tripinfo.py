@@ -138,7 +138,7 @@ def run_the_script(tripinfo):
 
     splited = sys.argv[1].split("/")
     dir_name = splited[len(splited) - 1]
-    sumo_config = dir_name + ".sumocfg.xml"
+    sumo_config = sys.argv[1] + "/" + dir_name + ".sumocfg.xml"
     if len(sys.argv) == 3:
         output_dir = sys.argv[1]
     else:
