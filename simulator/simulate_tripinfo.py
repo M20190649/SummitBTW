@@ -123,7 +123,7 @@ def run_simulation_example(simulation_example, *args, **kwargs):
         raise ValueError("Insert example with sumocfg file")
 
 
-if __name__ == "__main__":
+def run_the_script(tripinfo):
     options = get_options()
 
     # this script has been called from the command line. It will start sumo as a
@@ -147,13 +147,21 @@ if __name__ == "__main__":
     # this is the normal way of using traci. sumo is started as a
     # subprocess and then the python script connects and runs
 
-    #run with statistics output
-    # traci.start([sumo_binary, '-c', sumo_config, '--tripinfo-output', output_dir + '/tripinfo-output_' + dir_name + "_" + sys.argv[2] + ".xml"])
-    #run with full output for Unity
-    traci.start([sumo_binary, '-c', sumo_config, '--full-output', output_dir + '/full-output'+dir_name+"_"+sys.argv[2]+".xml"])
+    if tripinfo:
+        # run with statistics output
+        traci.start([sumo_binary, '-c', sumo_config, '--tripinfo-output',
+                     output_dir + '/tripinfo-output_' + dir_name + "_" + sys.argv[2] + ".xml"])
+    else:
+        # run with full output for Unity
+        traci.start([sumo_binary, '-c', sumo_config, '--full-output',
+                     output_dir + '/full-output' + dir_name + "_" + sys.argv[2] + ".xml"])
 
-    run_simulate(sumo_config[0:sumo_config.find(".sumocfg.xml")]+".net.xml", schedulers_name_map[sys.argv[2]])
+    run_simulate(sumo_config[0:sumo_config.find(".sumocfg.xml")] + ".net.xml", schedulers_name_map[sys.argv[2]])
     traci.close()
     sys.stdout.flush()
     print("Simulation ended successfully!")
     sys.exit()
+
+
+if __name__ == "__main__":
+    run_the_script(True)

@@ -2,7 +2,7 @@ import os
 from sys import argv
 import logging
 from scheduler.scheduler_constants import schedulers_name_map
-from simulator.simulate import run_sumo
+from simulator.simulate_tripinfo import run_sumo
 
 __author__ = "Yair Feldman"
 

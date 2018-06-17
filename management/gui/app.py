@@ -6,7 +6,7 @@ import pandas as pd
 from management.functionality.algorithm_compare import compare_algorithms, TEMP_OUT_DIR
 from management.gui.visual_statistics import load_statistics_widgets
 from scheduler.scheduler_constants import schedulers_name_map
-from simulator.simulate import run_simulation_example
+from simulator.simulate_tripinfo import run_simulation_example
 from statistics.get_statistics import create_statistics
 
 __author__ = "Eylon Shoshan"

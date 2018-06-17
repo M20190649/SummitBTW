@@ -2,7 +2,7 @@ import os
 from sys import argv
 
 from scheduler.scheduler_constants import schedulers_name_map
-from simulator.simulate import run_simulation_example
+from simulator.simulate_tripinfo import run_simulation_example
 from statistics.get_statistics import create_statistics
 
 __author__ = "Yair Feldman"
