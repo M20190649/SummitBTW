@@ -14,7 +14,7 @@ public class MapAndSimulationChangeButton : MonoBehaviour {
 
     string getPathFromType(AlgorithmChooser.AlgorithmType type)
     {
-        string finalPath = "";
+        /*string finalPath = "";
         string[] pathArray = MapChooser.mapPath.Split('/');
         string mapName = pathArray[pathArray.Length - 1];
         pathArray[pathArray.Length - 1] = mapName.Split('.')[0] + "_full_output.xml";
@@ -22,7 +22,8 @@ public class MapAndSimulationChangeButton : MonoBehaviour {
         {
             finalPath += part + '/';
         }
-        return finalPath.Substring(0, finalPath.Length - 1);
+        return finalPath.Substring(0, finalPath.Length - 1);*/
+        return @"D://home/site/wwwroot/simulator/examples/data/New_York/New_York_full-output-AdvencedScheduler.xml";
     }
 
     public void onClick()
