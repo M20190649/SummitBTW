@@ -98,7 +98,7 @@ def run_sumo(config_file, scheduler, real_time=True, gui=False, output_file="tri
 
         traci.start(sumo_parameters)
 
-        run_simulate(scheduler_algorithm=scheduler, real_time=real_time)
+        run_simulate(config_file, scheduler_algorithm=scheduler, real_time=real_time)
         traci.close()
         sys.stdout.flush()
 
