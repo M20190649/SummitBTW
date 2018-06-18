@@ -161,7 +161,7 @@ class Junction(object):
 
     def detectors_ok(self):
         for detector in self._detectors:
-            if detector.get_length() <= 10:
+            if detector.get_length() <= 8:
                 return False
         return True
 

@@ -23,6 +23,7 @@ from scheduler.static_scheduler import StaticScheduler
 from simulator.realtime.city import City
 from statistics.realtime import RealTime
 from simulator.streaming.screenshot import get_screenshot
+from pathlib import Path
 
 
 def get_options():
@@ -136,8 +137,8 @@ def run_the_script(tripinfo):
     if len(sys.argv) < 3:
         sys.exit('Need path for directory of sumocfg.net and for scheduler algorithm')
 
-    splited = sys.argv[1].split("/")
-    dir_name = splited[len(splited) - 1]
+    path = Path(sys.argv[1])
+    dir_name = path.parts[len(path.parts)-1]
     sumo_config = sys.argv[1] + "/" + dir_name + ".sumocfg.xml"
     if len(sys.argv) == 3:
         output_dir = sys.argv[1]

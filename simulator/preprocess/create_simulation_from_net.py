@@ -11,8 +11,6 @@ __author__ = "Eylon Shoshan"
 
 
 if __name__ == '__main__':
-    splited = sys.argv[1].split("/")
-    directory_name = splited[len(splited) - 1]
-    prepare_simulation(sys.argv[1], True, fringe_factor=10000)
+    prepare_simulation(True, fringe_factor=10000)
                        # , fringe_factor=10000)  # uncomment to use, see further documentation in random_trips.py
                        # binomial=10000, period=5)
