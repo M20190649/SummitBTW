@@ -372,6 +372,7 @@ extern const uint32_t MapAndSimulationChangeButton_getPathFromType_m1713043568_M
 extern RuntimeClass* Debug_t3317548046_il2cpp_TypeInfo_var;
 extern RuntimeClass* MapChooser_t1481971204_il2cpp_TypeInfo_var;
 extern String_t* _stringLiteral3092710847;
+extern String_t* _stringLiteral1903018119;
 extern String_t* _stringLiteral3092710827;
 extern const uint32_t MapAndSimulationChangeButton_onClick_m3647358106_MetadataUsageId;
 extern RuntimeClass* String_t_il2cpp_TypeInfo_var;
@@ -7365,6 +7366,7 @@ extern "C"  void MapAndSimulationChangeButton_onClick_m3647358106 (MapAndSimulat
 	{
 		IL2CPP_RUNTIME_CLASS_INIT(Debug_t3317548046_il2cpp_TypeInfo_var);
 		Debug_Log_m4051431634(NULL /*static, unused*/, _stringLiteral3092710847, /*hidden argument*/NULL);
+		Debug_Log_m4051431634(NULL /*static, unused*/, _stringLiteral1903018119, /*hidden argument*/NULL);
 		MapXmlParser_t3144498968 * L_0 = __this->get_m_mapXmlParser_2();
 		IL2CPP_RUNTIME_CLASS_INIT(MapChooser_t1481971204_il2cpp_TypeInfo_var);
 		String_t* L_1 = ((MapChooser_t1481971204_StaticFields*)il2cpp_codegen_static_fields_for(MapChooser_t1481971204_il2cpp_TypeInfo_var))->get_mapPath_2();
