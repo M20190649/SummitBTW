@@ -2290,6 +2290,7 @@ extern "C" void Directory_CreateDirectory_m751642867 ();
 extern "C" void Directory_CreateDirectoriesInternal_m3735342319 ();
 extern "C" void Directory_Exists_m1484791558 ();
 extern "C" void Directory_GetCurrentDirectory_m219218555 ();
+extern "C" void Directory_GetFiles_m932257245 ();
 extern "C" void Directory_GetFiles_m2624572368 ();
 extern "C" void Directory_GetFileSystemEntries_m1684188607 ();
 extern "C" void DirectoryInfo__ctor_m1000259829 ();
@@ -14659,7 +14660,7 @@ extern "C" void U3CdetermineLightU3Ec__AnonStorey1_U3CU3Em__0_m1983843048 ();
 extern "C" void Vehicle__ctor_m2908657167 ();
 extern "C" void Vehicle_updateCarPosition_m1968675102 ();
 extern "C" void Vehicle_changeOrientation_m3989541646 ();
-extern const Il2CppMethodPointer g_MethodPointers[14640] = 
+extern const Il2CppMethodPointer g_MethodPointers[14641] = 
 {
 	Locale_GetText_m3374010885,
 	Locale_GetText_m1601577974,
@@ -16932,6 +16933,7 @@ extern const Il2CppMethodPointer g_MethodPointers[14640] =
 	Directory_CreateDirectoriesInternal_m3735342319,
 	Directory_Exists_m1484791558,
 	Directory_GetCurrentDirectory_m219218555,
+	Directory_GetFiles_m932257245,
 	Directory_GetFiles_m2624572368,
 	Directory_GetFileSystemEntries_m1684188607,
 	DirectoryInfo__ctor_m1000259829,

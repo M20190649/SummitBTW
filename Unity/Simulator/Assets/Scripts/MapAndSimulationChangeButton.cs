@@ -23,7 +23,7 @@ public class MapAndSimulationChangeButton : MonoBehaviour {
             finalPath += part + '/';
         }
         return finalPath.Substring(0, finalPath.Length - 1);*/
-        return "/";//"/Users/eylonsho/Nextcloud/Technion/YearlyProject/SummitBTW/simulator/examples/data/New_York/New_York_full-outputs/New_York_full-output_AdvancedScheduler.xml";
+        return "/Users/eylonsho/Nextcloud/Technion/YearlyProject/SummitBTW/simulator/examples/data/New_York/New_York_full-outputs/New_York_full-output_AdvancedScheduler.xml";
     }
 
     public void onClick()
@@ -31,6 +31,8 @@ public class MapAndSimulationChangeButton : MonoBehaviour {
         Debug.Log("poop");
 
         m_mapXmlParser.parseMap(MapChooser.mapPath);
+
+        Debug.Log("doop");
 
         m_simXmlParser.parseSimulation(MapChooser.mapPath, getPathFromType(AlgorithmChooser.algorithmType));
     }

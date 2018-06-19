@@ -4,6 +4,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Xml;
+using System.IO;
 
 public class MapChooser : MonoBehaviour, IPointerClickHandler {
 
@@ -15,10 +17,15 @@ public class MapChooser : MonoBehaviour, IPointerClickHandler {
     {
         
         Debug.Log("Path : " + Application.dataPath);
-        string mapPath = "D:/home/site/wwwroot/simulator/examples/data/New_York/New_York.net.xml";
+
+        Debug.Log("d1: " + File.Exists(@"D:\home\site\wwwroot\simulator\examples\data\New_York\New_York.net.xml"));
+        Debug.Log("d2: " + File.Exists("D:/home/site/wwwroot/simulator/examples/data/New_York/New_York.net.xml"));
+        Debug.Log("d3: " + File.Exists("/Users/eylonsho/Nextcloud/Technion/YearlyProject/SummitBTW/simulator/examples/data/New_York/New_York.net.xml"));
+        Debug.Log("list files: " + Directory.GetFiles("."));
+        //string mapPath = "D:/home/site/wwwroot/simulator/examples/data/New_York/New_York.net.xml";
 
         //string mapPath = "D:\\home\site\wwwroot\simulator\\examples\\data\\New_York\\New_York.net.xml";
-        //string mapPath = "/Users/eylonsho/Nextcloud/Technion/YearlyProject/SummitBTW/simulator/examples/data/New_York/New_York.net.xml";
+        string mapPath = "/Users/eylonsho/Nextcloud/Technion/YearlyProject/SummitBTW/simulator/examples/data/New_York/New_York.net.xml";
         string[] path = mapPath.Split('/');
         m_InputField.text = path[path.Length - 1];
         MapChooser.mapPath = mapPath;

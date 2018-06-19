@@ -1170,6 +1170,8 @@ extern const uint32_t Directory_CreateDirectoriesInternal_m3735342319_MetadataUs
 extern const uint32_t Directory_Exists_m1484791558_MetadataUsageId;
 extern const RuntimeMethod* Directory_GetCurrentDirectory_m219218555_RuntimeMethod_var;
 extern const uint32_t Directory_GetCurrentDirectory_m219218555_MetadataUsageId;
+extern String_t* _stringLiteral3452614534;
+extern const uint32_t Directory_GetFiles_m932257245_MetadataUsageId;
 extern RuntimeClass* SearchPattern_t3793128359_il2cpp_TypeInfo_var;
 extern RuntimeClass* DirectoryNotFoundException_t1220582502_il2cpp_TypeInfo_var;
 extern const RuntimeMethod* Directory_GetFileSystemEntries_m1684188607_RuntimeMethod_var;
@@ -13140,6 +13142,8 @@ extern "C"  bool MonoIO_ExistsDirectory_m2182482658 (RuntimeObject * __this /* s
 extern "C"  String_t* MonoIO_GetCurrentDirectory_m762333289 (RuntimeObject * __this /* static, unused */, int32_t* ___error0, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // System.Exception System.IO.MonoIO::GetException(System.IO.MonoIOError)
 extern "C"  Exception_t * MonoIO_GetException_m865954703 (RuntimeObject * __this /* static, unused */, int32_t ___error0, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
+// System.String[] System.IO.Directory::GetFiles(System.String,System.String)
+extern "C"  StringU5BU5D_t1281789340* Directory_GetFiles_m2624572368 (RuntimeObject * __this /* static, unused */, String_t* ___path0, String_t* ___searchPattern1, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // System.String[] System.IO.Directory::GetFileSystemEntries(System.String,System.String,System.IO.FileAttributes,System.IO.FileAttributes)
 extern "C"  StringU5BU5D_t1281789340* Directory_GetFileSystemEntries_m1684188607 (RuntimeObject * __this /* static, unused */, String_t* ___path0, String_t* ___searchPattern1, int32_t ___mask2, int32_t ___attrs3, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // System.String System.IO.Path::GetDirectoryName(System.String)
@@ -33805,6 +33809,21 @@ IL_0015:
 	{
 		String_t* L_4 = V_1;
 		return L_4;
+	}
+}
+// System.String[] System.IO.Directory::GetFiles(System.String)
+extern "C"  StringU5BU5D_t1281789340* Directory_GetFiles_m932257245 (RuntimeObject * __this /* static, unused */, String_t* ___path0, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_method (Directory_GetFiles_m932257245_MetadataUsageId);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		String_t* L_0 = ___path0;
+		StringU5BU5D_t1281789340* L_1 = Directory_GetFiles_m2624572368(NULL /*static, unused*/, L_0, _stringLiteral3452614534, /*hidden argument*/NULL);
+		return L_1;
 	}
 }
 // System.String[] System.IO.Directory::GetFiles(System.String,System.String)
