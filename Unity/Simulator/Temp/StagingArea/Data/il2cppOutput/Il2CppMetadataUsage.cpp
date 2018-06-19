@@ -4643,8 +4643,8 @@ const RuntimeMethod* Enumerable_Repeat_TisRuntimeObject_m214212566_RuntimeMethod
 const RuntimeMethod* Array_AsReadOnly_TisRuntimeObject_m3652082723_RuntimeMethod_var;
 const RuntimeMethod* Array_BinarySearch_TisInt32_t2950945753_m1522448592_RuntimeMethod_var;
 const RuntimeMethod* Array_BinarySearch_TisRuntimeObject_m3933462998_RuntimeMethod_var;
-const RuntimeMethod* Array_BinarySearch_TisRuntimeObject_m1711327235_RuntimeMethod_var;
 const RuntimeMethod* Array_BinarySearch_TisRuntimeObject_m2948599796_RuntimeMethod_var;
+const RuntimeMethod* Array_BinarySearch_TisRuntimeObject_m1711327235_RuntimeMethod_var;
 const RuntimeMethod* Array_compare_TisBoolean_t97287965_m1376687335_RuntimeMethod_var;
 const RuntimeMethod* Array_compare_TisKeyValuePair_2_t2530217319_m1696649718_RuntimeMethod_var;
 const RuntimeMethod* Array_compare_TisInt32_t2950945753_m580865278_RuntimeMethod_var;
@@ -4669,12 +4669,12 @@ const RuntimeMethod* Array_FindLastIndex_TisRuntimeObject_m1404930667_RuntimeMet
 const RuntimeMethod* Array_IndexOf_TisBoolean_t97287965_m1598428858_RuntimeMethod_var;
 const RuntimeMethod* Array_IndexOf_TisKeyValuePair_2_t2530217319_m729972805_RuntimeMethod_var;
 const RuntimeMethod* Array_IndexOf_TisInt32_t2950945753_m3640809994_RuntimeMethod_var;
-const RuntimeMethod* Array_IndexOf_TisRuntimeObject_m3944231312_RuntimeMethod_var;
 const RuntimeMethod* Array_IndexOf_TisRuntimeObject_m865614675_RuntimeMethod_var;
-const RuntimeMethod* Array_IndexOf_TisCustomAttributeNamedArgument_t287865710_m3640167086_RuntimeMethod_var;
+const RuntimeMethod* Array_IndexOf_TisRuntimeObject_m3944231312_RuntimeMethod_var;
 const RuntimeMethod* Array_IndexOf_TisCustomAttributeNamedArgument_t287865710_m2817957199_RuntimeMethod_var;
-const RuntimeMethod* Array_IndexOf_TisCustomAttributeTypedArgument_t2723150157_m3158556463_RuntimeMethod_var;
+const RuntimeMethod* Array_IndexOf_TisCustomAttributeNamedArgument_t287865710_m3640167086_RuntimeMethod_var;
 const RuntimeMethod* Array_IndexOf_TisCustomAttributeTypedArgument_t2723150157_m2960013511_RuntimeMethod_var;
+const RuntimeMethod* Array_IndexOf_TisCustomAttributeTypedArgument_t2723150157_m3158556463_RuntimeMethod_var;
 const RuntimeMethod* Array_IndexOf_TisOrderBlock_t1585977831_m623427105_RuntimeMethod_var;
 const RuntimeMethod* Array_IndexOf_TisColor32_t2600501292_m2718632137_RuntimeMethod_var;
 const RuntimeMethod* Array_IndexOf_TisRaycastResult_t3360306849_m3322053070_RuntimeMethod_var;
@@ -4749,9 +4749,9 @@ const RuntimeMethod* Array_InternalArray__IndexOf_TisWorkRequest_t1354518612_m27
 const RuntimeMethod* Array_InternalArray__IndexOf_TisVector2_t2156229523_m424149457_RuntimeMethod_var;
 const RuntimeMethod* Array_InternalArray__IndexOf_TisVector3_t3722313464_m426050001_RuntimeMethod_var;
 const RuntimeMethod* Array_InternalArray__IndexOf_TisVector4_t3319028937_m412221905_RuntimeMethod_var;
-const RuntimeMethod* Array_LastIndexOf_TisRuntimeObject_m1719321980_RuntimeMethod_var;
-const RuntimeMethod* Array_LastIndexOf_TisRuntimeObject_m1677937501_RuntimeMethod_var;
 const RuntimeMethod* Array_LastIndexOf_TisRuntimeObject_m2701366436_RuntimeMethod_var;
+const RuntimeMethod* Array_LastIndexOf_TisRuntimeObject_m1677937501_RuntimeMethod_var;
+const RuntimeMethod* Array_LastIndexOf_TisRuntimeObject_m1719321980_RuntimeMethod_var;
 const RuntimeMethod* Array_ForEach_TisRuntimeObject_m599801986_RuntimeMethod_var;
 const RuntimeMethod* Array_InternalArray__ICollection_Add_TisAlgorithmType_t644850295_m3863721861_RuntimeMethod_var;
 const RuntimeMethod* Array_InternalArray__ICollection_Add_TisTableRange_t3332867892_m1428005761_RuntimeMethod_var;
@@ -5037,14 +5037,14 @@ const RuntimeMethod* Array_Sort_TisKeyValuePair_2_t2530217319_m4138943987_Runtim
 const RuntimeMethod* Array_Sort_TisInt32_t2950945753_TisInt32_t2950945753_m3955828611_RuntimeMethod_var;
 const RuntimeMethod* Array_Sort_TisInt32_t2950945753_m3365933701_RuntimeMethod_var;
 const RuntimeMethod* Array_Sort_TisInt32_t2950945753_m263117253_RuntimeMethod_var;
-const RuntimeMethod* Array_Sort_TisRuntimeObject_TisRuntimeObject_m1685639929_RuntimeMethod_var;
 const RuntimeMethod* Array_Sort_TisRuntimeObject_TisRuntimeObject_m528220565_RuntimeMethod_var;
 const RuntimeMethod* Array_Sort_TisRuntimeObject_TisRuntimeObject_m879120523_RuntimeMethod_var;
-const RuntimeMethod* Array_Sort_TisRuntimeObject_m1972115694_RuntimeMethod_var;
+const RuntimeMethod* Array_Sort_TisRuntimeObject_TisRuntimeObject_m1685639929_RuntimeMethod_var;
 const RuntimeMethod* Array_Sort_TisRuntimeObject_m460813780_RuntimeMethod_var;
 const RuntimeMethod* Array_Sort_TisRuntimeObject_m3735745751_RuntimeMethod_var;
 const RuntimeMethod* Array_Sort_TisRuntimeObject_m3700318967_RuntimeMethod_var;
 const RuntimeMethod* Array_Sort_TisRuntimeObject_m2698056810_RuntimeMethod_var;
+const RuntimeMethod* Array_Sort_TisRuntimeObject_m1972115694_RuntimeMethod_var;
 const RuntimeMethod* Array_Sort_TisCustomAttributeNamedArgument_t287865710_TisCustomAttributeNamedArgument_t287865710_m1309535943_RuntimeMethod_var;
 const RuntimeMethod* Array_Sort_TisCustomAttributeNamedArgument_t287865710_m3178168269_RuntimeMethod_var;
 const RuntimeMethod* Array_Sort_TisCustomAttributeNamedArgument_t287865710_m2341269431_RuntimeMethod_var;
@@ -5169,8 +5169,8 @@ const RuntimeMethod* ExecuteEvents_ValidateEventData_TisRuntimeObject_m159454652
 const RuntimeMethod* Array_FindAll_TisRuntimeObject_m3566631088_RuntimeMethod_var;
 const RuntimeMethod* Array_ConvertAll_TisRuntimeObject_TisRuntimeObject_m2417852296_RuntimeMethod_var;
 const RuntimeMethod* Enumerable_ElementAt_TisAlgorithmType_t644850295_m171015142_RuntimeMethod_var;
-const RuntimeMethod* Enumerable_ElementAt_TisRuntimeObject_m2021996717_RuntimeMethod_var;
 const RuntimeMethod* Enumerable_ElementAt_TisRuntimeObject_m1482474722_RuntimeMethod_var;
+const RuntimeMethod* Enumerable_ElementAt_TisRuntimeObject_m2021996717_RuntimeMethod_var;
 const RuntimeMethod* Enumerable_Single_TisRuntimeObject_m1146889774_RuntimeMethod_var;
 const RuntimeMethod* List_1_get_Item_m2402360903_RuntimeMethod_var;
 const RuntimeMethod* List_1_get_Count_m3543896146_RuntimeMethod_var;
@@ -15154,8 +15154,8 @@ extern void** const g_MetadataUsages[10509] =
 	(void**)(&Array_AsReadOnly_TisRuntimeObject_m3652082723_RuntimeMethod_var),
 	(void**)(&Array_BinarySearch_TisInt32_t2950945753_m1522448592_RuntimeMethod_var),
 	(void**)(&Array_BinarySearch_TisRuntimeObject_m3933462998_RuntimeMethod_var),
-	(void**)(&Array_BinarySearch_TisRuntimeObject_m1711327235_RuntimeMethod_var),
 	(void**)(&Array_BinarySearch_TisRuntimeObject_m2948599796_RuntimeMethod_var),
+	(void**)(&Array_BinarySearch_TisRuntimeObject_m1711327235_RuntimeMethod_var),
 	(void**)(&Array_compare_TisBoolean_t97287965_m1376687335_RuntimeMethod_var),
 	(void**)(&Array_compare_TisKeyValuePair_2_t2530217319_m1696649718_RuntimeMethod_var),
 	(void**)(&Array_compare_TisInt32_t2950945753_m580865278_RuntimeMethod_var),
@@ -15180,12 +15180,12 @@ extern void** const g_MetadataUsages[10509] =
 	(void**)(&Array_IndexOf_TisBoolean_t97287965_m1598428858_RuntimeMethod_var),
 	(void**)(&Array_IndexOf_TisKeyValuePair_2_t2530217319_m729972805_RuntimeMethod_var),
 	(void**)(&Array_IndexOf_TisInt32_t2950945753_m3640809994_RuntimeMethod_var),
-	(void**)(&Array_IndexOf_TisRuntimeObject_m3944231312_RuntimeMethod_var),
 	(void**)(&Array_IndexOf_TisRuntimeObject_m865614675_RuntimeMethod_var),
-	(void**)(&Array_IndexOf_TisCustomAttributeNamedArgument_t287865710_m3640167086_RuntimeMethod_var),
+	(void**)(&Array_IndexOf_TisRuntimeObject_m3944231312_RuntimeMethod_var),
 	(void**)(&Array_IndexOf_TisCustomAttributeNamedArgument_t287865710_m2817957199_RuntimeMethod_var),
-	(void**)(&Array_IndexOf_TisCustomAttributeTypedArgument_t2723150157_m3158556463_RuntimeMethod_var),
+	(void**)(&Array_IndexOf_TisCustomAttributeNamedArgument_t287865710_m3640167086_RuntimeMethod_var),
 	(void**)(&Array_IndexOf_TisCustomAttributeTypedArgument_t2723150157_m2960013511_RuntimeMethod_var),
+	(void**)(&Array_IndexOf_TisCustomAttributeTypedArgument_t2723150157_m3158556463_RuntimeMethod_var),
 	(void**)(&Array_IndexOf_TisOrderBlock_t1585977831_m623427105_RuntimeMethod_var),
 	(void**)(&Array_IndexOf_TisColor32_t2600501292_m2718632137_RuntimeMethod_var),
 	(void**)(&Array_IndexOf_TisRaycastResult_t3360306849_m3322053070_RuntimeMethod_var),
@@ -15260,9 +15260,9 @@ extern void** const g_MetadataUsages[10509] =
 	(void**)(&Array_InternalArray__IndexOf_TisVector2_t2156229523_m424149457_RuntimeMethod_var),
 	(void**)(&Array_InternalArray__IndexOf_TisVector3_t3722313464_m426050001_RuntimeMethod_var),
 	(void**)(&Array_InternalArray__IndexOf_TisVector4_t3319028937_m412221905_RuntimeMethod_var),
-	(void**)(&Array_LastIndexOf_TisRuntimeObject_m1719321980_RuntimeMethod_var),
-	(void**)(&Array_LastIndexOf_TisRuntimeObject_m1677937501_RuntimeMethod_var),
 	(void**)(&Array_LastIndexOf_TisRuntimeObject_m2701366436_RuntimeMethod_var),
+	(void**)(&Array_LastIndexOf_TisRuntimeObject_m1677937501_RuntimeMethod_var),
+	(void**)(&Array_LastIndexOf_TisRuntimeObject_m1719321980_RuntimeMethod_var),
 	(void**)(&Array_ForEach_TisRuntimeObject_m599801986_RuntimeMethod_var),
 	(void**)(&Array_InternalArray__ICollection_Add_TisAlgorithmType_t644850295_m3863721861_RuntimeMethod_var),
 	(void**)(&Array_InternalArray__ICollection_Add_TisTableRange_t3332867892_m1428005761_RuntimeMethod_var),
@@ -15548,14 +15548,14 @@ extern void** const g_MetadataUsages[10509] =
 	(void**)(&Array_Sort_TisInt32_t2950945753_TisInt32_t2950945753_m3955828611_RuntimeMethod_var),
 	(void**)(&Array_Sort_TisInt32_t2950945753_m3365933701_RuntimeMethod_var),
 	(void**)(&Array_Sort_TisInt32_t2950945753_m263117253_RuntimeMethod_var),
-	(void**)(&Array_Sort_TisRuntimeObject_TisRuntimeObject_m1685639929_RuntimeMethod_var),
 	(void**)(&Array_Sort_TisRuntimeObject_TisRuntimeObject_m528220565_RuntimeMethod_var),
 	(void**)(&Array_Sort_TisRuntimeObject_TisRuntimeObject_m879120523_RuntimeMethod_var),
-	(void**)(&Array_Sort_TisRuntimeObject_m1972115694_RuntimeMethod_var),
+	(void**)(&Array_Sort_TisRuntimeObject_TisRuntimeObject_m1685639929_RuntimeMethod_var),
 	(void**)(&Array_Sort_TisRuntimeObject_m460813780_RuntimeMethod_var),
 	(void**)(&Array_Sort_TisRuntimeObject_m3735745751_RuntimeMethod_var),
 	(void**)(&Array_Sort_TisRuntimeObject_m3700318967_RuntimeMethod_var),
 	(void**)(&Array_Sort_TisRuntimeObject_m2698056810_RuntimeMethod_var),
+	(void**)(&Array_Sort_TisRuntimeObject_m1972115694_RuntimeMethod_var),
 	(void**)(&Array_Sort_TisCustomAttributeNamedArgument_t287865710_TisCustomAttributeNamedArgument_t287865710_m1309535943_RuntimeMethod_var),
 	(void**)(&Array_Sort_TisCustomAttributeNamedArgument_t287865710_m3178168269_RuntimeMethod_var),
 	(void**)(&Array_Sort_TisCustomAttributeNamedArgument_t287865710_m2341269431_RuntimeMethod_var),
@@ -15680,8 +15680,8 @@ extern void** const g_MetadataUsages[10509] =
 	(void**)(&Array_FindAll_TisRuntimeObject_m3566631088_RuntimeMethod_var),
 	(void**)(&Array_ConvertAll_TisRuntimeObject_TisRuntimeObject_m2417852296_RuntimeMethod_var),
 	(void**)(&Enumerable_ElementAt_TisAlgorithmType_t644850295_m171015142_RuntimeMethod_var),
-	(void**)(&Enumerable_ElementAt_TisRuntimeObject_m2021996717_RuntimeMethod_var),
 	(void**)(&Enumerable_ElementAt_TisRuntimeObject_m1482474722_RuntimeMethod_var),
+	(void**)(&Enumerable_ElementAt_TisRuntimeObject_m2021996717_RuntimeMethod_var),
 	(void**)(&Enumerable_Single_TisRuntimeObject_m1146889774_RuntimeMethod_var),
 	(void**)(&List_1_get_Item_m2402360903_RuntimeMethod_var),
 	(void**)(&List_1_get_Count_m3543896146_RuntimeMethod_var),
