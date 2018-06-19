@@ -5,7 +5,6 @@ import pandas as pd
 # import pandas as pd
 import sys
 sys.path.insert(0, 'D:\\home\\site\\wwwroot\\sumo-0.32.0\\tools')
-print(sys.path)
 
 from management.functionality.algorithm_compare import compare_algorithms, TEMP_OUT_DIR
 from management.gui.visual_statistics import load_statistics_widgets
@@ -61,6 +60,15 @@ def compare_schedulers():
     stats = compare_algorithms(simulation_example, *schedulers)
     schedulers_names = [_camel_case_to_name(s) for s in schedulers]
     return load_statistics_widgets(stats, schedulers_names)
+
+
+@app.route('/webgl_singelton', methods=['GET', 'POST'])
+def webgl_singelton():
+    """
+    Compare scheduling algorithms and present results
+    :return: Result statistics
+    """
+    return render_template('test/index.html')
 
 
 if __name__ == "__main__":
