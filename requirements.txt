@@ -1,4 +1,1 @@
 Flask==0.12.2
-prettytable==0.7.2
-gevent==1.2.2
-pandas==0.20.3
