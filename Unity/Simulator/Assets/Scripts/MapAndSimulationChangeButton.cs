@@ -29,7 +29,7 @@ public class MapAndSimulationChangeButton : MonoBehaviour {
     public void onClick()
     {
         Debug.Log("poop");
-        Debug.Log("poop2");
+        Debug.Log("poop3");
         m_mapXmlParser.parseMap(MapChooser.mapPath);
 
         Debug.Log("doop");

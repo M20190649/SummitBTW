@@ -372,11 +372,12 @@ extern const uint32_t MapAndSimulationChangeButton_getPathFromType_m1713043568_M
 extern RuntimeClass* Debug_t3317548046_il2cpp_TypeInfo_var;
 extern RuntimeClass* MapChooser_t1481971204_il2cpp_TypeInfo_var;
 extern String_t* _stringLiteral3092710847;
-extern String_t* _stringLiteral1903018119;
+extern String_t* _stringLiteral1903018118;
 extern String_t* _stringLiteral3092710827;
 extern const uint32_t MapAndSimulationChangeButton_onClick_m3647358106_MetadataUsageId;
 extern RuntimeClass* String_t_il2cpp_TypeInfo_var;
 extern RuntimeClass* Boolean_t97287965_il2cpp_TypeInfo_var;
+extern RuntimeClass* Path_t1605229823_il2cpp_TypeInfo_var;
 extern String_t* _stringLiteral249465722;
 extern String_t* _stringLiteral2058722228;
 extern String_t* _stringLiteral1269782862;
@@ -384,8 +385,11 @@ extern String_t* _stringLiteral2058656692;
 extern String_t* _stringLiteral2998221401;
 extern String_t* _stringLiteral2058591156;
 extern String_t* _stringLiteral132419186;
-extern String_t* _stringLiteral355807170;
+extern String_t* _stringLiteral2058525620;
+extern String_t* _stringLiteral607675389;
+extern String_t* _stringLiteral1874753564;
 extern String_t* _stringLiteral3452614530;
+extern String_t* _stringLiteral355807170;
 extern const uint32_t MapChooser_OnPointerClick_m891393910_MetadataUsageId;
 extern const RuntimeMethod* Component_GetComponent_TisInputField_t3762917431_m3342128916_RuntimeMethod_var;
 extern const uint32_t MapChooser_Start_m854486562_MetadataUsageId;
@@ -6777,6 +6781,8 @@ extern "C"  String_t* String_Concat_m3937257545 (RuntimeObject * __this /* stati
 extern "C"  bool File_Exists_m3943585060 (RuntimeObject * __this /* static, unused */, String_t* p0, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // System.String System.String::Concat(System.Object,System.Object)
 extern "C"  String_t* String_Concat_m904156431 (RuntimeObject * __this /* static, unused */, RuntimeObject * p0, RuntimeObject * p1, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
+// System.String System.IO.Path::GetFullPath(System.String)
+extern "C"  String_t* Path_GetFullPath_m4142135635 (RuntimeObject * __this /* static, unused */, String_t* p0, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // System.String[] System.IO.Directory::GetFiles(System.String)
 extern "C"  StringU5BU5D_t1281789340* Directory_GetFiles_m932257245 (RuntimeObject * __this /* static, unused */, String_t* p0, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // System.Void UnityEngine.UI.InputField::set_text(System.String)
@@ -7366,7 +7372,7 @@ extern "C"  void MapAndSimulationChangeButton_onClick_m3647358106 (MapAndSimulat
 	{
 		IL2CPP_RUNTIME_CLASS_INIT(Debug_t3317548046_il2cpp_TypeInfo_var);
 		Debug_Log_m4051431634(NULL /*static, unused*/, _stringLiteral3092710847, /*hidden argument*/NULL);
-		Debug_Log_m4051431634(NULL /*static, unused*/, _stringLiteral1903018119, /*hidden argument*/NULL);
+		Debug_Log_m4051431634(NULL /*static, unused*/, _stringLiteral1903018118, /*hidden argument*/NULL);
 		MapXmlParser_t3144498968 * L_0 = __this->get_m_mapXmlParser_2();
 		IL2CPP_RUNTIME_CLASS_INIT(MapChooser_t1481971204_il2cpp_TypeInfo_var);
 		String_t* L_1 = ((MapChooser_t1481971204_StaticFields*)il2cpp_codegen_static_fields_for(MapChooser_t1481971204_il2cpp_TypeInfo_var))->get_mapPath_2();
@@ -7436,24 +7442,33 @@ extern "C"  void MapChooser_OnPointerClick_m891393910 (MapChooser_t1481971204 * 
 		RuntimeObject * L_12 = Box(Boolean_t97287965_il2cpp_TypeInfo_var, &L_11);
 		String_t* L_13 = String_Concat_m904156431(NULL /*static, unused*/, _stringLiteral2058591156, L_12, /*hidden argument*/NULL);
 		Debug_Log_m4051431634(NULL /*static, unused*/, L_13, /*hidden argument*/NULL);
-		StringU5BU5D_t1281789340* L_14 = Directory_GetFiles_m932257245(NULL /*static, unused*/, _stringLiteral3452614530, /*hidden argument*/NULL);
-		String_t* L_15 = String_Concat_m904156431(NULL /*static, unused*/, _stringLiteral355807170, (RuntimeObject *)(RuntimeObject *)L_14, /*hidden argument*/NULL);
-		Debug_Log_m4051431634(NULL /*static, unused*/, L_15, /*hidden argument*/NULL);
+		bool L_14 = File_Exists_m3943585060(NULL /*static, unused*/, _stringLiteral607675389, /*hidden argument*/NULL);
+		bool L_15 = L_14;
+		RuntimeObject * L_16 = Box(Boolean_t97287965_il2cpp_TypeInfo_var, &L_15);
+		String_t* L_17 = String_Concat_m904156431(NULL /*static, unused*/, _stringLiteral2058525620, L_16, /*hidden argument*/NULL);
+		Debug_Log_m4051431634(NULL /*static, unused*/, L_17, /*hidden argument*/NULL);
+		IL2CPP_RUNTIME_CLASS_INIT(Path_t1605229823_il2cpp_TypeInfo_var);
+		String_t* L_18 = Path_GetFullPath_m4142135635(NULL /*static, unused*/, _stringLiteral3452614530, /*hidden argument*/NULL);
+		String_t* L_19 = String_Concat_m3937257545(NULL /*static, unused*/, _stringLiteral1874753564, L_18, /*hidden argument*/NULL);
+		Debug_Log_m4051431634(NULL /*static, unused*/, L_19, /*hidden argument*/NULL);
+		StringU5BU5D_t1281789340* L_20 = Directory_GetFiles_m932257245(NULL /*static, unused*/, _stringLiteral3452614530, /*hidden argument*/NULL);
+		String_t* L_21 = String_Concat_m904156431(NULL /*static, unused*/, _stringLiteral355807170, (RuntimeObject *)(RuntimeObject *)L_20, /*hidden argument*/NULL);
+		Debug_Log_m4051431634(NULL /*static, unused*/, L_21, /*hidden argument*/NULL);
 		V_0 = _stringLiteral132419186;
-		String_t* L_16 = V_0;
-		CharU5BU5D_t3528271667* L_17 = ((CharU5BU5D_t3528271667*)SZArrayNew(CharU5BU5D_t3528271667_il2cpp_TypeInfo_var, (uint32_t)1));
-		(L_17)->SetAtUnchecked(static_cast<il2cpp_array_size_t>(0), (Il2CppChar)((int32_t)47));
-		StringU5BU5D_t1281789340* L_18 = String_Split_m3646115398(L_16, L_17, /*hidden argument*/NULL);
-		V_1 = L_18;
-		InputField_t3762917431 * L_19 = __this->get_m_InputField_3();
-		StringU5BU5D_t1281789340* L_20 = V_1;
-		StringU5BU5D_t1281789340* L_21 = V_1;
-		int32_t L_22 = ((int32_t)il2cpp_codegen_subtract((int32_t)(((int32_t)((int32_t)(((RuntimeArray *)L_21)->max_length)))), (int32_t)1));
-		String_t* L_23 = (L_20)->GetAtUnchecked(static_cast<il2cpp_array_size_t>(L_22));
-		InputField_set_text_m1877260015(L_19, L_23, /*hidden argument*/NULL);
-		String_t* L_24 = V_0;
+		String_t* L_22 = V_0;
+		CharU5BU5D_t3528271667* L_23 = ((CharU5BU5D_t3528271667*)SZArrayNew(CharU5BU5D_t3528271667_il2cpp_TypeInfo_var, (uint32_t)1));
+		(L_23)->SetAtUnchecked(static_cast<il2cpp_array_size_t>(0), (Il2CppChar)((int32_t)47));
+		StringU5BU5D_t1281789340* L_24 = String_Split_m3646115398(L_22, L_23, /*hidden argument*/NULL);
+		V_1 = L_24;
+		InputField_t3762917431 * L_25 = __this->get_m_InputField_3();
+		StringU5BU5D_t1281789340* L_26 = V_1;
+		StringU5BU5D_t1281789340* L_27 = V_1;
+		int32_t L_28 = ((int32_t)il2cpp_codegen_subtract((int32_t)(((int32_t)((int32_t)(((RuntimeArray *)L_27)->max_length)))), (int32_t)1));
+		String_t* L_29 = (L_26)->GetAtUnchecked(static_cast<il2cpp_array_size_t>(L_28));
+		InputField_set_text_m1877260015(L_25, L_29, /*hidden argument*/NULL);
+		String_t* L_30 = V_0;
 		IL2CPP_RUNTIME_CLASS_INIT(MapChooser_t1481971204_il2cpp_TypeInfo_var);
-		((MapChooser_t1481971204_StaticFields*)il2cpp_codegen_static_fields_for(MapChooser_t1481971204_il2cpp_TypeInfo_var))->set_mapPath_2(L_24);
+		((MapChooser_t1481971204_StaticFields*)il2cpp_codegen_static_fields_for(MapChooser_t1481971204_il2cpp_TypeInfo_var))->set_mapPath_2(L_30);
 		return;
 	}
 }
