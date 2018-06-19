@@ -181,6 +181,7 @@ class AdvancedScheduler(AbstractScheduler):
 
     def __init__(self, city):
         self.schedulers = []
+        self.smart_schedulers = []
         key_jucn_val_sched_junc = {}
         for junction in city.get_junctions():
             sched_junc = SchedulerJunctionAdvanced(junction)
@@ -194,10 +195,14 @@ class AdvancedScheduler(AbstractScheduler):
             for neighbor in sched_junc.junction.get_before_me_neighbors():
                 if neighbor.detectors_ok():
                     sched_junc.add_before_me_neighbors(key_jucn_val_sched_junc[neighbor])
+        for junction in city.get_smart_junctions():
+            sched_junc = key_jucn_val_sched_junc[junction]
+            if sched_junc.junction.detectors_ok():
+                self.smart_schedulers += [sched_junc]
 
     def start_green_wave(self):
         res = []
-        for sched_junc in self.schedulers:
+        for sched_junc in self.smart_schedulers:
             if sched_junc.junction.is_there_full_detector():
                 res.append(sched_junc)
         return res
