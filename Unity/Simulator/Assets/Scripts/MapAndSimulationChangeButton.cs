@@ -23,7 +23,7 @@ public class MapAndSimulationChangeButton : MonoBehaviour {
             finalPath += part + '/';
         }
         return finalPath.Substring(0, finalPath.Length - 1);*/
-        return @"D://home/site/wwwroot/simulator/examples/data/New_York/New_York_full-output-AdvencedScheduler.xml";
+        return "/";//"/Users/eylonsho/Nextcloud/Technion/YearlyProject/SummitBTW/simulator/examples/data/New_York/New_York_full-outputs/New_York_full-output_AdvancedScheduler.xml";
     }
 
     public void onClick()

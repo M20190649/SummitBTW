@@ -8465,6 +8465,7 @@ extern "C" void Application_CallLowMemory_m2813539296 ();
 extern "C" void Application_get_isPlaying_m100394690 ();
 extern "C" void Application_get_isEditor_m857789090 ();
 extern "C" void Application_get_platform_m2150679437 ();
+extern "C" void Application_get_dataPath_m4232621142 ();
 extern "C" void Application_CallLogCallback_m255562505 ();
 extern "C" void LogCallback__ctor_m144650965 ();
 extern "C" void LogCallback_Invoke_m1707963620 ();
@@ -14658,7 +14659,7 @@ extern "C" void U3CdetermineLightU3Ec__AnonStorey1_U3CU3Em__0_m1983843048 ();
 extern "C" void Vehicle__ctor_m2908657167 ();
 extern "C" void Vehicle_updateCarPosition_m1968675102 ();
 extern "C" void Vehicle_changeOrientation_m3989541646 ();
-extern const Il2CppMethodPointer g_MethodPointers[14639] = 
+extern const Il2CppMethodPointer g_MethodPointers[14640] = 
 {
 	Locale_GetText_m3374010885,
 	Locale_GetText_m1601577974,
@@ -23106,6 +23107,7 @@ extern const Il2CppMethodPointer g_MethodPointers[14639] =
 	Application_get_isPlaying_m100394690,
 	Application_get_isEditor_m857789090,
 	Application_get_platform_m2150679437,
+	Application_get_dataPath_m4232621142,
 	Application_CallLogCallback_m255562505,
 	LogCallback__ctor_m144650965,
 	LogCallback_Invoke_m1707963620,

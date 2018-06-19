@@ -37,6 +37,7 @@ public class MapXmlParser : MonoBehaviour {
         XmlNode location = doc.GetElementsByTagName("location")[0];
         Vector3 offset = new Vector3(float.Parse(location.Attributes["netOffset"].Value.Split(',')[0]), 0.0f, float.Parse(location.Attributes["netOffset"].Value.Split(',')[1]));
         XmlNodeList edgeNodes = doc.GetElementsByTagName("edge");
+        bool first = true;
         foreach (XmlNode edgeNode in edgeNodes)
         {
             float y = 0.0f;
@@ -58,6 +59,10 @@ public class MapXmlParser : MonoBehaviour {
                 {
                     roadLines.SetPositions(new Vector3[] { shapeVectors[i], shapeVectors[i + 1] });
                     LineRenderer laneLine = Instantiate(roadLines) as LineRenderer;
+                    if (first){
+                        Camera.main.transform.position = new Vector3(shapeVectors[i].x, 10.0f, shapeVectors[i].z);
+                        first = false;
+                    }
                     if (edgeNode.Attributes["function"] != null)
                     {
                         laneLine.startWidth = 0.5f;

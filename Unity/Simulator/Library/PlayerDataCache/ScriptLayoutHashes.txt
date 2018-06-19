@@ -1,6 +1,6 @@
 WebGL
 PlayerPath?
-/Users/eylonsho/Nextcloud/Technion/YearlyProject/SummitBTW/Unity/WebGL Build/test
+/Users/eylonsho/Desktop/test
 SceneListBegin?
 Assets/Scenes/MainScene.unity
 SceneListEnd?

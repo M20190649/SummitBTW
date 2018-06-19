@@ -20422,6 +20422,16 @@ extern "C"  int32_t Application_get_platform_m2150679437 (RuntimeObject * __this
 	int32_t retVal = _il2cpp_icall_func();
 	return retVal;
 }
+// System.String UnityEngine.Application::get_dataPath()
+extern "C"  String_t* Application_get_dataPath_m4232621142 (RuntimeObject * __this /* static, unused */, const RuntimeMethod* method)
+{
+	typedef String_t* (*Application_get_dataPath_m4232621142_ftn) ();
+	static Application_get_dataPath_m4232621142_ftn _il2cpp_icall_func;
+	if (!_il2cpp_icall_func)
+	_il2cpp_icall_func = (Application_get_dataPath_m4232621142_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.Application::get_dataPath()");
+	String_t* retVal = _il2cpp_icall_func();
+	return retVal;
+}
 // System.Void UnityEngine.Application::CallLogCallback(System.String,System.String,UnityEngine.LogType,System.Boolean)
 extern "C"  void Application_CallLogCallback_m255562505 (RuntimeObject * __this /* static, unused */, String_t* ___logString0, String_t* ___stackTrace1, int32_t ___type2, bool ___invokedOnMainThread3, const RuntimeMethod* method)
 {

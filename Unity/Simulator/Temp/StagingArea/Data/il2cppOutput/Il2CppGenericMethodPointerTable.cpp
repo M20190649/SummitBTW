@@ -1078,10 +1078,10 @@ extern "C" void Array_compare_TisVector4_t3319028937_m1974066282_gshared ();
 extern "C" void Array_IndexOf_TisBoolean_t97287965_m1598428858_gshared ();
 extern "C" void Array_IndexOf_TisKeyValuePair_2_t2530217319_m729972805_gshared ();
 extern "C" void Array_IndexOf_TisInt32_t2950945753_m3640809994_gshared ();
-extern "C" void Array_IndexOf_TisCustomAttributeNamedArgument_t287865710_m2817957199_gshared ();
 extern "C" void Array_IndexOf_TisCustomAttributeNamedArgument_t287865710_m3640167086_gshared ();
-extern "C" void Array_IndexOf_TisCustomAttributeTypedArgument_t2723150157_m2960013511_gshared ();
+extern "C" void Array_IndexOf_TisCustomAttributeNamedArgument_t287865710_m2817957199_gshared ();
 extern "C" void Array_IndexOf_TisCustomAttributeTypedArgument_t2723150157_m3158556463_gshared ();
+extern "C" void Array_IndexOf_TisCustomAttributeTypedArgument_t2723150157_m2960013511_gshared ();
 extern "C" void Array_IndexOf_TisOrderBlock_t1585977831_m623427105_gshared ();
 extern "C" void Array_IndexOf_TisColor32_t2600501292_m2718632137_gshared ();
 extern "C" void Array_IndexOf_TisRaycastResult_t3360306849_m3322053070_gshared ();
@@ -1444,34 +1444,34 @@ extern "C" void Array_qsort_TisVector3_t3722313464_TisVector3_t3722313464_m15364
 extern "C" void Array_qsort_TisVector3_t3722313464_m4117329442_gshared ();
 extern "C" void Array_qsort_TisVector4_t3319028937_TisVector4_t3319028937_m3053919711_gshared ();
 extern "C" void Array_qsort_TisVector4_t3319028937_m2158412227_gshared ();
-extern "C" void Array_Resize_TisBoolean_t97287965_m1311737542_gshared ();
 extern "C" void Array_Resize_TisBoolean_t97287965_m4177583518_gshared ();
-extern "C" void Array_Resize_TisKeyValuePair_2_t2530217319_m2833897428_gshared ();
+extern "C" void Array_Resize_TisBoolean_t97287965_m1311737542_gshared ();
 extern "C" void Array_Resize_TisKeyValuePair_2_t2530217319_m2383251369_gshared ();
-extern "C" void Array_Resize_TisInt32_t2950945753_m18578417_gshared ();
+extern "C" void Array_Resize_TisKeyValuePair_2_t2530217319_m2833897428_gshared ();
 extern "C" void Array_Resize_TisInt32_t2950945753_m2286572300_gshared ();
-extern "C" void Array_Resize_TisCustomAttributeNamedArgument_t287865710_m885566878_gshared ();
+extern "C" void Array_Resize_TisInt32_t2950945753_m18578417_gshared ();
 extern "C" void Array_Resize_TisCustomAttributeNamedArgument_t287865710_m2861489985_gshared ();
-extern "C" void Array_Resize_TisCustomAttributeTypedArgument_t2723150157_m3021884250_gshared ();
+extern "C" void Array_Resize_TisCustomAttributeNamedArgument_t287865710_m885566878_gshared ();
 extern "C" void Array_Resize_TisCustomAttributeTypedArgument_t2723150157_m877658765_gshared ();
-extern "C" void Array_Resize_TisOrderBlock_t1585977831_m2784259641_gshared ();
+extern "C" void Array_Resize_TisCustomAttributeTypedArgument_t2723150157_m3021884250_gshared ();
 extern "C" void Array_Resize_TisOrderBlock_t1585977831_m3449774576_gshared ();
-extern "C" void Array_Resize_TisColor32_t2600501292_m2781660956_gshared ();
+extern "C" void Array_Resize_TisOrderBlock_t1585977831_m2784259641_gshared ();
 extern "C" void Array_Resize_TisColor32_t2600501292_m2984087822_gshared ();
-extern "C" void Array_Resize_TisRaycastResult_t3360306849_m1811054291_gshared ();
+extern "C" void Array_Resize_TisColor32_t2600501292_m2781660956_gshared ();
 extern "C" void Array_Resize_TisRaycastResult_t3360306849_m1277390301_gshared ();
-extern "C" void Array_Resize_TisUICharInfo_t75501106_m3903846016_gshared ();
+extern "C" void Array_Resize_TisRaycastResult_t3360306849_m1811054291_gshared ();
 extern "C" void Array_Resize_TisUICharInfo_t75501106_m3926798054_gshared ();
-extern "C" void Array_Resize_TisUILineInfo_t4195266810_m3763058392_gshared ();
+extern "C" void Array_Resize_TisUICharInfo_t75501106_m3903846016_gshared ();
 extern "C" void Array_Resize_TisUILineInfo_t4195266810_m2197625248_gshared ();
-extern "C" void Array_Resize_TisUIVertex_t4057497605_m2412004271_gshared ();
+extern "C" void Array_Resize_TisUILineInfo_t4195266810_m3763058392_gshared ();
 extern "C" void Array_Resize_TisUIVertex_t4057497605_m1219201596_gshared ();
-extern "C" void Array_Resize_TisVector2_t2156229523_m3382835435_gshared ();
+extern "C" void Array_Resize_TisUIVertex_t4057497605_m2412004271_gshared ();
 extern "C" void Array_Resize_TisVector2_t2156229523_m1564542050_gshared ();
-extern "C" void Array_Resize_TisVector3_t3722313464_m3912253972_gshared ();
+extern "C" void Array_Resize_TisVector2_t2156229523_m3382835435_gshared ();
 extern "C" void Array_Resize_TisVector3_t3722313464_m1245103517_gshared ();
-extern "C" void Array_Resize_TisVector4_t3319028937_m3264241945_gshared ();
+extern "C" void Array_Resize_TisVector3_t3722313464_m3912253972_gshared ();
 extern "C" void Array_Resize_TisVector4_t3319028937_m1507893064_gshared ();
+extern "C" void Array_Resize_TisVector4_t3319028937_m3264241945_gshared ();
 extern "C" void Array_Sort_TisBoolean_t97287965_TisBoolean_t97287965_m2753381653_gshared ();
 extern "C" void Array_Sort_TisBoolean_t97287965_m2273626517_gshared ();
 extern "C" void Array_Sort_TisBoolean_t97287965_m2871387438_gshared ();
@@ -5890,10 +5890,10 @@ extern const Il2CppMethodPointer g_Il2CppGenericMethodPointers[4810] =
 	(Il2CppMethodPointer)&Array_IndexOf_TisBoolean_t97287965_m1598428858_gshared/* 1050*/,
 	(Il2CppMethodPointer)&Array_IndexOf_TisKeyValuePair_2_t2530217319_m729972805_gshared/* 1051*/,
 	(Il2CppMethodPointer)&Array_IndexOf_TisInt32_t2950945753_m3640809994_gshared/* 1052*/,
-	(Il2CppMethodPointer)&Array_IndexOf_TisCustomAttributeNamedArgument_t287865710_m2817957199_gshared/* 1053*/,
-	(Il2CppMethodPointer)&Array_IndexOf_TisCustomAttributeNamedArgument_t287865710_m3640167086_gshared/* 1054*/,
-	(Il2CppMethodPointer)&Array_IndexOf_TisCustomAttributeTypedArgument_t2723150157_m2960013511_gshared/* 1055*/,
-	(Il2CppMethodPointer)&Array_IndexOf_TisCustomAttributeTypedArgument_t2723150157_m3158556463_gshared/* 1056*/,
+	(Il2CppMethodPointer)&Array_IndexOf_TisCustomAttributeNamedArgument_t287865710_m3640167086_gshared/* 1053*/,
+	(Il2CppMethodPointer)&Array_IndexOf_TisCustomAttributeNamedArgument_t287865710_m2817957199_gshared/* 1054*/,
+	(Il2CppMethodPointer)&Array_IndexOf_TisCustomAttributeTypedArgument_t2723150157_m3158556463_gshared/* 1055*/,
+	(Il2CppMethodPointer)&Array_IndexOf_TisCustomAttributeTypedArgument_t2723150157_m2960013511_gshared/* 1056*/,
 	(Il2CppMethodPointer)&Array_IndexOf_TisOrderBlock_t1585977831_m623427105_gshared/* 1057*/,
 	(Il2CppMethodPointer)&Array_IndexOf_TisColor32_t2600501292_m2718632137_gshared/* 1058*/,
 	(Il2CppMethodPointer)&Array_IndexOf_TisRaycastResult_t3360306849_m3322053070_gshared/* 1059*/,
@@ -6256,34 +6256,34 @@ extern const Il2CppMethodPointer g_Il2CppGenericMethodPointers[4810] =
 	(Il2CppMethodPointer)&Array_qsort_TisVector3_t3722313464_m4117329442_gshared/* 1416*/,
 	(Il2CppMethodPointer)&Array_qsort_TisVector4_t3319028937_TisVector4_t3319028937_m3053919711_gshared/* 1417*/,
 	(Il2CppMethodPointer)&Array_qsort_TisVector4_t3319028937_m2158412227_gshared/* 1418*/,
-	(Il2CppMethodPointer)&Array_Resize_TisBoolean_t97287965_m1311737542_gshared/* 1419*/,
-	(Il2CppMethodPointer)&Array_Resize_TisBoolean_t97287965_m4177583518_gshared/* 1420*/,
-	(Il2CppMethodPointer)&Array_Resize_TisKeyValuePair_2_t2530217319_m2833897428_gshared/* 1421*/,
-	(Il2CppMethodPointer)&Array_Resize_TisKeyValuePair_2_t2530217319_m2383251369_gshared/* 1422*/,
-	(Il2CppMethodPointer)&Array_Resize_TisInt32_t2950945753_m18578417_gshared/* 1423*/,
-	(Il2CppMethodPointer)&Array_Resize_TisInt32_t2950945753_m2286572300_gshared/* 1424*/,
-	(Il2CppMethodPointer)&Array_Resize_TisCustomAttributeNamedArgument_t287865710_m885566878_gshared/* 1425*/,
-	(Il2CppMethodPointer)&Array_Resize_TisCustomAttributeNamedArgument_t287865710_m2861489985_gshared/* 1426*/,
-	(Il2CppMethodPointer)&Array_Resize_TisCustomAttributeTypedArgument_t2723150157_m3021884250_gshared/* 1427*/,
-	(Il2CppMethodPointer)&Array_Resize_TisCustomAttributeTypedArgument_t2723150157_m877658765_gshared/* 1428*/,
-	(Il2CppMethodPointer)&Array_Resize_TisOrderBlock_t1585977831_m2784259641_gshared/* 1429*/,
-	(Il2CppMethodPointer)&Array_Resize_TisOrderBlock_t1585977831_m3449774576_gshared/* 1430*/,
-	(Il2CppMethodPointer)&Array_Resize_TisColor32_t2600501292_m2781660956_gshared/* 1431*/,
-	(Il2CppMethodPointer)&Array_Resize_TisColor32_t2600501292_m2984087822_gshared/* 1432*/,
-	(Il2CppMethodPointer)&Array_Resize_TisRaycastResult_t3360306849_m1811054291_gshared/* 1433*/,
-	(Il2CppMethodPointer)&Array_Resize_TisRaycastResult_t3360306849_m1277390301_gshared/* 1434*/,
-	(Il2CppMethodPointer)&Array_Resize_TisUICharInfo_t75501106_m3903846016_gshared/* 1435*/,
-	(Il2CppMethodPointer)&Array_Resize_TisUICharInfo_t75501106_m3926798054_gshared/* 1436*/,
-	(Il2CppMethodPointer)&Array_Resize_TisUILineInfo_t4195266810_m3763058392_gshared/* 1437*/,
-	(Il2CppMethodPointer)&Array_Resize_TisUILineInfo_t4195266810_m2197625248_gshared/* 1438*/,
-	(Il2CppMethodPointer)&Array_Resize_TisUIVertex_t4057497605_m2412004271_gshared/* 1439*/,
-	(Il2CppMethodPointer)&Array_Resize_TisUIVertex_t4057497605_m1219201596_gshared/* 1440*/,
-	(Il2CppMethodPointer)&Array_Resize_TisVector2_t2156229523_m3382835435_gshared/* 1441*/,
-	(Il2CppMethodPointer)&Array_Resize_TisVector2_t2156229523_m1564542050_gshared/* 1442*/,
-	(Il2CppMethodPointer)&Array_Resize_TisVector3_t3722313464_m3912253972_gshared/* 1443*/,
-	(Il2CppMethodPointer)&Array_Resize_TisVector3_t3722313464_m1245103517_gshared/* 1444*/,
-	(Il2CppMethodPointer)&Array_Resize_TisVector4_t3319028937_m3264241945_gshared/* 1445*/,
-	(Il2CppMethodPointer)&Array_Resize_TisVector4_t3319028937_m1507893064_gshared/* 1446*/,
+	(Il2CppMethodPointer)&Array_Resize_TisBoolean_t97287965_m4177583518_gshared/* 1419*/,
+	(Il2CppMethodPointer)&Array_Resize_TisBoolean_t97287965_m1311737542_gshared/* 1420*/,
+	(Il2CppMethodPointer)&Array_Resize_TisKeyValuePair_2_t2530217319_m2383251369_gshared/* 1421*/,
+	(Il2CppMethodPointer)&Array_Resize_TisKeyValuePair_2_t2530217319_m2833897428_gshared/* 1422*/,
+	(Il2CppMethodPointer)&Array_Resize_TisInt32_t2950945753_m2286572300_gshared/* 1423*/,
+	(Il2CppMethodPointer)&Array_Resize_TisInt32_t2950945753_m18578417_gshared/* 1424*/,
+	(Il2CppMethodPointer)&Array_Resize_TisCustomAttributeNamedArgument_t287865710_m2861489985_gshared/* 1425*/,
+	(Il2CppMethodPointer)&Array_Resize_TisCustomAttributeNamedArgument_t287865710_m885566878_gshared/* 1426*/,
+	(Il2CppMethodPointer)&Array_Resize_TisCustomAttributeTypedArgument_t2723150157_m877658765_gshared/* 1427*/,
+	(Il2CppMethodPointer)&Array_Resize_TisCustomAttributeTypedArgument_t2723150157_m3021884250_gshared/* 1428*/,
+	(Il2CppMethodPointer)&Array_Resize_TisOrderBlock_t1585977831_m3449774576_gshared/* 1429*/,
+	(Il2CppMethodPointer)&Array_Resize_TisOrderBlock_t1585977831_m2784259641_gshared/* 1430*/,
+	(Il2CppMethodPointer)&Array_Resize_TisColor32_t2600501292_m2984087822_gshared/* 1431*/,
+	(Il2CppMethodPointer)&Array_Resize_TisColor32_t2600501292_m2781660956_gshared/* 1432*/,
+	(Il2CppMethodPointer)&Array_Resize_TisRaycastResult_t3360306849_m1277390301_gshared/* 1433*/,
+	(Il2CppMethodPointer)&Array_Resize_TisRaycastResult_t3360306849_m1811054291_gshared/* 1434*/,
+	(Il2CppMethodPointer)&Array_Resize_TisUICharInfo_t75501106_m3926798054_gshared/* 1435*/,
+	(Il2CppMethodPointer)&Array_Resize_TisUICharInfo_t75501106_m3903846016_gshared/* 1436*/,
+	(Il2CppMethodPointer)&Array_Resize_TisUILineInfo_t4195266810_m2197625248_gshared/* 1437*/,
+	(Il2CppMethodPointer)&Array_Resize_TisUILineInfo_t4195266810_m3763058392_gshared/* 1438*/,
+	(Il2CppMethodPointer)&Array_Resize_TisUIVertex_t4057497605_m1219201596_gshared/* 1439*/,
+	(Il2CppMethodPointer)&Array_Resize_TisUIVertex_t4057497605_m2412004271_gshared/* 1440*/,
+	(Il2CppMethodPointer)&Array_Resize_TisVector2_t2156229523_m1564542050_gshared/* 1441*/,
+	(Il2CppMethodPointer)&Array_Resize_TisVector2_t2156229523_m3382835435_gshared/* 1442*/,
+	(Il2CppMethodPointer)&Array_Resize_TisVector3_t3722313464_m1245103517_gshared/* 1443*/,
+	(Il2CppMethodPointer)&Array_Resize_TisVector3_t3722313464_m3912253972_gshared/* 1444*/,
+	(Il2CppMethodPointer)&Array_Resize_TisVector4_t3319028937_m1507893064_gshared/* 1445*/,
+	(Il2CppMethodPointer)&Array_Resize_TisVector4_t3319028937_m3264241945_gshared/* 1446*/,
 	(Il2CppMethodPointer)&Array_Sort_TisBoolean_t97287965_TisBoolean_t97287965_m2753381653_gshared/* 1447*/,
 	(Il2CppMethodPointer)&Array_Sort_TisBoolean_t97287965_m2273626517_gshared/* 1448*/,
 	(Il2CppMethodPointer)&Array_Sort_TisBoolean_t97287965_m2871387438_gshared/* 1449*/,

@@ -746,24 +746,24 @@ extern const RuntimeMethod* Array_Sort_TisInt32_t2950945753_m3365933701_RuntimeM
 extern const uint32_t Array_Sort_TisInt32_t2950945753_m3365933701_MetadataUsageId;
 extern const RuntimeMethod* Array_Sort_TisInt32_t2950945753_m263117253_RuntimeMethod_var;
 extern const uint32_t Array_Sort_TisInt32_t2950945753_m263117253_MetadataUsageId;
+extern const RuntimeMethod* Array_Sort_TisRuntimeObject_TisRuntimeObject_m1685639929_RuntimeMethod_var;
+extern const uint32_t Array_Sort_TisRuntimeObject_TisRuntimeObject_m1685639929_MetadataUsageId;
 extern const RuntimeMethod* Array_Sort_TisRuntimeObject_TisRuntimeObject_m528220565_RuntimeMethod_var;
 extern const uint32_t Array_Sort_TisRuntimeObject_TisRuntimeObject_m528220565_MetadataUsageId;
 extern const RuntimeMethod* Array_Sort_TisRuntimeObject_TisRuntimeObject_m879120523_RuntimeMethod_var;
 extern const uint32_t Array_Sort_TisRuntimeObject_TisRuntimeObject_m879120523_MetadataUsageId;
-extern const RuntimeMethod* Array_Sort_TisRuntimeObject_TisRuntimeObject_m1685639929_RuntimeMethod_var;
-extern const uint32_t Array_Sort_TisRuntimeObject_TisRuntimeObject_m1685639929_MetadataUsageId;
+extern const RuntimeMethod* Array_Sort_TisRuntimeObject_m1972115694_RuntimeMethod_var;
+extern const uint32_t Array_Sort_TisRuntimeObject_m1972115694_MetadataUsageId;
 extern const RuntimeMethod* Array_Sort_TisRuntimeObject_m460813780_RuntimeMethod_var;
 extern const uint32_t Array_Sort_TisRuntimeObject_m460813780_MetadataUsageId;
 extern const RuntimeMethod* Array_Sort_TisRuntimeObject_m3735745751_RuntimeMethod_var;
 extern const uint32_t Array_Sort_TisRuntimeObject_m3735745751_MetadataUsageId;
 extern const RuntimeMethod* Array_Sort_TisRuntimeObject_m3700318967_RuntimeMethod_var;
 extern const uint32_t Array_Sort_TisRuntimeObject_m3700318967_MetadataUsageId;
-extern const RuntimeMethod* Array_Sort_TisRuntimeObject_m2698056810_RuntimeMethod_var;
-extern const uint32_t Array_Sort_TisRuntimeObject_m2698056810_MetadataUsageId;
 extern const RuntimeMethod* Array_Sort_TisRuntimeObject_m440635289_RuntimeMethod_var;
 extern const uint32_t Array_Sort_TisRuntimeObject_m440635289_MetadataUsageId;
-extern const RuntimeMethod* Array_Sort_TisRuntimeObject_m1972115694_RuntimeMethod_var;
-extern const uint32_t Array_Sort_TisRuntimeObject_m1972115694_MetadataUsageId;
+extern const RuntimeMethod* Array_Sort_TisRuntimeObject_m2698056810_RuntimeMethod_var;
+extern const uint32_t Array_Sort_TisRuntimeObject_m2698056810_MetadataUsageId;
 extern const RuntimeMethod* Array_Sort_TisCustomAttributeNamedArgument_t287865710_TisCustomAttributeNamedArgument_t287865710_m1309535943_RuntimeMethod_var;
 extern const uint32_t Array_Sort_TisCustomAttributeNamedArgument_t287865710_TisCustomAttributeNamedArgument_t287865710_m1309535943_MetadataUsageId;
 extern const RuntimeMethod* Array_Sort_TisCustomAttributeNamedArgument_t287865710_m3178168269_RuntimeMethod_var;
@@ -21505,6 +21505,45 @@ IL_00aa:
 		return;
 	}
 }
+// System.Void System.Array::Resize<System.Boolean>(T[]&,System.Int32)
+extern "C"  void Array_Resize_TisBoolean_t97287965_m4177583518_gshared (RuntimeObject * __this /* static, unused */, BooleanU5BU5D_t2897418192** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
+{
+	BooleanU5BU5D_t2897418192** G_B2_0 = NULL;
+	BooleanU5BU5D_t2897418192** G_B1_0 = NULL;
+	int32_t G_B3_0 = 0;
+	BooleanU5BU5D_t2897418192** G_B3_1 = NULL;
+	{
+		BooleanU5BU5D_t2897418192** L_0 = ___array0;
+		BooleanU5BU5D_t2897418192** L_1 = ___array0;
+		BooleanU5BU5D_t2897418192* L_2 = *((BooleanU5BU5D_t2897418192**)L_1);
+		G_B1_0 = L_0;
+		if (L_2)
+		{
+			G_B2_0 = L_0;
+			goto IL_000e;
+		}
+	}
+	{
+		G_B3_0 = 0;
+		G_B3_1 = G_B1_0;
+		goto IL_0012;
+	}
+
+IL_000e:
+	{
+		BooleanU5BU5D_t2897418192** L_3 = ___array0;
+		BooleanU5BU5D_t2897418192* L_4 = *((BooleanU5BU5D_t2897418192**)L_3);
+		G_B3_0 = (((int32_t)((int32_t)(((RuntimeArray *)L_4)->max_length))));
+		G_B3_1 = G_B2_0;
+	}
+
+IL_0012:
+	{
+		int32_t L_5 = ___newSize1;
+		((  void (*) (RuntimeObject * /* static, unused */, BooleanU5BU5D_t2897418192**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (BooleanU5BU5D_t2897418192**)(BooleanU5BU5D_t2897418192**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
+		return;
+	}
+}
 // System.Void System.Array::Resize<System.Boolean>(T[]&,System.Int32,System.Int32)
 extern "C"  void Array_Resize_TisBoolean_t97287965_m1311737542_gshared (RuntimeObject * __this /* static, unused */, BooleanU5BU5D_t2897418192** ___array0, int32_t ___length1, int32_t ___newSize2, const RuntimeMethod* method)
 {
@@ -21577,17 +21616,17 @@ IL_0028:
 		return;
 	}
 }
-// System.Void System.Array::Resize<System.Boolean>(T[]&,System.Int32)
-extern "C"  void Array_Resize_TisBoolean_t97287965_m4177583518_gshared (RuntimeObject * __this /* static, unused */, BooleanU5BU5D_t2897418192** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
+// System.Void System.Array::Resize<System.Collections.Generic.KeyValuePair`2<System.Object,System.Object>>(T[]&,System.Int32)
+extern "C"  void Array_Resize_TisKeyValuePair_2_t2530217319_m2383251369_gshared (RuntimeObject * __this /* static, unused */, KeyValuePair_2U5BU5D_t118269214** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
 {
-	BooleanU5BU5D_t2897418192** G_B2_0 = NULL;
-	BooleanU5BU5D_t2897418192** G_B1_0 = NULL;
+	KeyValuePair_2U5BU5D_t118269214** G_B2_0 = NULL;
+	KeyValuePair_2U5BU5D_t118269214** G_B1_0 = NULL;
 	int32_t G_B3_0 = 0;
-	BooleanU5BU5D_t2897418192** G_B3_1 = NULL;
+	KeyValuePair_2U5BU5D_t118269214** G_B3_1 = NULL;
 	{
-		BooleanU5BU5D_t2897418192** L_0 = ___array0;
-		BooleanU5BU5D_t2897418192** L_1 = ___array0;
-		BooleanU5BU5D_t2897418192* L_2 = *((BooleanU5BU5D_t2897418192**)L_1);
+		KeyValuePair_2U5BU5D_t118269214** L_0 = ___array0;
+		KeyValuePair_2U5BU5D_t118269214** L_1 = ___array0;
+		KeyValuePair_2U5BU5D_t118269214* L_2 = *((KeyValuePair_2U5BU5D_t118269214**)L_1);
 		G_B1_0 = L_0;
 		if (L_2)
 		{
@@ -21603,8 +21642,8 @@ extern "C"  void Array_Resize_TisBoolean_t97287965_m4177583518_gshared (RuntimeO
 
 IL_000e:
 	{
-		BooleanU5BU5D_t2897418192** L_3 = ___array0;
-		BooleanU5BU5D_t2897418192* L_4 = *((BooleanU5BU5D_t2897418192**)L_3);
+		KeyValuePair_2U5BU5D_t118269214** L_3 = ___array0;
+		KeyValuePair_2U5BU5D_t118269214* L_4 = *((KeyValuePair_2U5BU5D_t118269214**)L_3);
 		G_B3_0 = (((int32_t)((int32_t)(((RuntimeArray *)L_4)->max_length))));
 		G_B3_1 = G_B2_0;
 	}
@@ -21612,7 +21651,7 @@ IL_000e:
 IL_0012:
 	{
 		int32_t L_5 = ___newSize1;
-		((  void (*) (RuntimeObject * /* static, unused */, BooleanU5BU5D_t2897418192**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (BooleanU5BU5D_t2897418192**)(BooleanU5BU5D_t2897418192**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
+		((  void (*) (RuntimeObject * /* static, unused */, KeyValuePair_2U5BU5D_t118269214**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (KeyValuePair_2U5BU5D_t118269214**)(KeyValuePair_2U5BU5D_t118269214**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
 		return;
 	}
 }
@@ -21688,17 +21727,17 @@ IL_0028:
 		return;
 	}
 }
-// System.Void System.Array::Resize<System.Collections.Generic.KeyValuePair`2<System.Object,System.Object>>(T[]&,System.Int32)
-extern "C"  void Array_Resize_TisKeyValuePair_2_t2530217319_m2383251369_gshared (RuntimeObject * __this /* static, unused */, KeyValuePair_2U5BU5D_t118269214** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
+// System.Void System.Array::Resize<System.Int32>(T[]&,System.Int32)
+extern "C"  void Array_Resize_TisInt32_t2950945753_m2286572300_gshared (RuntimeObject * __this /* static, unused */, Int32U5BU5D_t385246372** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
 {
-	KeyValuePair_2U5BU5D_t118269214** G_B2_0 = NULL;
-	KeyValuePair_2U5BU5D_t118269214** G_B1_0 = NULL;
+	Int32U5BU5D_t385246372** G_B2_0 = NULL;
+	Int32U5BU5D_t385246372** G_B1_0 = NULL;
 	int32_t G_B3_0 = 0;
-	KeyValuePair_2U5BU5D_t118269214** G_B3_1 = NULL;
+	Int32U5BU5D_t385246372** G_B3_1 = NULL;
 	{
-		KeyValuePair_2U5BU5D_t118269214** L_0 = ___array0;
-		KeyValuePair_2U5BU5D_t118269214** L_1 = ___array0;
-		KeyValuePair_2U5BU5D_t118269214* L_2 = *((KeyValuePair_2U5BU5D_t118269214**)L_1);
+		Int32U5BU5D_t385246372** L_0 = ___array0;
+		Int32U5BU5D_t385246372** L_1 = ___array0;
+		Int32U5BU5D_t385246372* L_2 = *((Int32U5BU5D_t385246372**)L_1);
 		G_B1_0 = L_0;
 		if (L_2)
 		{
@@ -21714,8 +21753,8 @@ extern "C"  void Array_Resize_TisKeyValuePair_2_t2530217319_m2383251369_gshared 
 
 IL_000e:
 	{
-		KeyValuePair_2U5BU5D_t118269214** L_3 = ___array0;
-		KeyValuePair_2U5BU5D_t118269214* L_4 = *((KeyValuePair_2U5BU5D_t118269214**)L_3);
+		Int32U5BU5D_t385246372** L_3 = ___array0;
+		Int32U5BU5D_t385246372* L_4 = *((Int32U5BU5D_t385246372**)L_3);
 		G_B3_0 = (((int32_t)((int32_t)(((RuntimeArray *)L_4)->max_length))));
 		G_B3_1 = G_B2_0;
 	}
@@ -21723,7 +21762,7 @@ IL_000e:
 IL_0012:
 	{
 		int32_t L_5 = ___newSize1;
-		((  void (*) (RuntimeObject * /* static, unused */, KeyValuePair_2U5BU5D_t118269214**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (KeyValuePair_2U5BU5D_t118269214**)(KeyValuePair_2U5BU5D_t118269214**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
+		((  void (*) (RuntimeObject * /* static, unused */, Int32U5BU5D_t385246372**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (Int32U5BU5D_t385246372**)(Int32U5BU5D_t385246372**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
 		return;
 	}
 }
@@ -21799,17 +21838,17 @@ IL_0028:
 		return;
 	}
 }
-// System.Void System.Array::Resize<System.Int32>(T[]&,System.Int32)
-extern "C"  void Array_Resize_TisInt32_t2950945753_m2286572300_gshared (RuntimeObject * __this /* static, unused */, Int32U5BU5D_t385246372** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
+// System.Void System.Array::Resize<System.Object>(T[]&,System.Int32)
+extern "C"  void Array_Resize_TisRuntimeObject_m856296018_gshared (RuntimeObject * __this /* static, unused */, ObjectU5BU5D_t2843939325** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
 {
-	Int32U5BU5D_t385246372** G_B2_0 = NULL;
-	Int32U5BU5D_t385246372** G_B1_0 = NULL;
+	ObjectU5BU5D_t2843939325** G_B2_0 = NULL;
+	ObjectU5BU5D_t2843939325** G_B1_0 = NULL;
 	int32_t G_B3_0 = 0;
-	Int32U5BU5D_t385246372** G_B3_1 = NULL;
+	ObjectU5BU5D_t2843939325** G_B3_1 = NULL;
 	{
-		Int32U5BU5D_t385246372** L_0 = ___array0;
-		Int32U5BU5D_t385246372** L_1 = ___array0;
-		Int32U5BU5D_t385246372* L_2 = *((Int32U5BU5D_t385246372**)L_1);
+		ObjectU5BU5D_t2843939325** L_0 = ___array0;
+		ObjectU5BU5D_t2843939325** L_1 = ___array0;
+		ObjectU5BU5D_t2843939325* L_2 = *((ObjectU5BU5D_t2843939325**)L_1);
 		G_B1_0 = L_0;
 		if (L_2)
 		{
@@ -21825,8 +21864,8 @@ extern "C"  void Array_Resize_TisInt32_t2950945753_m2286572300_gshared (RuntimeO
 
 IL_000e:
 	{
-		Int32U5BU5D_t385246372** L_3 = ___array0;
-		Int32U5BU5D_t385246372* L_4 = *((Int32U5BU5D_t385246372**)L_3);
+		ObjectU5BU5D_t2843939325** L_3 = ___array0;
+		ObjectU5BU5D_t2843939325* L_4 = *((ObjectU5BU5D_t2843939325**)L_3);
 		G_B3_0 = (((int32_t)((int32_t)(((RuntimeArray *)L_4)->max_length))));
 		G_B3_1 = G_B2_0;
 	}
@@ -21834,7 +21873,7 @@ IL_000e:
 IL_0012:
 	{
 		int32_t L_5 = ___newSize1;
-		((  void (*) (RuntimeObject * /* static, unused */, Int32U5BU5D_t385246372**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (Int32U5BU5D_t385246372**)(Int32U5BU5D_t385246372**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
+		((  void (*) (RuntimeObject * /* static, unused */, ObjectU5BU5D_t2843939325**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (ObjectU5BU5D_t2843939325**)(ObjectU5BU5D_t2843939325**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
 		return;
 	}
 }
@@ -21910,17 +21949,17 @@ IL_0028:
 		return;
 	}
 }
-// System.Void System.Array::Resize<System.Object>(T[]&,System.Int32)
-extern "C"  void Array_Resize_TisRuntimeObject_m856296018_gshared (RuntimeObject * __this /* static, unused */, ObjectU5BU5D_t2843939325** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
+// System.Void System.Array::Resize<System.Reflection.CustomAttributeNamedArgument>(T[]&,System.Int32)
+extern "C"  void Array_Resize_TisCustomAttributeNamedArgument_t287865710_m2861489985_gshared (RuntimeObject * __this /* static, unused */, CustomAttributeNamedArgumentU5BU5D_t3710464795** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
 {
-	ObjectU5BU5D_t2843939325** G_B2_0 = NULL;
-	ObjectU5BU5D_t2843939325** G_B1_0 = NULL;
+	CustomAttributeNamedArgumentU5BU5D_t3710464795** G_B2_0 = NULL;
+	CustomAttributeNamedArgumentU5BU5D_t3710464795** G_B1_0 = NULL;
 	int32_t G_B3_0 = 0;
-	ObjectU5BU5D_t2843939325** G_B3_1 = NULL;
+	CustomAttributeNamedArgumentU5BU5D_t3710464795** G_B3_1 = NULL;
 	{
-		ObjectU5BU5D_t2843939325** L_0 = ___array0;
-		ObjectU5BU5D_t2843939325** L_1 = ___array0;
-		ObjectU5BU5D_t2843939325* L_2 = *((ObjectU5BU5D_t2843939325**)L_1);
+		CustomAttributeNamedArgumentU5BU5D_t3710464795** L_0 = ___array0;
+		CustomAttributeNamedArgumentU5BU5D_t3710464795** L_1 = ___array0;
+		CustomAttributeNamedArgumentU5BU5D_t3710464795* L_2 = *((CustomAttributeNamedArgumentU5BU5D_t3710464795**)L_1);
 		G_B1_0 = L_0;
 		if (L_2)
 		{
@@ -21936,8 +21975,8 @@ extern "C"  void Array_Resize_TisRuntimeObject_m856296018_gshared (RuntimeObject
 
 IL_000e:
 	{
-		ObjectU5BU5D_t2843939325** L_3 = ___array0;
-		ObjectU5BU5D_t2843939325* L_4 = *((ObjectU5BU5D_t2843939325**)L_3);
+		CustomAttributeNamedArgumentU5BU5D_t3710464795** L_3 = ___array0;
+		CustomAttributeNamedArgumentU5BU5D_t3710464795* L_4 = *((CustomAttributeNamedArgumentU5BU5D_t3710464795**)L_3);
 		G_B3_0 = (((int32_t)((int32_t)(((RuntimeArray *)L_4)->max_length))));
 		G_B3_1 = G_B2_0;
 	}
@@ -21945,7 +21984,7 @@ IL_000e:
 IL_0012:
 	{
 		int32_t L_5 = ___newSize1;
-		((  void (*) (RuntimeObject * /* static, unused */, ObjectU5BU5D_t2843939325**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (ObjectU5BU5D_t2843939325**)(ObjectU5BU5D_t2843939325**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
+		((  void (*) (RuntimeObject * /* static, unused */, CustomAttributeNamedArgumentU5BU5D_t3710464795**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (CustomAttributeNamedArgumentU5BU5D_t3710464795**)(CustomAttributeNamedArgumentU5BU5D_t3710464795**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
 		return;
 	}
 }
@@ -22021,17 +22060,17 @@ IL_0028:
 		return;
 	}
 }
-// System.Void System.Array::Resize<System.Reflection.CustomAttributeNamedArgument>(T[]&,System.Int32)
-extern "C"  void Array_Resize_TisCustomAttributeNamedArgument_t287865710_m2861489985_gshared (RuntimeObject * __this /* static, unused */, CustomAttributeNamedArgumentU5BU5D_t3710464795** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
+// System.Void System.Array::Resize<System.Reflection.CustomAttributeTypedArgument>(T[]&,System.Int32)
+extern "C"  void Array_Resize_TisCustomAttributeTypedArgument_t2723150157_m877658765_gshared (RuntimeObject * __this /* static, unused */, CustomAttributeTypedArgumentU5BU5D_t1465843424** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
 {
-	CustomAttributeNamedArgumentU5BU5D_t3710464795** G_B2_0 = NULL;
-	CustomAttributeNamedArgumentU5BU5D_t3710464795** G_B1_0 = NULL;
+	CustomAttributeTypedArgumentU5BU5D_t1465843424** G_B2_0 = NULL;
+	CustomAttributeTypedArgumentU5BU5D_t1465843424** G_B1_0 = NULL;
 	int32_t G_B3_0 = 0;
-	CustomAttributeNamedArgumentU5BU5D_t3710464795** G_B3_1 = NULL;
+	CustomAttributeTypedArgumentU5BU5D_t1465843424** G_B3_1 = NULL;
 	{
-		CustomAttributeNamedArgumentU5BU5D_t3710464795** L_0 = ___array0;
-		CustomAttributeNamedArgumentU5BU5D_t3710464795** L_1 = ___array0;
-		CustomAttributeNamedArgumentU5BU5D_t3710464795* L_2 = *((CustomAttributeNamedArgumentU5BU5D_t3710464795**)L_1);
+		CustomAttributeTypedArgumentU5BU5D_t1465843424** L_0 = ___array0;
+		CustomAttributeTypedArgumentU5BU5D_t1465843424** L_1 = ___array0;
+		CustomAttributeTypedArgumentU5BU5D_t1465843424* L_2 = *((CustomAttributeTypedArgumentU5BU5D_t1465843424**)L_1);
 		G_B1_0 = L_0;
 		if (L_2)
 		{
@@ -22047,8 +22086,8 @@ extern "C"  void Array_Resize_TisCustomAttributeNamedArgument_t287865710_m286148
 
 IL_000e:
 	{
-		CustomAttributeNamedArgumentU5BU5D_t3710464795** L_3 = ___array0;
-		CustomAttributeNamedArgumentU5BU5D_t3710464795* L_4 = *((CustomAttributeNamedArgumentU5BU5D_t3710464795**)L_3);
+		CustomAttributeTypedArgumentU5BU5D_t1465843424** L_3 = ___array0;
+		CustomAttributeTypedArgumentU5BU5D_t1465843424* L_4 = *((CustomAttributeTypedArgumentU5BU5D_t1465843424**)L_3);
 		G_B3_0 = (((int32_t)((int32_t)(((RuntimeArray *)L_4)->max_length))));
 		G_B3_1 = G_B2_0;
 	}
@@ -22056,7 +22095,7 @@ IL_000e:
 IL_0012:
 	{
 		int32_t L_5 = ___newSize1;
-		((  void (*) (RuntimeObject * /* static, unused */, CustomAttributeNamedArgumentU5BU5D_t3710464795**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (CustomAttributeNamedArgumentU5BU5D_t3710464795**)(CustomAttributeNamedArgumentU5BU5D_t3710464795**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
+		((  void (*) (RuntimeObject * /* static, unused */, CustomAttributeTypedArgumentU5BU5D_t1465843424**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (CustomAttributeTypedArgumentU5BU5D_t1465843424**)(CustomAttributeTypedArgumentU5BU5D_t1465843424**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
 		return;
 	}
 }
@@ -22132,17 +22171,17 @@ IL_0028:
 		return;
 	}
 }
-// System.Void System.Array::Resize<System.Reflection.CustomAttributeTypedArgument>(T[]&,System.Int32)
-extern "C"  void Array_Resize_TisCustomAttributeTypedArgument_t2723150157_m877658765_gshared (RuntimeObject * __this /* static, unused */, CustomAttributeTypedArgumentU5BU5D_t1465843424** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
+// System.Void System.Array::Resize<UnityEngine.BeforeRenderHelper/OrderBlock>(T[]&,System.Int32)
+extern "C"  void Array_Resize_TisOrderBlock_t1585977831_m3449774576_gshared (RuntimeObject * __this /* static, unused */, OrderBlockU5BU5D_t2389202590** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
 {
-	CustomAttributeTypedArgumentU5BU5D_t1465843424** G_B2_0 = NULL;
-	CustomAttributeTypedArgumentU5BU5D_t1465843424** G_B1_0 = NULL;
+	OrderBlockU5BU5D_t2389202590** G_B2_0 = NULL;
+	OrderBlockU5BU5D_t2389202590** G_B1_0 = NULL;
 	int32_t G_B3_0 = 0;
-	CustomAttributeTypedArgumentU5BU5D_t1465843424** G_B3_1 = NULL;
+	OrderBlockU5BU5D_t2389202590** G_B3_1 = NULL;
 	{
-		CustomAttributeTypedArgumentU5BU5D_t1465843424** L_0 = ___array0;
-		CustomAttributeTypedArgumentU5BU5D_t1465843424** L_1 = ___array0;
-		CustomAttributeTypedArgumentU5BU5D_t1465843424* L_2 = *((CustomAttributeTypedArgumentU5BU5D_t1465843424**)L_1);
+		OrderBlockU5BU5D_t2389202590** L_0 = ___array0;
+		OrderBlockU5BU5D_t2389202590** L_1 = ___array0;
+		OrderBlockU5BU5D_t2389202590* L_2 = *((OrderBlockU5BU5D_t2389202590**)L_1);
 		G_B1_0 = L_0;
 		if (L_2)
 		{
@@ -22158,8 +22197,8 @@ extern "C"  void Array_Resize_TisCustomAttributeTypedArgument_t2723150157_m87765
 
 IL_000e:
 	{
-		CustomAttributeTypedArgumentU5BU5D_t1465843424** L_3 = ___array0;
-		CustomAttributeTypedArgumentU5BU5D_t1465843424* L_4 = *((CustomAttributeTypedArgumentU5BU5D_t1465843424**)L_3);
+		OrderBlockU5BU5D_t2389202590** L_3 = ___array0;
+		OrderBlockU5BU5D_t2389202590* L_4 = *((OrderBlockU5BU5D_t2389202590**)L_3);
 		G_B3_0 = (((int32_t)((int32_t)(((RuntimeArray *)L_4)->max_length))));
 		G_B3_1 = G_B2_0;
 	}
@@ -22167,7 +22206,7 @@ IL_000e:
 IL_0012:
 	{
 		int32_t L_5 = ___newSize1;
-		((  void (*) (RuntimeObject * /* static, unused */, CustomAttributeTypedArgumentU5BU5D_t1465843424**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (CustomAttributeTypedArgumentU5BU5D_t1465843424**)(CustomAttributeTypedArgumentU5BU5D_t1465843424**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
+		((  void (*) (RuntimeObject * /* static, unused */, OrderBlockU5BU5D_t2389202590**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (OrderBlockU5BU5D_t2389202590**)(OrderBlockU5BU5D_t2389202590**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
 		return;
 	}
 }
@@ -22243,17 +22282,17 @@ IL_0028:
 		return;
 	}
 }
-// System.Void System.Array::Resize<UnityEngine.BeforeRenderHelper/OrderBlock>(T[]&,System.Int32)
-extern "C"  void Array_Resize_TisOrderBlock_t1585977831_m3449774576_gshared (RuntimeObject * __this /* static, unused */, OrderBlockU5BU5D_t2389202590** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
+// System.Void System.Array::Resize<UnityEngine.Color32>(T[]&,System.Int32)
+extern "C"  void Array_Resize_TisColor32_t2600501292_m2984087822_gshared (RuntimeObject * __this /* static, unused */, Color32U5BU5D_t3850468773** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
 {
-	OrderBlockU5BU5D_t2389202590** G_B2_0 = NULL;
-	OrderBlockU5BU5D_t2389202590** G_B1_0 = NULL;
+	Color32U5BU5D_t3850468773** G_B2_0 = NULL;
+	Color32U5BU5D_t3850468773** G_B1_0 = NULL;
 	int32_t G_B3_0 = 0;
-	OrderBlockU5BU5D_t2389202590** G_B3_1 = NULL;
+	Color32U5BU5D_t3850468773** G_B3_1 = NULL;
 	{
-		OrderBlockU5BU5D_t2389202590** L_0 = ___array0;
-		OrderBlockU5BU5D_t2389202590** L_1 = ___array0;
-		OrderBlockU5BU5D_t2389202590* L_2 = *((OrderBlockU5BU5D_t2389202590**)L_1);
+		Color32U5BU5D_t3850468773** L_0 = ___array0;
+		Color32U5BU5D_t3850468773** L_1 = ___array0;
+		Color32U5BU5D_t3850468773* L_2 = *((Color32U5BU5D_t3850468773**)L_1);
 		G_B1_0 = L_0;
 		if (L_2)
 		{
@@ -22269,8 +22308,8 @@ extern "C"  void Array_Resize_TisOrderBlock_t1585977831_m3449774576_gshared (Run
 
 IL_000e:
 	{
-		OrderBlockU5BU5D_t2389202590** L_3 = ___array0;
-		OrderBlockU5BU5D_t2389202590* L_4 = *((OrderBlockU5BU5D_t2389202590**)L_3);
+		Color32U5BU5D_t3850468773** L_3 = ___array0;
+		Color32U5BU5D_t3850468773* L_4 = *((Color32U5BU5D_t3850468773**)L_3);
 		G_B3_0 = (((int32_t)((int32_t)(((RuntimeArray *)L_4)->max_length))));
 		G_B3_1 = G_B2_0;
 	}
@@ -22278,7 +22317,7 @@ IL_000e:
 IL_0012:
 	{
 		int32_t L_5 = ___newSize1;
-		((  void (*) (RuntimeObject * /* static, unused */, OrderBlockU5BU5D_t2389202590**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (OrderBlockU5BU5D_t2389202590**)(OrderBlockU5BU5D_t2389202590**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
+		((  void (*) (RuntimeObject * /* static, unused */, Color32U5BU5D_t3850468773**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (Color32U5BU5D_t3850468773**)(Color32U5BU5D_t3850468773**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
 		return;
 	}
 }
@@ -22354,17 +22393,17 @@ IL_0028:
 		return;
 	}
 }
-// System.Void System.Array::Resize<UnityEngine.Color32>(T[]&,System.Int32)
-extern "C"  void Array_Resize_TisColor32_t2600501292_m2984087822_gshared (RuntimeObject * __this /* static, unused */, Color32U5BU5D_t3850468773** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
+// System.Void System.Array::Resize<UnityEngine.EventSystems.RaycastResult>(T[]&,System.Int32)
+extern "C"  void Array_Resize_TisRaycastResult_t3360306849_m1277390301_gshared (RuntimeObject * __this /* static, unused */, RaycastResultU5BU5D_t1128832444** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
 {
-	Color32U5BU5D_t3850468773** G_B2_0 = NULL;
-	Color32U5BU5D_t3850468773** G_B1_0 = NULL;
+	RaycastResultU5BU5D_t1128832444** G_B2_0 = NULL;
+	RaycastResultU5BU5D_t1128832444** G_B1_0 = NULL;
 	int32_t G_B3_0 = 0;
-	Color32U5BU5D_t3850468773** G_B3_1 = NULL;
+	RaycastResultU5BU5D_t1128832444** G_B3_1 = NULL;
 	{
-		Color32U5BU5D_t3850468773** L_0 = ___array0;
-		Color32U5BU5D_t3850468773** L_1 = ___array0;
-		Color32U5BU5D_t3850468773* L_2 = *((Color32U5BU5D_t3850468773**)L_1);
+		RaycastResultU5BU5D_t1128832444** L_0 = ___array0;
+		RaycastResultU5BU5D_t1128832444** L_1 = ___array0;
+		RaycastResultU5BU5D_t1128832444* L_2 = *((RaycastResultU5BU5D_t1128832444**)L_1);
 		G_B1_0 = L_0;
 		if (L_2)
 		{
@@ -22380,8 +22419,8 @@ extern "C"  void Array_Resize_TisColor32_t2600501292_m2984087822_gshared (Runtim
 
 IL_000e:
 	{
-		Color32U5BU5D_t3850468773** L_3 = ___array0;
-		Color32U5BU5D_t3850468773* L_4 = *((Color32U5BU5D_t3850468773**)L_3);
+		RaycastResultU5BU5D_t1128832444** L_3 = ___array0;
+		RaycastResultU5BU5D_t1128832444* L_4 = *((RaycastResultU5BU5D_t1128832444**)L_3);
 		G_B3_0 = (((int32_t)((int32_t)(((RuntimeArray *)L_4)->max_length))));
 		G_B3_1 = G_B2_0;
 	}
@@ -22389,7 +22428,7 @@ IL_000e:
 IL_0012:
 	{
 		int32_t L_5 = ___newSize1;
-		((  void (*) (RuntimeObject * /* static, unused */, Color32U5BU5D_t3850468773**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (Color32U5BU5D_t3850468773**)(Color32U5BU5D_t3850468773**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
+		((  void (*) (RuntimeObject * /* static, unused */, RaycastResultU5BU5D_t1128832444**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (RaycastResultU5BU5D_t1128832444**)(RaycastResultU5BU5D_t1128832444**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
 		return;
 	}
 }
@@ -22465,17 +22504,17 @@ IL_0028:
 		return;
 	}
 }
-// System.Void System.Array::Resize<UnityEngine.EventSystems.RaycastResult>(T[]&,System.Int32)
-extern "C"  void Array_Resize_TisRaycastResult_t3360306849_m1277390301_gshared (RuntimeObject * __this /* static, unused */, RaycastResultU5BU5D_t1128832444** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
+// System.Void System.Array::Resize<UnityEngine.UICharInfo>(T[]&,System.Int32)
+extern "C"  void Array_Resize_TisUICharInfo_t75501106_m3926798054_gshared (RuntimeObject * __this /* static, unused */, UICharInfoU5BU5D_t928762055** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
 {
-	RaycastResultU5BU5D_t1128832444** G_B2_0 = NULL;
-	RaycastResultU5BU5D_t1128832444** G_B1_0 = NULL;
+	UICharInfoU5BU5D_t928762055** G_B2_0 = NULL;
+	UICharInfoU5BU5D_t928762055** G_B1_0 = NULL;
 	int32_t G_B3_0 = 0;
-	RaycastResultU5BU5D_t1128832444** G_B3_1 = NULL;
+	UICharInfoU5BU5D_t928762055** G_B3_1 = NULL;
 	{
-		RaycastResultU5BU5D_t1128832444** L_0 = ___array0;
-		RaycastResultU5BU5D_t1128832444** L_1 = ___array0;
-		RaycastResultU5BU5D_t1128832444* L_2 = *((RaycastResultU5BU5D_t1128832444**)L_1);
+		UICharInfoU5BU5D_t928762055** L_0 = ___array0;
+		UICharInfoU5BU5D_t928762055** L_1 = ___array0;
+		UICharInfoU5BU5D_t928762055* L_2 = *((UICharInfoU5BU5D_t928762055**)L_1);
 		G_B1_0 = L_0;
 		if (L_2)
 		{
@@ -22491,8 +22530,8 @@ extern "C"  void Array_Resize_TisRaycastResult_t3360306849_m1277390301_gshared (
 
 IL_000e:
 	{
-		RaycastResultU5BU5D_t1128832444** L_3 = ___array0;
-		RaycastResultU5BU5D_t1128832444* L_4 = *((RaycastResultU5BU5D_t1128832444**)L_3);
+		UICharInfoU5BU5D_t928762055** L_3 = ___array0;
+		UICharInfoU5BU5D_t928762055* L_4 = *((UICharInfoU5BU5D_t928762055**)L_3);
 		G_B3_0 = (((int32_t)((int32_t)(((RuntimeArray *)L_4)->max_length))));
 		G_B3_1 = G_B2_0;
 	}
@@ -22500,7 +22539,7 @@ IL_000e:
 IL_0012:
 	{
 		int32_t L_5 = ___newSize1;
-		((  void (*) (RuntimeObject * /* static, unused */, RaycastResultU5BU5D_t1128832444**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (RaycastResultU5BU5D_t1128832444**)(RaycastResultU5BU5D_t1128832444**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
+		((  void (*) (RuntimeObject * /* static, unused */, UICharInfoU5BU5D_t928762055**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (UICharInfoU5BU5D_t928762055**)(UICharInfoU5BU5D_t928762055**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
 		return;
 	}
 }
@@ -22576,17 +22615,17 @@ IL_0028:
 		return;
 	}
 }
-// System.Void System.Array::Resize<UnityEngine.UICharInfo>(T[]&,System.Int32)
-extern "C"  void Array_Resize_TisUICharInfo_t75501106_m3926798054_gshared (RuntimeObject * __this /* static, unused */, UICharInfoU5BU5D_t928762055** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
+// System.Void System.Array::Resize<UnityEngine.UILineInfo>(T[]&,System.Int32)
+extern "C"  void Array_Resize_TisUILineInfo_t4195266810_m2197625248_gshared (RuntimeObject * __this /* static, unused */, UILineInfoU5BU5D_t1655937503** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
 {
-	UICharInfoU5BU5D_t928762055** G_B2_0 = NULL;
-	UICharInfoU5BU5D_t928762055** G_B1_0 = NULL;
+	UILineInfoU5BU5D_t1655937503** G_B2_0 = NULL;
+	UILineInfoU5BU5D_t1655937503** G_B1_0 = NULL;
 	int32_t G_B3_0 = 0;
-	UICharInfoU5BU5D_t928762055** G_B3_1 = NULL;
+	UILineInfoU5BU5D_t1655937503** G_B3_1 = NULL;
 	{
-		UICharInfoU5BU5D_t928762055** L_0 = ___array0;
-		UICharInfoU5BU5D_t928762055** L_1 = ___array0;
-		UICharInfoU5BU5D_t928762055* L_2 = *((UICharInfoU5BU5D_t928762055**)L_1);
+		UILineInfoU5BU5D_t1655937503** L_0 = ___array0;
+		UILineInfoU5BU5D_t1655937503** L_1 = ___array0;
+		UILineInfoU5BU5D_t1655937503* L_2 = *((UILineInfoU5BU5D_t1655937503**)L_1);
 		G_B1_0 = L_0;
 		if (L_2)
 		{
@@ -22602,8 +22641,8 @@ extern "C"  void Array_Resize_TisUICharInfo_t75501106_m3926798054_gshared (Runti
 
 IL_000e:
 	{
-		UICharInfoU5BU5D_t928762055** L_3 = ___array0;
-		UICharInfoU5BU5D_t928762055* L_4 = *((UICharInfoU5BU5D_t928762055**)L_3);
+		UILineInfoU5BU5D_t1655937503** L_3 = ___array0;
+		UILineInfoU5BU5D_t1655937503* L_4 = *((UILineInfoU5BU5D_t1655937503**)L_3);
 		G_B3_0 = (((int32_t)((int32_t)(((RuntimeArray *)L_4)->max_length))));
 		G_B3_1 = G_B2_0;
 	}
@@ -22611,7 +22650,7 @@ IL_000e:
 IL_0012:
 	{
 		int32_t L_5 = ___newSize1;
-		((  void (*) (RuntimeObject * /* static, unused */, UICharInfoU5BU5D_t928762055**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (UICharInfoU5BU5D_t928762055**)(UICharInfoU5BU5D_t928762055**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
+		((  void (*) (RuntimeObject * /* static, unused */, UILineInfoU5BU5D_t1655937503**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (UILineInfoU5BU5D_t1655937503**)(UILineInfoU5BU5D_t1655937503**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
 		return;
 	}
 }
@@ -22687,17 +22726,17 @@ IL_0028:
 		return;
 	}
 }
-// System.Void System.Array::Resize<UnityEngine.UILineInfo>(T[]&,System.Int32)
-extern "C"  void Array_Resize_TisUILineInfo_t4195266810_m2197625248_gshared (RuntimeObject * __this /* static, unused */, UILineInfoU5BU5D_t1655937503** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
+// System.Void System.Array::Resize<UnityEngine.UIVertex>(T[]&,System.Int32)
+extern "C"  void Array_Resize_TisUIVertex_t4057497605_m1219201596_gshared (RuntimeObject * __this /* static, unused */, UIVertexU5BU5D_t1981460040** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
 {
-	UILineInfoU5BU5D_t1655937503** G_B2_0 = NULL;
-	UILineInfoU5BU5D_t1655937503** G_B1_0 = NULL;
+	UIVertexU5BU5D_t1981460040** G_B2_0 = NULL;
+	UIVertexU5BU5D_t1981460040** G_B1_0 = NULL;
 	int32_t G_B3_0 = 0;
-	UILineInfoU5BU5D_t1655937503** G_B3_1 = NULL;
+	UIVertexU5BU5D_t1981460040** G_B3_1 = NULL;
 	{
-		UILineInfoU5BU5D_t1655937503** L_0 = ___array0;
-		UILineInfoU5BU5D_t1655937503** L_1 = ___array0;
-		UILineInfoU5BU5D_t1655937503* L_2 = *((UILineInfoU5BU5D_t1655937503**)L_1);
+		UIVertexU5BU5D_t1981460040** L_0 = ___array0;
+		UIVertexU5BU5D_t1981460040** L_1 = ___array0;
+		UIVertexU5BU5D_t1981460040* L_2 = *((UIVertexU5BU5D_t1981460040**)L_1);
 		G_B1_0 = L_0;
 		if (L_2)
 		{
@@ -22713,8 +22752,8 @@ extern "C"  void Array_Resize_TisUILineInfo_t4195266810_m2197625248_gshared (Run
 
 IL_000e:
 	{
-		UILineInfoU5BU5D_t1655937503** L_3 = ___array0;
-		UILineInfoU5BU5D_t1655937503* L_4 = *((UILineInfoU5BU5D_t1655937503**)L_3);
+		UIVertexU5BU5D_t1981460040** L_3 = ___array0;
+		UIVertexU5BU5D_t1981460040* L_4 = *((UIVertexU5BU5D_t1981460040**)L_3);
 		G_B3_0 = (((int32_t)((int32_t)(((RuntimeArray *)L_4)->max_length))));
 		G_B3_1 = G_B2_0;
 	}
@@ -22722,7 +22761,7 @@ IL_000e:
 IL_0012:
 	{
 		int32_t L_5 = ___newSize1;
-		((  void (*) (RuntimeObject * /* static, unused */, UILineInfoU5BU5D_t1655937503**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (UILineInfoU5BU5D_t1655937503**)(UILineInfoU5BU5D_t1655937503**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
+		((  void (*) (RuntimeObject * /* static, unused */, UIVertexU5BU5D_t1981460040**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (UIVertexU5BU5D_t1981460040**)(UIVertexU5BU5D_t1981460040**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
 		return;
 	}
 }
@@ -22798,17 +22837,17 @@ IL_0028:
 		return;
 	}
 }
-// System.Void System.Array::Resize<UnityEngine.UIVertex>(T[]&,System.Int32)
-extern "C"  void Array_Resize_TisUIVertex_t4057497605_m1219201596_gshared (RuntimeObject * __this /* static, unused */, UIVertexU5BU5D_t1981460040** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
+// System.Void System.Array::Resize<UnityEngine.Vector2>(T[]&,System.Int32)
+extern "C"  void Array_Resize_TisVector2_t2156229523_m1564542050_gshared (RuntimeObject * __this /* static, unused */, Vector2U5BU5D_t1457185986** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
 {
-	UIVertexU5BU5D_t1981460040** G_B2_0 = NULL;
-	UIVertexU5BU5D_t1981460040** G_B1_0 = NULL;
+	Vector2U5BU5D_t1457185986** G_B2_0 = NULL;
+	Vector2U5BU5D_t1457185986** G_B1_0 = NULL;
 	int32_t G_B3_0 = 0;
-	UIVertexU5BU5D_t1981460040** G_B3_1 = NULL;
+	Vector2U5BU5D_t1457185986** G_B3_1 = NULL;
 	{
-		UIVertexU5BU5D_t1981460040** L_0 = ___array0;
-		UIVertexU5BU5D_t1981460040** L_1 = ___array0;
-		UIVertexU5BU5D_t1981460040* L_2 = *((UIVertexU5BU5D_t1981460040**)L_1);
+		Vector2U5BU5D_t1457185986** L_0 = ___array0;
+		Vector2U5BU5D_t1457185986** L_1 = ___array0;
+		Vector2U5BU5D_t1457185986* L_2 = *((Vector2U5BU5D_t1457185986**)L_1);
 		G_B1_0 = L_0;
 		if (L_2)
 		{
@@ -22824,8 +22863,8 @@ extern "C"  void Array_Resize_TisUIVertex_t4057497605_m1219201596_gshared (Runti
 
 IL_000e:
 	{
-		UIVertexU5BU5D_t1981460040** L_3 = ___array0;
-		UIVertexU5BU5D_t1981460040* L_4 = *((UIVertexU5BU5D_t1981460040**)L_3);
+		Vector2U5BU5D_t1457185986** L_3 = ___array0;
+		Vector2U5BU5D_t1457185986* L_4 = *((Vector2U5BU5D_t1457185986**)L_3);
 		G_B3_0 = (((int32_t)((int32_t)(((RuntimeArray *)L_4)->max_length))));
 		G_B3_1 = G_B2_0;
 	}
@@ -22833,7 +22872,7 @@ IL_000e:
 IL_0012:
 	{
 		int32_t L_5 = ___newSize1;
-		((  void (*) (RuntimeObject * /* static, unused */, UIVertexU5BU5D_t1981460040**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (UIVertexU5BU5D_t1981460040**)(UIVertexU5BU5D_t1981460040**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
+		((  void (*) (RuntimeObject * /* static, unused */, Vector2U5BU5D_t1457185986**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (Vector2U5BU5D_t1457185986**)(Vector2U5BU5D_t1457185986**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
 		return;
 	}
 }
@@ -22909,17 +22948,17 @@ IL_0028:
 		return;
 	}
 }
-// System.Void System.Array::Resize<UnityEngine.Vector2>(T[]&,System.Int32)
-extern "C"  void Array_Resize_TisVector2_t2156229523_m1564542050_gshared (RuntimeObject * __this /* static, unused */, Vector2U5BU5D_t1457185986** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
+// System.Void System.Array::Resize<UnityEngine.Vector3>(T[]&,System.Int32)
+extern "C"  void Array_Resize_TisVector3_t3722313464_m1245103517_gshared (RuntimeObject * __this /* static, unused */, Vector3U5BU5D_t1718750761** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
 {
-	Vector2U5BU5D_t1457185986** G_B2_0 = NULL;
-	Vector2U5BU5D_t1457185986** G_B1_0 = NULL;
+	Vector3U5BU5D_t1718750761** G_B2_0 = NULL;
+	Vector3U5BU5D_t1718750761** G_B1_0 = NULL;
 	int32_t G_B3_0 = 0;
-	Vector2U5BU5D_t1457185986** G_B3_1 = NULL;
+	Vector3U5BU5D_t1718750761** G_B3_1 = NULL;
 	{
-		Vector2U5BU5D_t1457185986** L_0 = ___array0;
-		Vector2U5BU5D_t1457185986** L_1 = ___array0;
-		Vector2U5BU5D_t1457185986* L_2 = *((Vector2U5BU5D_t1457185986**)L_1);
+		Vector3U5BU5D_t1718750761** L_0 = ___array0;
+		Vector3U5BU5D_t1718750761** L_1 = ___array0;
+		Vector3U5BU5D_t1718750761* L_2 = *((Vector3U5BU5D_t1718750761**)L_1);
 		G_B1_0 = L_0;
 		if (L_2)
 		{
@@ -22935,8 +22974,8 @@ extern "C"  void Array_Resize_TisVector2_t2156229523_m1564542050_gshared (Runtim
 
 IL_000e:
 	{
-		Vector2U5BU5D_t1457185986** L_3 = ___array0;
-		Vector2U5BU5D_t1457185986* L_4 = *((Vector2U5BU5D_t1457185986**)L_3);
+		Vector3U5BU5D_t1718750761** L_3 = ___array0;
+		Vector3U5BU5D_t1718750761* L_4 = *((Vector3U5BU5D_t1718750761**)L_3);
 		G_B3_0 = (((int32_t)((int32_t)(((RuntimeArray *)L_4)->max_length))));
 		G_B3_1 = G_B2_0;
 	}
@@ -22944,7 +22983,7 @@ IL_000e:
 IL_0012:
 	{
 		int32_t L_5 = ___newSize1;
-		((  void (*) (RuntimeObject * /* static, unused */, Vector2U5BU5D_t1457185986**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (Vector2U5BU5D_t1457185986**)(Vector2U5BU5D_t1457185986**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
+		((  void (*) (RuntimeObject * /* static, unused */, Vector3U5BU5D_t1718750761**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (Vector3U5BU5D_t1718750761**)(Vector3U5BU5D_t1718750761**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
 		return;
 	}
 }
@@ -23020,17 +23059,17 @@ IL_0028:
 		return;
 	}
 }
-// System.Void System.Array::Resize<UnityEngine.Vector3>(T[]&,System.Int32)
-extern "C"  void Array_Resize_TisVector3_t3722313464_m1245103517_gshared (RuntimeObject * __this /* static, unused */, Vector3U5BU5D_t1718750761** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
+// System.Void System.Array::Resize<UnityEngine.Vector4>(T[]&,System.Int32)
+extern "C"  void Array_Resize_TisVector4_t3319028937_m1507893064_gshared (RuntimeObject * __this /* static, unused */, Vector4U5BU5D_t934056436** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
 {
-	Vector3U5BU5D_t1718750761** G_B2_0 = NULL;
-	Vector3U5BU5D_t1718750761** G_B1_0 = NULL;
+	Vector4U5BU5D_t934056436** G_B2_0 = NULL;
+	Vector4U5BU5D_t934056436** G_B1_0 = NULL;
 	int32_t G_B3_0 = 0;
-	Vector3U5BU5D_t1718750761** G_B3_1 = NULL;
+	Vector4U5BU5D_t934056436** G_B3_1 = NULL;
 	{
-		Vector3U5BU5D_t1718750761** L_0 = ___array0;
-		Vector3U5BU5D_t1718750761** L_1 = ___array0;
-		Vector3U5BU5D_t1718750761* L_2 = *((Vector3U5BU5D_t1718750761**)L_1);
+		Vector4U5BU5D_t934056436** L_0 = ___array0;
+		Vector4U5BU5D_t934056436** L_1 = ___array0;
+		Vector4U5BU5D_t934056436* L_2 = *((Vector4U5BU5D_t934056436**)L_1);
 		G_B1_0 = L_0;
 		if (L_2)
 		{
@@ -23046,8 +23085,8 @@ extern "C"  void Array_Resize_TisVector3_t3722313464_m1245103517_gshared (Runtim
 
 IL_000e:
 	{
-		Vector3U5BU5D_t1718750761** L_3 = ___array0;
-		Vector3U5BU5D_t1718750761* L_4 = *((Vector3U5BU5D_t1718750761**)L_3);
+		Vector4U5BU5D_t934056436** L_3 = ___array0;
+		Vector4U5BU5D_t934056436* L_4 = *((Vector4U5BU5D_t934056436**)L_3);
 		G_B3_0 = (((int32_t)((int32_t)(((RuntimeArray *)L_4)->max_length))));
 		G_B3_1 = G_B2_0;
 	}
@@ -23055,7 +23094,7 @@ IL_000e:
 IL_0012:
 	{
 		int32_t L_5 = ___newSize1;
-		((  void (*) (RuntimeObject * /* static, unused */, Vector3U5BU5D_t1718750761**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (Vector3U5BU5D_t1718750761**)(Vector3U5BU5D_t1718750761**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
+		((  void (*) (RuntimeObject * /* static, unused */, Vector4U5BU5D_t934056436**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (Vector4U5BU5D_t934056436**)(Vector4U5BU5D_t934056436**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
 		return;
 	}
 }
@@ -23128,45 +23167,6 @@ IL_0028:
 		Vector4U5BU5D_t934056436* L_17 = V_0;
 		*((RuntimeObject **)(L_16)) = (RuntimeObject *)L_17;
 		Il2CppCodeGenWriteBarrier((RuntimeObject **)(L_16), (RuntimeObject *)L_17);
-		return;
-	}
-}
-// System.Void System.Array::Resize<UnityEngine.Vector4>(T[]&,System.Int32)
-extern "C"  void Array_Resize_TisVector4_t3319028937_m1507893064_gshared (RuntimeObject * __this /* static, unused */, Vector4U5BU5D_t934056436** ___array0, int32_t ___newSize1, const RuntimeMethod* method)
-{
-	Vector4U5BU5D_t934056436** G_B2_0 = NULL;
-	Vector4U5BU5D_t934056436** G_B1_0 = NULL;
-	int32_t G_B3_0 = 0;
-	Vector4U5BU5D_t934056436** G_B3_1 = NULL;
-	{
-		Vector4U5BU5D_t934056436** L_0 = ___array0;
-		Vector4U5BU5D_t934056436** L_1 = ___array0;
-		Vector4U5BU5D_t934056436* L_2 = *((Vector4U5BU5D_t934056436**)L_1);
-		G_B1_0 = L_0;
-		if (L_2)
-		{
-			G_B2_0 = L_0;
-			goto IL_000e;
-		}
-	}
-	{
-		G_B3_0 = 0;
-		G_B3_1 = G_B1_0;
-		goto IL_0012;
-	}
-
-IL_000e:
-	{
-		Vector4U5BU5D_t934056436** L_3 = ___array0;
-		Vector4U5BU5D_t934056436* L_4 = *((Vector4U5BU5D_t934056436**)L_3);
-		G_B3_0 = (((int32_t)((int32_t)(((RuntimeArray *)L_4)->max_length))));
-		G_B3_1 = G_B2_0;
-	}
-
-IL_0012:
-	{
-		int32_t L_5 = ___newSize1;
-		((  void (*) (RuntimeObject * /* static, unused */, Vector4U5BU5D_t934056436**, int32_t, int32_t, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (Vector4U5BU5D_t934056436**)(Vector4U5BU5D_t934056436**)G_B3_1, (int32_t)G_B3_0, (int32_t)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
 		return;
 	}
 }
@@ -24262,6 +24262,37 @@ IL_0011:
 		return;
 	}
 }
+// System.Void System.Array::Sort<System.Object,System.Object>(TKey[],TValue[])
+extern "C"  void Array_Sort_TisRuntimeObject_TisRuntimeObject_m1685639929_gshared (RuntimeObject * __this /* static, unused */, ObjectU5BU5D_t2843939325* ___keys0, ObjectU5BU5D_t2843939325* ___items1, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_method (Array_Sort_TisRuntimeObject_TisRuntimeObject_m1685639929_MetadataUsageId);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		ObjectU5BU5D_t2843939325* L_0 = ___keys0;
+		if (L_0)
+		{
+			goto IL_0011;
+		}
+	}
+	{
+		ArgumentNullException_t1615371798 * L_1 = (ArgumentNullException_t1615371798 *)il2cpp_codegen_object_new(ArgumentNullException_t1615371798_il2cpp_TypeInfo_var);
+		ArgumentNullException__ctor_m1170824041(L_1, (String_t*)_stringLiteral465436770, /*hidden argument*/NULL);
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_1, NULL, Array_Sort_TisRuntimeObject_TisRuntimeObject_m1685639929_RuntimeMethod_var);
+	}
+
+IL_0011:
+	{
+		ObjectU5BU5D_t2843939325* L_2 = ___keys0;
+		ObjectU5BU5D_t2843939325* L_3 = ___items1;
+		ObjectU5BU5D_t2843939325* L_4 = ___keys0;
+		((  void (*) (RuntimeObject * /* static, unused */, ObjectU5BU5D_t2843939325*, ObjectU5BU5D_t2843939325*, int32_t, int32_t, RuntimeObject*, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (ObjectU5BU5D_t2843939325*)L_2, (ObjectU5BU5D_t2843939325*)L_3, (int32_t)0, (int32_t)(((int32_t)((int32_t)(((RuntimeArray *)L_4)->max_length)))), (RuntimeObject*)NULL, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
+		return;
+	}
+}
 // System.Void System.Array::Sort<System.Object,System.Object>(TKey[],TValue[],System.Collections.Generic.IComparer`1<TKey>)
 extern "C"  void Array_Sort_TisRuntimeObject_TisRuntimeObject_m528220565_gshared (RuntimeObject * __this /* static, unused */, ObjectU5BU5D_t2843939325* ___keys0, ObjectU5BU5D_t2843939325* ___items1, RuntimeObject* ___comparer2, const RuntimeMethod* method)
 {
@@ -24291,6 +24322,18 @@ IL_0011:
 		ObjectU5BU5D_t2843939325* L_4 = ___keys0;
 		RuntimeObject* L_5 = ___comparer2;
 		((  void (*) (RuntimeObject * /* static, unused */, ObjectU5BU5D_t2843939325*, ObjectU5BU5D_t2843939325*, int32_t, int32_t, RuntimeObject*, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (ObjectU5BU5D_t2843939325*)L_2, (ObjectU5BU5D_t2843939325*)L_3, (int32_t)0, (int32_t)(((int32_t)((int32_t)(((RuntimeArray *)L_4)->max_length)))), (RuntimeObject*)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
+		return;
+	}
+}
+// System.Void System.Array::Sort<System.Object,System.Object>(TKey[],TValue[],System.Int32,System.Int32)
+extern "C"  void Array_Sort_TisRuntimeObject_TisRuntimeObject_m900474681_gshared (RuntimeObject * __this /* static, unused */, ObjectU5BU5D_t2843939325* ___keys0, ObjectU5BU5D_t2843939325* ___items1, int32_t ___index2, int32_t ___length3, const RuntimeMethod* method)
+{
+	{
+		ObjectU5BU5D_t2843939325* L_0 = ___keys0;
+		ObjectU5BU5D_t2843939325* L_1 = ___items1;
+		int32_t L_2 = ___index2;
+		int32_t L_3 = ___length3;
+		((  void (*) (RuntimeObject * /* static, unused */, ObjectU5BU5D_t2843939325*, ObjectU5BU5D_t2843939325*, int32_t, int32_t, RuntimeObject*, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (ObjectU5BU5D_t2843939325*)L_0, (ObjectU5BU5D_t2843939325*)L_1, (int32_t)L_2, (int32_t)L_3, (RuntimeObject*)NULL, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
 		return;
 	}
 }
@@ -24531,29 +24574,17 @@ IL_0111:
 		return;
 	}
 }
-// System.Void System.Array::Sort<System.Object,System.Object>(TKey[],TValue[],System.Int32,System.Int32)
-extern "C"  void Array_Sort_TisRuntimeObject_TisRuntimeObject_m900474681_gshared (RuntimeObject * __this /* static, unused */, ObjectU5BU5D_t2843939325* ___keys0, ObjectU5BU5D_t2843939325* ___items1, int32_t ___index2, int32_t ___length3, const RuntimeMethod* method)
-{
-	{
-		ObjectU5BU5D_t2843939325* L_0 = ___keys0;
-		ObjectU5BU5D_t2843939325* L_1 = ___items1;
-		int32_t L_2 = ___index2;
-		int32_t L_3 = ___length3;
-		((  void (*) (RuntimeObject * /* static, unused */, ObjectU5BU5D_t2843939325*, ObjectU5BU5D_t2843939325*, int32_t, int32_t, RuntimeObject*, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (ObjectU5BU5D_t2843939325*)L_0, (ObjectU5BU5D_t2843939325*)L_1, (int32_t)L_2, (int32_t)L_3, (RuntimeObject*)NULL, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
-		return;
-	}
-}
-// System.Void System.Array::Sort<System.Object,System.Object>(TKey[],TValue[])
-extern "C"  void Array_Sort_TisRuntimeObject_TisRuntimeObject_m1685639929_gshared (RuntimeObject * __this /* static, unused */, ObjectU5BU5D_t2843939325* ___keys0, ObjectU5BU5D_t2843939325* ___items1, const RuntimeMethod* method)
+// System.Void System.Array::Sort<System.Object>(T[])
+extern "C"  void Array_Sort_TisRuntimeObject_m1972115694_gshared (RuntimeObject * __this /* static, unused */, ObjectU5BU5D_t2843939325* ___array0, const RuntimeMethod* method)
 {
 	static bool s_Il2CppMethodInitialized;
 	if (!s_Il2CppMethodInitialized)
 	{
-		il2cpp_codegen_initialize_method (Array_Sort_TisRuntimeObject_TisRuntimeObject_m1685639929_MetadataUsageId);
+		il2cpp_codegen_initialize_method (Array_Sort_TisRuntimeObject_m1972115694_MetadataUsageId);
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		ObjectU5BU5D_t2843939325* L_0 = ___keys0;
+		ObjectU5BU5D_t2843939325* L_0 = ___array0;
 		if (L_0)
 		{
 			goto IL_0011;
@@ -24561,16 +24592,15 @@ extern "C"  void Array_Sort_TisRuntimeObject_TisRuntimeObject_m1685639929_gshare
 	}
 	{
 		ArgumentNullException_t1615371798 * L_1 = (ArgumentNullException_t1615371798 *)il2cpp_codegen_object_new(ArgumentNullException_t1615371798_il2cpp_TypeInfo_var);
-		ArgumentNullException__ctor_m1170824041(L_1, (String_t*)_stringLiteral465436770, /*hidden argument*/NULL);
-		IL2CPP_RAISE_MANAGED_EXCEPTION(L_1, NULL, Array_Sort_TisRuntimeObject_TisRuntimeObject_m1685639929_RuntimeMethod_var);
+		ArgumentNullException__ctor_m1170824041(L_1, (String_t*)_stringLiteral4007973390, /*hidden argument*/NULL);
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_1, NULL, Array_Sort_TisRuntimeObject_m1972115694_RuntimeMethod_var);
 	}
 
 IL_0011:
 	{
-		ObjectU5BU5D_t2843939325* L_2 = ___keys0;
-		ObjectU5BU5D_t2843939325* L_3 = ___items1;
-		ObjectU5BU5D_t2843939325* L_4 = ___keys0;
-		((  void (*) (RuntimeObject * /* static, unused */, ObjectU5BU5D_t2843939325*, ObjectU5BU5D_t2843939325*, int32_t, int32_t, RuntimeObject*, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (ObjectU5BU5D_t2843939325*)L_2, (ObjectU5BU5D_t2843939325*)L_3, (int32_t)0, (int32_t)(((int32_t)((int32_t)(((RuntimeArray *)L_4)->max_length)))), (RuntimeObject*)NULL, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
+		ObjectU5BU5D_t2843939325* L_2 = ___array0;
+		ObjectU5BU5D_t2843939325* L_3 = ___array0;
+		((  void (*) (RuntimeObject * /* static, unused */, ObjectU5BU5D_t2843939325*, ObjectU5BU5D_t2843939325*, int32_t, int32_t, RuntimeObject*, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (ObjectU5BU5D_t2843939325*)L_2, (ObjectU5BU5D_t2843939325*)(ObjectU5BU5D_t2843939325*)NULL, (int32_t)0, (int32_t)(((int32_t)((int32_t)(((RuntimeArray *)L_3)->max_length)))), (RuntimeObject*)NULL, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
 		return;
 	}
 }
@@ -24731,38 +24761,6 @@ IL_004d:
 		return;
 	}
 }
-// System.Void System.Array::Sort<System.Object>(T[],System.Int32,System.Int32,System.Collections.Generic.IComparer`1<T>)
-extern "C"  void Array_Sort_TisRuntimeObject_m2698056810_gshared (RuntimeObject * __this /* static, unused */, ObjectU5BU5D_t2843939325* ___array0, int32_t ___index1, int32_t ___length2, RuntimeObject* ___comparer3, const RuntimeMethod* method)
-{
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
-	{
-		il2cpp_codegen_initialize_method (Array_Sort_TisRuntimeObject_m2698056810_MetadataUsageId);
-		s_Il2CppMethodInitialized = true;
-	}
-	{
-		ObjectU5BU5D_t2843939325* L_0 = ___array0;
-		if (L_0)
-		{
-			goto IL_0011;
-		}
-	}
-	{
-		ArgumentNullException_t1615371798 * L_1 = (ArgumentNullException_t1615371798 *)il2cpp_codegen_object_new(ArgumentNullException_t1615371798_il2cpp_TypeInfo_var);
-		ArgumentNullException__ctor_m1170824041(L_1, (String_t*)_stringLiteral4007973390, /*hidden argument*/NULL);
-		IL2CPP_RAISE_MANAGED_EXCEPTION(L_1, NULL, Array_Sort_TisRuntimeObject_m2698056810_RuntimeMethod_var);
-	}
-
-IL_0011:
-	{
-		ObjectU5BU5D_t2843939325* L_2 = ___array0;
-		int32_t L_3 = ___index1;
-		int32_t L_4 = ___length2;
-		RuntimeObject* L_5 = ___comparer3;
-		((  void (*) (RuntimeObject * /* static, unused */, ObjectU5BU5D_t2843939325*, ObjectU5BU5D_t2843939325*, int32_t, int32_t, RuntimeObject*, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (ObjectU5BU5D_t2843939325*)L_2, (ObjectU5BU5D_t2843939325*)(ObjectU5BU5D_t2843939325*)NULL, (int32_t)L_3, (int32_t)L_4, (RuntimeObject*)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
-		return;
-	}
-}
 // System.Void System.Array::Sort<System.Object>(T[],System.Int32,System.Int32)
 extern "C"  void Array_Sort_TisRuntimeObject_m440635289_gshared (RuntimeObject * __this /* static, unused */, ObjectU5BU5D_t2843939325* ___array0, int32_t ___index1, int32_t ___length2, const RuntimeMethod* method)
 {
@@ -24794,13 +24792,13 @@ IL_0011:
 		return;
 	}
 }
-// System.Void System.Array::Sort<System.Object>(T[])
-extern "C"  void Array_Sort_TisRuntimeObject_m1972115694_gshared (RuntimeObject * __this /* static, unused */, ObjectU5BU5D_t2843939325* ___array0, const RuntimeMethod* method)
+// System.Void System.Array::Sort<System.Object>(T[],System.Int32,System.Int32,System.Collections.Generic.IComparer`1<T>)
+extern "C"  void Array_Sort_TisRuntimeObject_m2698056810_gshared (RuntimeObject * __this /* static, unused */, ObjectU5BU5D_t2843939325* ___array0, int32_t ___index1, int32_t ___length2, RuntimeObject* ___comparer3, const RuntimeMethod* method)
 {
 	static bool s_Il2CppMethodInitialized;
 	if (!s_Il2CppMethodInitialized)
 	{
-		il2cpp_codegen_initialize_method (Array_Sort_TisRuntimeObject_m1972115694_MetadataUsageId);
+		il2cpp_codegen_initialize_method (Array_Sort_TisRuntimeObject_m2698056810_MetadataUsageId);
 		s_Il2CppMethodInitialized = true;
 	}
 	{
@@ -24813,14 +24811,16 @@ extern "C"  void Array_Sort_TisRuntimeObject_m1972115694_gshared (RuntimeObject 
 	{
 		ArgumentNullException_t1615371798 * L_1 = (ArgumentNullException_t1615371798 *)il2cpp_codegen_object_new(ArgumentNullException_t1615371798_il2cpp_TypeInfo_var);
 		ArgumentNullException__ctor_m1170824041(L_1, (String_t*)_stringLiteral4007973390, /*hidden argument*/NULL);
-		IL2CPP_RAISE_MANAGED_EXCEPTION(L_1, NULL, Array_Sort_TisRuntimeObject_m1972115694_RuntimeMethod_var);
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_1, NULL, Array_Sort_TisRuntimeObject_m2698056810_RuntimeMethod_var);
 	}
 
 IL_0011:
 	{
 		ObjectU5BU5D_t2843939325* L_2 = ___array0;
-		ObjectU5BU5D_t2843939325* L_3 = ___array0;
-		((  void (*) (RuntimeObject * /* static, unused */, ObjectU5BU5D_t2843939325*, ObjectU5BU5D_t2843939325*, int32_t, int32_t, RuntimeObject*, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (ObjectU5BU5D_t2843939325*)L_2, (ObjectU5BU5D_t2843939325*)(ObjectU5BU5D_t2843939325*)NULL, (int32_t)0, (int32_t)(((int32_t)((int32_t)(((RuntimeArray *)L_3)->max_length)))), (RuntimeObject*)NULL, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
+		int32_t L_3 = ___index1;
+		int32_t L_4 = ___length2;
+		RuntimeObject* L_5 = ___comparer3;
+		((  void (*) (RuntimeObject * /* static, unused */, ObjectU5BU5D_t2843939325*, ObjectU5BU5D_t2843939325*, int32_t, int32_t, RuntimeObject*, const RuntimeMethod*))IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0)->methodPointer)(NULL /*static, unused*/, (ObjectU5BU5D_t2843939325*)L_2, (ObjectU5BU5D_t2843939325*)(ObjectU5BU5D_t2843939325*)NULL, (int32_t)L_3, (int32_t)L_4, (RuntimeObject*)L_5, /*hidden argument*/IL2CPP_RGCTX_METHOD_INFO(method->rgctx_data, 0));
 		return;
 	}
 }

@@ -13,7 +13,12 @@ public class MapChooser : MonoBehaviour, IPointerClickHandler {
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        string mapPath = @"D://home/site/wwwroot/simulator/examples/data/New_York/New_York.net.xml";
+        
+        Debug.Log("Path : " + Application.dataPath);
+        string mapPath = "D:/home/site/wwwroot/simulator/examples/data/New_York/New_York.net.xml";
+
+        //string mapPath = "D:\\home\site\wwwroot\simulator\\examples\\data\\New_York\\New_York.net.xml";
+        //string mapPath = "/Users/eylonsho/Nextcloud/Technion/YearlyProject/SummitBTW/simulator/examples/data/New_York/New_York.net.xml";
         string[] path = mapPath.Split('/');
         m_InputField.text = path[path.Length - 1];
         MapChooser.mapPath = mapPath;

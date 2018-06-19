@@ -18,6 +18,7 @@ UnityEngine.Animator::ResetTriggerString
 UnityEngine.Animator::SetTriggerString
 UnityEngine.Application::get_isEditor
 UnityEngine.Application::get_isPlaying
+UnityEngine.Application::get_dataPath
 UnityEngine.Application::get_platform
 UnityEngine.AsyncOperation::InternalDestroy
 UnityEngine.AudioClip::get_ambisonic
