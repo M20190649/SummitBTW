@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">TraCI/Change Polygon State</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.097075 from <a href="http://sumo.dlr.de/wiki/TraCI/Change_Polygon_State">the wiki page for TraCI/Change_Polygon_State</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.458569 from <a href="http://sumo.dlr.de/wiki/TraCI/Change_Polygon_State">the wiki page for TraCI/Change_Polygon_State</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -328,16 +329,16 @@
 </td>
 <td> Sets the polygon's type to the given value
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._polygon.html#PolygonDomain-setType">setType</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._polygon.html#PolygonDomain-setType">setType</a>
 </td></tr>
 <tr>
 <td> color (0x45)
 </td>
 <td> color (ubyte,ubyte,ubyte,ubyte)
 </td>
-<td> Sets the polygon's color to the given value (r,g,b,a) - please note that a(lpha) is currently not used
+<td> Sets the polygon's color to the given value (r,g,b,a) - please note that a(lpha) = 0 means fully transparent
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._polygon.html#PolygonDomain-setColor">setColor</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._polygon.html#PolygonDomain-setColor">setColor</a>
 </td></tr>
 <tr>
 <td> shape (0x4e)
@@ -346,7 +347,7 @@
 </td>
 <td> Sets the polygon's shape to the given value
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._polygon.html#PolygonDomain-setShape">setShape</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._polygon.html#PolygonDomain-setShape">setShape</a>
 </td></tr>
 <tr>
 <td> filled (0x55)
@@ -355,7 +356,7 @@
 </td>
 <td> Marks that the polygon shall be filled if the value is&#160;!=0.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._polygon.html#PolygonDomain-setFilled">setFilled</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._polygon.html#PolygonDomain-setFilled">setFilled</a>
 </td></tr>
 <tr>
 <td> ADD (0x80)
@@ -364,7 +365,7 @@
 </td>
 <td> Adds the defined Polygon
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._polygon.html#PolygonDomain-add">add</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._polygon.html#PolygonDomain-add">add</a>
 </td></tr>
 <tr>
 <td> REMOVE (0x81)
@@ -373,7 +374,7 @@
 </td>
 <td> Removes the defined Polygon
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._polygon.html#PolygonDomain-remove">remove</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._polygon.html#PolygonDomain-remove">remove</a>
 </td></tr>
 </table>
 <p><br />
@@ -532,8 +533,8 @@
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.044 seconds
-Real time usage: 0.043 seconds
+CPU time usage: 0.020 seconds
+Real time usage: 0.021 seconds
 Preprocessor visited node count: 26/1000000
 Preprocessor generated node count: 32/1000000
 Post‐expand include size: 0/2097152 bytes
@@ -547,9 +548,9 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:295-0!*!0!!en!*!* and timestamp 20171218232345 and revision id 8827
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:295-0!*!0!!en!*!* and timestamp 20180515221812 and revision id 10540
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 6 February 2017, at 14:40.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 10 January 2018, at 14:53.</div> </div>
 
     <div id="footer">
       <div>

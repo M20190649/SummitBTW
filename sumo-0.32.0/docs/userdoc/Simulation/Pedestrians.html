@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Simulation/Pedestrians</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.989853 from <a href="http://sumo.dlr.de/wiki/Simulation/Pedestrians">the wiki page for Simulation/Pedestrians</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.346922 from <a href="http://sumo.dlr.de/wiki/Simulation/Pedestrians">the wiki page for Simulation/Pedestrians</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -330,10 +331,10 @@ When using multiple modes all edges and lanes need to have the <a href="../Simul
 <div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />The current pedestrian models assume that each simulation edge has at most one sidewalk. In order to have sidewalks at both sides of a one-way street, a simulation edge in the reverse direction (which only allows pedestrians) must be added.</div>
 <div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />The methods described below, perform checks to prevent generating duplicate sidewalks. If the rightmost lane is recognized as a sidewalk (it only permits vClass <i>pedestrian</i>) no additional sidewalk will be added.</div>
 <h3><span class="mw-headline" id="Explicit_specification_of_additional_lanes">Explicit specification of additional lanes</span></h3>
-<p>Sidewalks may be defined explicitly in plain XML input when describing <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Lane-specific_Definitions" title="Networks/Building Networks from own XML-descriptions">edges (plain.edg.xml)</a>. This is done by defining an additional lane which only permits the vClass “pedestrian” and setting the appropriate width. In this case it is important to disallow pedestrians on all other lanes. Also, any pre-exisiting connection definitions must be modified to account for the new sidewalk lane. 
+<p>Sidewalks may be defined explicitly in plain XML input when describing <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Lane-specific_Definitions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">edges (plain.edg.xml)</a>. This is done by defining an additional lane which only permits the vClass “pedestrian” and setting the appropriate width. In this case it is important to disallow pedestrians on all other lanes. Also, any pre-exisiting connection definitions must be modified to account for the new sidewalk lane. 
 </p>
 <h3><span class="mw-headline" id="Explicit_specification_of_sidewalks">Explicit specification of sidewalks</span></h3>
-<p>Alternatively to the above method, the <span class="inlxml">&lt;edge&gt;</span> -attribute <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Edge_Descriptions" title="Networks/Building Networks from own XML-descriptions"><span class="inlxml">sidewalkWidth</span> may be used</a>. It will cause a sidewalk of the specified width to be added to that edge, connections to be remapped and pedestrian permissions to be removed from all other lanes. 
+<p>Alternatively to the above method, the <span class="inlxml">&lt;edge&gt;</span> -attribute <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Edge_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect"><span class="inlxml">sidewalkWidth</span> may be used</a>. It will cause a sidewalk of the specified width to be added to that edge, connections to be remapped and pedestrian permissions to be removed from all other lanes. 
 </p>
 <div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />The heuristic methods described below, also perform automatic connection shifting and removal of pedestrian permissions from non-sidewalk lanes</div>
 <h3><span class="mw-headline" id="Type-base_generation">Type-base generation</span></h3>
@@ -401,7 +402,7 @@ An example type file can be found in <i><b>&lt;SUMO_HOME&gt;</b></i>/data/typema
 <p>In order to be eligible for a crossing there must be sidewalks or footpaths which are separated by one or more lanes which forbid pedestrian traffic.
 </p>
 <div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />If crossing should be possible between two far-away junctions, additional junctions must be inserted by splitting the edge(s) between the junctions and defining a crossing at the inserted junctions.</div>
-<p>Crossings may be defined explicitly in plain XML input when describing <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Pedestrian_Crossings" title="Networks/Building Networks from own XML-descriptions">connections (plain.con.xml) using the XML element <span class="inlxml">crossings</span></a>. They can also be placed with <a href="../NETEDIT.html#Crossings" title="NETEDIT">NETEDIT</a>.
+<p>Crossings may be defined explicitly in plain XML input when describing <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Pedestrian_Crossings" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">connections (plain.con.xml) using the XML element <span class="inlxml">crossings</span></a>. They can also be placed with <a href="../NETEDIT.html#Crossings" title="NETEDIT">NETEDIT</a>.
 </p><p>The second available method for adding crossing information to a network is with the option <span style="color: #111144; font-weight: bold; white-space: pre;"> --crossings.guess <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;BOOL&gt;</i></a></span>. This enables a heuristic which adds crossings wherever sidewalks with similar angle are separated by lanes which forbid pedestrians. If the edges to be crossed have sufficient distance between them or vary a by a sufficient angle, two crossings with an intermediate walking area are generated. For roads with a speed limit beyond 50km/h, crossings are only generated at tls-controlled intersections. This threshold can be set with the option <span style="color: #111144; font-weight: bold; white-space: pre;">crossings.guess.speed-threshold</span>.
 To successfully generate crossings with this option <a href="../Simulation/Pedestrians.html#Generating_a_network_with_sidewalks" title="Simulation/Pedestrians">sidewalks should be defined</a> for the network.
 </p>
@@ -411,8 +412,10 @@ To successfully generate crossings with this option <a href="../Simulation/Pedes
 </p>
 <div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />It is not necessary to define connections between sidewalks or footpaths in a <i>.con.xml</i> file. Instead the connections to and from walkingareas are generated automatically along with the walkingareas.</div>
 <p>Example:
-If multiple footpaths meet at an intersection they will be automatically connected by a single walkingarea which allows connecectivity in all directions.
+If multiple footpaths meet at an intersection they will be automatically connected by a single walkingarea which allows connectivity in all directions.
+</p><p><br />
 </p>
+<div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />If pedestrians are simulated in a network without walkingareas, they will assume full-connectivity at every junction.</div>
 <h1><span class="mw-headline" id="Generating_pedestrian_demand">Generating pedestrian demand</span></h1>
 <h2><span class="mw-headline" id="Explicit">Explicit</span></h2>
 <p>Pedestrian demand may be specified explicitly as described at <a href="../Specification/Persons.html#Walks" title="Specification/Persons">Specification/Persons#Walks</a> or it may be generated.
@@ -435,7 +438,7 @@ The interface between the pedestrian model and the rest of the simulation was de
 This model has a very high execution speed and may be useful if the pedestrian dynamics are not important.
 </p>
 <h2><span class="mw-headline" id="Model_striping">Model <i>striping</i></span></h2>
-<p>This model assigns 2D-coordinates within a lane (of type sidewalk, walkingarea or crossing) to each pedestrian. These coordinates which are defined relative to the leftmost side of the start of the lane are updated in every simulation step. This is in contrast to the coordinates of vehicles, which (generally) only have 1D-coordinates within their respective lane. Pedestrians advance along a lane towards the next node which may either correspond to the natural direction of the lane (forward movement) or it may opposite to the natural direction (backward movement). Thus, the x coordinate monotonically increase or decreases while on a lane. Once the end of a lane has been reached, the pedestrian is placed on the next lane (which may either be unique or determined dynamically with a routing algorithm). 
+<p>This model assigns 2D-coordinates within a lane (of type sidewalk, walkingarea or crossing) to each pedestrian. These coordinates which are defined relative to the leftmost side of the start of the lane are updated in every simulation step. This is in contrast to the coordinates of vehicles, which (generally) only have 1D-coordinates within their respective lane (except the case that the <a href="../Simulation/SublaneModel.html" title="Simulation/SublaneModel">sublane model</a> is used). Pedestrians advance along a lane towards the next node which may either correspond to the natural direction of the lane (forward movement) or it may opposite to the natural direction (backward movement). Thus, the x coordinate monotonically increases or decreases while on a lane. Once the end of a lane has been reached, the pedestrian is placed on the next lane (which may either be unique or determined dynamically with a routing algorithm). 
 </p><p>The most important feature of pedestrian interactions is collision avoidance. To achieve this, the “striping”-model divides the lateral width of a lane into discrete stripes of fixed width. This width is user configurable using the option   <span style="color: #111144; font-weight: bold; white-space: pre;"> --pedestrian.striping.stripe-width <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FLOAT&gt;</i></a></span> and defaults to 0.65 m. These stripes are similar to lanes of a multi-lane road. Collision avoidance is thus reduced to maintaining sufficient distance within the same stripe. Whenever a pedestrian comes too close to another pedestrian within the same stripe it moves in the y-direction (laterally) as well as in the x-direction to change to a different stripe. The y-coordinate changes continuously which leads to situations in which a pedestrian temporarily occupies two stripes and thus needs to ensure sufficient distances in both. The algorithm for selecting the preferred stripe is based on the direction of movement (preferring evasion to the right for oncoming pedestrians) and the expected distance the pedestrian will be able to walk in that stripe without a collision.
 </p><p>During every simulation step, each pedestrian advances as fast as possible while still avoiding collisions. The updates happen in a single pass for each walking direction with the pedestrian in the front being updated first and then its followers sorted by their x-coordinate. The speed in the x-direction may be reduced by a random amount with the maximum amount defined as a fraction of the maximum speed, using the global option <span style="color: #111144; font-weight: bold; white-space: pre;"> --pedestrian.striping.dawdling <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FLOAT&gt;</i></a></span> (defaulting to 0.2). 
 As a consequence of the above movement rules, pedestrians tend to walk side by side on sidewalks of sufficient width. They wait in front of crossings in a wide queue and they form a jam if the inflow into a lane is larger than its outflow.
@@ -463,33 +466,33 @@ At priority crossings, pedestrians cross without regard for vehicles.
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.188 seconds
-Real time usage: 0.196 seconds
-Preprocessor visited node count: 334/1000000
-Preprocessor generated node count: 892/1000000
-Post‐expand include size: 6138/2097152 bytes
-Template argument size: 2883/2097152 bytes
+CPU time usage: 0.068 seconds
+Real time usage: 0.066 seconds
+Preprocessor visited node count: 341/1000000
+Preprocessor generated node count: 912/1000000
+Post‐expand include size: 6394/2097152 bytes
+Template argument size: 3000/2097152 bytes
 Highest expansion depth: 3/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   68.858      1 - -total
- 44.58%   30.700     18 - Template:Option
- 10.31%    7.102      2 - Template:Caution
-  8.67%    5.967      7 - Template:XML
-  7.75%    5.336      6 - Template:Note
-  5.88%    4.052      1 - Template:DT_STR
-  5.75%    3.960      3 - Template:DT_BOOL
-  4.78%    3.290      5 - Template:DT_FLOAT
-  4.17%    2.869      2 - Template:SUMO
-  4.14%    2.854      2 - Template:DT_IDList
+100.00%   24.325      1 - -total
+ 43.81%   10.658     18 - Template:Option
+ 10.01%    2.434      3 - Template:Caution
+  8.57%    2.085      7 - Template:XML
+  7.99%    1.942      6 - Template:Note
+  5.29%    1.286      5 - Template:DT_FLOAT
+  4.70%    1.143      3 - Template:DT_BOOL
+  4.51%    1.096      2 - Template:SUMO
+  4.45%    1.083      2 - Template:DT_IDList
+  4.25%    1.033      1 - Template:DT_STR
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:554-0!*!0!!en!*!* and timestamp 20171219074715 and revision id 10380
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:554-0!*!0!!en!*!* and timestamp 20180515221758 and revision id 10618
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 20 November 2017, at 09:33.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 17 February 2018, at 13:43.</div> </div>
 
     <div id="footer">
       <div>

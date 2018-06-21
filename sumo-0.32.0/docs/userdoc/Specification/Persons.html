@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Specification/Persons</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.030825 from <a href="http://sumo.dlr.de/wiki/Specification/Persons">the wiki page for Specification/Persons</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.389797 from <a href="http://sumo.dlr.de/wiki/Specification/Persons">the wiki page for Specification/Persons</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -364,6 +365,8 @@
 <p>Persons are rendered in the GUI with the configured detail-level. When assigning a type with attribute <i>imgFile</i>, the person may be rendered with an image. By default, the image will not be rotated (suitable for abstract icons). However, when setting the types <i>guiShape</i>="pedestrian" the image will be rotated according to the persons location and stage.
 </p>
 <h1><span class="mw-headline" id="Simulation_input">Simulation input</span></h1>
+<p>The input for a person consists of a sequence of <i>stages</i> of the 3 types give below.
+</p>
 <h2><span class="mw-headline" id="Rides">Rides</span></h2>
 <p>Rides define the start and end point of a movement with a single mode of transport (e.g. a car or a bus).
 They are child elements of plan definitions.
@@ -506,7 +509,7 @@ In the first and second case the route edges are traveled in the listed order. T
 </p><p>A given bus stop may serve as a replacement for a destination edge and arrival position. If an arrival position is given nevertheless, it has to be inside the range of the stop.
 </p>
 <h2><span class="mw-headline" id="Stops">Stops</span></h2>
-<p>Stops define a delay until the next element of a plan is started. They can be used to model activities such as working or shopping. Stops for persons follow the specification at <a href="../Specification.html#Stops" title="Specification">Specification#Stops</a>. However, only the attributes <span class="inlxml">lane</span>, <span class="inlxml">duration</span> and <i>until}} are evaluated. Using these attributes it is possible to model activities with a fixed duration as well as those with a fixed end time. If a person needs to be transferred between two positions without delay, it is possible to use two stops in conjunction.</i>
+<p>Stops define a delay until the next element of a plan is started. They can be used to model activities such as working or shopping. Stops for persons follow the specification at <a href="../Specification.html#Stops" title="Specification">Specification#Stops</a>. However, only the attributes <span class="inlxml">lane</span>, <span class="inlxml">duration</span> and <span class="inlxml">until</span> are evaluated. Using these attributes it is possible to model activities with a fixed duration as well as those with a fixed end time. If a person needs to be transferred between two positions without delay, it is possible to use two stops in conjunction.
 </p>
 <h1><span class="mw-headline" id="Simulation_behavior">Simulation behavior</span></h1>
 <p>A person is starting her life at her depart time on the source (resp. first) edge of the first walk, ride or stop. She tries to start the next step of her plan.
@@ -522,7 +525,7 @@ In the first and second case the route edges are traveled in the listed order. T
 </p>
 <h1><span class="mw-headline" id="Router_input">Router input</span></h1>
 <h2><span class="mw-headline" id="PersonTrips">PersonTrips</span></h2>
-<p>A personTrip defines the start and end point of a movement with optional changes in mode. They are child elements to the person. In order to process a personTrip with mode <i>public</i>, the <a href="../IntermodalRouting.html" title="IntermodalRouting">public transport network has to be defined as well</a>. 
+<p>A personTrip defines the start and end point of a movement with optional changes in mode. They are child elements to the person. In order to process a personTrip with mode <i>public</i>, the <a href="../IntermodalRouting.html" title="IntermodalRouting">public transport network</a>  has to be defined as well. Currently bicycle and/or car can only be the first mode. It is not possible to switch to a car or bicycle after a different mode.
 </p>
 <table border="1" cellpadding="5" cellspacing="0">
 <tr>
@@ -572,7 +575,7 @@ In the first and second case the route edges are traveled in the listed order. T
 <td>list       </td>
 <td>any combination of "public", "car", "bicycle"</td>
 <td>-</td>
-<td>list of possible traffic modes. Walking is always possible regardless of this value. <div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />mode <b>bicycle</b> is currently not working</div>
+<td>list of possible traffic modes. Walking is always possible regardless of this value.
 </td></tr>
 <tr>
 <td>departPos     </td>
@@ -626,36 +629,35 @@ In the first and second case the route edges are traveled in the listed order. T
 <h1><span class="mw-headline" id="Planned_features">Planned features</span></h1>
 <p>The following features are not yet implemented.
 </p>
-<ul><li> personFlow is the person equivalent to a vehicle flow. It allows to specify a sequence of persons with the same plan with a single input element. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/1515">Issue #1515</a></li>
-<li> state saving and loading, see <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2792">Issue #2792</a></li>
-<li> TraCI API for persons, see <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/1459">Issue #1459</a></li>
+<ul><li> personFlow is the person equivalent to a vehicle flow. It allows to specify a sequence of persons with the same plan with a single input element. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1515">Issue #1515</a></li>
+<li> state saving and loading, see <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2792">Issue #2792</a></li>
+<li> TraCI API for persons, see <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1459">Issue #1459</a></li>
 <li> Outputs
 <ul><li> include a section for persons in --duration-log.statistics</li></ul></li></ul>
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.092 seconds
-Real time usage: 0.190 seconds
+CPU time usage: 0.044 seconds
+Real time usage: 0.044 seconds
 Preprocessor visited node count: 251/1000000
-Preprocessor generated node count: 648/1000000
-Post‐expand include size: 1284/2097152 bytes
-Template argument size: 249/2097152 bytes
+Preprocessor generated node count: 642/1000000
+Post‐expand include size: 1138/2097152 bytes
+Template argument size: 211/2097152 bytes
 Highest expansion depth: 2/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   52.042      1 - -total
- 33.20%   17.278     22 - Template:XML
- 20.17%   10.499      1 - Template:Note
- 16.10%    8.379      1 - Template:Caution
-  6.99%    3.640      3 - Template:Ticket
+100.00%   13.686      1 - -total
+ 33.97%    4.648     23 - Template:XML
+ 11.78%    1.612      3 - Template:Ticket
+  8.47%    1.159      1 - Template:Note
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:319-0!*!0!!en!*!* and timestamp 20171218190845 and revision id 9991
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:319-0!*!0!!en!*!* and timestamp 20180515221803 and revision id 10753
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 5 September 2017, at 21:19.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 27 April 2018, at 21:55.</div> </div>
 
     <div id="footer">
       <div>

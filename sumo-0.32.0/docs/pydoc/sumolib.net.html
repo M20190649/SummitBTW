@@ -9,7 +9,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="sumolib.html"><font color="#ffffff">sumolib</font></a>.net</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/delphi/cmakeGcc/sumo/tools/sumolib/net/__init__.py">/home/delphi/cmakeGcc/sumo/tools/sumolib/net/__init__.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/delphi/gcc/sumo/tools/sumolib/net/__init__.py">/home/delphi/gcc/sumo/tools/sumolib/net/__init__.py</a></font></td></tr></table>
     <p><tt>This&nbsp;file&nbsp;contains&nbsp;a&nbsp;content&nbsp;handler&nbsp;for&nbsp;parsing&nbsp;sumo&nbsp;network&nbsp;xml&nbsp;files.<br>
 It&nbsp;uses&nbsp;other&nbsp;classes&nbsp;from&nbsp;this&nbsp;module&nbsp;to&nbsp;represent&nbsp;the&nbsp;road&nbsp;network.</tt></p>
 <p>
@@ -59,7 +59,7 @@ It&nbsp;uses&nbsp;other&nbsp;classes&nbsp;from&nbsp;this&nbsp;module&nbsp;to&nbs
 
 <dl><dt><a name="Net-addEdge"><strong>addEdge</strong></a>(self, id, fromID, toID, prio, function, name)</dt></dl>
 
-<dl><dt><a name="Net-addLane"><strong>addLane</strong></a>(self, edge, speed, length, allow<font color="#909090">=None</font>, disallow<font color="#909090">=None</font>)</dt></dl>
+<dl><dt><a name="Net-addLane"><strong>addLane</strong></a>(self, edge, speed, length, width, allow<font color="#909090">=None</font>, disallow<font color="#909090">=None</font>)</dt></dl>
 
 <dl><dt><a name="Net-addNode"><strong>addNode</strong></a>(self, id, type<font color="#909090">=None</font>, coord<font color="#909090">=None</font>, incLanes<font color="#909090">=None</font>, intLanes<font color="#909090">=None</font>)</dt></dl>
 
@@ -322,7 +322,17 @@ not&nbsp;guaranteed.</tt></dd></dl>
 This&nbsp;method&nbsp;converts&nbsp;the&nbsp;2d&nbsp;or&nbsp;3d&nbsp;shape&nbsp;string&nbsp;from&nbsp;SUMO's&nbsp;xml&nbsp;file<br>
 into&nbsp;a&nbsp;list&nbsp;containing&nbsp;3d&nbsp;float-tuples.&nbsp;Non&nbsp;existant&nbsp;z&nbsp;coordinates&nbsp;default<br>
 to&nbsp;zero.&nbsp;If&nbsp;shapeString&nbsp;is&nbsp;empty,&nbsp;an&nbsp;empty&nbsp;list&nbsp;will&nbsp;be&nbsp;returned.</tt></dd></dl>
- <dl><dt><a name="-readNet"><strong>readNet</strong></a>(filename, **others)</dt></dl>
+ <dl><dt><a name="-readNet"><strong>readNet</strong></a>(filename, **others)</dt><dd><tt>load&nbsp;a&nbsp;.net.xml&nbsp;file<br>
+The&nbsp;following&nbsp;named&nbsp;options&nbsp;are&nbsp;supported:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'net'&nbsp;:&nbsp;initialize&nbsp;data&nbsp;structurs&nbsp;with&nbsp;an&nbsp;existing&nbsp;net&nbsp;object&nbsp;(default&nbsp;<a href="#Net">Net</a>())<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'withPrograms'&nbsp;:&nbsp;import&nbsp;all&nbsp;traffic&nbsp;light&nbsp;programs&nbsp;(default&nbsp;False)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'withLatestPrograms'&nbsp;:&nbsp;import&nbsp;only&nbsp;the&nbsp;last&nbsp;program&nbsp;for&nbsp;each&nbsp;traffic&nbsp;light.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;is&nbsp;the&nbsp;program&nbsp;that&nbsp;would&nbsp;be&nbsp;active&nbsp;in&nbsp;sumo&nbsp;by&nbsp;default.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(default&nbsp;False)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'withConnections'&nbsp;:&nbsp;import&nbsp;all&nbsp;connections&nbsp;(default&nbsp;True)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'withFoes'&nbsp;:&nbsp;import&nbsp;right-of-way&nbsp;information&nbsp;(default&nbsp;True)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'withInternal'&nbsp;:&nbsp;import&nbsp;internal&nbsp;edges&nbsp;and&nbsp;lanes&nbsp;(default&nbsp;False)</tt></dd></dl>
  <dl><dt><a name="-tee"><strong>tee</strong></a>(...)</dt><dd><tt><a href="#-tee">tee</a>(iterable,&nbsp;n=2)&nbsp;--&gt;&nbsp;tuple&nbsp;of&nbsp;n&nbsp;independent&nbsp;iterators.</tt></dd></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">

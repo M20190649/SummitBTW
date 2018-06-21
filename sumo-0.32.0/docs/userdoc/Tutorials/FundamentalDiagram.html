@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Tutorials/FundamentalDiagram</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.160761 from <a href="http://sumo.dlr.de/wiki/Tutorials/FundamentalDiagram">the wiki page for Tutorials/FundamentalDiagram</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.524673 from <a href="http://sumo.dlr.de/wiki/Tutorials/FundamentalDiagram">the wiki page for Tutorials/FundamentalDiagram</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -344,6 +345,7 @@ The disadvantage of this approach is the need to run the simulation multiple tim
        &lt;step time="13400"/&gt;
    &lt;/variableSpeedSign&gt;
 </pre>
+<div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />This speed reduction will introduce some small artefacts into the resulting fundamental diagram.</div>
 <p>And a flow that continuously tries to add vehicles:
 </p>
 <pre>   &lt;flow id="0" type="default" begin="0" end="60000" period="3" departPos="last" departSpeed="max" departLane="free"&gt;
@@ -352,26 +354,27 @@ The disadvantage of this approach is the need to run the simulation multiple tim
 </pre>
 <!-- 
 NewPP limit report
-CPU time usage: 0.032 seconds
-Real time usage: 0.040 seconds
-Preprocessor visited node count: 23/1000000
-Preprocessor generated node count: 56/1000000
-Post‐expand include size: 93/2097152 bytes
-Template argument size: 10/2097152 bytes
+CPU time usage: 0.016 seconds
+Real time usage: 0.019 seconds
+Preprocessor visited node count: 28/1000000
+Preprocessor generated node count: 82/1000000
+Post‐expand include size: 328/2097152 bytes
+Template argument size: 106/2097152 bytes
 Highest expansion depth: 2/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    7.537      1 - -total
- 49.53%    3.733      1 - Template:XML
- 42.30%    3.188      1 - Template:AdditionalFile
+100.00%    5.144      1 - -total
+ 34.14%    1.756      1 - Template:XML
+ 30.01%    1.544      1 - Template:Caution
+ 26.90%    1.384      1 - Template:AdditionalFile
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:844-0!*!0!!en!*!* and timestamp 20171218221148 and revision id 9808
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:844-0!*!0!!en!*!* and timestamp 20180516130459 and revision id 10786
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 6 July 2017, at 08:18.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 14 May 2018, at 09:30.</div> </div>
 
     <div id="footer">
       <div>

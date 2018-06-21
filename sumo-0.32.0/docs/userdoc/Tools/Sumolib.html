@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,12 +270,12 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Tools/Sumolib</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.067763 from <a href="http://sumo.dlr.de/wiki/Tools/Sumolib">the wiki page for Tools/Sumolib</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.428220 from <a href="http://sumo.dlr.de/wiki/Tools/Sumolib">the wiki page for Tools/Sumolib</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><b>sumolib</b> is a set of python modules for working with sumo networks, simulation output and other simulation artifacts. 
-For a detailed list of available functions see the <a rel="nofollow" class="external text" href="http://sumo.dlr.de/daily/pydoc/sumolib.html">pydoc generated documentation</a>.
-You can <a rel="nofollow" class="external text" href="http://sumo.dlr.de/trac.wsgi/browser/trunk/sumo/tools/sumolib">browse the code here</a>.
+For a detailed list of available functions see the <a rel="nofollow" class="external text" href="../../pydoc/sumolib.html">pydoc generated documentation</a>.
+You can <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/tree/master/tools/sumolib">browse the code here</a>.
 </p>
 <div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
 <ul>
@@ -323,7 +324,7 @@ You can <a rel="nofollow" class="external text" href="http://sumo.dlr.de/trac.ws
      edgeCount += 1
  avgLength = lengthSum / edgeCount
 </pre>
-<pre> # compute the median length using the <a rel="nofollow" class="external text" href="http://sumo-sim.org/daily/pydoc/sumolib.miscutils.html#Statistics">Statistics</a> module
+<pre> # compute the median length using the <a rel="nofollow" class="external text" href="../../pydoc/sumolib.miscutils.html#Statistics">Statistics</a> module
  edgeStats = sumolib.miscutils.Statistics("edge lengths")
  for edge in sumolib.output.parse('myNet.edg.xml', ['edge']):
      edgeStats.add(float(edge.length))
@@ -351,8 +352,8 @@ You can <a rel="nofollow" class="external text" href="http://sumo.dlr.de/trac.ws
 </pre>
 <!-- 
 NewPP limit report
-CPU time usage: 0.024 seconds
-Real time usage: 0.024 seconds
+CPU time usage: 0.012 seconds
+Real time usage: 0.013 seconds
 Preprocessor visited node count: 31/1000000
 Preprocessor generated node count: 42/1000000
 Post‐expand include size: 21/2097152 bytes
@@ -363,13 +364,13 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    2.614      1 - -total
-100.00%    2.614      1 - Template:SUMO
+100.00%    1.549      1 - -total
+100.00%    1.549      1 - Template:SUMO
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:514-0!*!*!!en!*!* and timestamp 20171218181414 and revision id 9940
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:514-0!*!*!!en!*!* and timestamp 20180516094912 and revision id 10558
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 27 August 2017, at 22:07.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 18 January 2018, at 09:37.</div> </div>
 
     <div id="footer">
       <div>

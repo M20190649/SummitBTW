@@ -114,6 +114,7 @@
   <li><a href="Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">OD2TRIPS</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.859006 from <a href="http://sumo.dlr.de/wiki/OD2TRIPS">the wiki page for OD2TRIPS</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.211521 from <a href="http://sumo.dlr.de/wiki/OD2TRIPS">the wiki page for OD2TRIPS</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -307,6 +308,9 @@
 <dd><b>Output:</b> A list of vehicle trip definitions</dd>
 <dd><b>Programming Language:</b> C++</dd></dl>
 <h1><span class="mw-headline" id="Usage_Description">Usage Description</span></h1>
+<p>OD2TRIPS maps traffic that is defined via origin and destination zones onto the edges of a network.
+For details, see <a href="Demand/Importing_O/D_Matrices.html" title="Demand/Importing O/D Matrices">Demand/Importing_O/D_Matrices</a>.
+</p>
 <h2><span class="mw-headline" id="Options">Options</span></h2>
 <p>You may use a XML schema definition file for setting up a OD2TRIPS configuration: <a rel="nofollow" class="external text" href="http://sumo.dlr.de/xsd/od2tripsConfiguration.xsd">od2tripsConfiguration.xsd</a>.
 </p>
@@ -618,8 +622,6 @@
 <td style="vertical-align:top"> Initialises the random number generator with the given value; <i>default: <b>23423</b></i>
 </td></tr>
 </table>
-<p><br />
-</p>
 <h1><span class="mw-headline" id="Notes">Notes</span></h1>
 <p>The option --vtype only works when "--od-matrix-files" is used. For "Amitran" format, this is given by the "id" property of "actorConfig".
 </p>
@@ -627,8 +629,8 @@
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.220 seconds
-Real time usage: 0.223 seconds
+CPU time usage: 0.100 seconds
+Real time usage: 0.104 seconds
 Preprocessor visited node count: 524/1000000
 Preprocessor generated node count: 1722/1000000
 Post‐expand include size: 11294/2097152 bytes
@@ -639,19 +641,19 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   88.037      1 - -total
- 74.64%   65.707     59 - Template:Option
-  5.85%    5.148     20 - Template:DT_BOOL
-  5.25%    4.626     17 - Template:DT_FILE
-  4.42%    3.891     13 - Template:DT_STR
-  3.21%    2.827      2 - Template:DT_FLOAT
-  2.58%    2.267      4 - Template:DT_TIME
-  2.47%    2.172      3 - Template:DT_INT
+100.00%   42.015      1 - -total
+ 74.79%   31.424     59 - Template:Option
+  5.43%    2.283     20 - Template:DT_BOOL
+  5.22%    2.193     17 - Template:DT_FILE
+  4.74%    1.992     13 - Template:DT_STR
+  3.57%    1.498      4 - Template:DT_TIME
+  3.38%    1.422      3 - Template:DT_INT
+  3.27%    1.375      2 - Template:DT_FLOAT
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:80-0!*!0!!en!*!* and timestamp 20171218232246 and revision id 10047
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:80-0!*!0!!en!*!* and timestamp 20180516102641 and revision id 10711
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 12 September 2017, at 15:09.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 26 March 2018, at 08:22.</div> </div>
 
     <div id="footer">
       <div>

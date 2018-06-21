@@ -114,6 +114,7 @@
   <li><a href="Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">NETEDIT</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.822145 from <a href="http://sumo.dlr.de/wiki/NETEDIT">the wiki page for NETEDIT</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.172187 from <a href="http://sumo.dlr.de/wiki/NETEDIT">the wiki page for NETEDIT</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -302,97 +303,102 @@
 <li class="toclevel-2 tocsection-16"><a href="#Connect"><span class="tocnumber">3.5</span> <span class="toctext">Connect</span></a>
 <ul>
 <li class="toclevel-3 tocsection-17"><a href="#Inspecting_connections"><span class="tocnumber">3.5.1</span> <span class="toctext">Inspecting connections</span></a></li>
-<li class="toclevel-3 tocsection-18"><a href="#Editing_connections"><span class="tocnumber">3.5.2</span> <span class="toctext">Editing connections</span></a></li>
-</ul>
-</li>
-<li class="toclevel-2 tocsection-19"><a href="#Select"><span class="tocnumber">3.6</span> <span class="toctext">Select</span></a>
+<li class="toclevel-3 tocsection-18"><a href="#Editing_connections"><span class="tocnumber">3.5.2</span> <span class="toctext">Editing connections</span></a>
 <ul>
-<li class="toclevel-3 tocsection-20"><a href="#Methods_for_selecting"><span class="tocnumber">3.6.1</span> <span class="toctext">Methods for selecting</span></a></li>
-<li class="toclevel-3 tocsection-21"><a href="#Modification_Mode"><span class="tocnumber">3.6.2</span> <span class="toctext">Modification Mode</span></a></li>
-<li class="toclevel-3 tocsection-22"><a href="#Match_Attribute"><span class="tocnumber">3.6.3</span> <span class="toctext">Match Attribute</span></a>
+<li class="toclevel-4 tocsection-19"><a href="#Conflict_reasons"><span class="tocnumber">3.5.2.1</span> <span class="toctext">Conflict reasons</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-20"><a href="#Select"><span class="tocnumber">3.6</span> <span class="toctext">Select</span></a>
 <ul>
-<li class="toclevel-4 tocsection-23"><a href="#Matching_rules"><span class="tocnumber">3.6.3.1</span> <span class="toctext">Matching rules</span></a></li>
-<li class="toclevel-4 tocsection-24"><a href="#Special_Cases"><span class="tocnumber">3.6.3.2</span> <span class="toctext">Special Cases</span></a></li>
-<li class="toclevel-4 tocsection-25"><a href="#Examples"><span class="tocnumber">3.6.3.3</span> <span class="toctext">Examples</span></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toclevel-2 tocsection-26"><a href="#Traffic_Lights"><span class="tocnumber">3.7</span> <span class="toctext">Traffic Lights</span></a></li>
-<li class="toclevel-2 tocsection-27"><a href="#Additionals"><span class="tocnumber">3.8</span> <span class="toctext">Additionals</span></a></li>
-<li class="toclevel-2 tocsection-28"><a href="#Crossings"><span class="tocnumber">3.9</span> <span class="toctext">Crossings</span></a></li>
-<li class="toclevel-2 tocsection-29"><a href="#POIs_and_Polygons"><span class="tocnumber">3.10</span> <span class="toctext">POIs and Polygons</span></a></li>
-</ul>
-</li>
-<li class="toclevel-1 tocsection-30"><a href="#Road_Network_Elements"><span class="tocnumber">4</span> <span class="toctext">Road Network Elements</span></a>
+<li class="toclevel-3 tocsection-21"><a href="#Methods_for_selecting"><span class="tocnumber">3.6.1</span> <span class="toctext">Methods for selecting</span></a></li>
+<li class="toclevel-3 tocsection-22"><a href="#Modification_Mode"><span class="tocnumber">3.6.2</span> <span class="toctext">Modification Mode</span></a></li>
+<li class="toclevel-3 tocsection-23"><a href="#Match_Attribute"><span class="tocnumber">3.6.3</span> <span class="toctext">Match Attribute</span></a>
 <ul>
-<li class="toclevel-2 tocsection-31"><a href="#Junctions"><span class="tocnumber">4.1</span> <span class="toctext">Junctions</span></a></li>
-<li class="toclevel-2 tocsection-32"><a href="#Edges"><span class="tocnumber">4.2</span> <span class="toctext">Edges</span></a></li>
-<li class="toclevel-2 tocsection-33"><a href="#Lanes"><span class="tocnumber">4.3</span> <span class="toctext">Lanes</span></a></li>
-<li class="toclevel-2 tocsection-34"><a href="#Connections"><span class="tocnumber">4.4</span> <span class="toctext">Connections</span></a></li>
-<li class="toclevel-2 tocsection-35"><a href="#Traffic_Lights_2"><span class="tocnumber">4.5</span> <span class="toctext">Traffic Lights</span></a></li>
+<li class="toclevel-4 tocsection-24"><a href="#Matching_rules"><span class="tocnumber">3.6.3.1</span> <span class="toctext">Matching rules</span></a></li>
+<li class="toclevel-4 tocsection-25"><a href="#Special_Cases"><span class="tocnumber">3.6.3.2</span> <span class="toctext">Special Cases</span></a></li>
+<li class="toclevel-4 tocsection-26"><a href="#Examples"><span class="tocnumber">3.6.3.3</span> <span class="toctext">Examples</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-36"><a href="#Additional_elements"><span class="tocnumber">5</span> <span class="toctext">Additional elements</span></a>
-<ul>
-<li class="toclevel-2 tocsection-37"><a href="#Move_and_references"><span class="tocnumber">5.1</span> <span class="toctext">Move and references</span></a></li>
-<li class="toclevel-2 tocsection-38"><a href="#Parameters"><span class="tocnumber">5.2</span> <span class="toctext">Parameters</span></a></li>
-<li class="toclevel-2 tocsection-39"><a href="#Additional_sets"><span class="tocnumber">5.3</span> <span class="toctext">Additional sets</span></a></li>
-<li class="toclevel-2 tocsection-40"><a href="#Help_dialogs"><span class="tocnumber">5.4</span> <span class="toctext">Help dialogs</span></a></li>
-<li class="toclevel-2 tocsection-41"><a href="#Additional_types"><span class="tocnumber">5.5</span> <span class="toctext">Additional types</span></a>
-<ul>
-<li class="toclevel-3 tocsection-42"><a href="#Stopping_Places"><span class="tocnumber">5.5.1</span> <span class="toctext">Stopping Places</span></a>
-<ul>
-<li class="toclevel-4 tocsection-43"><a href="#Bus_stop"><span class="tocnumber">5.5.1.1</span> <span class="toctext">Bus stop</span></a></li>
-<li class="toclevel-4 tocsection-44"><a href="#Container_stops"><span class="tocnumber">5.5.1.2</span> <span class="toctext">Container stops</span></a></li>
-<li class="toclevel-4 tocsection-45"><a href="#Charging_station"><span class="tocnumber">5.5.1.3</span> <span class="toctext">Charging station</span></a></li>
 </ul>
 </li>
-<li class="toclevel-3 tocsection-46"><a href="#Detectors"><span class="tocnumber">5.5.2</span> <span class="toctext">Detectors</span></a>
+<li class="toclevel-2 tocsection-27"><a href="#Traffic_Lights"><span class="tocnumber">3.7</span> <span class="toctext">Traffic Lights</span></a></li>
+<li class="toclevel-2 tocsection-28"><a href="#Additionals"><span class="tocnumber">3.8</span> <span class="toctext">Additionals</span></a></li>
+<li class="toclevel-2 tocsection-29"><a href="#Crossings"><span class="tocnumber">3.9</span> <span class="toctext">Crossings</span></a></li>
+<li class="toclevel-2 tocsection-30"><a href="#POIs_and_Polygons"><span class="tocnumber">3.10</span> <span class="toctext">POIs and Polygons</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-31"><a href="#Road_Network_Elements"><span class="tocnumber">4</span> <span class="toctext">Road Network Elements</span></a>
 <ul>
-<li class="toclevel-4 tocsection-47"><a href="#Induction_Loops_Detectors_.28E1.29"><span class="tocnumber">5.5.2.1</span> <span class="toctext">Induction Loops Detectors (E1)</span></a></li>
-<li class="toclevel-4 tocsection-48"><a href="#Lane_Area_Detectors_.28E2.29"><span class="tocnumber">5.5.2.2</span> <span class="toctext">Lane Area Detectors (E2)</span></a></li>
-<li class="toclevel-4 tocsection-49"><a href="#Multi-Entry_Multi-Exit_Detectors_.28E3.29"><span class="tocnumber">5.5.2.3</span> <span class="toctext">Multi-Entry Multi-Exit Detectors (E3)</span></a></li>
-<li class="toclevel-4 tocsection-50"><a href="#DetEntry.2FDetExit"><span class="tocnumber">5.5.2.4</span> <span class="toctext">DetEntry/DetExit</span></a></li>
-<li class="toclevel-4 tocsection-51"><a href="#Route_Probe"><span class="tocnumber">5.5.2.5</span> <span class="toctext">Route Probe</span></a></li>
+<li class="toclevel-2 tocsection-32"><a href="#Junctions"><span class="tocnumber">4.1</span> <span class="toctext">Junctions</span></a></li>
+<li class="toclevel-2 tocsection-33"><a href="#Edges"><span class="tocnumber">4.2</span> <span class="toctext">Edges</span></a></li>
+<li class="toclevel-2 tocsection-34"><a href="#Lanes"><span class="tocnumber">4.3</span> <span class="toctext">Lanes</span></a></li>
+<li class="toclevel-2 tocsection-35"><a href="#Connections"><span class="tocnumber">4.4</span> <span class="toctext">Connections</span></a></li>
+<li class="toclevel-2 tocsection-36"><a href="#Traffic_Lights_2"><span class="tocnumber">4.5</span> <span class="toctext">Traffic Lights</span></a></li>
 </ul>
 </li>
-<li class="toclevel-3 tocsection-52"><a href="#Calibrator"><span class="tocnumber">5.5.3</span> <span class="toctext">Calibrator</span></a></li>
-<li class="toclevel-3 tocsection-53"><a href="#Rerouter"><span class="tocnumber">5.5.4</span> <span class="toctext">Rerouter</span></a></li>
-<li class="toclevel-3 tocsection-54"><a href="#Vaporizer"><span class="tocnumber">5.5.5</span> <span class="toctext">Vaporizer</span></a></li>
-<li class="toclevel-3 tocsection-55"><a href="#Variable_Speed_Signs"><span class="tocnumber">5.5.6</span> <span class="toctext">Variable Speed Signs</span></a></li>
-</ul>
-</li>
-<li class="toclevel-2 tocsection-56"><a href="#Route_elements"><span class="tocnumber">5.6</span> <span class="toctext">Route elements</span></a></li>
-</ul>
-</li>
-<li class="toclevel-1 tocsection-57"><a href="#Popup-Menu_Functions"><span class="tocnumber">6</span> <span class="toctext">Popup-Menu Functions</span></a>
+<li class="toclevel-1 tocsection-37"><a href="#Additional_elements"><span class="tocnumber">5</span> <span class="toctext">Additional elements</span></a>
 <ul>
-<li class="toclevel-2 tocsection-58"><a href="#Edge_and_Lane"><span class="tocnumber">6.1</span> <span class="toctext">Edge and Lane</span></a>
+<li class="toclevel-2 tocsection-38"><a href="#Move_and_references"><span class="tocnumber">5.1</span> <span class="toctext">Move and references</span></a></li>
+<li class="toclevel-2 tocsection-39"><a href="#Parameters"><span class="tocnumber">5.2</span> <span class="toctext">Parameters</span></a></li>
+<li class="toclevel-2 tocsection-40"><a href="#Additional_sets"><span class="tocnumber">5.3</span> <span class="toctext">Additional sets</span></a></li>
+<li class="toclevel-2 tocsection-41"><a href="#Help_dialogs"><span class="tocnumber">5.4</span> <span class="toctext">Help dialogs</span></a></li>
+<li class="toclevel-2 tocsection-42"><a href="#Additional_types"><span class="tocnumber">5.5</span> <span class="toctext">Additional types</span></a>
 <ul>
-<li class="toclevel-3 tocsection-59"><a href="#Restricted_lanes"><span class="tocnumber">6.1.1</span> <span class="toctext">Restricted lanes</span></a></li>
+<li class="toclevel-3 tocsection-43"><a href="#Stopping_Places"><span class="tocnumber">5.5.1</span> <span class="toctext">Stopping Places</span></a>
+<ul>
+<li class="toclevel-4 tocsection-44"><a href="#Bus_stop"><span class="tocnumber">5.5.1.1</span> <span class="toctext">Bus stop</span></a></li>
+<li class="toclevel-4 tocsection-45"><a href="#Container_stops"><span class="tocnumber">5.5.1.2</span> <span class="toctext">Container stops</span></a></li>
+<li class="toclevel-4 tocsection-46"><a href="#Charging_station"><span class="tocnumber">5.5.1.3</span> <span class="toctext">Charging station</span></a></li>
 </ul>
 </li>
-<li class="toclevel-2 tocsection-60"><a href="#Junction"><span class="tocnumber">6.2</span> <span class="toctext">Junction</span></a></li>
-<li class="toclevel-2 tocsection-61"><a href="#Connection"><span class="tocnumber">6.3</span> <span class="toctext">Connection</span></a></li>
-<li class="toclevel-2 tocsection-62"><a href="#Crossing"><span class="tocnumber">6.4</span> <span class="toctext">Crossing</span></a></li>
-<li class="toclevel-2 tocsection-63"><a href="#Modifiable_Poly"><span class="tocnumber">6.5</span> <span class="toctext">Modifiable Poly</span></a></li>
-<li class="toclevel-2 tocsection-64"><a href="#Additionals_2"><span class="tocnumber">6.6</span> <span class="toctext">Additionals</span></a></li>
+<li class="toclevel-3 tocsection-47"><a href="#Detectors"><span class="tocnumber">5.5.2</span> <span class="toctext">Detectors</span></a>
+<ul>
+<li class="toclevel-4 tocsection-48"><a href="#Induction_Loops_Detectors_.28E1.29"><span class="tocnumber">5.5.2.1</span> <span class="toctext">Induction Loops Detectors (E1)</span></a></li>
+<li class="toclevel-4 tocsection-49"><a href="#Lane_Area_Detectors_.28E2.29"><span class="tocnumber">5.5.2.2</span> <span class="toctext">Lane Area Detectors (E2)</span></a></li>
+<li class="toclevel-4 tocsection-50"><a href="#Multi-Entry_Multi-Exit_Detectors_.28E3.29"><span class="tocnumber">5.5.2.3</span> <span class="toctext">Multi-Entry Multi-Exit Detectors (E3)</span></a></li>
+<li class="toclevel-4 tocsection-51"><a href="#DetEntry.2FDetExit"><span class="tocnumber">5.5.2.4</span> <span class="toctext">DetEntry/DetExit</span></a></li>
+<li class="toclevel-4 tocsection-52"><a href="#Route_Probe"><span class="tocnumber">5.5.2.5</span> <span class="toctext">Route Probe</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-65"><a href="#Usage_Examples"><span class="tocnumber">7</span> <span class="toctext">Usage Examples</span></a>
-<ul>
-<li class="toclevel-2 tocsection-66"><a href="#Reducing_the_extent_of_the_network"><span class="tocnumber">7.1</span> <span class="toctext">Reducing the extent of the network</span></a></li>
-<li class="toclevel-2 tocsection-67"><a href="#Specifying_the_complete_geometry_of_an_edge_including_endpoints"><span class="tocnumber">7.2</span> <span class="toctext">Specifying the complete geometry of an edge including endpoints</span></a>
-<ul>
-<li class="toclevel-3 tocsection-68"><a href="#Using_.27Set_geometry_endpoint.27"><span class="tocnumber">7.2.1</span> <span class="toctext">Using 'Set geometry endpoint'</span></a></li>
-<li class="toclevel-3 tocsection-69"><a href="#Entering_the_Position_manually"><span class="tocnumber">7.2.2</span> <span class="toctext">Entering the Position manually</span></a></li>
-<li class="toclevel-3 tocsection-70"><a href="#Using_.27Join_Selected_Junctions.27"><span class="tocnumber">7.2.3</span> <span class="toctext">Using 'Join Selected Junctions'</span></a></li>
+<li class="toclevel-3 tocsection-53"><a href="#Calibrator"><span class="tocnumber">5.5.3</span> <span class="toctext">Calibrator</span></a></li>
+<li class="toclevel-3 tocsection-54"><a href="#Rerouter"><span class="tocnumber">5.5.4</span> <span class="toctext">Rerouter</span></a></li>
+<li class="toclevel-3 tocsection-55"><a href="#Vaporizer"><span class="tocnumber">5.5.5</span> <span class="toctext">Vaporizer</span></a></li>
+<li class="toclevel-3 tocsection-56"><a href="#Variable_Speed_Signs"><span class="tocnumber">5.5.6</span> <span class="toctext">Variable Speed Signs</span></a></li>
 </ul>
 </li>
-<li class="toclevel-2 tocsection-71"><a href="#Converting_an_intersection_into_a_roundabout"><span class="tocnumber">7.3</span> <span class="toctext">Converting an intersection into a roundabout</span></a></li>
-<li class="toclevel-2 tocsection-72"><a href="#Correcting_road_access_permissions"><span class="tocnumber">7.4</span> <span class="toctext">Correcting road access permissions</span></a></li>
-<li class="toclevel-2 tocsection-73"><a href="#Adapting_Visualization_Settings_to_help_editing_complicated_intersections"><span class="tocnumber">7.5</span> <span class="toctext">Adapting Visualization Settings to help editing complicated intersections</span></a></li>
+<li class="toclevel-2 tocsection-57"><a href="#Route_elements"><span class="tocnumber">5.6</span> <span class="toctext">Route elements</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-58"><a href="#Popup-Menu_Functions"><span class="tocnumber">6</span> <span class="toctext">Popup-Menu Functions</span></a>
+<ul>
+<li class="toclevel-2 tocsection-59"><a href="#Edge_and_Lane"><span class="tocnumber">6.1</span> <span class="toctext">Edge and Lane</span></a>
+<ul>
+<li class="toclevel-3 tocsection-60"><a href="#Restricted_lanes"><span class="tocnumber">6.1.1</span> <span class="toctext">Restricted lanes</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-61"><a href="#Junction"><span class="tocnumber">6.2</span> <span class="toctext">Junction</span></a></li>
+<li class="toclevel-2 tocsection-62"><a href="#Connection"><span class="tocnumber">6.3</span> <span class="toctext">Connection</span></a></li>
+<li class="toclevel-2 tocsection-63"><a href="#Crossing"><span class="tocnumber">6.4</span> <span class="toctext">Crossing</span></a></li>
+<li class="toclevel-2 tocsection-64"><a href="#Modifiable_Poly"><span class="tocnumber">6.5</span> <span class="toctext">Modifiable Poly</span></a></li>
+<li class="toclevel-2 tocsection-65"><a href="#Additionals_2"><span class="tocnumber">6.6</span> <span class="toctext">Additionals</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-66"><a href="#Usage_Examples"><span class="tocnumber">7</span> <span class="toctext">Usage Examples</span></a>
+<ul>
+<li class="toclevel-2 tocsection-67"><a href="#Reducing_the_extent_of_the_network"><span class="tocnumber">7.1</span> <span class="toctext">Reducing the extent of the network</span></a></li>
+<li class="toclevel-2 tocsection-68"><a href="#Specifying_the_complete_geometry_of_an_edge_including_endpoints"><span class="tocnumber">7.2</span> <span class="toctext">Specifying the complete geometry of an edge including endpoints</span></a>
+<ul>
+<li class="toclevel-3 tocsection-69"><a href="#Using_.27Set_geometry_endpoint.27"><span class="tocnumber">7.2.1</span> <span class="toctext">Using 'Set geometry endpoint'</span></a></li>
+<li class="toclevel-3 tocsection-70"><a href="#Entering_the_Position_manually"><span class="tocnumber">7.2.2</span> <span class="toctext">Entering the Position manually</span></a></li>
+<li class="toclevel-3 tocsection-71"><a href="#Using_.27Join_Selected_Junctions.27"><span class="tocnumber">7.2.3</span> <span class="toctext">Using 'Join Selected Junctions'</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-72"><a href="#Converting_an_intersection_into_a_roundabout"><span class="tocnumber">7.3</span> <span class="toctext">Converting an intersection into a roundabout</span></a></li>
+<li class="toclevel-2 tocsection-73"><a href="#Correcting_road_access_permissions"><span class="tocnumber">7.4</span> <span class="toctext">Correcting road access permissions</span></a></li>
+<li class="toclevel-2 tocsection-74"><a href="#Changing_all_traffic_lights_to_right_on_red"><span class="tocnumber">7.5</span> <span class="toctext">Changing all traffic lights to <i>right_on_red</i></span></a></li>
+<li class="toclevel-2 tocsection-75"><a href="#Adapting_Visualization_Settings_to_help_editing_complicated_intersections"><span class="tocnumber">7.6</span> <span class="toctext">Adapting Visualization Settings to help editing complicated intersections</span></a></li>
 </ul>
 </li>
 </ul>
@@ -788,7 +794,7 @@ Editing commands are generally issued with a left-click (according to the curren
 <h2><span class="mw-headline" id="Processing_Menu_Options">Processing Menu Options</span></h2>
 <ul><li> <b>Compute Junctions</b>  (F5): recomputes the geometry and logic of all junctions. This is triggered automatically when entering modes which require this information (Connect, Traffic Lights).</li>
 <li> <b>Clean Junctions</b> (F6): removes all junctions that do not have any adjacent edges (These junctions are not included when saving the network. They are kept in the editor until cleaned for potential reuse).</li>
-<li> <b>Join Selected Junctions</b> (F7): joins the selected junctions into a single junction (See <a href="Networks/Building_Networks_from_own_XML-descriptions.html#Joining_Nodes" title="Networks/Building Networks from own XML-descriptions"> joining junctions</a>).</li>
+<li> <b>Join Selected Junctions</b> (F7): joins the selected junctions into a single junction (See <a href="Networks/Building_Networks_from_own_XML-descriptions.html#Joining_Nodes" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect"> joining junctions</a>).</li>
 <li> <b>Options</b> (F10): inspect and set all options. These are the same options that <a href="NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> accepts on the commandline or in a configuration.</li></ul>
 <h2><span class="mw-headline" id="Customizing_Visualization">Customizing Visualization</span></h2>
 <p>Most of the visualization options that are available in <a href="SUMO-GUI.html#Changing_the_appearance.2Fvisualisation_of_the_simulation" title="SUMO-GUI">SUMO-GUI</a> can also be set in NETEDIT. This includes the facilities for <a href="SUMO-GUI.html#Using_Decals_within_SUMO-GUI" title="SUMO-GUI">loading background images</a>.
@@ -1025,7 +1031,61 @@ it arrives at a junction.
 		</div></li>
 </ul>
 <h3><span class="mw-headline" id="Editing_connections">Editing connections</span></h3>
-<p>When a new junction is created, or their edges are modified, a set of new connections is automatically created. But NETEDIT allows also to customize the connections of a lane using the connection mode. When a lane is selected in connection mode:
+<p>When a new junction is created, or their edges are modified, a set of new connections is automatically created. But NETEDIT allows also to customize the connections of a lane using the connection mode. When a source lane is selected in connection mode all outgoing lanes at the junction are colored according the the categories below:
+</p>
+<table cellspacing="0" border="1" align="center" width="80%">
+
+<tr>
+<th style="background:#ddddff;"> Legend
+</th>
+<th style="background:#ddddff;"> Meaning
+</th>
+<th style="background:#ddddff;"> Result of left-click
+</th></tr>
+<tr>
+<td> <span style="background:#00FFFF">Source</span>
+</td>
+<td> The source lane for editing connections
+</td>
+<td> Nothing
+</td></tr>
+<tr>
+<td> <span style="background:#00FF00">Target</span>
+</td>
+<td> The lane is already connected from the source lane.
+</td>
+<td> Remove connection
+</td></tr>
+<tr>
+<td> <span style="background:#008800">Possible Target</span>
+</td>
+<td> The lane is not yet connected.
+</td>
+<td> Add connection (with shift-click, set <span class="inlxml">pass="true"</span>)
+</td></tr>
+<tr>
+<td> <span style="background:#FF00FF">Target (pass)</span>
+</td>
+<td> The lane already connected and this connection is forcibly set to have priority (attribute <span class="inlxml">pass="true"</span>)
+</td>
+<td> Remove connection
+</td></tr>
+<tr>
+<td> <span style="background:#FFFF00">Conflict</span>
+</td>
+<td> The lane is not yet connected. Adding a connection would be unusual for some reason (see below)
+</td>
+<td> Print reason for conflict in status bar. (with ctrl-click add connection, with ctr+shift+click create connection with <span class="inlxml">pass="true"</span>)
+</td></tr>
+</table>
+<p>To deselect the source edge or cancel the declared connections press <b>&lt;ESC&gt;</b> or click the <i>Cancel</i>-Button.
+To confirm the change press <b>&lt;ENTER&gt;</b> or click the <i>OK</i>-Button.
+</p>
+<h5><span class="mw-headline" id="Conflict_reasons">Conflict reasons</span></h5>
+<ul><li> <a href="Networks/Building_Networks_from_own_XML-descriptions.html#Multiple_connections_from_the_same_edge_to_the_same_target_lane" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">double connection</a>. Usually each lane only has one predecessor from the same edge. A counter-example would be a <a href="Networks/Building_Networks_from_own_XML-descriptions.html#Node_types" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">zipper node</a>. May also be useful to model bus bays.</li>
+<li> Incompatible permissions: The source and target lanes have no <a href="Simulation/VehiclePermissions.html" title="Simulation/VehiclePermissions">allowed vehicle class</a> in common</li>
+<li> Connection from sidewalk: Lane-to-lane connections for pedestrians are usually not defined by the user. Instead, the connectivity is modeled with <a href="Simulation/Pedestrians.html#Generating_a_network_with_crossings_and_walkingareas" title="Simulation/Pedestrians">pedestrian crossings</a>.</li></ul>
+<p><br />
 </p>
 <ul class="gallery mw-gallery-traditional" style="max-width: 2465px;_width: 2465px;">
 		<li class="gallerybox" style="width: 485px"><div style="width: 485px">
@@ -1036,7 +1096,7 @@ it arrives at a junction.
 			</div>
 		</div></li>
 </ul>
-<p><b>Target Connected</b> are lanes that are already bond through a connection with the source lane. <b>Possible Target</b> are lanes that can be connected with the source lane, but currently they aren't connected. <b>Target conflicted</b> are lanes that are already connected from the another lane of the source edge. Since this is a rare occurrence in traffic networks and thus usually not wanted, the user can only set these by pressing <i>&lt;CTRL&gt;</i> while clicking. Clicking over <b>Target Connected</b> or <b>Possible targets</b> will create o remove connections.
+<p><br />
 </p>
 <ul class="gallery mw-gallery-traditional" style="max-width: 2465px;_width: 2465px;">
 		<li class="gallerybox" style="width: 485px"><div style="width: 485px">
@@ -1054,8 +1114,6 @@ it arrives at a junction.
 			</div>
 		</div></li>
 </ul>
-<p>When the connection of a <b>Target Connected</b> lane is removed, lane changes automatically to <b>Possible Target</b>. Respectively, when the connection between source and a <b>Possible Target</b> lane is created, lane changes automatically to <b>Target Connected</b>. Note that the arrows over lane indicates the possible turning directions (as seen in <a href="/w/index.php?title=SUMO_GUI&amp;action=edit&amp;redlink=1" class="new" title="SUMO GUI (page does not exist)">SUMO_GUI</a>).
-</p>
 <h2><span class="mw-headline" id="Select">Select</span></h2>
 <p>Select network objects according to various criteria. Selected objects can be moved or deleted together. It is also possible to 
 set attributes for all selected junctions (or all edges) at the same time using <b>inspect mode</b>. 
@@ -1211,7 +1269,7 @@ Editing signal states can be accomplished in either of the following ways:
 <p>Add additional elements to the net. Additionals can be placed over a lane or in an empty place of the map. See <a href="#Additional_elements">#Additional_elements</a> for more information. They are saved to a separate file (<a href="SUMO.html#Format_of_additional_files" title="SUMO"><i>additional-file</i></a>) and are loaded separately when running the simulation
 </p>
 <h2><span class="mw-headline" id="Crossings">Crossings</span></h2>
-<p>Add <a href="Networks/Building_Networks_from_own_XML-descriptions.html#Pedestrian_Crossings" title="Networks/Building Networks from own XML-descriptions">pedestrian crossings</a> for use with <a href="Simulation/Pedestrians.html" title="Simulation/Pedestrians">pedestrian simulation</a>.
+<p>Add <a href="Networks/Building_Networks_from_own_XML-descriptions.html#Pedestrian_Crossings" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">pedestrian crossings</a> for use with <a href="Simulation/Pedestrians.html" title="Simulation/Pedestrians">pedestrian simulation</a>.
 Crossings are define relative a junction and edges at this junction. Their width can be customized and they can either be configured as priotized (zebra stripes) or unprioritzed (vehicles have right of way).
 </p><p>Crossings are added using the following steps:
 </p>
@@ -1348,7 +1406,7 @@ Crossings are define relative a junction and edges at this junction. Their width
 <p>This elements comprise the road network and can be created and modified with <strong class="selflink">NETEDIT</strong>.
 </p>
 <h2><span class="mw-headline" id="Junctions">Junctions</span></h2>
-<p><a href="Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions">Junctions</a>,
+<p><a href="Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">Junctions</a>,
 (also referred to as <i>Nodes</i>), represent intersections. A SUMO junction is equivalent to a Vertex in graph theory.
 </p>
 <ul class="gallery mw-gallery-traditional" style="max-width: 986px;_width: 986px;">
@@ -1361,7 +1419,7 @@ Crossings are define relative a junction and edges at this junction. Their width
 		</div></li>
 </ul>
 <h2><span class="mw-headline" id="Edges">Edges</span></h2>
-<p>In the SUMO-context, <a href="Networks/Building_Networks_from_own_XML-descriptions.html#Edge_Descriptions" title="Networks/Building Networks from own XML-descriptions">edges</a> represent roads or streets. Note that edges are unidirectional. It's equivalent to a edge in a graph theory.
+<p>In the SUMO-context, <a href="Networks/Building_Networks_from_own_XML-descriptions.html#Edge_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">edges</a> represent roads or streets. Note that edges are unidirectional. It's equivalent to a edge in a graph theory.
 </p>
 <ul class="gallery mw-gallery-traditional" style="max-width: 986px;_width: 986px;">
 		<li class="gallerybox" style="width: 485px"><div style="width: 485px">
@@ -1373,7 +1431,7 @@ Crossings are define relative a junction and edges at this junction. Their width
 		</div></li>
 </ul>
 <h2><span class="mw-headline" id="Lanes">Lanes</span></h2>
-<p>Each SUMO edge is composed of a set of <a href="Networks/Building_Networks_from_own_XML-descriptions.html#Lane-specific_Definitions" title="Networks/Building Networks from own XML-descriptions">lanes</a> (At least one).
+<p>Each SUMO edge is composed of a set of <a href="Networks/Building_Networks_from_own_XML-descriptions.html#Lane-specific_Definitions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">lanes</a> (At least one).
 </p>
 <ul class="gallery mw-gallery-traditional" style="max-width: 986px;_width: 986px;">
 		<li class="gallerybox" style="width: 485px"><div style="width: 485px">
@@ -1385,7 +1443,7 @@ Crossings are define relative a junction and edges at this junction. Their width
 		</div></li>
 </ul>
 <h2><span class="mw-headline" id="Connections">Connections</span></h2>
-<p><a href="Networks/Building_Networks_from_own_XML-descriptions.html#Connection_Descriptions" title="Networks/Building Networks from own XML-descriptions">Connections</a>
+<p><a href="Networks/Building_Networks_from_own_XML-descriptions.html#Connection_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">Connections</a>
 describe how incoming and outgoing edges of junctions are connected (for example to prohibit left-turns at some junctions).
 </p>
 <ul class="gallery mw-gallery-traditional" style="max-width: 986px;_width: 986px;">
@@ -1398,7 +1456,7 @@ describe how incoming and outgoing edges of junctions are connected (for example
 		</div></li>
 </ul>
 <h2><span class="mw-headline" id="Traffic_Lights_2">Traffic Lights</span></h2>
-<p>A <a href="Networks/Building_Networks_from_own_XML-descriptions.html#Traffic_Light_Program_Definition" title="Networks/Building Networks from own XML-descriptions">traffic light program</a> defines the phases of a traffic light.
+<p>A <a href="Networks/Building_Networks_from_own_XML-descriptions.html#Traffic_Light_Program_Definition" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">traffic light program</a> defines the phases of a traffic light.
 </p>
 <ul class="gallery mw-gallery-traditional" style="max-width: 986px;_width: 986px;">
 		<li class="gallerybox" style="width: 485px"><div style="width: 485px">
@@ -1914,9 +1972,8 @@ Below are three alternative methods of accomplishing this.
 </p>
 <h3><span class="mw-headline" id="Using_.27Set_geometry_endpoint.27">Using 'Set geometry endpoint'</span></h3>
 <ol><li> switch to <a href="#Move">move mode</a></li>
-<li> create/move geometry points for that edge</li>
-<li> create new geometry points where the endpoints of the edge should be</li>
-<li> right-click on the new endpoints and select <i>Set geometry endpoint here</i></li></ol>
+<li> shift-click near the start or the end of the edge to create/remove a custom geometry endpoint (marked with 'S' at the start and 'E' and the end.</li>
+<li> once create these special geometry points can be moved around like normal geometry points</li></ol>
 <div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />When right-clicking the geometry point the click must be within the edge shape for this too work.</div>
 <p>Afterwards, you will have to recompute the junction shape to see how it looks (F5).
 If you want to modify the edge and it's reverse edge at once this works almost the same way:
@@ -2015,6 +2072,9 @@ If you want to modify the edge and it's reverse edge at once this works almost t
 </p>
 <ol><li> in <i>select-mode</i>, use the Match Attribute panel to select  all <b>Lanes</b> with attribute <b>allow</b> that match the string <b>=bus</b> (the '=' forces exact matches). All dedicated bus lanes are now selected</li>
 <li> in <i>inspect-mode</i>, click on one of the selected lanes and modify the allow attribute from <i>bus</i> to <i>bus bicycle</i></li></ol>
+<h2><span class="mw-headline" id="Changing_all_traffic_lights_to_right_on_red">Changing all traffic lights to <i>right_on_red</i></span></h2>
+<ol><li> in <i>select-mode</i>, use the Match Attribute panel to select  all <b>Junctions</b> with attribute <b>type</b> that match the string <b>traffic_light</b> </li>
+<li> in <i>inspect-mode</i>, click on one of the selected junctions and set the type attribute to <i>right_on_red</i></li></ol>
 <h2><span class="mw-headline" id="Adapting_Visualization_Settings_to_help_editing_complicated_intersections">Adapting Visualization Settings to help editing complicated intersections</span></h2>
 <p>Editing complex intersection clusters with many short edges can be difficult with the default visualisation settings. The following settings may help
 </p>
@@ -2030,29 +2090,29 @@ If you want to modify the edge and it's reverse edge at once this works almost t
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.996 seconds
-Real time usage: 1.550 seconds
-Preprocessor visited node count: 1048/1000000
-Preprocessor generated node count: 2220/1000000
-Post‐expand include size: 1226/2097152 bytes
-Template argument size: 399/2097152 bytes
+CPU time usage: 0.416 seconds
+Real time usage: 0.447 seconds
+Preprocessor visited node count: 1085/1000000
+Preprocessor generated node count: 2304/1000000
+Post‐expand include size: 1343/2097152 bytes
+Template argument size: 432/2097152 bytes
 Highest expansion depth: 2/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00% 1005.991      1 - -total
-  1.60%   16.070      2 - Template:Incomplete
-  0.35%    3.561      1 - Template:Caution
-  0.35%    3.494      2 - Template:Note
-  0.34%    3.412      2 - Template:AdditionalFile
-  0.26%    2.585      1 - Template:XML
+100.00%  245.034      1 - -total
+  0.84%    2.049      4 - Template:XML
+  0.76%    1.869      2 - Template:Incomplete
+  0.54%    1.324      2 - Template:Note
+  0.54%    1.318      1 - Template:Caution
+  0.46%    1.120      2 - Template:AdditionalFile
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:440-0!*!0!!en!5!* and timestamp 20171218120140 and revision id 10375
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:440-0!*!0!!en!5!* and timestamp 20180515221737 and revision id 10757
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 17 November 2017, at 07:26.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 2 May 2018, at 10:43.</div> </div>
 
     <div id="footer">
       <div>

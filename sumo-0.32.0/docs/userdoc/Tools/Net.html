@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Tools/Net</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.060902 from <a href="http://sumo.dlr.de/wiki/Tools/Net">the wiki page for Tools/Net</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.421128 from <a href="http://sumo.dlr.de/wiki/Tools/Net">the wiki page for Tools/Net</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -288,7 +289,7 @@
 </p>
 <pre> <i><b>&lt;SUMO_HOME&gt;</b></i>/tools/net/netdiff.py A.net.xml B.net.xml diff
 </pre>
-<p>will produce 4 <a href="../Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions">plain-XML network</a> files
+<p>will produce 4 <a href="../Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">plain-XML network</a> files
 </p>
 <ul><li> diff.nod.xml</li>
 <li> diff.edg.xml</li>
@@ -331,7 +332,7 @@ The following connections are added:
 <h1><span class="mw-headline" id="netextract.py">netextract.py</span></h1>
 <p>This tool extracts nodes and edges from a given network for their reuse in NETCONVERT. 
 </p>
-<div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />NETCONVERT is able to import <i>.net.xml</i> files and export <a href="../Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions"><i>plain xml files</i></a> which makes this tool obsolete. It is retained for educational purposes as it demonstrates working with a sumo network from python.</div>
+<div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />NETCONVERT is able to import <i>.net.xml</i> files and export <a href="../Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect"><i>plain xml files</i></a> which makes this tool obsolete. It is retained for educational purposes as it demonstrates working with a sumo network from python.</div>
 <h1><span class="mw-headline" id="xmledges_applyOffset.py_and_xmlnodes_applyOffset.py">xmledges_applyOffset.py and xmlnodes_applyOffset.py</span></h1>
 <p>Both tools apply the given offset to the geometrical information of edges or nodes given in the input file. The results are written into &lt;XMLEDGES&gt;.mod.xml or &lt;XMLNODES&gt;.mod.xml, respectively.
 </p>
@@ -357,8 +358,8 @@ The result is written to &lt;CONNECTIONS&gt;.mod.xml
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.084 seconds
-Real time usage: 0.082 seconds
+CPU time usage: 0.024 seconds
+Real time usage: 0.027 seconds
 Preprocessor visited node count: 141/1000000
 Preprocessor generated node count: 378/1000000
 Post‐expand include size: 1794/2097152 bytes
@@ -369,15 +370,15 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   25.367      1 - -total
- 38.74%    9.828     15 - Template:Option
- 12.69%    3.218      1 - Template:Note
- 11.81%    2.995      2 - Template:SUMO
+100.00%    8.788      1 - -total
+ 38.61%    3.393     15 - Template:Option
+ 13.28%    1.167      1 - Template:Note
+ 12.69%    1.115      2 - Template:SUMO
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:12-0!*!0!!en!*!* and timestamp 20171219074734 and revision id 7045
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:12-0!*!0!!en!*!* and timestamp 20180515221807 and revision id 7045
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 25 February 2016, at 11:59.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 25 February 2016, at 12:59.</div> </div>
 
     <div id="footer">
       <div>

@@ -114,6 +114,7 @@
   <li><a href="../../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Simulation/Output/RawDump</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.970789 from <a href="http://sumo.dlr.de/wiki/Simulation/Output/RawDump">the wiki page for Simulation/Output/RawDump</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.326411 from <a href="http://sumo.dlr.de/wiki/Simulation/Output/RawDump">the wiki page for Simulation/Output/RawDump</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>The network dump (also called <i>netstate output</i> or <i>netstate dump</i>) was the first output capability that was implemented in SUMO. It contains detailed information for each edge, each vehicle and each simulation step. Due to the high level of detail it is very flexible but often requires additional programming to parse and filter the information that is actually desired. The <a href="../../Simulation/Output/FCDOutput.html" title="Simulation/Output/FCDOutput">Simulation/Output/FCDOutput</a> has a similar level of detail but does not group vehicles based on their edge.
@@ -310,6 +311,12 @@
 
          ... more lanes if the edge possesses more ...
 
+         ... optional persons and containers if currently active on that edge
+         &lt;person id=&quot;&lt;ID&gt;&quot; pos=&quot;&lt;OFFSET_FROM_EDGE_BEGIN&gt;&quot; speed=&quot;&lt;SPEED&gt;&quot;/&gt;
+         ...
+         &lt;container id=&quot;&lt;ID&gt;&quot; pos=&quot;&lt;OFFSET_FROM_EDGE_BEGIN&gt;&quot; speed=&quot;&lt;SPEED&gt;&quot;/&gt;
+         ...
+
       &lt;/edge&gt;
 
       ... more edges ....
@@ -320,6 +327,7 @@
 
 &lt;/netstate&gt;
 </pre>
+<div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />If persons or containers are transported within a vehicle, they are written as child elements of that vehicle rather than as child elements of the edge.</div>
 <p>The meanings of the written values are given in the following table.
 </p>
 <table cellspacing="0" border="1" align="center" width="80%">
@@ -358,6 +366,34 @@
 <td> m/s
 </td>
 <td> The speed of the vehicle within the described time step
+</td></tr>
+<tr>
+<td class="inlxml"> posLat
+</td>
+<td> m
+</td>
+<td> Offset from the center of the lane (only when using the <a href="../../Simulation/SublaneModel.html" title="Simulation/SublaneModel">sublane model</a>)
+</td></tr>
+<tr>
+<td class="inlxml"> personNumber
+</td>
+<td> #
+</td>
+<td> number of persons in the vehicle (not in <a href="../../MESO.html" title="MESO" class="mw-redirect">MESO</a>)
+</td></tr>
+<tr>
+<td class="inlxml"> containerNumber
+</td>
+<td> #
+</td>
+<td> number of containers in the vehicle (not in <a href="../../MESO.html" title="MESO" class="mw-redirect">MESO</a>)
+</td></tr>
+<tr>
+<td class="inlxml"> stage
+</td>
+<td> string
+</td>
+<td> description of the current <a href="../../Specification/Persons.html#Simulation_input" title="Specification/Persons">stage</a> (only for persons and containers)
 </td></tr></table>
 <h2><span class="mw-headline" id="Additional_Options">Additional Options</span></h2>
 <p>The option <span style="color: #111144; font-weight: bold; white-space: pre;">--netstate-dump.precision <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;INT&gt;</i></a></span> controls the number of significant digits when writing positions and speeds to the output file. The option <span style="color: #111144; font-weight: bold; white-space: pre;">--netstate-dump.empty-edges <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;BOOL&gt;</i></a></span> controls whether edges without vehicles are included in the output.
@@ -368,28 +404,29 @@
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.044 seconds
-Real time usage: 0.052 seconds
-Preprocessor visited node count: 84/1000000
-Preprocessor generated node count: 240/1000000
-Post‐expand include size: 1130/2097152 bytes
-Template argument size: 375/2097152 bytes
+CPU time usage: 0.028 seconds
+Real time usage: 0.028 seconds
+Preprocessor visited node count: 91/1000000
+Preprocessor generated node count: 266/1000000
+Post‐expand include size: 1418/2097152 bytes
+Template argument size: 527/2097152 bytes
 Highest expansion depth: 3/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   20.656      1 - -total
- 75.61%   15.617      6 - Template:Option
- 15.17%    3.134      4 - Template:DT_FILE
- 14.55%    3.005      1 - Template:DT_INT
- 13.79%    2.848      1 - Template:DT_BOOL
+100.00%   10.673      1 - -total
+ 62.69%    6.691      6 - Template:Option
+ 12.27%    1.310      4 - Template:DT_FILE
+ 11.54%    1.232      1 - Template:Note
+ 10.39%    1.109      1 - Template:DT_BOOL
+ 10.37%    1.107      1 - Template:DT_INT
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:244-0!*!0!!en!*!* and timestamp 20171218102908 and revision id 9400
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:244-0!*!0!!en!*!* and timestamp 20180515221756 and revision id 10595
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 26 April 2017, at 09:40.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 12 February 2018, at 10:27.</div> </div>
 
     <div id="footer">
       <div>

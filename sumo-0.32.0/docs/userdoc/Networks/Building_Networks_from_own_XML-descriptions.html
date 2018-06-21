@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -267,10 +268,10 @@
 
 						<div class="mw-indicators">
 </div>
-			<h1 id="firstHeading" class="firstHeading" lang="en">Networks/Building Networks from own XML-descriptions</h1>
+			<h1 id="firstHeading" class="firstHeading" lang="en">Networks/PlainXML</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.828395 from <a href="http://sumo.dlr.de/wiki/Networks/Building_Networks_from_own_XML-descriptions">the wiki page for Networks/Building_Networks_from_own_XML-descriptions</a> for SUMO 0.32.0</div>
-								<div id="contentSub"></div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.178128 from <a href="http://sumo.dlr.de/wiki/Networks/Building_Networks_from_own_XML-descriptions">the wiki page for Networks/Building_Networks_from_own_XML-descriptions</a> for SUMO git</div>
+								<div id="contentSub"><span class="mw-redirectedfrom">(Redirected from <a href="/w/index.php?title=Networks/Building_Networks_from_own_XML-descriptions&amp;redirect=no" title="Networks/Building Networks from own XML-descriptions">Networks/Building Networks from own XML-descriptions</a>)</span></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><b>SUMO</b>-Networks have two representations: 
 </p>
@@ -1414,7 +1415,7 @@ traffic light controllers which control multiple intersections.
 You can easily get examples for this type of file by loading a <i>sumo.net.xml</i> in <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> and using option <span style="color: #111144; font-weight: bold; white-space: pre;">--plain-output-prefix</span>. 
 </p>
 <h1><span class="mw-headline" id="Pedestrian_Crossings">Pedestrian Crossings</span></h1>
-<p>When building a network for <a href="../Simulation/Pedestrians.html" title="Simulation/Pedestrians">pedestrian simulation</a>, pedestrian crossings at intersections can be specified explicitly. This is done using <span class="inlxml">crossing</span> elements within a <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Connection_Descriptions" title="Networks/Building Networks from own XML-descriptions"><i>connection-file</i></a>. 
+<p>When building a network for <a href="../Simulation/Pedestrians.html" title="Simulation/Pedestrians">pedestrian simulation</a>, pedestrian crossings at intersections can be specified explicitly. This is done using <span class="inlxml">crossing</span> elements within a <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Connection_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect"><i>connection-file</i></a>. 
 </p>
 <pre> &lt;crossing node="C" edges="edge1 edge2" priority="true"/&gt;
 
@@ -1466,6 +1467,20 @@ You can easily get examples for this type of file by loading a <i>sumo.net.xml</
 <td> specifies a custom shape for this crossing. By default it is straight.
 </td></tr>
 <tr>
+<td class="inlxml"> linkIndex
+</td>
+<td> int
+</td>
+<td> specifies a custom index within the signal plan (for the forward direction)
+</td></tr>
+<tr>
+<td class="inlxml"> linkIndex2
+</td>
+<td> int
+</td>
+<td> specifies a custom index within the signal plan (for the backward direction)
+</td></tr>
+<tr>
 <td class="inlxml"> discard
 </td>
 <td> bool
@@ -1476,7 +1491,7 @@ You can easily get examples for this type of file by loading a <i>sumo.net.xml</
 </p>
 <div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />When two edges that define a bidirectional road are separated (i.e. by a green verge) it is permitted to define a separate crossing for each of the edges. This will result in a so called <i>split crossing</i> with an in-between walkingArea.</div>
 <h1><span class="mw-headline" id="Walking_Areas">Walking Areas</span></h1>
-<p>When building a network for <a href="../Simulation/Pedestrians.html" title="Simulation/Pedestrians">pedestrian simulation</a> walking areas are generated automatically. These network elements are used to connect multiple side walks and pedestrian crossings (typically one in each corner of an intersection). The shape of a walking area can be specified explicitly. This is done using <span class="inlxml">walkingArea</span> element within a <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Connection_Descriptions" title="Networks/Building Networks from own XML-descriptions"><i>connection-file</i></a>. 
+<p>When building a network for <a href="../Simulation/Pedestrians.html" title="Simulation/Pedestrians">pedestrian simulation</a> walking areas are generated automatically. These network elements are used to connect multiple side walks and pedestrian crossings (typically one in each corner of an intersection). The shape of a walking area can be specified explicitly. This is done using <span class="inlxml">walkingArea</span> element within a <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Connection_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect"><i>connection-file</i></a>. 
 </p>
 <pre> &lt;walkingArea node="C" edges="SC" shape="115.88,88.57 120.38,88.57 120.38,86.87 120.37,83.87 119.86,80.83 118.46,78.53 115.46,78.50 113.74,78.55 113.73,83.05"/&gt;  
 
@@ -1516,8 +1531,8 @@ You can easily get examples for this type of file by loading a <i>sumo.net.xml</
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.436 seconds
-Real time usage: 0.472 seconds
+CPU time usage: 0.196 seconds
+Real time usage: 0.227 seconds
 Preprocessor visited node count: 796/1000000
 Preprocessor generated node count: 2100/1000000
 Post‐expand include size: 10096/2097152 bytes
@@ -1528,21 +1543,21 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   91.470      1 - -total
- 26.34%   24.091      5 - Template:Infobox_file_format
- 16.19%   14.812     15 - Template:Option
- 12.48%   11.418     10 - Template:Ifdef
-  9.52%    8.710     17 - Template:XML
-  7.63%    6.982      6 - Template:Caution
-  5.68%    5.193      6 - Template:Note
-  3.09%    2.824      1 - Template:AdditionalFile
-  2.70%    2.472      1 - Template:DT_STR
-  2.70%    2.467      7 - Template:SUMO
+100.00%   54.809      1 - -total
+ 22.00%   12.058      5 - Template:Infobox_file_format
+ 14.50%    7.946     17 - Template:XML
+ 13.20%    7.236     15 - Template:Option
+ 10.32%    5.658     10 - Template:Ifdef
+  5.81%    3.183      6 - Template:Caution
+  4.70%    2.575      6 - Template:Note
+  2.43%    1.330      7 - Template:SUMO
+  2.13%    1.170      1 - Template:DT_FILE
+  1.96%    1.072      1 - Template:DT_FLOAT
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:195-0!*!0!!en!5!* and timestamp 20171218232237 and revision id 10105
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:195-0!*!0!!en!5!* and timestamp 20180515221739 and revision id 10698
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 25 September 2017, at 13:05.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 15 March 2018, at 10:01.</div> </div>
 
     <div id="footer">
       <div>

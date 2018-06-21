@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # Eclipse SUMO, Simulation of Urban MObility; see https://eclipse.org/sumo
-# Copyright (C) 2015-2017 German Aerospace Center (DLR) and others.
+# Copyright (C) 2015-2018 German Aerospace Center (DLR) and others.
 # This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v2.0
 # which accompanies this distribution, and is available at
 # http://www.eclipse.org/legal/epl-v20.html
+# SPDX-License-Identifier: EPL-2.0
 
 # @file    typemap.py
 # @author  Michael Behrisch
@@ -12,7 +13,7 @@
 # @version $Id$
 
 """
-This script rebuilds "../../src/netimport/typemap.h", the file
+This script rebuilds "src/netimport/typemap.h" and "src/polyconvert/pc_typemap.h", the files
 representing the default typemaps.
 It does this by parsing the data from the sumo data dir.
 """
@@ -32,24 +33,13 @@ def writeTypeMap(typemapFile, typemap):
                       line.replace('"', r'\"').replace('\n', r'\n'), file=f)
             print(";", file=f)
 
-
-def main():
-    typemapDir = join(dirname(__file__), '..', '..', 'data', 'typemap')
-    if len(sys.argv) == 1:
-        typemapFile = join(
-            dirname(__file__), '..', '..', 'src', 'netimport', 'typemap.h')
-        formats = ("opendrive", "osm")
-        suffix = "Netconvert.typ.xml"
-    else:
-        typemapFile = join(
-            dirname(__file__), '..', '..', 'src', 'polyconvert', 'pc_typemap.h')
-        formats = ("navteq", "osm", "visum")
-        suffix = "Polyconvert.typ.xml"
-    # determine output file
+def generateTypeMap(relPath, formats, suffix):
+    typemapDataDir = join(dirname(__file__), '..', '..', 'data', 'typemap')
+    typemapFile = join(dirname(__file__), '..', '..', 'src', relPath)
     typemap = {}
     maxTime = 0
     for format in formats:
-        typemap[format] = join(typemapDir, format + suffix)
+        typemap[format] = join(typemapDataDir, format + suffix)
         if exists(typemap[format]):
             maxTime = max(maxTime, getmtime(typemap[format]))
     if not exists(typemapFile) or maxTime > getmtime(typemapFile):
@@ -57,4 +47,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    generateTypeMap(join('netimport', 'typemap.h'), ("opendrive", "osm"), "Netconvert.typ.xml")
+    generateTypeMap(join('polyconvert', 'pc_typemap.h'), ("navteq", "osm", "visum"), "Polyconvert.typ.xml")

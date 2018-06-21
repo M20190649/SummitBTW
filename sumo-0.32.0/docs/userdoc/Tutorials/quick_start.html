@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,14 +270,14 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Tutorials/quick start</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.190325 from <a href="http://sumo.dlr.de/wiki/Tutorials/quick_start">the wiki page for Tutorials/quick_start</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.553241 from <a href="http://sumo.dlr.de/wiki/Tutorials/quick_start">the wiki page for Tutorials/quick_start</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><pre style="color: red"> CAUTION! - This tutorial is under construction after 3.1&#160;!</pre>
 <p>This tutorial covers a basic application and essential functions of SUMO for traffic analysis using an example network.
 </p><p>The old style tutorial can be found here:
 <a href="../Tutorials/Quick_Start_old_style.html" title="Tutorials/Quick Start old style">Tutorials/Quick Start old style</a> - a more complex tutorial; first steps in SUMO
-</p><p>All files mentioned here can also be found in the <i><b>&lt;SUMO_HOME&gt;</b></i>/docs/tutorial/quickstart directory. The most recent version can be found in the repository at <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/blob/master/tests/complex/tutorial/quickstart/data"><i><b>&lt;SUMO_HOME&gt;</b></i>/tests/complex/tutorial/quickstart/data</a>.
+</p><p>All files mentioned here can also be found in the <i><b>&lt;SUMO_HOME&gt;</b></i>/docs/tutorial/quickstart directory. The most recent version can be found in the repository at <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/blob/master/tests/complex/tutorial/quickstart/data"><i><b>&lt;SUMO_HOME&gt;</b></i>/tests/complex/tutorial/quickstart/data</a>.
 </p>
 <div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
 <ul>
@@ -439,9 +440,9 @@
 <div class="thumb tright"><div class="thumbinner" style="width:642px;"><a href="../images/Fifth.png" class="image"><img alt="Fifth.png" src="../images//Fifth.png" width="640" height="402" class="thumbimage" /></a>  <div class="thumbcaption"></div></div></div>     
 <p><br clear="all" />
 </p><p>If you press enter you will get the new positions.
-</p><p>Now it is time to save your network: You are able to find a selection in the dropdown menu of <b>File</b>. For our purpose here the <i><b>Save Network As...</b></i> is adequate. Please choose a suitable name for your network.
+</p><p>Now it is time to save your network: You are able to find a selection in the dropdown menu of <b>File</b>. For our purpose here the <i><b>Save Network As...</b></i> is adequate. Please choose a suitable name for your network, for instance quickstart.net.xml. You will use this name later on when referring to the network from your configuration.
 </p>
-<ul><li> As you can see in the given example, there are streets in both directions. To give your edge this information you can either right-click on your created edge and choose <i><b>Add reverse direction</b></i> or select the option <i><b>two-way</b></i> during the creating process of an edge .</li></ul>
+<ul><li> As you can see in the given example, there are streets in both directions. To give your edge this information you can either right-click on your created edge and choose <i><b>Add reverse direction</b></i> or select the option <i><b>two-way</b></i> during the creating process of an edge.</li></ul>
 <div class="thumb tleft"><div class="thumbinner" style="width:734px;"><a href="../images/Sixth.png" class="image"><img alt="Sixth.png" src="../images//Sixth.png" width="732" height="602" class="thumbimage" /></a>  <div class="thumbcaption"></div></div></div>
 <div class="thumb tleft"><div class="thumbinner" style="width:786px;"><a href="../images/Seventh.png" class="image"><img alt="Seventh.png" src="../images//Seventh.png" width="784" height="236" class="thumbimage" /></a>  <div class="thumbcaption"></div></div></div>
 <p><br clear="all" />
@@ -911,16 +912,13 @@ For further information and a deeper sight, please go to <a href="../NETEDIT.htm
 </p><p><b>Fig. 1.8: Overview of traffic simulation process</b>
 </p>
 <h3><span class="mw-headline" id="Command_line">Command line</span></h3>
-<p>An efficient traffic simulation execution can be achieved with the use of command line, especially when dealing with large and sophisticated traffic networks. To simplify the execution process it is recommended that all the required execution actions, e.g. the path and the name of the input files, the output types, the output directory and the simulation time period is specified in a configuration file. For the example network the respective configuration file is shown in Listing 1.7 and the traffic simulation can then be carried out with the use of the following command.
-</p>
-<pre>sumo –c quickstart.sumocfg 
-</pre>
-<p><b>Listing 1.7 Configuration file for the traffic simulation of the example network (quickstart.sumo.cfg)</b> 
+<p>An efficient traffic simulation execution can be achieved with the use of command line, especially when dealing with large and sophisticated traffic networks. To simplify the execution process it is recommended that all the required execution actions, e.g. the path and the name of the input files, the output types, the output directory and the simulation time period is specified in a configuration file.
+</p><p><b>Listing 1.7 Configuration file for the traffic simulation of the example network (quickstart.sumocfg)</b> 
 </p>
 <pre class="xml">
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
 &lt;configuration xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
- xsi:noNamespaceSchemaLocation=&quot;http://sumo.sf.net/xsd/sumoConfiguration.xsd&quot;&gt;
+ xsi:noNamespaceSchemaLocation=&quot;http://sumo.dlr.de/xsd/sumoConfiguration.xsd&quot;&gt;
     &lt;input&gt;
         &lt;net-file value=&quot;quickstart.net.xml&quot;/&gt;
         &lt;route-files value=&quot;quickstart.rou.xml&quot;/&gt;
@@ -933,7 +931,10 @@ For further information and a deeper sight, please go to <a href="../NETEDIT.htm
 &lt;/configuration&gt;
 </pre>
 <p>We use the <span class="inlxml">&lt;time-to-teleport value="-1"/&gt;</span> option here, to disable the automatic removal of vehicles which wait too long in front of an intersection.
+</p><p>For the example network the respective configuration file is shown in Listing 1.7 and the traffic simulation can then be carried out with the use of the following command.
 </p>
+<pre>sumo –c quickstart.sumocfg
+</pre>
 <h3><span class="mw-headline" id="SUMO-GUI">SUMO-GUI</span></h3>
 <p>The application of <a href="../SUMO-GUI.html" title="SUMO-GUI">SUMO-GUI</a> is the other way to execute the traffic simulation with SUMO. During the execution each vehicular movement and the traffic progression can be observed and the possible bottlenecks can be visually identified. A configuration file for all execution actions, e.g. the one in Table 1.9, is required in <a href="../SUMO-GUI.html" title="SUMO-GUI">SUMO-GUI</a>. Double-click on the Program <i>sumo-gui.exe</i> <a href="../SUMO-GUI.html" title="SUMO-GUI">SUMO-GUI</a> will be activated and a work window will be automatically open. The investigated network can be activated by opening the corresponding configuration file under the File-Menu of the menu bar. Traffic simulation can then be performed by pressing the green triangle button in the main tool bar. The simulation can be stopped any time when the user presses the red squared button. A stopped simulation can be further performed by pressing green triangle, if the simulation time is not up. An illustration example is given in Figure 1.9.
 </p><p><a href="../images/Image009.jpg" class="image"><img alt="Image009.jpg" src="../images//Image009.jpg" width="448" height="345" /></a>
@@ -944,11 +945,11 @@ For further information and a deeper sight, please go to <a href="../NETEDIT.htm
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.236 seconds
-Real time usage: 0.318 seconds
+CPU time usage: 0.076 seconds
+Real time usage: 0.080 seconds
 Preprocessor visited node count: 94/1000000
 Preprocessor generated node count: 194/1000000
-Post‐expand include size: 751/2097152 bytes
+Post‐expand include size: 752/2097152 bytes
 Template argument size: 505/2097152 bytes
 Highest expansion depth: 2/40
 Expensive parser function count: 0/100
@@ -956,15 +957,15 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    9.669      1 - -total
- 35.37%    3.420      1 - Template:Source
- 23.27%    2.250      1 - Template:Note
- 21.84%    2.112      2 - Template:SUMO
+100.00%    4.649      1 - -total
+ 32.39%    1.506      1 - Template:Source
+ 24.76%    1.151      1 - Template:Note
+ 23.57%    1.096      2 - Template:SUMO
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:824-0!*!0!!en!5!* and timestamp 20171219044436 and revision id 10322
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:824-0!*!0!!en!5!* and timestamp 20180515221822 and revision id 10731
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 6 November 2017, at 11:57.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 10 April 2018, at 12:19.</div> </div>
 
     <div id="footer">
       <div>

@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Networks/Further Outputs</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.835977 from <a href="http://sumo.dlr.de/wiki/Networks/Further_Outputs">the wiki page for Networks/Further_Outputs</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.185671 from <a href="http://sumo.dlr.de/wiki/Networks/Further_Outputs">the wiki page for Networks/Further_Outputs</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a>, <a href="../NETGENERATE.html" title="NETGENERATE">NETGENERATE</a>, and <a href="../NETEDIT.html" title="NETEDIT">NETEDIT</a> allow to generate additional output files besides writing a SUMO network file. They will be presented in the following.
@@ -300,13 +301,13 @@
 </p><p>Currently, the applications allow to write networks in the following formats:
 </p>
 <ul><li> SUMO road networks</li>
-<li> plain XML definitions, as described in <a href="../Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions">Networks/Building Networks from own XML-descriptions</a></li>
+<li> plain XML definitions, as described in <a href="../Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">Networks/Building Networks from own XML-descriptions</a></li>
 <li> MATsim networks</li></ul>
 <h2><span class="mw-headline" id="SUMO_Road_Networks">SUMO Road Networks</span></h2>
 <p>This is the default output format, see above. The name of the file to write the network into can be given using the option <span style="color: #111144; font-weight: bold; white-space: pre;">--output-file <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span>. <span style="color: #111144; font-weight: bold; white-space: pre;">--sumo-output <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span> and <span style="color: #111144; font-weight: bold; white-space: pre;">--output <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span> are synonymes.
 </p>
 <h2><span class="mw-headline" id="Plain_XML_Output">Plain XML Output</span></h2>
-<p>Parsed node and edge definitions may be saved into a XML-files which have the same formats as the ones used for importing XML-networks (as described in <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions">Node Descriptions</a> and <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions">Edge Descriptions</a>). This shall ease processing of networks read from other formats than XML. The option <span style="color: #111144; font-weight: bold; white-space: pre;">--plain-output <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span> forces <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> and <a href="../NETGENERATE.html" title="NETGENERATE">NETGENERATE</a> to generate a file named "<a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a>.nod.xml" which contains the previously imported nodes, a file named "<a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a>.edg.xml" which contains the previously imported edges, and a file named "<a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a>.con.xml" which contains the previously imported connections. The edge file will contain the list of previously read edges and each edge will have the information about the edge's id, the allowed velocity, the number of lanes, and the from/to - nodes stored. Geometry information is stored only if the imported edge has a shape, meaning that it is not only a straight connection between the from/to-nodes. The lane spread type and the basic edge type are only saved if differing from defaults ("right" and "normal", respectively). Additionally, if one of the lanes prohibits/allows vehicle classes, this information is saved, too (see also "Defining allowed Vehicle Types").
+<p>Parsed node and edge definitions may be saved into a XML-files which have the same formats as the ones used for importing XML-networks (as described in <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">Node Descriptions</a> and <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">Edge Descriptions</a>). This shall ease processing of networks read from other formats than XML. The option <span style="color: #111144; font-weight: bold; white-space: pre;">--plain-output <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span> forces <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> and <a href="../NETGENERATE.html" title="NETGENERATE">NETGENERATE</a> to generate a file named "<a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a>.nod.xml" which contains the previously imported nodes, a file named "<a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a>.edg.xml" which contains the previously imported edges, and a file named "<a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a>.con.xml" which contains the previously imported connections. The edge file will contain the list of previously read edges and each edge will have the information about the edge's id, the allowed velocity, the number of lanes, and the from/to - nodes stored. Geometry information is stored only if the imported edge has a shape, meaning that it is not only a straight connection between the from/to-nodes. The lane spread type and the basic edge type are only saved if differing from defaults ("right" and "normal", respectively). Additionally, if one of the lanes prohibits/allows vehicle classes, this information is saved, too (see also "Defining allowed Vehicle Types").
 </p>
 <h2><span class="mw-headline" id="MATsim_Road_Networks">MATsim Road Networks</span></h2>
 <p>To write the imported/generated network as a MATsim file, use the option <span style="color: #111144; font-weight: bold; white-space: pre;">--matsim-output <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span>. The extension for MATsim networks is usually ".xml".
@@ -359,8 +360,8 @@
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.088 seconds
-Real time usage: 0.092 seconds
+CPU time usage: 0.040 seconds
+Real time usage: 0.044 seconds
 Preprocessor visited node count: 212/1000000
 Preprocessor generated node count: 606/1000000
 Post‐expand include size: 3115/2097152 bytes
@@ -371,18 +372,18 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   32.527      1 - -total
- 58.76%   19.112     16 - Template:Option
- 10.48%    3.408     12 - Template:DT_FILE
-  8.08%    2.629      3 - Template:XML
-  6.41%    2.084      2 - Template:DT_BOOL
-  5.86%    1.907      1 - Template:DT_FLOAT
-  5.82%    1.894      2 - Template:AdditionalFile
+100.00%   17.149      1 - -total
+ 56.35%    9.664     16 - Template:Option
+  9.57%    1.642     12 - Template:DT_FILE
+  9.26%    1.588      3 - Template:XML
+  6.46%    1.108      2 - Template:DT_BOOL
+  6.40%    1.097      1 - Template:DT_FLOAT
+  6.17%    1.058      2 - Template:AdditionalFile
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:224-0!*!0!!en!*!* and timestamp 20171218232239 and revision id 9495
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:224-0!*!0!!en!*!* and timestamp 20180515221740 and revision id 9495
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 9 May 2017, at 07:45.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 9 May 2017, at 08:45.</div> </div>
 
     <div id="footer">
       <div>

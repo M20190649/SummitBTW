@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Simulation/VehicleSpeed</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.017485 from <a href="http://sumo.dlr.de/wiki/Simulation/VehicleSpeed">the wiki page for Simulation/VehicleSpeed</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.375897 from <a href="http://sumo.dlr.de/wiki/Simulation/VehicleSpeed">the wiki page for Simulation/VehicleSpeed</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>There are a wide range of influences on vehicle speed. They are described in the following. Each of these influences sets an upper bound on the vehicle speed. The actual speed in any given situation is the minimum speed of all influences.
@@ -299,10 +300,10 @@
 <p>The <a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Vehicle_Types" title="Definition of Vehicles, Vehicle Types, and Routes"><span class="inlxml">&lt;vType&gt;</span>-attribute <span class="inlxml">maxSpeed</span></a> models the maximum speed that a vehicle will travel. It can be thought of as the maximum speed of the engine or the maximum speed desired by the driver under any circumstances (possibly these two aspects will be modelled with separate attributes in the future).
 </p>
 <h1><span class="mw-headline" id="edge.2Flane_speed">edge/lane speed</span></h1>
-<p>The <span class="inlxml">speed</span>-attribute is usually <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Edge_Descriptions" title="Networks/Building Networks from own XML-descriptions">defined for edges</a> but may also <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Lane-specific_Definitions" title="Networks/Building Networks from own XML-descriptions">differ among the lanes</a> of the same edge. It models the legal speed limit.
+<p>The <span class="inlxml">speed</span>-attribute is usually <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Edge_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">defined for edges</a> but may also <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Lane-specific_Definitions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">differ among the lanes</a> of the same edge. It models the legal speed limit.
 </p><p>When approaching an edge with a lower speed limit than the current one, a vehicle will slow down so as to stay within the new limit at the time of reaching the new edge.
 </p><p>Each vehicle can be <a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Speed_Distributions" title="Definition of Vehicles, Vehicle Types, and Routes">assigned an individual speed multiplier</a> which then lets it exceed this limit.
-</p><p>Since version 0.24.0 it is also possible to define <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#vehicle-class_specific_speed_limits" title="Networks/Building Networks from own XML-descriptions">vClass-specific speed limits for every edge</a>.
+</p><p>Since version 0.24.0 it is also possible to define <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#vehicle-class_specific_speed_limits" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">vClass-specific speed limits for every edge</a>.
 </p>
 <h1><span class="mw-headline" id="Car_Following_Model">Car Following Model</span></h1>
 <p>The <a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Car-Following_Models" title="Definition of Vehicles, Vehicle Types, and Routes">car following model</a> of a vehicle defines its speed in relation the vehicle ahead. The default model always selects the maximum speed which is <i>safe</i> in the sense of being able to stop in time to avoid a collision. 
@@ -318,8 +319,8 @@ All models will never brake harder than the <i>emergencyDecel</i> value (which d
 </p>
 <h1><span class="mw-headline" id="Intersections">Intersections</span></h1>
 <p>Vehicles approaching an intersection without the right-of-way have to slow down. If the intersection is used by other vehicles which have the right of way, stopping may be necessary until a safe time-window is found. That time windows is based on the same safety assumptions as the car-following model. For the default <i>Krauss</i>-model this means that each vehicle must be able to stop safely even if it's lead vehicle brakes hard to a full stop.
-</p><p>Even if a vehicle has the right-of-way it may need to slow down due to <a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Impatience" title="Definition of Vehicles, Vehicle Types, and Routes">impatient</a> drivers which drive across the intersection. The <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Right-of-way" title="Networks/Building Networks from own XML-descriptions">right-of-way rules</a> at an intersection are <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions">defined by the node <span class="inlxml">type</span>-attribute</a> and by <a href="../Simulation/Traffic_Lights.html" title="Simulation/Traffic Lights">traffic lights</a>.
-</p><p>The visibility of intersections can be controlled by the visibility attribute for the corresponding connections, see <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Connection_Descriptions" title="Networks/Building Networks from own XML-descriptions">Connection Descriptions</a>. Per default, a vehicle approaching from a minor road slows down until it is 4.5m away from the intersection (even if no prioritized vehicle is nearby). After that it may start to accelerate again if there is a safe gap in traffic.
+</p><p>Even if a vehicle has the right-of-way it may need to slow down due to <a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Impatience" title="Definition of Vehicles, Vehicle Types, and Routes">impatient</a> drivers which drive across the intersection. The <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Right-of-way" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">right-of-way rules</a> at an intersection are <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">defined by the node <span class="inlxml">type</span>-attribute</a> and by <a href="../Simulation/Traffic_Lights.html" title="Simulation/Traffic Lights">traffic lights</a>.
+</p><p>The visibility of intersections can be controlled by the visibility attribute for the corresponding connections, see <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Connection_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">Connection Descriptions</a>. Per default, a vehicle approaching from a minor road slows down until it is 4.5m away from the intersection (even if no prioritized vehicle is nearby). After that it may start to accelerate again if there is a safe gap in traffic.
 </p>
 <h1><span class="mw-headline" id="Lane_Changing">Lane Changing</span></h1>
 <p>Vehicles may decide to slow down in order to execute a lane-change maneuver. They may also slow down in order to aid other vehicles with lane-changing. If the lane a vehicle is on does not have a connection to the next edge on a vehicles route, the vehicle will decelerate and stop.
@@ -346,8 +347,8 @@ By using <a href="../TraCI/Change_Vehicle_State.html#speed_mode_.280xb3.29" titl
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.048 seconds
-Real time usage: 0.053 seconds
+CPU time usage: 0.028 seconds
+Real time usage: 0.027 seconds
 Preprocessor visited node count: 142/1000000
 Preprocessor generated node count: 328/1000000
 Post‐expand include size: 652/2097152 bytes
@@ -358,14 +359,14 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   13.453      1 - -total
- 45.48%    6.119     12 - Template:XML
- 19.13%    2.574      1 - Template:Note
+100.00%    7.154      1 - -total
+ 46.18%    3.304     12 - Template:XML
+ 20.14%    1.441      1 - Template:Note
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:576-0!*!0!!en!*!* and timestamp 20171219065553 and revision id 9775
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:576-0!*!0!!en!*!* and timestamp 20180516102214 and revision id 9775
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 3 July 2017, at 19:58.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 3 July 2017, at 20:58.</div> </div>
 
     <div id="footer">
       <div>

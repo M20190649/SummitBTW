@@ -114,6 +114,7 @@
   <li><a href="../../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Simulation/Output/Instantaneous Induction Loops Detectors</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.954894 from <a href="http://sumo.dlr.de/wiki/Simulation/Output/Instantaneous_Induction_Loops_Detectors">the wiki page for Simulation/Output/Instantaneous_Induction_Loops_Detectors</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.310108 from <a href="http://sumo.dlr.de/wiki/Simulation/Output/Instantaneous_Induction_Loops_Detectors">the wiki page for Simulation/Output/Instantaneous_Induction_Loops_Detectors</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -332,6 +333,7 @@
 </td>
 <td> If set, no error will be reported if the detector is placed behind the lane. Instead, the detector will be placed 0.1 meters from the lane's end or at position 0.1, if the position was negative and larger than the lane's length after multiplication with -1.
 </td></tr></table>
+<div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />Instead of manually defining detectors in an xml file, they can also be defined visually with <a href="../../NETEDIT.html#Additional_elements" title="NETEDIT">NETEDIT</a>.</div>
 <h2><span class="mw-headline" id="Generated_Output">Generated Output</span></h2>
 <p>An instantaneous induction loop is writing a value to the output as soon as a vehicle was detected. This detector differs between different states:
 </p>
@@ -450,25 +452,26 @@
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.120 seconds
-Real time usage: 0.158 seconds
-Preprocessor visited node count: 23/1000000
-Preprocessor generated node count: 54/1000000
-Post‐expand include size: 533/2097152 bytes
-Template argument size: 394/2097152 bytes
+CPU time usage: 0.056 seconds
+Real time usage: 0.069 seconds
+Preprocessor visited node count: 30/1000000
+Preprocessor generated node count: 80/1000000
+Post‐expand include size: 803/2097152 bytes
+Template argument size: 528/2097152 bytes
 Highest expansion depth: 2/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    2.180      1 - -total
-100.00%    2.180      1 - Template:Caution
+100.00%    3.104      1 - -total
+ 53.09%    1.648      1 - Template:Note
+ 37.82%    1.174      1 - Template:Caution
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:432-0!*!0!!en!5!* and timestamp 20171218232310 and revision id 7513
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:432-0!*!0!!en!5!* and timestamp 20180516105326 and revision id 10692
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 15 June 2016, at 12:04.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 11 March 2018, at 01:00.</div> </div>
 
     <div id="footer">
       <div>

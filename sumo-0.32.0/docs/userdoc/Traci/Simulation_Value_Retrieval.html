@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">TraCI/Simulation Value Retrieval</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.138371 from <a href="http://sumo.dlr.de/wiki/TraCI/Simulation_Value_Retrieval">the wiki page for TraCI/Simulation_Value_Retrieval</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.501471 from <a href="http://sumo.dlr.de/wiki/TraCI/Simulation_Value_Retrieval">the wiki page for TraCI/Simulation_Value_Retrieval</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -322,7 +323,7 @@
 </td>
 <td> Returns the current simulation time (in ms)
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getCurrentTime">getCurrentTime</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getCurrentTime">getCurrentTime</a>
 </td></tr>
 <tr>
 <td> number of loaded vehicles (id 0x71)
@@ -331,7 +332,7 @@
 </td>
 <td> The number of vehicles which were loaded in this time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getLoadedNumber">getLoadedNumber</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getLoadedNumber">getLoadedNumber</a>
 </td></tr>
 <tr>
 <td> ids of loaded vehicles (id 0x72)
@@ -340,7 +341,7 @@
 </td>
 <td> A list of ids of vehicles which were loaded in this time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getLoadedIDList">getLoadedIDList</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getLoadedIDList">getLoadedIDList</a>
 </td></tr>
 <tr>
 <td> number of departed vehicles (id 0x73)
@@ -349,7 +350,7 @@
 </td>
 <td> The number of vehicles which departed (were inserted into the road network) in this time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getDepartedNumber">getDepartedNumber</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getDepartedNumber">getDepartedNumber</a>
 </td></tr>
 <tr>
 <td> ids of departed vehicles (id 0x74)
@@ -358,7 +359,7 @@
 </td>
 <td> A list of ids of vehicles which departed (were inserted into the road network) in this time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getDepartedIDList">getDepartedIDList</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getDepartedIDList">getDepartedIDList</a>
 </td></tr>
 <tr>
 <td> number of vehicles that start to teleport <br />(id 0x75)
@@ -367,7 +368,7 @@
 </td>
 <td> The number of vehicles which started to teleport in this time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getStartingTeleportNumber">getStartingTeleportNumber</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getStartingTeleportNumber">getStartingTeleportNumber</a>
 </td></tr>
 <tr>
 <td> ids of vehicles that start to teleport (id 0x76)
@@ -376,7 +377,7 @@
 </td>
 <td> A list of ids of vehicles which started to teleport in this time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getStartingTeleportIDList">getStartingTeleportIDList</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getStartingTeleportIDList">getStartingTeleportIDList</a>
 </td></tr>
 <tr>
 <td> number of vehicles that end being teleported <br />(id 0x77)
@@ -385,7 +386,7 @@
 </td>
 <td> The number of vehicles which ended to be teleported in this time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getEndingTeleportNumber">getEndingTeleportNumber</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getEndingTeleportNumber">getEndingTeleportNumber</a>
 </td></tr>
 <tr>
 <td> ids of vehicles that end being teleported <br />(id 0x78)
@@ -394,7 +395,7 @@
 </td>
 <td> A list of ids of vehicles which ended to be teleported in this time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getEndingTeleportIDList">getEndingTeleportIDList</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getEndingTeleportIDList">getEndingTeleportIDList</a>
 </td></tr>
 <tr>
 <td> number of arrived vehicles (id 0x79)
@@ -403,7 +404,7 @@
 </td>
 <td> The number of vehicles which arrived (have reached their destination and are removed from the road network) in this time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getArrivedNumber">getArrivedNumber</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getArrivedNumber">getArrivedNumber</a>
 </td></tr>
 <tr>
 <td> ids of arrived vehicles (id 0x7a)
@@ -412,7 +413,7 @@
 </td>
 <td> A list of ids of vehicles which arrived (have reached their destination and are removed from the road network) in this time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getArrivedIDList">getArrivedIDList</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getArrivedIDList">getArrivedIDList</a>
 </td></tr>
 <tr>
 <td> network boundaries (id 0x7c)
@@ -421,7 +422,7 @@
 </td>
 <td> The boundary box of the simulation network.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getNetBoundary">getNetBoundary</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getNetBoundary">getNetBoundary</a>
 </td></tr>
 <tr>
 <td> minimum number of vehicles that are still expected to leave the net (id 0x7d)
@@ -430,7 +431,7 @@
 </td>
 <td> The number of vehicles which are in the net plus the ones still waiting to start. This number may be smaller than the actual number of vehicles still to come because of delayed route file parsing.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getMinExpectedNumber">getMinExpectedNumber</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getMinExpectedNumber">getMinExpectedNumber</a>
 </td></tr>
 <tr>
 <td> number of vehicles that begin a stop (id 0x68)
@@ -439,7 +440,7 @@
 </td>
 <td> The number of vehicles that halted on a scheduled stop in this time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getStopStartingVehiclesNumber">getStopStartingVehiclesNumber</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getStopStartingVehiclesNumber">getStopStartingVehiclesNumber</a>
 </td></tr>
 <tr>
 <td> ids of vehicles that begin a stop (id 0x69)
@@ -448,7 +449,7 @@
 </td>
 <td> A list of ids of vehicles that halted on a scheduled stop in this time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getStopStartingVehiclesIDList">getStopStartingVehiclesIDList</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getStopStartingVehiclesIDList">getStopStartingVehiclesIDList</a>
 </td></tr>
 <tr>
 <td> number of vehicles that end a stop (id 0x6a)
@@ -457,7 +458,7 @@
 </td>
 <td> The number of vehicles that begin to continue their journey, leaving a scheduled stop in this time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getStopEndingVehiclesNumber">getStopEndingVehiclesNumber</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getStopEndingVehiclesNumber">getStopEndingVehiclesNumber</a>
 </td></tr>
 <tr>
 <td> ids of vehicles that end a stop (id 0x6b)
@@ -466,7 +467,25 @@
 </td>
 <td> A list of ids of vehicles that begin to continue their journey, leaving a scheduled stop in this time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getStopEndingVehiclesIDList">getStopEndingVehiclesIDList</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getStopEndingVehiclesIDList">getStopEndingVehiclesIDList</a>
+</td></tr>
+<tr>
+<td> number of vehicles involved in a collision (id 0x80)
+</td>
+<td> int
+</td>
+<td> The number of vehicles that were involved in a collision in this time step.
+</td>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getCollidingVehiclesNumber">getCollidingVehiclesNumber</a>
+</td></tr>
+<tr>
+<td> ids of vehicles involved in a collision (id 0x81)
+</td>
+<td> stringList
+</td>
+<td> A list of ids of vehicles that were involved in a collision in this time step.
+</td>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getCollidingVehiclesIDList">getCollidingVehiclesIDList</a>
 </td></tr>
 <tr>
 <td> number of vehicles that begin to be parked <br />(id 0x6c)
@@ -475,7 +494,7 @@
 </td>
 <td> The number of vehicles that enter a parking position in this time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getParkingStartingVehiclesNumber">getParkingStartingVehiclesNumber</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getParkingStartingVehiclesNumber">getParkingStartingVehiclesNumber</a>
 </td></tr>
 <tr>
 <td> ids of vehicles that begin to be parked <br />(id 0x6d)
@@ -484,7 +503,7 @@
 </td>
 <td> A list of ids of vehicles that enter a parking position in this time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getParkingStartingVehiclesIDList">getParkingStartingVehiclesIDList</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getParkingStartingVehiclesIDList">getParkingStartingVehiclesIDList</a>
 </td></tr>
 <tr>
 <td> number of vehicles that end to be parked <br />(id 0x6e)
@@ -493,7 +512,7 @@
 </td>
 <td> The number of vehicles that begin to continue their journey, leaving a scheduled parking in this time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getParkingEndingVehiclesNumber">getParkingEndingVehiclesNumber</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getParkingEndingVehiclesNumber">getParkingEndingVehiclesNumber</a>
 </td></tr>
 <tr>
 <td> ids of vehicles that end being parked (id 0x6f)
@@ -502,7 +521,7 @@
 </td>
 <td> A list of ids of vehicles that begin to continue their journey, leaving a scheduled parking in this time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getParkingEndingVehiclesIDList">getParkingEndingVehiclesIDList</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getParkingEndingVehiclesIDList">getParkingEndingVehiclesIDList</a>
 </td></tr>
 <tr>
 <td> bus stop waiting (id 0x67)
@@ -511,7 +530,7 @@
 </td>
 <td> Get the total number of waiting persons at the named bus stop.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getBusStopWaiting">getBusStopWaiting</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getBusStopWaiting">getBusStopWaiting</a>
 </td></tr>
 <tr>
 <td> delta T (id 0x7b)
@@ -520,7 +539,7 @@
 </td>
 <td> Returns the length of one simulation step in milliseconds.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getDeltaT">getDeltaT</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getDeltaT">getDeltaT</a>
 </td></tr>
 <tr>
 <td> parameter (0x7e)
@@ -529,7 +548,7 @@
 </td>
 <td> <a href="#Generic_Parameter_Retrieval_0x7e">Returns the value for the given string parameter</a>
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getParameter">getParameter</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getParameter">getParameter</a>
 </td></tr>
 </table>
 <h2><span class="mw-headline" id="Response_0xbb:_Simulation_Variable">Response 0xbb: Simulation Variable</span></h2>
@@ -572,7 +591,7 @@
 <th> <a href="../TraCI/Interfacing_TraCI_from_Python.html" title="TraCI/Interfacing TraCI from Python">Python Method</a>
 </th></tr>
 <tr>
-<td> position conversion (0x58)
+<td> position conversion (0x82)
 </td>
 <td> compound, see below
 </td>
@@ -580,10 +599,10 @@
 </td>
 <td> Reads a position information and returns it converted into the given representation.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-convert2D">convert2D</a> <br /><a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-convert3D">convert3D</a> <br /><a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-convertGeo">convertGeo</a> <br /><a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-convertRoad">convertRoad</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-convert2D">convert2D</a> <br /><a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-convert3D">convert3D</a> <br /><a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-convertGeo">convertGeo</a> <br /><a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-convertRoad">convertRoad</a>
 </td></tr>
 <tr>
-<td> distance request (0x59)
+<td> distance request (0x83)
 </td>
 <td> compound, see below
 </td>
@@ -591,7 +610,29 @@
 </td>
 <td> Reads two positions and an indicator whether the air or the driving distance shall be computed. Returns the according distance.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getDistanceRoad">getDistanceRoad</a> <br /><a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._simulation.html#SimulationDomain-getDistance2D">getDistance2D</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getDistanceRoad">getDistanceRoad</a> <br /><a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-getDistance2D">getDistance2D</a>
+</td></tr>
+<tr>
+<td> find route (0x86)
+</td>
+<td> compound, see below
+</td>
+<td> compound, see below
+</td>
+<td> Reads origin and destination edge together with some vehicle paramters and computes the currently fastest driving route for the vehicle (for pedestrians / passengers use find intermodal route).
+</td>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-findRoute">findRoute</a>
+</td></tr>
+<tr>
+<td> find intermodal route (0x87)
+</td>
+<td> compound, see below
+</td>
+<td> compound, see below
+</td>
+<td> Reads origin and destination position together with usable modes and other person paramters and computes the currently fastest route for the person using the available modes.
+</td>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._simulation.html#SimulationDomain-findIntermodalRoute">findIntermodalRoute</a>
 </td></tr>
 </table>
 <h3><span class="mw-headline" id="Command_0x82:_Position_Conversion">Command 0x82: Position Conversion</span></h3>
@@ -733,9 +774,119 @@
 </th>
 <th style="border: 1pt solid;"> travel time (s)
 </th></tr></table>
-<div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />The python and C++ client return a namedtupe / struct with field names <i>stageType</i>, <i>line</i>, <i>destStop</i>, <i>edges</i>, <i>travelTime</i>, <i>cost</i>.</div>
+<div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />The python and C++ client return a namedtuple / struct with field names <i>stageType</i>, <i>line</i>, <i>destStop</i>, <i>edges</i>, <i>travelTime</i>, <i>cost</i>.</div>
 <div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />The seemingly unused/redundant fields are reserved for route-by-cost and intermodal routing (see below).</div>
 <h3><span class="mw-headline" id="Command_0x87:_Find_Intermodal_Route">Command 0x87: Find Intermodal Route</span></h3>
+<table cellpadding="4" cellspacing="0" border="0">
+<tr>
+<td align="center"> byte
+</td>
+<td align="center"> integer
+</td>
+<td align="center"> byte
+</td>
+<td align="center"> string
+</td>
+<td align="center"> byte
+</td>
+<td align="center"> string
+</td>
+<td align="center"> byte
+</td>
+<td align="center"> string
+</td>
+<td align="center"> byte
+</td>
+<td align="center"> double
+</td>
+<td align="center"> byte
+</td>
+<td align="center"> integer
+</td>
+<td align="center"> byte
+</td>
+<td align="center"> double
+</td>
+<td align="center"> byte
+</td>
+<td align="center"> double
+</td>
+<td align="center"> byte
+</td>
+<td align="center"> double
+</td>
+<td align="center"> byte
+</td>
+<td align="center"> double
+</td>
+<td align="center"> byte
+</td>
+<td align="center"> double
+</td>
+<td align="center"> byte
+</td>
+<td align="center"> string
+</td>
+<td align="center"> byte
+</td>
+<td align="center"> string
+</td></tr>
+<tr>
+<th style="border: 1pt solid;"> value type <i>compound</i>
+</th>
+<th style="border: 1pt solid;"> item number (always 12)
+</th>
+<th style="border: 1pt solid;"> value type <i>string</i>
+</th>
+<th style="border: 1pt solid;"> start edge
+</th>
+<th style="border: 1pt solid;"> value type <i>string</i>
+</th>
+<th style="border: 1pt solid;"> destination edge
+</th>
+<th style="border: 1pt solid;"> value type <i>string</i>
+</th>
+<th style="border: 1pt solid;"> available modes
+</th>
+<th style="border: 1pt solid;"> value type <i>double</i>
+</th>
+<th style="border: 1pt solid;"> departure time (s)
+</th>
+<th style="border: 1pt solid;"> value type <i>integer</i>
+</th>
+<th style="border: 1pt solid;"> routing mode (see above)
+</th>
+<th style="border: 1pt solid;"> value type <i>double</i>
+</th>
+<th style="border: 1pt solid;"> walking speed (m/s)
+</th>
+<th style="border: 1pt solid;"> value type <i>double</i>
+</th>
+<th style="border: 1pt solid;"> walk factor
+</th>
+<th style="border: 1pt solid;"> value type <i>double</i>
+</th>
+<th style="border: 1pt solid;"> depart position (m)
+</th>
+<th style="border: 1pt solid;"> value type <i>double</i>
+</th>
+<th style="border: 1pt solid;"> arrival position (m)
+</th>
+<th style="border: 1pt solid;"> value type <i>double</i>
+</th>
+<th style="border: 1pt solid;"> departPosLat (m)
+</th>
+<th style="border: 1pt solid;"> value type <i>string</i>
+</th>
+<th style="border: 1pt solid;"> vtype of the vehicle
+</th>
+<th style="border: 1pt solid;"> value type <i>string</i>
+</th>
+<th style="border: 1pt solid;"> vtype of the pedestrian
+</th></tr></table>
+<p>The available modes are "car", "public", "bicycle" or space separated combination. Walking is always considered possible and is the default (or used when giving an empty string). When "car" is an available mode the vehicle type can be given using the vtype parameter. If this is empty, the default vehicle type is used.
+</p><p>The response is a list of stages similar to the one returned by findRoute.
+</p>
 <h2><span class="mw-headline" id="Generic_Parameter_Retrieval_0x7e">Generic Parameter Retrieval 0x7e</span></h2>
 <p>The simulation supports retrieval of additional object parameters using the <a href="../Traci/GenericParameters.html#get_parameter" title="Traci/GenericParameters">generic parameter retrieval call</a>.
 The <i>object id</i> refers to the object (i.e. chargingStation) id.
@@ -747,26 +898,26 @@ The following parameters are supported:
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.072 seconds
-Real time usage: 0.075 seconds
+CPU time usage: 0.040 seconds
+Real time usage: 0.042 seconds
 Preprocessor visited node count: 51/1000000
 Preprocessor generated node count: 108/1000000
-Post‐expand include size: 918/2097152 bytes
-Template argument size: 507/2097152 bytes
+Post‐expand include size: 919/2097152 bytes
+Template argument size: 508/2097152 bytes
 Highest expansion depth: 2/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    6.408      1 - -total
- 45.57%    2.920      1 - Template:Caution
- 43.04%    2.758      2 - Template:Note
+100.00%    2.915      1 - -total
+ 44.70%    1.303      2 - Template:Note
+ 41.61%    1.213      1 - Template:Caution
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:320-0!*!0!!en!*!* and timestamp 20171218201424 and revision id 10383
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:320-0!*!0!!en!*!* and timestamp 20180515221817 and revision id 10574
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 20 November 2017, at 23:54.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 1 February 2018, at 14:02.</div> </div>
 
     <div id="footer">
       <div>

@@ -114,6 +114,7 @@
   <li><a href="../../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Networks/Import/SUMO Road Networks</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.851852 from <a href="http://sumo.dlr.de/wiki/Networks/Import/SUMO_Road_Networks">the wiki page for Networks/Import/SUMO_Road_Networks</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.201976 from <a href="http://sumo.dlr.de/wiki/Networks/Import/SUMO_Road_Networks">the wiki page for Networks/Import/SUMO_Road_Networks</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><a href="../../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> allows a round-trip reimport of generated SUMO road networks. Use the option <span style="color: #111144; font-weight: bold; white-space: pre;">--sumo-net-file <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span> for reading a SUMO road network, the shorter options <span style="color: #111144; font-weight: bold; white-space: pre;">--sumo-net <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span> and <span style="color: #111144; font-weight: bold; white-space: pre;">--sumo <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span> are synonymes. An example call:
@@ -277,7 +278,7 @@
 <pre>netconvert --sumo mySUMOnet.net.xml -o mySUMOnet2.net.xml
 </pre>
 <p>Note that in this case, both the read network ("mySUMOnet.net.xml") and the generated one ("mySUMOnet2.net.xml") should be same besides the meta-information in the XML header.
-</p><p>Re-importing SUMO networks allows you to apply changes to on an existing road network using additional <a href="../../Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions">XML-files</a>. An example would be patching the type of a node.
+</p><p>Re-importing SUMO networks allows you to apply changes to on an existing road network using additional <a href="../../Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">XML-files</a>. An example would be patching the type of a node.
 </p><p>prepare a file like this:
 patch.nod.xml&#160;:
 </p>
@@ -291,8 +292,8 @@ patch.nod.xml&#160;:
 </pre>
 <!-- 
 NewPP limit report
-CPU time usage: 0.020 seconds
-Real time usage: 0.021 seconds
+CPU time usage: 0.008 seconds
+Real time usage: 0.013 seconds
 Preprocessor visited node count: 20/1000000
 Preprocessor generated node count: 96/1000000
 Post‐expand include size: 568/2097152 bytes
@@ -303,14 +304,14 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    6.638      1 - -total
- 89.77%    5.959      3 - Template:Option
- 30.55%    2.028      3 - Template:DT_FILE
+100.00%    4.602      1 - -total
+ 92.06%    4.237      3 - Template:Option
+ 38.44%    1.769      3 - Template:DT_FILE
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:423-0!*!0!*!*!*!* and timestamp 20171218232244 and revision id 5644
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:423-0!*!0!*!*!*!* and timestamp 20180516160638 and revision id 5644
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 7 November 2014, at 08:38.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 7 November 2014, at 09:38.</div> </div>
 
     <div id="footer">
       <div>

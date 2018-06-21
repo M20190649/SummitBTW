@@ -114,6 +114,7 @@
   <li><a href="../../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Networks/Import/OpenStreetMap</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.846384 from <a href="http://sumo.dlr.de/wiki/Networks/Import/OpenStreetMap">the wiki page for Networks/Import/OpenStreetMap</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.196404 from <a href="http://sumo.dlr.de/wiki/Networks/Import/OpenStreetMap">the wiki page for Networks/Import/OpenStreetMap</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><i>"<a rel="nofollow" class="external text" href="http://www.openstreetmap.org/">OpenStreetMap</a> is a free editable map of the whole world. It is made by people like you."</i> (from <a rel="nofollow" class="external text" href="http://www.openstreetmap.org/">http://www.openstreetmap.org</a>). This page discusses the conversion of files with data from OpenStreetMap to a SUMO network file. 
@@ -281,52 +282,53 @@
 <li class="toclevel-1 tocsection-2"><a href="#Importing_the_Road_Network"><span class="tocnumber">2</span> <span class="toctext">Importing the Road Network</span></a>
 <ul>
 <li class="toclevel-2 tocsection-3"><a href="#Recommended_NETCONVERT_Options"><span class="tocnumber">2.1</span> <span class="toctext">Recommended NETCONVERT Options</span></a></li>
-<li class="toclevel-2 tocsection-4"><a href="#Recommended_Typemaps"><span class="tocnumber">2.2</span> <span class="toctext">Recommended Typemaps</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Countries_with_left-hand_driving"><span class="tocnumber">2.2</span> <span class="toctext">Countries with left-hand driving</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Recommended_Typemaps"><span class="tocnumber">2.3</span> <span class="toctext">Recommended Typemaps</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-5"><a href="#Importing_additional_Polygons_.28Buildings.2C_Water.2C_etc..29"><span class="tocnumber">3</span> <span class="toctext">Importing additional Polygons (Buildings, Water, etc.)</span></a></li>
-<li class="toclevel-1 tocsection-6"><a href="#Import_Scripts"><span class="tocnumber">4</span> <span class="toctext">Import Scripts</span></a></li>
-<li class="toclevel-1 tocsection-7"><a href="#Elevation_Data"><span class="tocnumber">5</span> <span class="toctext">Elevation Data</span></a>
+<li class="toclevel-1 tocsection-6"><a href="#Importing_additional_Polygons_.28Buildings.2C_Water.2C_etc..29"><span class="tocnumber">3</span> <span class="toctext">Importing additional Polygons (Buildings, Water, etc.)</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Import_Scripts"><span class="tocnumber">4</span> <span class="toctext">Import Scripts</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Elevation_Data"><span class="tocnumber">5</span> <span class="toctext">Elevation Data</span></a>
 <ul>
-<li class="toclevel-2 tocsection-8"><a href="#SRTM"><span class="tocnumber">5.1</span> <span class="toctext">SRTM</span></a></li>
-<li class="toclevel-2 tocsection-9"><a href="#Layer_Information"><span class="tocnumber">5.2</span> <span class="toctext">Layer Information</span></a></li>
-<li class="toclevel-2 tocsection-10"><a href="#Other_data_sources"><span class="tocnumber">5.3</span> <span class="toctext">Other data sources</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#SRTM"><span class="tocnumber">5.1</span> <span class="toctext">SRTM</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="#Layer_Information"><span class="tocnumber">5.2</span> <span class="toctext">Layer Information</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#Other_data_sources"><span class="tocnumber">5.3</span> <span class="toctext">Other data sources</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-11"><a href="#Further_Notes"><span class="tocnumber">6</span> <span class="toctext">Further Notes</span></a>
+<li class="toclevel-1 tocsection-12"><a href="#Further_Notes"><span class="tocnumber">6</span> <span class="toctext">Further Notes</span></a>
 <ul>
-<li class="toclevel-2 tocsection-12"><a href="#Junctions"><span class="tocnumber">6.1</span> <span class="toctext">Junctions</span></a></li>
-<li class="toclevel-2 tocsection-13"><a href="#Traffic_Lights"><span class="tocnumber">6.2</span> <span class="toctext">Traffic Lights</span></a>
+<li class="toclevel-2 tocsection-13"><a href="#Junctions"><span class="tocnumber">6.1</span> <span class="toctext">Junctions</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="#Traffic_Lights"><span class="tocnumber">6.2</span> <span class="toctext">Traffic Lights</span></a>
 <ul>
-<li class="toclevel-3 tocsection-14"><a href="#Interpreting_traffic_light_information_in_OSM"><span class="tocnumber">6.2.1</span> <span class="toctext">Interpreting traffic light information in OSM</span></a></li>
-<li class="toclevel-3 tocsection-15"><a href="#Joining_traffic_lights"><span class="tocnumber">6.2.2</span> <span class="toctext">Joining traffic lights</span></a></li>
-<li class="toclevel-3 tocsection-16"><a href="#Debugging_missing_traffic_lights"><span class="tocnumber">6.2.3</span> <span class="toctext">Debugging missing traffic lights</span></a></li>
-<li class="toclevel-3 tocsection-17"><a href="#Overriding_the_traffic_light_information"><span class="tocnumber">6.2.4</span> <span class="toctext">Overriding the traffic light information</span></a></li>
+<li class="toclevel-3 tocsection-15"><a href="#Interpreting_traffic_light_information_in_OSM"><span class="tocnumber">6.2.1</span> <span class="toctext">Interpreting traffic light information in OSM</span></a></li>
+<li class="toclevel-3 tocsection-16"><a href="#Joining_traffic_lights"><span class="tocnumber">6.2.2</span> <span class="toctext">Joining traffic lights</span></a></li>
+<li class="toclevel-3 tocsection-17"><a href="#Debugging_missing_traffic_lights"><span class="tocnumber">6.2.3</span> <span class="toctext">Debugging missing traffic lights</span></a></li>
+<li class="toclevel-3 tocsection-18"><a href="#Overriding_the_traffic_light_information"><span class="tocnumber">6.2.4</span> <span class="toctext">Overriding the traffic light information</span></a></li>
 </ul>
 </li>
-<li class="toclevel-2 tocsection-18"><a href="#Highway_On-_and_Off-Ramps"><span class="tocnumber">6.3</span> <span class="toctext">Highway On- and Off-Ramps</span></a></li>
-<li class="toclevel-2 tocsection-19"><a href="#Roundabouts"><span class="tocnumber">6.4</span> <span class="toctext">Roundabouts</span></a></li>
-<li class="toclevel-2 tocsection-20"><a href="#Isolated_Edges"><span class="tocnumber">6.5</span> <span class="toctext">Isolated Edges</span></a></li>
-<li class="toclevel-2 tocsection-21"><a href="#Editing_OSM_networks"><span class="tocnumber">6.6</span> <span class="toctext">Editing OSM networks</span></a>
+<li class="toclevel-2 tocsection-19"><a href="#Highway_On-_and_Off-Ramps"><span class="tocnumber">6.3</span> <span class="toctext">Highway On- and Off-Ramps</span></a></li>
+<li class="toclevel-2 tocsection-20"><a href="#Roundabouts"><span class="tocnumber">6.4</span> <span class="toctext">Roundabouts</span></a></li>
+<li class="toclevel-2 tocsection-21"><a href="#Isolated_Edges"><span class="tocnumber">6.5</span> <span class="toctext">Isolated Edges</span></a></li>
+<li class="toclevel-2 tocsection-22"><a href="#Editing_OSM_networks"><span class="tocnumber">6.6</span> <span class="toctext">Editing OSM networks</span></a>
 <ul>
-<li class="toclevel-3 tocsection-22"><a href="#JOSM"><span class="tocnumber">6.6.1</span> <span class="toctext">JOSM</span></a></li>
-<li class="toclevel-3 tocsection-23"><a href="#OSMOSIS"><span class="tocnumber">6.6.2</span> <span class="toctext">OSMOSIS</span></a></li>
+<li class="toclevel-3 tocsection-23"><a href="#JOSM"><span class="tocnumber">6.6.1</span> <span class="toctext">JOSM</span></a></li>
+<li class="toclevel-3 tocsection-24"><a href="#OSMOSIS"><span class="tocnumber">6.6.2</span> <span class="toctext">OSMOSIS</span></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-24"><a href="#NETCONVERT_Details"><span class="tocnumber">7</span> <span class="toctext">NETCONVERT Details</span></a>
+<li class="toclevel-1 tocsection-25"><a href="#NETCONVERT_Details"><span class="tocnumber">7</span> <span class="toctext">NETCONVERT Details</span></a>
 <ul>
-<li class="toclevel-2 tocsection-25"><a href="#Road_Types"><span class="tocnumber">7.1</span> <span class="toctext">Road Types</span></a></li>
-<li class="toclevel-2 tocsection-26"><a href="#Explicite_Road_Attributes"><span class="tocnumber">7.2</span> <span class="toctext">Explicite Road Attributes</span></a></li>
-<li class="toclevel-2 tocsection-27"><a href="#Dismissing_unwanted_traffic_modes"><span class="tocnumber">7.3</span> <span class="toctext">Dismissing unwanted traffic modes</span></a></li>
-<li class="toclevel-2 tocsection-28"><a href="#Relationship_between_OSM_ids_and_SUMO-ids"><span class="tocnumber">7.4</span> <span class="toctext">Relationship between OSM ids and SUMO-ids</span></a></li>
-<li class="toclevel-2 tocsection-29"><a href="#Warnings_during_Import"><span class="tocnumber">7.5</span> <span class="toctext">Warnings during Import</span></a></li>
+<li class="toclevel-2 tocsection-26"><a href="#Road_Types"><span class="tocnumber">7.1</span> <span class="toctext">Road Types</span></a></li>
+<li class="toclevel-2 tocsection-27"><a href="#Explicite_Road_Attributes"><span class="tocnumber">7.2</span> <span class="toctext">Explicite Road Attributes</span></a></li>
+<li class="toclevel-2 tocsection-28"><a href="#Dismissing_unwanted_traffic_modes"><span class="tocnumber">7.3</span> <span class="toctext">Dismissing unwanted traffic modes</span></a></li>
+<li class="toclevel-2 tocsection-29"><a href="#Relationship_between_OSM_ids_and_SUMO-ids"><span class="tocnumber">7.4</span> <span class="toctext">Relationship between OSM ids and SUMO-ids</span></a></li>
+<li class="toclevel-2 tocsection-30"><a href="#Warnings_during_Import"><span class="tocnumber">7.5</span> <span class="toctext">Warnings during Import</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-30"><a href="#Importing_large_Networks"><span class="tocnumber">8</span> <span class="toctext">Importing large Networks</span></a></li>
-<li class="toclevel-1 tocsection-31"><a href="#Missing_Descriptions"><span class="tocnumber">9</span> <span class="toctext">Missing Descriptions</span></a></li>
-<li class="toclevel-1 tocsection-32"><a href="#References"><span class="tocnumber">10</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-31"><a href="#Importing_large_Networks"><span class="tocnumber">8</span> <span class="toctext">Importing large Networks</span></a></li>
+<li class="toclevel-1 tocsection-32"><a href="#Missing_Descriptions"><span class="tocnumber">9</span> <span class="toctext">Missing Descriptions</span></a></li>
+<li class="toclevel-1 tocsection-33"><a href="#References"><span class="tocnumber">10</span> <span class="toctext">References</span></a></li>
 </ul>
 </div>
 
@@ -355,6 +357,8 @@ The network will be imported with options and typemaps suitable for the selected
 <li> --ramps.guess. Acceleration/Deceleration lanes are often not included in OSM data. This option identifies likely roads that have these additional lanes and causes them to be added</li>
 <li> --junctions.join. See <a href="#Junctions">#Junctions</a></li>
 <li> --tls.guess-signals, --tls.discard-simple, --tls.join. See <a href="#Traffic_Lights">#Traffic_Lights</a></li></ul>
+<h3><span class="mw-headline" id="Countries_with_left-hand_driving">Countries with left-hand driving</span></h3>
+<div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />When importing networks with left-hand driving rules, the option <span style="color: #111144; font-weight: bold; white-space: pre;">--lefthand</span> must be set.</div>
 <h3><span class="mw-headline" id="Recommended_Typemaps">Recommended Typemaps</span></h3>
 <p>There are multiple degrees of freedom when importing data from OSM. Sometimes, information such as speed limit is missing in the raw data and must be inferred from the abstract type of the road (i.e. motorway). Different simulation scenarios require different modes of traffic and thus different parts of the traffic infrastructure to be imported. The tool for making these choices are via typemaps. SUMO provides recommended typemaps in the folder <i><b>&lt;SUMO_HOME&gt;</b></i>/data/typemap/. They are explained below.
 </p>
@@ -459,8 +463,8 @@ Since this data does not encode full elevation information, a heuristic is used 
 </p>
 <h1><span class="mw-headline" id="Further_Notes">Further Notes</span></h1>
 <h2><span class="mw-headline" id="Junctions">Junctions</span></h2>
-<p>In OpenStreetMap roads forming a single street and separated by, for example, a lawn or tram line, are represented by two edges that are parallel to each other. When crossing with another street, they form two junctions instead of one. To merge such junctions into a single junction, one can define which nodes to merge. See <a href="../../Networks/Building_Networks_from_own_XML-descriptions.html#Joining_Nodes" title="Networks/Building Networks from own XML-descriptions">Networks/Building Networks from own XML-descriptions#Joining Nodes</a> and <a href="../../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> documentation for usage details.
-</p><p>The <a href="../../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> option <span style="color: #111144; font-weight: bold; white-space: pre;">--junctions.join</span> applies a heuristic to join these junction clusters automatically and is used by default when using the <i>osmBuild.py</i> script described above. However, some junction clusters are too complex for the heuristic and should be checked manually (as indicated by the warning messages). To manually specify joins for these junctions, see <a href="../../Networks/Building_Networks_from_own_XML-descriptions.html#Joining_Nodes" title="Networks/Building Networks from own XML-descriptions">JoiningNodes</a> Also, sometimes the heuristic wrongly joins some junctions. These can be excluded by giving them as a list to the option <span style="color: #111144; font-weight: bold; white-space: pre;">--junctions.join-exclude <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;ID&gt;[,&lt;ID&gt;]*</i></a></span>.
+<p>In OpenStreetMap roads forming a single street and separated by, for example, a lawn or tram line, are represented by two edges that are parallel to each other. When crossing with another street, they form two junctions instead of one. To merge such junctions into a single junction, one can define which nodes to merge. See <a href="../../Networks/Building_Networks_from_own_XML-descriptions.html#Joining_Nodes" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">Networks/Building Networks from own XML-descriptions#Joining Nodes</a> and <a href="../../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> documentation for usage details.
+</p><p>The <a href="../../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> option <span style="color: #111144; font-weight: bold; white-space: pre;">--junctions.join</span> applies a heuristic to join these junction clusters automatically and is used by default when using the <i>osmBuild.py</i> script described above. However, some junction clusters are too complex for the heuristic and should be checked manually (as indicated by the warning messages). To manually specify joins for these junctions, see <a href="../../Networks/Building_Networks_from_own_XML-descriptions.html#Joining_Nodes" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">JoiningNodes</a> Also, sometimes the heuristic wrongly joins some junctions. These can be excluded by giving them as a list to the option <span style="color: #111144; font-weight: bold; white-space: pre;">--junctions.join-exclude <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;ID&gt;[,&lt;ID&gt;]*</i></a></span>.
 </p><p>When leaving junctions unjoined, there is a high risk of getting low throughput, jams and even deadlocks due to the short intermediate edges and the difficulty in computing proper traffic light plans for the junction clusters.
 </p>
 <h2><span class="mw-headline" id="Traffic_Lights">Traffic Lights</span></h2>
@@ -477,7 +481,7 @@ To cover the cases where this heuristic fails, the options below may be used to 
 <ul><li> run <a href="../../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> <b>without</b> the options <span style="color: #111144; font-weight: bold; white-space: pre;">--tls.discard-loaded --tls.discard-simple</span></li>
 <li> run <a href="../../POLYCONVERT.html" title="POLYCONVERT">POLYCONVERT</a> with a type-file that contains <span class="inlxml">&lt;polygonType id="highway" name="highway"</span> and then look at the generated POIs in <a href="../../SUMO-GUI.html#Loading_Shapes_and_POIs" title="SUMO-GUI">SUMO-GUI</a>. They should include all traffic light locations defined in the OSM file.</li></ul>
 <h3><span class="mw-headline" id="Overriding_the_traffic_light_information">Overriding the traffic light information</span></h3>
-<p>If the traffic light information embedded in the OSM file does not fit your needs, you can strip it with <span style="color: #111144; font-weight: bold; white-space: pre;">--osm.discard-tls</span> option in <a href="../../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> and then provide your own definition in a separate <a href="../../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions">*.nod.xml</a> file in a second run of <a href="../../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a>:
+<p>If the traffic light information embedded in the OSM file does not fit your needs, you can strip it with <span style="color: #111144; font-weight: bold; white-space: pre;">--osm.discard-tls</span> option in <a href="../../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> and then provide your own definition in a separate <a href="../../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">*.nod.xml</a> file in a second run of <a href="../../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a>:
 </p>
 <pre># 1. Import the OSM file to SUMO, discarding TLS information.
 netconvert --osm-files berlin.osm.xml --output-file berlin-without-tls.net.xml \
@@ -630,33 +634,33 @@ an edge (due to opion <span style="color: #111144; font-weight: bold; white-spac
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.160 seconds
-Real time usage: 0.171 seconds
-Preprocessor visited node count: 395/1000000
-Preprocessor generated node count: 952/1000000
-Post‐expand include size: 5394/2097152 bytes
-Template argument size: 2412/2097152 bytes
+CPU time usage: 0.076 seconds
+Real time usage: 0.078 seconds
+Preprocessor visited node count: 411/1000000
+Preprocessor generated node count: 996/1000000
+Post‐expand include size: 5779/2097152 bytes
+Template argument size: 2584/2097152 bytes
 Highest expansion depth: 4/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   61.600      1 - -total
- 45.72%   28.165     23 - Template:Option
- 12.06%    7.428      3 - Template:Caution
-  7.20%    4.438      4 - Template:XML
-  5.48%    3.376      2 - Template:Note
-  5.08%    3.128      1 - Template:DT_StringList
-  4.98%    3.067      1 - Template:DT_IDList
-  4.90%    3.021      6 - Template:SUMO
-  4.51%    2.778      1 - Template:DT_BOOL
-  4.49%    2.763      1 - Template:DT_FLOAT
+100.00%   27.826      1 - -total
+ 44.51%   12.385     24 - Template:Option
+ 12.44%    3.462      4 - Template:Caution
+  5.83%    1.623      4 - Template:XML
+  5.35%    1.488      6 - Template:SUMO
+  5.24%    1.458      1 - Template:DT_StringList
+  4.72%    1.313      2 - Template:Note
+  4.05%    1.128      1 - Template:DT_BOOL
+  3.99%    1.109      2 - Template:DT_FileList
+  3.85%    1.070      1 - Template:DT_FLOAT
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:98-0!*!0!!en!*!* and timestamp 20171218172011 and revision id 9799
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:98-0!*!0!!en!*!* and timestamp 20180515221741 and revision id 10702
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 5 July 2017, at 11:32.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 16 March 2018, at 08:51.</div> </div>
 
     <div id="footer">
       <div>

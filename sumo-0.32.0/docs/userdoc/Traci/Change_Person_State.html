@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">TraCI/Change Person State</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.093654 from <a href="http://sumo.dlr.de/wiki/TraCI/Change_Person_State">the wiki page for TraCI/Change_Person_State</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.454995 from <a href="http://sumo.dlr.de/wiki/TraCI/Change_Person_State">the wiki page for TraCI/Change_Person_State</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -319,7 +320,7 @@
 </td>
 <td> Inserts a new person to the simulation at the given edge, position and time (in s). This function should be followed by appending Stages or the person will immediatly vanish on departure.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._person.html#PersonDomain-add">add</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._person.html#PersonDomain-add">add</a>
 </td></tr>
 <tr>
 <td> append stage (0xc4)
@@ -328,7 +329,7 @@
 </td>
 <td> Appends a stage (waiting, walking or driving) to the plan of the given person.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._person.html#PersonDomain-appendDrivingStage">appendDrivingStage</a> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._person.html#PersonDomain-appendWaitingStage">appendWaitingStage</a> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._person.html#PersonDomain-appendWalkingStage">appendWalkingStage</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._person.html#PersonDomain-appendDrivingStage">appendDrivingStage</a> <a rel="nofollow" class="external text" href="../../pydoc/traci._person.html#PersonDomain-appendWaitingStage">appendWaitingStage</a> <a rel="nofollow" class="external text" href="../../pydoc/traci._person.html#PersonDomain-appendWalkingStage">appendWalkingStage</a>
 </td></tr>
 <tr>
 <td> remove stage (0xc5)
@@ -337,7 +338,7 @@
 </td>
 <td> Removes the nth next stage. nextStageIndex must be lower then value of getRemainingStages(personID). nextStageIndex 0 immediately aborts the current stage and proceeds to the next stage. When removing all stages, stage 0 should be removed last (the python function removeStages does this automatically).
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._person.html#PersonDomain-removeStage">removeStage</a><br /> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._person.html#PersonDomain-removeStages">removeStages</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._person.html#PersonDomain-removeStage">removeStage</a><br /> <a rel="nofollow" class="external text" href="../../pydoc/traci._person.html#PersonDomain-removeStages">removeStages</a>
 </td></tr>
 <tr>
 <td> reroute (compute new route) by travel time (0x90)
@@ -346,16 +347,16 @@
 </td>
 <td> Computes a new route to the current destination that minimizes travel time. The assumed values for each edge in the network can be customized in various ways. See <a href="../Simulation/Routing.html#Travel-time_values_for_routing" title="Simulation/Routing">Simulation/Routing#Travel-time_values_for_routing</a>. Replaces the current route by the found route.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._person.html#PersonDomain-rerouteTraveltime">rerouteTraveltime</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._person.html#PersonDomain-rerouteTraveltime">rerouteTraveltime</a>
 </td></tr>
 <tr>
 <td> color (0x45)
 </td>
 <td> ubyte,ubyte,ubyte,ubyte (RGBA)
 </td>
-<td> sets color for person with the given ID. i.e. (255,0,0,0) for the color red. The fourth integer (alpha) is only used when drawing persons with raster images.
+<td> sets color for person with the given ID. i.e. (255,0,0,255) for the color red.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._person.html#PersonDomain-setColor">setColor</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._person.html#PersonDomain-setColor">setColor</a>
 </td></tr>
 <tr>
 <td> height (0xbc)
@@ -364,7 +365,7 @@
 </td>
 <td> Sets the height in m for this person.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._person.html#PersonDomain-setHeight">setHeight</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._person.html#PersonDomain-setHeight">setHeight</a>
 </td></tr>
 <tr>
 <td> length (0x44)
@@ -373,7 +374,7 @@
 </td>
 <td> Sets the length in m for the given person.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._person.html#PersonDomain-setLength">setLength</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._person.html#PersonDomain-setLength">setLength</a>
 </td></tr>
 <tr>
 <td> min gap (0x4c)
@@ -382,7 +383,7 @@
 </td>
 <td> Sets the offset (gap to front person if halting) for this vehicle.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._person.html#PersonDomain-setMinGap">setMinGap</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._person.html#PersonDomain-setMinGap">setMinGap</a>
 </td></tr>
 <tr>
 <td> speed (0x5e)
@@ -391,7 +392,7 @@
 </td>
 <td> Sets the maximum speed in m/s for the named person for subsequent step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._person.html#PersonDomain-setSpeed">setSpeed</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._person.html#PersonDomain-setSpeed">setSpeed</a>
 </td></tr>
 <tr>
 <td> type (0x4f)
@@ -400,7 +401,7 @@
 </td>
 <td> Sets the id of the type for the named person.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._person.html#PersonDomain-setType">setType</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._person.html#PersonDomain-setType">setType</a>
 </td></tr>
 <tr>
 <td> width (0x4d)
@@ -409,7 +410,7 @@
 </td>
 <td> Sets the width in m for this person.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._person.html#PersonDomain-setWidth">setWidth</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._person.html#PersonDomain-setWidth">setWidth</a>
 </td></tr>
 </table>
 <h1><span class="mw-headline" id="compound_message_details">compound message details</span></h1>
@@ -612,8 +613,8 @@
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.060 seconds
-Real time usage: 0.061 seconds
+CPU time usage: 0.024 seconds
+Real time usage: 0.024 seconds
 Preprocessor visited node count: 23/1000000
 Preprocessor generated node count: 28/1000000
 Post‐expand include size: 0/2097152 bytes
@@ -627,9 +628,9 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:800-0!*!0!!en!*!* and timestamp 20171219074743 and revision id 9911
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:800-0!*!0!!en!*!* and timestamp 20180516122713 and revision id 10542
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 16 August 2017, at 07:14.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 10 January 2018, at 14:55.</div> </div>
 
     <div id="footer">
       <div>

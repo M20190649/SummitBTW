@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Tutorials/Hello Sumo</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.162476 from <a href="http://sumo.dlr.de/wiki/Tutorials/Hello_Sumo">the wiki page for Tutorials/Hello_Sumo</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.526431 from <a href="http://sumo.dlr.de/wiki/Tutorials/Hello_Sumo">the wiki page for Tutorials/Hello_Sumo</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />This tutorial assumes very basic computer skill. If you run into any questions
@@ -287,7 +288,7 @@ please read the page <a href="../Basics/Basic_Computer_Skills.html" title="Basic
 
 <h2><span class="mw-headline" id="Hello_Sumo_-_Introduction">Hello Sumo - Introduction</span></h2>
 <p>This tutorial aims at first time Sumo users. We are building the simplest net possible and let a single car
-drive on it. All files mentioned here can also be found in the <i><b>&lt;SUMO_HOME&gt;</b></i>/docs/tutorial/hello directory. The most recent version can be found in the repository at <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/blob/master/tests/complex/tutorial/hello/data/"><i><b>&lt;SUMO_HOME&gt;</b></i>/tests/complex/tutorial/hello/data/</a>.
+drive on it. All files mentioned here can also be found in the <i><b>&lt;SUMO_HOME&gt;</b></i>/docs/tutorial/hello directory. The most recent version can be found in the repository at <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/blob/master/tests/complex/tutorial/hello/data/"><i><b>&lt;SUMO_HOME&gt;</b></i>/tests/complex/tutorial/hello/data/</a>.
 </p><p>In <a href="../SUMO.html" title="SUMO">SUMO</a> a street network consists of nodes (junctions) and edges (streets connecting the junctions). Thus, if we want to create a network with two streets, subsequent to  each other, we need three nodes and two edges. We will see in the section on <a href="#Routes">#Routes</a>, why the simplest network cannot contain only one edge.
 </p>
 <h2><span class="mw-headline" id="Nodes">Nodes</span></h2>
@@ -383,17 +384,17 @@ in this example this would be <tt>hello.settings.xml</tt>.
 </p><p>Here we used viewport to set the camera position and we used delay to set the delay between each step of the simulation in ms.
 </p>
 <h2><span class="mw-headline" id="Further_Reading">Further Reading</span></h2>
-<p>More information on defining networks using XML can be found here: <a href="../Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions">Networks/Building Networks from own XML-descriptions</a>. <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> also allows to import networks from other applications, further information is available here: <a href="../Networks/Import.html" title="Networks/Import">Networks/Import</a>.
+<p>More information on defining networks using XML can be found here: <a href="../Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">Networks/Building Networks from own XML-descriptions</a>. <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> also allows to import networks from other applications, further information is available here: <a href="../Networks/Import.html" title="Networks/Import">Networks/Import</a>.
 </p><p>More information on defining vehicles can be found here: <a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html" title="Definition of Vehicles, Vehicle Types, and Routes">Definition of Vehicles, Vehicle Types, and Routes</a>.
 </p><p>More <a href="../Tutorials.html" title="Tutorials">Tutorials</a>.
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.052 seconds
-Real time usage: 0.060 seconds
+CPU time usage: 0.024 seconds
+Real time usage: 0.025 seconds
 Preprocessor visited node count: 98/1000000
 Preprocessor generated node count: 220/1000000
-Post‐expand include size: 447/2097152 bytes
+Post‐expand include size: 448/2097152 bytes
 Template argument size: 201/2097152 bytes
 Highest expansion depth: 2/40
 Expensive parser function count: 0/100
@@ -401,15 +402,15 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   12.702      1 - -total
- 35.07%    4.455      1 - Template:Source
- 30.62%    3.890      1 - Template:Note
- 26.37%    3.349      2 - Template:SUMO
+100.00%    5.416      1 - -total
+ 37.65%    2.039      1 - Template:Source
+ 29.73%    1.610      1 - Template:Note
+ 25.98%    1.407      2 - Template:SUMO
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:96-0!*!0!!en!*!* and timestamp 20171218201028 and revision id 10303
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:96-0!*!0!!en!*!* and timestamp 20180516111416 and revision id 10303
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 5 November 2017, at 20:36.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 5 November 2017, at 21:36.</div> </div>
 
     <div id="footer">
       <div>

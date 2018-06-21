@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Networks/SUMO Road Networks</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.857101 from <a href="http://sumo.dlr.de/wiki/Networks/SUMO_Road_Networks">the wiki page for Networks/SUMO_Road_Networks</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.209509 from <a href="http://sumo.dlr.de/wiki/Networks/SUMO_Road_Networks">the wiki page for Networks/SUMO_Road_Networks</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="wikitable" style="width:25em; border-width:1px 1px; border-style:solid; border-color:#909090; background-color:#f8f8ff; font-size:90%; margin:1em 0em 1em 2em; padding:3px 6px">
@@ -307,9 +308,9 @@
 </p>
 <ul><li> districts,</li>
 <li> roundabout descriptions.</li></ul>
-<p><b>Although being readable (XML) by human beings, a SUMO network file is not meant to be edited by hand.</b> Rather you should use <a href="../Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions">SUMO XML description files</a> together with <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a>. You can also convert an existing map from various formats using <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> or generate geometrically simple, abstract road maps with <a href="../NETGENERATE.html" title="NETGENERATE">NETGENERATE</a>. To modify an existing <i>.net.xml</i>-file you may <a href="../Networks/Import/SUMO_Road_Networks.html" title="Networks/Import/SUMO Road Networks">load it with NETCONVERT along with patch files</a> You may also use <a href="../NETEDIT.html" title="NETEDIT">NETEDIT</a> for building own road networks or for reworking the ones obtained from <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> or <a href="../NETGENERATE.html" title="NETGENERATE">NETGENERATE</a>.
+<p><b>Although being readable (XML) by human beings, a SUMO network file is not meant to be edited by hand.</b> Rather you should use <a href="../Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">SUMO XML description files</a> together with <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a>. You can also convert an existing map from various formats using <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> or generate geometrically simple, abstract road maps with <a href="../NETGENERATE.html" title="NETGENERATE">NETGENERATE</a>. To modify an existing <i>.net.xml</i>-file you may <a href="../Networks/Import/SUMO_Road_Networks.html" title="Networks/Import/SUMO Road Networks">load it with NETCONVERT along with patch files</a> You may also use <a href="../NETEDIT.html" title="NETEDIT">NETEDIT</a> for building own road networks or for reworking the ones obtained from <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> or <a href="../NETGENERATE.html" title="NETGENERATE">NETGENERATE</a>.
 </p>
-<div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />When creating SUMO networks from custom input data, the recommended approach is to create/generate <a href="../Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions">plain-xml-files</a> and use <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> to turn these into a <i>.net.xml</i> file. Trying to <a href="../FAQ.html#I_made_changes_to_the_.net.xml-file_but_it_did_not_work_as_expected._Why.3F" title="FAQ">generate the .net.xml file directly is fraught with dangers</a>.</div>
+<div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />When creating SUMO networks from custom input data, the recommended approach is to create/generate <a href="../Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">plain-xml-files</a> and use <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> to turn these into a <i>.net.xml</i> file. Trying to <a href="../FAQ.html#I_made_changes_to_the_.net.xml-file_but_it_did_not_work_as_expected._Why.3F" title="FAQ">generate the .net.xml file directly is fraught with dangers</a>.</div>
 <div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
 <ul>
 <li class="toclevel-1 tocsection-1"><a href="#Network_Format"><span class="tocnumber">1</span> <span class="toctext">Network Format</span></a>
@@ -320,27 +321,28 @@
 <li class="toclevel-3 tocsection-4"><a href="#Normal_Edges"><span class="tocnumber">1.2.1</span> <span class="toctext">Normal Edges</span></a></li>
 <li class="toclevel-3 tocsection-5"><a href="#Lanes"><span class="tocnumber">1.2.2</span> <span class="toctext">Lanes</span></a></li>
 <li class="toclevel-3 tocsection-6"><a href="#Internal_Edges"><span class="tocnumber">1.2.3</span> <span class="toctext">Internal Edges</span></a></li>
+<li class="toclevel-3 tocsection-7"><a href="#Stop_Offsets"><span class="tocnumber">1.2.4</span> <span class="toctext">Stop Offsets</span></a></li>
 </ul>
 </li>
-<li class="toclevel-2 tocsection-7"><a href="#Traffic_Light_Programs"><span class="tocnumber">1.3</span> <span class="toctext">Traffic Light Programs</span></a></li>
-<li class="toclevel-2 tocsection-8"><a href="#Junctions_and_Right-of-Way"><span class="tocnumber">1.4</span> <span class="toctext">Junctions and Right-of-Way</span></a>
+<li class="toclevel-2 tocsection-8"><a href="#Traffic_Light_Programs"><span class="tocnumber">1.3</span> <span class="toctext">Traffic Light Programs</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#Junctions_and_Right-of-Way"><span class="tocnumber">1.4</span> <span class="toctext">Junctions and Right-of-Way</span></a>
 <ul>
-<li class="toclevel-3 tocsection-9"><a href="#Plain_Junctions"><span class="tocnumber">1.4.1</span> <span class="toctext">Plain Junctions</span></a></li>
-<li class="toclevel-3 tocsection-10"><a href="#Requests"><span class="tocnumber">1.4.2</span> <span class="toctext">Requests</span></a></li>
-<li class="toclevel-3 tocsection-11"><a href="#Internal_Junctions"><span class="tocnumber">1.4.3</span> <span class="toctext">Internal Junctions</span></a></li>
+<li class="toclevel-3 tocsection-10"><a href="#Plain_Junctions"><span class="tocnumber">1.4.1</span> <span class="toctext">Plain Junctions</span></a></li>
+<li class="toclevel-3 tocsection-11"><a href="#Requests"><span class="tocnumber">1.4.2</span> <span class="toctext">Requests</span></a></li>
+<li class="toclevel-3 tocsection-12"><a href="#Internal_Junctions"><span class="tocnumber">1.4.3</span> <span class="toctext">Internal Junctions</span></a></li>
 </ul>
 </li>
-<li class="toclevel-2 tocsection-12"><a href="#Connections"><span class="tocnumber">1.5</span> <span class="toctext">Connections</span></a>
+<li class="toclevel-2 tocsection-13"><a href="#Connections"><span class="tocnumber">1.5</span> <span class="toctext">Connections</span></a>
 <ul>
-<li class="toclevel-3 tocsection-13"><a href="#Plain_Connections"><span class="tocnumber">1.5.1</span> <span class="toctext">Plain Connections</span></a></li>
-<li class="toclevel-3 tocsection-14"><a href="#Indices_of_a_connection"><span class="tocnumber">1.5.2</span> <span class="toctext">Indices of a connection</span></a></li>
+<li class="toclevel-3 tocsection-14"><a href="#Plain_Connections"><span class="tocnumber">1.5.1</span> <span class="toctext">Plain Connections</span></a></li>
+<li class="toclevel-3 tocsection-15"><a href="#Indices_of_a_connection"><span class="tocnumber">1.5.2</span> <span class="toctext">Indices of a connection</span></a></li>
 </ul>
 </li>
-<li class="toclevel-2 tocsection-15"><a href="#Roundabouts"><span class="tocnumber">1.6</span> <span class="toctext">Roundabouts</span></a></li>
+<li class="toclevel-2 tocsection-16"><a href="#Roundabouts"><span class="tocnumber">1.6</span> <span class="toctext">Roundabouts</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-16"><a href="#Software_for_Viewing.2C_Editing_and_Processing"><span class="tocnumber">2</span> <span class="toctext">Software for Viewing, Editing and Processing</span></a></li>
-<li class="toclevel-1 tocsection-17"><a href="#Further_Documentation"><span class="tocnumber">3</span> <span class="toctext">Further Documentation</span></a></li>
+<li class="toclevel-1 tocsection-17"><a href="#Software_for_Viewing.2C_Editing_and_Processing"><span class="tocnumber">2</span> <span class="toctext">Software for Viewing, Editing and Processing</span></a></li>
+<li class="toclevel-1 tocsection-18"><a href="#Further_Documentation"><span class="tocnumber">3</span> <span class="toctext">Further Documentation</span></a></li>
 </ul>
 </div>
 
@@ -495,7 +497,7 @@ cartesian.set(p.u, p.v);
 <tr>
 <td class="inlxml"> function
 </td>
-<td> enum ( "<span class="inlxml">normal</span>", "<span class="inlxml">internal</span>", "<span class="inlxml">connector</span>" )
+<td> enum ( "<span class="inlxml">normal</span>", "<span class="inlxml">internal</span>", "<span class="inlxml">connector</span>", "<span class="inlxml">crossing</span>", "<span class="inlxml">walkingarea</span>" )
 </td>
 <td> An abstract edge purpose (optional with default "<span class="inlxml">normal</span>")
 </td></tr></table>
@@ -503,7 +505,9 @@ cartesian.set(p.u, p.v);
 </p>
 <ul><li> <span class="inlxml">normal</span>: The edge is a plain part of a road network, like a highway or a normal street which connects two roads</li>
 <li> <span class="inlxml">connector</span>: The edge is a macroscopic connector - not a part of the real world road network. Still, within the simulation, no distinction is made between "connector" roads and "normal" nodes. Only <a href="../SUMO-GUI.html" title="SUMO-GUI">SUMO-GUI</a> allows to hide connector edges.</li>
-<li> <span class="inlxml">internal</span>: The edge is a part of an intersection (is located within the intersection), see above.</li></ul>
+<li> <span class="inlxml">internal</span>: The edge is a part of an intersection (is located within the intersection), see above.</li>
+<li> <span class="inlxml">crossing</span>: </li>
+<li> <span class="inlxml">walkingarea</span>:</li></ul>
 <h4><span class="mw-headline" id="Lanes">Lanes</span></h4>
 <p>Each edge includes the definitions of lanes it consists of. The following example shows a single edge with two lanes. Note, that coordinates may be 2D as well as 3D.
 </p>
@@ -599,6 +603,54 @@ EDGE_INDEX + LANE_INDEX = CONNECTION_INDEX.
 </td>
 <td> Always "<span class="inlxml">internal</span>" for an internal edge
 </td></tr></table>
+<p><br />
+</p>
+<h4><span class="mw-headline" id="Stop_Offsets">Stop Offsets</span></h4>
+<p>Each edge or lane may carry a <span class="inlxml">stopOffset</span> child element to specify an additional stopping offset for vehicles of certain classes:
+</p>
+<pre class="xml">
+    &lt;edge id=&quot;&lt;ID&gt;&quot; function=&quot;internal&quot;&gt;
+        &lt;stopOffset value=&quot;&lt;distance in m.&gt;&quot; vClasses=&quot;&lt;space-separated list of vClasses&gt;&quot; /&gt;
+        &lt;lane id=&quot;&lt;ID&gt;&quot; index=&quot;&lt;INDEX&gt;&quot; ... &gt;
+            &lt;stopOffset value=&quot;&lt;distance in m.&gt;&quot; exceptions=&quot;&lt;space-separated list of vClasses&gt;&quot; /&gt;
+        &lt;/lane&gt;
+        ...
+    &lt;/edge&gt;
+</pre>
+<p>Defining this element for an edge will affect all lanes of the edge that do not hold an own <span class="inlxml">stopOffset</span> element. Note that there is the possibility to define either all vehicle classes, that are affected by the stop offset (attribute <span class="inlxml">vClasses</span>), or those, which are not affected (attribute <span class="inlxml">exceptions</span>). You may not use both attributes in conjunction. The distance at which the specified vehicle classes are required to stop from the lane end is specified by the <span class="inlxml">value</span>-attribute.
+</p>
+<table cellspacing="0" border="1" align="center" width="80%">
+
+<tr>
+<th style="background:#ffbdee;"> Name
+</th>
+<th style="background:#ffbdee;"> Type
+</th>
+<th style="background:#ffbdee;"> Description
+</th></tr>
+<tr>
+<td class="inlxml"> <b>value</b>
+</td>
+<td> value (double)
+</td>
+<td> The stop offset as positive value in meters.
+</td></tr>
+<tr>
+<td class="inlxml"> <b>vClasses</b>
+</td>
+<td> list of vClasses
+</td>
+<td> Specifies, for which vehicle classes the stopOffset applies.
+</td></tr>
+<tr>
+<td class="inlxml"> <b>exceptions</b>
+</td>
+<td> list of vClasses
+</td>
+<td> Specifies, for which vehicle classes the stopOffset does not apply.
+</td></tr></table>
+<p>For specification of vehicle classes see <a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Abstract_Vehicle_Class" title="Definition of Vehicles, Vehicle Types, and Routes"> here</a>.
+</p>
 <h3><span class="mw-headline" id="Traffic_Light_Programs">Traffic Light Programs</span></h3>
 <p>A traffic light program defines the phases of a traffic light. 
 </p>
@@ -749,7 +801,7 @@ The attributes of a request element are:
 <div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />The bitstrings in attributes <span class="inlxml">response</span> and <span class="inlxml">foes</span> must be read from right to left (response to link 0 is the rightmost entry) in contrast to <span class="inlxml">tlLogic</span>-<span class="inlxml">state</span> strings which are read from left to right (state of link 0 is the leftmost entry).</div>
 <h4><span class="mw-headline" id="Internal_Junctions">Internal Junctions</span></h4>
 <p>"internal" junctions are used to define a <a href="../Simulation/Intersections.html#Waiting_Within_the_Intersection" title="Simulation/Intersections">waiting position within the intersection</a> for some traffic relations. This is typically used for left-turning vehicles from the prioritized direction or for right-turning vehicles that have to wait for straight-going pedestrians.
-</p><p>Since version 0.25.0 the user can <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Explicitly_setting_which_Edge_.2F_Lane_is_connected_to_which" title="Networks/Building Networks from own XML-descriptions">customize the positioning (and presence) of internal junctions</a>
+</p><p>Since version 0.25.0 the user can <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Explicitly_setting_which_Edge_.2F_Lane_is_connected_to_which" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">customize the positioning (and presence) of internal junctions</a>
 </p><p>These junctions do not need a right-of-way matrix but only following information
 </p>
 <ul><li> the lanes that are incoming into the junction the internal junction is located in and prohibit to pass the internal junction if a vehicle is approaching </li>
@@ -902,7 +954,7 @@ The attributes of a request element are:
 <p>Each connection has associated indices which can be shown in <a href="../SUMO-GUI.html" title="SUMO-GUI">SUMO-GUI</a> by customizing gui settings and activating <i>Junctions-&gt;Show ... index</i>. These indices are usually identical but may be configured independently of each other.
 </p>
 <ul><li> <b>Junction Index</b>: This index is described in section <a href="#Requests">#Requests</a>. It cannot be modified. The index corresponds to the order of the <span class="inlxml">&lt;junctions&gt;</span>s <i>incLanes</i>-attribute and also to the order of the <span class="inlxml">&lt;connection&gt;</span> elements.</li>
-<li> <b>TLS Index</b>: This index is assigned to connections which are controlled by a traffic light. It may be <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#controlled_connections" title="Networks/Building Networks from own XML-descriptions">configured with a <i>.con.xml</i> file</a>.</li></ul>
+<li> <b>TLS Index</b>: This index is assigned to connections which are controlled by a traffic light. It may be <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#controlled_connections" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">configured with a <i>.con.xml</i> file</a>.</li></ul>
 <h3><span class="mw-headline" id="Roundabouts">Roundabouts</span></h3>
 <p>Roundabouts in a network influence the right of way (encoded in the [[Networks/SUMO_Road_Networks#Requests|<span class="inlxml">&lt;request&gt;</span> elements of a junction during network building). Their presence in the network file has two reasons:
 </p>
@@ -915,11 +967,11 @@ The attributes of a request element are:
 <h2><span class="mw-headline" id="Software_for_Viewing.2C_Editing_and_Processing">Software for Viewing, Editing and Processing</span></h2>
 <p>To create a SUMO network file, <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> helps to generate it from maps in other formats and <a href="../NETGENERATE.html" title="NETGENERATE">NETGENERATE</a> constructs a new map with simple geometries. <a href="../SUMO.html" title="SUMO">SUMO</a> performs its simulation directly in the map of this file. Most other SUMO tools read such files to generate or import information that must be the mapped onto a road network.
 </p><p>Networks can be created and edited graphically using <a href="../NETEDIT.html" title="NETEDIT">NETEDIT</a>.
-</p><p>The SUMO net file is not meant for manual editing. Convert it to the <a href="../Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions">SUMO native XML descriptions</a> with <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> instead. You can then process these files by hand and rebuild the network with <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a>.
+</p><p>The SUMO net file is not meant for manual editing. Convert it to the <a href="../Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">SUMO native XML descriptions</a> with <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> instead. You can then process these files by hand and rebuild the network with <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a>.
 </p>
 <h2><span class="mw-headline" id="Further_Documentation">Further Documentation</span></h2>
 <ul><li> Network Import
-<ul><li><ul><li> <a href="../Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions">Defining own networks using XML and NETCONVERT</a></li>
+<ul><li><ul><li> <a href="../Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">Defining own networks using XML and NETCONVERT</a></li>
 <li> <a href="../Networks/Import.html" title="Networks/Import">Importing networks from other applications using NETCONVERT</a></li></ul></li>
 <li> <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> manual</li></ul></li>
 <li> Generation of abstract road networks
@@ -931,33 +983,33 @@ The attributes of a request element are:
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.176 seconds
-Real time usage: 0.182 seconds
-Preprocessor visited node count: 312/1000000
-Preprocessor generated node count: 862/1000000
-Post‐expand include size: 2801/2097152 bytes
-Template argument size: 1355/2097152 bytes
+CPU time usage: 0.096 seconds
+Real time usage: 0.099 seconds
+Preprocessor visited node count: 364/1000000
+Preprocessor generated node count: 994/1000000
+Post‐expand include size: 2984/2097152 bytes
+Template argument size: 1398/2097152 bytes
 Highest expansion depth: 5/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   38.730      1 - -total
- 23.24%    9.000      1 - Template:Infobox_file_format
- 18.81%    7.287      4 - Template:Caution
- 10.63%    4.116      2 - Template:Ifdef
-  9.89%    3.830      7 - Template:XML
-  6.78%    2.625      1 - Template:DT_2DPosition
-  6.69%    2.590      2 - Template:DT_2DBoundingBox
-  5.95%    2.304      1 - Template:DT_PROJ_DEF
-  5.34%    2.068      1 - Template:Option
-  5.15%    1.994      1 - Template:Note
+100.00%   23.494      1 - -total
+ 20.05%    4.711      1 - Template:Infobox_file_format
+ 14.14%    3.323      4 - Template:Caution
+ 12.85%    3.020     12 - Template:XML
+  9.21%    2.165      2 - Template:Ifdef
+  6.59%    1.548      1 - Template:DT_2DPosition
+  6.38%    1.500      2 - Template:DT_2DBoundingBox
+  5.94%    1.396      1 - Template:DT_PROJ_DEF
+  4.98%    1.170      1 - Template:Note
+  4.96%    1.165      1 - Template:Option
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:185-0!*!0!!en!5!* and timestamp 20171218232246 and revision id 10358
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:185-0!*!0!!en!5!* and timestamp 20180515221742 and revision id 10730
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 14 November 2017, at 08:52.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 10 April 2018, at 11:08.</div> </div>
 
     <div id="footer">
       <div>

@@ -114,6 +114,7 @@
   <li><a href="../../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,18 +270,12 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Demand/Importing O/D Matrices</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.713586 from <a href="http://sumo.dlr.de/wiki/Demand/Importing_O/D_Matrices">the wiki page for Demand/Importing_O/D_Matrices</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.059153 from <a href="http://sumo.dlr.de/wiki/Demand/Importing_O/D_Matrices">the wiki page for Demand/Importing_O/D_Matrices</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><a href="../../OD2TRIPS.html" title="OD2TRIPS">OD2TRIPS</a> computes trip tables from O/D (origin/destination) matrices. <a href="../../OD2TRIPS.html" title="OD2TRIPS">OD2TRIPS</a> assumes the matrix / the matrices to be coded as amounts of vehicles that drive from one district or traffic assignment zone (TAZ) to another within a certain time period. Because the generated trips must start and end at edges, <a href="../../OD2TRIPS.html" title="OD2TRIPS">OD2TRIPS</a> requires a mapping of TAZ to edges. During conversion of VISUM networks with <a href="../../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> districts stored in the VISUM input file are parsed and stored within the generated SUMO network file. If you do not use VISUM as input, you must build a TAZ file by your own. The format is given in <a href="#Describing_the_TAZ">#Describing_the_TAZ</a> below. You have to pass the file containing the TAZ definitions to <a href="../../OD2TRIPS.html" title="OD2TRIPS">OD2TRIPS</a> using the <span style="color: #111144; font-weight: bold; white-space: pre;">--net-file <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span> (<span style="color: #111144; font-weight: bold; white-space: pre;">--net <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span> or <span style="color: #111144; font-weight: bold; white-space: pre;">-n <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span> for short) option.
-</p><p>Because <a href="../../OD2TRIPS.html" title="OD2TRIPS">OD2TRIPS</a> was only used to import data stored in VISUM/VISION/VISSIM formats, it assumes O/D to be stored in one of the formats used by these applications. Not all VISUM/VISION/VISSIM formats are supported, by now only two, namely the "V"- and the "O"-format. 
-If you do not own matrices stored in these formats, you still have three possibilities:
-</p>
-<ul><li> convert them into one of the supported formats,</li>
-<li> write your own reader for <a href="../../OD2TRIPS.html" title="OD2TRIPS">OD2TRIPS</a>, or</li>
-<li> convert them into flow definitions and then give them to <a href="../../DUAROUTER.html" title="DUAROUTER">DUAROUTER</a> (see Chapter "Using Flow Definitions"). </li></ul>
-<p>Since SUMO 0.21.0 there is the additional possibility to read matrices in the Amitran format given by <a rel="nofollow" class="external free" href="http://sumo-sim.org/xsd/amitran/od.xsd">http://sumo-sim.org/xsd/amitran/od.xsd</a>.
-</p><p>All supported formats are described in <a href="#Describing_the_Matrix_Cells">#Describing_the_Matrix_Cells</a> below. You may either give a list of matrices to <a href="../../OD2TRIPS.html" title="OD2TRIPS">OD2TRIPS</a> using the <span style="color: #111144; font-weight: bold; white-space: pre;">--od-matrix-files <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;[,&lt;FILE&gt;]*</i></a></span> (<span style="color: #111144; font-weight: bold; white-space: pre;">-d <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;[,&lt;FILE&gt;]*</i></a></span> for short) option followed by the list of files separated using a ','.
+TAZ can be created by drawing polygons in <a href="../../NETEDIT.html" title="NETEDIT">NETEDIT</a> and processing them with the tool <a href="../../Tools/District.html#edgesInDistricts.py" title="Tools/District">Tools/District#edgesInDistricts.py</a>.
+</p><p>All supported OD-formats are described in <a href="#Describing_the_Matrix_Cells">#Describing_the_Matrix_Cells</a> below. You may either give a list of matrices to <a href="../../OD2TRIPS.html" title="OD2TRIPS">OD2TRIPS</a> using the <span style="color: #111144; font-weight: bold; white-space: pre;">--od-matrix-files <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;[,&lt;FILE&gt;]*</i></a></span> (<span style="color: #111144; font-weight: bold; white-space: pre;">-d <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;[,&lt;FILE&gt;]*</i></a></span> for short) option followed by the list of files separated using a ','.
 </p><p><br />
 <a href="../../OD2TRIPS.html" title="OD2TRIPS">OD2TRIPS</a> reads all matrices and generates trip definitions. The generated trip definitions are numbered starting at zero. You can also add a prefix to the generated trip definition names using (<span style="color: #111144; font-weight: bold; white-space: pre;">--prefix <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;STRING&gt;</i></a></span>). As usual, they are written to the output file named using the <span style="color: #111144; font-weight: bold; white-space: pre;">--output-file <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span> (<span style="color: #111144; font-weight: bold; white-space: pre;">-o <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span> for short). You can specify a vehicle type to be added to the trip definitions using <span style="color: #111144; font-weight: bold; white-space: pre;">--vtype <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;STRING&gt;</i></a></span>. Please remark that vehicles will have no type unless not given in the O/D-matrices or defined using this option. The command line option overrides type names given in the O/D-matrices. The type itself will not be generated. Vehicles will be generated for the time period between <span style="color: #111144; font-weight: bold; white-space: pre;">--begin <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;TIME&gt;</i></a></span> (<span style="color: #111144; font-weight: bold; white-space: pre;">-b <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;TIME&gt;</i></a></span>) and <span style="color: #111144; font-weight: bold; white-space: pre;">--end <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;TIME&gt;</i></a></span> (<span style="color: #111144; font-weight: bold; white-space: pre;">-e <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;TIME&gt;</i></a></span>), having 0 and 86400 as default values, respectively. The meaning is the simulation step in seconds, as usual.
 </p><p>Because each O/D-matrix cell describes the amount of vehicles to be inserted into the network within a certain time period, <a href="../../OD2TRIPS.html" title="OD2TRIPS">OD2TRIPS</a> has to compute the vehicle's explicit departure times. Normally, this is done by using a random time within the time interval a O/D-matrix cell describes. It still is possible to insert a cell's vehicles with an uniform time between their insertion. Use the option --spread.uniform to enable this.
@@ -292,8 +287,8 @@ If you do not own matrices stored in these formats, you still have three possibi
 <li class="toclevel-1 tocsection-1"><a href="#Describing_the_TAZ"><span class="tocnumber">1</span> <span class="toctext">Describing the TAZ</span></a></li>
 <li class="toclevel-1 tocsection-2"><a href="#Describing_the_Matrix_Cells"><span class="tocnumber">2</span> <span class="toctext">Describing the Matrix Cells</span></a>
 <ul>
-<li class="toclevel-2 tocsection-3"><a href="#The_V_format"><span class="tocnumber">2.1</span> <span class="toctext">The V format</span></a></li>
-<li class="toclevel-2 tocsection-4"><a href="#The_O-format"><span class="tocnumber">2.2</span> <span class="toctext">The O-format</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#The_V_format_.28VISUM.2FVISSIM.29"><span class="tocnumber">2.1</span> <span class="toctext">The V format (VISUM/VISSIM)</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#The_O-format_.28VISUM.2FVISSIM.29"><span class="tocnumber">2.2</span> <span class="toctext">The O-format (VISUM/VISSIM)</span></a></li>
 <li class="toclevel-2 tocsection-5"><a href="#The_Amitran_format"><span class="tocnumber">2.3</span> <span class="toctext">The Amitran format</span></a></li>
 </ul>
 </li>
@@ -347,7 +342,7 @@ If you do not own matrices stored in these formats, you still have three possibi
 </pre>
 <p>is given, the generated vehicles' depart times will be second 0 to second 3599.
 </p>
-<h2><span class="mw-headline" id="The_V_format">The V format</span></h2>
+<h2><span class="mw-headline" id="The_V_format_.28VISUM.2FVISSIM.29">The V format (VISUM/VISSIM)</span></h2>
 <p>The V-format stores the O/D matrix by giving the number of districts (TAZ) first and then naming them. After this, for each of the named districts, a list of vehicle amounts that leave this district is given, sorted by the destination district names as given in the district name list. An example may look like this:
 </p>
 <pre>$VMR
@@ -376,7 +371,7 @@ If you do not own matrices stored in these formats, you still have three possibi
 </pre>
 <p>The 'M' in the type name indicates that a vehicle type is used, the "R" that the values shall be rounded randomly. The second information is not processed by OD2TRIPS what means that you can parse both V-, VR-, VMR, and VM-matrices. Please remark that both the names list and the lists containing the amounts are written in a way that no more than 10 fields are stored in the same line. Each of the entries they contain seem to be left-aligned to a boundary of 11 characters (possibly 10 for the name and one space character). Both constraints are not mandatory for the importer used in OD2TRIPS.
 </p>
-<h2><span class="mw-headline" id="The_O-format">The O-format</span></h2>
+<h2><span class="mw-headline" id="The_O-format_.28VISUM.2FVISSIM.29">The O-format (VISUM/VISSIM)</span></h2>
 <p>The O-format instead simply lists each origin and each destination together with the amount in one line (please remark that we currently ignore the string after the ';' that occurs after the type identifier "$OR" in the first line):
 </p>
 <pre>$OR;D2
@@ -648,8 +643,8 @@ If you do not own matrices stored in these formats, you still have three possibi
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.160 seconds
-Real time usage: 0.177 seconds
+CPU time usage: 0.076 seconds
+Real time usage: 0.083 seconds
 Preprocessor visited node count: 210/1000000
 Preprocessor generated node count: 596/1000000
 Post‐expand include size: 4225/2097152 bytes
@@ -660,20 +655,20 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   49.534      1 - -total
- 53.12%   26.313     14 - Template:Option
- 18.97%    9.397      1 - Template:Projects/AMITRAN
-  8.41%    4.164      3 - Template:Note
-  6.23%    3.085      4 - Template:DT_TIME
-  5.95%    2.946      5 - Template:DT_FILE
-  5.72%    2.834      1 - Template:DT_FLOAT
-  5.67%    2.810      2 - Template:DT_FileList
-  5.41%    2.682      2 - Template:DT_STR
+100.00%   19.947      1 - -total
+ 61.66%   12.299     14 - Template:Option
+  8.26%    1.648      2 - Template:DT_FileList
+  7.44%    1.484      3 - Template:Note
+  7.34%    1.464      4 - Template:DT_TIME
+  7.13%    1.422      1 - Template:Projects/AMITRAN
+  6.25%    1.246      5 - Template:DT_FILE
+  5.54%    1.105      2 - Template:DT_STR
+  5.23%    1.044      1 - Template:DT_FLOAT
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:228-0!*!0!!en!5!* and timestamp 20171218154028 and revision id 9998
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:228-0!*!0!!en!5!* and timestamp 20180515221723 and revision id 10713
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 7 September 2017, at 16:58.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 26 March 2018, at 08:29.</div> </div>
 
     <div id="footer">
       <div>

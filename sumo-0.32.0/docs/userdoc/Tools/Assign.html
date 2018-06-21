@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Tools/Assign</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.040077 from <a href="http://sumo.dlr.de/wiki/Tools/Assign">the wiki page for Tools/Assign</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.399612 from <a href="http://sumo.dlr.de/wiki/Tools/Assign">the wiki page for Tools/Assign</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -297,11 +298,11 @@ At least two files have to be given as input the script: a SUMO-network and a se
 </p>
 <pre>dua-iterate.py -n &lt;PATH_TO_SUMO_NET&gt; -t &lt;PATH_TO_TRIPS&gt;
 </pre>
-<p>Furthermore a calibrator option is avalible in the script to call the Cadyts calibration tool, developed by Gunnar Flötteröd
+<p>Furthermore a calibrator option is available in the script to call the Cadyts calibration tool, developed by Gunnar Flötteröd
 at EPFL, Switzerland. With this option, route choices will be adjusted according to given link counts. The validation work of the calibration between SUMO and Cadyts is work in progress.
 </p>
 <h2><span class="mw-headline" id="one-shot.py">one-shot.py</span></h2>
-<p>The one-shot.py provides a variant of the dynamic user assignment. The assignment method is the same one which SUMO and the dua-iterate.py use. Given trips will be assigned to respective fastest routes according to their deaprture times and a given travel-time updating interval. Different travel-time updating intervals can be defined by users, such as 900, i.e. link travel times will be updated every 900 sec. If the travel-time updating interval is set to -1, link travel times will not updated and link trave times at free-flow speeds are used for all trips.
+<p>The one-shot.py provides a variant of the dynamic user assignment. The assignment method is the same one which SUMO and the dua-iterate.py use. Given trips will be assigned to respective fastest routes according to their departure times and a given travel-time updating interval. Different travel-time updating intervals can be defined by users, such as 900, i.e. link travel times will be updated every 900 sec. If the travel-time updating interval is set to -1, link travel times will not updated and link trave times at free-flow speeds are used for all trips.
 </p><p>A stochastic user-equilibrium traffic state will not achieved with the use of this script.
 </p><p><br />
 An examplary execution command is shown below.
@@ -414,8 +415,8 @@ Besides, this script is also to execute a significance test for evaluating the r
 </pre>
 <!-- 
 NewPP limit report
-CPU time usage: 0.028 seconds
-Real time usage: 0.029 seconds
+CPU time usage: 0.016 seconds
+Real time usage: 0.015 seconds
 Preprocessor visited node count: 30/1000000
 Preprocessor generated node count: 36/1000000
 Post‐expand include size: 0/2097152 bytes
@@ -429,9 +430,9 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:249-0!*!0!!en!*!* and timestamp 20171219055353 and revision id 4920
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:249-0!*!0!!en!*!* and timestamp 20180516112611 and revision id 10521
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 5 December 2013, at 10:33.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 5 January 2018, at 15:50.</div> </div>
 
     <div id="footer">
       <div>

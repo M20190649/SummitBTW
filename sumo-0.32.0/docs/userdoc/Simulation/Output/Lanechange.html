@@ -114,6 +114,7 @@
   <li><a href="../../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,11 +270,23 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Simulation/Output/Lanechange</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.963846 from <a href="http://sumo.dlr.de/wiki/Simulation/Output/Lanechange">the wiki page for Simulation/Output/Lanechange</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.319208 from <a href="http://sumo.dlr.de/wiki/Simulation/Output/Lanechange">the wiki page for Simulation/Output/Lanechange</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>The lanechange-output tracks all events where a vehicle changes laterally from one lane to another (define as the moment where the center line of the vehicle enters the new lane). It also contains the dominant reason for that change maneuver.
 </p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Instantiating_within_the_Simulation"><span class="tocnumber">1</span> <span class="toctext">Instantiating within the Simulation</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Generated_Output"><span class="tocnumber">2</span> <span class="toctext">Generated Output</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#Lane_Changing_Reasons"><span class="tocnumber">2.1</span> <span class="toctext">Lane Changing Reasons</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Continuous_Lane_Changes"><span class="tocnumber">2.2</span> <span class="toctext">Continuous Lane Changes</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
 <h2><span class="mw-headline" id="Instantiating_within_the_Simulation">Instantiating within the Simulation</span></h2>
 <p>The simulation is forced to generate this output using the option <span style="color: #111144; font-weight: bold; white-space: pre;">--lanechange-output <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span>. <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a> is the name of the file the output will be written to. Any other file with this name will be overwritten, the destination folder must exist.
 </p>
@@ -282,7 +295,7 @@
 </p>
 <pre class="xml">
 &lt;lanechanges&gt;
-  &lt;change id=&quot;&lt;VEHICLE_ID&gt;&quot; time=&quot;&lt;TIME_STAMP&gt;&quot; from=&quot;&lt;SOURCE_LANE&gt;&quot; to=&quot;&lt;DESTINATION_LANE&gt;&quot; reason=&quot;&lt;CHANGE_REASON&gt;&quot;/&gt;
+  &lt;change id=&quot;&lt;VEHICLE_ID&gt;&quot; time=&quot;&lt;TIME_STAMP&gt;&quot; from=&quot;&lt;SOURCE_LANE&gt;&quot; to=&quot;&lt;DESTINATION_LANE&gt;&quot; reason=&quot;&lt;CHANGE_REASON&gt;&quot; ... /&gt;
   ...
 
 &lt;/lanechanges&gt;
@@ -378,7 +391,7 @@
 </td>
 <td> double
 </td>
-<td> The lateral gap to the nearest follower on the target lane (bumper to bumper) or 'None' if there was no follower.
+<td> The longitudinal gap to the nearest follower on the target lane (bumper to bumper) or 'None' if there was no follower.
 </td></tr>
 <tr>
 <td class="inlxml"> followerSecureGap
@@ -386,6 +399,20 @@
 <td> double
 </td>
 <td> The required longitudinal gap to the nearest follower to fulfill deceleration constraints or 'None' if there was no follower.
+</td></tr>
+<tr>
+<td class="inlxml"> origLeaderGap
+</td>
+<td> double
+</td>
+<td> The longitudinal gap to the nearest leader on the vehicle's original lane (bumper to bumper) or 'None' if there was no leader.
+</td></tr>
+<tr>
+<td class="inlxml"> origLeaderSecureGap
+</td>
+<td> double
+</td>
+<td> The required longitudinal gap to the nearest leader to fulfill deceleration constraints or 'None' if there was no leader.
 </td></tr>
 <tr>
 <td class="inlxml"> latGap
@@ -405,29 +432,43 @@
 <li> <b>sublane</b></li>
 <li> <b>traci</b></li></ul>
 <p>A reason may be further qualified by the addition of the string <b>|urgent</b>.
+</p><p><br />
+</p>
+<h3><span class="mw-headline" id="Continuous_Lane_Changes">Continuous Lane Changes</span></h3>
+<p>If the simulation is performed with the <a href="../../Simulation/SublaneModel.html" title="Simulation/SublaneModel">sublane-model</a>, the options <span style="color: #111144; font-weight: bold; white-space: pre;">--lanechange-output.ended</span> and <span style="color: #111144; font-weight: bold; white-space: pre;">--lanechange-output.started</span> can be used to obtain additional output elements:
+</p>
+<pre class="xml">
+&lt;lanechanges&gt;
+  &lt;changeStarted id=&quot;&lt;VEHICLE_ID&gt;&quot; time=&quot;&lt;TIME_STAMP&gt;&quot; from=&quot;&lt;SOURCE_LANE&gt;&quot; to=&quot;&lt;DESTINATION_LANE&gt;&quot; reason=&quot;&lt;CHANGE_REASON&gt;&quot; ... /&gt;
+  &lt;change id=&quot;&lt;VEHICLE_ID&gt;&quot; time=&quot;&lt;TIME_STAMP&gt;&quot; from=&quot;&lt;SOURCE_LANE&gt;&quot; to=&quot;&lt;DESTINATION_LANE&gt;&quot; reason=&quot;&lt;CHANGE_REASON&gt;&quot; ... /&gt;
+  &lt;changeEnded id=&quot;&lt;VEHICLE_ID&gt;&quot; time=&quot;&lt;TIME_STAMP&gt;&quot; from=&quot;&lt;SOURCE_LANE&gt;&quot; to=&quot;&lt;DESTINATION_LANE&gt;&quot; reason=&quot;&lt;CHANGE_REASON&gt;&quot; ... /&gt;
+  ...
+&lt;/lanechanges&gt;
+</pre>
+<p>The <code>change</code>-elements are recorded when the primary lane of the vehicle has changed (the center of its front bumper crossed the border between original and target lane).
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.048 seconds
-Real time usage: 0.048 seconds
-Preprocessor visited node count: 32/1000000
-Preprocessor generated node count: 80/1000000
-Post‐expand include size: 250/2097152 bytes
-Template argument size: 72/2097152 bytes
+CPU time usage: 0.016 seconds
+Real time usage: 0.018 seconds
+Preprocessor visited node count: 49/1000000
+Preprocessor generated node count: 144/1000000
+Post‐expand include size: 450/2097152 bytes
+Template argument size: 124/2097152 bytes
 Highest expansion depth: 3/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    8.425      1 - -total
- 91.84%    7.737      1 - Template:Option
- 41.03%    3.457      2 - Template:DT_FILE
+100.00%    4.320      1 - -total
+ 64.10%    2.769      3 - Template:Option
+ 25.28%    1.092      2 - Template:DT_FILE
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:686-0!*!0!!*!*!* and timestamp 20171219052155 and revision id 10217
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:686-0!*!0!!en!*!* and timestamp 20180515221755 and revision id 10767
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 10 October 2017, at 12:50.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 3 May 2018, at 14:47.</div> </div>
 
     <div id="footer">
       <div>

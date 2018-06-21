@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Other/Glossary</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.867973 from <a href="http://sumo.dlr.de/wiki/Other/Glossary">the wiki page for Other/Glossary</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.220675 from <a href="http://sumo.dlr.de/wiki/Other/Glossary">the wiki page for Other/Glossary</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -301,7 +302,7 @@
 <dd>A file that can be included in a sumo configuration. This is needed to load pois, shapes, bus stops and variable speed signs. Refer to <a href="../SUMO.html#Format_of_additional_files" title="SUMO">the format description</a> for details.</dd></dl>
 <h2><span class="mw-headline" id="C">C</span></h2>
 <dl><dt>connection(s)-file&#160;</dt>
-<dd>An XML-file describing connections between edges or lanes, see <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Connection_Descriptions" title="Networks/Building Networks from own XML-descriptions">connection descriptions for importing networks defined as XML</a></dd></dl>
+<dd>An XML-file describing connections between edges or lanes, see <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Connection_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">connection descriptions for importing networks defined as XML</a></dd></dl>
 <h2><span class="mw-headline" id="D">D</span></h2>
 <dl><dt>DELPHI&#160;</dt>
 <dd>Deutschlandweite Echtzeit Verkehrs-Lage und Prognose im Ereignisfall</dd>
@@ -323,7 +324,7 @@
 <dl><dt>edge&#160;</dt>
 <dd>A single-directed street connection between two points (junctions/nodes). An edge contains at least one lane</dd>
 <dt>edge(s)-file&#160;</dt>
-<dd>A XML-file describing edges of a road network, see <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Edge_Descriptions" title="Networks/Building Networks from own XML-descriptions">edge descriptions for importing networks defined as XML</a></dd></dl>
+<dd>A XML-file describing edges of a road network, see <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Edge_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">edge descriptions for importing networks defined as XML</a></dd></dl>
 <h2><span class="mw-headline" id="F">F</span></h2>
 <dl><dt>FCD&#160;</dt>
 <dd>Floating Car Data</dd></dl>
@@ -353,7 +354,7 @@
 <dt>node&#160;</dt>
 <dd>A node (junction) is a single point were at least one edge (road) starts or ends </dd>
 <dt>node(s)-file&#160;</dt>
-<dd>A XML-file describing nodes of a road network, see <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions">node descriptions for importing networks defined as XML</a></dd></dl>
+<dd>A XML-file describing nodes of a road network, see <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">node descriptions for importing networks defined as XML</a></dd></dl>
 <h2><span class="mw-headline" id="O">O</span></h2>
 <dl><dt>O/D-matrix (od-matrix)&#160;</dt>
 <dd>Origin/Destination-matrix; describes how many vehicles are moving from each origin to each destination within a certain time period</dd>
@@ -392,7 +393,7 @@
 <dt>TS-BA&#160;</dt>
 <dd>TS Standort Berlin-Adlershof</dd>
 <dt>type(s)-file&#160;</dt>
-<dd>A XML-file describing types of streets, see <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Type_Descriptions" title="Networks/Building Networks from own XML-descriptions">type descriptions for importing networks defined as XML</a></dd></dl>
+<dd>A XML-file describing types of streets, see <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Type_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">type descriptions for importing networks defined as XML</a></dd></dl>
 <h2><span class="mw-headline" id="X">X</span></h2>
 <dl><dt>XML&#160;</dt>
 <dd>"e<b>X</b>tensible <b>M</b>arkup <b>L</b>anguage is a universal format for structured documents and data" as the w3c says. Further information may be found at <a rel="nofollow" class="external free" href="http://www.w3c.org/XML/">http://www.w3c.org/XML/</a> or <a rel="nofollow" class="external free" href="http://en.wikipedia.org/wiki/XML">http://en.wikipedia.org/wiki/XML</a>. Most of the data read and written by SUMO is stored as XML, see also the page on <a href="../Other/File_Extensions.html" title="Other/File Extensions">file types</a>.</dd>
@@ -402,8 +403,8 @@
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.028 seconds
-Real time usage: 0.029 seconds
+CPU time usage: 0.016 seconds
+Real time usage: 0.015 seconds
 Preprocessor visited node count: 66/1000000
 Preprocessor generated node count: 72/1000000
 Post‐expand include size: 0/2097152 bytes
@@ -417,9 +418,9 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:9-0!*!0!!en!*!* and timestamp 20171218232249 and revision id 6548
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:9-0!*!0!!en!*!* and timestamp 20180516140606 and revision id 6548
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 24 September 2015, at 20:21.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 24 September 2015, at 21:21.</div> </div>
 
     <div id="footer">
       <div>

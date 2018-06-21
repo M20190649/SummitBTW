@@ -9,14 +9,15 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="traci.html"><font color="#ffffff">traci</font></a>._poi</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/delphi/cmakeGcc/sumo/tools/traci/_poi.py">/home/delphi/cmakeGcc/sumo/tools/traci/_poi.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/delphi/gcc/sumo/tools/traci/_poi.py">/home/delphi/gcc/sumo/tools/traci/_poi.py</a></font></td></tr></table>
     <p><tt>#&nbsp;-*-&nbsp;coding:&nbsp;utf-8&nbsp;-*-<br>
 #&nbsp;Eclipse&nbsp;SUMO,&nbsp;Simulation&nbsp;of&nbsp;Urban&nbsp;MObility;&nbsp;see&nbsp;https://eclipse.org/sumo<br>
-#&nbsp;Copyright&nbsp;(C)&nbsp;2008-2017&nbsp;German&nbsp;Aerospace&nbsp;Center&nbsp;(DLR)&nbsp;and&nbsp;others.<br>
+#&nbsp;Copyright&nbsp;(C)&nbsp;2008-2018&nbsp;German&nbsp;Aerospace&nbsp;Center&nbsp;(DLR)&nbsp;and&nbsp;others.<br>
 #&nbsp;This&nbsp;program&nbsp;and&nbsp;the&nbsp;accompanying&nbsp;materials<br>
 #&nbsp;are&nbsp;made&nbsp;available&nbsp;under&nbsp;the&nbsp;terms&nbsp;of&nbsp;the&nbsp;Eclipse&nbsp;Public&nbsp;License&nbsp;v2.0<br>
 #&nbsp;which&nbsp;accompanies&nbsp;this&nbsp;distribution,&nbsp;and&nbsp;is&nbsp;available&nbsp;at<br>
-#&nbsp;<a href="http://www.eclipse.org/legal/epl-v20.html">http://www.eclipse.org/legal/epl-v20.html</a></tt></p>
+#&nbsp;<a href="http://www.eclipse.org/legal/epl-v20.html">http://www.eclipse.org/legal/epl-v20.html</a><br>
+#&nbsp;SPDX-License-Identifier:&nbsp;EPL-2.0</tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#aa55cc">
@@ -69,7 +70,8 @@ Returns&nbsp;the&nbsp;(abstract)&nbsp;type&nbsp;of&nbsp;the&nbsp;poi.</tt></dd><
 
 <dl><dt><a name="PoiDomain-setColor"><strong>setColor</strong></a>(self, poiID, color)</dt><dd><tt><a href="#PoiDomain-setColor">setColor</a>(string,&nbsp;(integer,&nbsp;integer,&nbsp;integer,&nbsp;integer))&nbsp;-&gt;&nbsp;None<br>
 &nbsp;<br>
-Sets&nbsp;the&nbsp;rgba&nbsp;color&nbsp;of&nbsp;the&nbsp;poi.</tt></dd></dl>
+Sets&nbsp;the&nbsp;rgba&nbsp;color&nbsp;of&nbsp;the&nbsp;poi,&nbsp;i.e.&nbsp;(255,0,0)&nbsp;for&nbsp;the&nbsp;color&nbsp;red.<br>
+The&nbsp;fourth&nbsp;component&nbsp;(alpha)&nbsp;is&nbsp;optional.</tt></dd></dl>
 
 <dl><dt><a name="PoiDomain-setPosition"><strong>setPosition</strong></a>(self, poiID, x, y)</dt><dd><tt><a href="#PoiDomain-setPosition">setPosition</a>(string,&nbsp;(double,&nbsp;double))&nbsp;-&gt;&nbsp;None<br>
 &nbsp;<br>

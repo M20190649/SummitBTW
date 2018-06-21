@@ -9,14 +9,15 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="traci.html"><font color="#ffffff">traci</font></a>._vehicle</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/delphi/cmakeGcc/sumo/tools/traci/_vehicle.py">/home/delphi/cmakeGcc/sumo/tools/traci/_vehicle.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/delphi/gcc/sumo/tools/traci/_vehicle.py">/home/delphi/gcc/sumo/tools/traci/_vehicle.py</a></font></td></tr></table>
     <p><tt>#&nbsp;-*-&nbsp;coding:&nbsp;utf-8&nbsp;-*-<br>
 #&nbsp;Eclipse&nbsp;SUMO,&nbsp;Simulation&nbsp;of&nbsp;Urban&nbsp;MObility;&nbsp;see&nbsp;https://eclipse.org/sumo<br>
-#&nbsp;Copyright&nbsp;(C)&nbsp;2011-2017&nbsp;German&nbsp;Aerospace&nbsp;Center&nbsp;(DLR)&nbsp;and&nbsp;others.<br>
+#&nbsp;Copyright&nbsp;(C)&nbsp;2011-2018&nbsp;German&nbsp;Aerospace&nbsp;Center&nbsp;(DLR)&nbsp;and&nbsp;others.<br>
 #&nbsp;This&nbsp;program&nbsp;and&nbsp;the&nbsp;accompanying&nbsp;materials<br>
 #&nbsp;are&nbsp;made&nbsp;available&nbsp;under&nbsp;the&nbsp;terms&nbsp;of&nbsp;the&nbsp;Eclipse&nbsp;Public&nbsp;License&nbsp;v2.0<br>
 #&nbsp;which&nbsp;accompanies&nbsp;this&nbsp;distribution,&nbsp;and&nbsp;is&nbsp;available&nbsp;at<br>
-#&nbsp;<a href="http://www.eclipse.org/legal/epl-v20.html">http://www.eclipse.org/legal/epl-v20.html</a></tt></p>
+#&nbsp;<a href="http://www.eclipse.org/legal/epl-v20.html">http://www.eclipse.org/legal/epl-v20.html</a><br>
+#&nbsp;SPDX-License-Identifier:&nbsp;EPL-2.0</tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#aa55cc">
@@ -61,6 +62,11 @@
 <dl><dt><a name="VehicleDomain-changeLane"><strong>changeLane</strong></a>(self, vehID, laneIndex, duration)</dt><dd><tt><a href="#VehicleDomain-changeLane">changeLane</a>(string,&nbsp;int,&nbsp;int)&nbsp;-&gt;&nbsp;None<br>
 &nbsp;<br>
 Forces&nbsp;a&nbsp;lane&nbsp;change&nbsp;to&nbsp;the&nbsp;lane&nbsp;with&nbsp;the&nbsp;given&nbsp;index;&nbsp;if&nbsp;successful,<br>
+the&nbsp;lane&nbsp;will&nbsp;be&nbsp;chosen&nbsp;for&nbsp;the&nbsp;given&nbsp;amount&nbsp;of&nbsp;time&nbsp;(in&nbsp;ms).</tt></dd></dl>
+
+<dl><dt><a name="VehicleDomain-changeLaneRelative"><strong>changeLaneRelative</strong></a>(self, vehID, laneIndex, duration)</dt><dd><tt><a href="#VehicleDomain-changeLane">changeLane</a>(string,&nbsp;int,&nbsp;int)&nbsp;-&gt;&nbsp;None<br>
+&nbsp;<br>
+Forces&nbsp;a&nbsp;relative&nbsp;lane&nbsp;change;&nbsp;if&nbsp;successful,<br>
 the&nbsp;lane&nbsp;will&nbsp;be&nbsp;chosen&nbsp;for&nbsp;the&nbsp;given&nbsp;amount&nbsp;of&nbsp;time&nbsp;(in&nbsp;ms).</tt></dd></dl>
 
 <dl><dt><a name="VehicleDomain-changeSublane"><strong>changeSublane</strong></a>(self, vehID, latDist)</dt><dd><tt><a href="#VehicleDomain-changeLane">changeLane</a>(string,&nbsp;double)&nbsp;-&gt;&nbsp;None<br>
@@ -167,8 +173,15 @@ Returns&nbsp;the&nbsp;height&nbsp;in&nbsp;m&nbsp;of&nbsp;this&nbsp;vehicle.</tt>
 &nbsp;<br>
 .</tt></dd></dl>
 
+<dl><dt><a name="VehicleDomain-getLaneChangeMode"><strong>getLaneChangeMode</strong></a>(self, vehID)</dt><dd><tt><a href="#VehicleDomain-getLaneChangeMode">getLaneChangeMode</a>(string)&nbsp;-&gt;&nbsp;integer<br>
+&nbsp;<br>
+Gets&nbsp;the&nbsp;vehicle's&nbsp;lane&nbsp;change&nbsp;mode&nbsp;as&nbsp;a&nbsp;bitset.</tt></dd></dl>
+
 <dl><dt><a name="VehicleDomain-getLaneChangeState"><strong>getLaneChangeState</strong></a>(self, vehID, direction)</dt><dd><tt><a href="#VehicleDomain-getLaneChangeState">getLaneChangeState</a>(string,&nbsp;int)&nbsp;-&gt;&nbsp;(int,&nbsp;int)<br>
 Return&nbsp;the&nbsp;lane&nbsp;change&nbsp;state&nbsp;for&nbsp;the&nbsp;vehicle</tt></dd></dl>
+
+<dl><dt><a name="VehicleDomain-getLaneChangeStatePretty"><strong>getLaneChangeStatePretty</strong></a>(self, vehID, direction)</dt><dd><tt><a href="#VehicleDomain-getLaneChangeState">getLaneChangeState</a>(string,&nbsp;int)&nbsp;-&gt;&nbsp;([string,&nbsp;...],&nbsp;[string,&nbsp;...])<br>
+Return&nbsp;the&nbsp;lane&nbsp;change&nbsp;state&nbsp;for&nbsp;the&nbsp;vehicle&nbsp;as&nbsp;a&nbsp;list&nbsp;of&nbsp;string&nbsp;constants</tt></dd></dl>
 
 <dl><dt><a name="VehicleDomain-getLaneID"><strong>getLaneID</strong></a>(self, vehID)</dt><dd><tt><a href="#VehicleDomain-getLaneID">getLaneID</a>(string)&nbsp;-&gt;&nbsp;string<br>
 &nbsp;<br>
@@ -424,9 +437,9 @@ Adds&nbsp;or&nbsp;modifies&nbsp;a&nbsp;stop&nbsp;at&nbsp;a&nbsp;chargingStation&
 in&nbsp;milliseconds.</tt></dd></dl>
 
 <dl><dt><a name="VehicleDomain-setColor"><strong>setColor</strong></a>(self, vehID, color)</dt><dd><tt><a href="#VehicleDomain-setColor">setColor</a>(string,&nbsp;(integer,&nbsp;integer,&nbsp;integer,&nbsp;integer))<br>
-sets&nbsp;color&nbsp;for&nbsp;vehicle&nbsp;with&nbsp;the&nbsp;given&nbsp;ID.<br>
-i.e.&nbsp;(255,0,0,0)&nbsp;for&nbsp;the&nbsp;color&nbsp;red.<br>
-The&nbsp;fourth&nbsp;integer&nbsp;(alpha)&nbsp;is&nbsp;only&nbsp;used&nbsp;when&nbsp;drawing&nbsp;vehicles&nbsp;with&nbsp;raster&nbsp;images</tt></dd></dl>
+&nbsp;<br>
+Sets&nbsp;the&nbsp;color&nbsp;for&nbsp;the&nbsp;vehicle&nbsp;with&nbsp;the&nbsp;given&nbsp;ID,&nbsp;i.e.&nbsp;(255,0,0)&nbsp;for&nbsp;the&nbsp;color&nbsp;red.<br>
+The&nbsp;fourth&nbsp;component&nbsp;(alpha)&nbsp;is&nbsp;optional.</tt></dd></dl>
 
 <dl><dt><a name="VehicleDomain-setContainerStop"><strong>setContainerStop</strong></a>(self, vehID, stopID, duration<font color="#909090">=2147483647</font>, until<font color="#909090">=-1</font>, flags<font color="#909090">=0</font>)</dt><dd><tt><a href="#VehicleDomain-setContainerStop">setContainerStop</a>(string,&nbsp;string,&nbsp;integer,&nbsp;integer,&nbsp;integer)&nbsp;-&gt;&nbsp;None<br>
 &nbsp;<br>

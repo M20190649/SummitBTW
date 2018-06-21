@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Simulation/SaveAndLoad</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.003764 from <a href="http://sumo.dlr.de/wiki/Simulation/SaveAndLoad">the wiki page for Simulation/SaveAndLoad</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.361476 from <a href="http://sumo.dlr.de/wiki/Simulation/SaveAndLoad">the wiki page for Simulation/SaveAndLoad</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>SUMO allows loading and saving simulation state since version 0.18.0.
@@ -290,7 +291,7 @@
 <pre> sumo --save-state.times TIME1,TIME2,TIME3
 </pre>
 <p>Alternatively, the option <span style="color: #111144; font-weight: bold; white-space: pre;">--save-state.period <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;TIME&gt;</i></a></span> can be used to save states periodically.
-</p><p>By default the state will be written to files named <i>&lt;PREFIX&gt;_<time>&lt;SUFFIX&gt;</i> where <i>&lt;PREFIX&gt;</i> can be set via option <span style="color: #111144; font-weight: bold; white-space: pre;">--save-state.prefix</span> (default <i>state</i>), <i>&lt;TIME&gt;</i> is the simulation time and <i>&lt;SUFFIX&gt;</i> is either one of <i>.sbx</i> or <i>.xml</i> as controlled by the option <span style="color: #111144; font-weight: bold; white-space: pre;">--save-state.suffix</span> (default <i>.sbx</i>).
+</p><p>By default the state will be written to files named <i>&lt;PREFIX&gt;_&lt; TIME&gt;&lt;SUFFIX&gt;</i> where <i>&lt;PREFIX&gt;</i> can be set via option <span style="color: #111144; font-weight: bold; white-space: pre;">--save-state.prefix</span> (default <i>state</i>), <i><time></i> is the simulation time and <i>&lt;SUFFIX&gt;</i> is either one of <i>.sbx</i> or <i>.xml</i> as controlled by the option <span style="color: #111144; font-weight: bold; white-space: pre;">--save-state.suffix</span> (default <i>.sbx</i>).
 </p><p>When using the option <span style="color: #111144; font-weight: bold; white-space: pre;">--save-state.times</span>, output files can also be specified by using the option <span style="color: #111144; font-weight: bold; white-space: pre;">--save-state.files</span> 
 </p>
 <pre>sumo --save-state.files FILE1,FILE2,FILE3 
@@ -315,8 +316,8 @@ When loading vehicles from an input file that are already present in the simulat
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.040 seconds
-Real time usage: 0.046 seconds
+CPU time usage: 0.020 seconds
+Real time usage: 0.020 seconds
 Preprocessor visited node count: 93/1000000
 Preprocessor generated node count: 250/1000000
 Post‐expand include size: 1153/2097152 bytes
@@ -327,15 +328,15 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   17.742      1 - -total
- 80.22%   14.232     10 - Template:Option
- 15.93%    2.826      1 - Template:DT_TIME
- 15.29%    2.713      1 - Template:DT_FILE
+100.00%    7.348      1 - -total
+ 76.57%    5.626     10 - Template:Option
+ 19.61%    1.441      1 - Template:DT_FILE
+ 14.38%    1.057      1 - Template:DT_TIME
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:619-0!*!0!!en!*!* and timestamp 20171218165418 and revision id 9226
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:619-0!*!0!!en!*!* and timestamp 20180516221736 and revision id 10639
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 24 March 2017, at 11:12.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 23 February 2018, at 22:20.</div> </div>
 
     <div id="footer">
       <div>

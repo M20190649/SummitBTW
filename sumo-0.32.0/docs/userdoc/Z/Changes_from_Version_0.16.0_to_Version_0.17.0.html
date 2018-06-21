@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Z/Changes from Version 0.16.0 to Version 0.17.0</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.218921 from <a href="http://sumo.dlr.de/wiki/Z/Changes_from_Version_0.16.0_to_Version_0.17.0">the wiki page for Z/Changes_from_Version_0.16.0_to_Version_0.17.0</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.582758 from <a href="http://sumo.dlr.de/wiki/Z/Changes_from_Version_0.16.0_to_Version_0.17.0">the wiki page for Z/Changes_from_Version_0.16.0_to_Version_0.17.0</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><h2><span class="mw-headline" id="Version_0.17.0_.2803.05.2013.29">Version 0.17.0 (03.05.2013)</span></h2>
@@ -308,7 +309,7 @@
 <ul><li> Fixed handling of the parameter to  the simulationStep command (CMD_SIMSTEP2). Formerly a single simulation step was performed if the given target time was lower than the current simulation step. Now the simulationStep command is ignored in this case. The propper use case for this command is to run the simulation up to the given target time. Some scripts (including tutorial scripts) wrongly passed the step duration as argument and only worked because of this bug. To make these scripts work it is sufficient to omit the parameter altogether.</li></ul></li></ul>
 <h3><span class="mw-headline" id="Enhancements">Enhancements</span></h3>
 <ul><li> Simulation
-<ul><li> added support for traffic-actuated traffic lights (see <a href="../Simulation/Traffic_Lights.html#Loading_new_TLS-Programs" title="Simulation/Traffic Lights">Simulation/Traffic_Lights#Loading_new_TLS-Programs</a>, <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions">Networks/Building_Networks_from_own_XML-descriptions#Node_Descriptions</a>)</li>
+<ul><li> added support for traffic-actuated traffic lights (see <a href="../Simulation/Traffic_Lights.html#Loading_new_TLS-Programs" title="Simulation/Traffic Lights">Simulation/Traffic_Lights#Loading_new_TLS-Programs</a>, <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">Networks/Building_Networks_from_own_XML-descriptions#Node_Descriptions</a>)</li>
 <li> added support for microscopic calibrators. These trigger-type objects can be used to increase or reduce traffic volume and to regulate speeds at selected edges. Using calibrators it becomes possible to calibrate a simulation according to known traffic measurements (i.e. from real-life induction loops) without using TraCI. For usage examples see the test suite at tests/sumo/extended/calibrator.</li>
 <li> renamed XML root elements of the netstate (raw dump) and the mean data outputs.</li>
 <li> added a car following model which respects slope (kraussPS), your network needs z-coordinates then</li></ul></li>
@@ -320,7 +321,7 @@
 <li> human readable color representations for red, green, blue, cyan, magenta, yellow, black, white, and grey</li>
 <li> junction coloring</li></ul></li>
 <li> NETCONVERT
-<ul><li> added support for traffic-actuated traffic lights (see <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions">Networks/Building_Networks_from_own_XML-descriptions#Node_Descriptions</a>)</li>
+<ul><li> added support for traffic-actuated traffic lights (see <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">Networks/Building_Networks_from_own_XML-descriptions#Node_Descriptions</a>)</li>
 <li> in plain connection files the element <b>delete</b> now also works when the connection doesn't exist yet (i.e. when building a network from plain nodes and edges and the connection file only contains delete elements).</li>
 <li> now importing most turning restrictions from <a href="../Networks/Import/OpenStreetMap.html" title="Networks/Import/OpenStreetMap">OpenStreetMap</a></li>
 <li> when importing SUMO networks without internal link the output network will be built without internal links by default.</li>
@@ -337,8 +338,8 @@
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.032 seconds
-Real time usage: 0.035 seconds
+CPU time usage: 0.016 seconds
+Real time usage: 0.015 seconds
 Preprocessor visited node count: 36/1000000
 Preprocessor generated node count: 102/1000000
 Post‐expand include size: 367/2097152 bytes
@@ -349,13 +350,13 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    5.293      1 - -total
- 77.19%    4.086      4 - Template:Option
+100.00%    2.252      1 - -total
+ 73.58%    1.657      4 - Template:Option
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:518-0!*!0!!*!*!* and timestamp 20171218142911 and revision id 4651
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:518-0!*!0!!*!*!* and timestamp 20180515221826 and revision id 4651
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 28 August 2013, at 11:42.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 28 August 2013, at 12:42.</div> </div>
 
     <div id="footer">
       <div>

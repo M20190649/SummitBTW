@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Tutorials/ScenarioGuide</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.183491 from <a href="http://sumo.dlr.de/wiki/Tutorials/ScenarioGuide">the wiki page for Tutorials/ScenarioGuide</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.546081 from <a href="http://sumo.dlr.de/wiki/Tutorials/ScenarioGuide">the wiki page for Tutorials/ScenarioGuide</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -324,7 +325,7 @@ You have various ways to insert vehicles into the map. Your choice basically dep
 <p>You will have to patch your network data to add missing roads, prohibit some turns, correct the number of lanes and add/remove some traffic lights. 
 The recommended way to perform the necessary changes is this:
 </p>
-<ol><li> Encode the changes in <i>plain-xml</i> files as described in <a href="../Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions">Networks/Building_Networks_from_own_XML-descriptions</a>. Most XML-attributes are optional so you only need to set the values you would like to change.</li>
+<ol><li> Encode the changes in <i>plain-xml</i> files as described in <a href="../Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">Networks/Building_Networks_from_own_XML-descriptions</a>. Most XML-attributes are optional so you only need to set the values you would like to change.</li>
 <li> patch your network using <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> by loading the net.xml along with the plain-xml files. You can even use this during the initial import (i.e. load an OSM-file along with your plain-xml files)</li></ol>
 <h3><span class="mw-headline" id="Example:_Patching_the_type_of_a_node">Example: Patching the type of a node</span></h3>
 <p>prepare a file like this:
@@ -369,7 +370,7 @@ The recommended way to perform the necessary changes is this:
 <div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />When working with networks based on OSM input, the .edg.xml file will contain information on the OSM-type of an edge (i.e. <i>highway.residential</i>. When loading such an .edg.xml file with <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> you need to supply the option <span style="color: #111144; font-weight: bold; white-space: pre;">--ignore-errors.edge-type</span> or load a type-file to prevent errors of the form <i>Type ... not defined</i>.</div>
 <h2><span class="mw-headline" id="Traffic_Light_Programs">Traffic Light Programs</span></h2>
 <p>In almost all cases the traffic light programs will have been guessed by <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> and turn out different from the real traffic lights. A simple way to improve traffic lights programs is making them start their program cycle at a different time. Experiment with the option <span style="color: #111144; font-weight: bold; white-space: pre;">--tls.half-offset</span> and all the other <span style="color: #111144; font-weight: bold; white-space: pre;">--tls.*</span> options of <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a>. 
-</p><p>A more powerful way to improve your traffic lights is to <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Traffic_Light_Program_Definition" title="Networks/Building Networks from own XML-descriptions">give the program explicitly with a <i>tls.xml</i> file</a>.
+</p><p>A more powerful way to improve your traffic lights is to <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Traffic_Light_Program_Definition" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">give the program explicitly with a <i>tls.xml</i> file</a>.
 </p><p>At this time <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> only supports the creation of static traffic light programs. For dynamic traffic lights see <a href="../Tutorials/TraCI4Traffic_Lights.html" title="Tutorials/TraCI4Traffic Lights">Tutorials/TraCI4Traffic_Lights</a>.
 </p>
 <h1><span class="mw-headline" id="Manage_Scenarios">Manage Scenarios</span></h1>
@@ -377,8 +378,8 @@ The recommended way to perform the necessary changes is this:
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.044 seconds
-Real time usage: 0.047 seconds
+CPU time usage: 0.024 seconds
+Real time usage: 0.025 seconds
 Preprocessor visited node count: 77/1000000
 Preprocessor generated node count: 170/1000000
 Post‐expand include size: 1102/2097152 bytes
@@ -389,15 +390,15 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   11.119      1 - -total
- 54.98%    6.113      2 - Template:Note
- 28.90%    3.213      3 - Template:Option
- 20.43%    2.272      1 - Template:SUMO
+100.00%    6.706      1 - -total
+ 59.45%    3.987      2 - Template:Note
+ 34.61%    2.321      3 - Template:Option
+ 20.33%    1.363      1 - Template:SUMO
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:448-0!*!0!!en!*!* and timestamp 20171219044427 and revision id 9365
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:448-0!*!0!!en!*!* and timestamp 20180516104623 and revision id 9365
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 18 April 2017, at 12:41.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 18 April 2017, at 13:41.</div> </div>
 
     <div id="footer">
       <div>

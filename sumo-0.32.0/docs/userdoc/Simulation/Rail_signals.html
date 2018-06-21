@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,10 +270,10 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Simulation/Rail signals</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.993473 from <a href="http://sumo.dlr.de/wiki/Simulation/Rail_signals">the wiki page for Simulation/Rail_signals</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.350638 from <a href="http://sumo.dlr.de/wiki/Simulation/Rail_signals">the wiki page for Simulation/Rail_signals</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
-				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>Rail signals are <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions">node</a> types for controllig rail traffic. 
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>Rail signals are <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">node</a> types for controllig rail traffic. 
 </p>
 <div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
 <ul>
@@ -295,7 +296,7 @@
 &lt;/nodes&gt; &lt;!-- The closing tag --&gt;
 </pre>
 <h1><span class="mw-headline" id="Usage">Usage</span></h1>
-<p>If one uses a rail network (here, we mean a network consisting exclusively of <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Edge_Descriptions" title="Networks/Building Networks from own XML-descriptions">edges that allow only</a> trains) within its simulation, it is not required to use rail signals. Instead one could choose all junctions withing this network to be of the type <i>priority</i>, which results, however, in an unrealistic behaviour of the rail traffic. 
+<p>If one uses a rail network (here, we mean a network consisting exclusively of <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Edge_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">edges that allow only</a> trains) within its simulation, it is not required to use rail signals. Instead one could choose all junctions withing this network to be of the type <i>priority</i>, which results, however, in an unrealistic behaviour of the rail traffic. 
 To achieve a more realistic behaviour, one can make use of rail signals. For that, one can split a longer rail section without any junctions in between into so called <i>blocks</i>, by choosing nodes within this section to have rail signals. Then, a <i>block</i> is the set of edges between two rail signals. The rail signal will then indicate green (we use green and red as for traffic lights) if there is no train in the block after the rail signal. A train will move from one block to the next one, and each time it wants to enter a block, the rail signal will state if this block is free and the train is allowed to enter, or if the block is occupied and the train has to wait until the block is empty.
 </p><p>If one uses one rail signal within its simulation, it is required to use rail signals for every junction/railroad switch with more than two tracks for which there exists a path from an existing rail signal. Otherwise, a warning will be issued. This is required as a rail signal depends on its adjacent rail signals (or rather the blocks between the adjacent rail signals and itself). For rail sections without junctions/railroad switches, one can split them into as many blocks as one desires, but a block length of a few hundred metres can be reasonable size. Too large block lengths can result in long waiting tims for trains waiting to enter a block. Too short block lengths can result in trains following each other very closely.
 </p>
@@ -305,7 +306,7 @@ To achieve a more realistic behaviour, one can make use of rail signals. For tha
 </p>
 <ul><li>Each block of a rail network is occupied by at most one train.</li>
 <li>If several trains approach the same junction/railroad switch from different lanes/edges and want to enter the same lane, at most one of these trains gets a green signal and all other trains get a red signal, even before one of these trains has entered the targeted lane. This will avoid that trains approach a rail signal with high velocity and receive suddently a red signal without having enough space to break before the rail signal.</li></ul>
-<p>A rail signal indicates green or red for each <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Connection_Descriptions" title="Networks/Building Networks from own XML-descriptions">connection</a> of the node individually. A connection <i>c</i> consists of one incoming lane <i>i</i> and one outgoing lane <i>o</i>. The signal for <i>c</i> depends on the occupation of:
+<p>A rail signal indicates green or red for each <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Connection_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">connection</a> of the node individually. A connection <i>c</i> consists of one incoming lane <i>i</i> and one outgoing lane <i>o</i>. The signal for <i>c</i> depends on the occupation of:
 </p>
 <ul><li>The outgoing block. That is the block leading from the current rail signal over <i>o</i> to the next rail signal. </li>
 <li>All blocks leading to <i>o</i>. A block leading to <i>o</i> is a block that is leading to the current rail signal for whose last lane there exists a connection to <i>o</i>. Clearly, the block to which <i>i</i> belongs is one of the blocks leading to <i>o</i>. We denote the set of the blocks leading to <i>o</i> by <i>O</i>.</li></ul>
@@ -323,8 +324,8 @@ If there is more than one block leading to <i>o</i>, i.e. <i>|O|&gt;1</i>, we co
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.092 seconds
-Real time usage: 0.096 seconds
+CPU time usage: 0.032 seconds
+Real time usage: 0.032 seconds
 Preprocessor visited node count: 26/1000000
 Preprocessor generated node count: 44/1000000
 Post‐expand include size: 0/2097152 bytes
@@ -338,9 +339,9 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:584-0!*!0!!en!5!* and timestamp 20171219074716 and revision id 6236
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:584-0!*!0!!en!5!* and timestamp 20180515221759 and revision id 6236
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 28 May 2015, at 13:45.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 28 May 2015, at 14:45.</div> </div>
 
     <div id="footer">
       <div>

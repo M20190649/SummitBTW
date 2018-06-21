@@ -114,6 +114,7 @@
   <li><a href="Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,13 +270,13 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Downloads</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.773602 from <a href="http://sumo.dlr.de/wiki/Downloads">the wiki page for Downloads</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.121002 from <a href="http://sumo.dlr.de/wiki/Downloads">the wiki page for Downloads</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>Here, you will find SUMO both as sources and as compiled binaries.
 </p><p>Please <a href="Contact.html" title="Contact">contact</a> us if you have any problems. If you want to report a
 bug, please <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/new">open a GitHub issue</a>. For further information about the changes between releases see the <a href="ChangeLog.html" title="ChangeLog">ChangeLog</a>.
-</p><p>SUMO is licensed under the <a rel="nofollow" class="external text" href="https://eclipse.org/legal/epl-v20.html">EPL</a> using only <a href="License.html" title="License" class="mw-redirect">open source libraries</a>.
+</p><p>SUMO is licensed under the <a rel="nofollow" class="external text" href="https://eclipse.org/legal/epl-v20.html">EPL-2.0</a> using only <a href="License.html" title="License" class="mw-redirect">open source libraries</a>.
 </p>
 <div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br /> If you have problems running SUMO because of missing files/commands/dlls please consult <a href="FAQ.html#Basic_Usage" title="FAQ">FAQ#Basic_Usage</a></div>
 <p><br />
@@ -520,7 +521,7 @@ sudo apt-get install sumo sumo-tools sumo-doc
 <p>This is still an experimental feature, feedback is welcome.
 </p>
 <h2><span class="mw-headline" id="SUMO_-_Latest_Release_.28Version_0.32.0.29">SUMO - Latest Release (Version 0.32.0)</span></h2>
-<p><b>Release date: 14.09.2017</b>
+<p><b>Release date: 19.12.2017</b>
 </p>
 <ul><li> The latest MS Windows binaries.</li></ul>
 <dl><dd>Contains the binaries (32 bit), all dlls needed, the examples, tools, and documentation in HTML format.</dd>
@@ -529,13 +530,16 @@ sudo apt-get install sumo sumo-tools sumo-doc
 <dd>Download 64 bit zip: <a rel="nofollow" class="external text" href="http://prdownloads.sourceforge.net/sumo/sumo-win64-0.32.0.zip?download">sumo-win64-0.32.0.zip</a></dd>
 <dd>Download 64 bit installer: <a rel="nofollow" class="external text" href="http://prdownloads.sourceforge.net/sumo/sumo-win64-0.32.0.msi?download">sumo-win64-0.32.0.msi</a></dd></dl>
 <ul><li> Linux binaries are created by the <a rel="nofollow" class="external text" href="http://en.opensuse.org/Build_Service">open build service</a></li></ul>
-<dl><dd>If the repositories do not contain the libraries (like proj and gdal) they are either part of the distribution or you will need them from another repository (you may try one of the build service repositories here too, e.g. <a rel="nofollow" class="external text" href="http://download.opensuse.org/repositories/Application:/Geo/">Application:Geo</a>). At the moment there is no documentation included in the packages. The repositories include a nightly build as well (called sumo-git).
+<dl><dd>If the repositories do not contain the libraries (like proj and gdal) they are either part of the distribution or you will need them from another repository (you may try one of the build service repositories here too, e.g. <a rel="nofollow" class="external text" href="http://download.opensuse.org/repositories/Application:/Geo/">Application:Geo</a>). At the moment there is no documentation included in the packages. The repositories include a nightly build as well (called sumo_nightly).
 <ul><li><a rel="nofollow" class="external text" href="http://download.opensuse.org/repositories/home:/behrisch/openSUSE_42.1/">openSUSE Leap 42.1 repository</a></li>
 <li><a rel="nofollow" class="external text" href="http://download.opensuse.org/repositories/home:/behrisch/openSUSE_42.2/">openSUSE Leap 42.2 repository</a></li>
 <li><a rel="nofollow" class="external text" href="http://download.opensuse.org/repositories/home:/behrisch/openSUSE_42.3/">openSUSE Leap 42.3 repository</a></li>
 <li><a rel="nofollow" class="external text" href="http://download.opensuse.org/repositories/home:/behrisch/openSUSE_Tumbleweed/">openSUSE Tumbleweed repository</a></li>
 <li><a rel="nofollow" class="external text" href="http://download.opensuse.org/repositories/home:/behrisch/Fedora_24/">Fedora 24 repository</a></li>
-<li><a rel="nofollow" class="external text" href="http://download.opensuse.org/repositories/home:/behrisch/Fedora_25/">Fedora 25 repository</a></li></ul></dd></dl>
+<li><a rel="nofollow" class="external text" href="http://download.opensuse.org/repositories/home:/behrisch/Fedora_25/">Fedora 25 repository</a></li>
+<li><a rel="nofollow" class="external text" href="http://download.opensuse.org/repositories/home:/behrisch/Fedora_26/">Fedora 26 repository</a></li>
+<li><a rel="nofollow" class="external text" href="http://download.opensuse.org/repositories/home:/behrisch/Fedora_27/">Fedora 27 repository</a></li>
+<li><a rel="nofollow" class="external text" href="http://download.opensuse.org/repositories/home:/behrisch/Fedora_Rawhide/">Fedora Rawhide repository</a></li></ul></dd></dl>
 <p>There are <a rel="nofollow" class="external text" href="https://build.opensuse.org/repositories/home:behrisch">more Linux RPM repositories</a> but in a less well maintained state (CentOS and Scientific missing gdal support for instance) because the opensuse build service does not provide the necessary packages any longer. Ubuntu and Debian users please see above for repository information.
 </p>
 <ul><li> The latest source-tarball. </li></ul>
@@ -584,8 +588,8 @@ state of the build, you may take a look at the <a rel="nofollow" class="external
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.112 seconds
-Real time usage: 0.114 seconds
+CPU time usage: 0.040 seconds
+Real time usage: 0.038 seconds
 Preprocessor visited node count: 101/1000000
 Preprocessor generated node count: 242/1000000
 Post‐expand include size: 693/2097152 bytes
@@ -596,15 +600,15 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   24.658      1 - -total
- 25.01%    6.168     19 - Template:Version
- 15.12%    3.729      1 - Template:Note
- 15.09%    3.720      1 - Template:Caution
+100.00%    8.154      1 - -total
+ 22.89%    1.866     19 - Template:Version
+ 14.97%    1.221      1 - Template:Note
+ 14.07%    1.147      1 - Template:Caution
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:64-0!*!0!!en!*!* and timestamp 20171218205958 and revision id 10331
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:64-0!*!0!!en!*!* and timestamp 20180515221731 and revision id 10571
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 6 November 2017, at 14:31.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 31 January 2018, at 09:30.</div> </div>
 
     <div id="footer">
       <div>

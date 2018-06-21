@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">TraCI/VehicleType Value Retrieval</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.141908 from <a href="http://sumo.dlr.de/wiki/TraCI/VehicleType_Value_Retrieval">the wiki page for TraCI/VehicleType_Value_Retrieval</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.505199 from <a href="http://sumo.dlr.de/wiki/TraCI/VehicleType_Value_Retrieval">the wiki page for TraCI/VehicleType_Value_Retrieval</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><br />
@@ -315,7 +316,7 @@
 </td>
 <td> Returns a list of ids of currently loaded vehicle types (the given vehicle type ID is ignored)
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicletype.html#VehicleTypeDomain-getIDList">getIDList</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicletype.html#VehicleTypeDomain-getIDList">getIDList</a>
 </td></tr>
 <tr>
 <td> count (0x01)
@@ -324,7 +325,7 @@
 </td>
 <td> Returns the number of currently loaded vehicle types (the given vehicle type ID is ignored)
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicletype.html#VehicleTypeDomain-getIDCount">getIDCount</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicletype.html#VehicleTypeDomain-getIDCount">getIDCount</a>
 </td></tr>
 <tr>
 <td> length (0x44)
@@ -333,7 +334,7 @@
 </td>
 <td> Returns the length of the vehicles of this type [m]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicletype.html#VehicleTypeDomain-getLength">getLength</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicletype.html#VehicleTypeDomain-getLength">getLength</a>
 </td></tr>
 <tr>
 <td> vmax (0x41)
@@ -342,7 +343,7 @@
 </td>
 <td> Returns the maximum speed of vehicles of this type [m/s]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicletype.html#VehicleTypeDomain-getMaxSpeed">getMaxSpeed</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicletype.html#VehicleTypeDomain-getMaxSpeed">getMaxSpeed</a>
 </td></tr>
 <tr>
 <td> accel (0x46)
@@ -351,7 +352,7 @@
 </td>
 <td> Returns the maximum acceleration possibility of vehicles of this type [m/s^2]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicletype.html#VehicleTypeDomain-getAccel">getAccel</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicletype.html#VehicleTypeDomain-getAccel">getAccel</a>
 </td></tr>
 <tr>
 <td> decel (0x47)
@@ -360,7 +361,7 @@
 </td>
 <td> Returns the maximum deceleration possibility of vehicles of this type [m/s^2]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicletype.html#VehicleTypeDomain-getDecel">getDecel</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicletype.html#VehicleTypeDomain-getDecel">getDecel</a>
 </td></tr>
 <tr>
 <td> tau (0x48)
@@ -369,7 +370,7 @@
 </td>
 <td> Returns the driver's desired time headway for vehicles of this type [s]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicletype.html#VehicleTypeDomain-getTau">getTau</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicletype.html#VehicleTypeDomain-getTau">getTau</a>
 </td></tr>
 <tr>
 <td> sigma(0x5d)
@@ -378,7 +379,7 @@
 </td>
 <td> Returns the driver's imperfection (dawdling) [0,1]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicletype.html#VehicleTypeDomain-getImperfection">getImperfection</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicletype.html#VehicleTypeDomain-getImperfection">getImperfection</a>
 </td></tr>
 <tr>
 <td> speedFactor(0x5e)
@@ -387,7 +388,7 @@
 </td>
 <td> Returns the road speed multiplier for drivers of this type [double]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicletype.html#VehicleTypeDomain-getSpeedFactor">getSpeedFactor</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicletype.html#VehicleTypeDomain-getSpeedFactor">getSpeedFactor</a>
 </td></tr>
 <tr>
 <td> speedDev(0x5f)
@@ -396,7 +397,7 @@
 </td>
 <td> Returns the deviation of speedFactor for drivers of this type [double]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicletype.html#VehicleTypeDomain-getSpeedDeviation">getSpeedDeviation</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicletype.html#VehicleTypeDomain-getSpeedDeviation">getSpeedDeviation</a>
 </td></tr>
 <tr>
 <td> vclass (0x49)
@@ -405,7 +406,7 @@
 </td>
 <td> Returns the class of vehicles of this type
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicletype.html#VehicleTypeDomain-getVehicleClass">getVehicleClass</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicletype.html#VehicleTypeDomain-getVehicleClass">getVehicleClass</a>
 </td></tr>
 <tr>
 <td> emission_class (0x4a)
@@ -414,7 +415,7 @@
 </td>
 <td> Returns the emission class of vehicles of this type
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicletype.html#VehicleTypeDomain-getEmissionClass">getEmissionClass</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicletype.html#VehicleTypeDomain-getEmissionClass">getEmissionClass</a>
 </td></tr>
 <tr>
 <td> shape (0x4b)
@@ -423,7 +424,7 @@
 </td>
 <td> Returns the shape of vehicles of this type
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicletype.html#VehicleTypeDomain-getShapeClass">getShapeClass</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicletype.html#VehicleTypeDomain-getShapeClass">getShapeClass</a>
 </td></tr>
 <tr>
 <td> minGap (0x4c)
@@ -432,7 +433,7 @@
 </td>
 <td> Returns the offset (gap to front vehicle if halting) of vehicles of this type [m]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicletype.html#VehicleTypeDomain-getMinGap">getMinGap</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicletype.html#VehicleTypeDomain-getMinGap">getMinGap</a>
 </td></tr>
 <tr>
 <td> width (0x4d)
@@ -441,7 +442,7 @@
 </td>
 <td> Returns the width of vehicles of this type [m]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicletype.html#VehicleTypeDomain-getWidth">getWidth</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicletype.html#VehicleTypeDomain-getWidth">getWidth</a>
 </td></tr>
 <tr>
 <td> height (0xbc)
@@ -450,7 +451,7 @@
 </td>
 <td> Returns the height of vehicles of this type [m]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicletype.html#VehicleTypeDomain-getHeight">getHeight</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicletype.html#VehicleTypeDomain-getHeight">getHeight</a>
 </td></tr>
 <tr>
 <td> color (0x45)
@@ -459,7 +460,7 @@
 </td>
 <td> Returns the color of this type
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicletype.html#VehicleTypeDomain-getColor">getColor</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicletype.html#VehicleTypeDomain-getColor">getColor</a>
 </td></tr>
 <tr>
 <td> max lateral speed (0xba)
@@ -468,7 +469,7 @@
 </td>
 <td> Returns the maximum lateral speed in m/s of this type.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicletype.html#VehicleTypeDomain-getMaxSpeedLat">getMaxSpeedLat</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicletype.html#VehicleTypeDomain-getMaxSpeedLat">getMaxSpeedLat</a>
 </td></tr>
 <tr>
 <td> lateral gap (0xbb)
@@ -477,7 +478,7 @@
 </td>
 <td> Returns the desired lateral gap of this type at 50km/h in m.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicletype.html#VehicleTypeDomain-getMinGapLat">getMinGapLat</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicletype.html#VehicleTypeDomain-getMinGapLat">getMinGapLat</a>
 </td></tr>
 <tr>
 <td> lateral alignment (0xb9)
@@ -486,7 +487,7 @@
 </td>
 <td> Returns the preferred lateral alignment of the type.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicletype.html#VehicleTypeDomain-getLateralAlignment">getLateralAlignment</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicletype.html#VehicleTypeDomain-getLateralAlignment">getLateralAlignment</a>
 </td></tr>
 <tr>
 <td> action step length (0x7d)
@@ -495,7 +496,7 @@
 </td>
 <td> Returns the action step length for the vehicle type in s.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicletype.html#VehicleTypeDomain-getActionStepLength">getActionStepLength </a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicletype.html#VehicleTypeDomain-getActionStepLength">getActionStepLength </a>
 </td></tr>
 </table>
 <h2><span class="mw-headline" id="Response_0xb5:_Vehicle_Type_Variable">Response 0xb5: Vehicle Type Variable</span></h2>
@@ -522,8 +523,8 @@
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.044 seconds
-Real time usage: 0.045 seconds
+CPU time usage: 0.016 seconds
+Real time usage: 0.016 seconds
 Preprocessor visited node count: 7/1000000
 Preprocessor generated node count: 12/1000000
 Post‐expand include size: 0/2097152 bytes
@@ -537,9 +538,9 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:266-0!*!0!!en!*!* and timestamp 20171218232356 and revision id 10408
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:266-0!*!0!!en!*!* and timestamp 20180516135553 and revision id 10408
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 15 December 2017, at 15:18.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 15 December 2017, at 16:18.</div> </div>
 
     <div id="footer">
       <div>

@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">TraCI/Change PoI State</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.095394 from <a href="http://sumo.dlr.de/wiki/TraCI/Change_PoI_State">the wiki page for TraCI/Change_PoI_State</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.456816 from <a href="http://sumo.dlr.de/wiki/TraCI/Change_PoI_State">the wiki page for TraCI/Change_PoI_State</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -327,16 +328,16 @@
 </td>
 <td> Sets the PoI's type to the given value
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._poi.html#PoiDomain-setType">setType</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._poi.html#PoiDomain-setType">setType</a>
 </td></tr>
 <tr>
 <td> color (0x45)
 </td>
 <td> color (ubyte,ubyte,ubyte,ubyte)
 </td>
-<td> Sets the PoI's color to the given value (r,g,b,a) - please note that a(lpha) is currently not used
+<td> Sets the PoI's color to the given value (r,g,b,a) - please note that a(lpha) = 0 means fully transparent
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._poi.html#PoiDomain-setColor">setColor</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._poi.html#PoiDomain-setColor">setColor</a>
 </td></tr>
 <tr>
 <td> position (0x42)
@@ -345,7 +346,7 @@
 </td>
 <td> Sets the PoI's position to the given value
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._poi.html#PoiDomain-setPosition">setPosition</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._poi.html#PoiDomain-setPosition">setPosition</a>
 </td></tr>
 <tr>
 <td> ADD (0x80)
@@ -354,7 +355,7 @@
 </td>
 <td> Adds the defined PoI
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._poi.html#PoiDomain-add">add</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._poi.html#PoiDomain-add">add</a>
 </td></tr>
 <tr>
 <td> REMOVE (0x81)
@@ -363,7 +364,7 @@
 </td>
 <td> Removes the defined PoI
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._poi.html#PoiDomain-remove">remove</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._poi.html#PoiDomain-remove">remove</a>
 </td></tr>
 </table>
 <p><br />
@@ -486,8 +487,8 @@ The message contents are as following:
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.028 seconds
-Real time usage: 0.032 seconds
+CPU time usage: 0.020 seconds
+Real time usage: 0.017 seconds
 Preprocessor visited node count: 22/1000000
 Preprocessor generated node count: 28/1000000
 Post‐expand include size: 0/2097152 bytes
@@ -501,9 +502,9 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:294-0!*!0!!en!*!* and timestamp 20171218232345 and revision id 8826
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:294-0!*!0!!en!*!* and timestamp 20180515221811 and revision id 10541
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 6 February 2017, at 14:39.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 10 January 2018, at 14:54.</div> </div>
 
     <div id="footer">
       <div>

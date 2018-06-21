@@ -114,6 +114,7 @@
   <li><a href="../../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,12 +270,12 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Tutorials/Calibration/San Pablo Dam</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.155574 from <a href="http://sumo.dlr.de/wiki/Tutorials/Calibration/San_Pablo_Dam">the wiki page for Tutorials/Calibration/San_Pablo_Dam</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.519354 from <a href="http://sumo.dlr.de/wiki/Tutorials/Calibration/San_Pablo_Dam">the wiki page for Tutorials/Calibration/San_Pablo_Dam</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>This tutorial describes the execution of the simulation in a loop using a control script. The aim is to calibrate the simulation to a given real-world dataset. This tutorial may be used for further research on car-following models or on optimization algorithms.
 </p><p>It is assumed that road network building and routes definition is known from other tutorials, as <a href="../../Tutorials/Hello_Sumo.html" title="Tutorials/Hello Sumo">Tutorials/Hello Sumo</a>, <a href="../../Tutorials/quick_start.html" title="Tutorials/quick start">Tutorials/quick start</a> or <a href="../../Tutorials/Quick_Start_old_style.html" title="Tutorials/Quick Start old style">Tutorials/Quick Start old style</a>.
-</p><p>All files mentioned here can also be found in the <i><b>&lt;SUMO_HOME&gt;</b></i>/docs/tutorial/san_pablo_dam directory. The most recent version can be found in the repository at <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/blob/master/tests/complex/tutorial/san_pablo_dam/data/"><i><b>&lt;SUMO_HOME&gt;</b></i>/tests/complex/tutorial/san_pablo_dam/data/</a>.
+</p><p>All files mentioned here can also be found in the <i><b>&lt;SUMO_HOME&gt;</b></i>/docs/tutorial/san_pablo_dam directory. The most recent version can be found in the repository at <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/blob/master/tests/complex/tutorial/san_pablo_dam/data/"><i><b>&lt;SUMO_HOME&gt;</b></i>/tests/complex/tutorial/san_pablo_dam/data/</a>.
 </p>
 <div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
 <ul>
@@ -305,7 +306,7 @@
 <li> Python 2.x (tested with Python 2.7)
 <ul><li> SciPy</li></ul></li></ul>
 <h1><span class="mw-headline" id="Network_Preparation">Network Preparation</span></h1>
-<p>Optimization requires several - many - iterations, and <a href="../../SUMO.html" title="SUMO">SUMO</a>'s execution speed highly depends on the number of edges a network is made of. Due to this we model the San Pablo Dam Road using two edges only. We build an edge file, and a node file as already discussed in previous (<a href="../../Tutorials/Hello_Sumo.html" title="Tutorials/Hello Sumo">Tutorials/Hello Sumo</a>, <a href="../../Tutorials/Quick_Start.html" title="Tutorials/Quick Start" class="mw-redirect">Tutorials/Quick Start</a>) tutorials.
+<p>Optimization requires several - many - iterations, and <a href="../../SUMO.html" title="SUMO">SUMO</a>'s execution speed highly depends on the number of edges a network is made of. Due to this we model the San Pablo Dam Road using two edges only. We build an edge file, and a node file as already discussed in previous (<a href="../../Tutorials/Hello_Sumo.html" title="Tutorials/Hello Sumo">Tutorials/Hello Sumo</a>, <a href="/w/index.php?title=Tutorials/Quick_Start&amp;action=edit&amp;redlink=1" class="new" title="Tutorials/Quick Start (page does not exist)">Tutorials/Quick Start</a>) tutorials.
 </p>
 <h1><span class="mw-headline" id="Demand_Preparation">Demand Preparation</span></h1>
 <p>We use the function genDemand in "runner.py" for building the demand. Here, times at observation point 1 are used as our vehicle departure times. The route consists of the two edges the network consists of. All vehicles have the same type. The values for this type - the car-following parameter to optimize - are documented in the function gof in "runner.py". Please note that we keep "minGap" at 2.5m constantly - this should be changed for other models than the used SUMO-Krauß-model. If wished, they may be set to the default parameter values before performing the calibration (see the end of runner.py).
@@ -375,11 +376,11 @@ traffic in long queues. Transportation Research Records, 1678, pp. 225-233; avai
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.044 seconds
-Real time usage: 0.049 seconds
+CPU time usage: 0.020 seconds
+Real time usage: 0.022 seconds
 Preprocessor visited node count: 60/1000000
 Preprocessor generated node count: 124/1000000
-Post‐expand include size: 284/2097152 bytes
+Post‐expand include size: 285/2097152 bytes
 Template argument size: 100/2097152 bytes
 Highest expansion depth: 2/40
 Expensive parser function count: 0/100
@@ -387,15 +388,15 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   12.513      1 - -total
- 27.60%    3.453      1 - Template:Source
- 26.87%    3.362      1 - Template:Option
- 23.50%    2.941      2 - Template:SUMO
+100.00%    5.377      1 - -total
+ 28.14%    1.513      1 - Template:Source
+ 21.78%    1.171      1 - Template:Option
+ 21.24%    1.142      2 - Template:SUMO
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:441-0!*!0!!en!*!* and timestamp 20171218130402 and revision id 10319
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:441-0!*!0!!en!*!* and timestamp 20180515221819 and revision id 10319
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 6 November 2017, at 11:50.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 6 November 2017, at 12:50.</div> </div>
 
     <div id="footer">
       <div>

@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Other/File Extensions</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.866186 from <a href="http://sumo.dlr.de/wiki/Other/File_Extensions">the wiki page for Other/File_Extensions</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.218829 from <a href="http://sumo.dlr.de/wiki/Other/File_Extensions">the wiki page for Other/File_Extensions</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><h2><span class="mw-headline" id="Native_SUMO_Files">Native SUMO Files</span></h2>
@@ -290,9 +291,9 @@
 <li> <b>*.rou.alt.xml</b>: route alternatives file (<a rel="nofollow" class="external text" href="http://sumo.dlr.de/xsd/routes_file.xsd">xsd</a>, <a href="../Demand/Dynamic_User_Assignment.html#General_behavior" title="Demand/Dynamic User Assignment">description</a>)</li>
 <li> <b>*.add.xml</b>: <a href="../SUMO.html" title="SUMO">SUMO</a>/<a href="../SUMO-GUI.html" title="SUMO-GUI">SUMO-GUI</a> - <a href="../SUMO.html#Format_of_additional_files" title="SUMO"><i>additional-file</i></a> (<a rel="nofollow" class="external text" href="http://sumo.dlr.de/xsd/additional_file.xsd">xsd</a>, <a href="/w/index.php?title=Missing_description&amp;action=edit&amp;redlink=1" class="new" title="Missing description (page does not exist)">missing description</a>)
 <ul><li> traffic lights only (<a rel="nofollow" class="external text" href="http://sumo.dlr.de/xsd/tllogic_file.xsd">xsd</a>, <a href="/w/index.php?title=Missing_description&amp;action=edit&amp;redlink=1" class="new" title="Missing description (page does not exist)">missing description</a>)</li></ul></li>
-<li> <b>*.edg.xml</b>: <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> - edges file (<a rel="nofollow" class="external text" href="http://sumo.dlr.de/xsd/edges_file.xsd">xsd</a>, <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Edge_Descriptions" title="Networks/Building Networks from own XML-descriptions">description</a>)</li>
-<li> <b>*.nod.xml</b>: <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> - nodes file (<a rel="nofollow" class="external text" href="http://sumo.dlr.de/xsd/nodes_file.xsd">xsd</a>, <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions">description</a>)</li>
-<li> <b>*.con.xml</b>: <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a>- connection file (<a rel="nofollow" class="external text" href="http://sumo.dlr.de/xsd/connections_file.xsd">xsd</a>, <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Connection_Descriptions" title="Networks/Building Networks from own XML-descriptions">description</a>)</li>
+<li> <b>*.edg.xml</b>: <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> - edges file (<a rel="nofollow" class="external text" href="http://sumo.dlr.de/xsd/edges_file.xsd">xsd</a>, <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Edge_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">description</a>)</li>
+<li> <b>*.nod.xml</b>: <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> - nodes file (<a rel="nofollow" class="external text" href="http://sumo.dlr.de/xsd/nodes_file.xsd">xsd</a>, <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">description</a>)</li>
+<li> <b>*.con.xml</b>: <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a>- connection file (<a rel="nofollow" class="external text" href="http://sumo.dlr.de/xsd/connections_file.xsd">xsd</a>, <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Connection_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">description</a>)</li>
 <li> <b>*.typ.xml</b>: <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a>- edge types file (<a rel="nofollow" class="external text" href="http://sumo.dlr.de/xsd/types_file.xsd">xsd</a>, <a href="../SUMO_edge_type_file.html" title="SUMO edge type file">description</a>)</li>
 <li> <b>*.trips.xml</b>: trip definitions for <a href="../DUAROUTER.html" title="DUAROUTER">DUAROUTER</a>,<a href="../SUMO.html" title="SUMO">SUMO</a> (<a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Incomplete_Routes_.28trips_and_flows.29" title="Definition of Vehicles, Vehicle Types, and Routes">description</a>)</li>
 <li> <b>*.flows.xml</b>: flow definitions for <a href="../JTRROUTER.html" title="JTRROUTER">JTRROUTER</a>,<a href="../DUAROUTER.html" title="DUAROUTER">DUAROUTER</a>,<a href="../SUMO.html" title="SUMO">SUMO</a> (<a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Incomplete_Routes_.28trips_and_flows.29" title="Definition of Vehicles, Vehicle Types, and Routes">description</a>)</li>
@@ -334,8 +335,8 @@
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.056 seconds
-Real time usage: 0.059 seconds
+CPU time usage: 0.028 seconds
+Real time usage: 0.029 seconds
 Preprocessor visited node count: 14/1000000
 Preprocessor generated node count: 26/1000000
 Post‐expand include size: 55/2097152 bytes
@@ -346,13 +347,13 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    2.565      1 - -total
-100.00%    2.565      1 - Template:AdditionalFile
+100.00%    1.576      1 - -total
+100.00%    1.576      1 - Template:AdditionalFile
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:103-0!*!0!!*!*!* and timestamp 20171218211410 and revision id 8125
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:103-0!*!0!!*!*!* and timestamp 20180516114441 and revision id 8125
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 22 October 2016, at 13:52.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 22 October 2016, at 14:52.</div> </div>
 
     <div id="footer">
       <div>

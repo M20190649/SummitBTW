@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Installing/Windows Build</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.794080 from <a href="http://sumo.dlr.de/wiki/Installing/Windows_Build">the wiki page for Installing/Windows_Build</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.143258 from <a href="http://sumo.dlr.de/wiki/Installing/Windows_Build">the wiki page for Installing/Windows_Build</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>This document describes how to build SUMO under MS-Windows using only freely
@@ -278,7 +279,7 @@ available (this does <b>not</b> mean "open source") tools. Instructions on how t
 </p><p>If you do not need the GUI, you can skip everything concerning Fox.
 If you do not need precise geodata conversion, you can skip everything concerning GDAL, Proj.
 </p>
-<ul><li>Download <a rel="nofollow" class="external text" href="https://www.microsoft.com/germany/msdn/vstudio/products/express/download.mspx">Visual C++ Express Edition</a>. SUMO is only compatible with Visual Studio 2013 or higher. If you are using Windows 8 or later be sure to download Visual Studio Express for Windows <i>Desktop</i>. Please install all the available Service Packs for Visual Studio as well. Note that with Visual Studio Express 2017 SUMO only can be compiled <b>in Release Mode</b>. </li>
+<ul><li>Download <a rel="nofollow" class="external text" href="https://www.visualstudio.com/vs/visual-studio-express/">Visual C++ Express Edition</a>. SUMO is only compatible with Visual Studio 2013 or higher. If you are using Windows 8 or later be sure to download Visual Studio Express for Windows <i>Desktop</i>. Please install all the available Service Packs for Visual Studio as well. Note that with Visual Studio Express 2017 SUMO only can be compiled <b>in Release Mode</b>. </li>
 <li><a rel="nofollow" class="external text" href="http://www.python.org/download/">Download Python for Windows</a> and install it. Our most preferred version is Python 2.7.x for the 32 bit platform, but you may try Python 3 and / or 64bit as well. </li>
 <li>Download and extract <a rel="nofollow" class="external text" href="http://sumo.dlr.de/daily/sumo-src-git.zip">sumo-src-git.zip</a> or a different version (or use a repository checkout, see <a href="../Downloads.html" title="Downloads">Downloads</a>)</li>
 <li>Note on installation paths: MSVC seems to have difficulties with include and library paths containing spaces (for instance <tt>C:\Program Files</tt>). Thus try to avoid installing SUMO or any of the libraries in such paths.</li></ul>
@@ -297,9 +298,11 @@ If you do not need precise geodata conversion, you can skip everything concernin
 <ul>
 <li class="toclevel-2 tocsection-7"><a href="#Linker_reports_something_similar_to_.22LINK_:_fatal_error_LNK1104:_cannot_open_file_.27C:.5CProgram.obj.27.22"><span class="tocnumber">3.1</span> <span class="toctext">Linker reports something similar to "LINK&#160;: fatal error LNK1104: cannot open file 'C:\Program.obj'"</span></a></li>
 <li class="toclevel-2 tocsection-8"><a href="#Failure_on_pre-build_event_.28missing_version.h_or_.2Atypemap.h.29"><span class="tocnumber">3.2</span> <span class="toctext">Failure on pre-build event (missing version.h or *typemap.h)</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#Execution_cannot_proceed_because_MSVCR120.dll.2FMSVCR140.dll_was_not_found"><span class="tocnumber">3.3</span> <span class="toctext">Execution cannot proceed because MSVCR120.dll/MSVCR140.dll was not found</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="#In_debug_mode.2C_execution_cannot_proceed_because_MSVCR120D.dll.2FMSVCR140D.dll_was_not_found"><span class="tocnumber">3.4</span> <span class="toctext">In debug mode, execution cannot proceed because MSVCR120D.dll/MSVCR140D.dll was not found</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-9"><a href="#Available_configurations"><span class="tocnumber">4</span> <span class="toctext">Available configurations</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="#Available_configurations"><span class="tocnumber">4</span> <span class="toctext">Available configurations</span></a></li>
 </ul>
 </div>
 
@@ -307,11 +310,13 @@ If you do not need precise geodata conversion, you can skip everything concernin
 <p>There are two ways of telling the SUMO build where to find its libraries. Either via environment variables or by editing a config file. This document only describes the latter (easier) way, for details on the former and also on how to use different versions and additional libraries see <a href="../Installing/Windows_Libraries.html" title="Installing/Windows Libraries">Installing/Windows_Libraries</a>.
 </p>
 <ul><li>Download the <a rel="nofollow" class="external text" href="http://xml.apache.org/xerces-c/">Xerces-C</a> and <a rel="nofollow" class="external text" href="http://www.fox-toolkit.org/">Fox</a> prebuilt <a rel="nofollow" class="external text" href="http://sourceforge.net/projects/sumo/files/dependencies/">binaries, libraries and headers</a> and extract them.
-<ul><li> For Win32 build with Visual Studio 2013 you currently need the <a rel="nofollow" class="external text" href="http://sourceforge.net/projects/sumo/files/dependencies/xerces-c-3.1.4.2052vc12.zip/download">Xerces-C binaries</a> and the <a rel="nofollow" class="external text" href="http://sourceforge.net/projects/sumo/files/dependencies/fox-1.6.54vc12.zip/download">Fox toolkit binaries</a></li>
-<li>They are build for Visual Studio 2013, but may be used with earlier versions as well. You may need to install the Visual C++ 2013 Runtime Distributable for running SUMO then (tested with Visual Studio 2010).</li></ul></li>
+<ul><li> For the Win32 build with Visual Studio 2013 you currently need the <a rel="nofollow" class="external text" href="http://sourceforge.net/projects/sumo/files/dependencies/xerces-c-3.2.0-win32vc12.zip/download">Xerces-C binaries</a> and the <a rel="nofollow" class="external text" href="http://sourceforge.net/projects/sumo/files/dependencies/fox-1.6.54vc12.zip/download">Fox toolkit binaries</a></li>
+<li> For the x64 build with Visual Studio 2013 you currently need the <a rel="nofollow" class="external text" href="http://sourceforge.net/projects/sumo/files/dependencies/xerces-c-3.2.0-win64vc12.zip/download">Xerces-C binaries</a> and the <a rel="nofollow" class="external text" href="http://sourceforge.net/projects/sumo/files/dependencies/fox-1.6.54_64vc12.zip/download">Fox toolkit binaries</a></li>
+<li> They are built with Visual Studio 2013, but may be used with earlier and later versions as well. You may need to install the Visual C++ 2013 Runtime Distributable for running SUMO then (tested with Visual Studio 2010).</li>
+<li> For Visual Studio 2017 you might need the libaries build with 2017 (because of incompatibilities with some Fox headers and sources). You can download them here: <a rel="nofollow" class="external free" href="https://github.com/DLR-TS/SUMOLibraries">https://github.com/DLR-TS/SUMOLibraries</a></li></ul></li>
 <li>Download the binary packages for PROJ and GDAL provided at <a rel="nofollow" class="external free" href="http://www.gisinternals.com/release.php">http://www.gisinternals.com/release.php</a>
-<ul><li>For Win32 build with Visual Studio 2013 you currently need <a rel="nofollow" class="external free" href="http://download.gisinternals.com/sdk/downloads/release-1800-gdal-2-1-3-mapserver-7-0-4.zip">http://download.gisinternals.com/sdk/downloads/release-1800-gdal-2-1-3-mapserver-7-0-4.zip</a> and <a rel="nofollow" class="external free" href="http://download.gisinternals.com/sdk/downloads/release-1800-gdal-2-1-3-mapserver-7-0-4-libs.zip">http://download.gisinternals.com/sdk/downloads/release-1800-gdal-2-1-3-mapserver-7-0-4-libs.zip</a></li>
-<li>For Win64 build with Visual Studio 2013 you currently need <a rel="nofollow" class="external free" href="http://download.gisinternals.com/sdk/downloads/release-1800-x64-gdal-2-1-3-mapserver-7-0-4.zip">http://download.gisinternals.com/sdk/downloads/release-1800-x64-gdal-2-1-3-mapserver-7-0-4.zip</a> and <a rel="nofollow" class="external free" href="http://download.gisinternals.com/sdk/downloads/release-1800-x64-gdal-2-1-3-mapserver-7-0-4-libs.zip">http://download.gisinternals.com/sdk/downloads/release-1800-x64-gdal-2-1-3-mapserver-7-0-4-libs.zip</a></li>
+<ul><li>For the Win32 build with Visual Studio you currently need <a rel="nofollow" class="external free" href="http://download.gisinternals.com/sdk/downloads/release-1800-gdal-2-1-3-mapserver-7-0-4.zip">http://download.gisinternals.com/sdk/downloads/release-1800-gdal-2-1-3-mapserver-7-0-4.zip</a> and <a rel="nofollow" class="external free" href="http://download.gisinternals.com/sdk/downloads/release-1800-gdal-2-1-3-mapserver-7-0-4-libs.zip">http://download.gisinternals.com/sdk/downloads/release-1800-gdal-2-1-3-mapserver-7-0-4-libs.zip</a></li>
+<li>For the x64 build with Visual Studio you currently need <a rel="nofollow" class="external free" href="http://download.gisinternals.com/sdk/downloads/release-1800-x64-gdal-2-1-3-mapserver-7-0-4.zip">http://download.gisinternals.com/sdk/downloads/release-1800-x64-gdal-2-1-3-mapserver-7-0-4.zip</a> and <a rel="nofollow" class="external free" href="http://download.gisinternals.com/sdk/downloads/release-1800-x64-gdal-2-1-3-mapserver-7-0-4-libs.zip">http://download.gisinternals.com/sdk/downloads/release-1800-x64-gdal-2-1-3-mapserver-7-0-4-libs.zip</a></li>
 <li>Create a new directory and extract both files into that dir (if you download 64bit as well, create a separate dir and extract them there)</li></ul></li>
 <li>There are also <a href="../Installing/Windows_CMake.html" title="Installing/Windows CMake">CMake build instructions</a> available.</li>
 <li>Execute &lt;SUMO&gt;\tools\build\pythonPropsMSVC.py</li>
@@ -320,17 +325,17 @@ If you do not need precise geodata conversion, you can skip everything concernin
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;Project DefaultTargets=&quot;Build&quot; ToolsVersion=&quot;4.0&quot; xmlns=&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot;&gt;
   &lt;PropertyGroup Label=&quot;UserMacros&quot;&gt;
-    &lt;XERCES&gt;D:\behr_mi\lib\xerces-c-3.1.4.2052&lt;/XERCES&gt;
-    &lt;PROJ_GDAL&gt;D:\behr_mi\lib\release-1800-gdal-2-1-3-mapserver-7-0-4&lt;/PROJ_GDAL&gt;
-    &lt;FOX16&gt;D:\behr_mi\lib\fox-1.6.54&lt;/FOX16&gt;
+    &lt;XERCES&gt;D:\lib\xerces-c-3.2.0-win32&lt;/XERCES&gt;
+    &lt;PROJ_GDAL&gt;D:\lib\release-1800-gdal-2-1-3-mapserver-7-0-4&lt;/PROJ_GDAL&gt;
+    &lt;FOX16&gt;D:\lib\fox-1.6.54&lt;/FOX16&gt;
     &lt;OSG&gt;$(OSG)&lt;/OSG&gt;
     &lt;FFMPEG&gt;$(FFMPEG)&lt;/FFMPEG&gt;
     &lt;PYTHON_LIB&gt;C:\Python27\libs\python27.lib&lt;/PYTHON_LIB&gt;
     &lt;PYTHON_DEBUG_LIB&gt;C:\Python27\libs\python27.lib&lt;/PYTHON_DEBUG_LIB&gt;
     &lt;PYTHON_INCLUDE_DIR&gt;C:\Python27\include&lt;/PYTHON_INCLUDE_DIR&gt;
-    &lt;XERCES_64&gt;D:\behr_mi\lib\xerces-c-3.1.4.2052_64&lt;/XERCES_64&gt;
-    &lt;PROJ_GDAL_64&gt;D:\behr_mi\lib\release-1800-x64-gdal-2-1-3-mapserver-7-0-4&lt;/PROJ_GDAL_64&gt;
-    &lt;FOX16_64&gt;D:\behr_mi\lib\fox-1.6.54_64&lt;/FOX16_64&gt;
+    &lt;XERCES_64&gt;D:\lib\xerces-c-3.2.0-win64&lt;/XERCES_64&gt;
+    &lt;PROJ_GDAL_64&gt;D:\lib\release-1800-x64-gdal-2-1-3-mapserver-7-0-4&lt;/PROJ_GDAL_64&gt;
+    &lt;FOX16_64&gt;D:\lib\fox-1.6.54_64&lt;/FOX16_64&gt;
     &lt;OSG_64&gt;$(OSG_64)&lt;/OSG_64&gt;
     &lt;FFMPEG_64&gt;$(FFMPEG_64)&lt;/FFMPEG_64&gt;
     &lt;PYTHON_64_LIB&gt;&lt;/PYTHON_64_LIB&gt;
@@ -364,6 +369,19 @@ If you do not need precise geodata conversion, you can skip everything concernin
 tools\build\typemap.py
 tools\build\typemap.py poly
 </pre>
+<h3><span class="mw-headline" id="Execution_cannot_proceed_because_MSVCR120.dll.2FMSVCR140.dll_was_not_found">Execution cannot proceed because MSVCR120.dll/MSVCR140.dll was not found</span></h3>
+<p>Install Microsoft <a rel="nofollow" class="external text" href="https://www.microsoft.com/en-US/download/details.aspx?id=30679">Visual C++ Redistributable Packages for Visual Studio 2012</a> (for MSVCR120.dll) or <a rel="nofollow" class="external text" href="https://www.visualstudio.com/downloads/">Microsoft Visual C++ Redistributable Packages for Visual Studio 2015</a> (for MSVCR140.dll). You can check if all dependences are correct using <a rel="nofollow" class="external text" href="https://lucasg.github.io/Dependencies/">Dependencies</a>
+</p>
+<ul class="gallery mw-gallery-traditional" style="max-width: 2215px;_width: 2215px;">
+		<li class="gallerybox" style="width: 435px"><div style="width: 435px">
+			<div class="thumb" style="width: 430px;"><div style="margin:15px auto;"><a href="../images/Dependencies.png" class="image"><img alt="Dependencies.png" src="../images/Dependencies.png" width="338" height="280" srcset="/w/images/thumb/a/a2/Dependencies.png/507px-Dependencies.png 1.5x, /w/images/thumb/a/a2/Dependencies.png/676px-Dependencies.png 2x" /></a></div></div>
+			<div class="gallerytext">
+			</div>
+		</div></li>
+</ul>
+<h3><span class="mw-headline" id="In_debug_mode.2C_execution_cannot_proceed_because_MSVCR120D.dll.2FMSVCR140D.dll_was_not_found">In debug mode, execution cannot proceed because MSVCR120D.dll/MSVCR140D.dll was not found</span></h3>
+<p>Your version of Visual Studio doesn't support Debugging, only can be compiled in release mode.
+</p>
 <h2><span class="mw-headline" id="Available_configurations">Available configurations</span></h2>
 <p>The release build is used for the distribution of sumo. The Fastbuild is suitable for frequent recompilation and the Debug build allows all debugging features. Keep in mind that <a href="../Developer/Tests.html" title="Developer/Tests">Texttest</a> usually picks up the release build.
 </p>
@@ -383,10 +401,10 @@ tools\build\typemap.py poly
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.072 seconds
-Real time usage: 0.074 seconds
-Preprocessor visited node count: 54/1000000
-Preprocessor generated node count: 106/1000000
+CPU time usage: 0.040 seconds
+Real time usage: 0.040 seconds
+Preprocessor visited node count: 71/1000000
+Preprocessor generated node count: 134/1000000
 Post‐expand include size: 256/2097152 bytes
 Template argument size: 120/2097152 bytes
 Highest expansion depth: 2/40
@@ -395,13 +413,13 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    3.305      1 - -total
-100.00%    3.305      1 - Template:Note
+100.00%    1.173      1 - -total
+100.00%    1.173      1 - Template:Note
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:37-0!*!0!!en!*!* and timestamp 20171218143654 and revision id 10360
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:37-0!*!0!!en!*!* and timestamp 20180515221733 and revision id 10745
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 14 November 2017, at 11:22.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 17 April 2018, at 09:11.</div> </div>
 
     <div id="footer">
       <div>

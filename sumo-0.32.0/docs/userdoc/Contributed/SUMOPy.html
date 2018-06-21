@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,10 +270,10 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Contributed/SUMOPy</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.685671 from <a href="http://sumo.dlr.de/wiki/Contributed/SUMOPy">the wiki page for Contributed/SUMOPy</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.030228 from <a href="http://sumo.dlr.de/wiki/Contributed/SUMOPy">the wiki page for Contributed/SUMOPy</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
-				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>This document describes the capabilities and basic usage of the software SUMOPy. SUMOPy is intended to expand the user-base of the traffic micro-simulator SUMO by providing a user-friendly, yet flexible simulation suite. There is an extended and better printable version of this page including demand modeling and pictures at <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/blob/master/tools/contributed/sumopy/sumopy_userman_v01_contrib.pdf"><i><b>&lt;SUMO_HOME&gt;</b></i>/tools/contributed/sumopy/sumopy_userman_v01_contrib.pdf</a>. Further slightly outdated publications related to SUMOPy can be found at the <a rel="nofollow" class="external text" href="http://campus.unibo.it/200538/1/Research-A-Choudhry-657079-.pdf">University of Bologna</a> and in the <a rel="nofollow" class="external text" href="http://sumo.dlr.de/2013/SUMO2013_15-17May%202013_Berlin-Adlershof.pdf">proceedings of the SUMO2013</a>.
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>This document describes the capabilities and basic usage of the software SUMOPy. SUMOPy is intended to expand the user-base of the traffic micro-simulator SUMO by providing a user-friendly, yet flexible simulation suite. There is an extended and better printable version of this page including demand modeling and pictures at <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/blob/master/tools/contributed/sumopy/sumopy_userman_v01_contrib.pdf"><i><b>&lt;SUMO_HOME&gt;</b></i>/tools/contributed/sumopy/sumopy_userman_v01_contrib.pdf</a>. Further slightly outdated publications related to SUMOPy can be found at the <a rel="nofollow" class="external text" href="http://campus.unibo.it/200538/1/Research-A-Choudhry-657079-.pdf">University of Bologna</a> and in the <a rel="nofollow" class="external text" href="http://sumo.dlr.de/2013/SUMO2013_15-17May%202013_Berlin-Adlershof.pdf">proceedings of the SUMO2013</a>.
 </p><p>A further scope of SUMOPy is to manage the huge amount of data necessary to run complex multi-modal simulations. This includes different demand generation models as well as a large range of modes, such as road transport, public transport, and bicycles. In the future also modes like self-driving cars and Personal Rapid Transit (PRT) will be supported.
 </p><p>SUMOPy consists of a GUI interface, network editor as well as a simple to use scripting language which facilitates the use of SUMO.
 </p>
@@ -637,11 +638,11 @@ First import flows and turnflows from a CSV file by selecting the menu item
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.208 seconds
-Real time usage: 0.221 seconds
+CPU time usage: 0.096 seconds
+Real time usage: 0.103 seconds
 Preprocessor visited node count: 275/1000000
 Preprocessor generated node count: 656/1000000
-Post‐expand include size: 199/2097152 bytes
+Post‐expand include size: 200/2097152 bytes
 Template argument size: 110/2097152 bytes
 Highest expansion depth: 3/40
 Expensive parser function count: 0/100
@@ -649,14 +650,14 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    8.069      1 - -total
-100.00%    8.069      1 - Template:Source
- 42.86%    3.458      1 - Template:SUMO
+100.00%    2.892      1 - -total
+100.00%    2.892      1 - Template:Source
+ 34.23%    0.990      1 - Template:SUMO
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:752-0!*!0!!en!5!* and timestamp 20171218205136 and revision id 8380
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:752-0!*!0!!en!5!* and timestamp 20180515221719 and revision id 8380
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 24 November 2016, at 16:58.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 24 November 2016, at 17:58.</div> </div>
 
     <div id="footer">
       <div>

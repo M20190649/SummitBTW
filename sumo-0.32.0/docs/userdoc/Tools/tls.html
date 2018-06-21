@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Tools/tls</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.076851 from <a href="http://sumo.dlr.de/wiki/Tools/tls">the wiki page for Tools/tls</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.437634 from <a href="http://sumo.dlr.de/wiki/Tools/tls">the wiki page for Tools/tls</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -446,11 +447,11 @@ time;31;16;6;16;31;16;6;16
 <p>Converts a csv-tls-description into one SUMO can read as additional file.
 This tool differs from <b>tls_csv2SUMO.py</b> by being based on signal groups in a way that is closer to the typical representation used by traffic engineers. It accepts green times per signal group and creates the <a href="../SUMO.html" title="SUMO">SUMO</a> tls representation out of it using the . Example call to convert two csv-tls-descriptions into the additional file <i>tls.add.xml</i>:
 </p>
-<pre>&lt;SUMO_HOME&gt;/tools/tls_csvSignalgroups.py -n net.net.xml -i tl1.csv,tl2.csv -o tls.add.xml
+<pre>&lt;SUMO_HOME&gt;/tools/tls/tls_csvSignalgroups.py -n net.net.xml -i tl1.csv,tl2.csv -o tls.add.xml
 </pre>
 <p>In the opposite direction, templates for csv-tls-descriptions of all tls in a <a href="../SUMO.html" title="SUMO">SUMO</a> network can be written to a given directory and completed by hand:
 </p>
-<pre>&lt;SUMO_HOME&gt;/tools/tls_csvSignalgroups.py -n net.net.xml -m .
+<pre>&lt;SUMO_HOME&gt;/tools/tls/tls_csvSignalgroups.py -n net.net.xml -m .
 </pre>
 <p>The input csv file contains input blocks divided by titles in brackets. The block &#91;general&#93; sets general information relating to the 
 signal program like the tls ID, the program ID, the cycle time &#91;s&#93; and the offset time &#91;s&#93;. Additional 0..n optional parameters can also be supplied. The &#91;links] block lists the relations between signal groups and junction connections in <a href="../SUMO.html" title="SUMO">SUMO</a>. The relation is build from the edges/lanes controlled by the respective signal group. The target edge/lane can be omitted. The last block &#91;signal groups&#93; contains the table of green times and signal group properties. The table uses a header row with the following keywords and their meanings:
@@ -493,45 +494,43 @@ signal program like the tls ID, the program ID, the cycle time &#91;s&#93; and t
 <p>The keywords may have a different order than shown above. The definition of a second green time per cycle (keywords <i>on2</i> and <i>off2</i>) is optional, so are the keywords.
 </p>
 <h2><span class="mw-headline" id="Example_with_a_single_green_phase_per_signal_group">Example with a single green phase per signal group</span></h2>
-<pre>[general];;;;;;
-cycle time;60;;;;;
-key;1;;;;;
-subkey;SZP_LeftTurn;;;;;
-offset;0;;;;;
-parameter;key1;value1;;;;
-parameter;key2;value2;;;;
-[links];;;;;;
-FZ11;-474_0;;;;;
-FZ12;-474_1;;;;;
-FZ21;-472_0;;;;;
-FZ31;-468_0;;;;;
-FZ32;-468_1;;;;;
-FZ41;-470_0;;;;;
-[signal groups];;;;;;
-id;on1;off1;transOn;transOff;;
-FZ11;0;25;1;3;;
-FZ12;0;35;1;3;;
-FZ21;40;55;1;3;;
-FZ31;0;25;1;3;;
-FZ32;0;35;1;3;;
-FZ41;40;55;1;3;;
+<pre>[general]
+cycle time;60
+key;1
+subkey;SZP_LeftTurn
+offset;0
+parameter;key1;value1
+parameter;key2;value2
+[links]
+FZ11;-474_0;
+FZ12;-474_1;
+FZ21;-472_0;
+FZ31;-468_0;
+FZ32;-468_1;
+FZ41;-470_0;
+[signal groups]
+id;on1;off1;transOn;transOff
+FZ11;0;25;1;3
+FZ12;0;35;1;3
+FZ21;40;55;1;3
+FZ31;0;25;1;3
+FZ32;0;35;1;3
+FZ41;40;55;1;3
 </pre>
 <h2><span class="mw-headline" id="Example_with_two_green_phases_for_some_groups">Example with two green phases for some groups</span></h2>
-<pre>[general];;;;;;
-cycle time;60;;;;;
-key;1;;;;;
-subkey;SZP_2Green;;;;;
-offset;0;;;;;
-parameter;key1;value1;;;;
-parameter;key2;value2;;;;
-[links];;;;;;
-FZ11;-474_0;;;;;
-FZ12;-474_1;;;;;
-FZ21;-472_0;;;;;
-FZ31;-468_0;;;;;
-FZ32;-468_1;;;;;
-FZ41;-470_0;;;;;
-[signal groups];;;;;;
+<pre>[general]
+cycle time;60
+key;1
+subkey;SZP_2Green
+offset;0
+[links]
+FZ11;-474_0;
+FZ12;-474_1;
+FZ21;-472_0;
+FZ31;-468_0;
+FZ32;-468_1;
+FZ41;-470_0;
+[signal groups]
 id;on1;off1;transOn;transOff;on2;off2
 FZ11;0;15;1;3;;
 FZ12;0;15;1;3;40;55
@@ -542,8 +541,8 @@ FZ41;25;35;1;3;;
 </pre>
 <!-- 
 NewPP limit report
-CPU time usage: 0.100 seconds
-Real time usage: 0.114 seconds
+CPU time usage: 0.052 seconds
+Real time usage: 0.059 seconds
 Preprocessor visited node count: 97/1000000
 Preprocessor generated node count: 198/1000000
 Post‐expand include size: 317/2097152 bytes
@@ -554,13 +553,13 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    2.941      1 - -total
-100.00%    2.941      1 - Template:Note
+100.00%    1.213      1 - -total
+100.00%    1.213      1 - Template:Note
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:564-0!*!0!!en!5!* and timestamp 20171218131710 and revision id 10382
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:564-0!*!0!!en!5!* and timestamp 20180515221809 and revision id 10616
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 20 November 2017, at 20:57.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 16 February 2018, at 11:12.</div> </div>
 
     <div id="footer">
       <div>
