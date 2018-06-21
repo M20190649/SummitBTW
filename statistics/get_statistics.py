@@ -23,9 +23,11 @@ class Tripinfo(object):
         self.arrivalSpeed = float(parsed_info['arrivalSpeed'])
         self.duration = float(parsed_info['duration'])
         self.routeLength = float(parsed_info['routeLength'])
-        self.waitSteps = int(parsed_info['waitSteps'])
+        self.waitingTime = float(parsed_info['waitingTime'])
+        self.waitingCount = int(parsed_info['waitingCount'])
+        self.stopTime = float(parsed_info['stopTime'])
         self.timeLoss = float(parsed_info['timeLoss'])
-        self.rerouteNo = int(parsed_info['rerouteNo'])
+        self.rerouteNo = float(parsed_info['rerouteNo'])
         self.devices = parsed_info['devices'].split(';')
         self.vType = parsed_info['vType']
         self.speedFactor = float(parsed_info['speedFactor'])
@@ -58,14 +60,14 @@ def get_stats():
               lambda infos: max([info.timeLoss for info in infos])))
     l.append(('Minimum Time-Loss',
               lambda infos: min([info.timeLoss for info in infos])))
-    l.append(('Total waitSteps',
-              lambda infos: funcs.reduce(ops.add, [info.waitSteps for info in infos])))
-    l.append(('Average waitSteps',
-              lambda infos: funcs.reduce(ops.add, [info.waitSteps for info in infos]) / len(infos)))
-    l.append(('Max waitSteps',
-              lambda infos: max([info.waitSteps for info in infos])))
-    l.append(('Minimum waitSteps',
-              lambda infos: min([info.waitSteps for info in infos])))
+    l.append(('Total waitingTime',
+              lambda infos: funcs.reduce(ops.add, [info.waitingTime for info in infos])))
+    l.append(('Average waitingTime',
+              lambda infos: funcs.reduce(ops.add, [info.waitingTime for info in infos]) / len(infos)))
+    l.append(('Max waitingTime',
+              lambda infos: max([info.waitingTime for info in infos])))
+    l.append(('Minimum waitingTime',
+              lambda infos: min([info.waitingTime for info in infos])))
     l.append(('Total Duration',
               lambda infos: funcs.reduce(ops.add, [info.duration for info in infos])))
     l.append(('Average Duration',

@@ -165,4 +165,4 @@ def run_the_script(tripinfo):
 
 
 if __name__ == "__main__":
-    run_the_script(True)
+    run_the_script(tripinfo=True)

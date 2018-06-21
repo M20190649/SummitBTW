@@ -3,11 +3,14 @@ Generating SUMO network which represents a city, with multiple junctions.
 Automatically adding traffic lights to junctions as well as their logic.
 """
 import sys
+from random import randint
 
 __author__ = "Eylon Shoshan"
 
 import subprocess
 import logging
+from pathlib import Path
+
 
 
 def change_g_to_y(text, i):
@@ -39,7 +42,7 @@ def fix_traffic_lights(sumo_network_path):
     net_file.close()
 
 
-def generate_net(sumo_network_path, net_exists, size=50):
+def generate_net(sumo_network_path, size):
     """
     Generating .net.xml that represents the a city SUMO network for simulation.
     Size is configurable.
@@ -49,14 +52,20 @@ def generate_net(sumo_network_path, net_exists, size=50):
     :return: None
     """
 
-    if not net_exists:
+    if size != 0:
         logging.info('Starting to generate SUMO network')
         cmd = ['netgenerate',
                '-o', sumo_network_path,
                '--default-junction-type', 'traffic_light_right_on_red',
                '--rand',
                '--rand.iterations=' + str(size),
-               '--default.lanenumber', '3',
+               '--default.lanenumber', str(6),
+               '--rand.neighbor-dist1', str(10),
+               '--rand.neighbor-dist2', str(10),
+               '--rand.neighbor-dist3', str(10),
+               '--rand.neighbor-dist4', str(10),
+               '--rand.neighbor-dist5', str(10),
+               '--rand.neighbor-dist6', str(10),
                '--rand.random-lanenumber',
                '--no-turnarounds',
                ]
@@ -66,10 +75,12 @@ def generate_net(sumo_network_path, net_exists, size=50):
     fix_traffic_lights(sumo_network_path)
     logging.info('Finished fixing traffic_lights')
 
-    if not net_exists:
+    if size != 0:
         logging.info('Finished generating SUMO network')
 
 
 if __name__ == "__main__":
-    splited = sys.argv[1].split("/")
-    generate_net(sys.argv[1]+"/"+splited[len(splited)-1]+".net.xml", False)
+    path = Path(sys.argv[1])
+    dir_name = path.parts[len(path.parts) - 1]
+    generate_net(sys.argv[1]+"/"+dir_name+".net.xml", sys.argv[2])
+

@@ -11,6 +11,6 @@ __author__ = "Eylon Shoshan"
 
 
 if __name__ == '__main__':
-    prepare_simulation(True, fringe_factor=10000)
+    prepare_simulation(0, fringe_factor=10000, period=0.75, binomial=10000, end=int(sys.argv[2]) / 1.3)
                        # , fringe_factor=10000)  # uncomment to use, see further documentation in random_trips.py
                        # binomial=10000, period=5)
