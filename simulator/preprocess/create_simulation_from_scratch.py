@@ -30,10 +30,11 @@ def _configuration_file(path, directory_name):
     config_tree.write(config_path)
 
 
-def prepare_simulation(net_exists=False, **kwargs):
+def prepare_simulation(size, **kwargs):
     """
     Preparing a full SUMO simulation with traffic lights, detectors and trips files.
     :param net_exists: if net already exists
+    :param size: size of net if a new one is created
     :param kwargs: keyword arguments to be passed to the random trip generator
     :return: None
     """
@@ -42,7 +43,7 @@ def prepare_simulation(net_exists=False, **kwargs):
     logging.info('Starting to generate full simulation')
 
     sumo_network = sys.argv[1] + "/" + dir_name + ".net.xml"
-    generate_net(sumo_network, net_exists)
+    generate_net(sumo_network, size)
     add_detectors(sumo_network)
     generate_trips(sumo_network, sys.argv[1], **kwargs)
     _configuration_file(sys.argv[1], dir_name)
@@ -51,6 +52,5 @@ def prepare_simulation(net_exists=False, **kwargs):
 
 
 if __name__ == '__main__':
-    prepare_simulation(fringe_factor=10000)
-    # , fringe_factor=10000)  # uncomment to use, see further documentation in random_trips.py
-    # binomial=10000, period=5)
+    prepare_simulation(sys.argv[3], fringe_factor=10000, period=0.75, binomial=10000, end=int(sys.argv[2])/1.3) #equals to Poisson distribution
+

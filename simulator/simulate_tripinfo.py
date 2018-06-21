@@ -150,7 +150,7 @@ def run_the_script(tripinfo):
 
     if tripinfo:
         # run with statistics output
-        traci.start([sumo_binary, '-c', sumo_config, '--tripinfo-output',
+        traci.start([sumo_binary, '-c', sumo_config, '--tripinfo-output_',
                      output_dir + '/tripinfo-output_' + dir_name + "_" + sys.argv[2] + ".xml"])
     else:
         # run with full output for Unity
@@ -165,4 +165,4 @@ def run_the_script(tripinfo):
 
 
 if __name__ == "__main__":
-    run_the_script(True)
+    run_the_script(tripinfo=True)

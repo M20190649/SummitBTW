@@ -102,7 +102,7 @@ def add_detectors(sumo_network):
                              help="The name of the file the detectors write "
                                   "their output into. Defaults to e2output.xml.",
                              type="string",
-                             default="e2.output.xml")
+                             default="e2_Static.output.xml")
     option_parser.set_usage("detectors.py -n example.net.xml "
                             "-l 250 -d .1 -f 60")
 
