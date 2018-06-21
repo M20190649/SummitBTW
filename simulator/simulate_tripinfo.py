@@ -159,6 +159,8 @@ def run_the_script(tripinfo):
 
     run_simulate(sumo_config[0:sumo_config.find(".sumocfg.xml")] + ".net.xml", schedulers_name_map[sys.argv[2]])
     traci.close()
+    if os.path.exists(output_dir + '/' + dir_name + '_detectors-output_' + sys.argv[2] + ".xml"):
+        os.remove(output_dir + '/' + dir_name + '_detectors-output_' + sys.argv[2] + ".xml")
     os.rename(output_dir+"/e2_Static.output.xml", output_dir + '/'+dir_name+'_detectors-output_' + sys.argv[2] + ".xml")
     sys.stdout.flush()
     print("Simulation ended successfully!")
