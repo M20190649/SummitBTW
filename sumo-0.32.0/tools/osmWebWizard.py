@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # Eclipse SUMO, Simulation of Urban MObility; see https://eclipse.org/sumo
-# Copyright (C) 2014-2017 German Aerospace Center (DLR) and others.
+# Copyright (C) 2014-2018 German Aerospace Center (DLR) and others.
 # This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v2.0
 # which accompanies this distribution, and is available at
 # http://www.eclipse.org/legal/epl-v20.html
+# SPDX-License-Identifier: EPL-2.0
 
 # @file    osmWebWizard.py
 # @author  Jakob Stigloher
@@ -91,9 +92,9 @@ def quoted_str(s):
         return "%.6f" % s
     elif type(s) != str:
         return str(s)
-    elif '"' in s:
+    elif '"' in s or ' ' in s:
         if os.name == "nt":
-            return s.replace('"', '\\"')
+            return '"' + s.replace('"', '\\"') + '"'
         else:
             return "'%s'" % s
     else:
@@ -179,6 +180,8 @@ class Builder(object):
             netconvertOptions += ",--ptline-output,%s" % self.files["ptlines"]
             self.additionalFiles.append(self.files["stops"])
             self.routenames.append(self.files["ptroutes"])
+        if self.data["leftHand"]:
+            netconvertOptions += ",--lefthand"
 
         options += ["--netconvert-typemap", ','.join(typefiles)]
         options += ["--netconvert-options", netconvertOptions]
@@ -200,6 +203,7 @@ class Builder(object):
                 "--ignore-errors",
                 #"--no-vtypes",
                 "--vtype-prefix", "pt_",
+                "--verbose",
                 "--flow-attributes", 'departPos="0"',
                 ]
             ptlines2flows.main(ptlines2flows.get_options(ptOptions))
@@ -235,10 +239,15 @@ class Builder(object):
                     self.routenames.append(self.files["trips"])
 
             # create a batch file for reproducing calls to randomTrips.py
+            if os.name == "posix":
+                SUMO_HOME_VAR = "$SUMO_HOME"
+            else:
+                SUMO_HOME_VAR = "%SUMO_HOME%"
+
             randomTripsPath = os.path.join(
-                SUMO_HOME, "tools", "randomTrips.py")
+                SUMO_HOME_VAR, "tools", "randomTrips.py")
             ptlines2flowsPath = os.path.join(
-                SUMO_HOME, "tools", "ptlines2flows.py")
+                SUMO_HOME_VAR, "tools", "ptlines2flows.py")
             batchFile = "build.bat"
             with open(batchFile, 'w') as f:
                 if os.name == "posix":
@@ -418,6 +427,7 @@ if __name__ == "__main__":
                 u'osm': os.path.abspath('osm_bbox.osm.xml'),
                 u'poly': True,
                 u'publicTransport': True,
+                u'leftHand': False,
                 }
         builder = Builder(data, True)
         builder.build()

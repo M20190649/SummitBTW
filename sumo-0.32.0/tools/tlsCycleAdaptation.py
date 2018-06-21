@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # Eclipse SUMO, Simulation of Urban MObility; see https://eclipse.org/sumo
-# Copyright (C) 2010-2017 German Aerospace Center (DLR) and others.
+# Copyright (C) 2010-2018 German Aerospace Center (DLR) and others.
 # This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v2.0
 # which accompanies this distribution, and is available at
 # http://www.eclipse.org/legal/epl-v20.html
+# SPDX-License-Identifier: EPL-2.0
 
 # @file    tlsCycleAdaptation.py
 # @author  Yun-Pang Floetteroed
@@ -23,7 +24,7 @@
   the respective flows will be equally divided into the corresponding
   phases for calculating the green splits.
 
-- If the critial flow or the sum of the critial flows is larger than 1,
+- If the critical flow or the sum of the critical flows is larger than 1,
  the optimal cycle length will be set to 120 sec.
 """
 from __future__ import absolute_import
@@ -247,7 +248,7 @@ def getLaneGroupFlows(tl, connFlowsMap, phases):
 def optimizeGreenTime(groupFlowsMap, phaseLaneIndexMap, currentLength, options):
     lostTime = len(groupFlowsMap) * options.losttime + options.allred
     satFlows = 3600. / options.satheadway
-    # calculate the critial flow ratios and the respective sum
+    # calculate the critical flow ratios and the respective sum
     critialFlowRateMap = {}
     for i in groupFlowsMap:   # [duration. groupFlow1, groupFlow2...]
         critialFlowRateMap[i] = 0.
@@ -268,7 +269,7 @@ def optimizeGreenTime(groupFlowsMap, phaseLaneIndexMap, currentLength, options):
     elif sumCritialFlows >= 1.:
         optCycle = options.maxcycle
         if options.verbose:
-            print ("Warning: the sum of the critial flows >= 1:%s" % sumCritialFlows)
+            print ("Warning: the sum of the critical flows >= 1:%s" % sumCritialFlows)
     else:
         optCycle = int(round((1.5 * lostTime + 5.) / (1. - sumCritialFlows)))
 
@@ -295,7 +296,7 @@ def optimizeGreenTime(groupFlowsMap, phaseLaneIndexMap, currentLength, options):
             subtotalGreenTimes += groupFlowsMap[i][0]
         totalLength += groupFlowsMap[i][0]
 
-    # adjust the green times if minmal green times are applied for keeping the defined maximal cycle length.
+    # adjust the green times if minimal green times are applied for keeping the defined maximal cycle length.
     if minGreenPhasesList and totalLength > options.maxcycle and options.restrict:
         if options.verbose:
             print ("Re-allocate the green splits!")
@@ -309,7 +310,7 @@ def optimizeGreenTime(groupFlowsMap, phaseLaneIndexMap, currentLength, options):
         for i in groupFlowsMap:
             totalLength += groupFlowsMap[i][0]
             print ("Green time for phase %s: %s" % (i, groupFlowsMap[i][0]))
-        print ("the optimal cycle lenth:%s" % totalLength)
+        print ("the optimal cycle length:%s" % totalLength)
 
     return groupFlowsMap
 

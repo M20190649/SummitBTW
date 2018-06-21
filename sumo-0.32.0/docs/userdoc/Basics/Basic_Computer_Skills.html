@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Basics/Basic Computer Skills</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.670464 from <a href="http://sumo.dlr.de/wiki/Basics/Basic_Computer_Skills">the wiki page for Basics/Basic_Computer_Skills</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.014531 from <a href="http://sumo.dlr.de/wiki/Basics/Basic_Computer_Skills">the wiki page for Basics/Basic_Computer_Skills</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -289,16 +290,17 @@
 <ul>
 <li class="toclevel-4 tocsection-11"><a href="#Temporary_Solution"><span class="tocnumber">4.4.2.1</span> <span class="toctext">Temporary Solution</span></a></li>
 <li class="toclevel-4 tocsection-12"><a href="#Permanent_Solution"><span class="tocnumber">4.4.2.2</span> <span class="toctext">Permanent Solution</span></a></li>
+<li class="toclevel-4 tocsection-13"><a href="#Using_a_pre-packaged_version_of_SUMO"><span class="tocnumber">4.4.2.3</span> <span class="toctext">Using a pre-packaged version of SUMO</span></a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-13"><a href="#Tips_for_using_the_Command-Line"><span class="tocnumber">5</span> <span class="toctext">Tips for using the Command-Line</span></a>
+<li class="toclevel-1 tocsection-14"><a href="#Tips_for_using_the_Command-Line"><span class="tocnumber">5</span> <span class="toctext">Tips for using the Command-Line</span></a>
 <ul>
-<li class="toclevel-2 tocsection-14"><a href="#Copy_and_Paste"><span class="tocnumber">5.1</span> <span class="toctext">Copy and Paste</span></a></li>
-<li class="toclevel-2 tocsection-15"><a href="#Repeating_previous_commands"><span class="tocnumber">5.2</span> <span class="toctext">Repeating previous commands</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="#Copy_and_Paste"><span class="tocnumber">5.1</span> <span class="toctext">Copy and Paste</span></a></li>
+<li class="toclevel-2 tocsection-16"><a href="#Repeating_previous_commands"><span class="tocnumber">5.2</span> <span class="toctext">Repeating previous commands</span></a></li>
 </ul>
 </li>
 </ul>
@@ -409,6 +411,11 @@ must configure your <code>PATH</code> variable and the <code>SUMO_HOME</code> va
 </p>
 <div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />Replace <code>YOUR_NAME</code> with your username;
 Replace <code>/your/path/to/sumo/</code> with your sumo directory.</div>
+<h4><span class="mw-headline" id="Using_a_pre-packaged_version_of_SUMO">Using a pre-packaged version of SUMO</span></h4>
+<p>When using the sumo version that comes with your package manager (i.e. apt) the SUMO_HOME variable must be set to the base path of the tools folder. On Ubuntu this is
+</p>
+<pre>  /usr/share/sumo
+</pre>
 <h1><span class="mw-headline" id="Tips_for_using_the_Command-Line">Tips for using the Command-Line</span></h1>
 <h2><span class="mw-headline" id="Copy_and_Paste">Copy and Paste</span></h2>
 <p>The standard hotkeys for copy and paste do not work in the command-line. You can access an edit menu for copy/paste by right-clicking the command-line window. For increased convenience you can also right-click the title-bar of the command-line window and select properties. Then check the box <b>quick-edit</b> under the options-tab. You can now select text with the left mouse button and copy it using right-click. Another right-click is used to paste the copied text.
@@ -418,10 +425,10 @@ Replace <code>/your/path/to/sumo/</code> with your sumo directory.</div>
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.060 seconds
-Real time usage: 0.059 seconds
-Preprocessor visited node count: 101/1000000
-Preprocessor generated node count: 202/1000000
+CPU time usage: 0.028 seconds
+Real time usage: 0.028 seconds
+Preprocessor visited node count: 105/1000000
+Preprocessor generated node count: 206/1000000
 Post‐expand include size: 1162/2097152 bytes
 Template argument size: 461/2097152 bytes
 Highest expansion depth: 3/40
@@ -430,15 +437,15 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   14.315      1 - -total
- 36.95%    5.290      4 - Template:Note
- 22.07%    3.160      1 - Template:Caution
- 21.04%    3.012      3 - Template:Version
+100.00%    6.712      1 - -total
+ 38.97%    2.616      4 - Template:Note
+ 21.44%    1.439      1 - Template:Caution
+ 21.23%    1.425      3 - Template:Version
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:345-0!*!0!!en!*!* and timestamp 20171218232157 and revision id 9830
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:345-0!*!0!!en!*!* and timestamp 20180516102321 and revision id 10606
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 18 July 2017, at 07:21.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 12 February 2018, at 17:11.</div> </div>
 
     <div id="footer">
       <div>

@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Tools/Misc</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.059236 from <a href="http://sumo.dlr.de/wiki/Tools/Misc">the wiki page for Tools/Misc</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.419435 from <a href="http://sumo.dlr.de/wiki/Tools/Misc">the wiki page for Tools/Misc</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><br />
@@ -279,9 +280,10 @@
 <li class="toclevel-1 tocsection-1"><a href="#createVehTypeDistributions.py"><span class="tocnumber">1</span> <span class="toctext">createVehTypeDistributions.py</span></a>
 <ul>
 <li class="toclevel-2 tocsection-2"><a href="#Retrieving_parameters_from_measurements_of_individual_vehicles"><span class="tocnumber">1.1</span> <span class="toctext">Retrieving parameters from measurements of individual vehicles</span></a></li>
-<li class="toclevel-2 tocsection-3"><a href="#generateTurnDefs.py"><span class="tocnumber">1.2</span> <span class="toctext">generateTurnDefs.py</span></a></li>
 </ul>
 </li>
+<li class="toclevel-1 tocsection-3"><a href="#generateTurnDefs.py"><span class="tocnumber">2</span> <span class="toctext">generateTurnDefs.py</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#generateParkingLots.py"><span class="tocnumber">3</span> <span class="toctext">generateParkingLots.py</span></a></li>
 </ul>
 </div>
 
@@ -319,7 +321,7 @@ a negative lower limit.
 <ul><li> <b>accel</b>: the maximum (or high percentile) acceleration for each vehicle </li>
 <li> <b>deccel</b>: the maximum (or high percentile) deceleration for each vehicle</li>
 <li> <b>speedFactor</b>: the maximum (or high percentile) quotient of speed/speedLimit for each vehicle</li></ul>
-<h2><span class="mw-headline" id="generateTurnDefs.py">generateTurnDefs.py</span></h2>
+<h1><span class="mw-headline" id="generateTurnDefs.py">generateTurnDefs.py</span></h1>
 <p>This script allows generation of the turn definitions based on the number of lanes allowing particular turns. The basic functionality distributes the traffic uniformly, that is:
 </p>
 <ol><li> distribute the incoming traffic uniformly across the lanes forming the road</li>
@@ -333,31 +335,60 @@ a negative lower limit.
 </p><p>The script processes the connections given in the provided <i>*.con.xml</i> file. For usage details, execute the <i>generateTurnDefs.py</i> script with <i>--help</i> option.
 </p>
 <div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />You can generate a connections file with all the connections in the network using <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> - see the <i>--plain-output-prefix</i> option.</div>
+<h1><span class="mw-headline" id="generateParkingLots.py">generateParkingLots.py</span></h1>
+<p>This skript generats parking lots.
+</p><p>Example use
+</p>
+<pre> <i><b>&lt;SUMO_HOME&gt;</b></i>/tools/generateParkingLots.py -b &lt;xmin, ymin, xmax, ymax&gt; -c &lt;connecting edge&gt;
+ [-i &lt;parking-id&gt; -n &lt;number of parking spaces&gt; -l &lt;space-length&gt; -a &lt;space-angle&gt; ...]
+</pre>
+<p>or
+</p>
+<pre> <i><b>&lt;SUMO_HOME&gt;</b></i>/tools/generateParkingLots.py -x &lt;x-pos&gt; -y &lt;y-pos&gt; -c &lt;connecting edge&gt;
+ [-i &lt;parking-id&gt; -n &lt;number of parking spaces&gt; -l &lt;space-length&gt; -a &lt;space-angle&gt; ...]
+</pre>
+<p>The required parameter are the shape (--bounding-box) or the position (--x-axis and --y-axis) of the parking lot and the connecting edge (--connecting-edge). More options can be obtained by calling &lt;SUMO_HOME&gt;/tools/generateParkingLots.py --help.
+</p><p>Additional options:
+</p>
+<ul><li> <span style="color: #111144; font-weight: bold; white-space: pre;">--parking-id</span> defines the name/id of the parking lot</li>
+<li> <span style="color: #111144; font-weight: bold; white-space: pre;">--parking-spaces</span> defines the number of the parking spaces</li>
+<li> <span style="color: #111144; font-weight: bold; white-space: pre;">--start-position</span> defines the begin position of the enterance/exit of the parking lot</li>
+<li> <span style="color: #111144; font-weight: bold; white-space: pre;">--end-position</span> defines the end position of the enterance/exit of the parking lot</li>
+<li> <span style="color: #111144; font-weight: bold; white-space: pre;">--space-length</span> defines the length of each parking space</li>
+<li> <span style="color: #111144; font-weight: bold; white-space: pre;">--space-angle</span> defines the angle of the parking spaces</li>
+<li> <span style="color: #111144; font-weight: bold; white-space: pre;">--x-space-distance</span> defines the lateral distance (x-direction) between the locations of two parking spaces</li>
+<li> <span style="color: #111144; font-weight: bold; white-space: pre;">--y-space-distance</span> defines the longitudinal distance (y-direction) between the locations of two parking spaces</li>
+<li> <span style="color: #111144; font-weight: bold; white-space: pre;">--rotation-degree</span> defines the rotation degree of the parking lot</li>
+<li> <span style="color: #111144; font-weight: bold; white-space: pre;">--adjustrate-x</span> defines the modification rate of x-axis if the rotation exists</li>
+<li> <span style="color: #111144; font-weight: bold; white-space: pre;">--adjustrate-y</span> defines the modification rate of y-axis if the rotation exists</li>
+<li> <span style="color: #111144; font-weight: bold; white-space: pre;">--output-suffix</span> output suffix</li>
+<li> <span style="color: #111144; font-weight: bold; white-space: pre;">--fullname</span> full name of parking area</li>
+<li> <span style="color: #111144; font-weight: bold; white-space: pre;">--verbose</span> tell me what you are doing</li></ul>
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.040 seconds
-Real time usage: 0.041 seconds
-Preprocessor visited node count: 63/1000000
-Preprocessor generated node count: 192/1000000
-Post‐expand include size: 711/2097152 bytes
-Template argument size: 181/2097152 bytes
+CPU time usage: 0.028 seconds
+Real time usage: 0.031 seconds
+Preprocessor visited node count: 143/1000000
+Preprocessor generated node count: 492/1000000
+Post‐expand include size: 1989/2097152 bytes
+Template argument size: 381/2097152 bytes
 Highest expansion depth: 2/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   16.088      1 - -total
- 23.64%    3.803      4 - Template:Option
- 21.62%    3.479      2 - Template:XML
- 18.59%    2.991      1 - Template:Note
- 16.94%    2.726      2 - Template:SUMO
+100.00%   12.507      1 - -total
+ 30.44%    3.808     18 - Template:Option
+ 11.90%    1.488      1 - Template:Note
+ 11.37%    1.422      2 - Template:XML
+  9.55%    1.194      4 - Template:SUMO
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:684-0!*!0!!en!*!* and timestamp 20171218110231 and revision id 10413
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:684-0!*!0!!en!*!* and timestamp 20180516134340 and revision id 10608
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 16 December 2017, at 00:19.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 13 February 2018, at 09:25.</div> </div>
 
     <div id="footer">
       <div>

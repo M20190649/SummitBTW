@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">TraCI/Vehicle Value Retrieval</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.145301 from <a href="http://sumo.dlr.de/wiki/TraCI/Vehicle_Value_Retrieval">the wiki page for TraCI/Vehicle_Value_Retrieval</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.508703 from <a href="http://sumo.dlr.de/wiki/TraCI/Vehicle_Value_Retrieval">the wiki page for TraCI/Vehicle_Value_Retrieval</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -328,7 +329,7 @@
 </td>
 <td> Returns a list of ids of all vehicles currently running within the scenario (the given vehicle ID is ignored)
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getIDList">getIDList</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getIDList">getIDList</a>
 </td></tr>
 <tr>
 <td> count (0x01)
@@ -337,7 +338,7 @@
 </td>
 <td> Returns the number of vehicles currently running within the scenario (the given vehicle ID is ignored)
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getIDCount">getIDCount</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getIDCount">getIDCount</a>
 </td></tr>
 <tr>
 <td> speed (0x40)
@@ -346,7 +347,7 @@
 </td>
 <td> Returns the speed of the named vehicle within the last step [m/s]; error value: -1001
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getSpeed">getSpeed</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getSpeed">getSpeed</a>
 </td></tr>
 <tr>
 <td> position (0x42)
@@ -355,7 +356,7 @@
 </td>
 <td> Returns the position(two doubles) of the named vehicle (center of the front bumper) within the last step [m,m]; error value: [-2^30, -2^30].
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getPosition">getPosition</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getPosition">getPosition</a>
 </td></tr>
 <tr>
 <td> position 3D (0x39)
@@ -364,7 +365,7 @@
 </td>
 <td> Returns the 3D-position(three doubles) of the named vehicle (center of the front bumper) within the last step [m,m,m]; error value: [-2^30, -2^30, -2^30].
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getPosition3D">getPosition3D</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getPosition3D">getPosition3D</a>
 </td></tr>
 <tr>
 <td> angle (0x43)
@@ -373,7 +374,7 @@
 </td>
 <td> Returns the angle of the named vehicle within the last step [°]; error value: -1001
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getAngle">getAngle</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getAngle">getAngle</a>
 </td></tr>
 <tr>
 <td> road id (0x50)
@@ -382,7 +383,7 @@
 </td>
 <td> Returns the id of the edge the named vehicle was at within the last step; error value: ""
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getRoadID">getRoadID</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getRoadID">getRoadID</a>
 </td></tr>
 <tr>
 <td> lane id (0x51)
@@ -391,7 +392,7 @@
 </td>
 <td> Returns the id of the lane the named vehicle was at within the last step; error value: ""
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getLaneID">getLaneID</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getLaneID">getLaneID</a>
 </td></tr>
 <tr>
 <td> lane index (0x52)
@@ -400,7 +401,7 @@
 </td>
 <td> Returns the index of the lane the named vehicle was at within the last step; error value: -1001
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getLaneIndex">getLaneIndex</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getLaneIndex">getLaneIndex</a>
 </td></tr>
 <tr>
 <td> type id (0x4f)
@@ -409,7 +410,7 @@
 </td>
 <td> Returns the id of the type of the named vehicle
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getTypeID">getTypeID</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getTypeID">getTypeID</a>
 </td></tr>
 <tr>
 <td> route id (0x53)
@@ -418,7 +419,7 @@
 </td>
 <td> Returns the id of the route of the named vehicle
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getRouteID">getRouteID</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getRouteID">getRouteID</a>
 </td></tr>
 <tr>
 <td> route index (0x69)
@@ -427,7 +428,7 @@
 </td>
 <td> Returns the index of the current edge within the vehicles route or -1 if the vehicle has not yet departed
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getRouteIndex">getRouteIndex</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getRouteIndex">getRouteIndex</a>
 </td></tr>
 <tr>
 <td> edges (0x54)
@@ -436,7 +437,7 @@
 </td>
 <td> Returns the ids of the edges the vehicle's route is made of
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getRoute">getRoute</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getRoute">getRoute</a>
 </td></tr>
 <tr>
 <td> color (0x45)
@@ -445,7 +446,7 @@
 </td>
 <td> Returns the vehicle's color (RGBA).
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getColor">getColor</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getColor">getColor</a>
 </td></tr>
 <tr>
 <td> lane position (0x56)
@@ -454,7 +455,7 @@
 </td>
 <td> The position of the vehicle along the lane (the distance from the front bumper to the start of the lane in [m]); error value: -1001
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getLanePosition">getLanePosition</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getLanePosition">getLanePosition</a>
 </td></tr>
 <tr>
 <td> distance (0x84)
@@ -463,7 +464,7 @@
 </td>
 <td> The distance, the vehicle has already driven [m]); error value: -1001
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getDistance">getDistance</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getDistance">getDistance</a>
 </td></tr>
 <tr>
 <td> signal states (0x5b)
@@ -472,7 +473,7 @@
 </td>
 <td> An integer encoding the state of a vehicle's signals, see <a href="../TraCI/Vehicle_Signalling.html" title="TraCI/Vehicle Signalling">TraCI/Vehicle Signalling</a> for more information.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getSignals">getSignals</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getSignals">getSignals</a>
 </td></tr>
 <tr>
 <td> CO2 emissions <br />(id 0x60)
@@ -481,7 +482,7 @@
 </td>
 <td> Vehicle's CO2 emissions in mg during this time step; error value: -1001
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getCO2Emission">getCO2Emission</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getCO2Emission">getCO2Emission</a>
 </td></tr>
 <tr>
 <td> CO emissions <br />(id 0x61)
@@ -490,7 +491,7 @@
 </td>
 <td> Vehicle's CO emissions in mg during this time step; error value: -1001
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getCOEmission">getCOEmission</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getCOEmission">getCOEmission</a>
 </td></tr>
 <tr>
 <td> HC emissions <br />(id 0x62)
@@ -499,7 +500,7 @@
 </td>
 <td> Vehicle's HC emissions in mg during this time step; error value: -1001
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getHCEmission">getHCEmission</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getHCEmission">getHCEmission</a>
 </td></tr>
 <tr>
 <td> PMx emissions <br />(id 0x63)
@@ -508,7 +509,7 @@
 </td>
 <td> Vehicle's PMx emissions in mg during this time step; error value: -1001
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getPMxEmission">getPMxEmission</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getPMxEmission">getPMxEmission</a>
 </td></tr>
 <tr>
 <td> NOx emissions <br />(id 0x64)
@@ -517,7 +518,7 @@
 </td>
 <td> Vehicle's NOx emissions in mg during this time step; error value: -1001
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getNOxEmission">getNOxEmission</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getNOxEmission">getNOxEmission</a>
 </td></tr>
 <tr>
 <td> fuel consumption <br />(id 0x65)
@@ -526,7 +527,7 @@
 </td>
 <td> Vehicle's fuel consumption in ml during this time step; error value: -1001
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getFuelConsumption">getFuelConsumption</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getFuelConsumption">getFuelConsumption</a>
 </td></tr>
 <tr>
 <td> noise emission <br />(id 0x66)
@@ -535,7 +536,7 @@
 </td>
 <td> Noise generated by the vehicle in dBA; error value: -1001
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getNoiseEmission">getNoiseEmission</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getNoiseEmission">getNoiseEmission</a>
 </td></tr>
 <tr>
 <td> electricity consumption (id 0x71)
@@ -544,7 +545,7 @@
 </td>
 <td> Vehicle's electricity consumption in kWh during this time step; error value: -1001
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getElectricityConsumption">getElectricityConsumption</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getElectricityConsumption">getElectricityConsumption</a>
 </td></tr>
 <tr>
 <td> best lanes (id 0xb2)
@@ -553,7 +554,7 @@
 </td>
 <td> For each lane on the current edge, the sequences of lanes that would be followed from that lane without lane-change as well as information regarding lane-change desirability are returned (see below).
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getBestLanes">getBestLanes</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getBestLanes">getBestLanes</a>
 </td></tr>
 <tr>
 <td> stop state (id 0xb5)
@@ -562,7 +563,7 @@
 </td>
 <td> value = 1 * stopped + 2 * parking + 4 * triggered + 8 * containerTriggered + 16 * atBusStop + 32 * atContainerStop + 64 * atChargingStation + 128 * atParkingArea
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getStopState">getStopState</a> <br /><a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-isAtBusStop">isAtBusStop</a> <br /><a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-isAtContainerStop">isAtContainerStop</a> <br /><a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-isStopped">isStopped</a> <br /><a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-isStoppedParking">isStoppedParking</a> <br /><a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-isStoppedTriggered">isStoppedTriggered</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getStopState">getStopState</a> <br /><a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-isAtBusStop">isAtBusStop</a> <br /><a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-isAtContainerStop">isAtContainerStop</a> <br /><a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-isStopped">isStopped</a> <br /><a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-isStoppedParking">isStoppedParking</a> <br /><a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-isStoppedTriggered">isStoppedTriggered</a>
 </td></tr>
 <tr>
 <td> length (0x44)
@@ -571,7 +572,7 @@
 </td>
 <td> Returns the length of the vehicles [m]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getLength">getLength</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getLength">getLength</a>
 </td></tr>
 <tr>
 <td> vmax (0x41)
@@ -580,7 +581,7 @@
 </td>
 <td> Returns the maximum speed of the vehicle [m/s]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getMaxSpeed">getMaxSpeed</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getMaxSpeed">getMaxSpeed</a>
 </td></tr>
 <tr>
 <td> accel (0x46)
@@ -589,7 +590,7 @@
 </td>
 <td> Returns the maximum acceleration possibility of this vehicle [m/s^2]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getAccel">getAccel</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getAccel">getAccel</a>
 </td></tr>
 <tr>
 <td> decel (0x47)
@@ -598,7 +599,7 @@
 </td>
 <td> Returns the maximum deceleration possibility of this vehicle [m/s^2]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getDecel">getDecel</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getDecel">getDecel</a>
 </td></tr>
 <tr>
 <td> tau (0x48)
@@ -607,7 +608,7 @@
 </td>
 <td> Returns the driver's desired time headway for this vehicle [s]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getTau">getTau</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getTau">getTau</a>
 </td></tr>
 <tr>
 <td> sigma (0x5d)
@@ -616,7 +617,7 @@
 </td>
 <td> Returns the driver's imperfection (dawdling) [0,1]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getImperfection">getImperfection</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getImperfection">getImperfection</a>
 </td></tr>
 <tr>
 <td> speedFactor (0x5e)
@@ -625,7 +626,7 @@
 </td>
 <td> Returns the road speed multiplier for this vehicle [double]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getSpeedFactor">getSpeedFactor</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getSpeedFactor">getSpeedFactor</a>
 </td></tr>
 <tr>
 <td> speedDev (0x5f)
@@ -634,7 +635,7 @@
 </td>
 <td> Returns the deviation of speedFactor for this vehicle [double]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getSpeedDeviation">getSpeedDeviation</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getSpeedDeviation">getSpeedDeviation</a>
 </td></tr>
 <tr>
 <td> vClass (0x49)
@@ -643,7 +644,7 @@
 </td>
 <td> Returns the permission class of this vehicle
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getVehicleClass">getVehicleClass</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getVehicleClass">getVehicleClass</a>
 </td></tr>
 <tr>
 <td> emission_class (0x4a)
@@ -652,7 +653,7 @@
 </td>
 <td> Returns the emission class of this vehicle
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getEmissionClass">getEmissionClass</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getEmissionClass">getEmissionClass</a>
 </td></tr>
 <tr>
 <td> shape (0x4b)
@@ -661,7 +662,7 @@
 </td>
 <td> Returns the shape class of this vehicle
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getShapeClass">getShapeClass</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getShapeClass">getShapeClass</a>
 </td></tr>
 <tr>
 <td> minGap (0x4c)
@@ -670,7 +671,7 @@
 </td>
 <td> Returns the offset (gap to front vehicle if halting) of this vehicle [m]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getMinGap">getMinGap</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getMinGap">getMinGap</a>
 </td></tr>
 <tr>
 <td> width (0x4d)
@@ -679,7 +680,7 @@
 </td>
 <td> Returns the width of this vehicle [m]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getWidth">getWidth</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getWidth">getWidth</a>
 </td></tr>
 <tr>
 <td> height (0xbc)
@@ -688,7 +689,7 @@
 </td>
 <td> Returns the height of this vehicle [m]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getHeight">getHeight</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getHeight">getHeight</a>
 </td></tr>
 <tr>
 <td> waiting time (0x7a)
@@ -697,7 +698,7 @@
 </td>
 <td> Returns the waiting time [s]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getWaitingTime">getWaitingTime</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getWaitingTime">getWaitingTime</a>
 </td></tr>
 <tr>
 <td> accumulated waiting time (0x87)
@@ -706,7 +707,7 @@
 </td>
 <td> Returns the accumulated waiting time [s] within the previous time interval of default length 100 s. (length is configurable per option <span style="color: #111144; font-weight: bold; white-space: pre;">--waiting-time-memory</span> given to the main application)
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getAccumulatedWaitingTime">getAccumulatedWaitingTime</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getAccumulatedWaitingTime">getAccumulatedWaitingTime</a>
 </td></tr>
 <tr>
 <td> next TLS (0x70)
@@ -715,7 +716,7 @@
 </td>
 <td> Returns upcoming traffic lights, along with distance and state
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getNextTLS">getNextTLS</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getNextTLS">getNextTLS</a>
 </td></tr>
 <tr>
 <td> speed mode (0xb3)
@@ -724,7 +725,16 @@
 </td>
 <td> Retrieves how the values set by speed (0x40) and slowdown (0x14) shall be treated. See the <a href="../TraCI/Change_Vehicle_State.html#speed_mode_.280xb3.29" title="TraCI/Change Vehicle State">set speedmode command</a> for details.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getSpeedMode">getSpeedMode</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getSpeedMode">getSpeedMode</a>
+</td></tr>
+<tr>
+<td> lane change mode (0xb6)
+</td>
+<td> int bitset (see <a href="../TraCI/Change_Vehicle_State.html#lane_change_mode_.280xb6.29" title="TraCI/Change Vehicle State">below</a>)
+</td>
+<td> Get information on how lane changing in general and lane changing requests by TraCI are performed.
+</td>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getLaneChangeMode">getLaneChangeMode</a>
 </td></tr>
 <tr>
 <td> slope (0x36)
@@ -733,7 +743,7 @@
 </td>
 <td> Retrieves the slope at the current vehicle position in degrees
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getSlope">getSlope</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getSlope">getSlope</a>
 </td></tr>
 <tr>
 <td> allowed speed (0xb7)
@@ -742,7 +752,7 @@
 </td>
 <td> Returns the maximum allowed speed on the current lane regarding speed factor in m/s for this vehicle.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getAllowedSpeed">getAllowedSpeed</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getAllowedSpeed">getAllowedSpeed</a>
 </td></tr>
 <tr>
 <td> line (0xbd)
@@ -751,7 +761,7 @@
 </td>
 <td> Returns the line information of this vehicle.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getLine">getLine</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getLine">getLine</a>
 </td></tr>
 <tr>
 <td> Person Number(0x67)
@@ -760,7 +770,7 @@
 </td>
 <td> Returns the total number of persons which includes those defined using attribute 'personNumber' as well as &lt;person&gt;-objects which are riding in this vehicle.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getPersonNumber">getPersonNumber</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getPersonNumber">getPersonNumber</a>
 </td></tr>
 <tr>
 <td> via edges(0xbe)
@@ -769,7 +779,7 @@
 </td>
 <td> Returns the ids of via edges for this vehicle.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getVia">getVia</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getVia">getVia</a>
 </td></tr>
 <tr>
 <td> speed without TraCI (0xb1)
@@ -778,7 +788,7 @@
 </td>
 <td> Returns the speed that the vehicle would drive if not speed-influencing command such as setSpeed or slowDown was given.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getSpeedWithoutTraCI">getSpeedWithoutTraCI</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getSpeedWithoutTraCI">getSpeedWithoutTraCI</a>
 </td></tr>
 <tr>
 <td> valid route (0x92)
@@ -787,7 +797,7 @@
 </td>
 <td> Returns whether the current vehicle route is connected for the vehicle class of the given vehicle.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-isRouteValid">isRouteValid</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-isRouteValid">isRouteValid</a>
 </td></tr>
 <tr>
 <td> lateral lane position (0xb8)
@@ -796,7 +806,7 @@
 </td>
 <td> Returns the lateral position of the vehicle on its current lane measured in m.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getLateralLanePosition">getLateralLanePosition</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getLateralLanePosition">getLateralLanePosition</a>
 </td></tr>
 <tr>
 <td> max lateral speed (0xba)
@@ -805,7 +815,7 @@
 </td>
 <td> Returns the maximum lateral speed in m/s of this vehicle.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getMaxSpeedLat">getMaxSpeedLat</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getMaxSpeedLat">getMaxSpeedLat</a>
 </td></tr>
 <tr>
 <td> lateral gap (0xbb)
@@ -814,7 +824,7 @@
 </td>
 <td> Returns the desired lateral gap of this vehicle at 50km/h in m.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getMinGapLat">getMinGapLat</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getMinGapLat">getMinGapLat</a>
 </td></tr>
 <tr>
 <td> lateral alignment (0xb9)
@@ -823,7 +833,7 @@
 </td>
 <td> Returns the preferred lateral alignment of the vehicle.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getLateralAlignment">getLateralAlignment</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getLateralAlignment">getLateralAlignment</a>
 </td></tr>
 <tr>
 <td> parameter (0x7e)
@@ -832,7 +842,7 @@
 </td>
 <td> <a href="#Device_and_LaneChangeModel_Parameter_Retrieval_0x7e">Returns the value for the given string parameter</a>
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getParameter">getParameter</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getParameter">getParameter</a>
 </td></tr>
 <tr>
 <td> action step length (0x7d)
@@ -841,7 +851,7 @@
 </td>
 <td> Returns the current action step length for the vehicle in s.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getActionStepLength">getActionStepLength </a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getActionStepLength">getActionStepLength </a>
 </td></tr>
 <tr>
 <td> last action time (0x7f)
@@ -850,7 +860,7 @@
 </td>
 <td> Returns the time of the last action step in s.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getLastActionTime">getLastActionTime</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getLastActionTime">getLastActionTime</a>
 </td></tr>
 </table>
 <h2><span class="mw-headline" id="Response_0xb4:_Vehicle_Variable">Response 0xb4: Vehicle Variable</span></h2>
@@ -972,7 +982,7 @@
 </td>
 <td> Returns the edge travel time for the given time as stored in the vehicle's internal container. If such a value does not exist, -1 is returned.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getAdaptedTraveltime">getAdaptedTraveltime</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getAdaptedTraveltime">getAdaptedTraveltime</a>
 </td></tr>
 <tr>
 <td> edge effort information (0x59)
@@ -983,7 +993,7 @@
 </td>
 <td> Returns the edge effort for the given time as stored in the vehicle's internal container. If such a value does not exist, -1 is returned.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getEffort">getEffort</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getEffort">getEffort</a>
 </td></tr>
 <tr>
 <td> leader (0x68)
@@ -994,7 +1004,7 @@
 </td>
 <td> Returns the id of the leading vehicle and its distance, if the string is empty, no leader was found. Only vehicles ahead on the currently list of <i>best lanes</i> are considered (see above). This means, the leader is only valid until the next lane-change maneuver. The returned distance is measured from the ego vehicle front bumper + minGap to the back bumper of the leader vehicle.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getLeader">getLeader</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getLeader">getLeader</a>
 </td></tr>
 <tr>
 <td> distance request (0x83)
@@ -1005,8 +1015,8 @@
 </td>
 <td> Returns the distance between the current vehicle position and the specified position (for the given distance type)
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getDrivingDistance">getDrivingDistance</a>
-<p><a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getDrivingDistance2D">getDrivingDistance2D</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getDrivingDistance">getDrivingDistance</a>
+<p><a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getDrivingDistance2D">getDrivingDistance2D</a>
 </p>
 </td></tr>
 <tr>
@@ -1018,9 +1028,9 @@
 </td>
 <td> Return whether the vehicle could change lanes in the specified direction (right: -1, left: 1. sublane-change within current lane: 0). <br /> Return the lane change state for the vehicle.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-getLaneChangeState">getLaneChangeState</a>
-<p><a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-couldChangeLane">couldChangeLane</a>
-<a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._vehicle.html#VehicleDomain-wantsAndCouldChangeLane">wantsAndCouldChangeLane</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-getLaneChangeState">getLaneChangeState</a>
+<p><a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-couldChangeLane">couldChangeLane</a>
+<a rel="nofollow" class="external text" href="../../pydoc/traci._vehicle.html#VehicleDomain-wantsAndCouldChangeLane">wantsAndCouldChangeLane</a>
 </p>
 </td></tr>
 </table>
@@ -1192,6 +1202,7 @@ The request message contents are as following:
 <li> device.battery.actualBatteryCapacity</li>
 <li> device.battery.maximumBatteryCapacity</li>
 <li> device.battery.chargingStationId</li>
+<li> device.battery.vehicleMass</li>
 <li> device.person.IDList</li>
 <li> device.container.IDList</li>
 <li> device.rerouting.period (returns individual rerouting period in seconds)</li>
@@ -1203,8 +1214,8 @@ The request message contents are as following:
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.112 seconds
-Real time usage: 0.120 seconds
+CPU time usage: 0.052 seconds
+Real time usage: 0.054 seconds
 Preprocessor visited node count: 57/1000000
 Preprocessor generated node count: 100/1000000
 Post‐expand include size: 587/2097152 bytes
@@ -1215,14 +1226,14 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    6.862      1 - -total
- 43.21%    2.965      1 - Template:Caution
- 41.85%    2.872      1 - Template:Option
+100.00%    2.793      1 - -total
+ 42.32%    1.182      1 - Template:Option
+ 42.11%    1.176      1 - Template:Caution
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:265-0!*!0!!en!*!* and timestamp 20171218160433 and revision id 10407
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:265-0!*!0!!en!*!* and timestamp 20180515221817 and revision id 10591
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 15 December 2017, at 15:15.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 9 February 2018, at 11:38.</div> </div>
 
     <div id="footer">
       <div>

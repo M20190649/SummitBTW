@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Tutorials/SUMOlympics</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.181698 from <a href="http://sumo.dlr.de/wiki/Tutorials/SUMOlympics">the wiki page for Tutorials/SUMOlympics</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.544239 from <a href="http://sumo.dlr.de/wiki/Tutorials/SUMOlympics">the wiki page for Tutorials/SUMOlympics</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>This tutorial sets up a competition (a collective 100 meter sprint) for different traffic modes. You will learn how to create special lanes and (very simple) traffic lights in netedit, use different vehicle classes to define vehicle types and you will create flows for the different types. All files can also be found in the <i><b>&lt;SUMO_HOME&gt;</b></i>/docs/tutorial/sumolympics directory.
@@ -315,7 +316,7 @@ To create a tram, we add a new lane by clicking on "Duplicate lane" in the same 
 </pre>
 <p>Note that this assumes that the average vehicle occupation is 1.5.<sup id="cite_ref-1" class="reference"><a href="#cite_note-1">[1]</a></sup> For details on the meaning of the attributes of the flows see the section <a href="../Demand/Shortest_or_Optimal_Path_Routing.html#Flow_Definitions" title="Demand/Shortest or Optimal Path Routing">Flow Definitions</a>.
 </p><p><b>Note</b>: 
-1) The attribute <tt>departPos="last"</tt> works with SUMO version 0.29. For earlier versions a workaround is needed to let the vehicles start from the end of the lane (see <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2571">Issue #2571</a>). It can be achieved by inserting a route definition <tt>&lt;route id="r1" edges="beg end" /&gt;</tt> and seperate vehicle definitions of the desired type at the end of the lane by adding single vehicle elements as, e.g. <tt>&lt;vehicle id="pkw_starter" type = "pkw" depart="0" departPos="-0.01" route="r1"/&gt;</tt>, just before the flow definitions and substracting one from the numbers given in the flows.
+1) The attribute <tt>departPos="last"</tt> works with SUMO version 0.29. For earlier versions a workaround is needed to let the vehicles start from the end of the lane (see <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2571">Issue #2571</a>). It can be achieved by inserting a route definition <tt>&lt;route id="r1" edges="beg end" /&gt;</tt> and seperate vehicle definitions of the desired type at the end of the lane by adding single vehicle elements as, e.g. <tt>&lt;vehicle id="pkw_starter" type = "pkw" depart="0" departPos="-0.01" route="r1"/&gt;</tt>, just before the flow definitions and substracting one from the numbers given in the flows.
 2) For versions &lt; 0.29 you will have to create a connection of the pedestrian lanes manually to allow them to be subjected to the tls-control. This is done in the connection mode in NETEDIT (press <tt>c</tt> to activate it). Just click once on the sidewalk of the edge "beg" and then on the sidewalk of edge "end", et voila.
 </p><p>To start the simulation, create a SUMO configuration file (name it <tt>sumolympics.sumocfg</tt>):
 </p>
@@ -337,25 +338,27 @@ To create a tram, we add a new lane by clicking on "Duplicate lane" in the same 
 </p>
 <div class="thumb tright"><div class="thumbinner" style="width:212px;"><a href="../images/Sumolympics_TLSediting.png" class="image"><img alt="" src="../images/Sumolympics_TLSediting.png" width="210" height="251" class="thumbimage" srcset="/w/images/thumb/7/7b/Sumolympics_TLSediting.png/315px-Sumolympics_TLSediting.png 1.5x, /w/images/thumb/7/7b/Sumolympics_TLSediting.png/420px-Sumolympics_TLSediting.png 2x" /></a>  <div class="thumbcaption"><div class="magnify"><a href="../images/Sumolympics_TLSediting.png" class="internal" title="Enlarge"></a></div>Editing traffic lights</div></div></div>First we create a traffic light on the junction between the edges "beg" and "end" with NETEDIT: Press <tt>t</tt> to enter the traffic light editing mode. Click on the junction, then on "Create TLS" in the left panel. Below, under the label phases, type "rrrrr" for the first phase ("r" for red) and set its duration to 100 (secs.). This will give enough time for the bicyclists to group more densely. For the second phase enter "GGGGG" (yes, "G" for green) and set its duration to 1000 (i.e. until the end of the simulation run). Now run the simulation again to see the bikes outrun the cars. See? We should all use our bikes more often!
 <p>If you have noticed a warning (like "Warning: Missing yellow phase in tlLogic 'gneJ2', program '0' for tl-index 0 when switching to phase 0") in the Message Window, don't worry. SUMO routinely checks tls-phases for basic consistency and missing yellow phases may lead to crashes if you have intersecting flows. However, this is a special situation and we don't need to care about this, obviously. If you want to learn more about traffic light control, see the TraCI-Tutorials <a href="../Tutorials/TraCIPedCrossing.html" title="Tutorials/TraCIPedCrossing">TraCIPedCrossing</a> and <a href="../Tutorials/TraCI4Traffic_Lights.html" title="Tutorials/TraCI4Traffic Lights">TraCI4Traffic_Lights</a> or the main section on <a href="../Simulation/Traffic_Lights.html" title="Simulation/Traffic Lights">traffic lights</a>.
-</p><p>What do you think, will pedestrians be slower or faster? Let's see. You can already guess that the approach is a little different for pedestrians. This is because they are no vehicle class (not any more), but constitute an own class called "person". For instance, there is no such element as a person flow analogous to vehicle flows, yet (though it is coming, see <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/1515">Issue #1515</a>). So, we are going to write a python script to generate a routefile <tt>sumolympic_walking.rou.xml</tt>. (Note that there is a little script in the <i><b>&lt;SUMO_HOME&gt;</b></i>/tools folder called <tt>pedestrianFlow.py</tt>, which can be useful if you would like to do more sophisticated things.)
+</p><p>What do you think, will pedestrians be slower or faster? Let's see. You can already guess that the approach is a little different for pedestrians. This is because they are no vehicle class (not any more), but constitute an own class called "person". For instance, there is no such element as a person flow analogous to vehicle flows, yet (though it is coming, see <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1515">Issue #1515</a>). So, we are going to write a python script to generate a routefile <tt>sumolympic_walking.rou.xml</tt>. (Note that there is a little script in the <i><b>&lt;SUMO_HOME&gt;</b></i>/tools folder called <tt>pedestrianFlow.py</tt>, which can be useful if you would like to do more sophisticated things.)
 </p><p>Here's the simple script (call the file something like <tt>makeSumolympicWalkers.py</tt>):
 </p>
 <pre>#!/usr/bin/python
-# parameters
+#parameters
 outfile = "sumolympicWalks.rou.xml"
 startEdge = "beg"
-endEdge   = "end"
-departTime = 0.
-departPos = -30.
-numberTrips = 200
-# generate xml file
+endEdge = "end"
+departTime = 0. #time of departure
+departPos = -30. #position of departure
+arrivalPos = 100. #position of arrival
+numberTrips = 100 #number of persons walking
+#generate XML
+xml_string = "&lt;routes&gt;\n"  
+for i in range(numberTrips):
+    xml_string += '    &lt;person depart="%f" id="p%d" departPos="%f" &gt;\n'&#160;% (departTime, i, departPos)
+    xml_string += '        &lt;walk edges="%s&#160;%s" arrivalPos="%f"/&gt;\n'&#160;% (startEdge, endEdge, arrivalPos)
+    xml_string += '    &lt;/person&gt;\n'
+xml_string += "&lt;/routes&gt;\n"
 with open(outfile, "w") as f:
-    f.write("&lt;routes&gt;\n")
-    for i in range(numberTrips):
-        f.write('    &lt;person depart="%f" id="p%d"&gt;\n'&#160;% (departTime, i))
-        f.write('        &lt;walk departPos="%f" edges="%s&#160;%s"/&gt;\n'&#160;% (departPos, startEdge, endEdge))
-        f.write('    &lt;/person&gt;\n')
-    f.write("&lt;/routes&gt;\n")
+    f.write(xml_string)
 </pre>
 <p>Execute the script by double-clicking (or from the command line with <tt>python makeSumolympicWalkers.py</tt>). If you don't have python on your computer install it before doing anything else! (<a rel="nofollow" class="external text" href="https://www.python.org/downloads/%7C">get it from here</a>) We have to include the generated route file <tt>sumolympicWalks.rou.xml</tt> in the config file <tt>sumolympic.sumocfg</tt> to let the simulation know about them. Several route files can be included by merely seperating them by a comma. Therefore modify the <code>&lt;route-files .../&gt;</code>-entry of our config to look like this (be sure to put no spaces between the filenames!):
 </p>
@@ -375,11 +378,11 @@ Back to <a href="../Tutorials.html" title="Tutorials">Tutorials</a>.
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.128 seconds
-Real time usage: 0.138 seconds
+CPU time usage: 0.064 seconds
+Real time usage: 0.067 seconds
 Preprocessor visited node count: 103/1000000
 Preprocessor generated node count: 280/1000000
-Post‐expand include size: 343/2097152 bytes
+Post‐expand include size: 345/2097152 bytes
 Template argument size: 69/2097152 bytes
 Highest expansion depth: 3/40
 Expensive parser function count: 0/100
@@ -387,15 +390,15 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   23.466      1 - -total
- 14.77%    3.467      2 - Template:Ticket
- 11.46%    2.689      1 - Template:Note
- 11.33%    2.659      2 - Template:SUMO
+100.00%   12.624      1 - -total
+ 13.82%    1.744      2 - Template:Ticket
+ 11.96%    1.510      1 - Template:Note
+ 11.80%    1.490      2 - Template:SUMO
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:786-0!*!0!!en!5!* and timestamp 20171218145846 and revision id 8601
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:786-0!*!0!!en!5!* and timestamp 20180516134738 and revision id 10671
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 3 January 2017, at 13:16.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 2 March 2018, at 09:02.</div> </div>
 
     <div id="footer">
       <div>

@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Simulation/Routing</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.000346 from <a href="http://sumo.dlr.de/wiki/Simulation/Routing">the wiki page for Simulation/Routing</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.357858 from <a href="http://sumo.dlr.de/wiki/Simulation/Routing">the wiki page for Simulation/Routing</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -289,6 +290,7 @@
 </ul>
 </li>
 <li class="toclevel-1 tocsection-9"><a href="#Routing_by_effort"><span class="tocnumber">4</span> <span class="toctext">Routing by <i>effort</i></span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="#Routing_Algorithms"><span class="tocnumber">5</span> <span class="toctext">Routing Algorithms</span></a></li>
 </ul>
 </div>
 
@@ -324,29 +326,41 @@
 <h1><span class="mw-headline" id="Routing_by_effort">Routing by <i>effort</i></span></h1>
 <p>When setting the option <span style="color: #111144; font-weight: bold; white-space: pre;">--weight-attribute</span>, additional routing efforts are read according to the specified attribute. These are only used when calling the TraCI function <a href="../TraCI/Change_Vehicle_State.html" title="TraCI/Change Vehicle State">reroute by effort</a>. The assumed efforts along a vehicles route are are time-based values and the time is computed based on the travel time values described above.
 </p>
+<h1><span class="mw-headline" id="Routing_Algorithms">Routing Algorithms</span></h1>
+<p>Applications that perform routing (<a href="../SUMO.html" title="SUMO">SUMO</a>, <a href="../SUMO-GUI.html" title="SUMO-GUI">SUMO-GUI</a>, <a href="../DUAROUTER.html" title="DUAROUTER">DUAROUTER</a>, <a href="../MAROUTER.html" title="MAROUTER">MAROUTER</a>) support the option <span style="color: #111144; font-weight: bold; white-space: pre;">--routing.algorithm</span> for selecting among the following values:
+</p>
+<ul><li> <i>dijkstra</i>: (default) <a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Dijkstras</a> algorithm is the simplest and slowest of routing algorithms. It is well suited to routing in time-dependent networks (i.e. when the travel time on an edge depends on the time of day)</li>
+<li> <i>astar</i>: The <a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/A*_search_algorithm">A*</a> routing algorithm uses a metric for bounding travel time to direct the search and is often faster than dijkstra. Here, the metric <i>euclidean distance / maximumVehicleSpeed) is used. </i>
+<ul><li> by using <i>astar</i> together with the option <span style="color: #111144; font-weight: bold; white-space: pre;">--astar.landmark-distance <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span> the ALT-Algorithm is activated (A*, Landmarks, triangle inequality). It uses a precomputed distance table to selected network edges (so-called landmarks) to speed up the search, often by a significant factor.</li>
+<li> by using <i>astar</i> together with the option <span style="color: #111144; font-weight: bold; white-space: pre;">--astar.all-distances <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span> the A* algorithm is used together with a complete (and often huge) distance table to allow for blazing fast search.</li></ul></li>
+<li> <i>CH</i>: <a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/Contraction_hierarchies">Contraction Hierarchies</a> is preprocessing-based routing algorithm. This is very efficient when a large number of queries is expected. The algorithm does consider time-dependent weights. Instead, new preprocessing can be performed for time-slices of fixed size by setting the option <span style="color: #111144; font-weight: bold; white-space: pre;">--weight-period <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;TIME&gt;</i></a></span>. The preprocessing is done without restrictions on vehicle class which reduces efficiency in multi-modal networks.</li>
+<li> <i>CHWrapper</i>: This works like <i>CH</i> but performs separate preprocessing for every vehicle class that is encountered, thereby increasing routing efficiency.</li></ul>
+
 <!-- 
 NewPP limit report
-CPU time usage: 0.036 seconds
-Real time usage: 0.039 seconds
-Preprocessor visited node count: 60/1000000
-Preprocessor generated node count: 138/1000000
-Post‐expand include size: 553/2097152 bytes
-Template argument size: 241/2097152 bytes
-Highest expansion depth: 2/40
+CPU time usage: 0.032 seconds
+Real time usage: 0.031 seconds
+Preprocessor visited node count: 91/1000000
+Preprocessor generated node count: 250/1000000
+Post‐expand include size: 1256/2097152 bytes
+Template argument size: 486/2097152 bytes
+Highest expansion depth: 3/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    7.951      1 - -total
- 30.03%    2.388      2 - Template:Option
- 28.17%    2.240      1 - Template:XML
- 25.46%    2.024      1 - Template:Note
+100.00%   10.316      1 - -total
+ 55.18%    5.692      6 - Template:Option
+ 16.46%    1.698      1 - Template:XML
+ 14.28%    1.473      1 - Template:Note
+ 14.00%    1.444      2 - Template:DT_FILE
+ 13.77%    1.421      1 - Template:DT_TIME
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:614-0!*!0!!en!*!* and timestamp 20171218232321 and revision id 10397
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:614-0!*!0!!en!*!* and timestamp 20180516114350 and revision id 10668
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 5 December 2017, at 21:09.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 2 March 2018, at 08:40.</div> </div>
 
     <div id="footer">
       <div>

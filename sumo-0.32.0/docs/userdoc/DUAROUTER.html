@@ -114,6 +114,7 @@
   <li><a href="Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">DUAROUTER</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.694181 from <a href="http://sumo.dlr.de/wiki/DUAROUTER">the wiki page for DUAROUTER</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.039027 from <a href="http://sumo.dlr.de/wiki/DUAROUTER">the wiki page for DUAROUTER</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -292,8 +293,7 @@
 </li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-13"><a href="#Routing_Algorithms"><span class="tocnumber">3</span> <span class="toctext">Routing Algorithms</span></a></li>
-<li class="toclevel-1 tocsection-14"><a href="#Further_Documentation"><span class="tocnumber">4</span> <span class="toctext">Further Documentation</span></a></li>
+<li class="toclevel-1 tocsection-13"><a href="#Further_Documentation"><span class="tocnumber">3</span> <span class="toctext">Further Documentation</span></a></li>
 </ul>
 </div>
 
@@ -779,50 +779,39 @@ Additionally a <i>.rou.alt.xml</i> with the same name prefix as the <i>.rou.xml<
 <td style="vertical-align:top"> Initialises the random number generator with the given value; <i>default: <b>23423</b></i>
 </td></tr>
 </table>
-<h1><span class="mw-headline" id="Routing_Algorithms">Routing Algorithms</span></h1>
-<p>All available routing algorithms return the path with the shortest travel time by default. If the option <span style="color: #111144; font-weight: bold; white-space: pre;">--weight-attribute</span> is used, routing will try to optimize an alternative attribute from the given <span style="color: #111144; font-weight: bold; white-space: pre;">--weight-file</span> instead.
-</p>
-<dl><dt> 'dijkstra'&#160;</dt>
-<dd> <a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/Dijkstra's_algorithm">Dijkstra's algorithm</a> (time dependent)</dd>
-<dt> 'astar'&#160;</dt>
-<dd> <a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/A*_search_algorithm">A*</a> (time dependent)</dd>
-<dt> 'CH'&#160;</dt>
-<dd> <a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/Contraction_hierarchies">Contraction hierarchies</a>. This routing algorithm is not strictly time dependent. Instead a new hierarchy is built for each time interval according to the option <span style="color: #111144; font-weight: bold; white-space: pre;">--weight-period</span>. Each vehicle is routed according to the conditions at its departure.</dd>
-<dt> 'CHWrapper'&#160;</dt>
-<dd> Like 'CH' but builds a separate contraction hierarchy for each <span class="inlxml">vClass</span>. This is needed when using vClasses in the simulation.</dd></dl>
 <h1><span class="mw-headline" id="Further_Documentation">Further Documentation</span></h1>
-<ul><li> <a href="Demand/Shortest_or_Optimal_Path_Routing.html" title="Demand/Shortest or Optimal Path Routing">Demand/Shortest_or_Optimal_Path_Routing</a></li>
+<ul><li> <a href="Simulation/Routing.html#Routing_Algorithms" title="Simulation/Routing">Supported Routing Algorithms</a></li>
+<li> <a href="Demand/Shortest_or_Optimal_Path_Routing.html" title="Demand/Shortest or Optimal Path Routing">Demand/Shortest_or_Optimal_Path_Routing</a></li>
 <li> <a href="Demand/Dynamic_User_Assignment.html" title="Demand/Dynamic User Assignment">Demand/Dynamic_User_Assignment</a></li></ul>
 <hr />
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.328 seconds
-Real time usage: 0.338 seconds
-Preprocessor visited node count: 831/1000000
-Preprocessor generated node count: 2760/1000000
-Post‐expand include size: 18165/2097152 bytes
-Template argument size: 6177/2097152 bytes
+CPU time usage: 0.184 seconds
+Real time usage: 0.189 seconds
+Preprocessor visited node count: 799/1000000
+Preprocessor generated node count: 2670/1000000
+Post‐expand include size: 17863/2097152 bytes
+Template argument size: 6125/2097152 bytes
 Highest expansion depth: 3/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%  127.239      1 - -total
- 70.58%   89.808     96 - Template:Option
-  4.79%    6.101     28 - Template:DT_FILE
-  4.26%    5.424     30 - Template:DT_BOOL
-  3.06%    3.896     15 - Template:DT_STR
-  2.50%    3.183      6 - Template:DT_FLOAT
-  2.34%    2.973      7 - Template:DT_TIME
-  2.26%    2.873      6 - Template:DT_INT
-  2.11%    2.681      1 - Template:XML
+100.00%   68.694      1 - -total
+ 71.90%   49.394     93 - Template:Option
+  4.54%    3.118     30 - Template:DT_BOOL
+  4.20%    2.888     28 - Template:DT_FILE
+  3.15%    2.166     15 - Template:DT_STR
+  2.58%    1.770      7 - Template:DT_TIME
+  2.55%    1.753      6 - Template:DT_FLOAT
+  2.43%    1.668      6 - Template:DT_INT
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:81-0!*!0!!en!*!* and timestamp 20171218211327 and revision id 10434
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:81-0!*!0!!en!*!* and timestamp 20180516093903 and revision id 10756
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 18 December 2017, at 22:13.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 2 May 2018, at 09:32.</div> </div>
 
     <div id="footer">
       <div>

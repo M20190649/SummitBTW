@@ -114,6 +114,7 @@
   <li><a href="../../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Simulation/Output/Lane- or Edge-based Traffic Measures</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.960207 from <a href="http://sumo.dlr.de/wiki/Simulation/Output/Lane-_or_Edge-based_Traffic_Measures">the wiki page for Simulation/Output/Lane-_or_Edge-based_Traffic_Measures</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.315547 from <a href="http://sumo.dlr.de/wiki/Simulation/Output/Lane-_or_Edge-based_Traffic_Measures">the wiki page for Simulation/Output/Lane-_or_Edge-based_Traffic_Measures</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>Values within this output describe the situation within the network in terms of traffic science by giving macroscopic values such as the mean vehicle speed, the mean density, etc. This output can be generated either for lanes, or for edges.
@@ -501,7 +502,7 @@
 </td>
 <td> s
 </td>
-<td> Number seconds vehicles were measured on the edge/lane (may be subseconds if a vehicle enters/leaves the edge/lane). Please note that this value is the sum of the measure times of all vehicles.
+<td> The number of vehicles that are present on the edge/lane in each second summed up over the measurement interval (may be subseconds if a vehicle enters/leaves the edge/lane).
 </td></tr>
 <tr>
 <td class="inlxml"> traveltime
@@ -630,8 +631,8 @@ the error is negligible but if you have long and slow vehicles you cannot aggreg
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.076 seconds
-Real time usage: 0.072 seconds
+CPU time usage: 0.032 seconds
+Real time usage: 0.035 seconds
 Preprocessor visited node count: 96/1000000
 Preprocessor generated node count: 220/1000000
 Post‐expand include size: 1179/2097152 bytes
@@ -642,16 +643,16 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   15.938      1 - -total
- 30.52%    4.864      2 - Template:Note
- 16.33%    2.603      1 - Template:AdditionalFile
- 14.88%    2.371      2 - Template:XML
- 13.31%    2.122      1 - Template:Caution
+100.00%    8.849      1 - -total
+ 24.65%    2.181      2 - Template:Note
+ 19.80%    1.752      2 - Template:XML
+ 16.97%    1.502      1 - Template:Caution
+ 16.38%    1.449      1 - Template:AdditionalFile
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:242-0!*!0!!en!*!* and timestamp 20171218232312 and revision id 9891
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:242-0!*!0!!en!*!* and timestamp 20180516103107 and revision id 10685
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 10 August 2017, at 08:59.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 7 March 2018, at 17:06.</div> </div>
 
     <div id="footer">
       <div>

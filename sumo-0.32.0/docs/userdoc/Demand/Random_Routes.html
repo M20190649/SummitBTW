@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Demand/Random Routes</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.717169 from <a href="http://sumo.dlr.de/wiki/Demand/Random_Routes">the wiki page for Demand/Random_Routes</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.062825 from <a href="http://sumo.dlr.de/wiki/Demand/Random_Routes">the wiki page for Demand/Random_Routes</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><a href="../DUAROUTER.html" title="DUAROUTER">DUAROUTER</a> and <a href="../JTRROUTER.html" title="JTRROUTER">JTRROUTER</a> used to generate random routes for a given road network with the option <span style="color: #111144; font-weight: bold; white-space: pre;">--random-per-second <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FLOAT&gt;</i></a></span> (or <span style="color: #111144; font-weight: bold; white-space: pre;">-R <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FLOAT&gt;</i></a></span> for short). Due to a number of bugs in this feature and because those routes are highly unrealistic, this behavior was replaced with a python <a href="../Tools/Trip.html#randomTrips.py" title="Tools/Trip">random trip generation</a> script which can also produce a route set employing the <a href="../DUAROUTER.html" title="DUAROUTER">DUAROUTER</a>.
@@ -281,8 +282,8 @@
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.016 seconds
-Real time usage: 0.018 seconds
+CPU time usage: 0.008 seconds
+Real time usage: 0.012 seconds
 Preprocessor visited node count: 20/1000000
 Preprocessor generated node count: 72/1000000
 Post‐expand include size: 383/2097152 bytes
@@ -293,14 +294,14 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    7.490      1 - -total
- 94.74%    7.096      2 - Template:Option
- 35.75%    2.678      2 - Template:DT_FLOAT
+100.00%    3.080      1 - -total
+ 93.86%    2.891      2 - Template:Option
+ 35.88%    1.105      2 - Template:DT_FLOAT
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:280-0!*!0!*!*!*!* and timestamp 20171218094229 and revision id 3444
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:280-0!*!0!*!*!*!* and timestamp 20180515221723 and revision id 3444
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 27 October 2011, at 08:44.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 27 October 2011, at 09:44.</div> </div>
 
     <div id="footer">
       <div>

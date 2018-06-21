@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Z/Changes from Version 0.27.1 to Version 0.28.0</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.242201 from <a href="http://sumo.dlr.de/wiki/Z/Changes_from_Version_0.27.1_to_Version_0.28.0">the wiki page for Z/Changes_from_Version_0.27.1_to_Version_0.28.0</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.606769 from <a href="http://sumo.dlr.de/wiki/Z/Changes_from_Version_0.27.1_to_Version_0.28.0">the wiki page for Z/Changes_from_Version_0.27.1_to_Version_0.28.0</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -287,87 +288,87 @@
 <h2><span class="mw-headline" id="Version_0.28.0_.2801.11.2016.29">Version 0.28.0 (01.11.2016)</span></h2>
 <h3><span class="mw-headline" id="Bugfixes">Bugfixes</span></h3>
 <ul><li> Simulation
-<ul><li> Fixed bug that was causing insufficient overtaking on a single-lane road when using sublane simulation (most noticeable with small step-lenghts). <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2518">Issue #2518</a> </li>
-<li> Fixed invalid count of insertion-backlog for flows. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2535">Issue #2535</a></li>
-<li> Added check for possibility to stop at scheduled stops during insertion. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2543">Issue #2543</a></li>
+<ul><li> Fixed bug that was causing insufficient overtaking on a single-lane road when using sublane simulation (most noticeable with small step-lenghts). <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2518">Issue #2518</a> </li>
+<li> Fixed invalid count of insertion-backlog for flows. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2535">Issue #2535</a></li>
+<li> Added check for possibility to stop at scheduled stops during insertion. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2543">Issue #2543</a></li>
 <li> Fixed invalid timeLoss values in <a href="../Simulation/Output/TripInfo.html" title="Simulation/Output/TripInfo">tripinfo-output</a> (last step was counted twice for some vehicles).</li>
-<li> Fixed bug that would prevent a vehicle from reaching the end of it's route after rerouting while being teleported. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2554">Issue #2554</a></li>
-<li> Fixed erroneous detector output for a special situation. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2556">Issue #2556</a></li>
-<li> Fixed computation of energy loss for subsecond simulation. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2559">Issue #2559</a></li>
-<li> Fixed crash when using <a href="../Simulation/Rerouter.html#Closing_a_Street" title="Simulation/Rerouter">closing-rerouters</a> that prevent vehicles from departing after being loaded (related to <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2561">Issue #2561</a>).</li>
-<li> Fixed invalid permissions when using multiple <a href="../Simulation/Rerouter.html#Closing_a_Street" title="Simulation/Rerouter">closing-rerouters</a> that modify permissions of the same edge <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2560">Issue #2560</a>.</li>
-<li> Fixed crash when using the <a href="../Simulation/SublaneModel.html" title="Simulation/SublaneModel">sublane model</a> with varying lane widths. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2585">Issue #2585</a></li>
-<li> The option <span style="color: #111144; font-weight: bold; white-space: pre;">--ignore-errors</span> now properly ignores <span class="inlxml">vClass</span>-related errors. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2148">Issue #2148</a></li>
-<li> Vehicles are now properly angled during lane-changing in <a href="../Simulation/SublaneModel.html" title="Simulation/SublaneModel">sublane-simulation</a>. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2525">Issue #2525</a></li></ul></li></ul>
+<li> Fixed bug that would prevent a vehicle from reaching the end of it's route after rerouting while being teleported. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2554">Issue #2554</a></li>
+<li> Fixed erroneous detector output for a special situation. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2556">Issue #2556</a></li>
+<li> Fixed computation of energy loss for subsecond simulation. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2559">Issue #2559</a></li>
+<li> Fixed crash when using <a href="../Simulation/Rerouter.html#Closing_a_Street" title="Simulation/Rerouter">closing-rerouters</a> that prevent vehicles from departing after being loaded (related to <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2561">Issue #2561</a>).</li>
+<li> Fixed invalid permissions when using multiple <a href="../Simulation/Rerouter.html#Closing_a_Street" title="Simulation/Rerouter">closing-rerouters</a> that modify permissions of the same edge <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2560">Issue #2560</a>.</li>
+<li> Fixed crash when using the <a href="../Simulation/SublaneModel.html" title="Simulation/SublaneModel">sublane model</a> with varying lane widths. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2585">Issue #2585</a></li>
+<li> The option <span style="color: #111144; font-weight: bold; white-space: pre;">--ignore-errors</span> now properly ignores <span class="inlxml">vClass</span>-related errors. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2148">Issue #2148</a></li>
+<li> Vehicles are now properly angled during lane-changing in <a href="../Simulation/SublaneModel.html" title="Simulation/SublaneModel">sublane-simulation</a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2525">Issue #2525</a></li></ul></li></ul>
 <ul><li> MESO
-<ul><li> Tripinfo-output now has appropriate <span class="inlxml">timeLoss</span> values. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2570">Issue #2570</a></li></ul></li></ul>
+<ul><li> Tripinfo-output now has appropriate <span class="inlxml">timeLoss</span> values. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2570">Issue #2570</a></li></ul></li></ul>
 <ul><li> NETCONVERT
-<ul><li> Fixed invalid lane permissions when setting lane-specific attributes without specifying lane-specific permissions. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2515">Issue #2515</a></li>
+<ul><li> Fixed invalid lane permissions when setting lane-specific attributes without specifying lane-specific permissions. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2515">Issue #2515</a></li>
 <li> Fixed invalid elevation values at junctions when importing OpenDRIVE networks.</li>
 <li> Fixed crash when importing OpenDRIVE networks.</li>
-<li> Fixed invalid internal-lane geometries when exporting OpenDRIVE networks. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2562">Issue #2562</a></li>
+<li> Fixed invalid internal-lane geometries when exporting OpenDRIVE networks. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2562">Issue #2562</a></li>
 <li> Fixed various specification conformity issues when exporting OpenDRIVE networks.</li>
 <li> Option <span style="color: #111144; font-weight: bold; white-space: pre;">--street-sign-output</span> now only generates signs at <i>real</i> intersections.</li>
-<li> Fixed error when loading a <i>.net.xml</i> file and patching lane numbers with an <i>.edg.xml</i> file. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2459">Issue #2459</a></li></ul></li></ul>
+<li> Fixed error when loading a <i>.net.xml</i> file and patching lane numbers with an <i>.edg.xml</i> file. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2459">Issue #2459</a></li></ul></li></ul>
 <ul><li> SUMO-GUI
 <ul><li> The visulization option <i>show lane borders</i> is now working.</li>
-<li> Fixed crash when user loads an empty E3 detector <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2249">Issue #2249</a></li></ul></li></ul>
+<li> Fixed crash when user loads an empty E3 detector <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2249">Issue #2249</a></li></ul></li></ul>
 <ul><li> NETEDIT
 <ul><li> Geometry nodes are no longer drawn when set to full transparency (alpha = 0).</li>
 <li> Geometry nodes are now colored for selected edges.</li>
-<li> All textures are now loaded instead of a white square or a netedit crash. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2594">Issue #2594</a> <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2476">Issue #2476</a> <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2597">Issue #2597</a></li></ul></li></ul>
+<li> All textures are now loaded instead of a white square or a netedit crash. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2594">Issue #2594</a> <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2476">Issue #2476</a> <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2597">Issue #2597</a></li></ul></li></ul>
 <ul><li> DFROUTER
-<ul><li> Vehicles now always depart with the measured speeds. A vehicle type with non-zero <span class="inlxml">speedDev</span> is used to allow patching the <a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Speed_Distributions" title="Definition of Vehicles, Vehicle Types, and Routes">vehicle-specific speed factor</a> in <a href="../SUMO.html" title="SUMO">SUMO</a>. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2510">Issue #2510</a></li></ul></li></ul>
+<ul><li> Vehicles now always depart with the measured speeds. A vehicle type with non-zero <span class="inlxml">speedDev</span> is used to allow patching the <a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Speed_Distributions" title="Definition of Vehicles, Vehicle Types, and Routes">vehicle-specific speed factor</a> in <a href="../SUMO.html" title="SUMO">SUMO</a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2510">Issue #2510</a></li></ul></li></ul>
 <ul><li> TraCI
-<ul><li> Vehicles added via method add() of the python client now have the correct departDelay value. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2540">Issue #2540</a></li>
+<ul><li> Vehicles added via method add() of the python client now have the correct departDelay value. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2540">Issue #2540</a></li>
 <li> Vehicle type value retrieval via the <a href="../TraCI/C%2B%2BTraCIAPI.html" title="TraCI/C++TraCIAPI">C++ API</a> is now working.</li>
 <li> Setting and retrieving edge travel times and efforts via the <a href="../TraCI/C%2B%2BTraCIAPI.html" title="TraCI/C++TraCIAPI">C++ API</a> is now working.</li>
-<li> It is now possible to specify routes that contain <a href="../Demand/Importing_O/D_Matrices.html#Describing_the_TAZ" title="Demand/Importing O/D Matrices">TAZ-edges</a>. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2586">Issue #2586</a></li></ul></li></ul>
+<li> It is now possible to specify routes that contain <a href="../Demand/Importing_O/D_Matrices.html#Describing_the_TAZ" title="Demand/Importing O/D Matrices">TAZ-edges</a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2586">Issue #2586</a></li></ul></li></ul>
 <h3><span class="mw-headline" id="Enhancements">Enhancements</span></h3>
 <ul><li> Simulation
 <ul><li> <a href="../Simulation/Basic_Definition.html#Defining_the_Time_Step_Length_and_Integration_Method" title="Simulation/Basic Definition">Ballistic integration method</a> can be used by giving the option <span style="color: #111144; font-weight: bold; white-space: pre;">--step-method.ballistic</span>.</li>
-<li> <a href="../Simulation/Output/Lanearea_Detectors_(E2).html" title="Simulation/Output/Lanearea Detectors (E2)">Areal Detectors</a> now output vehicle counts. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2523">Issue #2523</a></li>
-<li> <a href="../Simulation/Rerouter.html#Closing_a_Lane" title="Simulation/Rerouter">Rerouters can now be used to close individual lanes</a> to simulate dynamic work zones and accidents. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2229">Issue #2229</a></li>
-<li> Electricity consumption is now included in emission outputs. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2211">Issue #2211</a></li>
-<li> Added option <span style="color: #111144; font-weight: bold; white-space: pre;">--save-state.period <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;TIME&gt;</i></a></span> for periodically <a href="../Simulation/SaveAndLoad.html#Saving" title="Simulation/SaveAndLoad">saving simulation state</a>. The new option <span style="color: #111144; font-weight: bold; white-space: pre;">--save-state.suffix <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;STRING&gt;</i></a></span> can be used to determine whether state should be saved in binary (<i>.sbx</i>) or XML (<i>.xml</i>). <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2441">Issue #2441</a></li>
+<li> <a href="../Simulation/Output/Lanearea_Detectors_(E2).html" title="Simulation/Output/Lanearea Detectors (E2)">Areal Detectors</a> now output vehicle counts. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2523">Issue #2523</a></li>
+<li> <a href="../Simulation/Rerouter.html#Closing_a_Lane" title="Simulation/Rerouter">Rerouters can now be used to close individual lanes</a> to simulate dynamic work zones and accidents. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2229">Issue #2229</a></li>
+<li> Electricity consumption is now included in emission outputs. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2211">Issue #2211</a></li>
+<li> Added option <span style="color: #111144; font-weight: bold; white-space: pre;">--save-state.period <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;TIME&gt;</i></a></span> for periodically <a href="../Simulation/SaveAndLoad.html#Saving" title="Simulation/SaveAndLoad">saving simulation state</a>. The new option <span style="color: #111144; font-weight: bold; white-space: pre;">--save-state.suffix <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;STRING&gt;</i></a></span> can be used to determine whether state should be saved in binary (<i>.sbx</i>) or XML (<i>.xml</i>). <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2441">Issue #2441</a></li>
 <li> Tripinfo-output now includes the values <span class="inlxml">departPosLat,arrivalPosLat</span> when running a <a href="../Simulation/SublaneModel.html" title="Simulation/SublaneModel">sublane-simulation</a>.</li>
-<li> Sublane simulation now supports the <a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Vehicles_and_Routes" title="Definition of Vehicles, Vehicle Types, and Routes">vehicle parameters</a> <span class="inlxml">departPosLat,arrivalPosLat</span>. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2003">Issue #2003</a></li>
+<li> Sublane simulation now supports the <a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Vehicles_and_Routes" title="Definition of Vehicles, Vehicle Types, and Routes">vehicle parameters</a> <span class="inlxml">departPosLat,arrivalPosLat</span>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2003">Issue #2003</a></li>
 <li> Added option <span style="color: #111144; font-weight: bold; white-space: pre;">--tls.all-off <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;BOOL&gt;</i></a></span> for switching off all traffic lights in the simulation.</li></ul></li></ul>
 <ul><li> NETEDIT
 <ul><li> Added new option <span style="color: #111144; font-weight: bold; white-space: pre;">--new <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;BOOL&gt;</i></a></span> for starting with an empty network.</li>
-<li> Added new option <span style="color: #111144; font-weight: bold; white-space: pre;">--window-size <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;INT&gt;</i></a>,<a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;INT&gt;</i></a></span> for specifying the initial window size. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2514">Issue #2514</a></li>
+<li> Added new option <span style="color: #111144; font-weight: bold; white-space: pre;">--window-size <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;INT&gt;</i></a>,<a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;INT&gt;</i></a></span> for specifying the initial window size. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2514">Issue #2514</a></li>
 <li> Junction attribute <i>tltype</i> is now supported.</li>
-<li> Joined TLS can now be defined by setting the junction attribute <i>tl</i> following the same rules as in <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions"><i>.nod.xml</i> files</a>. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2389">Issue #2389</a></li>
-<li> Added support for restricted lanes (Sidewalks, buslanes and bikelanes). <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/1568">Issue #1568</a></li>
+<li> Joined TLS can now be defined by setting the junction attribute <i>tl</i> following the same rules as in <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect"><i>.nod.xml</i> files</a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2389">Issue #2389</a></li>
+<li> Added support for restricted lanes (Sidewalks, buslanes and bikelanes). <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1568">Issue #1568</a></li>
 <li> Now junction visualization can be toggled between bubbles and their real shape when in <i>Move</i>-mode.</li>
-<li> Connections can now be shown in inspect mode (by activating a check-box) and their attributes can be edited. They can also be selected in select-mode and deleted in delete mode. When inspecting edges or lanes, controls for accessing their connections are now available. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2067">Issue #2067</a></li>
-<li> Now delete mode has a frame with information and options for deleting. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2432">Issue #2432</a></li>
-<li> Intervals of Rerouters can be edited using a dialog <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2480">Issue #2480</a></li></ul></li></ul>
+<li> Connections can now be shown in inspect mode (by activating a check-box) and their attributes can be edited. They can also be selected in select-mode and deleted in delete mode. When inspecting edges or lanes, controls for accessing their connections are now available. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2067">Issue #2067</a></li>
+<li> Now delete mode has a frame with information and options for deleting. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2432">Issue #2432</a></li>
+<li> Intervals of Rerouters can be edited using a dialog <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2480">Issue #2480</a></li></ul></li></ul>
 <ul><li> SUMO-GUI
-<ul><li> Added new option <span style="color: #111144; font-weight: bold; white-space: pre;">--window-size <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;INT&gt;</i></a>,<a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;INT&gt;</i></a></span> for specifying the initial window size. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2514">Issue #2514</a></li>
+<ul><li> Added new option <span style="color: #111144; font-weight: bold; white-space: pre;">--window-size <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;INT&gt;</i></a>,<a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;INT&gt;</i></a></span> for specifying the initial window size. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2514">Issue #2514</a></li>
 <li> Added new visualization setting for drawing right-of-way rules (colored bars).</li>
-<li> <a href="../SUMO-GUI.html#Using_Decals_within_SUMO-GUI" title="SUMO-GUI">Background images (decals)</a> now support the new Boolean attribute <i>screenRelative</i>. When set to <i>true</i>, position and size are relative to the drawing window instead of being relative to the network. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2438">Issue #2438</a></li></ul></li></ul>
+<li> <a href="../SUMO-GUI.html#Using_Decals_within_SUMO-GUI" title="SUMO-GUI">Background images (decals)</a> now support the new Boolean attribute <i>screenRelative</i>. When set to <i>true</i>, position and size are relative to the drawing window instead of being relative to the network. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2438">Issue #2438</a></li></ul></li></ul>
 <ul><li> NETCONVERT
 <ul><li> Ferry routes are now imported from <a href="../Networks/Import/OpenStreetMap.html#Recommended_Typemaps" title="Networks/Import/OpenStreetMap">OSM when using the <i>ships</i> typemap</a>.</li>
-<li> Railway crossings are now imported from <a href="../Networks/Import/OpenStreetMap.html" title="Networks/Import/OpenStreetMap">OSM</a>. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2059">Issue #2059</a></li>
-<li> Added new option <span style="color: #111144; font-weight: bold; white-space: pre;">--junctions.scurve-stretch <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FLOAT&gt;</i></a></span> which generates longer intersection shapes whenever the number of lanes changes. This allows for smoother trajectories and is recommended when <a href="../Networks/Further_Outputs.html#OpenDRIVE_Road_Networks" title="Networks/Further Outputs">writing OpenDRIVE networks</a>. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2522">Issue #2522</a></li>
-<li> Added new option <span style="color: #111144; font-weight: bold; white-space: pre;">--rectangular-lane-cut<a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;BOOL&gt;</i></a></span> which prevents oblique angles between edges and intersections. This option is automatically enabled when exporting OpenDRIVE networks. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2562">Issue #2562</a></li>
-<li> The distance below which all approaching vehicles on foe lanes to a specific connection are visible can now be <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Explicitly_setting_which_Edge_.2F_Lane_is_connected_to_which" title="Networks/Building Networks from own XML-descriptions">customized with the new connection attribute <span class="inlxml">visibility</span></a>. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2123">Issue #2123</a>, <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/892">Issue #892</a></li>
-<li> Elevation data is now interpolated when importing GeoTiff heightmaps. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/1962">Issue #1962</a></li>
-<li> The geometry of <a href="../Networks/Further_Outputs.html#OpenDRIVE_Road_Networks" title="Networks/Further Outputs">OpenDRIVE networks</a> is now exported with parameterized curves according to specification version 1.4. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2041">Issue #2041</a></li>
-<li> Elevation data is now <a href="../Networks/Import/OpenDRIVE.html" title="Networks/Import/OpenDRIVE">imported from OpenDRIVE</a> and <a href="../Networks/Further_Outputs.html#OpenDRIVE_Road_Networks" title="Networks/Further Outputs">exported to OpenDRIVE</a>. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2239">Issue #2239</a>,<a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2240">Issue #2240</a></li>
-<li> Added new option <span style="color: #111144; font-weight: bold; white-space: pre;">--default.disallow <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;STRING&gt;</i></a>,...</span> for simplifying specification of <a href="../Simulation/VehiclePermissions.html#Network_definition" title="Simulation/VehiclePermissions">vehicle permissions</a>. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2557">Issue #2557</a></li>
-<li> When converting an OSM network to <a href="../Networks/Export.html" title="Networks/Export">writingDlrNavteq or Amitran format</a>, functional road class is now based on OSM highway types. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2602">Issue #2602</a></li></ul></li></ul>
+<li> Railway crossings are now imported from <a href="../Networks/Import/OpenStreetMap.html" title="Networks/Import/OpenStreetMap">OSM</a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2059">Issue #2059</a></li>
+<li> Added new option <span style="color: #111144; font-weight: bold; white-space: pre;">--junctions.scurve-stretch <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FLOAT&gt;</i></a></span> which generates longer intersection shapes whenever the number of lanes changes. This allows for smoother trajectories and is recommended when <a href="../Networks/Further_Outputs.html#OpenDRIVE_Road_Networks" title="Networks/Further Outputs">writing OpenDRIVE networks</a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2522">Issue #2522</a></li>
+<li> Added new option <span style="color: #111144; font-weight: bold; white-space: pre;">--rectangular-lane-cut<a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;BOOL&gt;</i></a></span> which prevents oblique angles between edges and intersections. This option is automatically enabled when exporting OpenDRIVE networks. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2562">Issue #2562</a></li>
+<li> The distance below which all approaching vehicles on foe lanes to a specific connection are visible can now be <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Explicitly_setting_which_Edge_.2F_Lane_is_connected_to_which" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">customized with the new connection attribute <span class="inlxml">visibility</span></a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2123">Issue #2123</a>, <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/892">Issue #892</a></li>
+<li> Elevation data is now interpolated when importing GeoTiff heightmaps. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1962">Issue #1962</a></li>
+<li> The geometry of <a href="../Networks/Further_Outputs.html#OpenDRIVE_Road_Networks" title="Networks/Further Outputs">OpenDRIVE networks</a> is now exported with parameterized curves according to specification version 1.4. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2041">Issue #2041</a></li>
+<li> Elevation data is now <a href="../Networks/Import/OpenDRIVE.html" title="Networks/Import/OpenDRIVE">imported from OpenDRIVE</a> and <a href="../Networks/Further_Outputs.html#OpenDRIVE_Road_Networks" title="Networks/Further Outputs">exported to OpenDRIVE</a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2239">Issue #2239</a>,<a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2240">Issue #2240</a></li>
+<li> Added new option <span style="color: #111144; font-weight: bold; white-space: pre;">--default.disallow <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;STRING&gt;</i></a>,...</span> for simplifying specification of <a href="../Simulation/VehiclePermissions.html#Network_definition" title="Simulation/VehiclePermissions">vehicle permissions</a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2557">Issue #2557</a></li>
+<li> When converting an OSM network to <a href="../Networks/Export.html" title="Networks/Export">writingDlrNavteq or Amitran format</a>, functional road class is now based on OSM highway types. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2602">Issue #2602</a></li></ul></li></ul>
 <ul><li> DFROUTER
 <ul><li> Vehicle types are now included in the <a href="../Demand/Routes_from_Observation_Points.html#Saving_Flows_and_other_Values" title="Demand/Routes from Observation Points">emitters-output</a> by default. The new option <span style="color: #111144; font-weight: bold; white-space: pre;">--vtype-output <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span> allows redirection the vTypes into a separate file.</li>
 <li> If the average measured speeds are systematically above the speed limit of the respective roads, the written vTypes use attribute <a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Speed_Distributions" title="Definition of Vehicles, Vehicle Types, and Routes">speedFactor</a> to reflect systematic speeding.</li>
 <li> Added new option <span style="color: #111144; font-weight: bold; white-space: pre;">--speeddev <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FLOAT&gt;</i></a></span> to set a <a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Speed_Distributions" title="Definition of Vehicles, Vehicle Types, and Routes">speed deviation</a> for the generate vTypes</li></ul></li></ul>
 <ul><li> TraCI
-<ul><li> Added new convenience function <i>traci.start</i> that automatically selects a port, starts sumo on that port and connects. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2236">Issue #2236</a></li>
-<li> Added new get/set command <i>height (0xbc)</i> to retrieve and modify vehicle height (applicable to vehicles and vehicle types). <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2573">Issue #2573</a></li>
-<li> When adapting edge travel times and efforts, the (optional) parameters <i>begin</i> and <i>end</i> are now supported by the <a href="../TraCI/Interfacing_TraCI_from_Python.html" title="TraCI/Interfacing TraCI from Python">python client</a> and the <a href="../TraCI/C%2B%2BTraCIAPI.html" title="TraCI/C++TraCIAPI">C++ client</a>. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2584">Issue #2584</a></li></ul></li></ul>
+<ul><li> Added new convenience function <i>traci.start</i> that automatically selects a port, starts sumo on that port and connects. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2236">Issue #2236</a></li>
+<li> Added new get/set command <i>height (0xbc)</i> to retrieve and modify vehicle height (applicable to vehicles and vehicle types). <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2573">Issue #2573</a></li>
+<li> When adapting edge travel times and efforts, the (optional) parameters <i>begin</i> and <i>end</i> are now supported by the <a href="../TraCI/Interfacing_TraCI_from_Python.html" title="TraCI/Interfacing TraCI from Python">python client</a> and the <a href="../TraCI/C%2B%2BTraCIAPI.html" title="TraCI/C++TraCIAPI">C++ client</a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2584">Issue #2584</a></li></ul></li></ul>
 <ul><li> Tools
-<ul><li> The tool <a href="../Tools/Routes.html#route_departOffset" title="Tools/Routes">route_departOffset.py</a> (previously undocumented) now supports additional options for departure time modification based on departure edge and for shifting departures within one time interval to another interval. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2568">Issue #2568</a></li>
+<ul><li> The tool <a href="../Tools/Routes.html#route_departOffset" title="Tools/Routes">route_departOffset.py</a> (previously undocumented) now supports additional options for departure time modification based on departure edge and for shifting departures within one time interval to another interval. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2568">Issue #2568</a></li>
 <li> <a href="../Tools/Trip.html" title="Tools/Trip">randomTrips.py</a> supports the new alias <span style="color: #111144; font-weight: bold; white-space: pre;">--edge-permission</span> for former option <span style="color: #111144; font-weight: bold; white-space: pre;">--vclass</span>.</li></ul></li></ul>
 <h3><span class="mw-headline" id="Other">Other</span></h3>
 <ul><li> Documentation
@@ -375,23 +376,23 @@
 <li> More details on <a href="../Simulation/VehicleInsertion.html" title="Simulation/VehicleInsertion">loading and inserting vehicles</a></li>
 <li> Added new overview page on <a href="../Simulation/VehiclePermissions.html" title="Simulation/VehiclePermissions">vehicle permissions</a></li>
 <li> The <a href="../NETEDIT.html" title="NETEDIT">NETEDIT</a> documentation on old and novel features has been expanded.</li>
-<li> The tool <a href="../Tools/Routes.html#showDepartsAndArrivalsPerEdge" title="Tools/Routes">showDepartsAndArrivalsPerEdge.py</a> is now documented. It allows edge-coloring in <a href="../SUMO-GUI.html" title="SUMO-GUI">SUMO-GUI</a> according to traffic statistics <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2263">Issue #2263</a></li></ul></li></ul>
+<li> The tool <a href="../Tools/Routes.html#showDepartsAndArrivalsPerEdge" title="Tools/Routes">showDepartsAndArrivalsPerEdge.py</a> is now documented. It allows edge-coloring in <a href="../SUMO-GUI.html" title="SUMO-GUI">SUMO-GUI</a> according to traffic statistics <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2263">Issue #2263</a></li></ul></li></ul>
 <ul><li> TraCI
 <ul><li> TraCI version is now 13</li></ul></li></ul>
 <ul><li> Miscellaneous
 <ul><li> The full 24h-dataset for the <a href="../Data/Scenarios/TAPASCologne.html" title="Data/Scenarios/TAPASCologne">TAPASCologne</a> scenario is now available</li>
-<li> The deprecated option <span style="color: #111144; font-weight: bold; white-space: pre;">--lanechange.allow-swap</span> is no longer supported. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2116">Issue #2116</a></li>
+<li> The deprecated option <span style="color: #111144; font-weight: bold; white-space: pre;">--lanechange.allow-swap</span> is no longer supported. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2116">Issue #2116</a></li>
 <li> The <span class="inlxml">laneChangeModel="JE2013"</span> has been removed due to strong similarity with <i>LC2013</i>. Using the model is deprecated and now defaults to <i>LC2013</i></li>
 <li> <a href="../Contributed/SUMOPy.html" title="Contributed/SUMOPy">SUMOPy</a> has been added to the SUMO repository and to the relase. Many thanks to Joerg Schweizer.</li>
 <li> The libraries for the Windows build and release were updated to Fox 1.6.52 and Xerces-C 3.1.4 (with an additional fix for <a rel="nofollow" class="external text" href="https://issues.apache.org/jira/browse/XERCESC-2052">XERCESC-2052</a>)</li></ul></li></ul>
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.216 seconds
-Real time usage: 0.229 seconds
+CPU time usage: 0.080 seconds
+Real time usage: 0.084 seconds
 Preprocessor visited node count: 558/1000000
 Preprocessor generated node count: 1576/1000000
-Post‐expand include size: 6134/2097152 bytes
+Post‐expand include size: 6186/2097152 bytes
 Template argument size: 1500/2097152 bytes
 Highest expansion depth: 3/40
 Expensive parser function count: 0/100
@@ -399,21 +400,21 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%  115.168      1 - -total
- 34.18%   39.359     17 - Template:Option
- 28.86%   33.234     52 - Template:Ticket
-  6.23%    7.174      7 - Template:XML
-  3.68%    4.238      3 - Template:DT_BOOL
-  3.60%    4.145      4 - Template:DT_INT
-  3.38%    3.897      1 - Template:DT_TIME
-  3.17%    3.650      2 - Template:DT_STR
-  2.67%    3.072      1 - Template:DT_FILE
-  2.66%    3.060      2 - Template:DT_FLOAT
+100.00%   39.855      1 - -total
+ 31.84%   12.689     17 - Template:Option
+ 28.27%   11.265     52 - Template:Ticket
+  5.14%    2.048      7 - Template:XML
+  3.01%    1.200      4 - Template:DT_INT
+  2.95%    1.176      3 - Template:DT_BOOL
+  2.77%    1.106      2 - Template:DT_STR
+  2.74%    1.093      2 - Template:DT_FLOAT
+  2.63%    1.049      1 - Template:DT_FILE
+  2.60%    1.038      1 - Template:DT_TIME
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:860-0!*!0!!en!*!* and timestamp 20171218172100 and revision id 10061
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:860-0!*!0!!en!*!* and timestamp 20180515221829 and revision id 10061
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 14 September 2017, at 08:26.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 14 September 2017, at 09:26.</div> </div>
 
     <div id="footer">
       <div>

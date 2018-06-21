@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Simulation/Safety</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.002029 from <a href="http://sumo.dlr.de/wiki/Simulation/Safety">the wiki page for Simulation/Safety</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.359686 from <a href="http://sumo.dlr.de/wiki/Simulation/Safety">the wiki page for Simulation/Safety</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><br />
@@ -281,14 +282,20 @@
 <li class="toclevel-2 tocsection-2"><a href="#Deliberately_causing_collisions"><span class="tocnumber">1.1</span> <span class="toctext">Deliberately causing collisions</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-3"><a href="#Safety-related_parameters"><span class="tocnumber">2</span> <span class="toctext">Safety-related parameters</span></a>
+<li class="toclevel-1 tocsection-3"><a href="#Reaction_Times"><span class="tocnumber">2</span> <span class="toctext">Reaction Times</span></a>
 <ul>
-<li class="toclevel-2 tocsection-4"><a href="#car-following_model"><span class="tocnumber">2.1</span> <span class="toctext">car-following model</span></a></li>
-<li class="toclevel-2 tocsection-5"><a href="#Lane-Changing_Model"><span class="tocnumber">2.2</span> <span class="toctext">Lane-Changing Model</span></a></li>
-<li class="toclevel-2 tocsection-6"><a href="#Junction_Model"><span class="tocnumber">2.3</span> <span class="toctext">Junction Model</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Simulation_Step_Length"><span class="tocnumber">2.1</span> <span class="toctext">Simulation Step Length</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Action_Step_Length"><span class="tocnumber">2.2</span> <span class="toctext">Action Step Length</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-7"><a href="#Safety-Related_Outputs"><span class="tocnumber">3</span> <span class="toctext">Safety-Related Outputs</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Safety-related_parameters"><span class="tocnumber">3</span> <span class="toctext">Safety-related parameters</span></a>
+<ul>
+<li class="toclevel-2 tocsection-7"><a href="#car-following_model"><span class="tocnumber">3.1</span> <span class="toctext">car-following model</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#Lane-Changing_Model"><span class="tocnumber">3.2</span> <span class="toctext">Lane-Changing Model</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#Junction_Model"><span class="tocnumber">3.3</span> <span class="toctext">Junction Model</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="#Safety-Related_Outputs"><span class="tocnumber">4</span> <span class="toctext">Safety-Related Outputs</span></a></li>
 </ul>
 </div>
 
@@ -313,11 +320,29 @@ When setting the option <span style="color: #111144; font-weight: bold; white-sp
 </p>
 <ul><li> yellow phases which are too short in relation to the vehicle speed (giving insufficient time to come to a stop). By default this causes strong braking (<i>Warning: emergency braking</i>) potentially followed by rear-end collisions</li>
 <li> Green phases that allow conflicting streams to drive at the same time. Collision beyond the intersection due to this are always detected but collisions on the intersection are only registered when setting the option <span style="color: #111144; font-weight: bold; white-space: pre;">--collision.check-junctions</span>.</li>
-<li> <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Multiple_connections_from_the_same_edge_to_the_same_target_lane" title="Networks/Building Networks from own XML-descriptions">Double connections</a> from a traffic-light-controlled edge: If two lanes from the same edge with the same target lane get the green light at the same time, collisions are likely</li>
-<li> If all <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Multiple_connections_from_the_same_edge_to_the_same_target_lane" title="Networks/Building Networks from own XML-descriptions">Double connections</a> at an edge are configured with <span class="inlxml">pass="true"</span></li>
+<li> <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Multiple_connections_from_the_same_edge_to_the_same_target_lane" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">Double connections</a> from a traffic-light-controlled edge: If two lanes from the same edge with the same target lane get the green light at the same time, collisions are likely</li>
+<li> If all <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Multiple_connections_from_the_same_edge_to_the_same_target_lane" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">Double connections</a> at an edge are configured with <span class="inlxml">pass="true"</span></li>
 <li> If connections from the minor road of a priority junction are configured with <span class="inlxml">pass="true"</span></li></ul>
 <p><br />
 To simulate the <b>effects</b> of an accident see <a href="../FAQ.html#How_to_simulate_an_accident" title="FAQ">FAQ#How_to_simulate_an_accident</a>.
+</p>
+<h1><span class="mw-headline" id="Reaction_Times">Reaction Times</span></h1>
+<p>In Reality, drivers take actions with some delay in regard to the evolving traffic situation. This reaction time is modelled in the simulation in various ways.
+</p>
+<h2><span class="mw-headline" id="Simulation_Step_Length">Simulation Step Length</span></h2>
+<p>All simulation vehicles select their speed simultaneously with regard to the traffic state from the previous simulation step. This means, there is at least a reaction time of the simulation step-length.
+</p><p>In contrast, lane-changing within an edge happens sequentially (in the upstream direction) within each step  . Consequently, two vehicles that are driving almost parallel on a 3-lane road may both change their lanes in parallel within a single simulation step because the vehicle further behind already takes into account the lateral movement of the vehicle ahead.
+</p>
+<h2><span class="mw-headline" id="Action_Step_Length">Action Step Length</span></h2>
+<p>By default, vehicles recompute their speed and lane-changing decisions every simulation step. When running with sub-second time resultion (i.e. <span style="color: #111144; font-weight: bold; white-space: pre;">--step-length 0.1</span>), this also gives very low effective reaction times.
+</p><p>To decouple the decision interval from the simulation step length, the vehicle <i>action-step-length</i> can be defined as the duration between subsequent vehicle decisions. Decision-making starts direclty after insertion which means vehicles inserted at different times may take decisions during different simulation steps. During simulation steps without decision-making, vehicle positions are updated according to the previously computed acceleration. Lateral dynamics (when using the sublane model) use a dynamic acceleration curve that to complete the current lateral driving manoeuvre.
+</p><p>The action step length can be defined in any of the following ways:
+</p>
+<ul><li> setting the option <span style="color: #111144; font-weight: bold; white-space: pre;">default.action-step-length <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FLOAT&gt;</i></a></span> which sets the default action step length for all vehicles</li>
+<li> setting the <span class="inlxml">&lt;vType&gt;</span> attribute <i>actionStepLength</i></li>
+<li> calling <i>traci.vehicle.setActionStepLength</i></li></ul>
+<div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />the action step length must be a multiple of the simulation step length.</div>
+<p><br />
 </p>
 <h1><span class="mw-headline" id="Safety-related_parameters">Safety-related parameters</span></h1>
 <p>Simulation of unsafe behavior is a developing subject. Expect model additions and extensions.
@@ -352,28 +377,29 @@ The following <a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.052 seconds
-Real time usage: 0.056 seconds
-Preprocessor visited node count: 115/1000000
-Preprocessor generated node count: 304/1000000
-Post‐expand include size: 1446/2097152 bytes
-Template argument size: 468/2097152 bytes
+CPU time usage: 0.032 seconds
+Real time usage: 0.032 seconds
+Preprocessor visited node count: 157/1000000
+Preprocessor generated node count: 406/1000000
+Post‐expand include size: 1987/2097152 bytes
+Template argument size: 644/2097152 bytes
 Highest expansion depth: 3/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   17.832      1 - -total
- 42.89%    7.649      8 - Template:Option
- 16.71%    2.980      2 - Template:XML
- 16.46%    2.936      2 - Template:Note
- 13.16%    2.346      1 - Template:DT_TIME
+100.00%   11.013      1 - -total
+ 45.32%    4.991     10 - Template:Option
+ 14.12%    1.555      3 - Template:XML
+ 13.29%    1.464      3 - Template:Note
+  9.22%    1.015      1 - Template:DT_FLOAT
+  9.09%    1.001      1 - Template:DT_TIME
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:818-0!*!0!!en!*!* and timestamp 20171218155326 and revision id 10430
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:818-0!*!0!!en!*!* and timestamp 20180515221800 and revision id 10463
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 18 December 2017, at 16:53.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 2 January 2018, at 12:15.</div> </div>
 
     <div id="footer">
       <div>

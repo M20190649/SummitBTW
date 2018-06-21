@@ -26,12 +26,13 @@
     </xsd:complexType>
 
     <xsd:complexType name="edgeType">
-        <xsd:sequence>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
             <xsd:element name="lane" type="laneType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="split" type="splitType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="neigh" type="neighType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="stopOffset" type="stopOffsetType" minOccurs="0" maxOccurs="1"/>
             <xsd:element name="param" type="paramType" minOccurs="0" maxOccurs="unbounded"/>
-        </xsd:sequence>
+        </xsd:choice>
         <xsd:attribute name="id" type="xsd:string" use="required"/>
         <xsd:attribute name="from" type="xsd:string" use="required"/>
         <xsd:attribute name="to" type="xsd:string" use="required"/>
@@ -59,10 +60,11 @@
     </xsd:complexType>
 
     <xsd:complexType name="laneType">
-        <xsd:sequence>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
             <xsd:element name="neigh" type="neighType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="stopOffset" type="stopOffsetType" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="param" type="paramType" minOccurs="0" maxOccurs="unbounded"/>
-        </xsd:sequence>
+        </xsd:choice>
         <xsd:attribute name="index" type="xsd:nonNegativeInteger" use="required"/>
         <xsd:attribute name="speed" type="positiveFloatType" use="optional"/>
         <xsd:attribute name="width" type="positiveFloatType" use="optional"/>
@@ -86,6 +88,12 @@
 
     <xsd:complexType name="neighType">
         <xsd:attribute name="lane" type="xsd:string" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="stopOffsetType">
+        <xsd:attribute name="value" type="nonNegativeFloatType" use="required"/>
+        <xsd:attribute name="exceptions" type="xsd:string" use="optional"/>
+        <xsd:attribute name="vClasses" type="xsd:string" use="optional"/>
     </xsd:complexType>
 
 </xsd:schema>

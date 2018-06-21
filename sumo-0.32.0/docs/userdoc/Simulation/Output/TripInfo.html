@@ -114,6 +114,7 @@
   <li><a href="../../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Simulation/Output/TripInfo</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.981267 from <a href="http://sumo.dlr.de/wiki/Simulation/Output/TripInfo">the wiki page for Simulation/Output/TripInfo</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.337196 from <a href="http://sumo.dlr.de/wiki/Simulation/Output/TripInfo">the wiki page for Simulation/Output/TripInfo</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -300,7 +301,7 @@
             arrival=&quot;&lt;ARRIVAL_TIME&gt;&quot; arrivalLane=&quot;&lt;DEPARTURE_LANE_ID&gt;&quot; \
             arrivalPos=&quot;&lt;ARRIVAL_POSITION&gt;&quot; arrivalSpeed=&quot;&lt;ARRIVAL_SPEED&gt;&quot; \
             duration=&quot;&lt;TRAVEL_TIME&gt;&quot; routeLength=&quot;&lt;ROUTE_LENGTH&gt;&quot; \
-            waitSteps=&quot;&lt;STEPS_WITH_HALTS&gt;&quot; rerouteNo=&quot;&lt;REROUTE_NUMBER&gt;&quot; \
+            waitingTime=&quot;&lt;SECONDS_WAITING_FOR_TRAFFIC&gt;&quot; rerouteNo=&quot;&lt;REROUTE_NUMBER&gt;&quot; \
             devices=&quot;&lt;DEVICE_LIST&gt;&quot; vtype=&quot;&lt;VEHICLE_TYPE_ID&gt;&quot;/&gt;
 
    ... information about further vehicles ...
@@ -403,11 +404,18 @@
 <td> The length of the vehicle's route
 </td></tr>
 <tr>
-<td class="inlxml"> waitSteps
+<td class="inlxml"> waitingTime
 </td>
-<td> simulation steps
+<td> s
 </td>
-<td> The number of steps in which the vehicle speed was below 0.1m/s (scheduled <a href="../../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Stops" title="Definition of Vehicles, Vehicle Types, and Routes">stops</a> do not count)
+<td> The time in which the vehicle speed was below 0.1m/s (scheduled <a href="../../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Stops" title="Definition of Vehicles, Vehicle Types, and Routes">stops</a> do not count)
+</td></tr>
+<tr>
+<td class="inlxml"> stopTime
+</td>
+<td> s
+</td>
+<td> The time in which the vehicle was taking a planned <a href="../../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Stops" title="Definition of Vehicles, Vehicle Types, and Routes">stop</a>
 </td></tr>
 <tr>
 <td class="inlxml"> timeLoss
@@ -517,8 +525,6 @@
 </td>
 <td> The complete amount of fuel the vehicle used during the trip
 </td></tr></table>
-<p><br />
-</p>
 <h2><span class="mw-headline" id="Person_and_Container_Output">Person and Container Output</span></h2>
 <p>If the simulation contains persons or containers, the following elements will be added to the output:
 </p>
@@ -617,8 +623,8 @@
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.068 seconds
-Real time usage: 0.203 seconds
+CPU time usage: 0.032 seconds
+Real time usage: 0.033 seconds
 Preprocessor visited node count: 90/1000000
 Preprocessor generated node count: 246/1000000
 Post‐expand include size: 853/2097152 bytes
@@ -629,17 +635,17 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   50.334      1 - -total
- 83.92%   42.242      4 - Template:Option
- 43.05%   21.671      1 - Template:DT_FLOAT
- 15.08%    7.589      1 - Template:DT_IDList
-  6.46%    3.250      3 - Template:XML
-  5.09%    2.563      1 - Template:DT_FILE
+100.00%    9.159      1 - -total
+ 58.73%    5.379      4 - Template:Option
+ 15.76%    1.443      3 - Template:XML
+ 11.62%    1.064      1 - Template:DT_FLOAT
+ 11.34%    1.039      1 - Template:DT_FILE
+ 11.33%    1.038      1 - Template:DT_IDList
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:246-0!*!0!!en!*!* and timestamp 20171218220359 and revision id 10015
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:246-0!*!0!!en!*!* and timestamp 20180515221757 and revision id 10475
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 11 September 2017, at 08:14.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 3 January 2018, at 11:46.</div> </div>
 
     <div id="footer">
       <div>

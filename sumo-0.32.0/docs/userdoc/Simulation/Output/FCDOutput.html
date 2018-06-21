@@ -114,6 +114,7 @@
   <li><a href="../../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Simulation/Output/FCDOutput</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.949644 from <a href="http://sumo.dlr.de/wiki/Simulation/Output/FCDOutput">the wiki page for Simulation/Output/FCDOutput</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.304700 from <a href="http://sumo.dlr.de/wiki/Simulation/Output/FCDOutput">the wiki page for Simulation/Output/FCDOutput</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>The FCD (floating car data) export contains location and speed along with other information for every vehicle in the network at every time step. The output behaves somewhat like a super-accurate high-frequency GPS device for each vehicle. The outputs can be processed further using the <a href="../../Tools/TraceExporter.html" title="Tools/TraceExporter"> TraceExporter tool </a> for adapting frequency, equipment rates, accuracy and data format.
@@ -278,13 +279,17 @@
 <ul>
 <li class="toclevel-1 tocsection-1"><a href="#Instantiating_within_the_Simulation"><span class="tocnumber">1</span> <span class="toctext">Instantiating within the Simulation</span></a></li>
 <li class="toclevel-1 tocsection-2"><a href="#Generated_Output"><span class="tocnumber">2</span> <span class="toctext">Generated Output</span></a></li>
-<li class="toclevel-1 tocsection-3"><a href="#Further_Options"><span class="tocnumber">3</span> <span class="toctext">Further Options</span></a></li>
-<li class="toclevel-1 tocsection-4"><a href="#NOTES"><span class="tocnumber">4</span> <span class="toctext">NOTES</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Person_and_Container_Output"><span class="tocnumber">3</span> <span class="toctext">Person and Container Output</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Further_Options"><span class="tocnumber">4</span> <span class="toctext">Further Options</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#NOTES"><span class="tocnumber">5</span> <span class="toctext">NOTES</span></a></li>
 </ul>
 </div>
 
 <h2><span class="mw-headline" id="Instantiating_within_the_Simulation">Instantiating within the Simulation</span></h2>
 <p>The simulation is forced to generate this output using the option <span style="color: #111144; font-weight: bold; white-space: pre;">--fcd-output <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span>. <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a> is the name of the file the output will be written to. Any other file with this name will be overwritten, the destination folder must exist.
+</p><p>By default, fcd-output is enabled for all vehicles and persons in the simulation with output in each simulation step.
+Using <a href="../../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Devices" title="Definition of Vehicles, Vehicle Types, and Routes">device assignment options or parameters</a> (i.e. <span style="color: #111144; font-weight: bold; white-space: pre;">--device.fcd.probability 0.25</span> the set of vehicles which generate fcd output can be reduced.
+The output period can be set by using option <span style="color: #111144; font-weight: bold; white-space: pre;">--device.fcd.period <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;TIME&gt;</i></a></span>.
 </p>
 <h2><span class="mw-headline" id="Generated_Output">Generated Output</span></h2>
 <p>The generated XML file looks like this:
@@ -346,7 +351,7 @@
 </td>
 <td> degree
 </td>
-<td> The angle of the vehicle
+<td> The angle of the vehicle in navigational standard (0-360 degrees, going clockwise with 0 at the 12'o clock position)
 </td></tr>
 <tr>
 <td class="inlxml"> x
@@ -388,9 +393,37 @@
 </td>
 <td> degree
 </td>
-<td> The slope of the vehicle (equals the slope of the road at the current position)
+<td> The slope of the vehicle in degrees (equals the slope of the road at the current position)
+</td></tr>
+<tr>
+<td class="inlxml"> signals
+</td>
+<td> bitset
+</td>
+<td> The <a href="../../TraCI/Vehicle_Signalling.html" title="TraCI/Vehicle Signalling">signal state information</a> (blinkers, etc). Only present when option <span style="color: #111144; font-weight: bold; white-space: pre;"> --fcd-output.signals</span> is set.
 </td></tr></table>
 <p>When the option <span style="color: #111144; font-weight: bold; white-space: pre;">--fcd-output.geo</span> is set, the written (x,y)-coordinates will be the lon/lat geo-coordinates.
+</p>
+<h2><span class="mw-headline" id="Person_and_Container_Output">Person and Container Output</span></h2>
+<p>Any persons or container in the simulation will cause output of he  following form:
+</p>
+<pre class="xml">
+&lt;fcd-export&gt;
+  
+  &lt;timestep time=&quot;&lt;TIME_STEP&gt;&quot;&gt;
+     &lt;vehicle .../&gt;
+     ...     
+     &lt;person id=&quot;...&quot; x=&quot;...&quot; y=&quot;...&quot; angle=&quot;...&quot; type=&quot;...&quot; speed=&quot;...&quot; edge=&quot;...&quot; slope=&quot;...&quot;/&gt;
+     ...
+     &lt;container id=&quot;...&quot; x=&quot;...&quot; y=&quot;...&quot; angle=&quot;...&quot; type=&quot;...&quot; speed=&quot;...&quot; edge=&quot;...&quot; slope=&quot;...&quot;/&gt;
+     ...
+ &lt;/timestep&gt;
+
+ ... next timestep ...
+
+&lt;/fcd-export&gt;
+</pre>
+<p>If persons or containers are transported within a vehicle, their respective <span class="inlxml">&lt;person&gt;</span> and <span class="inlxml">&lt;container&gt;</span> elements will be written as child elements of that vehicle.
 </p>
 <h2><span class="mw-headline" id="Further_Options">Further Options</span></h2>
 <ul><li> using the option <span style="color: #111144; font-weight: bold; white-space: pre;"> --fcd-output.geo</span> will toggle output coordinates to WGS84 (for geo-referenced networks)</li>
@@ -400,27 +433,29 @@
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.040 seconds
-Real time usage: 0.045 seconds
-Preprocessor visited node count: 64/1000000
-Preprocessor generated node count: 170/1000000
-Post‐expand include size: 720/2097152 bytes
-Template argument size: 184/2097152 bytes
+CPU time usage: 0.024 seconds
+Real time usage: 0.027 seconds
+Preprocessor visited node count: 114/1000000
+Preprocessor generated node count: 310/1000000
+Post‐expand include size: 1203/2097152 bytes
+Template argument size: 331/2097152 bytes
 Highest expansion depth: 3/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   14.180      1 - -total
- 51.30%    7.274      4 - Template:Option
- 21.59%    3.062      2 - Template:DT_FILE
- 21.33%    3.024      1 - Template:Note
+100.00%   10.073      1 - -total
+ 45.35%    4.568      7 - Template:Option
+ 12.59%    1.268      2 - Template:XML
+ 11.93%    1.202      1 - Template:Note
+ 10.70%    1.078      2 - Template:DT_FILE
+ 10.11%    1.018      1 - Template:DT_TIME
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:499-0!*!0!!en!*!* and timestamp 20171218114726 and revision id 9658
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:499-0!*!0!!en!*!* and timestamp 20180515221754 and revision id 10716
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 13 June 2017, at 14:51.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 27 March 2018, at 08:36.</div> </div>
 
     <div id="footer">
       <div>

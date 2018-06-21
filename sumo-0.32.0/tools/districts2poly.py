@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # Eclipse SUMO, Simulation of Urban MObility; see https://eclipse.org/sumo
-# Copyright (C) 2012-2017 German Aerospace Center (DLR) and others.
+# Copyright (C) 2012-2018 German Aerospace Center (DLR) and others.
 # This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v2.0
 # which accompanies this distribution, and is available at
 # http://www.eclipse.org/legal/epl-v20.html
+# SPDX-License-Identifier: EPL-2.0
 
 # @file    districts2poly.py
 # @author  Jakob Erdmann
@@ -23,9 +24,9 @@ import os
 import random
 from optparse import OptionParser
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from sumolib.output import parse
-from sumolib.net import readNet
-from sumolib.miscutils import Colorgen
+from sumolib.output import parse  # noqa
+from sumolib.net import readNet  # noqa
+from sumolib.miscutils import Colorgen  # noqa
 
 
 def parse_args():

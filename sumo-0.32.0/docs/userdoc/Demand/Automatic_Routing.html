@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Demand/Automatic Routing</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.706637 from <a href="http://sumo.dlr.de/wiki/Demand/Automatic_Routing">the wiki page for Demand/Automatic_Routing</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.051873 from <a href="http://sumo.dlr.de/wiki/Demand/Automatic_Routing">the wiki page for Demand/Automatic_Routing</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -290,7 +291,7 @@
 </div>
 
 <h1><span class="mw-headline" id="Introduction">Introduction</span></h1>
-<p>There is another approach to vehicle routing which may be adequate in the following situations:
+<p>Routing dynamically in the running simulation may be adequate in the following situations:
 </p>
 <ul><li> there is not enough time / computing power to wait for the dynamic user equilibrium</li>
 <li> changes to the net occur while the simulation is running</li>
@@ -342,7 +343,7 @@
 <tr>
 <td valign="top"> <span style="color: #111144; font-weight: bold; white-space: pre;">--device.rerouting.pre-period <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;STRING&gt;</i></a></span>
 </td>
-<td> 1
+<td> 60
 </td>
 <td valign="top"> The rerouting period before insertion/depart
 </td></tr>
@@ -422,8 +423,8 @@ This randomness is a good way to achieve a reasonable route distribution in grid
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.080 seconds
-Real time usage: 0.086 seconds
+CPU time usage: 0.036 seconds
+Real time usage: 0.041 seconds
 Preprocessor visited node count: 179/1000000
 Preprocessor generated node count: 526/1000000
 Post‐expand include size: 3282/2097152 bytes
@@ -434,17 +435,17 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   32.756      1 - -total
- 67.79%   22.204     18 - Template:Option
-  9.82%    3.215      1 - Template:Note
-  9.75%    3.194      5 - Template:DT_FLOAT
-  9.53%    3.123      3 - Template:DT_INT
-  8.98%    2.942      3 - Template:DT_STR
+100.00%   15.791      1 - -total
+ 67.08%   10.593     18 - Template:Option
+  9.84%    1.553      5 - Template:DT_FLOAT
+  9.48%    1.497      1 - Template:Note
+  9.39%    1.483      3 - Template:DT_STR
+  9.30%    1.468      3 - Template:DT_INT
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:333-0!*!0!!en!*!* and timestamp 20171218085848 and revision id 10152
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:333-0!*!0!!en!*!* and timestamp 20180516095816 and revision id 10748
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 3 October 2017, at 19:54.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 19 April 2018, at 12:11.</div> </div>
 
     <div id="footer">
       <div>

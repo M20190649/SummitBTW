@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Demand/Shortest or Optimal Path Routing</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.722392 from <a href="http://sumo.dlr.de/wiki/Demand/Shortest_or_Optimal_Path_Routing">the wiki page for Demand/Shortest_or_Optimal_Path_Routing</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.068122 from <a href="http://sumo.dlr.de/wiki/Demand/Shortest_or_Optimal_Path_Routing">the wiki page for Demand/Shortest_or_Optimal_Path_Routing</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -289,7 +290,7 @@ Furthermore, it can be used to repair an existing <i>route</i>-file i.e. if a gi
 </p>
 <div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />The <i>trip</i> and <i>flow</i> elements described below may also be <a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Incomplete_Routes_.28trips_and_flows.29" title="Definition of Vehicles, Vehicle Types, and Routes">loaded directly</a> into <a href="../SUMO.html" title="SUMO">SUMO</a>. This takes up-to date traffic states within the network into account when computing routes but slows down the simulation.</div>
 <h1><span class="mw-headline" id="Trip_Definitions">Trip Definitions</span></h1>
-<p>Trip definitions that can be laid into the network may be supplied to the router using an XML-file. The syntax of a single trip definition is: <span class="inlxml">&lt;trip id="&lt;ID&gt;" depart="<time>" from="&lt;ORIGIN_EDGE_ID&gt;" to="&lt;DESTINATION_EDGE_ID&gt;" [type="&lt;VEHICLE_TYPE&gt;"] [color="&lt;COLOR&gt;"]/&gt;&lt;/span&gt;. 
+<p>Trip definitions that can be laid into the network may be supplied to the router using an XML-file. The syntax of a single trip definition is: <span class="inlxml">&lt;trip id="&lt;ID&gt;" depart="<time>" from="&lt;ORIGIN_EDGE_ID&gt;" to="&lt;DESTINATION_EDGE_ID&gt;" [type="&lt;VEHICLE_TYPE&gt;"] [color="&lt;COLOR&gt;"]/&gt;. 
 </p>
 <table cellspacing="0" border="1" align="center" width="80%">
 
@@ -340,14 +341,14 @@ Furthermore, it can be used to repair an existing <i>route</i>-file i.e. if a gi
 </td>
 <td> district id
 </td>
-<td> The name of the <a href="../Demand/Importing_O/D_Matrices.html#Describing_the_TAZ" title="Demand/Importing O/D Matrices">district</a> the route starts at
+<td> The name of the <a href="../Demand/Importing_O/D_Matrices.html#Describing_the_TAZ" title="Demand/Importing O/D Matrices">district</a> the route starts at. <a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Traffic_assignement_zones_.28TAZ.29" title="Definition of Vehicles, Vehicle Types, and Routes">TAZ edges are selected so that travel time is minimized.</a>
 </td></tr>
 <tr>
 <td class="inlxml"> toTaz
 </td>
 <td> district id
 </td>
-<td> The name of the <a href="../Demand/Importing_O/D_Matrices.html#Describing_the_TAZ" title="Demand/Importing O/D Matrices">district</a> the route ends at
+<td> The name of the <a href="../Demand/Importing_O/D_Matrices.html#Describing_the_TAZ" title="Demand/Importing O/D Matrices">district</a> the route ends at. <a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Traffic_assignement_zones_.28TAZ.29" title="Definition of Vehicles, Vehicle Types, and Routes">TAZ edges are selected so that travel time is minimized.</a>
 </td></tr>
 <tr>
 <td class="inlxml"> color
@@ -570,7 +571,7 @@ districts shall be used for routing this has to be specified using the option "-
 <pre>duarouter --trip-files=&lt;TRIP_DEFS&gt; --net-file=&lt;SUMO_NET&gt; \
   --output-file=MySUMORoutes.rou.xml --taz-files=&lt;DISTRICTS&gt; --with-taz
 </pre>
-<div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />The edge weights are ignored when using TAZ this way</div>
+<div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />The edge weights are ignored when using TAZ this way. Instead TAZ edges are selected so that the travel time is minimzed.</div>
 <p>As we have to read in the flow definitions completely into the memory - something we do not have to do necessarily with trips, an extra parameter (-f or --flows) is used to make them known by the router:
 </p>
 <pre>duarouter --flows=&lt;FLOW_DEFS&gt; --net=&lt;SUMO_NET&gt; \
@@ -593,31 +594,31 @@ The tool <a href="../Tools/Net.html#netcheck.py" title="Tools/Net">Tools/Net#net
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.092 seconds
-Real time usage: 0.099 seconds
+CPU time usage: 0.044 seconds
+Real time usage: 0.046 seconds
 Preprocessor visited node count: 164/1000000
 Preprocessor generated node count: 454/1000000
-Post‐expand include size: 3019/2097152 bytes
-Template argument size: 1307/2097152 bytes
+Post‐expand include size: 3088/2097152 bytes
+Template argument size: 1376/2097152 bytes
 Highest expansion depth: 3/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   31.397      1 - -total
- 35.46%   11.135      8 - Template:Note
- 31.67%    9.944      4 - Template:Option
- 10.02%    3.146      1 - Template:DT_FILE
-  8.78%    2.757      1 - Template:Caution
-  8.41%    2.640      1 - Template:AdditionalFile
-  8.07%    2.534      1 - Template:DT_STR
-  8.02%    2.517      1 - Template:XML
+100.00%   13.738      1 - -total
+ 35.89%    4.930      8 - Template:Note
+ 29.52%    4.055      4 - Template:Option
+  8.40%    1.154      1 - Template:Caution
+  8.11%    1.114      1 - Template:XML
+  7.69%    1.057      1 - Template:DT_FILE
+  7.45%    1.024      1 - Template:DT_STR
+  7.41%    1.018      1 - Template:AdditionalFile
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:351-0!*!0!!en!*!* and timestamp 20171218125449 and revision id 8869
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:351-0!*!0!!en!*!* and timestamp 20180515221724 and revision id 10611
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 14 February 2017, at 09:39.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 13 February 2018, at 09:57.</div> </div>
 
     <div id="footer">
       <div>

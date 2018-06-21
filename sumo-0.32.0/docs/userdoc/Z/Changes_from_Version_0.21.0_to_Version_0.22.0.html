@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Z/Changes from Version 0.21.0 to Version 0.22.0</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.229378 from <a href="http://sumo.dlr.de/wiki/Z/Changes_from_Version_0.21.0_to_Version_0.22.0">the wiki page for Z/Changes_from_Version_0.21.0_to_Version_0.22.0</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.593584 from <a href="http://sumo.dlr.de/wiki/Z/Changes_from_Version_0.21.0_to_Version_0.22.0">the wiki page for Z/Changes_from_Version_0.21.0_to_Version_0.22.0</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -306,8 +307,8 @@
 <li> Fixed bug that was causing unnecessary lane changes leading to oscillations.</li>
 <li> Fixed bug that was degrading the cooperation between vehicles during lane changing.</li>
 <li> Flows now always insert at least 1 vehicle for any positive repetition period (if the simulation time reaches the <span class="inlxml">begin</span>-time).</li>
-<li> Fixed position caching which caused wrong positions and angles after lane changes <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/143">Issue #143</a></li>
-<li> Fixed bluetooth reentry see <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/1455">Issue #1455</a></li>
+<li> Fixed position caching which caused wrong positions and angles after lane changes <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/143">Issue #143</a></li>
+<li> Fixed bluetooth reentry see <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1455">Issue #1455</a></li>
 <li> Fixed the usage of different random number generators for route file parsing and vehicle movement</li>
 <li> Fixed rerouting close to junctions</li></ul></li></ul>
 <ul><li> SUMO-GUI
@@ -344,8 +345,8 @@
 <li> Now supports parallel routing by using the option <span style="color: #111144; font-weight: bold; white-space: pre;">--device.rerouting.threads <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;INT&gt;</i></a></span></li>
 <li> Added new routing algorithms 'astar' and 'CH' which are faster than the default 'dijkstra' algorithm.</li>
 <li> <span class="inlxml">flow</span> elements with attributes <span class="inlxml">from</span> and <span class="inlxml">to</span> can now be loaded directly in the simulation and will automatically be routed according to the current traveltimes at <span class="inlxml">begin</span>.</li>
-<li> Invalid stops now generate better error messages, see <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/1458">Issue #1458</a></li>
-<li> Added option <span style="color: #111144; font-weight: bold; white-space: pre;">--vehroute-output.intended-depart <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;BOOL&gt;</i></a></span>. This allows to generate vehicle route files which reproduce the original behavior when using one shot routing. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/1429">Issue #1429</a></li>
+<li> Invalid stops now generate better error messages, see <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1458">Issue #1458</a></li>
+<li> Added option <span style="color: #111144; font-weight: bold; white-space: pre;">--vehroute-output.intended-depart <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;BOOL&gt;</i></a></span>. This allows to generate vehicle route files which reproduce the original behavior when using one shot routing. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1429">Issue #1429</a></li>
 <li> Added option <span style="color: #111144; font-weight: bold; white-space: pre;">--weights.random-factor <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FLOAT&gt;</i></a></span> to disturb edge weights when routing in the simulation. This allows modelling imperfect information, helps to avoid biases when multiple routes have the same length (i.e. in grid networks) and may be used to prevent jams on a single shortest path.</li></ul></li></ul>
 <ul><li> SUMO-GUI
 <ul><li> Now appending <i>.xml</i> suffix when saving viewport, view settings or decals</li>
@@ -359,7 +360,7 @@
 <li> Added new link state 'u' to encode red-yellow phase (shown as orange). Vehicles behave as if 'r' (red) was set. This linkstate may be used to indicates upcoming green phase according to <a rel="nofollow" class="external text" href="http://de.wikipedia.org/wiki/Richtlinien_f%C3%BCr_Lichtsignalanlagen">RiLSA</a>.</li>
 <li> Lane coloring by speed now uses more colors (the same as vehicle coloring by speed).</li></ul></li>
 <li> NETCONVERT
-<ul><li> Roundabouts can now be specified via <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Roundabouts" title="Networks/Building Networks from own XML-descriptions">plain-xml input</a>. They are also written to the <i>.edg.xml</i>-file when using option <span style="color: #111144; font-weight: bold; white-space: pre;">--plain-output-prefix</span>.</li></ul></li>
+<ul><li> Roundabouts can now be specified via <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Roundabouts" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">plain-xml input</a>. They are also written to the <i>.edg.xml</i>-file when using option <span style="color: #111144; font-weight: bold; white-space: pre;">--plain-output-prefix</span>.</li></ul></li>
 <li> DUAROUTER
 <ul><li> Now supports parallel routing by using the option <span style="color: #111144; font-weight: bold; white-space: pre;">--routing-threads <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;INT&gt;</i></a></span></li>
 <li> Added new routing algorithms 'astar' and 'CH' which are faster than the default 'dijkstra' algorithm.</li></ul></li>
@@ -393,11 +394,11 @@
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.148 seconds
-Real time usage: 0.153 seconds
+CPU time usage: 0.052 seconds
+Real time usage: 0.054 seconds
 Preprocessor visited node count: 320/1000000
 Preprocessor generated node count: 958/1000000
-Post‐expand include size: 3548/2097152 bytes
+Post‐expand include size: 3552/2097152 bytes
 Template argument size: 1021/2097152 bytes
 Highest expansion depth: 3/40
 Expensive parser function count: 0/100
@@ -405,20 +406,20 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   67.592      1 - -total
- 38.99%   26.356     17 - Template:Option
- 17.20%   11.625     20 - Template:XML
-  7.06%    4.769      4 - Template:Ticket
-  4.94%    3.339      2 - Template:DT_BOOL
-  4.52%    3.057      4 - Template:DT_STR
-  4.17%    2.820      2 - Template:DT_INT
-  3.93%    2.654      1 - Template:DT_FLOAT
-  3.91%    2.646      2 - Template:SUMO
+100.00%   23.948      1 - -total
+ 39.59%    9.482     17 - Template:Option
+ 17.24%    4.128     20 - Template:XML
+  7.35%    1.760      4 - Template:Ticket
+  4.86%    1.163      4 - Template:DT_STR
+  4.51%    1.080      2 - Template:DT_BOOL
+  4.50%    1.077      2 - Template:DT_INT
+  4.34%    1.039      2 - Template:SUMO
+  4.28%    1.025      1 - Template:DT_FLOAT
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:608-0!*!0!!en!*!* and timestamp 20171218232417 and revision id 6441
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:608-0!*!0!!en!*!* and timestamp 20180516221800 and revision id 6441
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 1 September 2015, at 15:42.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 1 September 2015, at 16:42.</div> </div>
 
     <div id="footer">
       <div>

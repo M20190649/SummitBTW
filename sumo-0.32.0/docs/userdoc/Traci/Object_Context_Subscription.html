@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,10 +270,21 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">TraCI/Object Context Subscription</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.124749 from <a href="http://sumo.dlr.de/wiki/TraCI/Object_Context_Subscription">the wiki page for TraCI/Object_Context_Subscription</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.487189 from <a href="http://sumo.dlr.de/wiki/TraCI/Object_Context_Subscription">the wiki page for TraCI/Object_Context_Subscription</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
-				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>Context subscriptions are allowing the obtaining of specific values from surrounding objects of a certain so called "EGO" object. With these datas one can determine the traffic status around that EGO object.
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Command_0x8X:_Subscribe_..._Context"><span class="tocnumber">2</span> <span class="toctext">Command 0x8<i>X</i>: Subscribe ... Context</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Response_0x9X:_..._Subscription_Response"><span class="tocnumber">3</span> <span class="toctext">Response 0x9<i>X</i>: ... Subscription Response</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Client_library_methods"><span class="tocnumber">4</span> <span class="toctext">Client library methods</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Notes"><span class="tocnumber">5</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Introduction">Introduction</span></h1>
+<p>Context subscriptions are allowing the obtaining of specific values from surrounding objects of a certain so called "EGO" object. With these datas one can determine the traffic status around that EGO object.
 Such an EGO Object can be any possible Vehicle, inductive loop, points-of-interest, and such like. A vehicle driving through a city, for example, is surrounded by a lot of different and changing vehicles, lanes, junctions, or points-of-interest along his ride. Context subscriptions can provide selected variables of those objects that surround the EGO object within a certain range.
 </p><p>The subscription for a structure's context is initiated using a "Subscribe ... Context" command (0x80-0x8e). The command is evaluated immediately on request, verifying it this way. It returns a "Subscribe ... Context" response (0x90-0x9e). If EGO is a vehicle, the subscription is descheduled as soon as the vehicle leaves the simulation.
 </p><p>As soon as the subscription was accepted, it is executed after each call of <a href="../TraCI/Control-related_commands.html#Command_0x02:_Simulation_Step.282.29" title="TraCI/Control-related commands">Simulation Step(2)</a> command.
@@ -402,7 +414,7 @@ Such an EGO Object can be any possible Vehicle, inductive loop, points-of-intere
 </table>
 <p>For each domain, the same variables can be retrieved as using the Get ... Variable commands (see above).
 </p>
-<h2><span class="mw-headline" id="Command_0x8X:_Subscribe_..._Context">Command 0x8<i>X</i>: Subscribe ... Context</span></h2>
+<h1><span class="mw-headline" id="Command_0x8X:_Subscribe_..._Context">Command 0x8<i>X</i>: Subscribe ... Context</span></h1>
 <table cellpadding="4" cellspacing="0" border="0">
 <tr>
 <td align="center"> time
@@ -441,7 +453,7 @@ Such an EGO Object can be any possible Vehicle, inductive loop, points-of-intere
 <li> Context Domain: the type of objects in the addressed object's surrounding to ask values from</li>
 <li> Context Range: the radius of the surrounding</li>
 <li> The size of the variables list must be equal to the field "Variable Number".</li></ul>
-<h2><span class="mw-headline" id="Response_0x9X:_..._Subscription_Response">Response 0x9<i>X</i>: ... Subscription Response</span></h2>
+<h1><span class="mw-headline" id="Response_0x9X:_..._Subscription_Response">Response 0x9<i>X</i>: ... Subscription Response</span></h1>
 <table cellpadding="4" cellspacing="0" border="0">
 <tr>
 <td width="75" align="center"> string
@@ -552,15 +564,20 @@ Such an EGO Object can be any possible Vehicle, inductive loop, points-of-intere
 <li> <i><b>Objects Count</b></i> is the number of objects in range</li></ul>
 <p>This implies that n*m values are returned (Variable Count * Objects Count).
 </p>
-<h2><span class="mw-headline" id="Notes">Notes</span></h2>
+<h1><span class="mw-headline" id="Client_library_methods">Client library methods</span></h1>
+<ul><li> In the <a href="../TraCI/Interfacing_TraCI_from_Python.html#Context_Subscriptions" title="TraCI/Interfacing TraCI from Python">python library</a>, all domains support the methods <a rel="nofollow" class="external text" href="../../pydoc/traci.domain.html#Domain"><i>subscribeContext</i> and <i>unsubscribeContext</i></a></li>
+<li> In the <a href="../TraCI/C%2B%2BTraCIAPI.html" title="TraCI/C++TraCIAPI">C++ library</a>, the method <i>simulation.subscribeContext</i> takes an additional argument that encodes the source domain</li></ul>
+<p><br />
+</p>
+<h1><span class="mw-headline" id="Notes">Notes</span></h1>
 <ul><li> When asking for domains "point-of-interest" and "polygon", the current version does not support asking for these structures when their position was changed using TraCI</li></ul>
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.040 seconds
-Real time usage: 0.042 seconds
-Preprocessor visited node count: 11/1000000
-Preprocessor generated node count: 16/1000000
+CPU time usage: 0.024 seconds
+Real time usage: 0.024 seconds
+Preprocessor visited node count: 19/1000000
+Preprocessor generated node count: 24/1000000
 Post‐expand include size: 0/2097152 bytes
 Template argument size: 0/2097152 bytes
 Highest expansion depth: 2/40
@@ -572,9 +589,9 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:504-0!*!0!!*!*!* and timestamp 20171219021819 and revision id 4684
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:504-0!*!0!!en!*!* and timestamp 20180516143143 and revision id 10775
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 6 September 2013, at 08:50.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 7 May 2018, at 11:28.</div> </div>
 
     <div id="footer">
       <div>

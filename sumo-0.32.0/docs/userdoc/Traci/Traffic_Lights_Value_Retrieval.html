@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">TraCI/Traffic Lights Value Retrieval</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.140153 from <a href="http://sumo.dlr.de/wiki/TraCI/Traffic_Lights_Value_Retrieval">the wiki page for TraCI/Traffic_Lights_Value_Retrieval</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.503378 from <a href="http://sumo.dlr.de/wiki/TraCI/Traffic_Lights_Value_Retrieval">the wiki page for TraCI/Traffic_Lights_Value_Retrieval</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -317,7 +318,7 @@
 </td>
 <td> Returns a list of ids of all traffic lights within the scenario (the given Traffic Lights ID is ignored)
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._trafficlights.html#TrafficLightsDomain-getIDList">getIDList</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._trafficlight.html#TrafficLightDomain-getIDList">getIDList</a>
 </td></tr>
 <tr>
 <td> count (0x01)
@@ -326,7 +327,7 @@
 </td>
 <td> Returns the number of traffic lights within the scenario (the given Traffic Lights ID is ignored)
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._trafficlights.html#TrafficLightsDomain-getIDCount">getIDCount</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._trafficlight.html#TrafficLightDomain-getIDCount">getIDCount</a>
 </td></tr>
 <tr>
 <td> state (light/priority tuple) (0x20)
@@ -335,7 +336,7 @@
 </td>
 <td> Returns the named tl's state as a tuple of light definitions from rRgGyYoO, for red, green, yellow, off, where lower case letters mean that the stream has to decelerate
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._trafficlights.html#TrafficLightsDomain-getRedYellowGreenState">getRedYellowGreenState</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._trafficlight.html#TrafficLightDomain-getRedYellowGreenState">getRedYellowGreenState</a>
 </td></tr>
 <tr>
 <td> default current phase duration (0x24)
@@ -344,7 +345,7 @@
 </td>
 <td> Returns the default total duration of the currently active phase [ms]; To obtain the remaining duration use <i>(getNextSwitch - simulation.getCurrentTime())</i>; to obtain the spent duration subtract the remaining from the total duration
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._trafficlights.html#TrafficLightsDomain-getPhaseDuration">getPhaseDuration</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._trafficlight.html#TrafficLightDomain-getPhaseDuration">getPhaseDuration</a>
 </td></tr>
 <tr>
 <td> controlled lanes (0x26)
@@ -353,7 +354,7 @@
 </td>
 <td> Returns the list of lanes which are controlled by the named traffic light. Returns at least one entry for every element of the phase state (signal index)<sup>(1)</sup><sup>(2)</sup>.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._trafficlights.html#TrafficLightsDomain-getControlledLanes">getControlledLanes</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._trafficlight.html#TrafficLightDomain-getControlledLanes">getControlledLanes</a>
 </td></tr>
 <tr>
 <td> controlled links (0x27)
@@ -362,7 +363,7 @@
 </td>
 <td> Returns the links controlled by the traffic light, sorted by the signal index and described by giving the incoming, outgoing, and via lane. <sup>(2)</sup>
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._trafficlights.html#TrafficLightsDomain-getControlledLinks">getControlledLinks</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._trafficlight.html#TrafficLightDomain-getControlledLinks">getControlledLinks</a>
 </td></tr>
 <tr>
 <td> current phase (0x28)
@@ -371,7 +372,7 @@
 </td>
 <td> Returns the index of the current phase in the current program
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._trafficlights.html#TrafficLightsDomain-getPhase">getPhase</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._trafficlight.html#TrafficLightDomain-getPhase">getPhase</a>
 </td></tr>
 <tr>
 <td> current program (0x29)
@@ -380,7 +381,7 @@
 </td>
 <td> Returns the id of the current program
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._trafficlights.html#TrafficLightsDomain-getProgram">getProgram</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._trafficlight.html#TrafficLightDomain-getProgram">getProgram</a>
 </td></tr>
 <tr>
 <td> complete definition (light/priority tuple) (0x2b)
@@ -389,7 +390,7 @@
 </td>
 <td> Returns the complete traffic light program, structure described under data types
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._trafficlights.html#TrafficLightsDomain-getCompleteRedYellowGreenDefinition">getCompleteRedYellowGreenDefinition</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._trafficlight.html#TrafficLightDomain-getCompleteRedYellowGreenDefinition">getCompleteRedYellowGreenDefinition</a>
 </td></tr>
 <tr>
 <td> assumed time of next switch (0x2d)
@@ -398,12 +399,12 @@
 </td>
 <td> Returns the assumed time (in milliseconds) at which the tls changes the phase. Please note that the time to switch is not relative to current simulation step (the result returned by the query will be absolute time, counting from simulation start); to obtain relative time, one needs to subtract current simulation time from the result returned by this query. Please also note that the time may vary in the case of actuated/adaptive traffic lights
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._trafficlights.html#TrafficLightsDomain-getNextSwitch">getNextSwitch</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._trafficlight.html#TrafficLightDomain-getNextSwitch">getNextSwitch</a>
 </td></tr></table>
 <p>Please note:
 </p>
 <ol><li> Each lane may be the start of multiple links (connections across the intersection). Thus a lane may occur multiple times in the output</li>
-<li> If one signal index controlls multiple links, their incoming lanes and links are all returned sequentially. This only happens if set explicitly by the user when building the network.</li></ol>
+<li> If one signal index controls multiple links, their incoming lanes and links are all returned sequentially. This only happens if set explicitly by the user when building the network.</li></ol>
 <h2><span class="mw-headline" id="Response_0xb2:_Traffic_Lights_Variable">Response 0xb2: Traffic Lights Variable</span></h2>
 <table cellpadding="4" cellspacing="0" border="0">
 <tr>
@@ -427,7 +428,7 @@
 <p>The respond to a <b>"Command Get Traffic Lights Variable"</b>.
 </p>
 <h3><span class="mw-headline" id="Structure_of_compound_object_traffic_light_program_.28both_0x25_and_0x2b.29">Structure of compound object traffic light program (both 0x25 and 0x2b)</span></h3>
-<p>If you request a complete traffic light program, the compound object is structured as following. Attention, each part is fowarded by a byte which represents its data type, except "length".
+<p>If you request a complete traffic light program, the compound object is structured as following. Attention, each part is preceded by a byte which represents its data type, except "length".
 </p>
 <table cellpadding="4" cellspacing="0" border="0">
 <tr>
@@ -515,7 +516,7 @@
 </p><p><br />
 </p>
 <h3><span class="mw-headline" id="Structure_of_compound_object_controlled_links">Structure of compound object controlled links</span></h3>
-<p>If you request the list of links, the compound object is structured as following. Attention, each part is fowarded by a byte which represents its data type, except "length".
+<p>If you request the list of links, the compound object is structured as following. Attention, each part is preceded by a byte which represents its data type, except "length".
 </p>
 <table cellpadding="4" cellspacing="0" border="0">
 <tr>
@@ -561,8 +562,8 @@
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.060 seconds
-Real time usage: 0.062 seconds
+CPU time usage: 0.020 seconds
+Real time usage: 0.021 seconds
 Preprocessor visited node count: 14/1000000
 Preprocessor generated node count: 20/1000000
 Post‐expand include size: 0/2097152 bytes
@@ -576,9 +577,9 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:262-0!*!0!!en!*!* and timestamp 20171218202544 and revision id 10179
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:262-0!*!0!!en!*!* and timestamp 20180515221817 and revision id 10531
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 4 October 2017, at 18:21.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 6 January 2018, at 08:25.</div> </div>
 
     <div id="footer">
       <div>

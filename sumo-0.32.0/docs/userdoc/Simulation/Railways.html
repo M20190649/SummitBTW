@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Simulation/Railways</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.995170 from <a href="http://sumo.dlr.de/wiki/Simulation/Railways">the wiki page for Simulation/Railways</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.352458 from <a href="http://sumo.dlr.de/wiki/Simulation/Railways">the wiki page for Simulation/Railways</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -279,8 +280,9 @@
 <li class="toclevel-1 tocsection-3"><a href="#Building_a_network_for_train_simulation"><span class="tocnumber">3</span> <span class="toctext">Building a network for train simulation</span></a>
 <ul>
 <li class="toclevel-2 tocsection-4"><a href="#Railways"><span class="tocnumber">3.1</span> <span class="toctext">Railways</span></a></li>
-<li class="toclevel-2 tocsection-5"><a href="#Rail_Signals"><span class="tocnumber">3.2</span> <span class="toctext">Rail Signals</span></a></li>
-<li class="toclevel-2 tocsection-6"><a href="#Rail_Crossings"><span class="tocnumber">3.3</span> <span class="toctext">Rail Crossings</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Bidirectional_track_usage"><span class="tocnumber">3.2</span> <span class="toctext">Bidirectional track usage</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Rail_Signals"><span class="tocnumber">3.3</span> <span class="toctext">Rail Signals</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#Rail_Crossings"><span class="tocnumber">3.4</span> <span class="toctext">Rail Crossings</span></a></li>
 </ul>
 </li>
 </ul>
@@ -297,35 +299,42 @@
 <h2><span class="mw-headline" id="Railways">Railways</span></h2>
 <p>Railways can be imported from <a href="../Networks/Import/OpenStreetMap.html" title="Networks/Import/OpenStreetMap">OSM</a>. They can also be explicitly specified using the existing <i>vClasses</i>.
 </p>
+<h2><span class="mw-headline" id="Bidirectional_track_usage">Bidirectional track usage</span></h2>
+<p>Bidirectional track usage is modelled by two edges that have their geometries exactly reversed and using the attribute <span class="inlxml">spreadType="center"</span>. This will result in lane geometries that are overlayed exactly. These edges are referred to as <i>superposed</i> (alternatively as bidirecticional rail edges).
+</p><p>Rail signals recognize superposed edges and automatically restrict their usage so that only one direction is accessible at a time.
+</p><p>When importing networks from <a href="../Networks/Import/OpenStreetMap.html" title="Networks/Import/OpenStreetMap">OSM</a>, rails tagged with <span class="inlxml">railway:preferred_direction:both</span> are automatically imported as superposed edges.
+</p><p><a href="../SUMO-GUI.html" title="SUMO-GUI">SUMO-GUI</a> automatically shows only one of both edges to avoid duplicate drawing of cross-ties. The visualisation option <i>show lane direction</i> can be used to identifiy superposed edges as arrows in both directions will be show.
+</p><p><a href="../NETEDIT.html" title="NETEDIT">NETEDIT</a> supports the visualisation option <i>spread superposed</i> which draws both edges with an offset and thus makes it easier to edit them.
+</p>
 <h2><span class="mw-headline" id="Rail_Signals">Rail Signals</span></h2>
-<p>The <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions">node type</a> <span class="inlxml">rail_signal</span> may be used to define signals which implement <a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/Automatic_block_signaling">Automatic Block Signaling</a>.
+<p>The <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">node type</a> <span class="inlxml">rail_signal</span> may be used to define signals which implement <a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/Automatic_block_signaling">Automatic Block Signaling</a>.
 </p>
 <h2><span class="mw-headline" id="Rail_Crossings">Rail Crossings</span></h2>
-<p>The <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions">node type</a> <span class="inlxml">rail_crossing</span> may be used to define railway crossings. At these nodes trains will always have the right of way and road vehicles get a red light until there is a safe gap between approaching trains.
+<p>The <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">node type</a> <span class="inlxml">rail_crossing</span> may be used to define railway crossings. At these nodes trains will always have the right of way and road vehicles get a red light until there is a safe gap between approaching trains.
 </p><p>When importing networks from <a href="../Networks/Import/OpenStreetMap.html" title="Networks/Import/OpenStreetMap">OpenStreetMap</a>, rail crossings will be imported automatically. For other input data sources the crossings may have to be specified <a href="../Tutorials/ScenarioGuide.html#Modifying_an_imported_network_via_plain.xml" title="Tutorials/ScenarioGuide">via additional xml files</a> or set via <a href="../NETEDIT.html" title="NETEDIT">NETEDIT</a> after importing.
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.024 seconds
-Real time usage: 0.056 seconds
-Preprocessor visited node count: 41/1000000
-Preprocessor generated node count: 100/1000000
-Post‐expand include size: 331/2097152 bytes
-Template argument size: 136/2097152 bytes
+CPU time usage: 0.016 seconds
+Real time usage: 0.017 seconds
+Preprocessor visited node count: 61/1000000
+Preprocessor generated node count: 148/1000000
+Post‐expand include size: 438/2097152 bytes
+Template argument size: 187/2097152 bytes
 Highest expansion depth: 2/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    5.920      1 - -total
- 41.78%    2.473      1 - Template:Caution
- 40.30%    2.386      2 - Template:XML
+100.00%    3.812      1 - -total
+ 42.68%    1.627      4 - Template:XML
+ 32.68%    1.246      1 - Template:Caution
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:591-0!*!0!!en!*!* and timestamp 20171218232320 and revision id 9389
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:591-0!*!0!!en!*!* and timestamp 20180515221759 and revision id 10614
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 24 April 2017, at 11:03.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 13 February 2018, at 14:23.</div> </div>
 
     <div id="footer">
       <div>

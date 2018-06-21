@@ -114,6 +114,7 @@
   <li><a href="Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Definition of Vehicles, Vehicle Types, and Routes</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.702792 from <a href="http://sumo.dlr.de/wiki/Definition_of_Vehicles,_Vehicle_Types,_and_Routes">the wiki page for Definition_of_Vehicles,_Vehicle_Types,_and_Routes</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.047871 from <a href="http://sumo.dlr.de/wiki/Definition_of_Vehicles,_Vehicle_Types,_and_Routes">the wiki page for Definition_of_Vehicles,_Vehicle_Types,_and_Routes</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="wikitable" style="width:25em; border-width:1px 1px; border-style:solid; border-color:#909090; background-color:#f8f8ff; font-size:90%; margin:1em 0em 1em 2em; padding:3px 6px">
@@ -330,31 +331,44 @@ Before starting, it is important to know that a vehicle in SUMO consists of thre
 </li>
 <li class="toclevel-1 tocsection-14"><a href="#Vehicle_Types"><span class="tocnumber">2</span> <span class="toctext">Vehicle Types</span></a>
 <ul>
-<li class="toclevel-2 tocsection-15"><a href="#Speed_Distributions"><span class="tocnumber">2.1</span> <span class="toctext">Speed Distributions</span></a></li>
-<li class="toclevel-2 tocsection-16"><a href="#Vehicle_Length"><span class="tocnumber">2.2</span> <span class="toctext">Vehicle Length</span></a></li>
-<li class="toclevel-2 tocsection-17"><a href="#Abstract_Vehicle_Class"><span class="tocnumber">2.3</span> <span class="toctext">Abstract Vehicle Class</span></a></li>
-<li class="toclevel-2 tocsection-18"><a href="#Vehicle_Emission_Classes"><span class="tocnumber">2.4</span> <span class="toctext">Vehicle Emission Classes</span></a></li>
-<li class="toclevel-2 tocsection-19"><a href="#Impatience"><span class="tocnumber">2.5</span> <span class="toctext">Impatience</span></a>
+<li class="toclevel-2 tocsection-15"><a href="#Speed_Distributions"><span class="tocnumber">2.1</span> <span class="toctext">Speed Distributions</span></a>
 <ul>
-<li class="toclevel-3 tocsection-20"><a href="#Impatience_when_passing_an_intersection_without_right-of-way"><span class="tocnumber">2.5.1</span> <span class="toctext">Impatience when passing an intersection without right-of-way</span></a></li>
-<li class="toclevel-3 tocsection-21"><a href="#Impatience_when_lane-changing"><span class="tocnumber">2.5.2</span> <span class="toctext">Impatience when lane-changing</span></a></li>
+<li class="toclevel-3 tocsection-16"><a href="#Defining_speed_limit_violations_explicitly"><span class="tocnumber">2.1.1</span> <span class="toctext">Defining speed limit violations explicitly</span></a></li>
+<li class="toclevel-3 tocsection-17"><a href="#Defining_a_normal_distribution_for_vehicle_speeds"><span class="tocnumber">2.1.2</span> <span class="toctext">Defining a normal distribution for vehicle speeds</span></a></li>
+<li class="toclevel-3 tocsection-18"><a href="#Defining_a_normal_distribution_.28old_style.29"><span class="tocnumber">2.1.3</span> <span class="toctext">Defining a normal distribution (old style)</span></a></li>
+<li class="toclevel-3 tocsection-19"><a href="#Additional_remarks_on_speed_distributions"><span class="tocnumber">2.1.4</span> <span class="toctext">Additional remarks on speed distributions</span></a></li>
 </ul>
 </li>
-<li class="toclevel-2 tocsection-22"><a href="#Visualization"><span class="tocnumber">2.6</span> <span class="toctext">Visualization</span></a></li>
-<li class="toclevel-2 tocsection-23"><a href="#Car-Following_Models"><span class="tocnumber">2.7</span> <span class="toctext">Car-Following Models</span></a>
+<li class="toclevel-2 tocsection-20"><a href="#Vehicle_Length"><span class="tocnumber">2.2</span> <span class="toctext">Vehicle Length</span></a></li>
+<li class="toclevel-2 tocsection-21"><a href="#Abstract_Vehicle_Class"><span class="tocnumber">2.3</span> <span class="toctext">Abstract Vehicle Class</span></a></li>
+<li class="toclevel-2 tocsection-22"><a href="#Vehicle_Emission_Classes"><span class="tocnumber">2.4</span> <span class="toctext">Vehicle Emission Classes</span></a></li>
+<li class="toclevel-2 tocsection-23"><a href="#Impatience"><span class="tocnumber">2.5</span> <span class="toctext">Impatience</span></a>
 <ul>
-<li class="toclevel-3 tocsection-24"><a href="#Default_Krauss_Model_Description"><span class="tocnumber">2.7.1</span> <span class="toctext">Default <i>Krauss</i> Model Description</span></a></li>
+<li class="toclevel-3 tocsection-24"><a href="#Impatience_when_passing_an_intersection_without_right-of-way"><span class="tocnumber">2.5.1</span> <span class="toctext">Impatience when passing an intersection without right-of-way</span></a></li>
+<li class="toclevel-3 tocsection-25"><a href="#Impatience_when_lane-changing"><span class="tocnumber">2.5.2</span> <span class="toctext">Impatience when lane-changing</span></a></li>
 </ul>
 </li>
-<li class="toclevel-2 tocsection-25"><a href="#Lane-Changing_Models"><span class="tocnumber">2.8</span> <span class="toctext">Lane-Changing Models</span></a></li>
-<li class="toclevel-2 tocsection-26"><a href="#Junction_Model_Parameters"><span class="tocnumber">2.9</span> <span class="toctext">Junction Model Parameters</span></a></li>
-<li class="toclevel-2 tocsection-27"><a href="#Default_Vehicle_Type"><span class="tocnumber">2.10</span> <span class="toctext">Default Vehicle Type</span></a></li>
+<li class="toclevel-2 tocsection-26"><a href="#Visualization"><span class="tocnumber">2.6</span> <span class="toctext">Visualization</span></a></li>
+<li class="toclevel-2 tocsection-27"><a href="#Car-Following_Models"><span class="tocnumber">2.7</span> <span class="toctext">Car-Following Models</span></a>
+<ul>
+<li class="toclevel-3 tocsection-28"><a href="#Default_Krauss_Model_Description"><span class="tocnumber">2.7.1</span> <span class="toctext">Default <i>Krauss</i> Model Description</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-28"><a href="#Route_and_vehicle_type_distributions"><span class="tocnumber">3</span> <span class="toctext">Route and vehicle type distributions</span></a></li>
-<li class="toclevel-1 tocsection-29"><a href="#Stops"><span class="tocnumber">4</span> <span class="toctext">Stops</span></a></li>
-<li class="toclevel-1 tocsection-30"><a href="#Colors"><span class="tocnumber">5</span> <span class="toctext">Colors</span></a></li>
-<li class="toclevel-1 tocsection-31"><a href="#Devices"><span class="tocnumber">6</span> <span class="toctext">Devices</span></a></li>
+<li class="toclevel-2 tocsection-29"><a href="#Lane-Changing_Models"><span class="tocnumber">2.8</span> <span class="toctext">Lane-Changing Models</span></a></li>
+<li class="toclevel-2 tocsection-30"><a href="#Junction_Model_Parameters"><span class="tocnumber">2.9</span> <span class="toctext">Junction Model Parameters</span></a></li>
+<li class="toclevel-2 tocsection-31"><a href="#Default_Vehicle_Type"><span class="tocnumber">2.10</span> <span class="toctext">Default Vehicle Type</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-32"><a href="#Route_and_vehicle_type_distributions"><span class="tocnumber">3</span> <span class="toctext">Route and vehicle type distributions</span></a></li>
+<li class="toclevel-1 tocsection-33"><a href="#Stops"><span class="tocnumber">4</span> <span class="toctext">Stops</span></a></li>
+<li class="toclevel-1 tocsection-34"><a href="#Colors"><span class="tocnumber">5</span> <span class="toctext">Colors</span></a></li>
+<li class="toclevel-1 tocsection-35"><a href="#Devices"><span class="tocnumber">6</span> <span class="toctext">Devices</span></a>
+<ul>
+<li class="toclevel-2 tocsection-36"><a href="#Automatic_assignment"><span class="tocnumber">6.1</span> <span class="toctext">Automatic assignment</span></a></li>
+<li class="toclevel-2 tocsection-37"><a href="#Assignment_by_global_options"><span class="tocnumber">6.2</span> <span class="toctext">Assignment by global options</span></a></li>
+<li class="toclevel-2 tocsection-38"><a href="#Assignment_by_generic_parameters"><span class="tocnumber">6.3</span> <span class="toctext">Assignment by generic parameters</span></a></li>
+</ul>
+</li>
 </ul>
 </div>
 
@@ -551,7 +565,7 @@ The following additional parameters are known:
 </td>
 <td> float(s)
 </td>
-<td> end of departure interval
+<td> end of departure interval (if undefined, defaults to 24 hours)
 </td></tr>
 <tr>
 <td class="inlxml"> vehsPerHour
@@ -625,7 +639,7 @@ The following additional parameters are known:
 <ul><li> Routes have to be connected. At the moment the simulation raises an error if the next edge of the current route is not a successor of the current edge or if the vehicle is not allowed to drive on any of the lanes. If you want the old behavior where a vehicle simply stopped at the end of the current edge and was possibly "teleported" to the next edge after a waiting time, use the Option <span style="color: #111144; font-weight: bold; white-space: pre;">--ignore-route-errors</span>.</li>
 <li> Routes have to contain at least one edge.</li>
 <li> The route file has to be sorted by starting times. In fact this is only relevant, when you define a lot of routes or have large gaps between departure times. The simulation parameter <span style="color: #111144; font-weight: bold; white-space: pre;">--route-steps</span>, which defaults to 200, defines the size of the time interval with which the simulation loads its routes. That means by default at startup, only routes with departure times &lt;200 are loaded, if all the vehicles have departed, the routes up to departure time 400 are loaded etc. pp. This works only if the route file is sorted. This behavior may be disabled by specifying --route-steps 0. It is possible to load unsorted route files as an additional file which will load the whole file at once.</li></ul>
-<p>The first two conditions can be checked using <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/blob/master/tools/route/routecheck.py"><i><b>&lt;SUMO_HOME&gt;</b></i>/tools/route/routecheck.py</a>, the third can be "fixed" using <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/blob/master/tools/route/sort_routes.py"><i><b>&lt;SUMO_HOME&gt;</b></i>/tools/route/sort_routes.py</a>.
+<p>The first two conditions can be checked using <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/blob/master/tools/route/routecheck.py"><i><b>&lt;SUMO_HOME&gt;</b></i>/tools/route/routecheck.py</a>, the third can be "fixed" using <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/blob/master/tools/route/sort_routes.py"><i><b>&lt;SUMO_HOME&gt;</b></i>/tools/route/sort_routes.py</a>.
 </p>
 <div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />sumo may enter an infinite loop when given an unsorted route file with person definitions.</div>
 <h2><span class="mw-headline" id="Incomplete_Routes_.28trips_and_flows.29">Incomplete Routes (trips and flows)</span></h2>
@@ -701,6 +715,7 @@ The following additional parameters are known:
 <div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />When used in <a href="DUAROUTER.html" title="DUAROUTER">DUAROUTER</a> or <a href="SUMO.html" title="SUMO">SUMO</a>, edge weights within TAZ are ignored.</div>
 <p>When loading <span class="inlxml">&lt;taz&gt;</span> in <a href="SUMO-GUI.html" title="SUMO-GUI">SUMO-GUI</a> the optional attribute <span class="inlxml">shape</span> can be used to draw an arbitrary polygon border for visualizing the traffic assignment zone.
 </p>
+<div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />When using TAZ with <a href="SUMO.html" title="SUMO">SUMO</a> and <a href="DUAROUTER.html" title="DUAROUTER">DUAROUTER</a>, their edges will be selected to minimize travel time. This is different from TAZ usage in <a href="OD2TRIPS.html" title="OD2TRIPS">OD2TRIPS</a> where edges are selected according to a probability distribution.</div>
 <h2><span class="mw-headline" id="A_Vehicle.27s_depart_and_arrival_parameter">A Vehicle's depart and arrival parameter</span></h2>
 <p>Using the <span class="inlxml">depart...</span> and <span class="inlxml">arrival...</span>-attributes, it is possible to control how a vehicle is inserted into the network and how it leaves it.
 </p>
@@ -820,6 +835,24 @@ These values have the following meanings:
 <td> The deceleration ability of vehicles of this type (in m/s^2)
 </td></tr>
 <tr>
+<td class="inlxml"> apparentDecel
+</td>
+<td> float
+</td>
+<td> <tt>==decel</tt>
+</td>
+<td> The apparent deceleration of the vehicle as used by the standard model (in m/s^2). The follower uses this value as expected maximal deceleration of the leader.
+</td></tr>
+<tr>
+<td class="inlxml"> emergencyDecel
+</td>
+<td> float
+</td>
+<td> <tt>==decel</tt>
+</td>
+<td> The maximal physically possible deceleration for the vehicle (in m/s^2).
+</td></tr>
+<tr>
 <td class="inlxml"> sigma
 </td>
 <td> float
@@ -925,9 +958,9 @@ These values have the following meanings:
 </td>
 <td> float
 </td>
-<td> 2.0
+<td> 1.8
 </td>
-<td> The vehicle's width [m] (only used for drawing)
+<td> The vehicle's width [m] (used only for visualization with the default model, affects <a href="Simulation/SublaneModel.html" title="Simulation/SublaneModel">sublane model</a>)
 </td></tr>
 <tr>
 <td class="inlxml"> imgFile
@@ -1042,12 +1075,24 @@ These values have the following meanings:
 Besides values which describe the vehicle's car-following properties, one can find definitions of the assigned vehicles' shapes, emissions, and assignment to abstract vehicle classes. These concepts will be described in the following. Also, you may find further descriptions of implemented car-following models in the subsection <a href="#Car-Following_Models">#Car-Following Models</a>.
 </p>
 <h2><span class="mw-headline" id="Speed_Distributions">Speed Distributions</span></h2>
-<p>The attribute <b>speedFactor</b> is used to sample a vehicle specific speed factor from a normal distribution. The parameter can be given as "norm(mean, dev)" or "normc(mean, dev, min, max)". Using <b>speedFactor</b>="normc(1,0.1,0.2,2)" will result in a speed distribution where 95% of the vehicles drive between 80% and 120% of the legal speed limit. For flows, every inserted vehicle will draw an individual chosen speed multiplier as well. The resulting values in this example are capped at 20% of speedFactor at the low end to prevent extreme dawdling and at twice the recommended speed. A vehicle keeps its chosen speed multiplier for the whole simulation and multiplies it with edge speeds to compute the actual speed for driving on this edge. Thus vehicles can exceed edge speeds. However, vehicle speeds are still capped at the vehicle type's <b>maxSpeed</b>.
-</p><p>An alternative way to specify speed distributions is to use numerical values for <b>speedFactor</b> and <b>speedDev</b>. In this case <b>speedFactor</b> defines the expected value and <b>speedDev</b> defines the deviation. When using this style, capping cannot be controlled and will always default to 20% and 200%. Thus the above example can also be defined as <b>speedFactor</b>="1" <b>speedDev</b>="0.1".
-</p><p>If the departSpeed of a vehicle exceeds the speed limit and it's vType has a speedFactor deviation &gt; 0, the indivial chosen speed multiplier is at least high enough to accommodate the stated depart speed. 
+<p>The desired driving speed usually varies among the vehicle of a fleet. This should be modeled by defining a speed distribution using the attributes <b>speedFactor</b> or <b>speedDev</b>. as explained below.
 </p>
 <div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />Using speed distributions is highly advisable to achieve realistic car following behaviour. If all vehicles have the same maximum speed on any given road, they will not be able to catch up with their lead vehicle causing unrealistic large headways</div>
+<h3><span class="mw-headline" id="Defining_speed_limit_violations_explicitly">Defining speed limit violations explicitly</span></h3>
+<p>Each vehicle has an individual speed factor which is multiplied with the speed limit (edge speed) to determine the desired driving speed (default 1.0).
+A vehicle with speed factor 1.2 drives up to 20% above the speed limit whereas a vehicle with speed factor 0.8 would always stay below the speed limit by 20%.
+By setting attribute <b>speedFactor</b> this individual speed factor for all vehicles of a type can be configured.
+</p>
+<h3><span class="mw-headline" id="Defining_a_normal_distribution_for_vehicle_speeds">Defining a normal distribution for vehicle speeds</span></h3>
+<p>The desired driving speed usually varies among the vehicle of a fleet. While this could be modeled by defining a new type for each vehicle and assigning a distinct speed factor for each type (as above) this would be quite cumbersome.
+Instead the attribute <b>speedFactor</b> can also be used to sample a vehicle specific speed factor from a normal distribution. The parameter can be given as "norm(mean, dev)" or "normc(mean, dev, min, max)". Using <b>speedFactor</b>="normc(1,0.1,0.2,2)" will result in a speed distribution where 95% of the vehicles drive between 80% and 120% of the legal speed limit. For flows, every inserted vehicle will draw an individual chosen speed multiplier as well. The resulting values in this example are capped at 20% of speedFactor at the low end to prevent extreme dawdling and at twice the recommended speed. A vehicle keeps its chosen speed multiplier for the whole simulation and multiplies it with edge speeds to compute the actual speed for driving on this edge. Thus vehicles can exceed edge speeds. However, vehicle speeds are still capped at the vehicle type's <b>maxSpeed</b>.
+</p>
+<h3><span class="mw-headline" id="Defining_a_normal_distribution_.28old_style.29">Defining a normal distribution (old style)</span></h3>
+<p>An alternative way to specify speed distributions is to use numerical values for <b>speedFactor</b> and <b>speedDev</b>. In this case <b>speedFactor</b> defines the expected value and <b>speedDev</b> defines the deviation. When using this style, capping cannot be controlled and will always default to 20% and 200%. Thus the above example can also be defined as <b>speedFactor</b>="1" <b>speedDev</b>="0.1".
+</p>
+<h3><span class="mw-headline" id="Additional_remarks_on_speed_distributions">Additional remarks on speed distributions</span></h3>
 <div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />When used for <a href="Simulation/Pedestrians.html" title="Simulation/Pedestrians">pedestrians</a>, the <i>speedFactor</i> attribute is applied directly to the maximum speed of the vType since speed limits are not applicable to pedestrians</div>
+<div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />If the specified departSpeed of a vehicle exceeds the speed limit and it's vType has a speedFactor deviation &gt; 0, the indivial chosen speed multiplier is at least high enough to accommodate the stated depart speed.</div>
 <h2><span class="mw-headline" id="Vehicle_Length">Vehicle Length</span></h2>
 <p>Due to the work on <a href="#Car-Following_Models">car following models</a>, we decided to use two values for vehicle length. The <span class="inlxml">length</span>-attribute describes the length of the vehicle itself. Additionally, the <span class="inlxml">minGap</span>-attribute describes the offset to the leading vehicle when standing in a jam.
 </p><p>This is illustrated in the following image:
@@ -1338,7 +1383,7 @@ Besides values which describe the vehicle's car-following properties, one can fi
 <p>The impatience of a driver is value between 0 and 1 that grows whenever the driver has to stop unintentionally (i.e. due to a jam or waiting at an intersection).
 The impatience value is computed as 
 </p>
-<pre> MAX(0, MIN(1.0, baseImpatience + waitingTime * timeToMaxImpatience))
+<pre> MAX(0, MIN(1.0, baseImpatience + waitingTime / timeToMaxImpatience))
 </pre>
 <p>Where baseImpatience is configured by setting the vType-attribute <i>impatience</i> and timeToMaxImpatience is set using the option <span style="color: #111144; font-weight: bold; white-space: pre;">--time-to-impatience</span> (default 300s).
 The value of baseImpatience may negative to slow the growth of the dynamically computed impatience. It may also be defined with the value <b>off</b> to prevent drivers from becoming impatient.
@@ -1589,7 +1634,7 @@ When using shapes, one should consider that different vehicle classes (passenger
 </p>
 <h3><span class="mw-headline" id="Default_Krauss_Model_Description">Default <i>Krauss</i> Model Description</span></h3>
 <p>The default model is a modification of the model defined by Stefan Krauß in <a rel="nofollow" class="external text" href="http://sumo.dlr.de/pdf/KraussDiss.pdf">Microscopic Modeling of Traffic Flow: Investigation of Collision Free Vehicle Dynamics</a>. The implemented model follows the same idea as that of Krauß, namely: Let vehicles drive as fast as possibly while maintaining perfect safety (always being able to avoid a collision if the leader starts braking within leader and follower maximum acceleration bounds).
-The implemented model as in <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/blob/master/src/microsim/cfmodels/MSCFModel_Krauss.cpp"><i><b>&lt;SUMO_HOME&gt;</b></i>/src/microsim/cfmodels/MSCFModel_Krauss.cpp</a> has the following differences:
+The implemented model as in <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/blob/master/src/microsim/cfmodels/MSCFModel_Krauss.cpp"><i><b>&lt;SUMO_HOME&gt;</b></i>/src/microsim/cfmodels/MSCFModel_Krauss.cpp</a> has the following differences:
 </p>
 <ul><li> Different deceleration capabilities among the vehicles are handled without violating safety (the original model allowed for collisions in this case)</li>
 <li> The formula for safe velocity was adapted to maintain safety when using the <i>Euler</i>-position update rule. This was done by discretizing some of the continuous terms. The original model was defined for the <i>Ballistic</i>-position updated rule and would produce collisions when using <i>Euler</i>. See also <a href="Simulation/Basic_Definition.html#Defining_the_Integration_Method" title="Simulation/Basic Definition">Simulation/Basic_Definition#Defining_the_Integration_Method</a>.</li></ul>
@@ -1718,6 +1763,27 @@ The implemented model as in <a rel="nofollow" class="external text" href="https:
 <td class="inlxml"> lcAccelLat
 </td>
 <td> maximum lateral acceleration per second. <i>default: 1.0</i>
+</td>
+<td> SL2015
+</td></tr>
+<tr>
+<td class="inlxml"> lcTurnAlignmentDistance
+</td>
+<td> Distance to an upcoming turn on the vehicles route, below which the alignment should be dynamically adapted to match the turn direction. <i>default: 0.0 (i.e., disabled)</i>
+</td>
+<td> SL2015
+</td></tr>
+<tr>
+<td class="inlxml"> lcMaxSpeedLatStanding
+</td>
+<td> Upper bound on lateral speed when standing. <i>default: maxSpeedLat (i.e., disabled)</i>
+</td>
+<td> SL2015
+</td></tr>
+<tr>
+<td class="inlxml"> lcMaxSpeedLatFactor
+</td>
+<td> Upper bound on lateral speed while moving computed as lcMaxSpeedLatStanding + lcMaxSpeedLatFactor * getSpeed(). <i>default: 1.0</i>
 </td>
 <td> SL2015
 </td></tr>
@@ -1994,7 +2060,34 @@ color="red"
 <p>The transparency value (alpha) only <a href="SUMO-GUI.html#Transparency" title="SUMO-GUI">takes effect</a> when also using the vType attribute <i>imgFile</i>.
 </p>
 <h1><span class="mw-headline" id="Devices">Devices</span></h1>
-<p>Vehicle devices can be defined individually using <a href="Simulation/GenericParameters.html" title="Simulation/GenericParameters">generic parameters</a>. This is done by defining them for the vehicle or the vehicle type in the following way:
+<p>Vehicle devices are used to model and configure different aspects such as output (device.fcd) or behavior (device.rerouting).
+</p><p>The following device names are supported and can be used for the placeholder <span class="inlxml">&lt;DEVICENAME&gt;</span> below
+</p>
+<ul><li> emission</li>
+<li> battery</li>
+<li> btreiver</li>
+<li> btsender</li>
+<li> rerouting</li>
+<li> ssm</li>
+<li> fcd</li>
+<li> example</li></ul>
+<h2><span class="mw-headline" id="Automatic_assignment">Automatic assignment</span></h2>
+<p>Some devices are assigned automatically. Every <span class="inlxml">&lt;trip&gt;</span> that is loaded into the simulation is automatially equipped with a <i>rerouting</i> device to perform the initial route computation.
+</p><p>Other devices such as <i>fcd</i> are assigned automatically when the option <span style="color: #111144; font-weight: bold; white-space: pre;">--fcd-output</span> is set.
+</p>
+<h2><span class="mw-headline" id="Assignment_by_global_options">Assignment by global options</span></h2>
+<p>Devices can be configured globally for all vehicles in the simulation by setting the option
+<span style="color: #111144; font-weight: bold; white-space: pre;">--device.&lt;DEVICENAME&gt;.probability</span> (i.e.)
+--device.fcd.probability 0.25
+This will equip about a quarter of the vehicles with an fcd device (each vehicle determines this randomly with 25% probability)
+To make the assignment exact the additional option
+<span style="color: #111144; font-weight: bold; white-space: pre;">--device.&lt;DEVICENAME&gt;.deterministic</span> can be set
+Another option is to pass the list of vehicle ids that shall be equipped using the option
+<span style="color: #111144; font-weight: bold; white-space: pre;">--device.&lt;DEVICENAME&gt;.explicit &lt;ID1,ID2,...IDk&gt;</span>.
+</p>
+<div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />These options take precedence over automatic assignment by output-option.</div>
+<h2><span class="mw-headline" id="Assignment_by_generic_parameters">Assignment by generic parameters</span></h2>
+<p>Another option for assigning devices for vehicle types or individual vehicles is by using <a href="Simulation/GenericParameters.html" title="Simulation/GenericParameters">generic parameters</a>. This is done by defining them for the vehicle or the vehicle type in the following way:
 </p>
 <pre class="xml">
 &lt;routes&gt;
@@ -2009,46 +2102,37 @@ color="red"
     &lt;vehicle id=&quot;v1&quot; route=&quot;route0&quot; depart=&quot;0&quot; type=&quot;t1&quot;/&gt;
 &lt;/routes&gt;
 </pre>
-<p>The <span class="inlxml">&lt;param&gt;</span> of a vehicle has precedence over the <span class="inlxml">&lt;param&gt;</span> of the vehicle's type. Both have precedence over the assignment by option <span style="color: #111144; font-weight: bold; white-space: pre;">device.&lt;DEVICENAME&gt;.probability</span> and <span style="color: #111144; font-weight: bold; white-space: pre;">device.&lt;DEVICENAME&gt;.deterministic</span>
-</p><p>The following values are supported for <span class="inlxml">&lt;DEVICENAME&gt;</span>
-</p>
-<ul><li> emission</li>
-<li> battery</li>
-<li> btreiver</li>
-<li> btsender</li>
-<li> rerouting</li>
-<li> ssm</li>
-<li> example</li></ul>
+<div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />The <span class="inlxml">&lt;param&gt;</span> of a vehicle has precedence over the <span class="inlxml">&lt;param&gt;</span> of the vehicle's type. Both have precedence over the assignment by options.</div>
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.440 seconds
-Real time usage: 0.503 seconds
-Preprocessor visited node count: 722/1000000
-Preprocessor generated node count: 1944/1000000
-Post‐expand include size: 9204/2097152 bytes
-Template argument size: 3975/2097152 bytes
+CPU time usage: 0.200 seconds
+Real time usage: 0.211 seconds
+Preprocessor visited node count: 803/1000000
+Preprocessor generated node count: 2112/1000000
+Post‐expand include size: 10690/2097152 bytes
+Template argument size: 4735/2097152 bytes
 Highest expansion depth: 5/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%  116.018      1 - -total
- 14.81%   17.187      1 - Template:Infobox_file_format
- 12.47%   14.465      8 - Template:Note
- 11.52%   13.365     10 - Template:Option
- 11.23%   13.027     23 - Template:XML
-  9.69%   11.244     14 - Template:Caution
-  9.14%   10.605      3 - Template:Source
-  5.66%    6.567      2 - Template:Ifdef
-  3.57%    4.144      2 - Template:DT_TIME
-  3.48%    4.037      2 - Template:DT_FLOAT
+100.00%   45.220      1 - -total
+ 13.92%    6.296     11 - Template:Note
+ 12.13%    5.486      1 - Template:Infobox_file_format
+ 12.10%    5.472     24 - Template:XML
+ 11.44%    5.172     12 - Template:Option
+  9.67%    4.371     15 - Template:Caution
+  8.65%    3.912      3 - Template:Source
+  5.15%    2.327      2 - Template:Ifdef
+  3.22%    1.455      3 - Template:SUMO
+  3.13%    1.415      2 - Template:DT_TIME
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:226-0!*!0!!en!5!* and timestamp 20171218122353 and revision id 10405
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:226-0!*!0!!en!5!* and timestamp 20180516082309 and revision id 10785
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 15 December 2017, at 12:07.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 14 May 2018, at 08:38.</div> </div>
 
     <div id="footer">
       <div>

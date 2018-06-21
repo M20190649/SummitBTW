@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,40 +270,53 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Installing/Windows Libraries</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.797514 from <a href="http://sumo.dlr.de/wiki/Installing/Windows_Libraries">the wiki page for Installing/Windows_Libraries</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.146832 from <a href="http://sumo.dlr.de/wiki/Installing/Windows_Libraries">the wiki page for Installing/Windows_Libraries</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
 <ul>
-<li class="toclevel-1 tocsection-1"><a href="#Xerces-C"><span class="tocnumber">1</span> <span class="toctext">Xerces-C</span></a></li>
-<li class="toclevel-1 tocsection-2"><a href="#Fox"><span class="tocnumber">2</span> <span class="toctext">Fox</span></a>
+<li class="toclevel-1 tocsection-1"><a href="#SUMO_Libraries"><span class="tocnumber">1</span> <span class="toctext">SUMO Libraries</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Individual_packages"><span class="tocnumber">2</span> <span class="toctext">Individual packages</span></a>
 <ul>
-<li class="toclevel-2 tocsection-3"><a href="#PNG_support_in_Fox"><span class="tocnumber">2.1</span> <span class="toctext">PNG support in Fox</span></a></li>
-<li class="toclevel-2 tocsection-4"><a href="#JPEG_support_in_Fox"><span class="tocnumber">2.2</span> <span class="toctext">JPEG support in Fox</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Xerces-C"><span class="tocnumber">2.1</span> <span class="toctext">Xerces-C</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Fox"><span class="tocnumber">2.2</span> <span class="toctext">Fox</span></a>
+<ul>
+<li class="toclevel-3 tocsection-5"><a href="#PNG_support_in_Fox"><span class="tocnumber">2.2.1</span> <span class="toctext">PNG support in Fox</span></a></li>
+<li class="toclevel-3 tocsection-6"><a href="#JPEG_support_in_Fox"><span class="tocnumber">2.2.2</span> <span class="toctext">JPEG support in Fox</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-5"><a href="#PROJ_and_GDAL"><span class="tocnumber">3</span> <span class="toctext">PROJ and GDAL</span></a>
+<li class="toclevel-2 tocsection-7"><a href="#PROJ_and_GDAL"><span class="tocnumber">2.3</span> <span class="toctext">PROJ and GDAL</span></a>
 <ul>
-<li class="toclevel-2 tocsection-6"><a href="#Tamas_Szekeres_binary_packages_at_http:.2F.2Fwww.gisinternals.com.2Frelease.php"><span class="tocnumber">3.1</span> <span class="toctext">Tamas Szekeres binary packages at http://www.gisinternals.com/release.php</span></a></li>
-<li class="toclevel-2 tocsection-7"><a href="#FWTools_.28very_outdated.29"><span class="tocnumber">3.2</span> <span class="toctext">FWTools (very outdated)</span></a></li>
-<li class="toclevel-2 tocsection-8"><a href="#Building_from_source"><span class="tocnumber">3.3</span> <span class="toctext">Building from source</span></a></li>
+<li class="toclevel-3 tocsection-8"><a href="#Tamas_Szekeres_binary_packages_at_http:.2F.2Fwww.gisinternals.com.2Frelease.php"><span class="tocnumber">2.3.1</span> <span class="toctext">Tamas Szekeres binary packages at http://www.gisinternals.com/release.php</span></a></li>
+<li class="toclevel-3 tocsection-9"><a href="#FWTools_.28very_outdated.29"><span class="tocnumber">2.3.2</span> <span class="toctext">FWTools (very outdated)</span></a></li>
+<li class="toclevel-3 tocsection-10"><a href="#Building_from_source"><span class="tocnumber">2.3.3</span> <span class="toctext">Building from source</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-9"><a href="#ffmpeg"><span class="tocnumber">4</span> <span class="toctext">ffmpeg</span></a></li>
-<li class="toclevel-1 tocsection-10"><a href="#OpenSceneGraph"><span class="tocnumber">5</span> <span class="toctext">OpenSceneGraph</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#FFMPEG"><span class="tocnumber">2.4</span> <span class="toctext">FFMPEG</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="#OpenSceneGraph"><span class="tocnumber">2.5</span> <span class="toctext">OpenSceneGraph</span></a></li>
+</ul>
+</li>
 </ul>
 </div>
 
-<h2><span class="mw-headline" id="Xerces-C">Xerces-C</span></h2>
-<p>SUMO uses Xerces-C 3.1.x by default but if you are still stuck with Xerces 2.8 changes should be limited to <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/blob/master/src/windows_config.h"><i><b>&lt;SUMO_HOME&gt;</b></i>/src/windows_config.h</a>, <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/blob/master/build/msvc10/Win32.props"><i><b>&lt;SUMO_HOME&gt;</b></i>/build/msvc10/Win32.props</a> and / or <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/blob/master/build/msvc10/x64.props"><i><b>&lt;SUMO_HOME&gt;</b></i>/build/msvc10/x64.props</a>.
+<h2><span class="mw-headline" id="SUMO_Libraries">SUMO Libraries</span></h2>
+<p><a rel="nofollow" class="external text" href="https://github.com/DLR-TS/SUMOLibraries">SUMOLibraries</a> is a Git repository in where all windows libraries are available and tested for Visual Studio 2017. To obtain it, simply type in windows console:
 </p>
-<ul><li> Apache does not provide binary distributions any longer, but you can try our own build of Xerces-C 3.1.4 with an additional patch fixing unicode problems <a rel="nofollow" class="external text" href="http://sourceforge.net/projects/sumo/files/dependencies/xerces-c-3.1.4.2025vc12.zip">in a 32 bit version</a> or its <a rel="nofollow" class="external text" href="http://sourceforge.net/projects/sumo/files/dependencies/xerces-c-3.1.4.2025_64vc12.zip">64bit version</a> for the 64bit build.</li>
-<li>Create a environment variable XERCES pointing to your xerces-c directory, e.g.</li></ul>
-<pre>set XERCES=D:\libs\xerces-c-3.1.4.2052
+<pre>git clone <a rel="nofollow" class="external free" href="https://github.com/DLR-TS/SUMOLibraries.git">https://github.com/DLR-TS/SUMOLibraries.git</a> c:\Libraries
 </pre>
-<ul><li>Copy dll-files <code>%XERCES%\bin\xerces-c_3_1.dll</code> and <code>%XERCES%\bin\xerces-c_3_1D.dll</code> to some directory which is in your PATH (last resort: into Windows' system32 directory).</li>
+<p>and copy the file <b>C:\Libraries\config.props</b> into SUMO folder <b>build\msvc17</b>. Make sure that folders <code>fox-1.6.54/lib</code>, <code>proj_gdal-1911/bin</code> and <code>xerces-c-3.2.0/bin</code> are in PATH. Note: for 64 bits compilations folders are <code>fox-1.6.54_64/lib</code>, <code>proj_gdal-1911_64/bin</code> and <code>xerces-c-3.2.0_64/bin</code>.
+</p>
+<h2><span class="mw-headline" id="Individual_packages">Individual packages</span></h2>
+<h3><span class="mw-headline" id="Xerces-C">Xerces-C</span></h3>
+<p>SUMO uses Xerces-C 3.1.x or 3.2.x by default but if you are still stuck with Xerces 2.8 changes should be limited to <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/blob/master/src/windows_config.h"><i><b>&lt;SUMO_HOME&gt;</b></i>/src/windows_config.h</a>, <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/blob/master/build/msvc10/Win32.props"><i><b>&lt;SUMO_HOME&gt;</b></i>/build/msvc10/Win32.props</a> and / or <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/blob/master/build/msvc10/x64.props"><i><b>&lt;SUMO_HOME&gt;</b></i>/build/msvc10/x64.props</a>. Please be aware that Xerces-C 3.1.4 can cause problems when using unicode characters in your networks (especially importing chinese street names from OpenStreetMap).
+</p>
+<ul><li> Apache does not provide binary distributions any longer, but you can try our own build of Xerces-C 3.2.0 with an additional patch fixing unicode problems <a rel="nofollow" class="external text" href="http://sourceforge.net/projects/sumo/files/dependencies/xerces-c-3.2.0-win32vc12.zip">in a 32 bit version</a> or its <a rel="nofollow" class="external text" href="http://sourceforge.net/projects/sumo/files/dependencies/xerces-c-3.2.0-win64vc12.zip">64bit version</a> for the 64bit build.</li>
+<li>Create a environment variable XERCES pointing to your xerces-c directory, e.g.</li></ul>
+<pre>set XERCES=D:\libs\xerces-c-3.2.0-win32
+</pre>
+<ul><li>Copy dll-files <code>%XERCES%\bin\xerces-c_3_2.dll</code> and <code>%XERCES%\bin\xerces-c_3_2D.dll</code> to some directory which is in your PATH (last resort: into Windows' system32 directory).</li>
 <li>For the 64bit build the name of the variable is XERCES_64</li></ul>
-<h2><span class="mw-headline" id="Fox">Fox</span></h2>
+<h3><span class="mw-headline" id="Fox">Fox</span></h3>
 <ul><li>If you do not need a GUI, you can skip this section.</li>
 <li>Usually you do not need to build Fox yourself you can <a rel="nofollow" class="external text" href="http://sourceforge.net/projects/sumo/files/dependencies/">download the readily compiled binaries</a>.</li>
 <li>If you insist, please <a rel="nofollow" class="external text" href="http://www.fox-toolkit.org/download.html">download fresh sources</a> and do not use the incomplete package.</li>
@@ -316,7 +330,7 @@
 <pre>set FOX16=D:\libs\fox-1.6.36.
 </pre>
 <ul><li>Copy dll-files <code>%FOX16%\libs\fox-1.6.36\lib\FOXDLL-1.6.dll</code> and <code>%FOX16%\lib\FOXDLLD-1.6.dll</code> to some directory which is in your PATH (last resort: into Windows' system32 directory).</li></ul>
-<h3><span class="mw-headline" id="PNG_support_in_Fox">PNG support in Fox</span></h3>
+<h4><span class="mw-headline" id="PNG_support_in_Fox">PNG support in Fox</span></h4>
 <ul><li>Warning: This is a little advanced, we were successful with libpng 1.5.2 and 1.6.20 together with zlib 1.2.5 and 1.2.8</li>
 <li>download zlib sources and libpng sources from <a rel="nofollow" class="external autonumber" href="http://ftp.fox-toolkit.org/pub/">[1]</a> or from <a rel="nofollow" class="external autonumber" href="http://www.libpng.org/pub/png/libpng.html">[2]</a> and <a rel="nofollow" class="external autonumber" href="http://www.zlib.net/">[3]</a></li>
 <li>unzip all zips</li>
@@ -330,7 +344,7 @@
 <li>in the C++/Preprocessor section add the HAVE_PNG_H define</li>
 <li>in the Linker/Input section add the .lib file to the input</li></ul></li>
 <li>recompile fox and put the resulting dll together with libpng dll in your path</li></ul>
-<h3><span class="mw-headline" id="JPEG_support_in_Fox">JPEG support in Fox</span></h3>
+<h4><span class="mw-headline" id="JPEG_support_in_Fox">JPEG support in Fox</span></h4>
 <ul><li>Warning: This is a little advanced, we were successful with jpeg 8d, and 9b the jpeg 8c which can be found at the fox-toolkit site was broken</li>
 <li>download libjpeg sources from <a rel="nofollow" class="external autonumber" href="http://www.ijg.org/">[4]</a> and unzip it</li>
 <li>download <a rel="nofollow" class="external text" href="http://www.bvbcode.com/code/f2kivdrh-395674-down">win32.mak</a> and place it in the jpeg dir</li>
@@ -345,28 +359,28 @@ nmake /f makefile.vc
 <li>in the C++/Preprocessor section add the HAVE_JPEG_H define</li>
 <li>in the Linker/Input section add the .lib file to the input</li></ul></li>
 <li>recompile foxdll (see above) and put the resulting dll (which has jpeg support linked statically inside) in your path</li></ul>
-<h2><span class="mw-headline" id="PROJ_and_GDAL">PROJ and GDAL</span></h2>
+<h3><span class="mw-headline" id="PROJ_and_GDAL">PROJ and GDAL</span></h3>
 <p>If you do not need transformation of geocoordinates you can disable PROJ and GDAL in <a rel="nofollow" class="external text" href="http://apps.sourceforge.net/trac/sumo/browser/trunk/sumo/build/msvc10/Win32.props">build/msvc10/Win32.props</a> and / or <a rel="nofollow" class="external text" href="http://apps.sourceforge.net/trac/sumo/browser/trunk/sumo/build/msvc10/x64.props">build/msvc10/x64.props</a> 
 (remove the UserMacros lines referencing the relevant *.lib files and remove the Preprocessor definitions HAVE_PROJ and/or HAVE_GDAL)
 and skip this section.
 Otherwise you have the choice between downloading the binary packages by Tamas Szekeres (preferred choice), the FWTools distribution (a little outdated) or compiling for yourself (for the adventurous). Building from source should only be necessary if you want a 64bit build or if you want to ship a copy of the SUMO executable(s) without the need to ship the FWTools as well.
 </p>
-<h3><span class="mw-headline" id="Tamas_Szekeres_binary_packages_at_http:.2F.2Fwww.gisinternals.com.2Frelease.php">Tamas Szekeres binary packages at <a rel="nofollow" class="external free" href="http://www.gisinternals.com/release.php">http://www.gisinternals.com/release.php</a></span></h3>
+<h4><span class="mw-headline" id="Tamas_Szekeres_binary_packages_at_http:.2F.2Fwww.gisinternals.com.2Frelease.php">Tamas Szekeres binary packages at <a rel="nofollow" class="external free" href="http://www.gisinternals.com/release.php">http://www.gisinternals.com/release.php</a></span></h4>
 <ul><li>Choose the latest stable release and then the <a rel="nofollow" class="external text" href="http://download.gisinternals.com/sdk/downloads/release-1600-gdal-1-11-1-mapserver-6-4-1.zip">binaries zip</a> and the <a rel="nofollow" class="external text" href="http://download.gisinternals.com/sdk/downloads/release-1600-gdal-1-11-1-mapserver-6-4-1-libs.zip">libs zip</a> (links valid for MSVC10 as of 31/8/2015)</li>
 <li>unzip the zips in a directory of your choice (lets say D:\libs\proj_gdal) and set PROJ_GDAL=D:\libs\proj_gdal.</li>
 <li>Add <code>%PROJ_GDAL%\bin</code> to your PATH (or copy the contents to some directory in your PATH).</li></ul>
-<h3><span class="mw-headline" id="FWTools_.28very_outdated.29">FWTools (very outdated)</span></h3>
+<h4><span class="mw-headline" id="FWTools_.28very_outdated.29">FWTools (very outdated)</span></h4>
 <ul><li>Just execute the binary and select a target directory.</li>
 <li>Create a environment variable PROJ_GDAL pointing to that directory, e.g.</li></ul>
 <pre>set PROJ_GDAL=D:\libs\FWTools1.1.3.
 </pre>
 <ul><li>Add <code>%PROJ_GDAL%\bin</code> to your PATH (or copy the contents to some directory in your PATH).</li></ul>
-<h3><span class="mw-headline" id="Building_from_source">Building from source</span></h3>
+<h4><span class="mw-headline" id="Building_from_source">Building from source</span></h4>
 <p>If you want to build PROJ and GDAL yourself for some reason, please follow the relevant <a rel="nofollow" class="external text" href="http://trac.osgeo.org/proj/browser/trunk/proj/README">build instructions for PROJ</a> and <a rel="nofollow" class="external text" href="http://trac.osgeo.org/gdal/wiki/BuildingOnWindows">for GDAL</a>. You then should install in a common directory and let the PROJ_GDAL variable point to it as above.
 You should also copy proj.dll and gdal*.dll to a directory in your PATH.
 </p><p>If you do or download a 64bit build, the name of the environment variable needs to be PROJ_GDAL_64.
 </p>
-<h2><span class="mw-headline" id="ffmpeg">ffmpeg</span></h2>
+<h3><span class="mw-headline" id="FFMPEG">FFMPEG</span></h3>
 <p>This is only needed, if you want to save videos directly from the sumo-gui.
 </p>
 <ul><li>You just need to install <a rel="nofollow" class="external text" href="http://ffmpeg.zeranoe.com/builds/">the binary ffmpeg distributions</a> in the Shared and the Dev flavor. Also be sure to download all the platforms (32 and/or 64 bit) you need.</li>
@@ -378,16 +392,16 @@ You should also copy proj.dll and gdal*.dll to a directory in your PATH.
 <pre>set FFMPEG_64=D:\libs\ffmpeg-2.8.3-win64-dev.
 </pre>
 <ul><li>Probably due to a bug in Visual Studio 2010 the resulting sumo-gui works only if debugging symbols are generated (which is the default for the Debug and the Fastbuild but not for the Release)! If your executable does not start or complains about missing symbols, double check whether it is enabled in the linker settings (currently it is for the 64 bit internal release).</li></ul>
-<h2><span class="mw-headline" id="OpenSceneGraph">OpenSceneGraph</span></h2>
+<h3><span class="mw-headline" id="OpenSceneGraph">OpenSceneGraph</span></h3>
 <p>This is only relevant for the 3D GUI. You will need to build at least OSG 3.4.0 because earlier versions do not work with Visual Studio 2012. Unfortunately there are no binaries readily available. If you want to use models which are not in &lt;SUMO&gt;/data/3D, you can add directories containing them to the OSG_FILE_PATH environment variable. the build will look for libraries and includes in the directories below $OSG and $OSG_64.
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.036 seconds
-Real time usage: 0.038 seconds
-Preprocessor visited node count: 65/1000000
-Preprocessor generated node count: 114/1000000
-Post‐expand include size: 399/2097152 bytes
+CPU time usage: 0.020 seconds
+Real time usage: 0.022 seconds
+Preprocessor visited node count: 73/1000000
+Preprocessor generated node count: 122/1000000
+Post‐expand include size: 402/2097152 bytes
 Template argument size: 132/2097152 bytes
 Highest expansion depth: 2/40
 Expensive parser function count: 0/100
@@ -395,14 +409,14 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    7.641      1 - -total
- 91.05%    6.957      3 - Template:Source
- 27.18%    2.077      3 - Template:SUMO
+100.00%    4.444      1 - -total
+ 92.03%    4.090      3 - Template:Source
+ 33.41%    1.485      3 - Template:SUMO
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:620-0!*!*!!en!*!* and timestamp 20171218232228 and revision id 9735
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:620-0!*!*!!en!*!* and timestamp 20180516130419 and revision id 10684
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 27 June 2017, at 09:41.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 7 March 2018, at 16:41.</div> </div>
 
     <div id="footer">
       <div>

@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Z/Changes from Version 0.13.0 to Version 0.13.1</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.212120 from <a href="http://sumo.dlr.de/wiki/Z/Changes_from_Version_0.13.0_to_Version_0.13.1">the wiki page for Z/Changes_from_Version_0.13.0_to_Version_0.13.1</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.575662 from <a href="http://sumo.dlr.de/wiki/Z/Changes_from_Version_0.13.0_to_Version_0.13.1">the wiki page for Z/Changes_from_Version_0.13.0_to_Version_0.13.1</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><b>Release Date: 01.11.2011</b>
@@ -287,11 +288,11 @@
 <li> Added the description about how to <a href="../TraCI/Change_Vehicle_State.html" title="TraCI/Change Vehicle State">add a vehicle via TraCI</a></li>
 <li> Retrieve the number of still expected vehicles</li></ul></li>
 <li> NETCONVERT
-<ul><li> added more control over joining junctions. You can declare nodes to be joined as well as exclude nodes from joining (see <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Joining_Nodes" title="Networks/Building Networks from own XML-descriptions">Networks/Building_Networks_from_own_XML-descriptions#Joining_Nodes</a>)</li>
+<ul><li> added more control over joining junctions. You can declare nodes to be joined as well as exclude nodes from joining (see <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Joining_Nodes" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">Networks/Building_Networks_from_own_XML-descriptions#Joining_Nodes</a>)</li>
 <li> added option <span style="color: #111144; font-weight: bold; white-space: pre;">--osm.discard-tls</span> (do not use tls definitions when importing OSM)</li>
 <li> added option <span style="color: #111144; font-weight: bold; white-space: pre;">--junctions.join-exclude <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;STRING&gt;[,&lt;STRING&gt;]*</i></a></span> (junctions in this list are not joined)</li>
 <li> added option <span style="color: #111144; font-weight: bold; white-space: pre;">--no-left-connections</span> (do not build connections to left)</li>
-<li> added optional attributes 'toLane' and 'fromLane' to connection-file element 'reset' (see <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Connection_Descriptions" title="Networks/Building Networks from own XML-descriptions">Networks/Building_Networks_from_own_XML-descriptions#Connection_Descriptions</a>)</li>
+<li> added optional attributes 'toLane' and 'fromLane' to connection-file element 'reset' (see <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Connection_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">Networks/Building_Networks_from_own_XML-descriptions#Connection_Descriptions</a>)</li>
 <li> added importer for openDRIVE files, see <a href="../Networks/Import/OpenDRIVE.html" title="Networks/Import/OpenDRIVE">Networks/Import/OpenDRIVE</a>; many thanks go to Marius Dupuis from <a rel="nofollow" class="external text" href="http://www.vires.com/">VIRES</a> for allowing to use the example files for tests</li>
 <li> added importer for matSIM files, see <a href="../Networks/Import/MATsim.html" title="Networks/Import/MATsim">Networks/Import/MATsim</a> (actually already in 0.13.0)</li>
 <li> added new plain xml input/output format <b>plain.tll.xml</b> which holds information about traffic lights.</li>
@@ -320,8 +321,8 @@
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.048 seconds
-Real time usage: 0.048 seconds
+CPU time usage: 0.024 seconds
+Real time usage: 0.024 seconds
 Preprocessor visited node count: 71/1000000
 Preprocessor generated node count: 208/1000000
 Post‐expand include size: 1103/2097152 bytes
@@ -332,18 +333,18 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   20.521      1 - -total
- 76.15%   15.627      6 - Template:Option
- 17.90%    3.673      1 - Template:DT_Float
- 12.69%    2.604      1 - Template:DT_StringList
- 11.51%    2.362      1 - Template:DT_FileList
-  9.69%    1.989      3 - Template:SUMO
-  8.95%    1.836      1 - Template:DT_FILE
+100.00%   10.450      1 - -total
+ 75.20%    7.858      6 - Template:Option
+ 19.09%    1.995      1 - Template:DT_Float
+ 10.39%    1.086      3 - Template:SUMO
+ 10.16%    1.062      1 - Template:DT_StringList
+ 10.00%    1.045      1 - Template:DT_FileList
+  9.99%    1.044      1 - Template:DT_FILE
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:460-0!*!0!!*!*!* and timestamp 20171218232413 and revision id 4522
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:460-0!*!0!!*!*!* and timestamp 20180515221825 and revision id 4522
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 6 June 2013, at 08:01.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 6 June 2013, at 09:01.</div> </div>
 
     <div id="footer">
       <div>

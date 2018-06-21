@@ -114,6 +114,7 @@
   <li><a href="Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">SUMO-GUI</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.914304 from <a href="http://sumo.dlr.de/wiki/SUMO-GUI">the wiki page for SUMO-GUI</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.268253 from <a href="http://sumo.dlr.de/wiki/SUMO-GUI">the wiki page for SUMO-GUI</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -383,7 +384,7 @@ Additional shortcuts are listed below:
 <li> select/deselect object</li></ul>
 <p>The following objects can be accessed by right-click:
 </p>
-<ul><li> Vehicles</li>
+<ul><li> Vehicles (some attributes are only availabe when using a specific simulation model, i.e. <a href="MESO.html" title="MESO" class="mw-redirect">MESO</a> or <a href="Simulation/SublaneModel.html#New_Parameters" title="Simulation/SublaneModel">sublane model</a>)</li>
 <li> Persons</li>
 <li> Lanes</li>
 <li> Junctions</li>
@@ -418,8 +419,8 @@ junction:myJunction
 <p>All simulation objects can be located based on their ID by using the locate dialog <a href="images/Locate.png" class="image"><img alt="Locate.png" src="images//Locate.png" width="26" height="26" /></a>.
 By clicking this butten a sub-menu for selecting the object type is openend. The following types are available:
 </p>
-<ul><li> <a href="Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions">Junction</a></li>
-<li> <a href="Networks/Building_Networks_from_own_XML-descriptions.html#Edge_Descriptions" title="Networks/Building Networks from own XML-descriptions">Edge</a></li>
+<ul><li> <a href="Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">Junction</a></li>
+<li> <a href="Networks/Building_Networks_from_own_XML-descriptions.html#Edge_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">Edge</a></li>
 <li> <a href="Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html" title="Definition of Vehicles, Vehicle Types, and Routes">Vehicle</a></li>
 <li> <a href="Specification/Persons.html" title="Specification/Persons">Person</a></li>
 <li> <a href="Simulation/Traffic_Lights.html" title="Simulation/Traffic Lights">Traffic light</a></li>
@@ -460,7 +461,7 @@ The <i>Locate Menu</i> in the main menu bar also contains a check-box that toggl
 <li> <span style="color:#FFFFFF; background:#FFFFFF">FOO</span> uncontrolled, vehicle has right of way</li>
 <li> <span style="color:#333333; background:#333333">FOO</span> uncontrolled, vehicle has to yield to some streams</li>
 <li> <span style="color:#808080; background:#808080">FOO</span> uncontrolled, right-before-left rules, all vehicles yield to the rightmost incoming lane</li>
-<li> <span style="color:#800080; background:#800080">FOO</span> uncontrolled, stop-sign, vehicle has to stop and then yield</li>
+<li> <span style="color:#800080; background:#800080">FOO</span> uncontrolled, stop-sign / controlled, right-turn arrow, vehicle has to stop and then yield </li>
 <li> <span style="color:#0000C0; background:#0000C0">FOO</span> uncontrolled, allway-stop, all vehicles have to stop and then drive in the order of arrival</li>
 <li> <span style="color:#c08140; background:#c08140">FOO</span> uncontrolled, zipper, vehicles have to perform <a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/Merge_%28traffic%29">zipper merging</a></li>
 <li> <span style="color:#000000; background:#000000">FOO</span> dead-end, vehicle may not drive there</li></ul>
@@ -1308,8 +1309,8 @@ When you are done the configuration files should look like below:
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.344 seconds
-Real time usage: 0.358 seconds
+CPU time usage: 0.160 seconds
+Real time usage: 0.180 seconds
 Preprocessor visited node count: 329/1000000
 Preprocessor generated node count: 692/1000000
 Post‐expand include size: 2885/2097152 bytes
@@ -1320,15 +1321,15 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   25.288      1 - -total
- 19.29%    4.879      8 - Template:Option
- 18.70%    4.729      5 - Template:Note
- 17.79%    4.500      7 - Template:XML
+100.00%   12.867      1 - -total
+ 19.19%    2.469      8 - Template:Option
+ 17.94%    2.308      7 - Template:XML
+ 17.22%    2.215      5 - Template:Note
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:77-0!*!0!!en!5!* and timestamp 20171219011434 and revision id 10422
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:77-0!*!0!!en!5!* and timestamp 20180515221749 and revision id 10696
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 17 December 2017, at 01:45.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 15 March 2018, at 09:48.</div> </div>
 
     <div id="footer">
       <div>

@@ -9,14 +9,15 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="traci.html"><font color="#ffffff">traci</font></a>._simulation</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/delphi/cmakeGcc/sumo/tools/traci/_simulation.py">/home/delphi/cmakeGcc/sumo/tools/traci/_simulation.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/delphi/gcc/sumo/tools/traci/_simulation.py">/home/delphi/gcc/sumo/tools/traci/_simulation.py</a></font></td></tr></table>
     <p><tt>#&nbsp;-*-&nbsp;coding:&nbsp;utf-8&nbsp;-*-<br>
 #&nbsp;Eclipse&nbsp;SUMO,&nbsp;Simulation&nbsp;of&nbsp;Urban&nbsp;MObility;&nbsp;see&nbsp;https://eclipse.org/sumo<br>
-#&nbsp;Copyright&nbsp;(C)&nbsp;2011-2017&nbsp;German&nbsp;Aerospace&nbsp;Center&nbsp;(DLR)&nbsp;and&nbsp;others.<br>
+#&nbsp;Copyright&nbsp;(C)&nbsp;2011-2018&nbsp;German&nbsp;Aerospace&nbsp;Center&nbsp;(DLR)&nbsp;and&nbsp;others.<br>
 #&nbsp;This&nbsp;program&nbsp;and&nbsp;the&nbsp;accompanying&nbsp;materials<br>
 #&nbsp;are&nbsp;made&nbsp;available&nbsp;under&nbsp;the&nbsp;terms&nbsp;of&nbsp;the&nbsp;Eclipse&nbsp;Public&nbsp;License&nbsp;v2.0<br>
 #&nbsp;which&nbsp;accompanies&nbsp;this&nbsp;distribution,&nbsp;and&nbsp;is&nbsp;available&nbsp;at<br>
-#&nbsp;<a href="http://www.eclipse.org/legal/epl-v20.html">http://www.eclipse.org/legal/epl-v20.html</a></tt></p>
+#&nbsp;<a href="http://www.eclipse.org/legal/epl-v20.html">http://www.eclipse.org/legal/epl-v20.html</a><br>
+#&nbsp;SPDX-License-Identifier:&nbsp;EPL-2.0</tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#aa55cc">
@@ -68,7 +69,7 @@
 
 <dl><dt><a name="SimulationDomain-convertRoad"><strong>convertRoad</strong></a>(self, x, y, isGeo<font color="#909090">=False</font>)</dt></dl>
 
-<dl><dt><a name="SimulationDomain-findIntermodalRoute"><strong>findIntermodalRoute</strong></a>(self, fromEdge, toEdge, modes<font color="#909090">=''</font>, depart<font color="#909090">=-1.0</font>, routingMode<font color="#909090">=0</font>, speed<font color="#909090">=-1.0</font>, walkFactor<font color="#909090">=-1.0</font>, departPos<font color="#909090">=-1.0</font>, arrivalPos<font color="#909090">=-1.0</font>, departPosLat<font color="#909090">=-1.0</font>, ptype<font color="#909090">=''</font>, vtype<font color="#909090">=''</font>)</dt></dl>
+<dl><dt><a name="SimulationDomain-findIntermodalRoute"><strong>findIntermodalRoute</strong></a>(self, fromEdge, toEdge, modes<font color="#909090">=''</font>, depart<font color="#909090">=-1.0</font>, routingMode<font color="#909090">=0</font>, speed<font color="#909090">=-1.0</font>, walkFactor<font color="#909090">=-1.0</font>, departPos<font color="#909090">=-1.0</font>, arrivalPos<font color="#909090">=-1.0</font>, departPosLat<font color="#909090">=-1.0</font>, ptype<font color="#909090">=''</font>, vtype<font color="#909090">=''</font>, destStop<font color="#909090">=''</font>)</dt></dl>
 
 <dl><dt><a name="SimulationDomain-findRoute"><strong>findRoute</strong></a>(self, fromEdge, toEdge, vtype<font color="#909090">=''</font>, depart<font color="#909090">=-1.0</font>, routingMode<font color="#909090">=0</font>)</dt></dl>
 
@@ -82,6 +83,14 @@ Returns&nbsp;the&nbsp;number&nbsp;of&nbsp;vehicles&nbsp;which&nbsp;arrived&nbsp;
 
 <dl><dt><a name="SimulationDomain-getBusStopWaiting"><strong>getBusStopWaiting</strong></a>(self, stopID)</dt><dd><tt><a href="#SimulationDomain-getBusStopWaiting">getBusStopWaiting</a>()&nbsp;-&gt;&nbsp;integer<br>
 Get&nbsp;the&nbsp;total&nbsp;number&nbsp;of&nbsp;waiting&nbsp;persons&nbsp;at&nbsp;the&nbsp;named&nbsp;bus&nbsp;stop.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getCollidingVehiclesIDList"><strong>getCollidingVehiclesIDList</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getCollidingVehiclesIDList">getCollidingVehiclesIDList</a>()&nbsp;-&gt;&nbsp;list(string)<br>
+Return&nbsp;Ids&nbsp;of&nbsp;vehicles&nbsp;involved&nbsp;in&nbsp;a&nbsp;collision&nbsp;(typically&nbsp;2&nbsp;per<br>
+collision).</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getCollidingVehiclesNumber"><strong>getCollidingVehiclesNumber</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getCollidingVehiclesNumber">getCollidingVehiclesNumber</a>()&nbsp;-&gt;&nbsp;integer<br>
+Return&nbsp;number&nbsp;of&nbsp;vehicles&nbsp;involved&nbsp;in&nbsp;a&nbsp;collision&nbsp;(typically&nbsp;2&nbsp;per<br>
+collision).</tt></dd></dl>
 
 <dl><dt><a name="SimulationDomain-getCurrentTime"><strong>getCurrentTime</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getCurrentTime">getCurrentTime</a>()&nbsp;-&gt;&nbsp;integer<br>
 &nbsp;<br>
@@ -232,7 +241,7 @@ Unsubscribe&nbsp;from&nbsp;receiving&nbsp;object&nbsp;values.</tt></dd></dl>
 <font color="#000000" face="helvetica, arial"><a name="Stage">class <strong>Stage</strong></a>(<a href="__builtin__.html#tuple">__builtin__.tuple</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt><a href="#Stage">Stage</a>(stageType,&nbsp;line,&nbsp;destStop,&nbsp;edges,&nbsp;travelTime,&nbsp;cost)<br>&nbsp;</tt></td></tr>
+<td colspan=2><tt><a href="#Stage">Stage</a>(stageType,&nbsp;line,&nbsp;destStop,&nbsp;edges,&nbsp;travelTime,&nbsp;cost,&nbsp;intended,&nbsp;depart)<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
 <dd><a href="traci._simulation.html#Stage">Stage</a></dd>
@@ -257,7 +266,7 @@ Class methods defined here:<br>
 
 <hr>
 Static methods defined here:<br>
-<dl><dt><a name="Stage-__new__"><strong>__new__</strong></a>(_cls, stageType, line, destStop, edges, travelTime, cost)</dt><dd><tt>Create&nbsp;new&nbsp;instance&nbsp;of&nbsp;<a href="#Stage">Stage</a>(stageType,&nbsp;line,&nbsp;destStop,&nbsp;edges,&nbsp;travelTime,&nbsp;cost)</tt></dd></dl>
+<dl><dt><a name="Stage-__new__"><strong>__new__</strong></a>(_cls, stageType, line, destStop, edges, travelTime, cost, intended, depart)</dt><dd><tt>Create&nbsp;new&nbsp;instance&nbsp;of&nbsp;<a href="#Stage">Stage</a>(stageType,&nbsp;line,&nbsp;destStop,&nbsp;edges,&nbsp;travelTime,&nbsp;cost,&nbsp;intended,&nbsp;depart)</tt></dd></dl>
 
 <hr>
 Data descriptors defined here:<br>
@@ -267,11 +276,17 @@ Data descriptors defined here:<br>
 <dl><dt><strong>cost</strong></dt>
 <dd><tt>Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;5</tt></dd>
 </dl>
+<dl><dt><strong>depart</strong></dt>
+<dd><tt>Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;7</tt></dd>
+</dl>
 <dl><dt><strong>destStop</strong></dt>
 <dd><tt>Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;2</tt></dd>
 </dl>
 <dl><dt><strong>edges</strong></dt>
 <dd><tt>Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;3</tt></dd>
+</dl>
+<dl><dt><strong>intended</strong></dt>
+<dd><tt>Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;6</tt></dd>
 </dl>
 <dl><dt><strong>line</strong></dt>
 <dd><tt>Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;1</tt></dd>
@@ -284,7 +299,7 @@ Data descriptors defined here:<br>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>_fields</strong> = ('stageType', 'line', 'destStop', 'edges', 'travelTime', 'cost')</dl>
+<dl><dt><strong>_fields</strong> = ('stageType', 'line', 'destStop', 'edges', 'travelTime', 'cost', 'intended', 'depart')</dl>
 
 <hr>
 Methods inherited from <a href="__builtin__.html#tuple">__builtin__.tuple</a>:<br>

@@ -1,9 +1,10 @@
 # Eclipse SUMO, Simulation of Urban MObility; see https://eclipse.org/sumo
-# Copyright (C) 2008-2017 German Aerospace Center (DLR) and others.
+# Copyright (C) 2008-2018 German Aerospace Center (DLR) and others.
 # This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v2.0
 # which accompanies this distribution, and is available at
 # http://www.eclipse.org/legal/epl-v20.html
+# SPDX-License-Identifier: EPL-2.0
 
 # @file    statisticsElements.py
 # @author  Yun-Pang Floetteroed
@@ -124,7 +125,7 @@ class VehInformationReader(handler.ContentHandler):
             self._Vehicle.travellength = float(attrs['routeLength'])
             self._Vehicle.departdelay = float(attrs['departDelay'])
             self._Vehicle.waittime = float(
-                attrs['departDelay']) + float(attrs['waitSteps'])
+                attrs['departDelay']) + float(attrs['waitingTime'])
             self._vehList.append(self._Vehicle)
 
 # output the network statistics based on the sumo-simulation results

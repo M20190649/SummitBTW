@@ -114,6 +114,7 @@
   <li><a href="../../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Networks/Import/ArcView</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.839393 from <a href="http://sumo.dlr.de/wiki/Networks/Import/ArcView">the wiki page for Networks/Import/ArcView</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.189216 from <a href="http://sumo.dlr.de/wiki/Networks/Import/ArcView">the wiki page for Networks/Import/ArcView</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><a href="../../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> is able to directly read binary ArcView databases ("shapefiles"). To convert such databases, at least three files are needed: a file with the extension ".dbf", one with the extension ".shp" and one with the extension ".shx". Additionally, having a projection file with the extension ".proj" is of benefit. The option to load a shape-file into <a href="../../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> in order to convert it into a SUMO-network is named <span style="color: #111144; font-weight: bold; white-space: pre;">--shapefile-prefix <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span>. Because shape-file descriptions use more than a single file, one has to supply the file name without extension, only. So, the following call to <a href="../../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> should be used to import the road network stored in "my_shape_files.shp", "my_shape_files.shx", "my_shape_files.proj", and "my_shape_files.dbf":
@@ -322,13 +323,13 @@
 <td> <span style="color: #111144; font-weight: bold; white-space: pre;">--shapefile.street-id <i>&lt;FIELD_NAME&gt;</i></span>
 </td></tr>
 <tr>
-<td> The name of an edge (not really used)
+<td> The street name of an edge (need not be unique, for displaying)
 </td>
 <td> n
 </td>
 <td> <b>ST_NAME</b>
 </td>
-<td>
+<td> <span style="color: #111144; font-weight: bold; white-space: pre;">--shapefile.name <i>&lt;FIELD_NAME&gt;</i></span>
 </td></tr>
 <tr>
 <td> The name of the node the edge starts at
@@ -391,7 +392,7 @@
 </td>
 <td> <b>SPEED</b> or <b>speed</b>
 </td>
-<td>
+<td> <span style="color: #111144; font-weight: bold; white-space: pre;">--shapefile.speed <i>&lt;FIELD_NAME&gt;</i></span>
 </td></tr>
 <tr>
 <td> Number of lanes a road has
@@ -400,7 +401,7 @@
 </td>
 <td> <b>NOLANES</b>, <b>nolanes</b> or <b>rnol</b>
 </td>
-<td>
+<td> <span style="color: #111144; font-weight: bold; white-space: pre;">--shapefile.laneNumber <i>&lt;FIELD_NAME&gt;</i></span>
 </td></tr>
 <tr>
 <td> Direction of travel ("B": both, "F": forward, "T": backward)
@@ -412,7 +413,7 @@
 <td>
 </td></tr></table>
 <p>If being familiar with NavTeq, you may have noticed that the defaults are the ones that are used by NavTeq.
-</p><p>Some shape file databases do not contain explicit information about the edges' attributes (number of lanes, priority, allowed speed) at all. It is possible use <a href="../../SUMO_edge_type_file.html" title="SUMO edge type file">SUMO edge type file</a> for describing the edges' attributes. In this case, the column to retrieve an according street's type name from must be named using <span style="color: #111144; font-weight: bold; white-space: pre;">--shapefile.type-id <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;ID&gt;</i></a></span> and a <a href="../../SUMO_edge_type_file.html" title="SUMO edge type file">SUMO edge type file</a> must be given to <a href="../../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> using <span style="color: #111144; font-weight: bold; white-space: pre;">--type-files <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span>. If something fails with the types or the explicit values, it can be catched using <span style="color: #111144; font-weight: bold; white-space: pre;">--shapefile.use-defaults-on-failure</span>. In these cases, the default <a href="../../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> values are used. Besides this, it is possible to load own <a href="../../Networks/Building_Networks_from_own_XML-descriptions.html#Connection_Descriptions" title="Networks/Building Networks from own XML-descriptions">connection descriptions</a>.
+</p><p>Some shape file databases do not contain explicit information about the edges' attributes (number of lanes, priority, allowed speed) at all. It is possible use <a href="../../SUMO_edge_type_file.html" title="SUMO edge type file">SUMO edge type file</a> for describing the edges' attributes. In this case, the column to retrieve an according street's type name from must be named using <span style="color: #111144; font-weight: bold; white-space: pre;">--shapefile.type-id <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;ID&gt;</i></a></span> and a <a href="../../SUMO_edge_type_file.html" title="SUMO edge type file">SUMO edge type file</a> must be given to <a href="../../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> using <span style="color: #111144; font-weight: bold; white-space: pre;">--type-files <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span>. If something fails with the types or the explicit values, it can be catched using <span style="color: #111144; font-weight: bold; white-space: pre;">--shapefile.use-defaults-on-failure</span>. In these cases, the default <a href="../../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> values are used. Besides this, it is possible to load own <a href="../../Networks/Building_Networks_from_own_XML-descriptions.html#Connection_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">connection descriptions</a>.
 </p>
 <div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />One can insert own attributes into the database using a GIS. This means, one can also insert own fields for the number of lanes, priority, or allowed speed, naming them as described above.</div>
 <p>ArcView-networks are encoded using geocoordinates which have to be converted to the cartesian coordinates system used by SUMO. To describe how to convert the coordinates, one should know in which UTM-zone your network is located. Use <a href="/w/index.php?title=Projection_options&amp;action=edit&amp;redlink=1" class="new" title="Projection options (page does not exist)">projection options</a> to set the correct one.
@@ -559,31 +560,31 @@ This work is licensed under a <a rel="nofollow" class="external text" href="http
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.148 seconds
-Real time usage: 0.407 seconds
-Preprocessor visited node count: 209/1000000
-Preprocessor generated node count: 598/1000000
-Post‐expand include size: 3650/2097152 bytes
-Template argument size: 1176/2097152 bytes
+CPU time usage: 0.072 seconds
+Real time usage: 0.079 seconds
+Preprocessor visited node count: 230/1000000
+Preprocessor generated node count: 658/1000000
+Post‐expand include size: 3978/2097152 bytes
+Template argument size: 1282/2097152 bytes
 Highest expansion depth: 3/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   71.196      1 - -total
- 50.90%   36.237     20 - Template:Option
- 16.37%   11.652      1 - Template:Note
- 15.83%   11.268      3 - Template:DT_FILE
- 14.72%   10.480      4 - Template:DT_STR
-  4.07%    2.895      1 - Template:License_CC_BY-SA
-  3.77%    2.682      1 - Template:DT_ID
-  2.90%    2.064      1 - Template:Caution
+100.00%   20.853      1 - -total
+ 48.75%   10.165     23 - Template:Option
+  8.07%    1.682      1 - Template:Note
+  7.64%    1.594      1 - Template:Caution
+  6.70%    1.397      1 - Template:License_CC_BY-SA
+  6.38%    1.330      1 - Template:DT_ID
+  6.16%    1.284      4 - Template:DT_STR
+  5.78%    1.205      3 - Template:DT_FILE
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:129-0!*!0!!en!5!* and timestamp 20171218232240 and revision id 9014
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:129-0!*!0!!en!5!* and timestamp 20180516125544 and revision id 10705
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 3 March 2017, at 14:00.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 17 March 2018, at 15:29.</div> </div>
 
     <div id="footer">
       <div>

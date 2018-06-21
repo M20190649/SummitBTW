@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Demand/Activity-based Demand Generation</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.704684 from <a href="http://sumo.dlr.de/wiki/Demand/Activity-based_Demand_Generation">the wiki page for Demand/Activity-based_Demand_Generation</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.049828 from <a href="http://sumo.dlr.de/wiki/Demand/Activity-based_Demand_Generation">the wiki page for Demand/Activity-based_Demand_Generation</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>ActivityGen generates demand from a description of the population in the net. To do so, it uses a simple activity-based traffic model. It supports the activities work, school, and free time and the conveyances walking, bike, car, and bus. Cars may have their start or stop location outside the map.
@@ -318,7 +319,7 @@
 </p>
 <h2><span class="mw-headline" id="Example">Example</span></h2>
 <div class="floatright"><a href="../images/Activitygen-example-net.png" class="image"><img alt="Activitygen-example-net.png" src="../images/Activitygen-example-net.png" width="200" height="200" srcset="/w/images/thumb/0/01/Activitygen-example-net.png/300px-Activitygen-example-net.png 1.5x, /w/images/thumb/0/01/Activitygen-example-net.png/400px-Activitygen-example-net.png 2x" /></a></div>
-<p>While activitygen has been developed mainly to generate traffic demand for larger networks, this example features the small network shown in the image on the right. Download the files <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/blob/master/tests/activitygen/demand_generation/activitygen-example.net.xml"><i><b>&lt;SUMO_HOME&gt;</b></i>/tests/activitygen/demand_generation/activitygen-example.net.xml</a> and <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/blob/master/tests/activitygen/demand_generation/activitygen-example.stat.xml"><i><b>&lt;SUMO_HOME&gt;</b></i>/tests/activitygen/demand_generation/activitygen-example.stat.xml</a> to follow this example.
+<p>While activitygen has been developed mainly to generate traffic demand for larger networks, this example features the small network shown in the image on the right. Download the files <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/blob/master/tests/activitygen/demand_generation/activitygen-example.net.xml"><i><b>&lt;SUMO_HOME&gt;</b></i>/tests/activitygen/demand_generation/activitygen-example.net.xml</a> and <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/blob/master/tests/activitygen/demand_generation/activitygen-example.stat.xml"><i><b>&lt;SUMO_HOME&gt;</b></i>/tests/activitygen/demand_generation/activitygen-example.stat.xml</a> to follow this example.
 </p><p>To run this example, use the following commands:
 </p>
 <pre>activitygen --net-file activitygen-example.net.xml \
@@ -1085,15 +1086,15 @@ However, <a href="../ACTIVITYGEN.html" title="ACTIVITYGEN">ACTIVITYGEN</a> does 
 <li> According to some distance criteria between locations and bus stations, fewer care trips are generated since people are assumed to take the bus. Public transport travel times are not considered.-</li></ul>
 <h2><span class="mw-headline" id="Model_Documentation">Model Documentation</span></h2>
 <p>ActivityGen was developed as a tool for the evaluation of trust scenarios in VANETs. The work was part of the project <a rel="nofollow" class="external text" href="http://www.ldv.ei.tum.de/fidens/">Fidens: Trust between Cooperative Systems</a> featuring trusted probabilistic knowledge processing in vehicular networks. 
-For further documentation on the internals of the model, refer to the source code in <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/blob/master/src/activitygen"><i><b>&lt;SUMO_HOME&gt;</b></i>/src/activitygen</a> or ask the <a href="../Sumo_at_a_Glance.html#Contributors_and_Participants" title="Sumo at a Glance">original authors</a>.
+For further documentation on the internals of the model, refer to the source code in <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/blob/master/src/activitygen"><i><b>&lt;SUMO_HOME&gt;</b></i>/src/activitygen</a> or ask the <a href="../Sumo_at_a_Glance.html#Contributors_and_Participants" title="Sumo at a Glance">original authors</a>.
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.132 seconds
-Real time usage: 0.138 seconds
+CPU time usage: 0.064 seconds
+Real time usage: 0.062 seconds
 Preprocessor visited node count: 200/1000000
 Preprocessor generated node count: 368/1000000
-Post‐expand include size: 599/2097152 bytes
+Post‐expand include size: 602/2097152 bytes
 Template argument size: 304/2097152 bytes
 Highest expansion depth: 2/40
 Expensive parser function count: 0/100
@@ -1101,15 +1102,15 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   19.625      1 - -total
- 44.91%    8.813      3 - Template:Source
- 16.11%    3.162      3 - Template:SUMO
- 15.51%    3.043      1 - Template:XML
+100.00%    8.183      1 - -total
+ 50.01%    4.092      3 - Template:Source
+ 18.30%    1.497      3 - Template:SUMO
+ 17.44%    1.427      1 - Template:XML
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:338-0!*!0!!en!5!* and timestamp 20171219033420 and revision id 10325
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:338-0!*!0!!en!5!* and timestamp 20180516100318 and revision id 10325
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 6 November 2017, at 12:05.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 6 November 2017, at 13:05.</div> </div>
 
     <div id="footer">
       <div>

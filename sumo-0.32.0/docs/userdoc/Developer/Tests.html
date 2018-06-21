@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Developer/Tests</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.765302 from <a href="http://sumo.dlr.de/wiki/Developer/Tests">the wiki page for Developer/Tests</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.112298 from <a href="http://sumo.dlr.de/wiki/Developer/Tests">the wiki page for Developer/Tests</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -283,20 +284,27 @@
 </ul>
 </li>
 <li class="toclevel-1 tocsection-6"><a href="#Running_the_Tests"><span class="tocnumber">3</span> <span class="toctext">Running the Tests</span></a></li>
-<li class="toclevel-1 tocsection-7"><a href="#Adding_an_Application_Test_Suite"><span class="tocnumber">4</span> <span class="toctext">Adding an Application Test Suite</span></a></li>
-<li class="toclevel-1 tocsection-8"><a href="#Example_of_use"><span class="tocnumber">5</span> <span class="toctext">Example of use</span></a></li>
-<li class="toclevel-1 tocsection-9"><a href="#Regular_tests"><span class="tocnumber">6</span> <span class="toctext">Regular tests</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Adding_a_Test_to_an_existing_Application"><span class="tocnumber">4</span> <span class="toctext">Adding a Test to an existing Application</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Adding_an_Application_Test_Suite"><span class="tocnumber">5</span> <span class="toctext">Adding an Application Test Suite</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="#Example_of_use"><span class="tocnumber">6</span> <span class="toctext">Example of use</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="#Organization_of_Tests"><span class="tocnumber">7</span> <span class="toctext">Organization of Tests</span></a>
+<ul>
+<li class="toclevel-2 tocsection-11"><a href="#Application_Tests"><span class="tocnumber">7.1</span> <span class="toctext">Application Tests</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="#Tool_Tests"><span class="tocnumber">7.2</span> <span class="toctext">Tool Tests</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="#Complex_Tests"><span class="tocnumber">7.3</span> <span class="toctext">Complex Tests</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-14"><a href="#Regular_tests"><span class="tocnumber">8</span> <span class="toctext">Regular tests</span></a></li>
 </ul>
 </div>
 
 <h1><span class="mw-headline" id="Introduction">Introduction</span></h1>
 <p>We use <a rel="nofollow" class="external text" href="http://texttest.org/">TextTest</a> to test whether the software still behaves as expected. What <a rel="nofollow" class="external text" href="http://texttest.org/">TextTest</a> does is to compare an application's output, including the output to stdout, stderr, and into generated files with predefined outputs from files.
-</p><p>There are some advantages and disadvantages of this approach. On the one hand, you can guarantee that the application is doing what is wanted by comparing all outputs with files you think are right. But this is also the problem with this approach: you do not have the assurance that the files you are comparing the current outputs to ARE right - you have to check these by hand.
+</p><p>There are some advantages and disadvantages of this approach. On the one hand, you can guarantee that the application is doing what is wanted by comparing all outputs with files you think are right. But this is also the problem with this approach: you do not have the assurance that the files you are comparing the current outputs to ARE right - you have to prepare them once and update/verify them again everytime the expected results change.
 </p><p><br />
 </p>
 <h1><span class="mw-headline" id="Setup">Setup</span></h1>
-<p>We use <a rel="nofollow" class="external text" href="http://texttest.org/">TextTest</a> as our testing environment which is python based.
-</p><p>You can use
+<p>We use <a rel="nofollow" class="external text" href="http://texttest.org/">TextTest</a> as our testing environment which is python based. To install it, you can open a Terminal/Windows console and type:
 </p>
 <pre>pip install texttest
 </pre>
@@ -307,7 +315,7 @@
 </p>
 <ul><li><a rel="nofollow" class="external text" href="http://www.python.org/download/">Python 2.7</a></li>
 <li> <a rel="nofollow" class="external text" href="http://www.gtk.org/download/">GTK and PyGTK for Windows</a>
-<ul><li> If you are using the 32 bit version of Python you can use <a rel="nofollow" class="external text" href="http://www.pygtk.org/downloads.html">the all in one installer</a></li>
+<ul><li> If you are using the 32 bit version of Python you can use <a rel="nofollow" class="external text" href="http://ftp.gnome.org/pub/GNOME/binaries/win32/pygtk/2.24/pygtk-all-in-one-2.24.0.win32-py2.7.msi">the all in one installer</a></li>
 <li> For 64 bit this <a rel="nofollow" class="external free" href="http://stackoverflow.com/questions/14567921/python-pygtk-windows-7-64-bit">http://stackoverflow.com/questions/14567921/python-pygtk-windows-7-64-bit</a> answer still applies except that the unofficial python packages now need pip to be installed</li></ul></li>
 <li><a rel="nofollow" class="external text" href="http://tkdiff.sourceforge.net/">TKDiff</a> (you can choose another compatible diff tool if you like)</li>
 <li>python and diff should also appear in your PATH.</li></ul>
@@ -389,6 +397,10 @@ export LANG=C
 <h1><span class="mw-headline" id="Running_the_Tests">Running the Tests</span></h1>
 <p>Within the <i> </i><b>&lt;SUMO_HOME&gt;</b><i>/tests</i> - folder you can find batch-files which start <a rel="nofollow" class="external text" href="http://texttest.org/">TextTest</a> with our test suites. "runAllTests.bat" starts TextTest for testing all apllications located in the folder, "runNetconvertTests.bat" will only show tests for NETCONVERT, "runDuarouterTests.bat" only those for DUAROUTER etc.
 </p><p><br />
+</p>
+<h1><span class="mw-headline" id="Adding_a_Test_to_an_existing_Application">Adding a Test to an existing Application</span></h1>
+<p>The easiest method is probably to copy an existing test using the Texttest GUI context menu functions (copy/paste). Then you can modify the copied input files, run the test once and save the expected results.
+Note, that input files may be picked up along the folder hierarchy so you may have to copy additional files to your test folder manually if these inherited input files must be changed as well.
 </p>
 <h1><span class="mw-headline" id="Adding_an_Application_Test_Suite">Adding an Application Test Suite</span></h1>
 <p>To add a test suite for a new application, you have to perform the following steps. For the examples below we'll use "polyconvert" as the example application.
@@ -501,15 +513,29 @@ net:Version
 			</div>
 		</div></li>
 </ul>
+<h1><span class="mw-headline" id="Organization_of_Tests">Organization of Tests</span></h1>
+<p>Our Texttest tests can be grouped into 3 categories described below
+</p>
+<h2><span class="mw-headline" id="Application_Tests">Application Tests</span></h2>
+<p>These tests are for the executable files in the <i>bin</i> folder such as <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a>, <a href="../DUAROUTER.html" title="DUAROUTER">DUAROUTER</a> and <a href="../SUMO.html" title="SUMO">SUMO</a>. They work by running their application once with a predefined set of input files and compare against expected output files.
+</p>
+<h2><span class="mw-headline" id="Tool_Tests">Tool Tests</span></h2>
+<p>These tests are for the python tools in the <i>tools</i> folder such as <a href="../Tools/Trip.html#randomTrips.py" title="Tools/Trip">randomTrips.py</a> and <a href="../Tools/Detector.html#flowrouter.py" title="Tools/Detector">flowRouter.py</a>.
+Instead of defining a new application for each tool (as is the stanard for TextTest) they all call the <i>tests/toolrunner.py</i> script and select the actual python tool to test via options.
+</p>
+<h2><span class="mw-headline" id="Complex_Tests">Complex Tests</span></h2>
+<p>These tests go beyond calling an application once. Each tests defines a <i>runner.py</i> script which performs arbitrary application calls. This is used to call netconvert multiple times to perform back-and-forth format conversions or to test tutorials where first the network is generated and afterwards simualtion is performed.
+They are also used for testing the traci python client (runner.py is a traci script in this case).
+</p>
 <h1><span class="mw-headline" id="Regular_tests">Regular tests</span></h1>
 <p>At the moment all our <a rel="nofollow" class="external text" href="http://sumo.dlr.de/daily/">tests run each night</a> on two linux machines of different age and on a windows server.
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.212 seconds
-Real time usage: 0.226 seconds
-Preprocessor visited node count: 117/1000000
-Preprocessor generated node count: 254/1000000
+CPU time usage: 0.096 seconds
+Real time usage: 0.103 seconds
+Preprocessor visited node count: 137/1000000
+Preprocessor generated node count: 274/1000000
 Post‐expand include size: 21/2097152 bytes
 Template argument size: 0/2097152 bytes
 Highest expansion depth: 2/40
@@ -518,13 +544,13 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    2.806      1 - -total
-100.00%    2.806      1 - Template:SUMO
+100.00%    1.122      1 - -total
+100.00%    1.122      1 - Template:SUMO
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:30-0!*!*!!en!*!* and timestamp 20171219074615 and revision id 7401
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:30-0!*!0!!en!*!* and timestamp 20180515221729 and revision id 10734
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 11 May 2016, at 13:25.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 10 April 2018, at 13:54.</div> </div>
 
     <div id="footer">
       <div>

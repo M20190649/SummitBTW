@@ -114,6 +114,7 @@
   <li><a href="../../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Networks/Import/OpenDRIVE</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.844638 from <a href="http://sumo.dlr.de/wiki/Networks/Import/OpenDRIVE">the wiki page for Networks/Import/OpenDRIVE</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.194591 from <a href="http://sumo.dlr.de/wiki/Networks/Import/OpenDRIVE">the wiki page for Networks/Import/OpenDRIVE</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>For reading <a rel="nofollow" class="external text" href="http://www.opendrive.org/">OpenDRIVE networks</a>, give <a href="../../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> the option <span style="color: #111144; font-weight: bold; white-space: pre;">--opendrive-files <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;[,&lt;FILE&gt;]*</i></a></span> or <span style="color: #111144; font-weight: bold; white-space: pre;">--opendrive <a href="../../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;[,&lt;FILE&gt;]*</i></a></span> for short.
@@ -297,7 +298,7 @@
 
 <h1><span class="mw-headline" id="User_Options">User Options</span></h1>
 <h2><span class="mw-headline" id="Defining_Lane_Types_to_Import">Defining Lane Types to Import</span></h2>
-<p>OpenDRIVE allows to assign a lane to an abstract (not pre-defined) class. Some of the lanes can be used by vehicles, some represent non-usable building structures, such as curbs. When reading OpenDRIVE files, <a href="../../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> determines whether and how a lane shall be imported by looking into pre-defined and/or loaded <a href="../../Networks/Building_Networks_from_own_XML-descriptions.html#Type_Descriptions" title="Networks/Building Networks from own XML-descriptions">edge types</a>. Several known lane types are pre-defined, and shown in the following table together with their defaults. They can be overwritten using <a href="../../Networks/Building_Networks_from_own_XML-descriptions.html#Type_Descriptions" title="Networks/Building Networks from own XML-descriptions">edge types</a> of same name. The following attributes are retrieved from the <a href="../../Networks/Building_Networks_from_own_XML-descriptions.html#Type_Descriptions" title="Networks/Building Networks from own XML-descriptions">edge types</a> if not set explicitly by the lane within the read OpenDRIVE file:
+<p>OpenDRIVE allows to assign a lane to an abstract (not pre-defined) class. Some of the lanes can be used by vehicles, some represent non-usable building structures, such as curbs. When reading OpenDRIVE files, <a href="../../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> determines whether and how a lane shall be imported by looking into pre-defined and/or loaded <a href="../../Networks/Building_Networks_from_own_XML-descriptions.html#Type_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">edge types</a>. Several known lane types are pre-defined, and shown in the following table together with their defaults. They can be overwritten using <a href="../../Networks/Building_Networks_from_own_XML-descriptions.html#Type_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">edge types</a> of same name. The following attributes are retrieved from the <a href="../../Networks/Building_Networks_from_own_XML-descriptions.html#Type_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">edge types</a> if not set explicitly by the lane within the read OpenDRIVE file:
 </p>
 <ul><li> width</li>
 <li> maximum allowed speed</li>
@@ -439,7 +440,7 @@
 </td></tr>
 </table>
 <p>All other types are not imported.
-</p><p>As a conclusion, if you wish to import lanes of type "<span class="inlxml">border</span>", you have to additionally load a <a href="../../Networks/Building_Networks_from_own_XML-descriptions.html#Type_Descriptions" title="Networks/Building Networks from own XML-descriptions">edge types</a> file like this:
+</p><p>As a conclusion, if you wish to import lanes of type "<span class="inlxml">border</span>", you have to additionally load a <a href="../../Networks/Building_Networks_from_own_XML-descriptions.html#Type_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">edge types</a> file like this:
 </p>
 <pre class="xml">
 &lt;types&gt;
@@ -464,8 +465,8 @@
 </pre>
 <!-- 
 NewPP limit report
-CPU time usage: 0.056 seconds
-Real time usage: 0.116 seconds
+CPU time usage: 0.028 seconds
+Real time usage: 0.031 seconds
 Preprocessor visited node count: 83/1000000
 Preprocessor generated node count: 236/1000000
 Post‐expand include size: 814/2097152 bytes
@@ -476,15 +477,15 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   18.797      1 - -total
- 41.97%    7.889      2 - Template:XML
- 34.90%    6.560      5 - Template:Option
- 10.84%    2.037      2 - Template:DT_FileList
+100.00%    8.017      1 - -total
+ 51.09%    4.096      5 - Template:Option
+ 20.89%    1.675      2 - Template:XML
+ 17.65%    1.415      2 - Template:DT_FileList
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:424-0!*!0!!en!*!* and timestamp 20171218232242 and revision id 6639
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:424-0!*!0!!en!*!* and timestamp 20180516121317 and revision id 6639
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 2 November 2015, at 16:07.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 2 November 2015, at 17:07.</div> </div>
 
     <div id="footer">
       <div>

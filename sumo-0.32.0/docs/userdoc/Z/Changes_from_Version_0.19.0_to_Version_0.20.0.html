@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Z/Changes from Version 0.19.0 to Version 0.20.0</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.225845 from <a href="http://sumo.dlr.de/wiki/Z/Changes_from_Version_0.19.0_to_Version_0.20.0">the wiki page for Z/Changes_from_Version_0.19.0_to_Version_0.20.0</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.589912 from <a href="http://sumo.dlr.de/wiki/Z/Changes_from_Version_0.19.0_to_Version_0.20.0">the wiki page for Z/Changes_from_Version_0.19.0_to_Version_0.20.0</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -288,15 +289,15 @@
 <h3><span class="mw-headline" id="Bugfixes">Bugfixes</span></h3>
 <ul><li> Simulation
 <ul><li> Fixed bug in the computation of safe velocities. Sometimes the velocity was too high (causing collisions) but most times it was too low (degrading traffic flow).</li>
-<li> Vehicles now move to the right lane after passing instead of staying on the passing lane. (see <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/1139">Issue #1139</a>)</li>
+<li> Vehicles now move to the right lane after passing instead of staying on the passing lane. (see <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1139">Issue #1139</a>)</li>
 <li> Fixed simulation crash related to lane-changing.</li>
 <li> Fixed bug where vehicles would no longer stop on the correct lane if they already stopped on the wrong lane.</li>
 <li> Fixed bug which would cause collisions due to unsafe lane changes</li>
 <li> Fixed crash when terminating the simulation while vehicles were performing continuous lane changing maneuvers (using option <span style="color: #111144; font-weight: bold; white-space: pre;"> --lanechange.duration</span>)</li>
-<li> Fast vehicles can now be correctly inserted closely in front of slow vehicles <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/1176">Issue #1176</a>.</li>
-<li> Rerouting fixed for vehicles which are on internal lanes when the rerouting is requested <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/1128">Issue #1128</a>.</li></ul></li>
+<li> Fast vehicles can now be correctly inserted closely in front of slow vehicles <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1176">Issue #1176</a>.</li>
+<li> Rerouting fixed for vehicles which are on internal lanes when the rerouting is requested <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1128">Issue #1128</a>.</li></ul></li>
 <li> SUMO-GUI
-<ul><li> Fixed crash when using the object locator <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/923">Issue #923</a> on some versions of Ubuntu].</li>
+<ul><li> Fixed crash when using the object locator <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/923">Issue #923</a> on some versions of Ubuntu].</li>
 <li> Fixed bug where brake lights were shown even though the vehicle was not braking</li>
 <li> Fixed bug where train carriages where sometimes drawn onto the wrong lane</li>
 <li> The vehicle option 'select foes' now works correctly for foe vehicles on internal lanes</li>
@@ -370,11 +371,11 @@
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.080 seconds
-Real time usage: 0.087 seconds
+CPU time usage: 0.040 seconds
+Real time usage: 0.043 seconds
 Preprocessor visited node count: 172/1000000
 Preprocessor generated node count: 542/1000000
-Post‐expand include size: 2802/2097152 bytes
+Post‐expand include size: 2806/2097152 bytes
 Template argument size: 823/2097152 bytes
 Highest expansion depth: 3/40
 Expensive parser function count: 0/100
@@ -382,19 +383,19 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   34.523      1 - -total
- 67.48%   23.297     17 - Template:Option
- 12.07%    4.168      4 - Template:Ticket
-  7.89%    2.725      4 - Template:DT_STR
-  7.16%    2.471      2 - Template:DT_FLOAT
-  7.03%    2.427      2 - Template:DT_FILE
-  6.83%    2.358      1 - Template:DT_BOOL
-  6.78%    2.342      1 - Template:DT_INT
+100.00%   17.121      1 - -total
+ 66.96%   11.464     17 - Template:Option
+ 11.18%    1.914      4 - Template:Ticket
+  9.64%    1.650      4 - Template:DT_STR
+  6.57%    1.125      2 - Template:DT_FLOAT
+  6.42%    1.099      2 - Template:DT_FILE
+  6.38%    1.092      1 - Template:DT_BOOL
+  6.05%    1.036      1 - Template:DT_INT
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:571-0!*!0!!en!*!* and timestamp 20171218211304 and revision id 5677
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:571-0!*!0!!en!*!* and timestamp 20180516221800 and revision id 5677
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 10 November 2014, at 12:26.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 10 November 2014, at 13:26.</div> </div>
 
     <div id="footer">
       <div>

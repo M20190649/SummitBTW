@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">TraCI/Protocol</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.133217 from <a href="http://sumo.dlr.de/wiki/TraCI/Protocol">the wiki page for TraCI/Protocol</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.496030 from <a href="http://sumo.dlr.de/wiki/TraCI/Protocol">the wiki page for TraCI/Protocol</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>This page details the <a href="../TraCI.html" title="TraCI">TraCI</a> protocol. Please see there for a general introduction.
@@ -345,7 +346,7 @@
 |            Command content           |  |
 +--------------------------------------+  /
 </pre>
-<p>To simplify the usage of TraCI, we provide a class for handling the socket connection and another for composing a message out of basic data types. The C++ implementation of these classes is available at <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/blob/master/src/foreign/tcpip"><i><b>&lt;SUMO_HOME&gt;</b></i>/src/foreign/tcpip</a>, the Python implementation is in <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/blob/master/tools/traci/connection.py"><i><b>&lt;SUMO_HOME&gt;</b></i>/tools/traci/connection.py</a> and <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/blob/master/tools/traci/storage.py"><i><b>&lt;SUMO_HOME&gt;</b></i>/tools/traci/storage.py</a>. For a Java implementation have a look at <a rel="nofollow" class="external text" href="http://traas.sourceforge.net/">TraaS</a>.
+<p>To simplify the usage of TraCI, we provide a class for handling the socket connection and another for composing a message out of basic data types. The C++ implementation of these classes is available at <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/blob/master/src/foreign/tcpip"><i><b>&lt;SUMO_HOME&gt;</b></i>/src/foreign/tcpip</a>, the Python implementation is in <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/blob/master/tools/traci/connection.py"><i><b>&lt;SUMO_HOME&gt;</b></i>/tools/traci/connection.py</a> and <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/blob/master/tools/traci/storage.py"><i><b>&lt;SUMO_HOME&gt;</b></i>/tools/traci/storage.py</a>. For a Java implementation have a look at <a rel="nofollow" class="external text" href="http://traas.sourceforge.net/">TraaS</a>.
 The class <code>tcpip::Socket</code> handles a TCP connection on server as well as on client side. The class <code>tcpip::Storage</code> is designed to hold a list of elementary data types. By using the method <code>tcpip::Socket::sendExact(tcpip::Storage)</code> and <code>tcpip::Socket::receiveExact(Storage)</code>, messages can be send and received as Storage objects.
 </p>
 <h3><span class="mw-headline" id="Status_Response">Status Response</span></h3>
@@ -783,11 +784,11 @@ A position within the simulation network in geo-coordinates with altitude, descr
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.140 seconds
-Real time usage: 0.160 seconds
+CPU time usage: 0.064 seconds
+Real time usage: 0.066 seconds
 Preprocessor visited node count: 77/1000000
 Preprocessor generated node count: 144/1000000
-Post‐expand include size: 612/2097152 bytes
+Post‐expand include size: 615/2097152 bytes
 Template argument size: 206/2097152 bytes
 Highest expansion depth: 2/40
 Expensive parser function count: 0/100
@@ -795,15 +796,15 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   14.142      1 - -total
- 67.62%    9.563      3 - Template:Source
- 30.72%    4.345      3 - Template:SUMO
- 22.69%    3.209      1 - Template:Caution
+100.00%    5.409      1 - -total
+ 62.08%    3.358      3 - Template:Source
+ 26.73%    1.446      1 - Template:Caution
+ 21.76%    1.177      3 - Template:SUMO
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:241-0!*!0!!en!5!* and timestamp 20171218173438 and revision id 10296
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:241-0!*!0!!en!5!* and timestamp 20180515221816 and revision id 10296
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 5 November 2017, at 18:49.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 5 November 2017, at 19:49.</div> </div>
 
     <div id="footer">
       <div>

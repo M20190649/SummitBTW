@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">TraCI/Induction Loop Value Retrieval</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.112639 from <a href="http://sumo.dlr.de/wiki/TraCI/Induction_Loop_Value_Retrieval">the wiki page for TraCI/Induction_Loop_Value_Retrieval</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.474600 from <a href="http://sumo.dlr.de/wiki/TraCI/Induction_Loop_Value_Retrieval">the wiki page for TraCI/Induction_Loop_Value_Retrieval</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -318,7 +319,7 @@
 </td>
 <td> Returns a list of ids of all induction loops within the scenario (the given Induction Loop ID is ignored)
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._inductionloop.html#InductionLoopDomain-getIDList">getIDList</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._inductionloop.html#InductionLoopDomain-getIDList">getIDList</a>
 </td></tr>
 <tr>
 <td> position (0x42)
@@ -327,7 +328,7 @@
 </td>
 <td> Returns the position of the induction loop at it's lane, counted from the lane's begin, in meters.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._inductionloop.html#InductionLoopDomain-getPosition">getPosition</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._inductionloop.html#InductionLoopDomain-getPosition">getPosition</a>
 </td></tr>
 <tr>
 <td> lane ID (0x51)
@@ -336,7 +337,7 @@
 </td>
 <td> Returns the ID of the lane the induction loop is placed at.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._inductionloop.html#InductionLoopDomain-getLaneID">getLaneID</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._inductionloop.html#InductionLoopDomain-getLaneID">getLaneID</a>
 </td></tr>
 <tr>
 <td> count (0x01)
@@ -345,7 +346,7 @@
 </td>
 <td> Returns the number of induction loops within the scenario (the given Induction Loop ID is ignored)
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._inductionloop.html#InductionLoopDomain-getIDCount">getIDCount</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._inductionloop.html#InductionLoopDomain-getIDCount">getIDCount</a>
 </td></tr>
 <tr>
 <td> last step vehicle number (0x10)
@@ -354,7 +355,7 @@
 </td>
 <td> Returns the number of vehicles that were on the named induction loop within the last simulation step [#]; <div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />This value corresponds to the <i>nVehEntered</i> measure of <a href="../Simulation/Output/Induction_Loops_Detectors_(E1).html" title="Simulation/Output/Induction Loops Detectors (E1)">induction loops</a>.</div>
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._inductionloop.html#InductionLoopDomain-getLastStepVehicleNumber">getLastStepVehicleNumber</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._inductionloop.html#InductionLoopDomain-getLastStepVehicleNumber">getLastStepVehicleNumber</a>
 </td></tr>
 <tr>
 <td> last step mean speed (0x11)
@@ -363,7 +364,7 @@
 </td>
 <td> Returns the mean speed of vehicles that were on the named induction loop within the last simulation step [m/s]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._inductionloop.html#InductionLoopDomain-getLastStepMeanSpeed">getLastStepMeanSpeed</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._inductionloop.html#InductionLoopDomain-getLastStepMeanSpeed">getLastStepMeanSpeed</a>
 </td></tr>
 <tr>
 <td> last step vehicle ids (0x12)
@@ -372,7 +373,7 @@
 </td>
 <td> Returns the list of ids of vehicles that were on the named induction loop in the last simulation step
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._inductionloop.html#InductionLoopDomain-getLastStepVehicleIDs">getLastStepVehicleIDs</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._inductionloop.html#InductionLoopDomain-getLastStepVehicleIDs">getLastStepVehicleIDs</a>
 </td></tr>
 <tr>
 <td> last step occupancy (0x13)
@@ -381,7 +382,7 @@
 </td>
 <td> Returns the percentage of time the detector was occupied by a vehicle [%]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._inductionloop.html#InductionLoopDomain-getLastStepOccupancy">getLastStepOccupancy</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._inductionloop.html#InductionLoopDomain-getLastStepOccupancy">getLastStepOccupancy</a>
 </td></tr>
 <tr>
 <td> last step mean vehicle length (0x15)
@@ -390,7 +391,7 @@
 </td>
 <td> The mean length of vehicles which were on the detector in the last step [m]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._inductionloop.html#InductionLoopDomain-getLastStepMeanLength">getLastStepMeanLength</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._inductionloop.html#InductionLoopDomain-getLastStepMeanLength">getLastStepMeanLength</a>
 </td></tr>
 <tr>
 <td> last step's time since last detection (0x16)
@@ -399,7 +400,7 @@
 </td>
 <td> The time since last detection [s]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._inductionloop.html#InductionLoopDomain-getTimeSinceDetection">getTimeSinceDetection</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._inductionloop.html#InductionLoopDomain-getTimeSinceDetection">getTimeSinceDetection</a>
 </td></tr>
 <tr>
 <td> last step's vehicle data (0x17)
@@ -408,7 +409,7 @@
 </td>
 <td> A complex structure containing several information about vehicles which passed the detector
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._inductionloop.html#InductionLoopDomain-getVehicleData">getVehicleData</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._inductionloop.html#InductionLoopDomain-getVehicleData">getVehicleData</a>
 </td></tr>
 </table>
 <h2><span class="mw-headline" id="Response_0xb0:_Induction_Loop_Variable">Response 0xb0: Induction Loop Variable</span></h2>
@@ -509,8 +510,8 @@
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.052 seconds
-Real time usage: 0.054 seconds
+CPU time usage: 0.024 seconds
+Real time usage: 0.025 seconds
 Preprocessor visited node count: 39/1000000
 Preprocessor generated node count: 102/1000000
 Post‐expand include size: 381/2097152 bytes
@@ -521,15 +522,15 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   10.054      1 - -total
- 31.82%    3.199      1 - Template:Note
- 29.08%    2.924      2 - Template:XML
- 27.34%    2.749      1 - Template:AdditionalFile
+100.00%    4.322      1 - -total
+ 30.72%    1.328      2 - Template:XML
+ 28.46%    1.230      1 - Template:AdditionalFile
+ 26.75%    1.156      1 - Template:Note
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:260-0!*!0!!en!*!* and timestamp 20171218180553 and revision id 8740
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:260-0!*!0!!en!*!* and timestamp 20180515221814 and revision id 8740
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 27 January 2017, at 01:53.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 27 January 2017, at 02:53.</div> </div>
 
     <div id="footer">
       <div>

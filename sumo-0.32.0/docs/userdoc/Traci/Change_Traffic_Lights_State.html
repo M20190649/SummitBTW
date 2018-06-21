@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,12 +270,12 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">TraCI/Change Traffic Lights State</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.102107 from <a href="http://sumo.dlr.de/wiki/TraCI/Change_Traffic_Lights_State">the wiki page for TraCI/Change_Traffic_Lights_State</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.463764 from <a href="http://sumo.dlr.de/wiki/TraCI/Change_Traffic_Lights_State">the wiki page for TraCI/Change_Traffic_Lights_State</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
 <ul>
-<li class="toclevel-1 tocsection-1"><a href="#Command_0xc2:_Change_Traffic_Lights_State"><span class="tocnumber">1</span> <span class="toctext">Command 0xc2: Change Traffic Lights State</span></a>
+<li class="toclevel-1 tocsection-1"><a href="#Command_0xc2:_Change_Traffic_Light_State"><span class="tocnumber">1</span> <span class="toctext">Command 0xc2: Change Traffic Light State</span></a>
 <ul>
 <li class="toclevel-2 tocsection-2"><a href="#state_.28light.2Fpriority_tuple.29_.280x20.29"><span class="tocnumber">1.1</span> <span class="toctext">state (light/priority tuple) (0x20)</span></a></li>
 <li class="toclevel-2 tocsection-3"><a href="#state_.28phase.2Fbrake.2Fyellow.29_.280x21.29"><span class="tocnumber">1.2</span> <span class="toctext">state (phase/brake/yellow) (0x21)</span></a></li>
@@ -287,7 +288,7 @@
 </ul>
 </div>
 
-<h1><span class="mw-headline" id="Command_0xc2:_Change_Traffic_Lights_State">Command 0xc2: Change Traffic Lights State</span></h1>
+<h1><span class="mw-headline" id="Command_0xc2:_Change_Traffic_Light_State">Command 0xc2: Change Traffic Light State</span></h1>
 <table cellpadding="4" cellspacing="0" border="0">
 <tr>
 <td align="center"> ubyte
@@ -328,8 +329,8 @@
 </td>
 <td> Sets the phase definition to the given. Assumes the given string is a tuple of light definitions from rRgGyYoO, for red, green, yellow, off, where lower case letters mean that the stream has to decelerate. After this call the program-ID of the traffic light will be set to "online" and the state will be maintained until the next call of setRedYellowGreenState() or until setting another program with setProgram().
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._trafficlights.html#TrafficLightsDomain-setRedYellowGreenState">setRedYellowGreenState</a>
-<p><a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._trafficlights.html#TrafficLightsDomain-setLinkState">setLinkState</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._trafficlight.html#TrafficLightDomain-setRedYellowGreenState">setRedYellowGreenState</a>
+<p><a rel="nofollow" class="external text" href="../../pydoc/traci._trafficlight.html#TrafficLightDomain-setLinkState">setLinkState</a>
 </p>
 </td></tr>
 <tr>
@@ -339,7 +340,7 @@
 </td>
 <td> Sets the phase of the traffic light to the given. The given index must be valid for the current program of the traffic light, this means it must be between 0 and the number of phases known to the current program of the tls - 1.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._trafficlights.html#TrafficLightsDomain-setPhase">setPhase</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._trafficlight.html#TrafficLightDomain-setPhase">setPhase</a>
 </td></tr>
 <tr>
 <td> program (0x23)
@@ -348,7 +349,7 @@
 </td>
 <td> Switches the traffic light to the given program. No WAUT algorithm is used, the program is directly instantiated. The index of the traffic light stays the same as before.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._trafficlights.html#TrafficLightsDomain-setProgram">setProgram</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._trafficlight.html#TrafficLightDomain-setProgram">setProgram</a>
 </td></tr>
 <tr>
 <td> phase duration (0x24)
@@ -357,7 +358,7 @@
 </td>
 <td> Sets the remaining duration of the current phase in milliseconds.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._trafficlights.html#TrafficLightsDomain-setPhaseDuration">setPhaseDuration</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._trafficlight.html#TrafficLightDomain-setPhaseDuration">setPhaseDuration</a>
 </td></tr>
 <tr>
 <td> complete program definition (0x2c)
@@ -366,7 +367,7 @@
 </td>
 <td> Inserts a completely new program.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._trafficlights.html#TrafficLightsDomain-setCompleteRedYellowGreenDefinition">setCompleteRedYellowGreenDefinition</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._trafficlight.html#TrafficLightDomain-setCompleteRedYellowGreenDefinition">setCompleteRedYellowGreenDefinition</a>
 </td></tr>
 </table>
 <p><br />
@@ -521,8 +522,8 @@ The message contents are as following:
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.064 seconds
-Real time usage: 0.064 seconds
+CPU time usage: 0.020 seconds
+Real time usage: 0.021 seconds
 Preprocessor visited node count: 31/1000000
 Preprocessor generated node count: 58/1000000
 Post‐expand include size: 408/2097152 bytes
@@ -533,13 +534,13 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    3.359      1 - -total
-100.00%    3.359      1 - Template:Note
+100.00%    1.195      1 - -total
+100.00%    1.195      1 - Template:Note
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:263-0!*!0!!en!*!* and timestamp 20171219074745 and revision id 10251
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:263-0!*!0!!en!*!* and timestamp 20180515221812 and revision id 10532
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 23 October 2017, at 10:25.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 6 January 2018, at 08:27.</div> </div>
 
     <div id="footer">
       <div>

@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Simulation/SublaneModel</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.007176 from <a href="http://sumo.dlr.de/wiki/Simulation/SublaneModel">the wiki page for Simulation/SublaneModel</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.365004 from <a href="http://sumo.dlr.de/wiki/Simulation/SublaneModel">the wiki page for Simulation/SublaneModel</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -284,6 +285,11 @@
 <li class="toclevel-3 tocsection-6"><a href="#Misc"><span class="tocnumber">1.2.3</span> <span class="toctext">Misc</span></a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="#Simple_Continous_lane-change_model"><span class="tocnumber">2</span> <span class="toctext">Simple Continous lane-change model</span></a>
+<ul>
+<li class="toclevel-2 tocsection-8"><a href="#Additional_Vehicle_Parameters"><span class="tocnumber">2.1</span> <span class="toctext">Additional Vehicle Parameters</span></a></li>
 </ul>
 </li>
 </ul>
@@ -309,7 +315,17 @@ ADAS in Chinese traffic situations<i> <a rel="nofollow" class="external text" hr
 <div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />The sublane model is a developing subject. It is not compatible with <a href="../Simulation/OppositeDirectionDriving.html" title="Simulation/OppositeDirectionDriving">opposite direction driving</a> so far.</div>
 <h2><span class="mw-headline" id="New_Parameters">New Parameters</span></h2>
 <p>The vehicle behavior is subject to model-specific <a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Vehicle_Types" title="Definition of Vehicles, Vehicle Types, and Routes">vType attributes (maxSpeedLat, minGapLat, latAlignment)</a> and <a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Lane-Changing_Models" title="Definition of Vehicles, Vehicle Types, and Routes">lane-changing-modell attributes (lcSublane, lcPushy)</a>.
+</p><p>When describing the state of a vehicle in <a href="../SUMO-GUI.html" title="SUMO-GUI">SUMO-GUI</a>-dialogs or in the <a href="../Simulation/Output/RawDump.html" title="Simulation/Output/RawDump">netstate-output</a>, additional attributes are used:
 </p>
+<ul><li> lateral position (posLat): offset from the center of the current lane in meters</li>
+<li> shadow lane: Each vehicle in the sublane model occupies 1 or 2 lanes. The lane that contains that contains the center of the front-bumper is refered to as its <i>lane</i>. If the vehicle front-bumper also reaches into another lane, this is called the <i>shadow lane</i></li>
+<li> target lane: if the vehicle has started a lane changing manoeuvre to another lane, this is the target lane</li>
+<li> lateral speed: the lateral velocity in the current simulation step</li>
+<li> lane change maneuver distance: the absolute lateral distance to be covered in the current lane change maneuver in m (overtaking another vehicle is considered to consist of two maneuveres: 1. leaving the current lane, 2. re-entering the lane after overtaking)</li>
+<li> right side on edge: offset of the right vehicle side from the right side of the current road edge in m</li>
+<li> left side on edge: offset of the left vehicle side from the right side of the current road edge in m</li>
+<li> right edge sublane: the rightmost sublane that the vehicle occupies (at least partially) when counting all sublanes of the current edge beginning at 0 on the right side of the edge</li>
+<li> left edge sublane: the leftmost sublane that the vehicle occupies (at least partially) when counting all sublanes of the current edge beginning at 0 on the right side of the edge</li></ul>
 <h2><span class="mw-headline" id="Model_Details">Model Details</span></h2>
 <p>The regular lanes of the road network are divided into sublanes with a minimum width of the given resolution (<span style="color: #111144; font-weight: bold; white-space: pre;">--lateral-resolution</span>). If the lane width is not a multiple of the given value, the leftmost sublane has a reduced with. The default lane-width of SUMO is 3.2m so a lateral resolution of 0.8 will created exactly 4 sublanes of that width per lane. A resulution of 1.0 will create three sublanes of 1.0m width and on more lane of 0.2m width. It is recommended use a resolution that is at least as small as the least wide vehicle being simulated (i.e. motorcycles).
 </p>
@@ -334,31 +350,41 @@ Lane-changing takes place at the sublane level and potentially uses the whole wi
 <p>Vehicles can be located laterally anywhere on the lane(s). Vehicles change lanes incrementally depending on their <i>maxSpeedLat</i> vType-attribute. The width of sublanes affects the fidelity of car following in regard to the acceptance of lateral gaps and also determines the number of candidate movements that are evaluated during lane-changing.
 </p><p>When <a href="../TraCI/Change_Vehicle_State.html#move_to_XY_.280xb4.29" title="TraCI/Change Vehicle State">controlling vehicles via-TraCI using the vehicle command moveToXY</a>, vehicles will be placed at the exact longitudinal and lateral position to match the specified coordinates. This allows for full control of sublane-placement.
 </p>
+<h1><span class="mw-headline" id="Simple_Continous_lane-change_model">Simple Continous lane-change model</span></h1>
+<p>The sublane model described above allows simulating a wide range of phenomena related to lateral vehicle dynamics at the price of increased computational load.
+</p><p>One important aspect of lateral dynamics is the fact that a lane-change manoeuvre generally takes longer than a single simulation step where is lane-changing is instantaneous without activating the sublane model.
+</p><p>If only the non-instantaneous aspect of lane-changing needs to be modelled, a simplified (and thus faster) model may be used as an alternaive to the sublane model.
+</p><p>The <i>Simple continous lane-change model</i> is activated by setting the option <span style="color: #111144; font-weight: bold; white-space: pre;">--lanechange.duration <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FLOAT&gt;</i></a></span> which specifies the default time for changing between adjacent lanes in seconds (instead of setting option <span style="color: #111144; font-weight: bold; white-space: pre;">--lateral-resolution</span>.
+</p><p>When using this model, vehicles will move with constant lateral speed to complete a manoeuvre in the specified time. Lane-changing decisions take the extra time required into account.
+</p>
+<h2><span class="mw-headline" id="Additional_Vehicle_Parameters">Additional Vehicle Parameters</span></h2>
+<ul><li> when setting the <span class="inlxml">&lt;vType&gt;</span>-attribute <i>maxSpeedLat</i>, the lateral speed computed from the default duration is replaced by the configured type-specific speed.</li></ul>
+
 <!-- 
 NewPP limit report
-CPU time usage: 0.036 seconds
-Real time usage: 0.041 seconds
-Preprocessor visited node count: 71/1000000
-Preprocessor generated node count: 202/1000000
-Post‐expand include size: 1054/2097152 bytes
-Template argument size: 448/2097152 bytes
+CPU time usage: 0.028 seconds
+Real time usage: 0.026 seconds
+Preprocessor visited node count: 99/1000000
+Preprocessor generated node count: 278/1000000
+Post‐expand include size: 1385/2097152 bytes
+Template argument size: 550/2097152 bytes
 Highest expansion depth: 3/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   13.829      1 - -total
- 36.09%    4.991      3 - Template:Option
- 19.45%    2.690      1 - Template:Note
- 16.60%    2.296      2 - Template:XML
- 14.46%    2.000      1 - Template:Caution
- 13.02%    1.801      1 - Template:DT_FLOAT
+100.00%    8.789      1 - -total
+ 36.72%    3.227      5 - Template:Option
+ 16.56%    1.455      1 - Template:Note
+ 15.90%    1.397      3 - Template:XML
+ 12.74%    1.120      1 - Template:Caution
+ 12.52%    1.100      2 - Template:DT_FLOAT
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:682-0!*!0!!en!*!* and timestamp 20171218232322 and revision id 10286
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:682-0!*!0!!en!*!* and timestamp 20180515221800 and revision id 10596
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 4 November 2017, at 12:17.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 12 February 2018, at 11:51.</div> </div>
 
     <div id="footer">
       <div>

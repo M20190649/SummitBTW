@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # Eclipse SUMO, Simulation of Urban MObility; see https://eclipse.org/sumo
-# Copyright (C) 2010-2017 German Aerospace Center (DLR) and others.
+# Copyright (C) 2010-2018 German Aerospace Center (DLR) and others.
 # This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v2.0
 # which accompanies this distribution, and is available at
 # http://www.eclipse.org/legal/epl-v20.html
+# SPDX-License-Identifier: EPL-2.0
 
 # @file    randomTrips.py
 # @author  Daniel Krajzewicz
@@ -25,12 +26,11 @@ from collections import defaultdict
 import math
 import optparse
 
-SUMO_HOME = os.environ.get('SUMO_HOME',
-                           os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
-sys.path.append(os.path.join(SUMO_HOME, 'tools'))
+if 'SUMO_HOME' in os.environ:
+    sys.path.append(os.path.join(os.environ['SUMO_HOME'], 'tools'))
 import sumolib  # noqa
-import route2trips
-from sumolib.miscutils import euclidean
+import route2trips  # noqa
+from sumolib.miscutils import euclidean  # noqa
 
 DUAROUTER = sumolib.checkBinary('duarouter')
 

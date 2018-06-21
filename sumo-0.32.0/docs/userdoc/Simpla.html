@@ -114,6 +114,7 @@
   <li><a href="Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Simpla</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.922319 from <a href="http://sumo.dlr.de/wiki/Simpla">the wiki page for Simpla</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.276459 from <a href="http://sumo.dlr.de/wiki/Simpla">the wiki page for Simpla</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />simpla is written for SUMO versions &gt; 0.30.0. We strongly recommend regularly updating to the newest SUMO version if possible. <a href="Downloads.html#Nightly_Snapshots" title="Downloads">Nightly snapshots can be found here.</a>
@@ -296,7 +297,7 @@ inside a platoon.
 </p><p>This is achieved by defining additional <a href="Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Vehicle_Types" title="Definition of Vehicles, Vehicle Types, and Routes">vehicle types</a> which 
 represent platooning modes, and by providing information, which type
 (mode) to use for normal, solitary travel, and which one to use when platooning 
-is activated. Further, 'catchup' modes may be specified, which are used
+is activated. Further, 'catch-up' modes may be specified, which are used
 when a potential platooning partner is farther ahead downstream.
 </p><p>For platooning up to four operational modes may be specified apart 
 from the normal traveling mode (see section <a href="Simpla.html#configuration" title="Simpla">Configuration</a> for the details):
@@ -312,7 +313,7 @@ the leader mode if the follower mode is not specified. The situations
 corresponding to the catch-up mode will use the solitary mode
 if no separate catch-up mode is specified. The situations
 corresponding to the catch-up follower mode will use the follower mode
-if no separate catch-up follower mode is specified. 
+if no separate catch-up follower mode is specified.
 </p>
 <h1><span class="mw-headline" id="Configuration">Configuration</span></h1>
 <p>The configuration of simpla is done by providing an xml-file containing obligatory and optional parameters for the application.
@@ -438,8 +439,8 @@ simpla.load(&quot;simpla.cfg&quot;)
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.076 seconds
-Real time usage: 0.078 seconds
+CPU time usage: 0.032 seconds
+Real time usage: 0.032 seconds
 Preprocessor visited node count: 129/1000000
 Preprocessor generated node count: 418/1000000
 Post‐expand include size: 2519/2097152 bytes
@@ -450,17 +451,17 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   28.142      1 - -total
- 35.53%    9.998      4 - Template:Note
- 20.05%    5.642      5 - Template:XML
- 13.35%    3.756      1 - Template:Option
- 11.98%    3.371      2 - Template:SUMO
- 10.29%    2.897      1 - Template:Caution
+100.00%   10.738      1 - -total
+ 38.53%    4.137      4 - Template:Note
+ 18.52%    1.988      5 - Template:XML
+ 10.76%    1.155      1 - Template:Option
+ 10.75%    1.154      1 - Template:Caution
+ 10.54%    1.132      2 - Template:SUMO
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:842-0!*!0!!en!*!* and timestamp 20171218200802 and revision id 10245
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:842-0!*!0!!en!*!* and timestamp 20180515221751 and revision id 10502
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 20 October 2017, at 13:18.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 4 January 2018, at 13:22.</div> </div>
 
     <div id="footer">
       <div>

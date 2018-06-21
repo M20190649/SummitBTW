@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Simulation/Basic Definition</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.923785 from <a href="http://sumo.dlr.de/wiki/Simulation/Basic_Definition">the wiki page for Simulation/Basic_Definition</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.277946 from <a href="http://sumo.dlr.de/wiki/Simulation/Basic_Definition">the wiki page for Simulation/Basic_Definition</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>In the following, the inputs needed by the simulation modules <a href="../SUMO.html" title="SUMO">SUMO</a> and <a href="../SUMO-GUI.html" title="SUMO-GUI">SUMO-GUI</a> are described.
@@ -343,37 +344,37 @@
 </p>
 <ul><li> Euler-update: Vehicle is stopped at position x in step t+1 (instant deceleration)</li>
 <li> Ballistic-update: Vehicle is stopped at position x + 2.25 in step t+1 (continuous deceleration)</li></ul>
-<div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />The ballistic update is currently not working well in combination with the sublane-model. See <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2581">Issue #2581</a>.</div>
+<div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />The ballistic update is currently not working well in combination with the sublane-model. See <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2581">Issue #2581</a>.</div>
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.136 seconds
-Real time usage: 0.145 seconds
+CPU time usage: 0.052 seconds
+Real time usage: 0.053 seconds
 Preprocessor visited node count: 211/1000000
 Preprocessor generated node count: 668/1000000
-Post‐expand include size: 4351/2097152 bytes
-Template argument size: 1519/2097152 bytes
+Post‐expand include size: 4353/2097152 bytes
+Template argument size: 1520/2097152 bytes
 Highest expansion depth: 3/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   62.187      1 - -total
- 60.38%   37.551     19 - Template:Option
- 11.40%    7.088      1 - Template:Caution
-  9.02%    5.607      1 - Template:DT_Int
-  6.39%    3.975      6 - Template:DT_Routes
-  6.00%    3.734      1 - Template:Ticket
-  5.52%    3.432      2 - Template:DT_Net
-  5.49%    3.412      7 - Template:DT_TIME
-  4.64%    2.885      1 - Template:Note
-  4.31%    2.682      2 - Template:AdditionalFile
+100.00%   23.693      1 - -total
+ 61.46%   14.563     19 - Template:Option
+ 10.65%    2.523      1 - Template:Caution
+  9.82%    2.327      1 - Template:DT_Int
+  6.67%    1.580      6 - Template:DT_Routes
+  6.03%    1.428      2 - Template:DT_Net
+  5.54%    1.312      7 - Template:DT_TIME
+  5.07%    1.201      1 - Template:Ticket
+  4.83%    1.145      1 - Template:Note
+  4.48%    1.062      1 - Template:DT_FileList
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:248-0!*!0!!en!*!* and timestamp 20171218232303 and revision id 10402
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:248-0!*!0!!en!*!* and timestamp 20180515221751 and revision id 10402
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 15 December 2017, at 11:28.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 15 December 2017, at 12:28.</div> </div>
 
     <div id="footer">
       <div>

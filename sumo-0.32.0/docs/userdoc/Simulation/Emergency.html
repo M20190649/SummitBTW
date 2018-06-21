@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Simulation/Emergency</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.930704 from <a href="http://sumo.dlr.de/wiki/Simulation/Emergency">the wiki page for Simulation/Emergency</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.285140 from <a href="http://sumo.dlr.de/wiki/Simulation/Emergency">the wiki page for Simulation/Emergency</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><h1><span class="mw-headline" id="Emergency_Vehicle_simulation">Emergency Vehicle simulation</span></h1>
@@ -280,7 +281,7 @@
 <li> Driving in a virtual middle lane on a multi-lane road: This is supported by using the <a href="../Simulation/SublaneModel.html" title="Simulation/SublaneModel">sublane model</a>. The cooperative behavior of the surrounding traffic is not automatic and must be forced via TraCI commands.</li>
 <li> Overtaking on the right: This is always permitted for vehicles with <span class="inlxml">vClass="emergency"</span></li></ul>
 <h1><span class="mw-headline" id="Visualization">Visualization</span></h1>
-<p>The visualization of emergency vehicles is supported in <a href="../SUMO-GUI.html" title="SUMO-GUI">SUMO-GUI</a>. When setting the vType-attribute <span class="inlxml">guiShape="emergency"</span> a white vehicle with the international sign for first aid is drawn. Furthermore a police car will be drwan with vType-attribute <span class="inlxml">guiShape="police"</span> and a firebrigade with vType-attribute <span class="inlxml">guiShape="firebrigade"</span>. When additionally setting the vType-attribute <span class="inlxml">vClass="emergency"</span> a blue flashing light will be drawn also.
+<p>The visualization of emergency vehicles is supported in <a href="../SUMO-GUI.html" title="SUMO-GUI">SUMO-GUI</a>. When setting the vType-attribute <span class="inlxml">guiShape="emergency"</span> a white vehicle with the international sign for first aid is drawn. Furthermore a police car will be drawn with vType-attribute <span class="inlxml">guiShape="police"</span> and a firebrigade with vType-attribute <span class="inlxml">guiShape="firebrigade"</span>. When additionally setting the vType-attribute <span class="inlxml">vClass="emergency"</span> a blue flashing light will be drawn also.
 </p><p><a href="../images/Ev.png" class="image"><img alt="Ev.png" src="../images//Ev.png" width="800" height="422" /></a>
 </p>
 <h1><span class="mw-headline" id="References">References</span></h1>
@@ -289,8 +290,8 @@
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.060 seconds
-Real time usage: 0.072 seconds
+CPU time usage: 0.028 seconds
+Real time usage: 0.031 seconds
 Preprocessor visited node count: 50/1000000
 Preprocessor generated node count: 132/1000000
 Post‐expand include size: 235/2097152 bytes
@@ -301,13 +302,13 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    6.459      1 - -total
- 77.96%    5.035      5 - Template:XML
+100.00%    2.709      1 - -total
+ 71.94%    1.949      5 - Template:XML
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:819-0!*!0!!*!5!* and timestamp 20171218200523 and revision id 9543
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:819-0!*!0!!*!5!* and timestamp 20180516154819 and revision id 10568
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 18 May 2017, at 12:00.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 24 January 2018, at 09:02.</div> </div>
 
     <div id="footer">
       <div>

@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,36 +270,112 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Installing/Windows CMake</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.795834 from <a href="http://sumo.dlr.de/wiki/Installing/Windows_CMake">the wiki page for Installing/Windows_CMake</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.145056 from <a href="http://sumo.dlr.de/wiki/Installing/Windows_CMake">the wiki page for Installing/Windows_CMake</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
-				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><h2><span class="mw-headline" id="Prerequisites">Prerequisites</span></h2>
-<ul><li> installed Visual Studio</li>
-<li> installed cmake for windows <a rel="nofollow" class="external free" href="https://cmake.org/download/">https://cmake.org/download/</a></li>
-<li> installed libraries (Xerces-C, Proj, GDAL, Fox)</li></ul>
-<h2><span class="mw-headline" id="How_To">How To</span></h2>
-<ul><li> fresh git checkout (e.g. git clone --recursive <a rel="nofollow" class="external free" href="https://github.com/DLR-TS/sumo">https://github.com/DLR-TS/sumo</a>)</li>
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Prerequisites"><span class="tocnumber">1</span> <span class="toctext">Prerequisites</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Method_1:_Automatic_generation_throught_python_script"><span class="tocnumber">2</span> <span class="toctext">Method 1: Automatic generation throught python script</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Method_2:_Manually_generation"><span class="tocnumber">3</span> <span class="toctext">Method 2: Manually generation</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Additional_options_and_fine_tuning"><span class="tocnumber">4</span> <span class="toctext">Additional options and fine tuning</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Troubleshooting"><span class="tocnumber">5</span> <span class="toctext">Troubleshooting</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Prerequisites">Prerequisites</span></h2>
+<ul><li> installed <a rel="nofollow" class="external text" href="https://www.visualstudio.com">Visual Studio Community, Professional or Enterprise.</a></li>
+<li> installed <a rel="nofollow" class="external text" href="https://cmake.org/download">cmake for windows</a></li>
+<li> Defined environment variable SUMO_HOME</li>
+<li> installed libraries (Xerces-C, Proj, GDAL, Fox).
+<ul><li> Make sure that the lib and bin  folders of every library are in PATH (See image)</li></ul></li></ul>
+<ul class="gallery mw-gallery-traditional" style="max-width: 1029px;_width: 1029px;">
+		<li class="gallerybox" style="width: 335px"><div style="width: 335px">
+			<div class="thumb" style="width: 330px;"><div style="margin:15px auto;"><a href="../images/CMakeEnviromentVariables.png" class="image"><img alt="" src="../images/CMakeEnviromentVariables.png" width="254" height="280" srcset="/w/images/thumb/b/b0/CMakeEnviromentVariables.png/382px-CMakeEnviromentVariables.png 1.5x, /w/images/thumb/b/b0/CMakeEnviromentVariables.png/509px-CMakeEnviromentVariables.png 2x" /></a></div></div>
+			<div class="gallerytext">
+<p>Lib folders placed in PATH
+</p>
+			</div>
+		</div></li>
+</ul>
+<h2><span class="mw-headline" id="Method_1:_Automatic_generation_throught_python_script">Method 1: Automatic generation throught python script</span></h2>
+<p>In folder sumo\tools\build there is five automatic python scripts for automatic generation of Visual Studio 15 (<i>buildMSVS15Project</i>), Visual Studio 17 (<i>buildMSVS17Project</i>) and Eclipse (<i>buildEclipseProject</i>) solutions. If you want to generate the 64 bits solutions, you need to use <i>buildMSVS15Project64Bits</i> or <i>buildMSVS17Project64Bits</i>. The automatic generated solution will be placed in folder sumo/build/autobuild.
+</p>
+<h2><span class="mw-headline" id="Method_2:_Manually_generation">Method 2: Manually generation</span></h2>
+<p>Build can be manually configured using CMake GUI:
+</p>
+<ul><li> fresh git checkout (<i>e.g. git clone --recursive <a rel="nofollow" class="external free" href="https://github.com/DLR-TS/sumo">https://github.com/DLR-TS/sumo</a></i>)</li>
 <li> start cmake gui</li>
-<li> select source path (e.g. C:/Users/me/sumo)</li>
-<li> select build path (C:/Users/me/sumo/cmake-build)
+<li> select source path (e.g. C:/sumo)</li>
+<li> select build path (C:/sumo/cmake-build)
 <ul><li> can be identical to source path but it is advised to separate</li></ul></li>
-<li> Configuration (Press "Configure")
+<li> Start Configuration pressing "Configure" button
 <ul><li> (Build dir should be created if necessary)</li>
 <li> select compiler (default should do)</li>
-<li> Lots of "red"</li>
+<li> Lots of "red" fields</li>
 <li> Scroll down to Xerces-C</li>
-<li> Set include dir to &lt;xercesdir&gt;/include</li>
-<li> Enter Libraries (something like &lt;xercesdir&gt;/lib/xerces-c3.lib and &lt;xercesdir&gt;/lib/xerces-c3D.lib)</li>
-<li> Press "Configure" again</li>
+<li> Set include dir to <i>&lt;xercesdir&gt;</i>/include</li>
+<li> Enter Libraries (something like <i>&lt;xercesdir&gt;</i>/lib/xerces-c3.lib and <i>&lt;xercesdir&gt;</i>/lib/xerces-c3D.lib)</li>
+<li> Press "Configure" button again</li>
 <li> Enter dirs and libs for Proj and GDAL</li>
+<li> Press "Configure" button again</li>
+<li> Enter dir and lib for Fox (Note: Fox-config must be ignored)</li>
 <li> Press "Configure" again</li>
-<li> Enter dir and lib for Fox (ignore Fox-config!)</li>
-<li> Press "Configure" again</li>
-<li> Still lots of red can be ignored for now</li></ul></li>
-<li> Create the Visual Studio solution (Press "Generate")</li>
-<li> Open C:/Users/me/sumo/cmake-build/SUMO.sln (from the explorer or by clicking on open project)</li>
+<li> Now there is more red fields, but can be ignored for now</li></ul></li>
+<li> Create the Visual Studio solution pressing "Generate" button</li>
+<li> Open <i>C:/sumo/cmake-build/SUMO.sln</i> (from the explorer or by clicking on open project)</li>
 <li> Build the configurations you want
-<ul><li> Binaries appear in C:/Users/me/sumo/bin</li></ul></li></ul>
+<ul><li> Binaries appear in C:/sumo/bin</li></ul></li></ul>
+<p>Visual guide:
+</p>
+<ul class="gallery mw-gallery-traditional" style="max-width: 1629px;_width: 1629px;">
+		<li class="gallerybox" style="width: 535px"><div style="width: 535px">
+			<div class="thumb" style="width: 530px;"><div style="margin:15px auto;"><a href="../images/CMakeClonningSUMO.png" class="image"><img alt="" src="../images/CMakeClonningSUMO.png" width="484" height="280" srcset="/w/images/thumb/e/e2/CMakeClonningSUMO.png/725px-CMakeClonningSUMO.png 1.5x, /w/images/thumb/e/e2/CMakeClonningSUMO.png/967px-CMakeClonningSUMO.png 2x" /></a></div></div>
+			<div class="gallerytext">
+<p>Clonning SUMO
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 535px"><div style="width: 535px">
+			<div class="thumb" style="width: 530px;"><div style="margin:21px auto;"><a href="../images/CMakeConfiguration1.png" class="image"><img alt="" src="../images/CMakeConfiguration1.png" width="500" height="268" srcset="/w/images/thumb/8/8e/CMakeConfiguration1.png/750px-CMakeConfiguration1.png 1.5x, /w/images/thumb/8/8e/CMakeConfiguration1.png/1000px-CMakeConfiguration1.png 2x" /></a></div></div>
+			<div class="gallerytext">
+<p>Selecting Solution (Visual Studio, Eclipse, etc.)
+</p>
+			</div>
+		</div></li>
+</ul>
+<ul class="gallery mw-gallery-traditional" style="max-width: 1629px;_width: 1629px;">
+		<li class="gallerybox" style="width: 535px"><div style="width: 535px">
+			<div class="thumb" style="width: 530px;"><div style="margin:21px auto;"><a href="../images/CMakeConfiguration2.png" class="image"><img alt="" src="../images/CMakeConfiguration2.png" width="500" height="268" srcset="/w/images/thumb/b/b4/CMakeConfiguration2.png/750px-CMakeConfiguration2.png 1.5x, /w/images/thumb/b/b4/CMakeConfiguration2.png/1000px-CMakeConfiguration2.png 2x" /></a></div></div>
+			<div class="gallerytext">
+<p>Libraries not found
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 535px"><div style="width: 535px">
+			<div class="thumb" style="width: 530px;"><div style="margin:21px auto;"><a href="../images/CMakeConfiguration3.png" class="image"><img alt="" src="../images/CMakeConfiguration3.png" width="500" height="268" srcset="/w/images/thumb/b/b9/CMakeConfiguration3.png/750px-CMakeConfiguration3.png 1.5x, /w/images/thumb/b/b9/CMakeConfiguration3.png/1000px-CMakeConfiguration3.png 2x" /></a></div></div>
+			<div class="gallerytext">
+<p>Setting libraries and folders
+</p>
+			</div>
+		</div></li>
+</ul>
+<ul class="gallery mw-gallery-traditional" style="max-width: 1629px;_width: 1629px;">
+		<li class="gallerybox" style="width: 535px"><div style="width: 535px">
+			<div class="thumb" style="width: 530px;"><div style="margin:21px auto;"><a href="../images/CMakeConfiguration4.png" class="image"><img alt="" src="../images/CMakeConfiguration4.png" width="500" height="268" srcset="/w/images/thumb/1/13/CMakeConfiguration4.png/750px-CMakeConfiguration4.png 1.5x, /w/images/thumb/1/13/CMakeConfiguration4.png/1000px-CMakeConfiguration4.png 2x" /></a></div></div>
+			<div class="gallerytext">
+<p>Libraries successfully configured
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 535px"><div style="width: 535px">
+			<div class="thumb" style="width: 530px;"><div style="margin:21px auto;"><a href="../images/CMakeConfiguration5.png" class="image"><img alt="" src="../images/CMakeConfiguration5.png" width="500" height="268" srcset="/w/images/thumb/c/c3/CMakeConfiguration5.png/750px-CMakeConfiguration5.png 1.5x, /w/images/thumb/c/c3/CMakeConfiguration5.png/1000px-CMakeConfiguration5.png 2x" /></a></div></div>
+			<div class="gallerytext">
+<p>Generated solution
+</p>
+			</div>
+		</div></li>
+</ul>
 <h2><span class="mw-headline" id="Additional_options_and_fine_tuning">Additional options and fine tuning</span></h2>
 <ul><li> For a different target platform (e.g. 32bit) start cmake again, do not use Visual Studio to add a different platform</li>
 <li> To enable <a href="../Libsumo.html" title="Libsumo">Libsumo</a> add SWIG dir and exe for building Python and Java bindings
@@ -308,13 +385,33 @@
 <ul><li> will need git in the path</li>
 <li> will clone the gtest git repo</li>
 <li> then enable build_gtest</li></ul></li></ul>
+<h2><span class="mw-headline" id="Troubleshooting">Troubleshooting</span></h2>
+<ul><li> Python cannot be found
+<ul><li> Make sure that there isn't two different Python version installed</li>
+<li> Python libraries can be specified manually (e.g. &lt;PythonFolder&gt;\libs\python&lt;version&gt;.lib)</li></ul></li></ul>
+<ul class="gallery mw-gallery-traditional" style="max-width: 1629px;_width: 1629px;">
+		<li class="gallerybox" style="width: 535px"><div style="width: 535px">
+			<div class="thumb" style="width: 530px;"><div style="margin:21px auto;"><a href="../images/CMakeConfiguration6.png" class="image"><img alt="" src="../images/CMakeConfiguration6.png" width="500" height="268" srcset="/w/images/thumb/e/e6/CMakeConfiguration6.png/750px-CMakeConfiguration6.png 1.5x, /w/images/thumb/e/e6/CMakeConfiguration6.png/1000px-CMakeConfiguration6.png 2x" /></a></div></div>
+			<div class="gallerytext">
+<p>Python library field
+</p>
+			</div>
+		</div></li>
+		<li class="gallerybox" style="width: 535px"><div style="width: 535px">
+			<div class="thumb" style="width: 530px;"><div style="margin:15px auto;"><a href="../images/CMakePython1.png" class="image"><img alt="" src="../images/CMakePython1.png" width="254" height="280" srcset="/w/images/thumb/f/f7/CMakePython1.png/382px-CMakePython1.png 1.5x, /w/images/thumb/f/f7/CMakePython1.png/509px-CMakePython1.png 2x" /></a></div></div>
+			<div class="gallerytext">
+<p>Two different python version at the same time
+</p>
+			</div>
+		</div></li>
+</ul>
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.012 seconds
-Real time usage: 0.013 seconds
-Preprocessor visited node count: 10/1000000
-Preprocessor generated node count: 16/1000000
+CPU time usage: 0.044 seconds
+Real time usage: 0.051 seconds
+Preprocessor visited node count: 66/1000000
+Preprocessor generated node count: 160/1000000
 Post‐expand include size: 0/2097152 bytes
 Template argument size: 0/2097152 bytes
 Highest expansion depth: 2/40
@@ -326,9 +423,9 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:865-0!*!0!!*!*!* and timestamp 20171218232228 and revision id 10424
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:865-0!*!0!!en!*!* and timestamp 20180516191444 and revision id 10501
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 17 December 2017, at 23:05.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 4 January 2018, at 11:47.</div> </div>
 
     <div id="footer">
       <div>

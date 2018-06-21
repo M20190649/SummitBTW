@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Simulation/Bicycles</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.925559 from <a href="http://sumo.dlr.de/wiki/Simulation/Bicycles">the wiki page for Simulation/Bicycles</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.279791 from <a href="http://sumo.dlr.de/wiki/Simulation/Bicycles">the wiki page for Simulation/Bicycles</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -337,18 +338,18 @@
 <p>The import of bicycle lanes from OpenStreetMap is supported since version 0.24.0. To use this, <a href="../Networks/Import/OpenStreetMap.html#Recommended_Typemaps" title="Networks/Import/OpenStreetMap">an appropriate typemap</a> must be loaded.
 </p>
 <h3><span class="mw-headline" id="Explicity_specification">Explicity specification</span></h3>
-<p>Bike lanes may be defined explicitly in plain XML input when describing <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Lane-specific_Definitions" title="Networks/Building Networks from own XML-descriptions">edges (plain.edg.xml)</a>. This is done by defining an additional lane which only permits the vClass “bicycle” and setting the appropriate width. In this case it is important to disallow bicycles on all other lanes. Also, any pre-exisiting connection definitions must be modified to account for the new sidewalk lane.
+<p>Bike lanes may be defined explicitly in plain XML input when describing <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Lane-specific_Definitions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">edges (plain.edg.xml)</a>. This is done by defining an additional lane which only permits the vClass “bicycle” and setting the appropriate width. In this case it is important to disallow bicycles on all other lanes. Also, any pre-exisiting connection definitions must be modified to account for the new sidewalk lane.
 </p>
 <h2><span class="mw-headline" id="Notes_on_Right-of-Way_rules">Notes on Right-of-Way rules</span></h2>
 <p>When using bicycle lanes in a network, right-turning vehicles must yield for straight-going bicycles. The intersection model supports these right-of-way rules and builds internal junctions where appropriate. 
 </p><p>Likewise, left-turning bicycles one a bicycle lane (on the right side of the road) must yield to straight-going vehicles.
 </p>
-<div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />The trajectories of left-turning bicycles use a wide curve rather than going straight twice. Currently, this can only be remedied by setting <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Custom_shapes_for_internal_lanes.2C_crossings_and_walkingareas" title="Networks/Building Networks from own XML-descriptions">custom shapes for these internal lanes</a>.</div>
+<div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />The trajectories of left-turning bicycles use a wide curve rather than going straight twice. Currently, this can only be remedied by setting <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Custom_shapes_for_internal_lanes.2C_crossings_and_walkingareas" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">custom shapes for these internal lanes</a>.</div>
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.040 seconds
-Real time usage: 0.039 seconds
+CPU time usage: 0.016 seconds
+Real time usage: 0.017 seconds
 Preprocessor visited node count: 66/1000000
 Preprocessor generated node count: 140/1000000
 Post‐expand include size: 782/2097152 bytes
@@ -359,14 +360,14 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    8.792      1 - -total
- 39.21%    3.447      2 - Template:Caution
- 37.35%    3.284      2 - Template:XML
+100.00%    3.493      1 - -total
+ 39.91%    1.394      2 - Template:Caution
+ 37.48%    1.309      2 - Template:XML
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:590-0!*!0!!en!*!* and timestamp 20171218232304 and revision id 9816
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:590-0!*!0!!en!*!* and timestamp 20180516221728 and revision id 9816
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 11 July 2017, at 12:31.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 11 July 2017, at 13:31.</div> </div>
 
     <div id="footer">
       <div>

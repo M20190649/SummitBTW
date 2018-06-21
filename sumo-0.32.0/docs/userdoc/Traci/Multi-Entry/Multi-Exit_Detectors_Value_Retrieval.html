@@ -114,6 +114,7 @@
   <li><a href="../../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">TraCI/Multi-Entry-Exit Detectors Value Retrieval</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.122948 from <a href="http://sumo.dlr.de/wiki/TraCI/Multi-Entry/Multi-Exit_Detectors_Value_Retrieval">the wiki page for TraCI/Multi-Entry/Multi-Exit_Detectors_Value_Retrieval</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.485381 from <a href="http://sumo.dlr.de/wiki/TraCI/Multi-Entry/Multi-Exit_Detectors_Value_Retrieval">the wiki page for TraCI/Multi-Entry/Multi-Exit_Detectors_Value_Retrieval</a> for SUMO git</div>
 								<div id="contentSub"><span class="mw-redirectedfrom">(Redirected from <a href="/w/index.php?title=TraCI/Multi-Entry/Multi-Exit_Detectors_Value_Retrieval&amp;redirect=no" title="TraCI/Multi-Entry/Multi-Exit Detectors Value Retrieval">TraCI/Multi-Entry/Multi-Exit Detectors Value Retrieval</a>)</span></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><h2><span class="mw-headline" id="Command_0xa1:_Get_MeMeDetector_Variable">Command 0xa1: Get MeMeDetector Variable</span></h2>
@@ -306,7 +307,7 @@ Please note that for asking values from your <a href="../../Simulation/Output/Mu
 </td>
 <td> Returns a list of ids of all multi-entry/multi-exit detectors within the scenario (the given DetectorID is ignored)
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._multientryexit.html#MultiEntryExitDomain-getIDList">getIDList</a>
+<td> <a rel="nofollow" class="external text" href="../../../pydoc/traci._multientryexit.html#MultiEntryExitDomain-getIDList">getIDList</a>
 </td></tr>
 <tr>
 <td> count (0x01)
@@ -315,7 +316,7 @@ Please note that for asking values from your <a href="../../Simulation/Output/Mu
 </td>
 <td> Returns the number of multi-entry/multi-exit detectors within the scenario (the given DetectorID  is ignored)
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._multientryexit.html#MultiEntryExitDomain-getIDCount">getIDCount</a>
+<td> <a rel="nofollow" class="external text" href="../../../pydoc/traci._multientryexit.html#MultiEntryExitDomain-getIDCount">getIDCount</a>
 </td></tr>
 <tr>
 <td> last step vehicle number (0x10)
@@ -325,7 +326,7 @@ Please note that for asking values from your <a href="../../Simulation/Output/Mu
 <td> Returns the number of vehicles that have been within the named multi-entry/multi-exit detector within the last simulation step [#];
 <div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />If the interval length for the detector is equal to the timestep length, this value corresponds to the <i>vehicleSumWithin</i> measure of <a href="../../Simulation/Output/Multi-Entry_Multi-Exit_Detectors_(E3).html" title="Simulation/Output/Multi-Entry Multi-Exit Detectors (E3)" class="mw-redirect">multi-entry/multi-exit detectors</a>.</div>
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._multientryexit.html#MultiEntryExitDomain-getLastStepVehicleNumber">getLastStepVehicleNumber</a>
+<td> <a rel="nofollow" class="external text" href="../../../pydoc/traci._multientryexit.html#MultiEntryExitDomain-getLastStepVehicleNumber">getLastStepVehicleNumber</a>
 </td></tr>
 <tr>
 <td> last step mean speed (0x11)
@@ -335,7 +336,7 @@ Please note that for asking values from your <a href="../../Simulation/Output/Mu
 <td> Returns the mean speed of vehicles that have been within the named multi-entry/multi-exit detector within the last simulation step [m/s]
 <div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />If the interval length for the detector is equal to the timestep length, this value corresponds to the <i>meanSpeedWithin</i> measure of <a href="../../Simulation/Output/Multi-Entry_Multi-Exit_Detectors_(E3).html" title="Simulation/Output/Multi-Entry Multi-Exit Detectors (E3)" class="mw-redirect">multi-entry/multi-exit detectors</a>.</div>
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._multientryexit.html#MultiEntryExitDomain-getLastStepMeanSpeed">getLastStepMeanSpeed</a>
+<td> <a rel="nofollow" class="external text" href="../../../pydoc/traci._multientryexit.html#MultiEntryExitDomain-getLastStepMeanSpeed">getLastStepMeanSpeed</a>
 </td></tr>
 <tr>
 <td> last step vehicle ids (0x12)
@@ -344,7 +345,7 @@ Please note that for asking values from your <a href="../../Simulation/Output/Mu
 </td>
 <td> Returns the list of ids of vehicles that have been within the named multi-entry/multi-exit detector in the last simulation step
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._multientryexit.html#MultiEntryExitDomain-getLastStepVehicleIDs">getLastStepVehicleIDs</a>
+<td> <a rel="nofollow" class="external text" href="../../../pydoc/traci._multientryexit.html#MultiEntryExitDomain-getLastStepVehicleIDs">getLastStepVehicleIDs</a>
 </td></tr>
 <tr>
 <td> last step halting vehicles number (0x14)
@@ -353,7 +354,7 @@ Please note that for asking values from your <a href="../../Simulation/Output/Mu
 </td>
 <td> Returns the number of vehicles which were halting during the last time step
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._multientryexit.html#MultiEntryExitDomain-getLastStepHaltingNumber">getLastStepHaltingNumber</a>
+<td> <a rel="nofollow" class="external text" href="../../../pydoc/traci._multientryexit.html#MultiEntryExitDomain-getLastStepHaltingNumber">getLastStepHaltingNumber</a>
 </td></tr>
 </table>
 <h2><span class="mw-headline" id="Response_0xb1:_MeMeDetector_Variable">Response 0xb1: MeMeDetector Variable</span></h2>
@@ -383,8 +384,8 @@ Please note that for asking values from your <a href="../../Simulation/Output/Mu
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.028 seconds
-Real time usage: 0.063 seconds
+CPU time usage: 0.012 seconds
+Real time usage: 0.015 seconds
 Preprocessor visited node count: 24/1000000
 Preprocessor generated node count: 62/1000000
 Post‐expand include size: 727/2097152 bytes
@@ -395,13 +396,13 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    3.004      1 - -total
- 86.89%    2.610      2 - Template:Note
+100.00%    1.494      1 - -total
+ 87.55%    1.308      2 - Template:Note
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:261-0!*!0!!*!*!* and timestamp 20171218232351 and revision id 9405
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:261-0!*!0!!*!*!* and timestamp 20180515221815 and revision id 9405
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 28 April 2017, at 06:53.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 28 April 2017, at 07:53.</div> </div>
 
     <div id="footer">
       <div>

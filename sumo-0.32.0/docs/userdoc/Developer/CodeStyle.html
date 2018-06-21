@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Developer/CodeStyle</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.724198 from <a href="http://sumo.dlr.de/wiki/Developer/CodeStyle">the wiki page for Developer/CodeStyle</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.070008 from <a href="http://sumo.dlr.de/wiki/Developer/CodeStyle">the wiki page for Developer/CodeStyle</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -379,7 +380,7 @@
 </p>
 <ul><li> <a href="../Developer/PythonFileTemplate.html" title="Developer/PythonFileTemplate">Developer/PythonFileTemplate</a></li></ul>
 <h1><span class="mw-headline" id="Line_endings_and_keyword_replacement">Line endings and keyword replacement</span></h1>
-<p>We enforce special line endings for the following file types (overriding core.autocrlf settings of git) using <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/blob/master/.gitattributes"><i><b>&lt;SUMO_HOME&gt;</b></i>/.gitattributes</a>:
+<p>We enforce special line endings for the following file types (overriding core.autocrlf settings of git) using <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/blob/master/.gitattributes"><i><b>&lt;SUMO_HOME&gt;</b></i>/.gitattributes</a>:
 </p>
 <ul><li> LF for
 <ul><li> source files (".h", ".cpp", ".py", ...),</li>
@@ -392,18 +393,18 @@
       smudge = .git_filters/keywords.py&#160;%f
 </pre>
 <p>The filter is enabled for Python and C++ source files.
-</p><p>For the current settings you can always look at <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/blob/master/.gitattributes"><i><b>&lt;SUMO_HOME&gt;</b></i>/.gitattributes</a>.
+</p><p>For the current settings you can always look at <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/blob/master/.gitattributes"><i><b>&lt;SUMO_HOME&gt;</b></i>/.gitattributes</a>.
 </p>
 <h1><span class="mw-headline" id="Checking_code_style">Checking code style</span></h1>
-<p>There is a python script checking (and optionally enforcing) some code style including the header format in <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/blob/master/tools/build/checkStyle.py"><i><b>&lt;SUMO_HOME&gt;</b></i>/tools/build/checkStyle.py</a>.
+<p>There is a python script checking (and optionally enforcing) some code style including the header format in <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/blob/master/tools/build/checkStyle.py"><i><b>&lt;SUMO_HOME&gt;</b></i>/tools/build/checkStyle.py</a>.
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.040 seconds
-Real time usage: 0.041 seconds
+CPU time usage: 0.028 seconds
+Real time usage: 0.023 seconds
 Preprocessor visited node count: 106/1000000
 Preprocessor generated node count: 166/1000000
-Post‐expand include size: 415/2097152 bytes
+Post‐expand include size: 418/2097152 bytes
 Template argument size: 106/2097152 bytes
 Highest expansion depth: 2/40
 Expensive parser function count: 0/100
@@ -411,14 +412,14 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    9.704      1 - -total
- 52.83%    5.127      3 - Template:Source
- 31.60%    3.066      5 - Template:SUMO
+100.00%    4.544      1 - -total
+ 52.95%    2.406      3 - Template:Source
+ 29.56%    1.343      5 - Template:SUMO
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:22-0!*!0!!en!*!* and timestamp 20171218202014 and revision id 10304
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:22-0!*!0!!en!*!* and timestamp 20180515221724 and revision id 10304
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 5 November 2017, at 21:34.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 5 November 2017, at 22:34.</div> </div>
 
     <div id="footer">
       <div>

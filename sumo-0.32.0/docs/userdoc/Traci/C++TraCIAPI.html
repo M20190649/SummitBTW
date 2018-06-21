@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">TraCI/C++TraCIAPI</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.086907 from <a href="http://sumo.dlr.de/wiki/TraCI/C++TraCIAPI">the wiki page for TraCI/C++TraCIAPI</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.447988 from <a href="http://sumo.dlr.de/wiki/TraCI/C++TraCIAPI">the wiki page for TraCI/C++TraCIAPI</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -283,7 +284,13 @@
 <li class="toclevel-3 tocsection-5"><a href="#Testing_the_TraCIAPI_client_library"><span class="tocnumber">1.2.2</span> <span class="toctext">Testing the TraCIAPI client library</span></a></li>
 </ul>
 </li>
-<li class="toclevel-2 tocsection-6"><a href="#Example_Code"><span class="tocnumber">1.3</span> <span class="toctext">Example Code</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Example_Code"><span class="tocnumber">1.3</span> <span class="toctext">Example Code</span></a>
+<ul>
+<li class="toclevel-3 tocsection-7"><a href="#compiling_when_sumo_is_already_built"><span class="tocnumber">1.3.1</span> <span class="toctext">compiling when sumo is already built</span></a></li>
+<li class="toclevel-3 tocsection-8"><a href="#compiling_with_all_files_in_the_same_directory"><span class="tocnumber">1.3.2</span> <span class="toctext">compiling with all files in the same directory</span></a></li>
+<li class="toclevel-3 tocsection-9"><a href="#running"><span class="tocnumber">1.3.3</span> <span class="toctext">running</span></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -303,10 +310,10 @@ src/foreign/tcpip/socket.cpp
 src/foreign/tcpip/storage.h
 src/foreign/tcpip/storage.cpp
 src/traci-server/TraCIConstants.h
-src/traci-server/TraCIDefs.h
-src/config.h (or src/windows_config.h)
+src/libsumo/TraCIDefs.h
 </pre>
-<p>If you chose to copy all these files into the same directory, the include paths in <i>TraCIAPI.h</i> and <i>TraCIAPI.cpp</i> need to be patched as well.
+<p>Additionally, the file <i>config.h</i> (on windows <i>windows_config.h</i>) must be present but these files can be left empty. If SUMO was built, they can either be found in the <i>src</i> or the <i>cmake-build/src</i> directory)
+</p><p>If you chose to copy all these files into the same directory, the include paths in <i>TraCIAPI.h</i> and <i>TraCIAPI.cpp</i> need to be patched as well.
 </p>
 <h2><span class="mw-headline" id="TraCI-Testclient"><a rel="nofollow" class="external text" href="http://sumo.dlr.de/trac.wsgi/browser/trunk/sumo/src/traci_testclient">TraCI-Testclient</a></span></h2>
 <p>The TraCI-Testclient is an application for testing the server side of the TRaCI-API. When using it as the basis for your own control 
@@ -350,22 +357,22 @@ int main(int argc, char* argv[]) {
 }   
 
 </pre>
-<p><br />
-compiling:
-</p>
-<pre>g++ -o test TraCIAPITest.cpp utils/traci/libtraci.a foreign/tcpip/storage.o foreign/tcpip/socket.o -I .
+<h3><span class="mw-headline" id="compiling_when_sumo_is_already_built">compiling when sumo is already built</span></h3>
+<pre>g++ -std=c++0x -o test TraCIAPITest.cpp utils/traci/libtraci.a foreign/tcpip/storage.o foreign/tcpip/socket.o -I .
 </pre>
-<p>running:
-</p>
+<h3><span class="mw-headline" id="compiling_with_all_files_in_the_same_directory">compiling with all files in the same directory</span></h3>
+<pre>g++ -std=c++0x -o test TraCIAPITest.cpp TraCIAPI.cpp socket.cpp storage.cpp
+</pre>
+<h3><span class="mw-headline" id="running">running</span></h3>
 <pre>sumo -c test.sumocfg --remote-port 1337 &amp;
 ./test
 </pre>
 <!-- 
 NewPP limit report
-CPU time usage: 0.028 seconds
-Real time usage: 0.028 seconds
-Preprocessor visited node count: 36/1000000
-Preprocessor generated node count: 84/1000000
+CPU time usage: 0.012 seconds
+Real time usage: 0.014 seconds
+Preprocessor visited node count: 54/1000000
+Preprocessor generated node count: 96/1000000
 Post‐expand include size: 294/2097152 bytes
 Template argument size: 137/2097152 bytes
 Highest expansion depth: 2/40
@@ -374,14 +381,14 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    5.911      1 - -total
- 49.94%    2.952      1 - Template:SUMO
- 43.19%    2.553      1 - Template:Note
+100.00%    2.435      1 - -total
+ 48.10%    1.171      1 - Template:Note
+ 43.65%    1.063      1 - Template:SUMO
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:612-0!*!*!!en!*!* and timestamp 20171219011203 and revision id 9498
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:612-0!*!*!!en!*!* and timestamp 20180515221811 and revision id 10784
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 11 May 2017, at 07:32.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 8 May 2018, at 08:41.</div> </div>
 
     <div id="footer">
       <div>

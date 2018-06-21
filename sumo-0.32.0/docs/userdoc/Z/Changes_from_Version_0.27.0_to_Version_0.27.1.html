@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,47 +270,47 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Z/Changes from Version 0.27.0 to Version 0.27.1</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.240520 from <a href="http://sumo.dlr.de/wiki/Z/Changes_from_Version_0.27.0_to_Version_0.27.1">the wiki page for Z/Changes_from_Version_0.27.0_to_Version_0.27.1</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.605038 from <a href="http://sumo.dlr.de/wiki/Z/Changes_from_Version_0.27.0_to_Version_0.27.1">the wiki page for Z/Changes_from_Version_0.27.0_to_Version_0.27.1</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><h2><span class="mw-headline" id="Version_0.27.1_.2827.07.2016.29">Version 0.27.1 (27.07.2016)</span></h2>
 <h3><span class="mw-headline" id="Bugfixes">Bugfixes</span></h3>
 <ul><li> NETCONVERT
-<ul><li> Original IDs are no longer lost when splitting edges. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2497">Issue #2497</a></li>
-<li> Elevation data is now correctly imported from OpenDRIVE networks. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2239">Issue #2239</a></li></ul></li></ul>
+<ul><li> Original IDs are no longer lost when splitting edges. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2497">Issue #2497</a></li>
+<li> Elevation data is now correctly imported from OpenDRIVE networks. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2239">Issue #2239</a></li></ul></li></ul>
 <ul><li> NETEDIT
-<ul><li> Fixed crash when increasing the number of lanes by setting numLanes. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2505">Issue #2505</a></li>
+<ul><li> Fixed crash when increasing the number of lanes by setting numLanes. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2505">Issue #2505</a></li>
 <li> Fixed slow loading of large networks.</li>
-<li> Custom colors for selected junctions and edges are now working. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2386">Issue #2386</a></li></ul></li></ul>
+<li> Custom colors for selected junctions and edges are now working. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2386">Issue #2386</a></li></ul></li></ul>
 <ul><li> DUAROUTER
-<ul><li> Fixed crash when using option <span style="color: #111144; font-weight: bold; white-space: pre;">--ignore-error</span> with invalid <span class="inlxml">via</span>-edges. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2494">Issue #2494</a></li></ul></li></ul>
+<ul><li> Fixed crash when using option <span style="color: #111144; font-weight: bold; white-space: pre;">--ignore-error</span> with invalid <span class="inlxml">via</span>-edges. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2494">Issue #2494</a></li></ul></li></ul>
 <h3><span class="mw-headline" id="Enhancements">Enhancements</span></h3>
 <ul><li> Simulation
-<ul><li> Added new option <span style="color: #111144; font-weight: bold; white-space: pre;">save-state.period <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;TIME&gt;</i></a></span> to save simulation state periodically. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2441">Issue #2441</a></li>
+<ul><li> Added new option <span style="color: #111144; font-weight: bold; white-space: pre;">save-state.period <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;TIME&gt;</i></a></span> to save simulation state periodically. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2441">Issue #2441</a></li>
 <li> Added new option <span style="color: #111144; font-weight: bold; white-space: pre;">save-state.suffix <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;STRING&gt;</i></a></span> to determine the suffix of saved state files. The default is <i>.sbx</i> which saves in a binary format. Alternatively, <i>.xml</i> may be used which makes the state files human-readable. </li></ul></li></ul>
 <ul><li> NETCONVERT
-<ul><li> Networks exported to OpenDRIVE now use parametric curves to represent smooth geometry in place of straight-line segments. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2041">Issue #2041</a></li>
-<li> Networks exported to OpenDRIVE now contain elevation data. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2240">Issue #2240</a></li>
-<li> Parametric curves as specified in OpenDRIVE version 1.4 can now be imported. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2478">Issue #2478</a></li>
-<li> Revised default OpenDRIVE typemap. Now imports additional lane types such as tram and rail. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2492">Issue #2492</a></li>
+<ul><li> Networks exported to OpenDRIVE now use parametric curves to represent smooth geometry in place of straight-line segments. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2041">Issue #2041</a></li>
+<li> Networks exported to OpenDRIVE now contain elevation data. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2240">Issue #2240</a></li>
+<li> Parametric curves as specified in OpenDRIVE version 1.4 can now be imported. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2478">Issue #2478</a></li>
+<li> Revised default OpenDRIVE typemap. Now imports additional lane types such as tram and rail. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2492">Issue #2492</a></li>
 <li> Added new option <span style="color: #111144; font-weight: bold; white-space: pre;">osm.layer-elevation <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FLOAT&gt;</i></a></span> to import implicit elevation data from <a href="../Networks/Import/OpenStreetMap.html#Layer_Information" title="Networks/Import/OpenStreetMap">OSM-layering information</a>.</li>
-<li> Networks imported from OpenDRIVE now contain edge type information based on the OpenDRIVE lane types. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2509">Issue #2509</a></li></ul></li></ul>
+<li> Networks imported from OpenDRIVE now contain edge type information based on the OpenDRIVE lane types. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2509">Issue #2509</a></li></ul></li></ul>
 <ul><li> SUMO-GUI
-<ul><li> Added Visualization options for drawing intersections with exaggerated size and disable edge drawing based on custom widths. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2140">Issue #2140</a></li>
-<li> Added Visualization option for indicating the driving direction of lanes. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2180">Issue #2180</a></li>
+<ul><li> Added Visualization options for drawing intersections with exaggerated size and disable edge drawing based on custom widths. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2140">Issue #2140</a></li>
+<li> Added Visualization option for indicating the driving direction of lanes. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2180">Issue #2180</a></li>
 <li> Added Visualization option for drawing <a href="../Simulation/SublaneModel.html" title="Simulation/SublaneModel">sublane boundaries</a></li>
-<li> Lanes can now be colored according to the number of vehicles that are delayed from entering the network. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2489">Issue #2489</a></li></ul></li></ul>
+<li> Lanes can now be colored according to the number of vehicles that are delayed from entering the network. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2489">Issue #2489</a></li></ul></li></ul>
 <ul><li> NETEDIT
-<ul><li> Added Visualization options for drawing intersections with exaggerated size and disable edge drawing based on custom widths. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2140">Issue #2140</a></li>
-<li> Added Visualization option for indicating the driving direction of lanes. <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/2180">Issue #2180</a></li></ul></li></ul>
+<ul><li> Added Visualization options for drawing intersections with exaggerated size and disable edge drawing based on custom widths. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2140">Issue #2140</a></li>
+<li> Added Visualization option for indicating the driving direction of lanes. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2180">Issue #2180</a></li></ul></li></ul>
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.068 seconds
-Real time usage: 0.070 seconds
+CPU time usage: 0.028 seconds
+Real time usage: 0.058 seconds
 Preprocessor visited node count: 135/1000000
 Preprocessor generated node count: 456/1000000
-Post‐expand include size: 1623/2097152 bytes
+Post‐expand include size: 1639/2097152 bytes
 Template argument size: 366/2097152 bytes
 Highest expansion depth: 3/40
 Expensive parser function count: 0/100
@@ -317,18 +318,18 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   35.805      1 - -total
- 35.13%   12.577      4 - Template:Option
- 30.96%   11.085     16 - Template:Ticket
-  7.68%    2.749      1 - Template:XML
-  6.79%    2.431      1 - Template:DT_STR
-  6.72%    2.407      1 - Template:DT_FLOAT
-  6.69%    2.396      1 - Template:DT_TIME
+100.00%   38.806      1 - -total
+ 55.25%   21.439      4 - Template:Option
+ 32.08%   12.449     16 - Template:Ticket
+ 21.73%    8.431      1 - Template:DT_FLOAT
+  2.93%    1.136      1 - Template:XML
+  2.86%    1.111      1 - Template:DT_STR
+  2.84%    1.103      1 - Template:DT_TIME
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:845-0!*!0!!*!*!* and timestamp 20171218232421 and revision id 9691
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:845-0!*!0!!*!*!* and timestamp 20180515221828 and revision id 9691
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 19 June 2017, at 12:17.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 19 June 2017, at 13:17.</div> </div>
 
     <div id="footer">
       <div>

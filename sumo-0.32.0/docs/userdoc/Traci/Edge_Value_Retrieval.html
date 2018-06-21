@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">TraCI/Edge Value Retrieval</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.109262 from <a href="http://sumo.dlr.de/wiki/TraCI/Edge_Value_Retrieval">the wiki page for TraCI/Edge_Value_Retrieval</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.471130 from <a href="http://sumo.dlr.de/wiki/TraCI/Edge_Value_Retrieval">the wiki page for TraCI/Edge_Value_Retrieval</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><h2><span class="mw-headline" id="Command_0xaa:_Get_Edge_Variable">Command 0xaa: Get Edge Variable</span></h2>
@@ -306,7 +307,7 @@
 </td>
 <td> Returns a list of ids of all edges within the scenario (the given Edge ID is ignored)
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._edge.html#EdgeDomain-getIDList">getIDList</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getIDList">getIDList</a>
 </td></tr>
 <tr>
 <td> count (0x01)
@@ -315,7 +316,16 @@
 </td>
 <td> Returns the number of edges within the scenario (the given Edge ID is ignored)
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._edge.html#EdgeDomain-getIDCount">getIDCount</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getIDCount">getIDCount</a>
+</td></tr>
+<tr>
+<td> lane number (0x52)
+</td>
+<td> int
+</td>
+<td> Returns the number of lanes for the given edge ID
+</td>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getLaneNumber">getLaneNumber</a>
 </td></tr>
 <tr>
 <td> current travel time (0x5a)
@@ -324,7 +334,7 @@
 </td>
 <td> Returns the current travel time (length/mean speed). <div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />This definition of travel time has to be reverified.</div>
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._edge.html#EdgeDomain-getTraveltime">getTraveltime</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getTraveltime">getTraveltime</a>
 </td></tr>
 <tr>
 <td> CO2 emissions (id 0x60)
@@ -333,7 +343,7 @@
 </td>
 <td> Sum of CO2 emissions on this edge in mg during this time step]].
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._edge.html#EdgeDomain-getCO2Emission">getCO2Emission</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getCO2Emission">getCO2Emission</a>
 </td></tr>
 <tr>
 <td> CO emissions (id 0x61)
@@ -342,7 +352,7 @@
 </td>
 <td> Sum of CO emissions on this edge in mg during this time step]].
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._edge.html#EdgeDomain-getCOEmission">getCOEmission</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getCOEmission">getCOEmission</a>
 </td></tr>
 <tr>
 <td> HC emissions (id 0x62)
@@ -351,7 +361,7 @@
 </td>
 <td> Sum of HC emissions on this edge in mg during this time step]].
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._edge.html#EdgeDomain-getHCEmission">getHCEmission</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getHCEmission">getHCEmission</a>
 </td></tr>
 <tr>
 <td> PMx emissions (id 0x63)
@@ -360,7 +370,7 @@
 </td>
 <td> Sum of PMx emissions on this edge in mg during this time step]].
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._edge.html#EdgeDomain-getPMxEmission">getPMxEmission</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getPMxEmission">getPMxEmission</a>
 </td></tr>
 <tr>
 <td> NOx emissions (id 0x64)
@@ -369,7 +379,7 @@
 </td>
 <td> Sum of NOx emissions on this edge in mg during this time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._edge.html#EdgeDomain-getNOxEmission">getNOxEmission</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getNOxEmission">getNOxEmission</a>
 </td></tr>
 <tr>
 <td> fuel consumption (id 0x65)
@@ -378,7 +388,7 @@
 </td>
 <td> Sum of fuel consumption on this edge in ml during this time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._edge.html#EdgeDomain-getFuelConsumption">getFuelConsumption</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getFuelConsumption">getFuelConsumption</a>
 </td></tr>
 <tr>
 <td> noise emission (id 0x66)
@@ -387,7 +397,7 @@
 </td>
 <td> Sum of noise generated on this edge in dBA.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._edge.html#EdgeDomain-getNoiseEmission">getNoiseEmission</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getNoiseEmission">getNoiseEmission</a>
 </td></tr>
 <tr>
 <td> electricity consumption (id 0x71)
@@ -396,7 +406,7 @@
 </td>
 <td> Sum of electricity consumption on this edge in kWh during this time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._edge.html#EdgeDomain-getElectricityConsumption">getElectricityConsumption</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getElectricityConsumption">getElectricityConsumption</a>
 </td></tr>
 <tr>
 <td> last step vehicle number (0x10)
@@ -405,7 +415,7 @@
 </td>
 <td> The number of vehicles on this edge within the last time step.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._edge.html#EdgeDomain-getLastStepVehicleNumber">getLastStepVehicleNumber</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getLastStepVehicleNumber">getLastStepVehicleNumber</a>
 </td></tr>
 <tr>
 <td> last step mean speed (0x11)
@@ -414,7 +424,7 @@
 </td>
 <td> Returns the mean speed of vehicles that were on the named edge within the last simulation step [m/s]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._edge.html#EdgeDomain-getLastStepMeanSpeed">getLastStepMeanSpeed</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getLastStepMeanSpeed">getLastStepMeanSpeed</a>
 </td></tr>
 <tr>
 <td> last step vehicle ids (0x12)
@@ -423,7 +433,7 @@
 </td>
 <td> Returns the list of ids of vehicles that were on the named edge in the last simulation step. The order is from rightmost to leftmost lane and downstream for each lane.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._edge.html#EdgeDomain-getLastStepVehicleIDs">getLastStepVehicleIDs</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getLastStepVehicleIDs">getLastStepVehicleIDs</a>
 </td></tr>
 <tr>
 <td> last step occupancy (0x13)
@@ -432,7 +442,7 @@
 </td>
 <td> Returns the percentage of time the edge was occupied by a vehicle [%]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._edge.html#EdgeDomain-getLastStepOccupancy">getLastStepOccupancy</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getLastStepOccupancy">getLastStepOccupancy</a>
 </td></tr>
 <tr>
 <td> last step mean vehicle length (0x15)
@@ -441,7 +451,7 @@
 </td>
 <td> The mean length of vehicles which were on the edge in the last step [m]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._edge.html#EdgeDomain-getLastStepLength">getLastStepLength</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getLastStepLength">getLastStepLength</a>
 </td></tr>
 <tr>
 <td> waiting time (0x7a)
@@ -450,7 +460,7 @@
 </td>
 <td> Returns the waiting time for all vehicles on the edge [s]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._edge.html#EdgeDomain-getWaitingTime">getWaitingTime</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getWaitingTime">getWaitingTime</a>
 </td></tr>
 <tr>
 <td> last step person ids (0x1a)
@@ -459,7 +469,7 @@
 </td>
 <td> Returns the list of ids of persons that were on the named edge in the last simulation step
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._edge.html#EdgeDomain-getLastStepPersonIDs">getLastStepPersonIDs</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getLastStepPersonIDs">getLastStepPersonIDs</a>
 </td></tr>
 <tr>
 <td> last step halting number (0x14)
@@ -468,7 +478,7 @@
 </td>
 <td> Returns the total number of halting vehicles for the last time step on the given edge. A speed of less than 0.1 m/s is considered a halt.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._edge.html#EdgeDomain-getLastStepHaltingNumber">getLastStepHaltingNumber</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getLastStepHaltingNumber">getLastStepHaltingNumber</a>
 </td></tr>
 </table>
 <p><br />
@@ -522,7 +532,7 @@
 </td>
 <td> Returns the edge travel time for the given time as stored in the global container. If such a value does not exist, -1 is returned.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._edge.html#EdgeDomain-getAdaptedTraveltime">getAdaptedTraveltime</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getAdaptedTraveltime">getAdaptedTraveltime</a>
 </td></tr>
 <tr>
 <td> edge effort information (0x59)
@@ -533,14 +543,14 @@
 </td>
 <td> Returns the edge effort for the given time as stored in the global container. If such a value does not exist, -1 is returned.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._edge.html#EdgeDomain-getEffort">getEffort</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._edge.html#EdgeDomain-getEffort">getEffort</a>
 </td></tr>
 </table>
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.040 seconds
-Real time usage: 0.124 seconds
+CPU time usage: 0.024 seconds
+Real time usage: 0.022 seconds
 Preprocessor visited node count: 17/1000000
 Preprocessor generated node count: 42/1000000
 Post‐expand include size: 188/2097152 bytes
@@ -551,13 +561,13 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    3.186      1 - -total
-100.00%    3.186      1 - Template:Note
+100.00%    1.846      1 - -total
+100.00%    1.846      1 - Template:Note
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:299-0!*!0!!*!*!* and timestamp 20171219035058 and revision id 8749
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:299-0!*!0!!*!*!* and timestamp 20180516100040 and revision id 10527
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 27 January 2017, at 13:33.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 5 January 2018, at 16:42.</div> </div>
 
     <div id="footer">
       <div>

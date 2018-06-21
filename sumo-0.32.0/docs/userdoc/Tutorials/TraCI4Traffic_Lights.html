@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,12 +270,12 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Tutorials/TraCI4Traffic Lights</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.185203 from <a href="http://sumo.dlr.de/wiki/Tutorials/TraCI4Traffic_Lights">the wiki page for Tutorials/TraCI4Traffic_Lights</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.547862 from <a href="http://sumo.dlr.de/wiki/Tutorials/TraCI4Traffic_Lights">the wiki page for Tutorials/TraCI4Traffic_Lights</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>This shows how to use the <a href="../TraCI.html" title="TraCI">Traffic Control Interface (in short TraCI)</a> on a simple example. TraCI gives the possibility to control a running road traffic simulation. TraCI uses a TCP-based client/server architecture where SUMO acts as a server and the external script (the “controller”) is the client. In this tutorial the “controller” is a Python-Script which receives informations about the simulation state from the server and then sends instructions back.
 </p><p>It is assumed that road network building and routes definition is known from other tutorials, as <a href="../Tutorials/Hello_Sumo.html" title="Tutorials/Hello Sumo">Tutorials/Hello Sumo</a>, <a href="../Tutorials/quick_start.html" title="Tutorials/quick start">Tutorials/quick start</a> or <a href="../Tutorials/Quick_Start_old_style.html" title="Tutorials/Quick Start old style">Tutorials/Quick Start old style</a>.
-</p><p>All files mentioned here can also be found in the <i><b>&lt;SUMO_HOME&gt;</b></i>/docs/tutorial/traci_tls directory of your installation. The most recent version can be found in the repository at <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/blob/master/tests/complex/tutorial/traci_tls/"><i><b>&lt;SUMO_HOME&gt;</b></i>/tests/complex/tutorial/traci_tls/</a>.
+</p><p>All files mentioned here can also be found in the <i><b>&lt;SUMO_HOME&gt;</b></i>/docs/tutorial/traci_tls directory of your installation. The most recent version can be found in the repository at <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/blob/master/tests/complex/tutorial/traci_tls/"><i><b>&lt;SUMO_HOME&gt;</b></i>/tests/complex/tutorial/traci_tls/</a>.
 </p>
 <div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
 <ul>
@@ -307,7 +308,7 @@
 </p>
 <h1><span class="mw-headline" id="Code">Code</span></h1>
 <p>The control logic resides in the python script <i>runner.py</i>. It generates the routes, acts with the server and controls the traffic light. It makes use of the TraCI python API bundled with SUMO. A description of the API can be found at <a href="../TraCI/Interfacing_TraCI_from_Python.html" title="TraCI/Interfacing TraCI from Python">TraCI/Interfacing_TraCI_from_Python</a>.
-For a detailed list of available functions see the <a rel="nofollow" class="external text" href="http://sumo.dlr.de/daily/pydoc/traci.html">pydoc generated documentation</a>.
+For a detailed list of available functions see the <a rel="nofollow" class="external text" href="../../pydoc/traci.html">pydoc generated documentation</a>.
 </p>
 <h1><span class="mw-headline" id="Simulation">Simulation</span></h1>
 <p>The main program is implemented in the script <i>runner.py</i>. There, we first generate the routes as described above. 
@@ -332,11 +333,11 @@ At the end we close the connection.
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.076 seconds
-Real time usage: 0.082 seconds
+CPU time usage: 0.036 seconds
+Real time usage: 0.038 seconds
 Preprocessor visited node count: 51/1000000
 Preprocessor generated node count: 104/1000000
-Post‐expand include size: 381/2097152 bytes
+Post‐expand include size: 382/2097152 bytes
 Template argument size: 132/2097152 bytes
 Highest expansion depth: 2/40
 Expensive parser function count: 0/100
@@ -344,15 +345,15 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    9.791      1 - -total
- 33.76%    3.306      1 - Template:Source
- 29.43%    2.882      1 - Template:Caution
- 27.97%    2.739      2 - Template:SUMO
+100.00%    4.151      1 - -total
+ 35.68%    1.481      1 - Template:Source
+ 27.65%    1.148      1 - Template:Caution
+ 27.27%    1.132      2 - Template:SUMO
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:198-0!*!0!!en!5!* and timestamp 20171218083558 and revision id 10321
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:198-0!*!0!!en!5!* and timestamp 20180515221822 and revision id 10321
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 6 November 2017, at 11:55.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 6 November 2017, at 12:55.</div> </div>
 
     <div id="footer">
       <div>

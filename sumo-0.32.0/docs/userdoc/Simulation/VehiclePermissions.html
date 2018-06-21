@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Simulation/VehiclePermissions</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.015797 from <a href="http://sumo.dlr.de/wiki/Simulation/VehiclePermissions">the wiki page for Simulation/VehiclePermissions</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.374102 from <a href="http://sumo.dlr.de/wiki/Simulation/VehiclePermissions">the wiki page for Simulation/VehiclePermissions</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -303,7 +304,7 @@ By setting the <span class="inlxml">vClass</span> attribute, a set of <a href=".
 <h1><span class="mw-headline" id="Network_definition">Network definition</span></h1>
 <p>In a <i>.net.xml</i> file, each lane defines a set of permitted vehicle classes. This definition is either 
 </p>
-<ul><li> taken from <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Edge_Descriptions" title="Networks/Building Networks from own XML-descriptions">custom input files</a>. It possible to define permissions for edges or individual lanes. To simplify definition, either the permitted classes or the prohibited classes can be specified using the attributes <span class="inlxml">allow, disallow</span>.</li>
+<ul><li> taken from <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Edge_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">custom input files</a>. It possible to define permissions for edges or individual lanes. To simplify definition, either the permitted classes or the prohibited classes can be specified using the attributes <span class="inlxml">allow, disallow</span>.</li>
 <li> set using the option <span style="color: #111144; font-weight: bold; white-space: pre;">--default.disallow <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;STRING&gt;</i></a>,...</span></li>
 <li> imported from an input source such as <a href="../Networks/Import/OpenStreetMap.html" title="Networks/Import/OpenStreetMap">OpenStreetMap</a> according to a <a href="../Networks/Import/OpenStreetMap.html#Recommended_Typemaps" title="Networks/Import/OpenStreetMap">customizable heuristic</a>.</li>
 <li> or set via <a href="../NETEDIT.html#Inspect" title="NETEDIT">NETEDIT</a>. Convenience features exist <a href="../NETEDIT.html#Restricted_lanes" title="NETEDIT">for adding bicycle lanes, bus lanes and sidewalks</a>.</li></ul>
@@ -315,8 +316,8 @@ By setting the <span class="inlxml">vClass</span> attribute, a set of <a href=".
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.032 seconds
-Real time usage: 0.123 seconds
+CPU time usage: 0.012 seconds
+Real time usage: 0.015 seconds
 Preprocessor visited node count: 47/1000000
 Preprocessor generated node count: 122/1000000
 Post‐expand include size: 282/2097152 bytes
@@ -327,15 +328,15 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   32.886      1 - -total
- 77.19%   25.383      1 - Template:Option
- 23.78%    7.819      1 - Template:DT_STR
- 20.21%    6.645      2 - Template:XML
+100.00%    4.463      1 - -total
+ 58.62%    2.616      1 - Template:Option
+ 32.20%    1.437      2 - Template:XML
+ 25.43%    1.135      1 - Template:DT_STR
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:750-0!*!0!!en!*!* and timestamp 20171218232325 and revision id 8304
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:750-0!*!0!!en!*!* and timestamp 20180516124024 and revision id 8304
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 18 November 2016, at 09:09.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 18 November 2016, at 10:09.</div> </div>
 
     <div id="footer">
       <div>

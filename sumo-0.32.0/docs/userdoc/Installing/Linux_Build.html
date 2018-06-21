@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Installing/Linux Build</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.787211 from <a href="http://sumo.dlr.de/wiki/Installing/Linux_Build">the wiki page for Installing/Linux_Build</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.136233 from <a href="http://sumo.dlr.de/wiki/Installing/Linux_Build">the wiki page for Installing/Linux_Build</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>This document describes how to install SUMO on Linux from sources. If you don't want to <b>extend</b> SUMO, but merely <b>use</b> it, you might want to <a href="../Installing.html" title="Installing">download one of our pre-built binary packages</a> instead.
@@ -291,19 +292,20 @@
 <li class="toclevel-2 tocsection-5"><a href="#Definition_of_SUMO_HOME"><span class="tocnumber">2.3</span> <span class="toctext">Definition of SUMO_HOME</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-6"><a href="#Building_the_SUMO_binaries"><span class="tocnumber">3</span> <span class="toctext">Building the SUMO binaries</span></a>
+<li class="toclevel-1 tocsection-6"><a href="#Building_the_SUMO_binaries_with_autotools"><span class="tocnumber">3</span> <span class="toctext">Building the SUMO binaries with autotools</span></a>
 <ul>
 <li class="toclevel-2 tocsection-7"><a href="#Building_with_clang"><span class="tocnumber">3.1</span> <span class="toctext">Building with clang</span></a></li>
 <li class="toclevel-2 tocsection-8"><a href="#Additional_notes_for_Cygwin_users"><span class="tocnumber">3.2</span> <span class="toctext">Additional notes for Cygwin users</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-9"><a href="#Installing_the_SUMO_binaries"><span class="tocnumber">4</span> <span class="toctext">Installing the SUMO binaries</span></a></li>
-<li class="toclevel-1 tocsection-10"><a href="#Troubleshooting"><span class="tocnumber">5</span> <span class="toctext">Troubleshooting</span></a>
+<li class="toclevel-1 tocsection-9"><a href="#Building_the_SUMO_binaries_with_cmake"><span class="tocnumber">4</span> <span class="toctext">Building the SUMO binaries with cmake</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="#Installing_the_SUMO_binaries"><span class="tocnumber">5</span> <span class="toctext">Installing the SUMO binaries</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="#Troubleshooting"><span class="tocnumber">6</span> <span class="toctext">Troubleshooting</span></a>
 <ul>
-<li class="toclevel-2 tocsection-11"><a href="#Problems_with_aclocal.m4_and_libtool"><span class="tocnumber">5.1</span> <span class="toctext">Problems with aclocal.m4 and libtool</span></a></li>
-<li class="toclevel-2 tocsection-12"><a href="#Unresolved_references_to_openGL-functions"><span class="tocnumber">5.2</span> <span class="toctext">Unresolved references to openGL-functions</span></a></li>
-<li class="toclevel-2 tocsection-13"><a href="#Problems_with_the_socket_subsystem"><span class="tocnumber">5.3</span> <span class="toctext">Problems with the socket subsystem</span></a></li>
-<li class="toclevel-2 tocsection-14"><a href="#ld_cannot_find_an_existing_library_.28Fedora-23.29"><span class="tocnumber">5.4</span> <span class="toctext">ld cannot find an existing library (Fedora-23)</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="#Problems_with_aclocal.m4_and_libtool"><span class="tocnumber">6.1</span> <span class="toctext">Problems with aclocal.m4 and libtool</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="#Unresolved_references_to_openGL-functions"><span class="tocnumber">6.2</span> <span class="toctext">Unresolved references to openGL-functions</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="#Problems_with_the_socket_subsystem"><span class="tocnumber">6.3</span> <span class="toctext">Problems with the socket subsystem</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="#ld_cannot_find_an_existing_library_.28Fedora-23.29"><span class="tocnumber">6.4</span> <span class="toctext">ld cannot find an existing library (Fedora-23)</span></a></li>
 </ul>
 </li>
 </ul>
@@ -322,30 +324,32 @@
 cd sumo-&lt;version&gt;/
 </pre>
 <h3><span class="mw-headline" id="repository_checkout">repository checkout</span></h3>
-<p>To build from a checkout the <a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/GNU_build_system">GNU autotools</a> are needed.
-The call to the autotools is hidden in Makefile.cvs.
-</p><p>The following commands should be issued:
+<p>The following commands should be issued:
 </p>
-<pre>git clone --recursive <a rel="nofollow" class="external free" href="https://github.com/DLR-TS/sumo.git">https://github.com/DLR-TS/sumo.git</a>
+<pre>git clone --recursive <a rel="nofollow" class="external free" href="https://github.com/eclipse/sumo">https://github.com/eclipse/sumo</a>
 cd sumo
-make -f Makefile.cvs
+git fetch origin refs/replace/*:refs/replace/*
 </pre>
+<p>The additional fetch of the replacements is necessary to get a full local project history.
+</p>
 <h3><span class="mw-headline" id="Definition_of_SUMO_HOME">Definition of SUMO_HOME</span></h3>
 <p>Before compiling is advisable (essential if you want to use Clang) to define the environment variable SUMO_HOME. Assuming that you placed SUMO in the folder "<i>/home/&lt;user&gt;/sumo-&lt;version&gt;</i>", if you want to define only for the current session, type in the console
 </p>
-<pre>SUMO_HOME="/home/&lt;user&gt;/sumo-&lt;version&gt;"; export SUMO_HOME
-</pre>
-<p>If you want to define for all sessions (i.e. for every time that you run your Linux distribution), go to your HOME folder, and find one of the next tree files (depending of your Linux distribution): <b>.bash_profile</b>, <b>.bash_login</b> or <b>.profile</b> (Note that these files can be hidden). Then edit the file, add at the end and reboot your session. 
-</p>
 <pre>export SUMO_HOME="/home/&lt;user&gt;/sumo-&lt;version&gt;"
 </pre>
-<p>You can check that SUMO_HOME was successfully set if you type 
+<p>If you want to define for all sessions (i.e. for every time that you run your Linux distribution), go to your HOME folder, and find one of the next tree files (depending of your Linux distribution): <b>.bash_profile</b>, <b>.bash_login</b> or <b>.profile</b> (Note that these files can be hidden). Then edit the file, add the line from above at the end and restart your session. 
+</p><p>You can check that SUMO_HOME was successfully set if you type 
 </p>
 <pre>echo $SUMO_HOME
 </pre>
 <p>and console shows "/home/&lt;user&gt;/sumo-&lt;version&gt;"
 </p>
-<h2><span class="mw-headline" id="Building_the_SUMO_binaries">Building the SUMO binaries</span></h2>
+<h2><span class="mw-headline" id="Building_the_SUMO_binaries_with_autotools">Building the SUMO binaries with autotools</span></h2>
+<p>To build from a checkout the <a rel="nofollow" class="external text" href="http://en.wikipedia.org/wiki/GNU_build_system">GNU autotools</a> are needed.
+The call to the autotools is hidden in Makefile.cvs.
+</p>
+<pre>make -f Makefile.cvs
+</pre>
 <pre>./configure [options]
 make
 </pre>
@@ -373,16 +377,36 @@ the installed libFOX-1.4.la such that it contains
 -lpthread -lpng /usr/lib/libtiff.la /usr/lib/libjpeg.la -lz -lbz2 -lopengl32 -lglu32'
 </pre>
 <p>Your mileage may vary.
+</p><p><br />
 </p>
+<h2><span class="mw-headline" id="Building_the_SUMO_binaries_with_cmake">Building the SUMO binaries with cmake</span></h2>
+<p>To build with cmake version 3 or higher is required.
+</p><p>Create  a build folder for cmake (in the sumo root folder)
+</p>
+<pre> mkdir build/cmake-build
+ cd build/cmake-build
+</pre>
+<p>then build sumo with the bare minimum of options use (fully EPL2 compatible):
+</p>
+<pre> cmake ../..
+</pre>
+<div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />On some plattforms the required cmake executable is called <i>cmake3</i>.</div>
+<p>after this is finished, run
+</p>
+<pre> make
+</pre>
+<p>to use additional features (gdal, gl2ps,...) set another option when building:
+</p>
+<pre> cmake  -D CHECK_OPTIONAL_LIBS=true ../..
+</pre>
 <h2><span class="mw-headline" id="Installing_the_SUMO_binaries">Installing the SUMO binaries</span></h2>
 <p>This (optional) step will copy the SUMO binaries to another path, so that you can delete all source and intermediate files afterwards.
 If you do not want (or need) to do that, you can simply skip this step and run SUMO from the bin subfolder (bin/sumo-gui and bin/sumo).
 </p><p>If you want to install the SUMO binaries, run
 </p>
 <pre>make install
+ 
 </pre>
-<p><br />
-</p>
 <h2><span class="mw-headline" id="Troubleshooting">Troubleshooting</span></h2>
 <h3><span class="mw-headline" id="Problems_with_aclocal.m4_and_libtool">Problems with aclocal.m4 and libtool</span></h3>
 <p>If you're experiencing problems with aclocal.m4 definitions and see
@@ -441,26 +465,26 @@ Install the dev package; for fedora:
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.036 seconds
-Real time usage: 0.041 seconds
-Preprocessor visited node count: 69/1000000
-Preprocessor generated node count: 104/1000000
-Post‐expand include size: 216/2097152 bytes
-Template argument size: 68/2097152 bytes
+CPU time usage: 0.020 seconds
+Real time usage: 0.021 seconds
+Preprocessor visited node count: 80/1000000
+Preprocessor generated node count: 128/1000000
+Post‐expand include size: 422/2097152 bytes
+Template argument size: 138/2097152 bytes
 Highest expansion depth: 2/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    6.194      1 - -total
- 45.99%    2.849      1 - Template:Note
- 39.59%    2.452      2 - Template:Version
+100.00%    3.436      1 - -total
+ 42.93%    1.475      2 - Template:Note
+ 31.37%    1.078      2 - Template:Version
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:36-0!*!0!!en!*!* and timestamp 20171218220942 and revision id 10316
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:36-0!*!0!!en!*!* and timestamp 20180515221732 and revision id 10760
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 6 November 2017, at 11:38.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 2 May 2018, at 16:07.</div> </div>
 
     <div id="footer">
       <div>

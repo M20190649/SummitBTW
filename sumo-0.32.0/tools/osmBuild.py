@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # Eclipse SUMO, Simulation of Urban MObility; see https://eclipse.org/sumo
-# Copyright (C) 2009-2017 German Aerospace Center (DLR) and others.
+# Copyright (C) 2009-2018 German Aerospace Center (DLR) and others.
 # This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v2.0
 # which accompanies this distribution, and is available at
 # http://www.eclipse.org/legal/epl-v20.html
+# SPDX-License-Identifier: EPL-2.0
 
 # @file    osmBuild.py
 # @author  Daniel Krajzewicz
@@ -73,15 +74,17 @@ def build(args=None, bindir=None):
         optParser.error('output directory "%s" does not exist' %
                         options.output_directory)
 
-    netconvertOpts = [sumolib.checkBinary('netconvert', bindir)]
+    netconvert = sumolib.checkBinary('netconvert', bindir)
+    polyconvert = sumolib.checkBinary('polyconvert', bindir)
+
+    netconvertOpts = [netconvert]
     if options.pedestrians:
         netconvertOpts += ['--sidewalks.guess', '--crossings.guess']
     if options.netconvert_typemap:
         netconvertOpts += ["-t", options.netconvert_typemap]
     netconvertOpts += options.netconvert_options.split(',') + ['--osm-files']
-    polyconvertOpts = [sumolib.checkBinary('polyconvert', bindir)] + \
-        options.polyconvert_options.split(',') + \
-                      ['--type-file', options.typemap, '--osm-files']
+    polyconvertOpts = ([polyconvert] + options.polyconvert_options.split(',') 
+            + ['--type-file', options.typemap, '--osm-files'])
 
     prefix = options.oldapi_prefix
     if prefix:  # used old API
@@ -99,19 +102,20 @@ def build(args=None, bindir=None):
         prefix = options.prefix
 
     basename = path.join(options.output_directory, prefix)
-    netfile = basename + '.net.xml'
+    netfile = prefix + '.net.xml'
     netconvertOpts += vclassRemove[options.vehicle_classes] + ["-o", netfile]
 
-    subprocess.call(netconvertOpts)
     # write config
-    subprocess.call(netconvertOpts +
-                    ["--save-configuration", basename + ".netccfg"])
+    cfg = basename + ".netccfg"
+    subprocess.call(netconvertOpts + ["--save-configuration", cfg])
+    subprocess.call([netconvert, "-c", cfg])
+
     if options.typemap:
-        polyconvertOpts += ["-n", netfile, "-o", basename + '.poly.xml']
-        subprocess.call(polyconvertOpts)
         # write config
-        subprocess.call(polyconvertOpts +
-                        ["--save-configuration", basename + ".polycfg"])
+        cfg = basename + ".polycfg"
+        polyconvertOpts += ["-n", netfile, "-o", prefix + '.poly.xml']
+        subprocess.call(polyconvertOpts + ["--save-configuration", cfg])
+        subprocess.call([polyconvert, "-c", cfg])
 
 
 if __name__ == "__main__":

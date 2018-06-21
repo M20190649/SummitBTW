@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Simulation/OppositeDirectionDriving</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.939216 from <a href="http://sumo.dlr.de/wiki/Simulation/OppositeDirectionDriving">the wiki page for Simulation/OppositeDirectionDriving</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.293976 from <a href="http://sumo.dlr.de/wiki/Simulation/OppositeDirectionDriving">the wiki page for Simulation/OppositeDirectionDriving</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -297,7 +298,7 @@ To enable this feature, the network must contain additional information regardin
 <p>By setting the <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> option <span style="color: #111144; font-weight: bold; white-space: pre;">--opposites.guess <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;BOOL&gt;</i></a></span>, opposite edges are identified heuristically.
 </p>
 <h2><span class="mw-headline" id="Explicitly">Explicitly</span></h2>
-<p>Adjacency can be declared explicitly in an <i>.edg.xml</i> file <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Neighboring_opposite-direction_Lanes" title="Networks/Building Networks from own XML-descriptions">as described here</a>. Explicity definitions take precedence over heuristic computation of adjacency.
+<p>Adjacency can be declared explicitly in an <i>.edg.xml</i> file <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Neighboring_opposite-direction_Lanes" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">as described here</a>. Explicity definitions take precedence over heuristic computation of adjacency.
 </p>
 <h1><span class="mw-headline" id="Model_Description">Model Description</span></h1>
 <p>Vehicles may overtake through the opposite direction lane to improve their travel speed. The decision to perform such a maneuver is subject to additional checks in regard to
@@ -315,8 +316,8 @@ To enable this feature, the network must contain additional information regardin
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.032 seconds
-Real time usage: 0.036 seconds
+CPU time usage: 0.012 seconds
+Real time usage: 0.016 seconds
 Preprocessor visited node count: 43/1000000
 Preprocessor generated node count: 110/1000000
 Post‐expand include size: 334/2097152 bytes
@@ -327,15 +328,15 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   11.560      1 - -total
- 62.24%    7.195      2 - Template:Option
- 26.56%    3.070      1 - Template:XML
- 25.91%    2.995      1 - Template:DT_BOOL
+100.00%    5.356      1 - -total
+ 60.57%    3.244      2 - Template:Option
+ 30.04%    1.609      1 - Template:XML
+ 25.89%    1.387      1 - Template:DT_BOOL
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:683-0!*!0!!en!*!* and timestamp 20171218174741 and revision id 9785
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:683-0!*!0!!en!*!* and timestamp 20180516103053 and revision id 9785
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 5 July 2017, at 09:20.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 5 July 2017, at 10:20.</div> </div>
 
     <div id="footer">
       <div>

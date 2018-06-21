@@ -114,6 +114,7 @@
   <li><a href="Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">TraCI</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.083717 from <a href="http://sumo.dlr.de/wiki/TraCI">the wiki page for TraCI</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.444692 from <a href="http://sumo.dlr.de/wiki/TraCI">the wiki page for TraCI</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -283,24 +284,25 @@
 <li class="toclevel-2 tocsection-6"><a href="#Shutdown"><span class="tocnumber">2.4</span> <span class="toctext">Shutdown</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-7"><a href="#Example_use"><span class="tocnumber">3</span> <span class="toctext">Example use</span></a></li>
-<li class="toclevel-1 tocsection-8"><a href="#Resources"><span class="tocnumber">4</span> <span class="toctext">Resources</span></a>
+<li class="toclevel-1 tocsection-7"><a href="#Using_SUMO_as_a_library"><span class="tocnumber">3</span> <span class="toctext">Using SUMO as a library</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Example_use"><span class="tocnumber">4</span> <span class="toctext">Example use</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="#Resources"><span class="tocnumber">5</span> <span class="toctext">Resources</span></a>
 <ul>
-<li class="toclevel-2 tocsection-9"><a href="#Interfaces_by_Programming_Language"><span class="tocnumber">4.1</span> <span class="toctext">Interfaces by Programming Language</span></a></li>
-<li class="toclevel-2 tocsection-10"><a href="#V2X_simulation"><span class="tocnumber">4.2</span> <span class="toctext">V2X simulation</span></a></li>
-<li class="toclevel-2 tocsection-11"><a href="#Other_Resources"><span class="tocnumber">4.3</span> <span class="toctext">Other Resources</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="#Interfaces_by_Programming_Language"><span class="tocnumber">5.1</span> <span class="toctext">Interfaces by Programming Language</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#V2X_simulation"><span class="tocnumber">5.2</span> <span class="toctext">V2X simulation</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="#Other_Resources"><span class="tocnumber">5.3</span> <span class="toctext">Other Resources</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-12"><a href="#References"><span class="tocnumber">5</span> <span class="toctext">References</span></a></li>
-<li class="toclevel-1 tocsection-13"><a href="#Performance"><span class="tocnumber">6</span> <span class="toctext">Performance</span></a>
+<li class="toclevel-1 tocsection-13"><a href="#References"><span class="tocnumber">6</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-14"><a href="#Performance"><span class="tocnumber">7</span> <span class="toctext">Performance</span></a>
 <ul>
-<li class="toclevel-2 tocsection-14"><a href="#Examples"><span class="tocnumber">6.1</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="#Examples"><span class="tocnumber">7.1</span> <span class="toctext">Examples</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-15"><a href="#Troubleshooting"><span class="tocnumber">7</span> <span class="toctext">Troubleshooting</span></a>
+<li class="toclevel-1 tocsection-16"><a href="#Troubleshooting"><span class="tocnumber">8</span> <span class="toctext">Troubleshooting</span></a>
 <ul>
-<li class="toclevel-2 tocsection-16"><a href="#Output_files_are_not_closed."><span class="tocnumber">7.1</span> <span class="toctext">Output files are not closed.</span></a></li>
-<li class="toclevel-2 tocsection-17"><a href="#Obsolete_APIs"><span class="tocnumber">7.2</span> <span class="toctext">Obsolete APIs</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="#Output_files_are_not_closed."><span class="tocnumber">8.1</span> <span class="toctext">Output files are not closed.</span></a></li>
+<li class="toclevel-2 tocsection-18"><a href="#Obsolete_APIs"><span class="tocnumber">8.2</span> <span class="toctext">Obsolete APIs</span></a></li>
 </ul>
 </li>
 </ul>
@@ -358,6 +360,10 @@ Please note, that the <span style="color: #111144; font-weight: bold; white-spac
 <h3><span class="mw-headline" id="Shutdown">Shutdown</span></h3>
 <p>When using TraCI, the <span style="color: #111144; font-weight: bold; white-space: pre;">--end</span> option of <a href="SUMO.html" title="SUMO">SUMO</a> is ignored. Instead the simulation is closed by issuing the <a href="TraCI/Control-related_commands.html#Command_0x7F:_Close" title="TraCI/Control-related commands"><i>close</i> command</a>. To detect whether all route files have been exhausted and all vehicles have left the simulation, one can check whether the command <a href="TraCI/Simulation_Value_Retrieval.html" title="TraCI/Simulation Value Retrieval">getMinExpectedNumber</a> returns 0. The simulation will end as soon as all clients have sent the <i>close</i> command.
 </p><p>It is also possible to reload the simulation with a new list of arguments by using the <a href="TraCI/Control-related_commands.html#Command_0x01:_Load" title="TraCI/Control-related commands"><i>load</i>-command</a>.
+</p>
+<h2><span class="mw-headline" id="Using_SUMO_as_a_library">Using SUMO as a library</span></h2>
+<p>Normally, TraCI is used to couple multiple processes: A SUMO server process and one or more TraCI client processes.
+Alternatively, <a href="Libsumo.html" title="Libsumo">Libsumo</a> can be used to embed SUMO as a library into the client process. This allows using the same method signatures as in the client libraries but avoids the overhead of socket communication.
 </p>
 <h2><span class="mw-headline" id="Example_use">Example use</span></h2>
 <ul><li> There is a <a href="Tutorials/TraCI4Traffic_Lights.html" title="Tutorials/TraCI4Traffic Lights">tutorial on using TraCI for adaptive traffic lights</a> (using Python).</li>
@@ -424,10 +430,10 @@ Please note, that the <span style="color: #111144; font-weight: bold; white-spac
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.092 seconds
-Real time usage: 0.103 seconds
-Preprocessor visited node count: 125/1000000
-Preprocessor generated node count: 268/1000000
+CPU time usage: 0.040 seconds
+Real time usage: 0.045 seconds
+Preprocessor visited node count: 129/1000000
+Preprocessor generated node count: 272/1000000
 Post‐expand include size: 1102/2097152 bytes
 Template argument size: 322/2097152 bytes
 Highest expansion depth: 3/40
@@ -436,15 +442,15 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   14.674      1 - -total
- 81.55%   11.966      7 - Template:Option
- 18.83%    2.763      4 - Template:DT_INT
- 16.61%    2.437      1 - Template:DT_TIME
+100.00%    7.475      1 - -total
+ 84.13%    6.289      7 - Template:Option
+ 20.05%    1.499      4 - Template:DT_INT
+ 17.54%    1.311      1 - Template:DT_TIME
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:38-0!*!0!!en!*!* and timestamp 20171218183059 and revision id 9936
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:38-0!*!0!!en!*!* and timestamp 20180516092502 and revision id 10445
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 21 August 2017, at 12:56.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 19 December 2017, at 16:48.</div> </div>
 
     <div id="footer">
       <div>

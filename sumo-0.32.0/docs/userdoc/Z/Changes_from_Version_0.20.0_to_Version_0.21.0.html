@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Z/Changes from Version 0.20.0 to Version 0.21.0</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.227595 from <a href="http://sumo.dlr.de/wiki/Z/Changes_from_Version_0.20.0_to_Version_0.21.0">the wiki page for Z/Changes_from_Version_0.20.0_to_Version_0.21.0</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.591758 from <a href="http://sumo.dlr.de/wiki/Z/Changes_from_Version_0.20.0_to_Version_0.21.0">the wiki page for Z/Changes_from_Version_0.20.0_to_Version_0.21.0</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -321,7 +322,7 @@
 <li> when setting lane change mode to prevent all changes due to a certain change-motivation, motivations with lower priority are now correctly considered.</li>
 <li> adding a vehicle with a negative depart position gives an error message (applies only to ADD not to ADD_FULL)</li>
 <li> adding a vehicle with a depart time in the past gives an error instead of silently dropping the vehicle</li>
-<li> vaporizing parked vehicles is now possible <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/1166">Issue #1166</a></li>
+<li> vaporizing parked vehicles is now possible <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1166">Issue #1166</a></li>
 <li> forcing a lane change for a stopped vehicle now correctly removes the current stop from the list of pending stops</li></ul></li>
 <li> Tools
 <ul><li> Fixed bug where sortRoutes.py would produce invalid XML (thanks to Pieter Loof for the patch)</li>
@@ -364,7 +365,7 @@
 <li> Added options <span style="color: #111144; font-weight: bold; white-space: pre;">--sidewalks.guess <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;BOOL&gt;</i></a></span>, <span style="color: #111144; font-weight: bold; white-space: pre;">--sidewalks.guess.min-speed <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FLOAT&gt;</i></a></span> and <span style="color: #111144; font-weight: bold; white-space: pre;">--sidewalks.guess.max-speed <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FLOAT&gt;</i></a></span> to trigger guessing of sidewalks</li>
 <li> Added option <span style="color: #111144; font-weight: bold; white-space: pre;">--crossings.guess <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;BOOL&gt;</i></a></span> to trigger guessing of pedestrian crossings</li>
 <li> Added options <span style="color: #111144; font-weight: bold; white-space: pre;">--tls.guess-signals <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;BOOL&gt;</i></a></span> and <span style="color: #111144; font-weight: bold; white-space: pre;">--tls.guess-signals.dist <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FLOAT&gt;</i></a></span> to interpret special traffic light nodes which surround an intersection as the signal positions for that intersection. This heuristic is useful for correctly importing a typical representation of traffic lights in OSM data.</li>
-<li> Added attribute <span class="inlxml">shape</span> to <span class="inlxml">&lt;node&gt;</span> elements in <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions"><i>.nod.xml</i> files</a>. This allows to specify a custom shape for that node.</li>
+<li> Added attribute <span class="inlxml">shape</span> to <span class="inlxml">&lt;node&gt;</span> elements in <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect"><i>.nod.xml</i> files</a>. This allows to specify a custom shape for that node.</li>
 <li> can write networks in the Amitran format</li></ul></li>
 <li> DUAROUTER
 <ul><li> <span class="inlxml">&lt;trip&gt;</span> and <span class="inlxml">&lt;flow</span> elements now support attribute <span class="inlxml">via</span> for specifying intermediate edges to use during routing.</li>
@@ -402,11 +403,11 @@
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.148 seconds
-Real time usage: 0.153 seconds
+CPU time usage: 0.068 seconds
+Real time usage: 0.071 seconds
 Preprocessor visited node count: 403/1000000
 Preprocessor generated node count: 1298/1000000
-Post‐expand include size: 5677/2097152 bytes
+Post‐expand include size: 5678/2097152 bytes
 Template argument size: 1684/2097152 bytes
 Highest expansion depth: 3/40
 Expensive parser function count: 0/100
@@ -414,21 +415,21 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   70.142      1 - -total
- 47.75%   33.492     31 - Template:Option
- 13.03%    9.139     22 - Template:XML
-  4.45%    3.123      1 - Template:Ticket
-  4.00%    2.806      2 - Template:DT_INT
-  3.81%    2.671      1 - Template:DT_TIME
-  3.69%    2.591      7 - Template:DT_FLOAT
-  3.59%    2.518      6 - Template:DT_BOOL
-  3.10%    2.173      1 - Template:AdditionalFile
-  2.92%    2.046      1 - Template:DT_FileList
+100.00%   33.694      1 - -total
+ 47.23%   15.913     31 - Template:Option
+ 13.49%    4.544     22 - Template:XML
+  4.00%    1.349      7 - Template:DT_FLOAT
+  3.92%    1.320      6 - Template:DT_BOOL
+  3.54%    1.192      1 - Template:Ticket
+  3.26%    1.099      1 - Template:DT_FileList
+  3.21%    1.083      2 - Template:DT_INT
+  3.12%    1.050      1 - Template:DT_STR
+  3.07%    1.035      1 - Template:DT_TIME
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:587-0!*!0!!en!*!* and timestamp 20171218232417 and revision id 6037
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:587-0!*!0!!en!*!* and timestamp 20180515221827 and revision id 6037
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 31 March 2015, at 08:49.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 31 March 2015, at 09:49.</div> </div>
 
     <div id="footer">
       <div>

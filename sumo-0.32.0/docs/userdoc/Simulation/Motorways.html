@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Simulation/Motorways</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.937525 from <a href="http://sumo.dlr.de/wiki/Simulation/Motorways">the wiki page for Simulation/Motorways</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.292195 from <a href="http://sumo.dlr.de/wiki/Simulation/Motorways">the wiki page for Simulation/Motorways</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -306,7 +307,7 @@
 <p>If the network does not contain detailed ramp data, <a href="../NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> can be <a href="../Networks/Further_Options.html#Guessing_On-_and_Off-Ramps" title="Networks/Further Options">configured to add them heuristically</a>. This basically adds acceleration at on-ramps and deceleration lanes at off-ramps.
 </p>
 <h3><span class="mw-headline" id="Reduction_in_the_number_of_lanes">Reduction in the number of lanes</span></h3>
-<p>The usual way to set up a lane-number reduction is to configure the rightmost lane as a dead-end (no connection to the next edge) and force vehicles to change-lanes to the left. In some situations it may be appropriate to declare the node where the lane number changes as a <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_types" title="Networks/Building Networks from own XML-descriptions">zipper node</a> instead.
+<p>The usual way to set up a lane-number reduction is to configure the rightmost lane as a dead-end (no connection to the next edge) and force vehicles to change-lanes to the left. In some situations it may be appropriate to declare the node where the lane number changes as a <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_types" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">zipper node</a> instead.
 </p>
 <h3><span class="mw-headline" id="Combined_On-Off-Ramps">Combined On-Off-Ramps</span></h3>
 <p>Combined ramps are those where the acceleration lane from an on-ramp becomes the deceleration lane for a nearby off-ramp. This forces vehicles into a weaving pattern where entering and exiting vehicles need to swap lanes.
@@ -326,7 +327,7 @@ This type of situation may cause deadlocks in <a href="../SUMO.html" title="SUMO
 <div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />In version 0.25.0 and earlier, this connectivity is not supported and the option <span style="color: #111144; font-weight: bold; white-space: pre;">--time-to-teleport.highways</span> may be used to resolve deadlocks via teleporting.</div>
 <h2><span class="mw-headline" id="Vehicle_class_specific_speed_limits">Vehicle class specific speed limits</span></h2>
 <p>In some jurisdictions, certain vehicle classes have specific speed limits (i.e. Trucks which may not drive faster than 90km/h on German motorways).
-This should be modelled as described here: <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#vehicle-class_specific_speed_limits" title="Networks/Building Networks from own XML-descriptions">Networks/Building_Networks_from_own_XML-descriptions#vehicle-class_specific_speed_limits</a>
+This should be modelled as described here: <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#vehicle-class_specific_speed_limits" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">Networks/Building_Networks_from_own_XML-descriptions#vehicle-class_specific_speed_limits</a>
 </p>
 <h2><span class="mw-headline" id="Lane-changing_prohibitions">Lane-changing prohibitions</span></h2>
 <p>Symmetrical lane-changing prohibitions between two lanes can be modelled by adding a thin lane with attribute <span class="inlxml">disallow="all"</span> between them.
@@ -342,8 +343,8 @@ Since a vehicle <i>speedFactor</i> defines desired speed relative to the speed l
 </p>
 <!-- 
 NewPP limit report
-CPU time usage: 0.072 seconds
-Real time usage: 0.074 seconds
+CPU time usage: 0.044 seconds
+Real time usage: 0.046 seconds
 Preprocessor visited node count: 82/1000000
 Preprocessor generated node count: 194/1000000
 Post‐expand include size: 942/2097152 bytes
@@ -354,16 +355,16 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   10.219      1 - -total
- 42.98%    4.392      1 - Template:Caution
- 25.67%    2.623      2 - Template:Note
- 19.90%    2.034      1 - Template:XML
- 19.54%    1.997      1 - Template:Option
+100.00%    8.090      1 - -total
+ 46.19%    3.737      1 - Template:Caution
+ 25.12%    2.032      2 - Template:Note
+ 20.58%    1.665      1 - Template:Option
+ 18.40%    1.489      1 - Template:XML
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:633-0!*!0!!en!*!* and timestamp 20171218232306 and revision id 9822
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:633-0!*!0!!en!*!* and timestamp 20180516130409 and revision id 9822
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 13 July 2017, at 14:18.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 13 July 2017, at 15:18.</div> </div>
 
     <div id="footer">
       <div>

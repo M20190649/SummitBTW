@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">TraCI/Lane Area Detector Value Retrieval</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:32.117777 from <a href="http://sumo.dlr.de/wiki/TraCI/Lane_Area_Detector_Value_Retrieval">the wiki page for TraCI/Lane_Area_Detector_Value_Retrieval</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.480013 from <a href="http://sumo.dlr.de/wiki/TraCI/Lane_Area_Detector_Value_Retrieval">the wiki page for TraCI/Lane_Area_Detector_Value_Retrieval</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><h2><span class="mw-headline" id="Command_0xad:_Get_LaneAreaDetector_Variable">Command 0xad: Get LaneAreaDetector Variable</span></h2>
@@ -307,7 +308,7 @@ Please note that for asking values from your detectors <a href="../Simulation/Ou
 </td>
 <td> Returns a list of ids of all lane area detectors within the scenario (the given DetectorID is ignored)
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._lanearea.html#LaneAreaDomain-getIDList">getIDList</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._lanearea.html#LaneAreaDomain-getIDList">getIDList</a>
 </td></tr>
 <tr>
 <td> count (0x01)
@@ -316,7 +317,7 @@ Please note that for asking values from your detectors <a href="../Simulation/Ou
 </td>
 <td> Returns the number of lane area detectors within the scenario (the given DetectorID  is ignored)
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._lanearea.html#LaneAreaDomain-getIDCount">getIDCount</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._lanearea.html#LaneAreaDomain-getIDCount">getIDCount</a>
 </td></tr>
 <tr>
 <td> position (0x42)
@@ -325,7 +326,7 @@ Please note that for asking values from your detectors <a href="../Simulation/Ou
 </td>
 <td> Returns the starting position of the detector at it's lane, counted from the lane's begin, in meters.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._lanearea.html#LaneAreaDomain-getPosition">getPosition</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._lanearea.html#LaneAreaDomain-getPosition">getPosition</a>
 </td></tr>
 <tr>
 <td> length(0x44)
@@ -334,7 +335,7 @@ Please note that for asking values from your detectors <a href="../Simulation/Ou
 </td>
 <td> Returns the length of the detector in meters.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._lanearea.html#LaneAreaDomain-getLength">getLength</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._lanearea.html#LaneAreaDomain-getLength">getLength</a>
 </td></tr>
 <tr>
 <td> lane ID (0x51)
@@ -343,7 +344,7 @@ Please note that for asking values from your detectors <a href="../Simulation/Ou
 </td>
 <td> Returns the ID of the lane the detector is placed at.
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._lanearea.html#LaneAreaDomain-getLaneID">getLaneID</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._lanearea.html#LaneAreaDomain-getLaneID">getLaneID</a>
 </td></tr>
 <tr>
 <td> last step vehicle number (0x10)
@@ -352,7 +353,7 @@ Please note that for asking values from your detectors <a href="../Simulation/Ou
 </td>
 <td> Returns the number of vehicles that have been within the area detector within the last simulation step [#];
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._lanearea.html#LaneAreaDomain-getLastStepVehicleNumber">getLastStepVehicleNumber</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._lanearea.html#LaneAreaDomain-getLastStepVehicleNumber">getLastStepVehicleNumber</a>
 </td></tr>
 <tr>
 <td> last step mean speed (0x11)
@@ -361,7 +362,7 @@ Please note that for asking values from your detectors <a href="../Simulation/Ou
 </td>
 <td> Returns the mean speed of vehicles that have been within the named area detector within the last simulation step [m/s]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._lanearea.html#LaneAreaDomain-getLastStepMeanSpeed">getLastStepMeanSpeed</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._lanearea.html#LaneAreaDomain-getLastStepMeanSpeed">getLastStepMeanSpeed</a>
 </td></tr>
 <tr>
 <td> last step vehicle ids (0x12)
@@ -370,7 +371,7 @@ Please note that for asking values from your detectors <a href="../Simulation/Ou
 </td>
 <td> Returns the list of ids of vehicles that have been within the detector in the last simulation step
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._lanearea.html#LaneAreaDomain-getLastStepVehicleIDs">getLastStepVehicleIDs</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._lanearea.html#LaneAreaDomain-getLastStepVehicleIDs">getLastStepVehicleIDs</a>
 </td></tr>
 <tr>
 <td> last step occupancy (0x13)
@@ -379,7 +380,7 @@ Please note that for asking values from your detectors <a href="../Simulation/Ou
 </td>
 <td> Returns the percentage of space the detector was occupied by a vehicle [%]
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._lanearea.html#LaneAreaDomain-getLastStepMeanSpeed">getLastStepOccupancy</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._lanearea.html#LaneAreaDomain-getLastStepMeanSpeed">getLastStepOccupancy</a>
 </td></tr>
 <tr>
 <td> last step halting vehicles number (0x14)
@@ -388,7 +389,7 @@ Please note that for asking values from your detectors <a href="../Simulation/Ou
 </td>
 <td> Returns the number of vehicles which were halting during the last time step
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._lanearea.html#LaneAreaDomain-getJamLengthVehicle">getJamLengthVehicle</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._lanearea.html#LaneAreaDomain-getJamLengthVehicle">getJamLengthVehicle</a>
 </td></tr>
 <tr>
 <td> last step jam length in number of vehicles (0x18)
@@ -397,7 +398,7 @@ Please note that for asking values from your detectors <a href="../Simulation/Ou
 </td>
 <td> Returns the number of vehicles which were halting on the loop during the last time step
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._lanearea.html#LaneAreaDomain-getJamLengthVehicle">getJamLengthVehicle</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._lanearea.html#LaneAreaDomain-getJamLengthVehicle">getJamLengthVehicle</a>
 </td></tr>
 <tr>
 <td> last step jam length in meters (0x19)
@@ -406,7 +407,7 @@ Please note that for asking values from your detectors <a href="../Simulation/Ou
 </td>
 <td> Returns the length of the jam in meters
 </td>
-<td> <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de/daily/pydoc/traci._lanearea.html#LaneAreaDomain-getJamLengthMeters">getJamLengthMeters</a>
+<td> <a rel="nofollow" class="external text" href="../../pydoc/traci._lanearea.html#LaneAreaDomain-getJamLengthMeters">getJamLengthMeters</a>
 </td></tr>
 </table>
 <h2><span class="mw-headline" id="Response_0xbd:_LaneAreaDetector_Variable">Response 0xbd: LaneAreaDetector Variable</span></h2>
@@ -436,8 +437,8 @@ Please note that for asking values from your detectors <a href="../Simulation/Ou
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.036 seconds
-Real time usage: 0.076 seconds
+CPU time usage: 0.020 seconds
+Real time usage: 0.018 seconds
 Preprocessor visited node count: 28/1000000
 Preprocessor generated node count: 72/1000000
 Post‐expand include size: 119/2097152 bytes
@@ -448,14 +449,14 @@ Expensive parser function count: 0/100
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%    9.228      1 - -total
- 66.70%    6.155      2 - Template:XML
- 24.61%    2.271      1 - Template:AdditionalFile
+100.00%    2.935      1 - -total
+ 45.28%    1.329      2 - Template:XML
+ 40.45%    1.187      1 - Template:AdditionalFile
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:542-0!*!0!!*!*!* and timestamp 20171218232350 and revision id 8741
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:542-0!*!0!!*!*!* and timestamp 20180515221814 and revision id 8741
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 27 January 2017, at 01:54.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 27 January 2017, at 02:54.</div> </div>
 
     <div id="footer">
       <div>

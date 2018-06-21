@@ -114,6 +114,7 @@
   <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,19 +270,17 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">Developer/HFileTemplate</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.734349 from <a href="http://sumo.dlr.de/wiki/Developer/HFileTemplate">the wiki page for Developer/HFileTemplate</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.080485 from <a href="http://sumo.dlr.de/wiki/Developer/HFileTemplate">the wiki page for Developer/HFileTemplate</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><pre>/****************************************************************************/
 // Eclipse SUMO, Simulation of Urban MObility; see <a rel="nofollow" class="external free" href="https://eclipse.org/sumo">https://eclipse.org/sumo</a>
 // Copyright (C) &lt;YEAR OF CREATION&gt;-&lt;CURRENT YEAR&gt; German Aerospace Center (DLR) and others.
-/****************************************************************************/
-//
-//   This program and the accompanying materials
-//   are made available under the terms of the Eclipse Public License v2.0
-//   which accompanies this distribution, and is available at
-//   <a rel="nofollow" class="external free" href="http://www.eclipse.org/legal/epl-v20.html">http://www.eclipse.org/legal/epl-v20.html</a>
-//
+// This program and the accompanying materials
+// are made available under the terms of the Eclipse Public License v2.0
+// which accompanies this distribution, and is available at
+// <a rel="nofollow" class="external free" href="http://www.eclipse.org/legal/epl-v20.html">http://www.eclipse.org/legal/epl-v20.html</a>
+// SPDX-License-Identifier: EPL-2.0
 /****************************************************************************/
 /// @file    &lt;FILENAME&gt;
 /// @author  &lt;AUTHOR'S NAME, ONE SEPARATE LINE FOR EACH AUTHOR&gt;
@@ -320,24 +319,24 @@ class myOwnClass2;
 // ===========================================================================
 
 /**
- * @class myOwnClass
- * briefly description of the class (Can be preceded of GNE, MS, NB, etc... depending of the project)
+ * @class OwnClass
+ * brief description of the class (Can be preceeded by GNE, MS, NB, etc... depending on the project)
  */
-class myOwnClass&#160;: public parentClass  {
+class OwnClass&#160;: public ParentClass  {
 
 public:
      /**
-      * @class mySubClass 
-      * briefly description of the sub-class
+      * @class SubClass 
+      * brief description of the sub-class
       */
-     class mySubClass {
+     class SubClass {
 
      public:
          /// @brief Constructor
-         mySubClass();
+         SubClass();
 
          /// @brief Destructor
-         ~mySubClass();
+         ~SubClass();
 
      private:
          /// @brief description of parameter
@@ -349,15 +348,15 @@ public:
      * @param[in] parameter2 each parameter must be documented
        ...
      */
-    myOwnClass(&lt;parameterType&gt; parameter1, &lt;parameterType&gt; parameter2,... &lt;parameterType&gt; parametern);
+    OwnClass(&lt;parameterType&gt; parameter1, &lt;parameterType&gt; parameter2,... &lt;parameterType&gt; parametern);
 
     /// @brief Destructor (don't need documentation)
-    ~myOwnClass();
+    ~OwnClass();
 
-    /// @brief Returns parameter1 (Simple functions should be documented with one Linie)
+    /// @brief Returns parameter1 (Simple functions should be documented with one line)
     &lt;parameterType&gt; getParameter1() const;
 
-    /** @brief some functions can throw exceptions
+    /** @brief some functions can throw exceptions but don't use throw declarations
      * @param[in] parameter1 description of the parameter
      * @throw &lt;exceptionName&gt; description of the situation that provoque an exception
      * @return description of the returned value
@@ -366,7 +365,7 @@ public:
 
     /// @brief if the class is abstract, should have pure virtual functions (virtual .... = 0;)
     //  @note: Extra information about a function should be written using @note
-    virtual void myPureVirtualFunction() = 0;
+    virtual void pureVirtualFunction() = 0;
 
 protected:
     /// @brief briefly description of the parameter
@@ -376,16 +375,16 @@ private:
     /// @brief every private parameter must start with "my"
     &lt;parameterType&gt; myPrivateParameter2;
 
-    /// @brief C++ Standard Library classes must be preceded of std::
+    /// @brief C++ Standard Library classes must be preceeded by std::
     std::vector&lt;std::string&gt; myPrivateParameter3;
-}
+};
 
 #endif
 </pre>
 <!-- 
 NewPP limit report
-CPU time usage: 0.020 seconds
-Real time usage: 0.018 seconds
+CPU time usage: 0.008 seconds
+Real time usage: 0.006 seconds
 Preprocessor visited node count: 1/1000000
 Preprocessor generated node count: 4/1000000
 Post‐expand include size: 0/2097152 bytes
@@ -399,9 +398,9 @@ Transclusion expansion time report (%,ms,calls,template)
 100.00%    0.000      1 - -total
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:41-0!*!*!*!*!*!* and timestamp 20171219074608 and revision id 10135
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:41-0!*!*!*!*!*!* and timestamp 20180515221725 and revision id 10547
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 29 September 2017, at 10:08.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 11 January 2018, at 13:43.</div> </div>
 
     <div id="footer">
       <div>

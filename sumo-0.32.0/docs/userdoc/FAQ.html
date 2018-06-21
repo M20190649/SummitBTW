@@ -114,6 +114,7 @@
   <li><a href="Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
   <li><a href="Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
   <li><a href="Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
 </ul></li>
   <li>Simulation</li>
 <li style="list-style: none; display: inline"><ul>
@@ -269,7 +270,7 @@
 </div>
 			<h1 id="firstHeading" class="firstHeading" lang="en">FAQ</h1>
 						<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">generated on 2017-12-19 09:15:31.776590 from <a href="http://sumo.dlr.de/wiki/FAQ">the wiki page for FAQ</a> for SUMO 0.32.0</div>
+									<div id="siteSub">generated on 2018-05-17 00:19:58.124013 from <a href="http://sumo.dlr.de/wiki/FAQ">the wiki page for FAQ</a> for SUMO git</div>
 								<div id="contentSub"></div>
 												
 				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
@@ -281,136 +282,139 @@
 <li class="toclevel-2 tocsection-4"><a href="#What_kind_of_a_traffic_simulation_is_SUMO.3F"><span class="tocnumber">1.3</span> <span class="toctext">What kind of a traffic simulation is SUMO?</span></a></li>
 <li class="toclevel-2 tocsection-5"><a href="#What_is_the_best_way_to_read_the_documentation_and_find_out_about_specific_topics"><span class="tocnumber">1.4</span> <span class="toctext">What is the best way to read the documentation and find out about specific topics</span></a></li>
 <li class="toclevel-2 tocsection-6"><a href="#How_can_I_contribute_to_SUMO.3F"><span class="tocnumber">1.5</span> <span class="toctext">How can I contribute to SUMO?</span></a></li>
-<li class="toclevel-2 tocsection-7"><a href="#How_do_I_contribute_to_the_wiki.3F"><span class="tocnumber">1.6</span> <span class="toctext">How do I contribute to the wiki?</span></a></li>
-<li class="toclevel-2 tocsection-8"><a href="#How_do_I_cite_SUMO"><span class="tocnumber">1.7</span> <span class="toctext">How do I cite SUMO</span></a></li>
-<li class="toclevel-2 tocsection-9"><a href="#How_do_I_unsubscribe_from_the_mailing_list.3F"><span class="tocnumber">1.8</span> <span class="toctext">How do I unsubscribe from the mailing list?</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#How_do_code_contributions_work.3F"><span class="tocnumber">1.6</span> <span class="toctext">How do code contributions work?</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#How_do_I_contribute_to_the_wiki.3F"><span class="tocnumber">1.7</span> <span class="toctext">How do I contribute to the wiki?</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#How_do_I_cite_SUMO"><span class="tocnumber">1.8</span> <span class="toctext">How do I cite SUMO</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="#How_do_I_unsubscribe_from_the_mailing_list.3F"><span class="tocnumber">1.9</span> <span class="toctext">How do I unsubscribe from the mailing list?</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-10"><a href="#General_Problem_Solving"><span class="tocnumber">2</span> <span class="toctext">General Problem Solving</span></a>
+<li class="toclevel-1 tocsection-11"><a href="#General_Problem_Solving"><span class="tocnumber">2</span> <span class="toctext">General Problem Solving</span></a>
 <ul>
-<li class="toclevel-2 tocsection-11"><a href="#An_application_crashed._What_should_I_do.3F"><span class="tocnumber">2.1</span> <span class="toctext">An application crashed. What should I do?</span></a></li>
-<li class="toclevel-2 tocsection-12"><a href="#Why_does_SUMO_not_behave_as_documented_in_this_wiki.3F"><span class="tocnumber">2.2</span> <span class="toctext">Why does SUMO not behave as documented in this wiki?</span></a></li>
-<li class="toclevel-2 tocsection-13"><a href="#There_is_an_error_message_but_I_don.27t_know_what_I_did_wrong"><span class="tocnumber">2.3</span> <span class="toctext">There is an error message but I don't know what I did wrong</span></a></li>
-<li class="toclevel-2 tocsection-14"><a href="#How_do_I_report_erroneous_behavior_of_a_SUMO_application.3F"><span class="tocnumber">2.4</span> <span class="toctext">How do I report erroneous behavior of a SUMO application?</span></a></li>
-<li class="toclevel-2 tocsection-15"><a href="#SUMO_does_not_do_what_I_want_and_I_don.27t_know_how_to_solve_the_issue"><span class="tocnumber">2.5</span> <span class="toctext">SUMO does not do what I want and I don't know how to solve the issue</span></a></li>
-<li class="toclevel-2 tocsection-16"><a href="#What_should_I_do_to_get_helpful_answers_on_the_mailing_list.3F"><span class="tocnumber">2.6</span> <span class="toctext">What should I do to get helpful answers on the mailing list?</span></a></li>
-<li class="toclevel-2 tocsection-17"><a href="#My_TraCI-program_is_not_working_as_intended._Can_you_help_me_debug_it.3F"><span class="tocnumber">2.7</span> <span class="toctext">My TraCI-program is not working as intended. Can you help me debug it?</span></a></li>
-<li class="toclevel-2 tocsection-18"><a href="#I_want_to_do_a_project_with_SUMO_can_you_help_me_with_the_implementation.3F"><span class="tocnumber">2.8</span> <span class="toctext">I want to do a project with SUMO can you help me with the implementation?</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="#An_application_crashed._What_should_I_do.3F"><span class="tocnumber">2.1</span> <span class="toctext">An application crashed. What should I do?</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="#Why_does_SUMO_not_behave_as_documented_in_this_wiki.3F"><span class="tocnumber">2.2</span> <span class="toctext">Why does SUMO not behave as documented in this wiki?</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="#There_is_an_error_message_but_I_don.27t_know_what_I_did_wrong"><span class="tocnumber">2.3</span> <span class="toctext">There is an error message but I don't know what I did wrong</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="#How_do_I_report_erroneous_behavior_of_a_SUMO_application.3F"><span class="tocnumber">2.4</span> <span class="toctext">How do I report erroneous behavior of a SUMO application?</span></a></li>
+<li class="toclevel-2 tocsection-16"><a href="#SUMO_does_not_do_what_I_want_and_I_don.27t_know_how_to_solve_the_issue"><span class="tocnumber">2.5</span> <span class="toctext">SUMO does not do what I want and I don't know how to solve the issue</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="#What_should_I_do_to_get_helpful_answers_on_the_mailing_list.3F"><span class="tocnumber">2.6</span> <span class="toctext">What should I do to get helpful answers on the mailing list?</span></a></li>
+<li class="toclevel-2 tocsection-18"><a href="#My_TraCI-program_is_not_working_as_intended._Can_you_help_me_debug_it.3F"><span class="tocnumber">2.7</span> <span class="toctext">My TraCI-program is not working as intended. Can you help me debug it?</span></a></li>
+<li class="toclevel-2 tocsection-19"><a href="#I_want_to_do_a_project_with_SUMO_can_you_help_me_with_the_implementation.3F"><span class="tocnumber">2.8</span> <span class="toctext">I want to do a project with SUMO can you help me with the implementation?</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-19"><a href="#Features"><span class="tocnumber">3</span> <span class="toctext">Features</span></a>
+<li class="toclevel-1 tocsection-20"><a href="#Features"><span class="tocnumber">3</span> <span class="toctext">Features</span></a>
 <ul>
-<li class="toclevel-2 tocsection-20"><a href="#Does_SUMO_support_traffic_within_the_junctions.3F"><span class="tocnumber">3.1</span> <span class="toctext">Does SUMO support traffic within the junctions?</span></a></li>
-<li class="toclevel-2 tocsection-21"><a href="#Is_it_possible_to_connect_SUMO_to_an_external_application_.28f.e._ns-2.29.3F"><span class="tocnumber">3.2</span> <span class="toctext">Is it possible to connect SUMO to an external application (f.e. ns-2)?</span></a></li>
-<li class="toclevel-2 tocsection-22"><a href="#Can_SUMO_simulate_lefthand_traffic.3F"><span class="tocnumber">3.3</span> <span class="toctext">Can SUMO simulate lefthand traffic?</span></a></li>
-<li class="toclevel-2 tocsection-23"><a href="#Can_SUMO_generate_movement_traces.3F"><span class="tocnumber">3.4</span> <span class="toctext">Can SUMO generate movement traces?</span></a></li>
-<li class="toclevel-2 tocsection-24"><a href="#Can_SUMO_simulate_heterogeneous_traffic_.2F_lane-free_traffic_.3F"><span class="tocnumber">3.5</span> <span class="toctext">Can SUMO simulate heterogeneous traffic / lane-free traffic&#160;?</span></a></li>
-<li class="toclevel-2 tocsection-25"><a href="#Can_SUMO_simulate_driving_in_reverse.3F"><span class="tocnumber">3.6</span> <span class="toctext">Can SUMO simulate driving in reverse?</span></a></li>
-<li class="toclevel-2 tocsection-26"><a href="#Can_SUMO_simulate_driving_through_the_oncoming_lane.3F"><span class="tocnumber">3.7</span> <span class="toctext">Can SUMO simulate driving through the oncoming lane?</span></a></li>
-<li class="toclevel-2 tocsection-27"><a href="#Can_SUMO_be_run_in_parallel_.28on_multiple_cores_or_computers.29.3F"><span class="tocnumber">3.8</span> <span class="toctext">Can SUMO be run in parallel (on multiple cores or computers)?</span></a></li>
+<li class="toclevel-2 tocsection-21"><a href="#Does_SUMO_support_traffic_within_the_junctions.3F"><span class="tocnumber">3.1</span> <span class="toctext">Does SUMO support traffic within the junctions?</span></a></li>
+<li class="toclevel-2 tocsection-22"><a href="#Is_it_possible_to_connect_SUMO_to_an_external_application_.28f.e._ns-2.29.3F"><span class="tocnumber">3.2</span> <span class="toctext">Is it possible to connect SUMO to an external application (f.e. ns-2)?</span></a></li>
+<li class="toclevel-2 tocsection-23"><a href="#Can_SUMO_simulate_lefthand_traffic.3F"><span class="tocnumber">3.3</span> <span class="toctext">Can SUMO simulate lefthand traffic?</span></a></li>
+<li class="toclevel-2 tocsection-24"><a href="#Can_SUMO_generate_movement_traces.3F"><span class="tocnumber">3.4</span> <span class="toctext">Can SUMO generate movement traces?</span></a></li>
+<li class="toclevel-2 tocsection-25"><a href="#Can_SUMO_simulate_heterogeneous_traffic_.2F_lane-free_traffic_.3F"><span class="tocnumber">3.5</span> <span class="toctext">Can SUMO simulate heterogeneous traffic / lane-free traffic&#160;?</span></a></li>
+<li class="toclevel-2 tocsection-26"><a href="#Can_SUMO_simulate_driving_in_reverse.3F"><span class="tocnumber">3.6</span> <span class="toctext">Can SUMO simulate driving in reverse?</span></a></li>
+<li class="toclevel-2 tocsection-27"><a href="#Can_SUMO_simulate_driving_through_the_oncoming_lane.3F"><span class="tocnumber">3.7</span> <span class="toctext">Can SUMO simulate driving through the oncoming lane?</span></a></li>
+<li class="toclevel-2 tocsection-28"><a href="#Can_SUMO_be_run_in_parallel_.28on_multiple_cores_or_computers.29.3F"><span class="tocnumber">3.8</span> <span class="toctext">Can SUMO be run in parallel (on multiple cores or computers)?</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-28"><a href="#Building_.2F_Installation"><span class="tocnumber">4</span> <span class="toctext">Building / Installation</span></a>
+<li class="toclevel-1 tocsection-29"><a href="#Building_.2F_Installation"><span class="tocnumber">4</span> <span class="toctext">Building / Installation</span></a>
 <ul>
-<li class="toclevel-2 tocsection-29"><a href="#How_do_I_access_the_code_repository.3F"><span class="tocnumber">4.1</span> <span class="toctext">How do I access the code repository?</span></a></li>
-<li class="toclevel-2 tocsection-30"><a href="#Is_there_further_documentation_on_Git_and_Subversion.3F"><span class="tocnumber">4.2</span> <span class="toctext">Is there further documentation on Git and Subversion?</span></a></li>
-<li class="toclevel-2 tocsection-31"><a href="#How_to_get_an_older_version_of_SUMO.3F"><span class="tocnumber">4.3</span> <span class="toctext">How to get an older version of SUMO?</span></a></li>
-<li class="toclevel-2 tocsection-32"><a href="#How_to_check_out_revision_5499_.28or_any_other_outdated_sumo.29.3F"><span class="tocnumber">4.4</span> <span class="toctext">How to check out revision 5499 (or any other outdated sumo)?</span></a></li>
-<li class="toclevel-2 tocsection-33"><a href="#Which_platforms_are_supported.3F"><span class="tocnumber">4.5</span> <span class="toctext">Which platforms are supported?</span></a></li>
-<li class="toclevel-2 tocsection-34"><a href="#Can_I_run_multiple_versions_of_SUMO_alongside_each_other.3F"><span class="tocnumber">4.6</span> <span class="toctext">Can I run multiple versions of SUMO alongside each other?</span></a></li>
-<li class="toclevel-2 tocsection-35"><a href="#Troubleshooting"><span class="tocnumber">4.7</span> <span class="toctext">Troubleshooting</span></a></li>
-<li class="toclevel-2 tocsection-36"><a href="#Uninstalling"><span class="tocnumber">4.8</span> <span class="toctext">Uninstalling</span></a></li>
+<li class="toclevel-2 tocsection-30"><a href="#How_do_I_access_the_code_repository.3F"><span class="tocnumber">4.1</span> <span class="toctext">How do I access the code repository?</span></a></li>
+<li class="toclevel-2 tocsection-31"><a href="#Is_there_further_documentation_on_Git_and_Subversion.3F"><span class="tocnumber">4.2</span> <span class="toctext">Is there further documentation on Git and Subversion?</span></a></li>
+<li class="toclevel-2 tocsection-32"><a href="#How_to_get_an_older_version_of_SUMO.3F"><span class="tocnumber">4.3</span> <span class="toctext">How to get an older version of SUMO?</span></a></li>
+<li class="toclevel-2 tocsection-33"><a href="#How_to_check_out_revision_5499_.28or_any_other_outdated_sumo.29.3F"><span class="tocnumber">4.4</span> <span class="toctext">How to check out revision 5499 (or any other outdated sumo)?</span></a></li>
+<li class="toclevel-2 tocsection-34"><a href="#Which_platforms_are_supported.3F"><span class="tocnumber">4.5</span> <span class="toctext">Which platforms are supported?</span></a></li>
+<li class="toclevel-2 tocsection-35"><a href="#Can_I_run_multiple_versions_of_SUMO_alongside_each_other.3F"><span class="tocnumber">4.6</span> <span class="toctext">Can I run multiple versions of SUMO alongside each other?</span></a></li>
+<li class="toclevel-2 tocsection-36"><a href="#Letters_and_words_are_represented_as_squares_in_SUMO-GUI_and_Netedit"><span class="tocnumber">4.7</span> <span class="toctext">Letters and words are represented as squares in SUMO-GUI and Netedit</span></a></li>
+<li class="toclevel-2 tocsection-37"><a href="#Troubleshooting"><span class="tocnumber">4.8</span> <span class="toctext">Troubleshooting</span></a></li>
+<li class="toclevel-2 tocsection-38"><a href="#Uninstalling"><span class="tocnumber">4.9</span> <span class="toctext">Uninstalling</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-37"><a href="#Basic_Usage"><span class="tocnumber">5</span> <span class="toctext">Basic Usage</span></a>
+<li class="toclevel-1 tocsection-39"><a href="#Basic_Usage"><span class="tocnumber">5</span> <span class="toctext">Basic Usage</span></a>
 <ul>
-<li class="toclevel-2 tocsection-38"><a href="#What_measures_are_used.2Frepresented.3F"><span class="tocnumber">5.1</span> <span class="toctext">What measures are used/represented?</span></a></li>
-<li class="toclevel-2 tocsection-39"><a href="#What_does_the_following_error_mean.3F"><span class="tocnumber">5.2</span> <span class="toctext">What does the following error mean?</span></a></li>
-<li class="toclevel-2 tocsection-40"><a href="#How_do_I_work_around_a_file_not_found_.2F_command_not_found_error.3F"><span class="tocnumber">5.3</span> <span class="toctext">How do I work around a file not found / command not found error?</span></a></li>
-<li class="toclevel-2 tocsection-41"><a href="#How_do_I_work_around_missing_dll_errors_on_windows.3F"><span class="tocnumber">5.4</span> <span class="toctext">How do I work around missing dll errors on windows?</span></a></li>
-<li class="toclevel-2 tocsection-42"><a href="#What_is_the_meaning_of_the_different_exit_codes_.28linux_command_line.29"><span class="tocnumber">5.5</span> <span class="toctext">What is the meaning of the different exit codes (linux command line)</span></a></li>
-<li class="toclevel-2 tocsection-43"><a href="#What.27s_the_deal_with_schema_resolution_warnings_.2F_xsd_errors.3F"><span class="tocnumber">5.6</span> <span class="toctext">What's the deal with <i>schema resolution</i> warnings / xsd errors?</span></a></li>
-<li class="toclevel-2 tocsection-44"><a href="#Why_can_my_input-XML_files_not_be_read_even_though_they_look_OK_to_me.3F"><span class="tocnumber">5.7</span> <span class="toctext">Why can my input-XML files not be read even though they look OK to me?</span></a></li>
-<li class="toclevel-2 tocsection-45"><a href="#Why_do_I_get_errors_about_missing_files_.2F_file_not_found_even_though_the_file_exists.3F"><span class="tocnumber">5.8</span> <span class="toctext">Why do I get errors about <i>missing files</i> / <i>file not found</i> even though the file exists?</span></a></li>
+<li class="toclevel-2 tocsection-40"><a href="#What_measures_are_used.2Frepresented.3F"><span class="tocnumber">5.1</span> <span class="toctext">What measures are used/represented?</span></a></li>
+<li class="toclevel-2 tocsection-41"><a href="#What_does_the_following_error_mean.3F"><span class="tocnumber">5.2</span> <span class="toctext">What does the following error mean?</span></a></li>
+<li class="toclevel-2 tocsection-42"><a href="#How_do_I_work_around_a_file_not_found_.2F_command_not_found_error.3F"><span class="tocnumber">5.3</span> <span class="toctext">How do I work around a file not found / command not found error?</span></a></li>
+<li class="toclevel-2 tocsection-43"><a href="#How_do_I_work_around_missing_dll_errors_on_windows.3F"><span class="tocnumber">5.4</span> <span class="toctext">How do I work around missing dll errors on windows?</span></a></li>
+<li class="toclevel-2 tocsection-44"><a href="#What_is_the_meaning_of_the_different_exit_codes_.28linux_command_line.29"><span class="tocnumber">5.5</span> <span class="toctext">What is the meaning of the different exit codes (linux command line)</span></a></li>
+<li class="toclevel-2 tocsection-45"><a href="#What.27s_the_deal_with_schema_resolution_warnings_.2F_xsd_errors.3F"><span class="tocnumber">5.6</span> <span class="toctext">What's the deal with <i>schema resolution</i> warnings / xsd errors?</span></a></li>
+<li class="toclevel-2 tocsection-46"><a href="#What_causes_Error:_unable_to_resolve_host.2Faddress_.27sumo.dlr.de.27_.3F"><span class="tocnumber">5.7</span> <span class="toctext">What causes <i>Error: unable to resolve host/address 'sumo.dlr.de' </i>?</span></a></li>
+<li class="toclevel-2 tocsection-47"><a href="#Why_can_my_input-XML_files_not_be_read_even_though_they_look_OK_to_me.3F"><span class="tocnumber">5.8</span> <span class="toctext">Why can my input-XML files not be read even though they look OK to me?</span></a></li>
+<li class="toclevel-2 tocsection-48"><a href="#Why_do_I_get_errors_about_missing_files_.2F_file_not_found_even_though_the_file_exists.3F"><span class="tocnumber">5.9</span> <span class="toctext">Why do I get errors about <i>missing files</i> / <i>file not found</i> even though the file exists?</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-46"><a href="#NETCONVERT"><span class="tocnumber">6</span> <span class="toctext">NETCONVERT</span></a>
+<li class="toclevel-1 tocsection-49"><a href="#NETCONVERT"><span class="tocnumber">6</span> <span class="toctext">NETCONVERT</span></a>
 <ul>
-<li class="toclevel-2 tocsection-47"><a href="#I_made_changes_to_the_.net.xml-file_but_it_did_not_work_as_expected._Why.3F"><span class="tocnumber">6.1</span> <span class="toctext">I made changes to the <i>.net.xml</i>-file but it did not work as expected. Why?</span></a></li>
-<li class="toclevel-2 tocsection-48"><a href="#My_network_looks_ugly.2C_All_the_junction_shapes_are_wrong._How_come.3F"><span class="tocnumber">6.2</span> <span class="toctext">My network looks ugly, All the junction shapes are wrong. How come?</span></a></li>
-<li class="toclevel-2 tocsection-49"><a href="#Some_junctions_in_my_network_look_ugly._What_can_I_do.3F"><span class="tocnumber">6.3</span> <span class="toctext">Some junctions in my network look ugly. What can I do?</span></a></li>
-<li class="toclevel-2 tocsection-50"><a href="#Can_I_import_the_free_network_of_Osnabr.C3.BCck_.22Frida.22.3F"><span class="tocnumber">6.4</span> <span class="toctext">Can I import the free network of Osnabrück "Frida"?</span></a></li>
-<li class="toclevel-2 tocsection-51"><a href="#Are_there_any_other_free_networks_available_I_can_use.3F"><span class="tocnumber">6.5</span> <span class="toctext">Are there any other free networks available I can use?</span></a></li>
-<li class="toclevel-2 tocsection-52"><a href="#The_application_hangs_after_a_while_.28few_memory_consumption.2C_most_of_the_system_time.29_.28Windows.29"><span class="tocnumber">6.6</span> <span class="toctext">The application hangs after a while (few memory consumption, most of the system time) (Windows)</span></a></li>
-<li class="toclevel-2 tocsection-53"><a href="#Many_errors_of_the_form_Edge.27s_.27x.27_from-_and_to-node_are_at_the_same_position"><span class="tocnumber">6.7</span> <span class="toctext">Many errors of the form <i>Edge's 'x' from- and to-node are at the same position</i></span></a></li>
-<li class="toclevel-2 tocsection-54"><a href="#Many_errors_of_the_form_Error:_Type_.27x.27_used_by_edge_.27y.27_was_not_defined"><span class="tocnumber">6.8</span> <span class="toctext">Many errors of the form <i>Error: Type 'x' used by edge 'y' was not defined</i></span></a></li>
+<li class="toclevel-2 tocsection-50"><a href="#I_made_changes_to_the_.net.xml-file_but_it_did_not_work_as_expected._Why.3F"><span class="tocnumber">6.1</span> <span class="toctext">I made changes to the <i>.net.xml</i>-file but it did not work as expected. Why?</span></a></li>
+<li class="toclevel-2 tocsection-51"><a href="#My_network_looks_ugly.2C_All_the_junction_shapes_are_wrong._How_come.3F"><span class="tocnumber">6.2</span> <span class="toctext">My network looks ugly, All the junction shapes are wrong. How come?</span></a></li>
+<li class="toclevel-2 tocsection-52"><a href="#Some_junctions_in_my_network_look_ugly._What_can_I_do.3F"><span class="tocnumber">6.3</span> <span class="toctext">Some junctions in my network look ugly. What can I do?</span></a></li>
+<li class="toclevel-2 tocsection-53"><a href="#Can_I_import_the_free_network_of_Osnabr.C3.BCck_.22Frida.22.3F"><span class="tocnumber">6.4</span> <span class="toctext">Can I import the free network of Osnabrück "Frida"?</span></a></li>
+<li class="toclevel-2 tocsection-54"><a href="#Are_there_any_other_free_networks_available_I_can_use.3F"><span class="tocnumber">6.5</span> <span class="toctext">Are there any other free networks available I can use?</span></a></li>
+<li class="toclevel-2 tocsection-55"><a href="#The_application_hangs_after_a_while_.28few_memory_consumption.2C_most_of_the_system_time.29_.28Windows.29"><span class="tocnumber">6.6</span> <span class="toctext">The application hangs after a while (few memory consumption, most of the system time) (Windows)</span></a></li>
+<li class="toclevel-2 tocsection-56"><a href="#Many_errors_of_the_form_Edge.27s_.27x.27_from-_and_to-node_are_at_the_same_position"><span class="tocnumber">6.7</span> <span class="toctext">Many errors of the form <i>Edge's 'x' from- and to-node are at the same position</i></span></a></li>
+<li class="toclevel-2 tocsection-57"><a href="#Many_errors_of_the_form_Error:_Type_.27x.27_used_by_edge_.27y.27_was_not_defined"><span class="tocnumber">6.8</span> <span class="toctext">Many errors of the form <i>Error: Type 'x' used by edge 'y' was not defined</i></span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-55"><a href="#NETEDIT"><span class="tocnumber">7</span> <span class="toctext">NETEDIT</span></a>
+<li class="toclevel-1 tocsection-58"><a href="#NETEDIT"><span class="tocnumber">7</span> <span class="toctext">NETEDIT</span></a>
 <ul>
-<li class="toclevel-2 tocsection-56"><a href="#How_can_I_obtain_NETEDIT.3F"><span class="tocnumber">7.1</span> <span class="toctext">How can I obtain NETEDIT?</span></a></li>
+<li class="toclevel-2 tocsection-59"><a href="#How_can_I_obtain_NETEDIT.3F"><span class="tocnumber">7.1</span> <span class="toctext">How can I obtain NETEDIT?</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-57"><a href="#Traffic_Demand_Generation"><span class="tocnumber">8</span> <span class="toctext">Traffic Demand Generation</span></a>
+<li class="toclevel-1 tocsection-60"><a href="#Traffic_Demand_Generation"><span class="tocnumber">8</span> <span class="toctext">Traffic Demand Generation</span></a>
 <ul>
-<li class="toclevel-2 tocsection-58"><a href="#How_do_I_generate_random_routes.3F"><span class="tocnumber">8.1</span> <span class="toctext">How do I generate random routes?</span></a></li>
-<li class="toclevel-2 tocsection-59"><a href="#How_do_I_maintain_a_constant_number_of_vehicles_in_the_net.3F"><span class="tocnumber">8.2</span> <span class="toctext">How do I maintain a constant number of vehicles in the net?</span></a></li>
-<li class="toclevel-2 tocsection-60"><a href="#A_vehicle_cannot_reach_its_target_or_takes_a_circuitous_route._Why.3F"><span class="tocnumber">8.3</span> <span class="toctext">A vehicle cannot reach its target or takes a circuitous route. Why?</span></a></li>
-<li class="toclevel-2 tocsection-61"><a href="#How_do_I_generate_SUMO_routes_from_GPS_traces.3F"><span class="tocnumber">8.4</span> <span class="toctext">How do I generate SUMO routes from GPS traces?</span></a></li>
+<li class="toclevel-2 tocsection-61"><a href="#How_do_I_generate_random_routes.3F"><span class="tocnumber">8.1</span> <span class="toctext">How do I generate random routes?</span></a></li>
+<li class="toclevel-2 tocsection-62"><a href="#How_do_I_maintain_a_constant_number_of_vehicles_in_the_net.3F"><span class="tocnumber">8.2</span> <span class="toctext">How do I maintain a constant number of vehicles in the net?</span></a></li>
+<li class="toclevel-2 tocsection-63"><a href="#A_vehicle_cannot_reach_its_target_or_takes_a_circuitous_route._Why.3F"><span class="tocnumber">8.3</span> <span class="toctext">A vehicle cannot reach its target or takes a circuitous route. Why?</span></a></li>
+<li class="toclevel-2 tocsection-64"><a href="#How_do_I_generate_SUMO_routes_from_GPS_traces.3F"><span class="tocnumber">8.4</span> <span class="toctext">How do I generate SUMO routes from GPS traces?</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-62"><a href="#Simulation"><span class="tocnumber">9</span> <span class="toctext">Simulation</span></a>
+<li class="toclevel-1 tocsection-65"><a href="#Simulation"><span class="tocnumber">9</span> <span class="toctext">Simulation</span></a>
 <ul>
-<li class="toclevel-2 tocsection-63"><a href="#How_to_simulate_an_accident"><span class="tocnumber">9.1</span> <span class="toctext">How to simulate an accident</span></a></li>
-<li class="toclevel-2 tocsection-64"><a href="#I_have_changed_my_network_and_now_SUMO_does_not_load_it."><span class="tocnumber">9.2</span> <span class="toctext">I have changed my network and now SUMO does not load it.</span></a></li>
-<li class="toclevel-2 tocsection-65"><a href="#How_do_I_change_the_duration_of_cycles_and_phases.3F"><span class="tocnumber">9.3</span> <span class="toctext">How do I change the duration of cycles and phases?</span></a></li>
-<li class="toclevel-2 tocsection-66"><a href="#I_can_not_see_a_vehicle_moving_in_my_simulation"><span class="tocnumber">9.4</span> <span class="toctext">I can not see a vehicle moving in my simulation</span></a></li>
-<li class="toclevel-2 tocsection-67"><a href="#Different_departure_times_with_different_time_step_size"><span class="tocnumber">9.5</span> <span class="toctext">Different departure times with different time step size</span></a></li>
-<li class="toclevel-2 tocsection-68"><a href="#How_to_save_a_simulation_state_and_proceed_later_and.2For_differently"><span class="tocnumber">9.6</span> <span class="toctext">How to save a simulation state and proceed later and/or differently</span></a></li>
-<li class="toclevel-2 tocsection-69"><a href="#The_simulation_gets_slow_with_many_vehicles_waiting_for_insertion"><span class="tocnumber">9.7</span> <span class="toctext">The simulation gets slow with many vehicles waiting for insertion</span></a></li>
-<li class="toclevel-2 tocsection-70"><a href="#The_simulation_runs_slow_on_the_command_line"><span class="tocnumber">9.8</span> <span class="toctext">The simulation runs slow on the command line</span></a></li>
-<li class="toclevel-2 tocsection-71"><a href="#The_simulation_has_lots_of_jams.2Fdeadlocks._What_can_I_do.3F"><span class="tocnumber">9.9</span> <span class="toctext">The simulation has lots of jams/deadlocks. What can I do?</span></a></li>
-<li class="toclevel-2 tocsection-72"><a href="#Why_do_the_vehicles_perform_unexpected_lane-changing_maneuvers.3F"><span class="tocnumber">9.10</span> <span class="toctext">Why do the vehicles perform unexpected lane-changing maneuvers?</span></a></li>
-<li class="toclevel-2 tocsection-73"><a href="#How_do_I_get_high_flows.2Fvehicle_densities.3F"><span class="tocnumber">9.11</span> <span class="toctext">How do I get high flows/vehicle densities?</span></a></li>
-<li class="toclevel-2 tocsection-74"><a href="#How_do_I_force_a_lane_change.3F"><span class="tocnumber">9.12</span> <span class="toctext">How do I force a lane change?</span></a></li>
-<li class="toclevel-2 tocsection-75"><a href="#Are_there_any_limits_in_regard_to_the_size_of_a_simulation_scenario.3F"><span class="tocnumber">9.13</span> <span class="toctext">Are there any limits in regard to the size of a simulation scenario?</span></a></li>
+<li class="toclevel-2 tocsection-66"><a href="#How_to_simulate_an_accident"><span class="tocnumber">9.1</span> <span class="toctext">How to simulate an accident</span></a></li>
+<li class="toclevel-2 tocsection-67"><a href="#I_have_changed_my_network_and_now_SUMO_does_not_load_it."><span class="tocnumber">9.2</span> <span class="toctext">I have changed my network and now SUMO does not load it.</span></a></li>
+<li class="toclevel-2 tocsection-68"><a href="#How_do_I_change_the_duration_of_cycles_and_phases.3F"><span class="tocnumber">9.3</span> <span class="toctext">How do I change the duration of cycles and phases?</span></a></li>
+<li class="toclevel-2 tocsection-69"><a href="#I_can_not_see_a_vehicle_moving_in_my_simulation"><span class="tocnumber">9.4</span> <span class="toctext">I can not see a vehicle moving in my simulation</span></a></li>
+<li class="toclevel-2 tocsection-70"><a href="#Different_departure_times_with_different_time_step_size"><span class="tocnumber">9.5</span> <span class="toctext">Different departure times with different time step size</span></a></li>
+<li class="toclevel-2 tocsection-71"><a href="#How_to_save_a_simulation_state_and_proceed_later_and.2For_differently"><span class="tocnumber">9.6</span> <span class="toctext">How to save a simulation state and proceed later and/or differently</span></a></li>
+<li class="toclevel-2 tocsection-72"><a href="#The_simulation_gets_slow_with_many_vehicles_waiting_for_insertion"><span class="tocnumber">9.7</span> <span class="toctext">The simulation gets slow with many vehicles waiting for insertion</span></a></li>
+<li class="toclevel-2 tocsection-73"><a href="#The_simulation_runs_slow_on_the_command_line"><span class="tocnumber">9.8</span> <span class="toctext">The simulation runs slow on the command line</span></a></li>
+<li class="toclevel-2 tocsection-74"><a href="#The_simulation_has_lots_of_jams.2Fdeadlocks._What_can_I_do.3F"><span class="tocnumber">9.9</span> <span class="toctext">The simulation has lots of jams/deadlocks. What can I do?</span></a></li>
+<li class="toclevel-2 tocsection-75"><a href="#Why_do_the_vehicles_perform_unexpected_lane-changing_maneuvers.3F"><span class="tocnumber">9.10</span> <span class="toctext">Why do the vehicles perform unexpected lane-changing maneuvers?</span></a></li>
+<li class="toclevel-2 tocsection-76"><a href="#How_do_I_get_high_flows.2Fvehicle_densities.3F"><span class="tocnumber">9.11</span> <span class="toctext">How do I get high flows/vehicle densities?</span></a></li>
+<li class="toclevel-2 tocsection-77"><a href="#How_do_I_force_a_lane_change.3F"><span class="tocnumber">9.12</span> <span class="toctext">How do I force a lane change?</span></a></li>
+<li class="toclevel-2 tocsection-78"><a href="#Are_there_any_limits_in_regard_to_the_size_of_a_simulation_scenario.3F"><span class="tocnumber">9.13</span> <span class="toctext">Are there any limits in regard to the size of a simulation scenario?</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-76"><a href="#Visualisation"><span class="tocnumber">10</span> <span class="toctext">Visualisation</span></a>
+<li class="toclevel-1 tocsection-79"><a href="#Visualisation"><span class="tocnumber">10</span> <span class="toctext">Visualisation</span></a>
 <ul>
-<li class="toclevel-2 tocsection-77"><a href="#SUMO-GUI_breaks"><span class="tocnumber">10.1</span> <span class="toctext">SUMO-GUI breaks</span></a></li>
-<li class="toclevel-2 tocsection-78"><a href="#Display_flickers_in_the_area_of_the_mouse_pointer_.28Windows.29"><span class="tocnumber">10.2</span> <span class="toctext">Display flickers in the area of the mouse pointer (Windows)</span></a></li>
-<li class="toclevel-2 tocsection-79"><a href="#SUMO-GUI_windows_and_buttons_appear_but_no_net.2Fcars_are_visible_.2F_Vehicles_are_not_visible_or_flicker_.2F_Roads_are_drawn_on_top_of_vehicles"><span class="tocnumber">10.3</span> <span class="toctext">SUMO-GUI windows and buttons appear but no net/cars are visible / Vehicles are not visible or flicker / Roads are drawn on top of vehicles</span></a></li>
-<li class="toclevel-2 tocsection-80"><a href="#Building_videos_from_SUMO-GUI"><span class="tocnumber">10.4</span> <span class="toctext">Building videos from SUMO-GUI</span></a></li>
-<li class="toclevel-2 tocsection-81"><a href="#Incomplete_output"><span class="tocnumber">10.5</span> <span class="toctext">Incomplete output</span></a></li>
-<li class="toclevel-2 tocsection-82"><a href="#Incompatibility_with_DisplayLink_devices"><span class="tocnumber">10.6</span> <span class="toctext">Incompatibility with DisplayLink devices</span></a></li>
+<li class="toclevel-2 tocsection-80"><a href="#SUMO-GUI_breaks"><span class="tocnumber">10.1</span> <span class="toctext">SUMO-GUI breaks</span></a></li>
+<li class="toclevel-2 tocsection-81"><a href="#Display_flickers_in_the_area_of_the_mouse_pointer_.28Windows.29"><span class="tocnumber">10.2</span> <span class="toctext">Display flickers in the area of the mouse pointer (Windows)</span></a></li>
+<li class="toclevel-2 tocsection-82"><a href="#SUMO-GUI_windows_and_buttons_appear_but_no_net.2Fcars_are_visible_.2F_Vehicles_are_not_visible_or_flicker_.2F_Roads_are_drawn_on_top_of_vehicles"><span class="tocnumber">10.3</span> <span class="toctext">SUMO-GUI windows and buttons appear but no net/cars are visible / Vehicles are not visible or flicker / Roads are drawn on top of vehicles</span></a></li>
+<li class="toclevel-2 tocsection-83"><a href="#Building_videos_from_SUMO-GUI"><span class="tocnumber">10.4</span> <span class="toctext">Building videos from SUMO-GUI</span></a></li>
+<li class="toclevel-2 tocsection-84"><a href="#Incomplete_output"><span class="tocnumber">10.5</span> <span class="toctext">Incomplete output</span></a></li>
+<li class="toclevel-2 tocsection-85"><a href="#Incompatibility_with_DisplayLink_devices"><span class="tocnumber">10.6</span> <span class="toctext">Incompatibility with DisplayLink devices</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-83"><a href="#Upgrading"><span class="tocnumber">11</span> <span class="toctext">Upgrading</span></a>
+<li class="toclevel-1 tocsection-86"><a href="#Upgrading"><span class="tocnumber">11</span> <span class="toctext">Upgrading</span></a>
 <ul>
-<li class="toclevel-2 tocsection-84"><a href="#How_do_I_upgrade_SUMO.3F"><span class="tocnumber">11.1</span> <span class="toctext">How do I upgrade SUMO?</span></a></li>
-<li class="toclevel-2 tocsection-85"><a href="#SUMO_warns_about_deprecated_networks_or_fails_to_load_them"><span class="tocnumber">11.2</span> <span class="toctext">SUMO warns about deprecated networks or fails to load them</span></a></li>
+<li class="toclevel-2 tocsection-87"><a href="#How_do_I_upgrade_SUMO.3F"><span class="tocnumber">11.1</span> <span class="toctext">How do I upgrade SUMO?</span></a></li>
+<li class="toclevel-2 tocsection-88"><a href="#SUMO_warns_about_deprecated_networks_or_fails_to_load_them"><span class="tocnumber">11.2</span> <span class="toctext">SUMO warns about deprecated networks or fails to load them</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-86"><a href="#Python_tools"><span class="tocnumber">12</span> <span class="toctext">Python tools</span></a>
+<li class="toclevel-1 tocsection-89"><a href="#Python_tools"><span class="tocnumber">12</span> <span class="toctext">Python tools</span></a>
 <ul>
-<li class="toclevel-2 tocsection-87"><a href="#How_do_I_run_the_python_tools.3F"><span class="tocnumber">12.1</span> <span class="toctext">How do I run the python tools?</span></a></li>
-<li class="toclevel-2 tocsection-88"><a href="#tools_fail_with_a_SyntaxError_or_ImportError_or_some_TypeError_concerning_.22.3E.3E.22"><span class="tocnumber">12.2</span> <span class="toctext">tools fail with a SyntaxError or ImportError or some TypeError concerning "&gt;&gt;"</span></a></li>
-<li class="toclevel-2 tocsection-89"><a href="#tools_fail_with_an_ImportError"><span class="tocnumber">12.3</span> <span class="toctext">tools fail with an ImportError</span></a></li>
-<li class="toclevel-2 tocsection-90"><a href="#how_do_I_import_traci_or_sumolib_in_my_own_python_script.3F"><span class="tocnumber">12.4</span> <span class="toctext">how do I import traci or sumolib in my own python script?</span></a></li>
-<li class="toclevel-2 tocsection-91"><a href="#the_python_scripts_do_not_accept_command_line_arguments_.28windows_only.29"><span class="tocnumber">12.5</span> <span class="toctext">the python scripts do not accept command line arguments (windows only)</span></a></li>
+<li class="toclevel-2 tocsection-90"><a href="#How_do_I_run_the_python_tools.3F"><span class="tocnumber">12.1</span> <span class="toctext">How do I run the python tools?</span></a></li>
+<li class="toclevel-2 tocsection-91"><a href="#tools_fail_with_a_SyntaxError_or_ImportError_or_some_TypeError_concerning_.22.3E.3E.22"><span class="tocnumber">12.2</span> <span class="toctext">tools fail with a SyntaxError or ImportError or some TypeError concerning "&gt;&gt;"</span></a></li>
+<li class="toclevel-2 tocsection-92"><a href="#tools_fail_with_an_ImportError"><span class="tocnumber">12.3</span> <span class="toctext">tools fail with an ImportError</span></a></li>
+<li class="toclevel-2 tocsection-93"><a href="#how_do_I_import_traci_or_sumolib_in_my_own_python_script.3F"><span class="tocnumber">12.4</span> <span class="toctext">how do I import traci or sumolib in my own python script?</span></a></li>
+<li class="toclevel-2 tocsection-94"><a href="#the_python_scripts_do_not_accept_command_line_arguments_.28windows_only.29"><span class="tocnumber">12.5</span> <span class="toctext">the python scripts do not accept command line arguments (windows only)</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-92"><a href="#.28Communication.29_Network_Simulators"><span class="tocnumber">13</span> <span class="toctext">(Communication) Network Simulators</span></a>
+<li class="toclevel-1 tocsection-95"><a href="#.28Communication.29_Network_Simulators"><span class="tocnumber">13</span> <span class="toctext">(Communication) Network Simulators</span></a>
 <ul>
-<li class="toclevel-2 tocsection-93"><a href="#How_do_I_use_.tcl_files_with_NS2.3F"><span class="tocnumber">13.1</span> <span class="toctext">How do I use <i>.tcl</i> files with NS2?</span></a></li>
-<li class="toclevel-2 tocsection-94"><a href="#How_do_I_combine_SUMO_with_a_network_simulator.3F"><span class="tocnumber">13.2</span> <span class="toctext">How do I combine SUMO with a network simulator?</span></a></li>
+<li class="toclevel-2 tocsection-96"><a href="#How_do_I_use_.tcl_files_with_NS2.3F"><span class="tocnumber">13.1</span> <span class="toctext">How do I use <i>.tcl</i> files with NS2?</span></a></li>
+<li class="toclevel-2 tocsection-97"><a href="#How_do_I_combine_SUMO_with_a_network_simulator.3F"><span class="tocnumber">13.2</span> <span class="toctext">How do I combine SUMO with a network simulator?</span></a></li>
 </ul>
 </li>
-<li class="toclevel-1 tocsection-95"><a href="#Outdated_.28Questions_for_very_old_versions_of_SUMO.29"><span class="tocnumber">14</span> <span class="toctext">Outdated (Questions for very old versions of SUMO)</span></a>
+<li class="toclevel-1 tocsection-98"><a href="#Outdated_.28Questions_for_very_old_versions_of_SUMO.29"><span class="tocnumber">14</span> <span class="toctext">Outdated (Questions for very old versions of SUMO)</span></a>
 <ul>
-<li class="toclevel-2 tocsection-96"><a href="#Vehicles_do_not_drive_on_the_last_edge_of_their_route"><span class="tocnumber">14.1</span> <span class="toctext">Vehicles do not drive on the last edge of their route</span></a></li>
-<li class="toclevel-2 tocsection-97"><a href="#Vehicle_jumps_backward"><span class="tocnumber">14.2</span> <span class="toctext">Vehicle jumps backward</span></a></li>
+<li class="toclevel-2 tocsection-99"><a href="#Vehicles_do_not_drive_on_the_last_edge_of_their_route"><span class="tocnumber">14.1</span> <span class="toctext">Vehicles do not drive on the last edge of their route</span></a></li>
+<li class="toclevel-2 tocsection-100"><a href="#Vehicle_jumps_backward"><span class="tocnumber">14.2</span> <span class="toctext">Vehicle jumps backward</span></a></li>
 </ul>
 </li>
 </ul>
@@ -428,9 +432,9 @@
 <h3><span class="mw-headline" id="What_is_the_best_way_to_read_the_documentation_and_find_out_about_specific_topics">What is the best way to read the documentation and find out about specific topics</span></h3>
 <dl><dd> The main page for getting an overview over the various topics is the outline <a href="SUMO_User_Documentation.html" title="SUMO User Documentation">SUMO_User_Documentation</a>. If you do not find the topic of interest listed there it is often useful to use google for searching the wiki (it tends to be a lot smarter than the wiki-internal search). Add <b>sumo</b> and <b>wiki</b> to your search terms and it will generally find the relevant pages.</dd></dl>
 <h3><span class="mw-headline" id="How_can_I_contribute_to_SUMO.3F">How can I contribute to SUMO?</span></h3>
-<ul><li> Tell us about your extensions at <a rel="nofollow" class="external text" href="http://lists.sourceforge.net/lists/listinfo/sumo-devel">sumo-devel</a></li>
-<li> Send us patches (bug fixes as well as extensions) at <a rel="nofollow" class="external text" href="http://lists.sourceforge.net/lists/listinfo/sumo-devel">sumo-devel</a>. If you have larger contributions, ask us about write access  to the code repository.</li>
-<li> Report bugs (crashes, surprising behavior) or invalid documentation at <a rel="nofollow" class="external text" href="http://lists.sourceforge.net/lists/listinfo/sumo-user">sumo-user</a></li>
+<ul><li> Tell us about your extensions on the <a rel="nofollow" class="external text" href="https://accounts.eclipse.org/mailing-list/sumo-dev">developer mailing list</a></li>
+<li> Send us patches (bug fixes as well as extensions) either to the same list or as pull requests at <a rel="nofollow" class="external free" href="https://github.com/eclipse/sumo">https://github.com/eclipse/sumo</a> (also see next question).</li>
+<li> Report bugs (crashes, surprising behavior) or invalid documentation at <a rel="nofollow" class="external text" href="https://accounts.eclipse.org/mailing-list/sumo-user">sumo-user</a> or at <a rel="nofollow" class="external free" href="https://github.com/eclipse/sumo/issues">https://github.com/eclipse/sumo/issues</a></li>
 <li> The main development team at the <a rel="nofollow" class="external text" href="http://sumo.dlr.de">DLR</a> is always looking for project partners. <a href="Contact.html" title="Contact">Contact us</a> to discuss your proposals.</li>
 <li> Make your SUMO simulation scenarios publicly available</li>
 <li> <a href="Publications.html" title="Publications">Cite us</a> in your publications and tell other people about SUMO.</li>
@@ -438,10 +442,18 @@
 <li> Contribute to this wiki (<a href="Contact.html" title="Contact">contact us</a>, so we can give you editing rights)</li>
 <li> Create a video tutorial and tell us about it</li>
 <li> Join us at the annual <a rel="nofollow" class="external text" href="http://www.dlr.de/ts/en/desktopdefault.aspx/tabid-3930/20125_read-47741/">SUMO User Conference</a></li></ul>
+<h3><span class="mw-headline" id="How_do_code_contributions_work.3F">How do code contributions work?</span></h3>
+<dl><dd>We need to make sure that you have the necessary rights on the code and that you agree that your contribution is put under the Eclipse Public License v2. The easiest way to do achieve this is</dd></dl>
+<ul><li> Create an <a rel="nofollow" class="external text" href="https://accounts.eclipse.org/user/register">Eclipse account</a> if you do not already have one</li>
+<li> Fill out a simple oline form, called the Eclipse Contributor Agreement (ECA, this is mandatory)</li>
+<li> Ensure that the email address in git matches your address at Eclipse (look for user.email in the output of git config -l)</li>
+<li> Make sure all the commits you want to contribute have a valid Signed-off-by entry. If you use command line git, this is as simple as doing "git commit -s" when committing.
+<ul><li> if you want to modify an existing commit because you forgot to sign it, you can use "git commit -s --amend"</li></ul></li>
+<li> Send us a pull request on GitHub
+<ul><li> You can of course send your code by any other means as well but we will need to make sure that you have a valid ECA and the Signed-off-by</li></ul></li>
+<li> More info may be found at <a rel="nofollow" class="external free" href="https://wiki.eclipse.org/Development_Resources/Contributing_via_Git">https://wiki.eclipse.org/Development_Resources/Contributing_via_Git</a></li></ul>
 <h3><span class="mw-headline" id="How_do_I_contribute_to_the_wiki.3F">How do I contribute to the wiki?</span></h3>
-<ul><li> Attempt to log in with a Google OpenID</li>
-<li> Send an email to [sumo-user@list.sourceforge.net] with your email adress
-<ul><li> Alternatively: Send an email stating your preferred user name to sumo-user@list.sourceforge.net]</li></ul></li>
+<ul><li> Alternatively: Send an email stating your preferred user name to sumo@dlr.de</li>
 <li> wait for our mail telling you that you have edit-permissions</li></ul>
 <h3><span class="mw-headline" id="How_do_I_cite_SUMO">How do I cite SUMO</span></h3>
 <dl><dd>Cite using <a href="Publications.html#Krajzewicz_et_al2012" title="Publications">Krajzewicz_et_al2012</a>.</dd></dl>
@@ -503,14 +515,15 @@
 <dl><dd> The python TraCI library allows controlling multiple simulations from a single script either by calling <i>traci.connect</i> and storing the returned connection object or by calling <i>traci.start(label=...)</i> and retrieving the connection object with <i>traci.getConnection(label)</i>.</dd></dl>
 <h2><span class="mw-headline" id="Building_.2F_Installation">Building / Installation</span></h2>
 <h3><span class="mw-headline" id="How_do_I_access_the_code_repository.3F">How do I access the code repository?</span></h3>
-<dl><dd>Since 2017-10-28 SUMO moved to <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/">GitHub</a>. You have the choice to access the repository using git or subversion. There are plenty of clients for all platforms. If you use the command line client, you can checkout sumo using the following command (for git):</dd></dl>
-<pre> git clone --recursive <a rel="nofollow" class="external free" href="https://github.com/DLR-TS/sumo.git">https://github.com/DLR-TS/sumo.git</a>
+<dl><dd>Since 2018-04-10 SUMO moved to <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/">the organizational Eclipse account at GitHub</a>. You have the choice to access the repository using git or subversion. There are plenty of clients for all platforms. If you use the command line client, you can checkout sumo using the following command (for git):</dd></dl>
+<pre> git clone --recursive <a rel="nofollow" class="external free" href="https://github.com/eclipse/sumo">https://github.com/eclipse/sumo</a>
 </pre>
-<p>or for subversion
+<p>If you want to see the full project history in your git checkout please change to the created directory and call
 </p>
-<pre> svn co <a rel="nofollow" class="external free" href="https://github.com/DLR-TS/sumo.git">https://github.com/DLR-TS/sumo.git</a>
+<pre> git fetch origin refs/replace/*:refs/replace/*
 </pre>
-<dl><dd>For later updates go inside the sumo directory, which has been created, and simply type <code>git pull</code> or <code>svn up</code>.</dd></dl>
+<p>For later updates go inside the sumo directory, which has been created, and simply type <code>git pull</code>.
+</p>
 <h3><span class="mw-headline" id="Is_there_further_documentation_on_Git_and_Subversion.3F">Is there further documentation on Git and Subversion?</span></h3>
 <dl><dd>There are the <a rel="nofollow" class="external text" href="https://git-scm.com/book/de/v1">Git book</a> and the <a rel="nofollow" class="external text" href="http://svnbook.red-bean.com/">Subversion book</a> and the <a rel="nofollow" class="external text" href="https://help.github.com/">GitHub help</a> is also worth reading.</dd></dl>
 <h3><span class="mw-headline" id="How_to_get_an_older_version_of_SUMO.3F">How to get an older version of SUMO?</span></h3>
@@ -521,6 +534,8 @@
 <dl><dd>We compile regularly under Windows 7 and Windows Server 2012 R2 using Visual Studio 2013 (32bit and 64bit) and have daily builds on Linux (openSUSE Leap 42.1 (64bit) and openSUSE 13.1 (32bit)). Furthermore there are nightly builds on the <a rel="nofollow" class="external text" href="https://build.opensuse.org/package/show?package=sumo_nightly&amp;project=home%3Abehrisch">open build service</a>. SUMO can be installed on MacOS via MacPorts (or built from source). We would be happy to hear about successful builds on other platforms. We already heard about successful builds on Solaris and Cygwin.</dd></dl>
 <h3><span class="mw-headline" id="Can_I_run_multiple_versions_of_SUMO_alongside_each_other.3F">Can I run multiple versions of SUMO alongside each other?</span></h3>
 <dl><dd>Different versions of SUMO generally do not interfere with each other. When setting environment variables such as <i>SUMO_HOME</i> or <i>PATH</i>, care must be take to reference the desired directory. On linux, the package manager will generally only offer a single version. <a href="Installing/Linux_Build.html" title="Installing/Linux Build">All other versions must be built from source</a>.</dd></dl>
+<h3><span class="mw-headline" id="Letters_and_words_are_represented_as_squares_in_SUMO-GUI_and_Netedit">Letters and words are represented as squares in SUMO-GUI and Netedit</span></h3>
+<dl><dd>Make sure that your computer supports 3D Acceleration and graphical drivers are correctly installed and configured.</dd></dl>
 <h3><span class="mw-headline" id="Troubleshooting">Troubleshooting</span></h3>
 <dl><dd>See <a href="Installing/Linux_Build.html" title="Installing/Linux Build">Installing/Linux Build</a> or <a href="Installing/Windows_Build.html" title="Installing/Windows Build">Installing/Windows Build</a>.</dd></dl>
 <h3><span class="mw-headline" id="Uninstalling">Uninstalling</span></h3>
@@ -542,6 +557,11 @@
 <dl><dd> 0 is success, 1 is a recognized error and anything above is an unorderly termination (crash). If you see exit codes other than 0 or 1 <a href="FAQ.html#How_do_I_report_Erroneous_behavior_of_a_SUMO-Application.3F" title="FAQ">please tell us about it</a></dd></dl>
 <h3><span class="mw-headline" id="What.27s_the_deal_with_schema_resolution_warnings_.2F_xsd_errors.3F">What's the deal with <i>schema resolution</i> warnings / xsd errors?</span></h3>
 <dl><dd> Since version 0.20.0 sumo performs <a href="XMLValidation.html" title="XMLValidation">XML-validation</a> on input files with schema information. This helps to detect common mistakes during manual preparation of XML input files. Files generated by sumo applications such as <a href="DUAROUTER.html" title="DUAROUTER">DUAROUTER</a> always add schema information.  The schema files which are needed for checking are retrieved from the local sumo installation if <a href="Basics/Basic_Computer_Skills.html#Additional_Environment_Variables" title="Basics/Basic Computer Skills">the environment variable <b>SUMO_HOME</b> is set</a>. Otherwise the files will be retrieved from <a rel="nofollow" class="external text" href="http://www.sumo.dlr.de">sumo.dlr.de</a> which is slower. Validation can be disabled by using the option <span style="color: #111144; font-weight: bold; white-space: pre;">--xml-validation never</span> or by deleting the schema information at the top of the XML input file(s).</dd></dl>
+<h3><span class="mw-headline" id="What_causes_Error:_unable_to_resolve_host.2Faddress_.27sumo.dlr.de.27_.3F">What causes <i>Error: unable to resolve host/address 'sumo.dlr.de' </i>?</span></h3>
+<dl><dd> This is related to <a href="XMLValidation.html" title="XMLValidation">XML-validation</a> (see above). When the <a href="Basics/Basic_Computer_Skills.html#Additional_Environment_Variables" title="Basics/Basic Computer Skills">the environment variable <b>SUMO_HOME</b></a> is not set, applications will try to retrieve the xsd schema files online. If there is no internet connection. The above error results. The solution is to either</dd></dl>
+<ul><li> disable validation or</li>
+<li> declare <b>SUMO_HOME</b> or</li>
+<li> ensure internet connectivity</li></ul>
 <h3><span class="mw-headline" id="Why_can_my_input-XML_files_not_be_read_even_though_they_look_OK_to_me.3F">Why can my input-XML files not be read even though they look OK to me?</span></h3>
 <dl><dd>Errors such as </dd></dl>
 <pre>Error: attribute name expected at 
@@ -560,14 +580,14 @@ At line/column 10/46
 </p>
 <ol><li> Edit the network with <a href="NETEDIT.html" title="NETEDIT">NETEDIT</a></li>
 <li> Modify the original input files and then rebuild the net with <a href="NETCONVERT.html" title="NETCONVERT">NETCONVERT</a>. </li>
-<li> Patch the network with <a href="NETCONVERT.html" title="NETCONVERT">NETCONVERT</a>. You can <a href="Networks/Import/SUMO_Road_Networks.html" title="Networks/Import/SUMO Road Networks">load a <i>.net.xml</i> file</a> together with <a href="Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions">small XML-files</a> to patch individual edges, nodes and connections. Additional possibilities are described <a href="Tutorials/ScenarioGuide.html#Modifying_the_Network" title="Tutorials/ScenarioGuide">here</a>. For changing traffic light plans or timings see <a href="Simulation/Traffic_Lights.html" title="Simulation/Traffic Lights">Simulation/Traffic_Lights</a>. If you cannot figure out how to accomplish the desired changes this way, <a href="Contact.html" title="Contact">contact us!</a>. </li>
-<li> Use <a href="NETCONVERT.html" title="NETCONVERT">NETCONVERT</a>-option <span style="color: #111144; font-weight: bold; white-space: pre;">--plain-output-prefix</span> to convert the network into <a href="Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions">it's plain XML representation</a>. Then modify these files and rebuild the network</li></ol>
-If you need to build a network from custom input data it is recommended to generate <a href="Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions"><i>plain-xml</i>-files</a> (nodes, edges, connections) with a custom process and build your network with <a href="NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> from these files. These input files allow for many customization of geometrical and structural network properties. If you cannot get them to represent the network you need, ask for help on the mailing list. <div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />In contrast, generating a network directly has been a dead-end for more than one project. You have been warned.</div>
+<li> Patch the network with <a href="NETCONVERT.html" title="NETCONVERT">NETCONVERT</a>. You can <a href="Networks/Import/SUMO_Road_Networks.html" title="Networks/Import/SUMO Road Networks">load a <i>.net.xml</i> file</a> together with <a href="Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">small XML-files</a> to patch individual edges, nodes and connections. Additional possibilities are described <a href="Tutorials/ScenarioGuide.html#Modifying_the_Network" title="Tutorials/ScenarioGuide">here</a>. For changing traffic light plans or timings see <a href="Simulation/Traffic_Lights.html" title="Simulation/Traffic Lights">Simulation/Traffic_Lights</a>. If you cannot figure out how to accomplish the desired changes this way, <a href="Contact.html" title="Contact">contact us!</a>. </li>
+<li> Use <a href="NETCONVERT.html" title="NETCONVERT">NETCONVERT</a>-option <span style="color: #111144; font-weight: bold; white-space: pre;">--plain-output-prefix</span> to convert the network into <a href="Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">it's plain XML representation</a>. Then modify these files and rebuild the network</li></ol>
+If you need to build a network from custom input data it is recommended to generate <a href="Networks/Building_Networks_from_own_XML-descriptions.html" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect"><i>plain-xml</i>-files</a> (nodes, edges, connections) with a custom process and build your network with <a href="NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> from these files. These input files allow for many customization of geometrical and structural network properties. If you cannot get them to represent the network you need, ask for help on the mailing list. <div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />In contrast, generating a network directly has been a dead-end for more than one project. You have been warned.</div>
 <h3><span class="mw-headline" id="My_network_looks_ugly.2C_All_the_junction_shapes_are_wrong._How_come.3F">My network looks ugly, All the junction shapes are wrong. How come?</span></h3>
 <dl><dd>This currently happens up to version 0.23.0 if you import networks with left-handed traffic. See <a href="#Can_SUMO_simulate_lefthand_traffic.3F">#Can_SUMO_simulate_lefthand_traffic.3F</a>.</dd></dl>
 <h3><span class="mw-headline" id="Some_junctions_in_my_network_look_ugly._What_can_I_do.3F">Some junctions in my network look ugly. What can I do?</span></h3>
 <dl><dd>See <a href="Networks/Import/OpenStreetMap.html#Junctions" title="Networks/Import/OpenStreetMap">Joining Junctions</a>. If that doesn't help, check for invalid edge geometry. A sharp turn in front of an intersection (even if the segment is only centimeters long) may mess up the shape computation. Read the <a href="NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> warnings about sharp angles and consider using <a href="NETCONVERT.html" title="NETCONVERT">NETCONVERT</a> option <span style="color: #111144; font-weight: bold; white-space: pre;">--geometry.min-radius.fix</span>. </dd>
-<dd>If that still doesn't help you may specify the shape of the junction <a href="Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions">manually using the <span class="inlxml">shape</span>-attribute</a>.</dd></dl>
+<dd>If that still doesn't help you may specify the shape of the junction <a href="Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">manually using the <span class="inlxml">shape</span>-attribute</a>.</dd></dl>
 <h3><span class="mw-headline" id="Can_I_import_the_free_network_of_Osnabr.C3.BCck_.22Frida.22.3F">Can I import the free network of Osnabrück "Frida"?</span></h3>
 <dl><dd>Yes and no. You can import it using NETCONVERT, a description is available at <a href="Networks/Import/ArcView.html#.27Frida.27_network_.28city_of_Osnabr.C3.BCck.29" title="Networks/Import/ArcView">Networks/Import/ArcView</a>.</dd>
 <dd>This may be a good gis-network but lacks some needed information in order to be usable for simulations (see discussion at the link above).</dd></dl>
@@ -592,7 +612,7 @@ If you need to build a network from custom input data it is recommended to gener
 <dl><dd>There are different methods for accomplishing this. In either case the simulation itself should be constraint using options <span style="color: #111144; font-weight: bold; white-space: pre;">--begin, --end</span>.</dd></dl>
 <ul><li> You can use the option <span style="color: #111144; font-weight: bold; white-space: pre;">--max-num-vehicles</span> to set the desired number. Vehicle insertions are delayed whenever this number would be exceeded. To avoid a large number of delayed vehicles it is recommended to also use the option <span style="color: #111144; font-weight: bold; white-space: pre;">--max-depart-delay</span>. When using this approach you must ensure that there is a sufficient number of vehicles that are ready for insertion at all times. Note, that the number of distinct vehicle IDs over the whole simulation is much larger the specified value because some vehicles leave the simulation and new vehicles with distinct IDs are inserted to replace them.</li></ul>
 <div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />Up to version 0.24.0, option <span style="color: #111144; font-weight: bold; white-space: pre;">--max-num-vehicles</span> terminates the simulation when exceeding the specified number</div>
-<ul><li> You can use <a href="Simulation/Rerouter.html" title="Simulation/Rerouter">rerouters</a> in the simulation. Rerouters, assign a new route for vehicles driving across them and thus prevent them from leaving the network. For an example with a simple circle see <a rel="nofollow" class="external free" href="http://sumo.dlr.de/trac.wsgi/browser/trunk/sumo/tests/sumo/cf_model/drive_in_circles/circle">http://sumo.dlr.de/trac.wsgi/browser/trunk/sumo/tests/sumo/cf_model/drive_in_circles/circle</a>
+<ul><li> You can use <a href="Simulation/Rerouter.html" title="Simulation/Rerouter">rerouters</a> in the simulation. Rerouters, assign a new route for vehicles driving across them and thus prevent them from leaving the network. For an example with a simple circle see <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/blob/master/tests/sumo/cf_model/drive_in_circles"><i><b>&lt;SUMO_HOME&gt;</b></i>/tests/sumo/cf_model/drive_in_circles</a>
 <ul><li> If the networks is not circular to begin with (i.e a single road) you can make the network circular in a non-geometrical way by adding a return edge and declaring it's length to be very short (minimum 0.1m). </li></ul></li>
 <li> You can generate long trips going around the network with lots of detours. This can be accomplished using <a href="Tools/Trip.html#randomTrips.py" title="Tools/Trip">randomTrips.py</a> by setting the options below. If the network contains disconnected parts, not all random trips will be viable. In this case, simply generate more trips and delete superfluous vehicles from the output route file.
 <ul><li> <span style="color: #111144; font-weight: bold; white-space: pre;">--begin</span> &lt;your desired begin time&gt;</li>
@@ -648,7 +668,7 @@ Since the default model aims to be accident free, some effort must be taken to <
 <ul><li> invalid lane numbers</li>
 <li> missing turning lanes</li>
 <li> invalid connections</li>
-<li> invalid junctions <a href="Networks/Building_Networks_from_own_XML-descriptions.html#Joining_Nodes" title="Networks/Building Networks from own XML-descriptions">(big clusters of small junctions should be joined)</a></li></ul></li>
+<li> invalid junctions <a href="Networks/Building_Networks_from_own_XML-descriptions.html#Joining_Nodes" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">(big clusters of small junctions should be joined)</a></li></ul></li>
 <li> invalid traffic lights</li>
 <li> invalid demand (too many vehicles overall, too many vehicles starting on the same edge, vehicles starting at inappropriate lanes)</li>
 <li> invalid routing (only shortest path were used instead of <a href="Demand/Dynamic_User_Assignment.html" title="Demand/Dynamic User Assignment">a user assignment algorithm</a></li></ul>
@@ -676,7 +696,7 @@ If traffic lights are a cause of jamming, it can help to add the option <span st
 <li> setting a route that requires lane-changing to a specific lane for continuation</li>
 <li> setting the vehicle <a href="Simulation/VehiclePermissions.html" title="Simulation/VehiclePermissions">class of the vehicle and forbidding that class from using the other lanes of an edge</a></li>
 <li> trigger the lane-change via <a href="TraCI/Change_Vehicle_State.html#change_lane_.280x13.29" title="TraCI/Change Vehicle State">TraCI</a></li></ul>
-<div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />A further method is planned but not yet implemented: <a rel="nofollow" class="external text" href="https://github.com/DLR-TS/sumo/issues/1020">Issue #1020</a></div>
+<div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />A further method is planned but not yet implemented: <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1020">Issue #1020</a></div>
 <h3><span class="mw-headline" id="Are_there_any_limits_in_regard_to_the_size_of_a_simulation_scenario.3F">Are there any limits in regard to the size of a simulation scenario?</span></h3>
 <ul><li> There are no hard limits on the number of streets, intersections or vehicles in SUMO. Make sure that you have enough RAM when trying to build or run scenarios beyond city-size. It may be necessary to use the 64bit version of SUMO to make use of available RAM. </li>
 <li> The maximum length of a simulation scenario is 292 million years. If you need to simulate longer time periods you must <a href="#Save_a_simulation_state_and_proceed_later_and.2For_differently">save and reload the simulation state</a></li></ul>
@@ -756,33 +776,33 @@ ffmpeg -r 10 -i images/%d.png -b:v 1500k -vcodec wmv2 sumo.wmv
 
 <!-- 
 NewPP limit report
-CPU time usage: 0.288 seconds
-Real time usage: 0.298 seconds
-Preprocessor visited node count: 681/1000000
-Preprocessor generated node count: 1282/1000000
-Post‐expand include size: 5173/2097152 bytes
-Template argument size: 1950/2097152 bytes
+CPU time usage: 0.152 seconds
+Real time usage: 0.152 seconds
+Preprocessor visited node count: 702/1000000
+Preprocessor generated node count: 1326/1000000
+Post‐expand include size: 5337/2097152 bytes
+Template argument size: 2023/2097152 bytes
 Highest expansion depth: 3/40
 Expensive parser function count: 0/100
 -->
 
 <!-- 
 Transclusion expansion time report (%,ms,calls,template)
-100.00%   60.793      1 - -total
- 29.90%   18.175     23 - Template:Option
- 10.55%    6.413      3 - Template:Note
-  6.62%    4.022      6 - Template:XML
-  5.99%    3.642      3 - Template:Caution
-  4.87%    2.962      3 - Template:SUMO
-  4.79%    2.911      1 - Template:SUMOUSERConference
-  3.98%    2.422      2 - Template:DT_TIME
-  3.98%    2.419      1 - Template:Ticket
-  3.61%    2.194      3 - Template:DT_INT
+100.00%   34.072      1 - -total
+ 28.82%    9.820     23 - Template:Option
+  9.24%    3.147      3 - Template:Note
+  7.10%    2.418      6 - Template:XML
+  5.93%    2.022      3 - Template:Caution
+  4.84%    1.650      1 - Template:Source
+  4.67%    1.590      1 - Template:SUMOUSERConference
+  3.92%    1.334      4 - Template:SUMO
+  3.79%    1.292      1 - Template:Ticket
+  3.68%    1.254      3 - Template:DT_INT
 -->
 
-<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:8-0!*!0!!en!5!* and timestamp 20171219070652 and revision id 10428
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:8-0!*!0!!en!5!* and timestamp 20180516092926 and revision id 10768
  -->
-</div>									</div><hr/><div id="lastmod">This page was last modified on 18 December 2017, at 08:01.</div> </div>
+</div>									</div><hr/><div id="lastmod">This page was last modified on 3 May 2018, at 21:12.</div> </div>
 
     <div id="footer">
       <div>

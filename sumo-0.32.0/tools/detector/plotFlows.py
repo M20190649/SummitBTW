@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # Eclipse SUMO, Simulation of Urban MObility; see https://eclipse.org/sumo
-# Copyright (C) 2007-2017 German Aerospace Center (DLR) and others.
+# Copyright (C) 2007-2018 German Aerospace Center (DLR) and others.
 # This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v2.0
 # which accompanies this distribution, and is available at
 # http://www.eclipse.org/legal/epl-v20.html
+# SPDX-License-Identifier: EPL-2.0
 
 # @file    plotFlows.py
 # @author  Jakob Erdmann
@@ -115,7 +116,8 @@ def plot(options, allData, prefix="", linestyle="-"):
         plt.plot(x, data, label=label, linestyle=linestyle)
         label = label.replace(";","_")
         if options.csv_output is not None:
-            write_csv(x, data, options.csv_output + label + ".csv")
+            lastdir = os.path.basename(os.path.dirname(f))
+            write_csv(x, data, "%s_%s.%s.csv" % (options.csv_output, label, lastdir))
     if not options.nolegend:
         plt.legend(loc='best')
     if not options.singleplot:
