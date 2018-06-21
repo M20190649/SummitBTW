@@ -1,25 +1,27 @@
-<!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Simulator</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="{{ url_for('static',  filename='TemplateData/style.css') }}"/>
-    <script src="TemplateData/UnityProgress.js"></script>  
-    <script src="Build/UnityLoader.js"></script>
-    <script>
-      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebGL Build.json");
-    </script>
-  </head>
-  <body>
-    <div class="webgl-content">
-      <div id="gameContainer" style="width: 100%; height: 100%"></div>
-      <div class="footer">
-        <div class="webgl-logo"></div>
+ <!DOCTYPE html>
+     <html lang="en-us">
+       <head>
+        <link rel="stylesheet" href="{{ url_for('static',  filename='TemplateData/style.css') }}"/>
+         <style>
+           canvas {
+           width: 100%;
+           height: 100%;
+           position: absolute;
+           }
+         </style>
+         <meta charset="utf-8">
+         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+         <title>Simulator</title>
+           <script src="TemplateData/UnityProgress.js"></script>  
+          <script src="Build/UnityLoader.js"></script>
+         <script>
+           var gameInstance = UnityLoader.instantiate("gameContainer", "Build/test.json");
+         </script>
+       </head>
+       <body>
+         <div id="gameContainer" style="width: 100%; height: 80%; position: absolute; margin: auto"></div>
+        <div class="footer">
         <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
-        <div class="title">Simulator</div>
       </div>
-    </div>
-  </body>
-</html>
+       </body>
+     </html>
