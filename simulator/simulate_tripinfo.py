@@ -150,15 +150,16 @@ def run_the_script(tripinfo):
 
     if tripinfo:
         # run with statistics output
-        traci.start([sumo_binary, '-c', sumo_config, '--tripinfo-output_',
-                     output_dir + '/tripinfo-output_' + dir_name + "_" + sys.argv[2] + ".xml"])
+        traci.start([sumo_binary, '-c', sumo_config, '--tripinfo-output',
+                     output_dir + '/'+dir_name+'_tripinfo-output_' + sys.argv[2] + ".xml"])
     else:
         # run with full output for Unity
         traci.start([sumo_binary, '-c', sumo_config, '--full-output',
-                     output_dir + '/full-output' + dir_name + "_" + sys.argv[2] + ".xml"])
+                     output_dir + '/' + dir_name+'_full-output_' + sys.argv[2] + ".xml"])
 
     run_simulate(sumo_config[0:sumo_config.find(".sumocfg.xml")] + ".net.xml", schedulers_name_map[sys.argv[2]])
     traci.close()
+    os.rename(output_dir+"/e2_Static.output.xml", output_dir + '/'+dir_name+'_detectors-output_' + sys.argv[2] + ".xml")
     sys.stdout.flush()
     print("Simulation ended successfully!")
     sys.exit()
