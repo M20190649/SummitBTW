@@ -17,11 +17,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
     <link rel="shortcut icon" href="{{ url_for('static',  filename='images/favicon.png') }}"/>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script>
-  function resizeIframe(obj) {
-    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-  }
-</script>
+      function resizeIframe(obj) {
+        obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+      }
+    </script>
 
 
 <!-- 
@@ -114,7 +115,7 @@
                                 &nbsp;
                                 Compare Schedulers</h4>
                             <br>
-                            <form action="/compare_schedulers" target="_blank">
+                            <form id="compare-schedulers-form" action="/compare_schedulers">
                                 <div class="text-center">
                                     <div class="btn-group btn-group-lg" data-toggle="buttons">
                                         <label class="btn btn-info active">
@@ -164,6 +165,10 @@
                                         Compare
                                     </button>
                                 </div>
+                                <div id = "loading-bar" style="display:none" align="center">
+                                    <div><img id = "loading-gif" src = "loading.gif" height="220" width="220"></div>
+                                    <div style="font-size:220%">Loading...</div>
+                                </div><br>
 
                                 <div class="text-center">
                                     {{ stats_table }}
@@ -188,7 +193,13 @@
     </div>
 
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script type="text/javascript">
+   $( "#compare-schedulers-form" ).submit(function( event ) {
+    document.getElementById("loading-bar").style.display = "block";
+});
+
+</script>
 
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
