@@ -7658,6 +7658,7 @@ h6, .h6 {
   font-size: 1rem; }
 
 .lead {
+    margin-left: 40px;
   font-size: 1.25rem;
   font-weight: 300; }
 
@@ -14041,3 +14042,6 @@ if it's not present, don't show loader */
 .download-btn:hover {
   background-color: RoyalBlue;
 }
+
+
+.tab { margin-left: 40px; }
