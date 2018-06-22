@@ -8,6 +8,7 @@ from statistics.get_statistics import create_statistics
 __author__ = "Yair Feldman"
 
 TEMP_OUT_DIR = "./temp_outputs/"  # TODO: define in constants file of this module
+CSV_DIR = "./management/gui/static/csv/"
 
 
 def compare_algorithms(simulation_example, *scheduler_names):
@@ -27,7 +28,7 @@ def compare_algorithms(simulation_example, *scheduler_names):
     output_files = [os.path.join(TEMP_OUT_DIR, scheduler_name) for
                     scheduler_name in scheduler_names]
 
-    return create_statistics(TEMP_OUT_DIR + "stats.csv", True, *output_files)
+    return create_statistics(CSV_DIR + "stats.csv", True, *output_files)
 
 
 if __name__ == '__main__':
