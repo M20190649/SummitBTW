@@ -14028,7 +14028,7 @@ if it's not present, don't show loader */
 }
 
 /* Style buttons */
-/*.btn {
+.download-btn {
   background-color: DodgerBlue;
   border: none;
   color: white;
@@ -14038,7 +14038,6 @@ if it's not present, don't show loader */
   font-size: 20px;
 }
 
-/* Darker background on mouse-over */
-/*.btn:hover {
+.download-btn:hover {
   background-color: RoyalBlue;
-}*/
+}
