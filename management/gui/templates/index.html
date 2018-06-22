@@ -165,9 +165,10 @@
                                         Compare
                                     </button>
                                 </div>
+                                <br>
                                 <div id = "loading-bar" style="display:none" align="center">
                                     <div><img id = "loading-gif" src = "images/loading.gif" height="220" width="220"></div>
-                                    <div style="font-size:220%">Loading...</div>
+                                    <br><div style="font-size:200%">Loading...</div>
                                 </div><br>
 
                                 <div class="text-center">
@@ -197,9 +198,18 @@
 <script type="text/javascript">
    $( "#compare-schedulers-form" ).submit(function( event ) {
     document.getElementById("loading-bar").style.display = "block";
-});
+});</script>
 
-</script>
+<script type="text/javascript">
+   $( "#loading-gif" ).dblclick(function() {
+    var curr = document.getElementById("loading-gif").src;
+    if(curr.includes("fortnite")) {
+        document.getElementById("loading-gif").src = "images/loading.gif"
+    }
+    else{
+        document.getElementById("loading-gif").src = "images/fortnite_loading.gif" ;
+    }
+}); </script>
 
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
