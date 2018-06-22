@@ -1,0 +1,17 @@
+Statistics,AdvancedScheduler
+Total Time-Loss,310.03
+Average Time-Loss,6.4589583333333325
+Max Time-Loss,17.92
+Minimum Time-Loss,2.71
+Total waitingTime,7.0
+Average waitingTime,0.14583333333333334
+Max waitingTime,4.0
+Minimum waitingTime,0.0
+Total Duration,1928.0
+Average Duration,40.166666666666664
+Max Duration,90.0
+Minimum Duration,4.0
+Total routeLength,22844.919999999995
+Average routeLength,475.9358333333332
+Max routeLength,1015.1
+Minimum routeLength,19.72

@@ -70,6 +70,14 @@ def webgl_singelton():
     """
     return render_template('test/index.html')
 
+@app.route('/scheduling.html', methods=['GET', 'POST'])
+def scheduling_analysis():
+    """
+    Compare scheduling algorithms and present results
+    :return: Result statistics
+    """
+    return render_template('scheduling.html')
+
 
 if __name__ == "__main__":
     app.run()

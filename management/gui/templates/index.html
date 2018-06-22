@@ -17,11 +17,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
     <link rel="shortcut icon" href="{{ url_for('static',  filename='images/favicon.png') }}"/>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script>
-  function resizeIframe(obj) {
-    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-  }
-</script>
+      function resizeIframe(obj) {
+        obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+      }
+    </script>
 
 
 <!-- 
@@ -67,7 +68,7 @@
             <nav class="bg-white sidebar sidebar-offcanvas" id="sidebar">
                 <div class="user-info">
                     <img src="images/face.jpg" alt="">
-                    <p class="name">Richard V.Welsh</p>
+                    <p class="name">Gal Sade</p>
                     <p class="designation">Traffic Manager</p>
                     <span class="online"></span>
                 </div>
@@ -75,8 +76,15 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="index.html">
                             <img src="images/icons/1.png" alt="">
-                            <span class="menu-title">Dashboard</span>
+                            <span class="menu-title">Simulation Zone</span>
                         </a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link" href="scheduling.html">
+                        <img src="images/icons/6.png" alt="">
+                        <span class="menu-title">Scheduling Analysis</span>
+                      </a>
                     </li>
 
                 </ul>
@@ -95,6 +103,11 @@
                                 <img src="images/icons/play-button.png" alt="" height="42" width="42">
                                 &nbsp; Simulation Zone</h4>
                             <br>
+                            <p class="lead" style="font-size:130%;">Here you can see the traffic simulation yourself.<br>
+                                Just choose a map and a scheduling algorithm and press play to see the simulation!<br>
+                                You can also push the next button to play the simulation step by step.
+                                </p>
+                                <br>
 
 
                                     <iframe src="http://localhost:5000/webgl_singelton" style="border:0px #000000 none;" name="Game name" scrolling="no"  height="700px" width="1000px"  allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"> </iframe>
@@ -105,90 +118,8 @@
                 </div>
 
 
-                <div class="card-deck">
-                    <div class="card col-lg-12 px-0 mb-4">
-                        <div class="card-body">
-
-                            <h4 class="card-title">
-                                <img src="images/icons/pie-chart.png" alt="" height="42" width="42">
-                                &nbsp;
-                                Compare Schedulers</h4>
-                            <br>
-                            <form action="/compare_schedulers" target="_blank">
-                                <div class="text-center">
-                                    <div class="btn-group btn-group-lg" data-toggle="buttons">
-                                        <label class="btn btn-info active">
-                                            <input type="checkbox" checked autocomplete="off" value="AdvancedScheduler"
-                                                   name="schedulers"> Advanced Scheduler
-                                        </label>
-                                        <label class="btn btn-info">
-                                            <input type="checkbox" autocomplete="off" value="MaxOccupancyScheduler"
-                                                   name="schedulers"> Max Occupancy
-                                        </label>
-                                        <label class="btn btn-info">
-                                            <input type="checkbox" autocomplete="off" value="StaticScheduler"
-                                                   name="schedulers"> Static Scheduler
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    &nbsp;
-                                </div>
-                                <br>
-
-                                <div class="text-center">
-                                    <div class="btn-group btn-group-lg" data-toggle="buttons">
-                                        <label class="btn btn-primary active">
-                                            <input type="radio" checked autocomplete="off" value="cross"
-                                                   name="simulation_example"> Single Junction
-                                        </label>
-                                        <label class="btn btn-primary">
-                                            <input type="radio" autocomplete="off" value="neighborhood"
-                                                   name="simulation_example"> Neighborhood
-                                        </label>
-                                        <label class="btn btn-primary">
-                                            <input type="radio" autocomplete="off" value="city"
-                                                   name="simulation_example"> Big City
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    &nbsp;
-                                </div>
-                                <div class="row">
-                                    &nbsp;
-                                </div>
-                                <div class="text-center">
-                                    <button id="comparealgos" type="submit" class="btn btn-success btn-lg">
-                                        <span class="caret"></span>
-                                        Compare
-                                    </button>
-                                </div>
-
-                                <div class="text-center">
-                                    {{ stats_table }}
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <!-- partial:partials/_footer.html -->
-            <footer class="footer">
-                <div class="container-fluid clearfix">
-            <span class="float-right">
-                <a href="#">BTW Technologies</a> &copy; 2018
-            </span>
-                </div>
-            </footer>
-
-            <!-- partial -->
-        </div>
-    </div>
-
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
 
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
