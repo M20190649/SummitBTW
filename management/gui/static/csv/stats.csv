@@ -1,17 +1,17 @@
-Statistics,./temp_outputs/AdvancedScheduler,./temp_outputs/MaxOccupancyScheduler,./temp_outputs/StaticScheduler
-Total Time-Loss,15822.92,22153.910000000007,24178.74999999999
-Average Time-Loss,85.06946236559139,119.10704301075273,129.99327956989242
-Max Time-Loss,210.97,346.25,434.54
-Minimum Time-Loss,4.06,3.67,3.86
-Total waitingTime,9664.0,10466.0,17566.0
-Average waitingTime,51.956989247311824,56.26881720430107,94.44086021505376
-Max waitingTime,170.0,189.0,347.0
-Minimum waitingTime,0.0,0.0,0.0
-Total Duration,26573.0,32907.0,34932.0
-Average Duration,142.86559139784947,176.91935483870967,187.80645161290323
-Max Duration,324.0,450.0,551.0
-Minimum Duration,30.0,30.0,30.0
-Total routeLength,148295.08000000007,148295.08000000002,148295.08
-Average routeLength,797.2853763440864,797.2853763440861,797.285376344086
-Max routeLength,1615.67,1615.67,1615.67
-Minimum routeLength,345.73,345.73,345.73
+Statistics,./temp_outputs/AdvancedScheduler
+Total Time-Loss,310.03
+Average Time-Loss,6.4589583333333325
+Max Time-Loss,17.92
+Minimum Time-Loss,2.71
+Total waitingTime,7.0
+Average waitingTime,0.14583333333333334
+Max waitingTime,4.0
+Minimum waitingTime,0.0
+Total Duration,1928.0
+Average Duration,40.166666666666664
+Max Duration,90.0
+Minimum Duration,4.0
+Total routeLength,22844.919999999995
+Average routeLength,475.9358333333332
+Max routeLength,1015.1
+Minimum routeLength,19.72

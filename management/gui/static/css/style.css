@@ -14026,3 +14026,19 @@ if it's not present, don't show loader */
     z-index: 9999;
     background: url(images/loader-64x/Preloader_2.gif) center no-repeat #fff;
 }
+
+/* Style buttons */
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
