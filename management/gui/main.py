@@ -79,5 +79,14 @@ def scheduling_analysis():
     return render_template('scheduling.html')
 
 
+@app.route('/team.html', methods=['GET', 'POST'])
+def team():
+    """
+    Compare scheduling algorithms and present results
+    :return: Result statistics
+    """
+    return render_template('team.html')
+
+
 if __name__ == "__main__":
     app.run()
