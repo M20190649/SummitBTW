@@ -101,6 +101,15 @@
                                     Just choose a map and one or more scheduling algorithms to see their performances on the chosen map!<br>
                             </p>
                             <br>
+                           <h4 class="card-title" style="font-size: 150%">About The Algorithms:</h4>
+                           <ul class="lead" style="font-size: 140%">
+                           	<li><i><u>Advanced Scheduler:</u></i> Our specially designed algorithm. This uses information from the detectors near traffic light and cleverly process this information to schedule the traffic light in the map.</li>
+                           	<br>
+                           	<li><i><u>Max Occupancy:</u></i> A simple algorithm that uses information from the detectors near traffic lights. This algorithm gives a green light to the most occupied lane in each junction at any given moment.</li>                       
+                           	<br>
+                           	<li><i><u>Static Scheduler:</u></i> The simple naive algorithm that doesn't use any information from the detectors. This is the algorithm used in non-smart cities. The scheduling is just a round-robin scheduling between all the traffic lights in each junction.</li>
+                           </ul>
+                           <br>
                             <form id="compare-schedulers-form" action="/compare_schedulers">
                                 <div class="text-center">
                                     <div class="btn-group btn-group-lg" data-toggle="buttons">
