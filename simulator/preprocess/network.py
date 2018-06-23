@@ -82,5 +82,5 @@ def generate_net(sumo_network_path, size):
 if __name__ == "__main__":
     path = Path(sys.argv[1])
     dir_name = path.parts[len(path.parts) - 1]
-    generate_net(sys.argv[1]+"/"+dir_name+".net.xml", sys.argv[2])
+    generate_net(sys.argv[1]+"/"+dir_name+".net.xml", sys.argv[2]+4)
 
