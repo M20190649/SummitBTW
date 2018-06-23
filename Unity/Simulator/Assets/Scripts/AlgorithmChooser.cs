@@ -21,7 +21,6 @@ public class AlgorithmChooser : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         this.m_dropDown = GetComponent<Dropdown>();
-        this.m_dropDown.options.Add(new Dropdown.OptionData("Choose Algorithm:"));
         var enumValues = Enum.GetValues(typeof(AlgorithmType)).Cast<AlgorithmType>();
         for (int i = 1; i < enumValues.Count(); ++i)
         {

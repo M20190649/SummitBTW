@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
@@ -23,9 +24,12 @@ public class MapXmlParser : MonoBehaviour {
         junctions = new List<Junction>();
     }
 
-    public void parseMap(string path) {
+    public void parseMap(string map) {
         XmlDocument doc = new XmlDocument();
-        doc.Load(path);
+        //doc.Load(path);
+        //XmlReader xmlDownloaded = new XmlTextReader(path);
+        doc.LoadXml(map);
+        //doc.LoadXml(StreamingAssetsGetter.LoadStreamingAsset("city.net.xml"));
         InitializeJunctionsAsMesh(doc);
         InitializeLanesAsLines(doc);
         //InitializeLanes(doc);
@@ -34,8 +38,9 @@ public class MapXmlParser : MonoBehaviour {
 
     void InitializeLanesAsLines(XmlDocument doc)
     {
-        XmlNode location = doc.GetElementsByTagName("location")[0];
-        Vector3 offset = new Vector3(float.Parse(location.Attributes["netOffset"].Value.Split(',')[0]), 0.0f, float.Parse(location.Attributes["netOffset"].Value.Split(',')[1]));
+        //XmlNode location = doc.GetElementsByTagName("location")[0];
+        //Vector3 offset = new Vector3(float.Parse(location.Attributes["netOffset"].Value.Split(',')[0]), 0.0f, float.Parse(location.Attributes["netOffset"].Value.Split(',')[1]));
+        Vector3 offset = Vector3.zero;
         XmlNodeList edgeNodes = doc.GetElementsByTagName("edge");
         bool first = true;
         foreach (XmlNode edgeNode in edgeNodes)
@@ -53,16 +58,17 @@ public class MapXmlParser : MonoBehaviour {
                 {
                     string[] axis = p.Split(',');
                     shapeVectors.Add((new Vector3(float.Parse(axis[0]), y, float.Parse(axis[1])) - offset));// / 50);
+                    if (first)
+                    {
+                        Camera.main.transform.position = new Vector3(float.Parse(axis[0]), 10.0f, float.Parse(axis[1]));
+                        first = false;
+                    }
                 }
                 Lane lane = new Lane(laneNode.Attributes["id"].Value);
                 for (int i = 0; i < shapeVectors.Count - 1; i++)
                 {
                     roadLines.SetPositions(new Vector3[] { shapeVectors[i], shapeVectors[i + 1] });
                     LineRenderer laneLine = Instantiate(roadLines) as LineRenderer;
-                    if (first){
-                        Camera.main.transform.position = new Vector3(shapeVectors[i].x, 10.0f, shapeVectors[i].z);
-                        first = false;
-                    }
                     if (edgeNode.Attributes["function"] != null)
                     {
                         laneLine.startWidth = 0.5f;
@@ -77,8 +83,9 @@ public class MapXmlParser : MonoBehaviour {
 
     void InitializeJunctionsAsMesh(XmlDocument doc)
     {
-        XmlNode location = doc.GetElementsByTagName("location")[0];
-        Vector3 offset = new Vector3(float.Parse(location.Attributes["netOffset"].Value.Split(',')[0]), 0.0f, float.Parse(location.Attributes["netOffset"].Value.Split(',')[1]));
+        //XmlNode location = doc.GetElementsByTagName("location")[0];
+        //Vector3 offset = new Vector3(float.Parse(location.Attributes["netOffset"].Value.Split(',')[0]), 0.0f, float.Parse(location.Attributes["netOffset"].Value.Split(',')[1]));
+        Vector3 offset = Vector3.zero;
         XmlNodeList juncNodes = doc.GetElementsByTagName("junction");
         foreach (XmlNode juncNode in juncNodes)
         {
