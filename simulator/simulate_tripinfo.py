@@ -124,7 +124,7 @@ def run_simulation_example(simulation_example, *args, **kwargs):
         raise ValueError("Insert example with sumocfg file")
 
 
-def run_the_script(tripinfo, without_gui=False, exit_after=True):
+def run_the_script(tripinfo=True, without_gui=False, exit_after=True):
     options = get_options()
 
     # this script has been called from the command line. It will start sumo as a
@@ -134,16 +134,13 @@ def run_the_script(tripinfo, without_gui=False, exit_after=True):
     else:
         sumo_binary = checkBinary('sumo-gui')
 
-    if len(sys.argv) < 3:
-        sys.exit('Need path for directory of sumocfg.net and for scheduler algorithm')
+    if len(sys.argv) < 4:
+        sys.exit('Need path for directory of sumocfg.net, for scheduler algorithm, path to output directory and 1 for without gui otherwise 0 for with gui')
 
     path = Path(sys.argv[1])
     dir_name = path.parts[len(path.parts)-1]
     sumo_config = sys.argv[1] + "/" + dir_name + ".sumocfg.xml"
-    if len(sys.argv) == 3:
-        output_dir = sys.argv[1]
-    else:
-        output_dir = sys.argv[3]
+    output_dir = sys.argv[3]
 
     # this is the normal way of using traci. sumo is started as a
     # subprocess and then the python script connects and runs
@@ -162,7 +159,7 @@ def run_the_script(tripinfo, without_gui=False, exit_after=True):
     traci.close()
     if os.path.exists(output_dir + '/' + dir_name + '_detectors-output_' + sys.argv[2] + ".xml"):
         os.remove(output_dir + '/' + dir_name + '_detectors-output_' + sys.argv[2] + ".xml")
-    os.rename(output_dir+"/e2_Static.output.xml", output_dir + '/'+dir_name+'_detectors-output_' + sys.argv[2] + ".xml")
+    os.rename(sys.argv[1]+"/e2_Static.output.xml", output_dir + '/'+dir_name+'_detectors-output_' + sys.argv[2] + ".xml")
     sys.stdout.flush()
     print("Simulation ended successfully!")
     if exit_after:
@@ -170,4 +167,4 @@ def run_the_script(tripinfo, without_gui=False, exit_after=True):
 
 
 if __name__ == "__main__":
-    run_the_script(tripinfo=True, without_gui=False, exit_after=True)
+    run_the_script(without_gui=bool(sys.argv[4]))

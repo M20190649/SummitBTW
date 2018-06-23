@@ -117,7 +117,7 @@ def create_light_statistics(to_csv=None, to_print=True, *lightinfo_files, dest_f
 
     statistics = {}
     global_statistics_lambdas = get_global_stats()
-    for filename in sys.argv[1:]:
+    for filename in lightinfo_files:
         curr_info = get_lightinfos(filename)
         for msg, f in global_statistics_lambdas:
             if msg not in statistics:
@@ -128,7 +128,7 @@ def create_light_statistics(to_csv=None, to_print=True, *lightinfo_files, dest_f
                 logging.debug(f"Evaluation of statistic {msg} failed")
 
     specific_statistics_lambdas = get_specific_stats()
-    for filename in sys.argv[1:]:
+    for filename in lightinfo_files:
         curr_info = get_lightinfos(filename)
         for msg, f in specific_statistics_lambdas:
             for id_detector, stats_per_detector in curr_info:

@@ -64,7 +64,7 @@ def get_stats():
               lambda infos: funcs.reduce(ops.add, [info.waitingTime for info in infos])))
     l.append(('Average waitingTime',
               lambda infos: funcs.reduce(ops.add, [info.waitingTime for info in infos]) / len(infos)))
-    l.append(('Max waitingTime0',
+    l.append(('Max waitingTime',
               lambda infos: max([info.waitingTime for info in infos])))
     l.append(('Minimum waitingTime',
               lambda infos: min([info.waitingTime for info in infos])))
@@ -92,7 +92,7 @@ def get_stats():
 def create_csv(statistics, tripinfo_files, output_filename):
     into_cvs = "Statistics,"
     for filename in tripinfo_files:
-        into_cvs += str(filename.split('/')[-1]) + ","
+        into_cvs += str(filename) + ","
     into_cvs = into_cvs[:len(into_cvs) - 1]+"\n"
     for stat in statistics.keys():
         into_cvs += str(stat)+","
