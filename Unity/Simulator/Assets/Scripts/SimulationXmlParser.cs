@@ -19,24 +19,28 @@ public class SimulationXmlParser : MonoBehaviour {
 
     XmlNodeList nodeList;   //contain every time frame of the simulation in a node list
     int readTime = -1;      //current timespace
-    private Vector3 offset;
+    private Vector3 offset = Vector3.zero;
+
+    private XmlDocument doc = new XmlDocument();
+    //private XmlReader xmlDownloaded;
 
     // Begin XML reading as soon as simulation begins
-    public void parseSimulation(string mapPath, string simPath)
+    public void parseSimulation(string sim)
     {
         //open and load the file
-        XmlDocument doc = new XmlDocument();
-        doc.Load(simPath);
-        XmlDocument mapDoc = new XmlDocument();
-        mapDoc.Load(mapPath);
-        XmlNode location = mapDoc.GetElementsByTagName("location")[0];
-        offset = new Vector3(float.Parse(location.Attributes["netOffset"].Value.Split(',')[0]), 0.0f, float.Parse(location.Attributes["netOffset"].Value.Split(',')[1]));
+        //doc.Load(simPath);
+        doc.LoadXml(sim);
+        //XmlDocument mapDoc = new XmlDocument();
+        //mapDoc.Load(mapPath);
+        //doc.Load(new XmlTextReader(mapPath));
+        //XmlNode location = mapDoc.GetElementsByTagName("location")[0];
+        //offset = new Vector3(float.Parse(location.Attributes["netOffset"].Value.Split(',')[0]), 0.0f, float.Parse(location.Attributes["netOffset"].Value.Split(',')[1]));
 
         nodeList = doc.GetElementsByTagName("data");
 
-        float camSize = Mathf.Max(offset.x, offset.z);
+        float camSize = 50;
         Camera.main.orthographicSize = camSize;
-        mouseSensitivity = camSize / 10;
+        mouseSensitivity = 15;
 
         Button play = playButton.GetComponent<Button>();
         play.onClick.AddListener(playSimulation);
