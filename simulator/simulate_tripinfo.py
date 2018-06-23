@@ -124,12 +124,12 @@ def run_simulation_example(simulation_example, *args, **kwargs):
         raise ValueError("Insert example with sumocfg file")
 
 
-def run_the_script(tripinfo):
+def run_the_script(tripinfo, without_gui=False, exit_after=True):
     options = get_options()
 
     # this script has been called from the command line. It will start sumo as a
     # server, then connect and run
-    if options.nogui:
+    if options.nogui or without_gui:
         sumo_binary = checkBinary('sumo')
     else:
         sumo_binary = checkBinary('sumo-gui')
@@ -156,7 +156,8 @@ def run_the_script(tripinfo):
         # run with full output for Unity
         traci.start([sumo_binary, '-c', sumo_config, '--full-output',
                      output_dir + '/' + dir_name+'_full-output_' + sys.argv[2] + ".xml"])
-
+    if sys.argv[2] not in schedulers_name_map.keys():
+        sys.exit("scheduler algorithm's name should be one of: " + ", ".join(schedulers_name_map.keys()))
     run_simulate(sumo_config[0:sumo_config.find(".sumocfg.xml")] + ".net.xml", schedulers_name_map[sys.argv[2]])
     traci.close()
     if os.path.exists(output_dir + '/' + dir_name + '_detectors-output_' + sys.argv[2] + ".xml"):
@@ -164,8 +165,9 @@ def run_the_script(tripinfo):
     os.rename(output_dir+"/e2_Static.output.xml", output_dir + '/'+dir_name+'_detectors-output_' + sys.argv[2] + ".xml")
     sys.stdout.flush()
     print("Simulation ended successfully!")
-    sys.exit()
+    if exit_after:
+        sys.exit()
 
 
 if __name__ == "__main__":
-    run_the_script(tripinfo=True)
+    run_the_script(tripinfo=True, without_gui=False, exit_after=True)

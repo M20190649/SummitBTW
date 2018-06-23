@@ -100,9 +100,10 @@ def create_csv(statistics, lightinfo_files, output_filename):
     text_file.close()
 
 
-def create_light_statistics(to_csv=None, to_print=True, *lightinfo_files):
+def create_light_statistics(to_csv=None, to_print=True, *lightinfo_files, dest_folder=None):
     """
     create statistics for the lights info files received as parameters
+    :param dest_folder: where the output csv file should be written to
     :param to_csv: path to csv output file, default is None (no csv output)
     :param to_print: whether to print the statistics to stdout or not
     :param lightinfo_files: .xml files of simulation outputs
@@ -143,8 +144,11 @@ def create_light_statistics(to_csv=None, to_print=True, *lightinfo_files):
         printer = TablePrinter(lightinfo_files, statistics)
         printer.print()
     if to_csv is not None:
-        create_csv(statistics, lightinfo_files, to_csv)
+        path_to_write = to_csv
+        if dest_folder is not None:
+            path_to_write = dest_folder + '/' + to_csv
+        create_csv(statistics, lightinfo_files, path_to_write)
 
 
 if __name__ == '__main__':
-    create_light_statistics("output.csv", True, *sys.argv[1:])
+    create_light_statistics("output_detectors.csv", True, *sys.argv[1:], dest_folder=None)
