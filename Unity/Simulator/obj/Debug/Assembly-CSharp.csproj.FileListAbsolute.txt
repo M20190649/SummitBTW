@@ -167,3 +167,6 @@ D:\Dropbox\Technion\Unity\New Unity Project\obj\Debug\Assembly-CSharp.csproj.Cor
 D:\Dropbox\Technion\Unity\New Unity Project\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 D:\Dropbox\Technion\Unity\New Unity Project\obj\Debug\Assembly-CSharp.dll
 D:\Dropbox\Technion\Unity\New Unity Project\obj\Debug\Assembly-CSharp.pdb
+C:\Users\user\Desktop\btw\SummitBTW\Unity\Simulator\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\Users\user\Desktop\btw\SummitBTW\Unity\Simulator\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\btw\SummitBTW\Unity\Simulator\obj\Debug\Assembly-CSharp.pdb
