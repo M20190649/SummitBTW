@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using AssemblyCSharp.Assets.Scripts;
+using UnityEditor;
 
 public class MapAndSimulationChangeButton : MonoBehaviour {
 
@@ -18,6 +19,7 @@ public class MapAndSimulationChangeButton : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        
         Button btn = GetComponent<Button>();
         btn.onClick.AddListener(onClick);
 	}
