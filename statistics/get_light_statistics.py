@@ -88,7 +88,7 @@ def get_specific_stats():
 def create_csv(statistics, lightinfo_files, output_filename):
     into_cvs = "Statistics,"
     for filename in lightinfo_files:
-        into_cvs += str(filename) + ","
+        into_cvs += str(filename.split('/')[-1]) + ","
     into_cvs = into_cvs[:len(into_cvs) - 1]+"\n"
     for stat in statistics.keys():
         into_cvs += str(stat)+","
