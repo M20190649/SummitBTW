@@ -15,26 +15,20 @@ public class SimulationXmlParser : MonoBehaviour {
 
     public GameObject cityParser;
 
+    public bool parseCalled = false;
+
     private float mouseSensitivity;
 
     XmlNodeList nodeList;   //contain every time frame of the simulation in a node list
     int readTime = -1;      //current timespace
-    private Vector3 offset = Vector3.zero;
-
-    private XmlDocument doc = new XmlDocument();
-    //private XmlReader xmlDownloaded;
 
     // Begin XML reading as soon as simulation begins
     public void parseSimulation(string sim)
     {
-        //open and load the file
-        //doc.Load(simPath);
+        XmlDocument doc = new XmlDocument();
         doc.LoadXml(sim);
-        //XmlDocument mapDoc = new XmlDocument();
-        //mapDoc.Load(mapPath);
-        //doc.Load(new XmlTextReader(mapPath));
-        //XmlNode location = mapDoc.GetElementsByTagName("location")[0];
-        //offset = new Vector3(float.Parse(location.Attributes["netOffset"].Value.Split(',')[0]), 0.0f, float.Parse(location.Attributes["netOffset"].Value.Split(',')[1]));
+
+        parseCalled = true;
 
         nodeList = doc.GetElementsByTagName("data");
 
@@ -125,8 +119,8 @@ public class SimulationXmlParser : MonoBehaviour {
         {
 
             car.GetComponent<Vehicle>().updateCarPosition(
-                (float.Parse(curNode.Attributes["x"].Value) - offset.x),// / 50,
-                (float.Parse(curNode.Attributes["y"].Value) - offset.z),// / 50,
+                float.Parse(curNode.Attributes["x"].Value),
+                float.Parse(curNode.Attributes["y"].Value),
                 float.Parse(curNode.Attributes["angle"].Value),
                 Convert.ToDouble(curNode.Attributes["speed"].Value)
             );
@@ -136,7 +130,7 @@ public class SimulationXmlParser : MonoBehaviour {
         {
             //create the car on the scene view
             car = Instantiate(getCarData(curNode),
-                               (new Vector3(float.Parse(curNode.Attributes["x"].Value), 2.0f, float.Parse(curNode.Attributes["y"].Value)) - offset),// / 50,
+                               new Vector3(float.Parse(curNode.Attributes["x"].Value), 2.0f, float.Parse(curNode.Attributes["y"].Value)),
                                new Quaternion(0, 0, 0, 0)) as GameObject;
 
             //add new car to list
@@ -201,8 +195,8 @@ public class SimulationXmlParser : MonoBehaviour {
 
         //add data from element
         car.GetComponent<Vehicle>().id = curNode.Attributes["id"].Value;
-        car.GetComponent<Vehicle>().x = (float.Parse(curNode.Attributes["x"].Value) - offset.x);// / 50;
-        car.GetComponent<Vehicle>().y = (float.Parse(curNode.Attributes["y"].Value) - offset.z);// / 50;
+        car.GetComponent<Vehicle>().x = float.Parse(curNode.Attributes["x"].Value);
+        car.GetComponent<Vehicle>().y = float.Parse(curNode.Attributes["y"].Value);
         car.GetComponent<Vehicle>().angle = float.Parse(curNode.Attributes["angle"].Value);
         car.GetComponent<Vehicle>().speed = Convert.ToDouble(curNode.Attributes["speed"].Value);
         car.GetComponent<Vehicle>().visited = true;
