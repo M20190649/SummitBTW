@@ -5,6 +5,7 @@ import pandas as pd
 # import pandas as pd
 import sys, os, shutil, glob, subprocess
 sys.path.insert(0, 'D:\\home\\site\\wwwroot\\sumo-0.32.0\\tools')
+sys.path.insert(0, 'D:\\home\\site\\wwwroot\\sumo-0.32.0\\bin')
 
 from management.functionality.algorithm_compare import compare_algorithms, TEMP_OUT_DIR
 from management.gui.visual_statistics import load_statistics_widgets
