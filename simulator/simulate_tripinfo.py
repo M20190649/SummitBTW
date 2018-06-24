@@ -167,4 +167,4 @@ def run_the_script(tripinfo=True, without_gui=False, exit_after=True):
 
 
 if __name__ == "__main__":
-    run_the_script(without_gui=bool(sys.argv[4]))
+    run_the_script(without_gui=bool(int(sys.argv[4])))
