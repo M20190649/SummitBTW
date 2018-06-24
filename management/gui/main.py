@@ -23,22 +23,23 @@ app = Flask(__name__, static_url_path='')
 last_compare_stats = None
 
 
-@app.route('/home.html')
+
+@app.route('/')
+@app.route('/index.html')
 def home():
     """
     Loading home page
     :return: html page of the dashboard
     """
-    return render_template('home.html')
+    return render_template('index.html')
 
-@app.route('/')
-@app.route('/index.html')
+@app.route('/simulation_zone.html')
 def simulation():
     """
     Loading home page
     :return: html page of the dashboard
     """
-    return render_template('index.html')
+    return render_template('simulation_zone.html')
 
 
 @app.route('/run_simulation', methods=['GET', 'POST'])
