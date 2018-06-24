@@ -7,7 +7,7 @@ from random import randint
 
 __author__ = "Eylon Shoshan"
 
-import subprocess
+import subprocess, os
 import logging
 from pathlib import Path
 
