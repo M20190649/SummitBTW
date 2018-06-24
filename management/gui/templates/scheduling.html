@@ -1,0 +1,232 @@
+<!--Author: Eylon Shoshan -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>BTW - Light The Traffic</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static',  filename='node_modules/font-awesome/css/font-awesome.min.css') }}"/>
+    <link rel="stylesheet"
+          href="{{ url_for('static',  filename='node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css') }}"/>
+    <link rel="stylesheet"
+          href="{{ url_for('static',  filename='node_modules/flag-icon-css/css/flag-icon.min.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='../../css/style.css') }}"/>
+    <link rel="shortcut icon" href="{{ url_for('static',  filename='images/favicon.png') }}"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+      function resizeIframe(obj) {
+        obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+      }
+    </script>
+
+
+</head>
+
+<body>
+<div class=" container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="bg-white text-center navbar-brand-wrapper">
+            <a class="navbar-brand brand-logo" href="index.html"><img src="images/logo_star_black.png"/></a>
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo_star_mini.jpg" alt=""></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-center">
+            <button class="navbar-toggler navbar-toggler d-none d-lg-block navbar-dark align-self-center mr-3"
+                    type="button" data-toggle="minimize">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <ul class="navbar-nav ml-lg-auto d-flex align-items-center flex-row">
+
+            </ul>
+            <button class="navbar-toggler navbar-dark navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- partial -->
+    <div class="container-fluid">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <!-- partial:partials/_sidebar.html -->
+            <nav class="bg-white sidebar sidebar-offcanvas" id="sidebar">
+                <div class="user-info">
+                    <img src="images/face.jpg" alt="">
+                    <p class="name">Gal Sade</p>
+                    <p class="designation">Traffic Manager</p>
+                    <span class="online"></span>
+                </div>
+                <ul class="nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">
+                            <img src="images/icons/1.png" alt="">
+                            <span class="menu-title">Simulation Zone</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link" href="scheduling.html">
+                        <img src="images/icons/6.png" alt="">
+                        <span class="menu-title">Scheduling Analysis</span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                       <a class="nav-link" href="team.html">
+                       <img src="images/icons/meet-team.png" alt="">
+                       <span class="menu-title">Our Team</span>
+                       </a>
+                    </li>
+
+                </ul>
+
+
+            </nav>
+
+            <!-- partial -->
+            <div class="content-wrapper">
+
+
+
+
+                <div class="card-deck">
+                    <div class="card col-lg-12 px-0 mb-4">
+                        <div class="card-body">
+
+                            <h4 class="card-title">
+                                <img src="images/icons/pie-chart.png" alt="" height="42" width="42">
+                                &nbsp;
+                                Compare Schedulers</h4>
+                            <br>
+                            <p class="lead" style="font-size:130%;">Here you can compare the perforemance of the different scheduling algorithms on various maps.<br>
+                                    Just choose a map and one or more scheduling algorithms to see their performances on the chosen map!<br>
+                            </p>
+                            <br>
+                           <h4 class="card-title" style="font-size: 150%">About The Algorithms:</h4>
+                           <ul class="lead" style="font-size: 140%">
+                           	<li><i><u>Advanced Scheduler:</u></i> Our specially designed algorithm. This uses information from the detectors near traffic light and cleverly process this information to schedule the traffic light in the map.</li>
+                           	<br>
+                           	<li><i><u>Max Occupancy:</u></i> A simple algorithm that uses information from the detectors near traffic lights. This algorithm gives a green light to the most occupied lane in each junction at any given moment.</li>                       
+                           	<br>
+                           	<li><i><u>Static Scheduler:</u></i> The simple naive algorithm that doesn't use any information from the detectors. This is the algorithm used in non-smart cities. The scheduling is just a round-robin scheduling between all the traffic lights in each junction.</li>
+                           </ul>
+                           <br>
+                            <form id="compare-schedulers-form" action="/compare_schedulers">
+                                <div class="text-center">
+                                    <div class="btn-group btn-group-lg" data-toggle="buttons">
+                                        <label class="btn btn-info active">
+                                            <input type="checkbox" checked autocomplete="off" value="AdvancedScheduler"
+                                                   name="schedulers"> Advanced Scheduler
+                                        </label>
+                                        <label class="btn btn-info">
+                                            <input type="checkbox" autocomplete="off" value="MaxOccupancyScheduler"
+                                                   name="schedulers"> Max Occupancy
+                                        </label>
+                                        <label class="btn btn-info">
+                                            <input type="checkbox" autocomplete="off" value="StaticScheduler"
+                                                   name="schedulers"> Static Scheduler
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    &nbsp;
+                                </div>
+                                <br>
+
+                                <div class="text-center">
+                                    <div class="btn-group btn-group-lg" data-toggle="buttons">
+                                        <label class="btn btn-primary active">
+                                            <input type="radio" checked autocomplete="off" value="cross"
+                                                   name="simulation_example"> Single Junction
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="radio" autocomplete="off" value="neighborhood"
+                                                   name="simulation_example"> Neighborhood
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="radio" autocomplete="off" value="city"
+                                                   name="simulation_example"> Big City
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    &nbsp;
+                                </div>
+                                <div class="row">
+                                    &nbsp;
+                                </div>
+                                <div class="text-center">
+                                    <button id="comparealgos" type="submit" class="btn btn-success btn-lg">
+                                        <span class="caret"></span>
+                                        Compare
+                                    </button>
+                                </div>
+                                <br>
+                                <div id = "loading-bar" style="display:none" align="center">
+                                    <div><img id = "loading-gif" src = "images/loading.gif" height="220" width="220"></div>
+                                    <br><div style="font-size:200%">Loading...</div>
+                                </div><br>
+
+                                <div class="text-center">
+                                    {{ stats_table }}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+                <div class="container-fluid clearfix">
+            <span class="float-right">
+                <a href="#">BTW Technologies</a> &copy; 2018
+            </span>
+                </div>
+            </footer>
+
+            <!-- partial -->
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+   $( "#compare-schedulers-form" ).submit(function( event ) {
+    document.getElementById("loading-bar").style.display = "block";
+});</script>
+
+<script type="text/javascript">
+   $( "#loading-gif" ).dblclick(function() {
+    var curr = document.getElementById("loading-gif").src;
+    if(curr.includes("fortnite")) {
+        document.getElementById("loading-gif").src = "images/loading.gif"
+    }
+    else{
+        document.getElementById("loading-gif").src = "images/fortnite_loading.gif" ;
+    }
+}); </script>
+
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="node_modules/chart.js/dist/Chart.min.js"></script>
+<script src="node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5NXz9eVnyJOA81wimI8WYE08kW_JMe8g&callback=initMap" async
+        defer></script>
+<script src="js/off-canvas.js"></script>
+<script src="js/hoverable-collapse.js"></script>
+<script src="js/misc.js"></script>
+<script src="js/chart.js"></script>
+<script src="js/maps.js"></script>
+<script src="js/schedulers-comparing.js"></script>
+
+</body>
+
+</html>
+

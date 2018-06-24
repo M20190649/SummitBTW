@@ -23,9 +23,11 @@ class Tripinfo(object):
         self.arrivalSpeed = float(parsed_info['arrivalSpeed'])
         self.duration = float(parsed_info['duration'])
         self.routeLength = float(parsed_info['routeLength'])
-        self.waitSteps = int(parsed_info['waitSteps'])
+        self.waitingTime = float(parsed_info['waitingTime'])
+        self.waitingCount = int(parsed_info['waitingCount'])
+        self.stopTime = float(parsed_info['stopTime'])
         self.timeLoss = float(parsed_info['timeLoss'])
-        self.rerouteNo = int(parsed_info['rerouteNo'])
+        self.rerouteNo = float(parsed_info['rerouteNo'])
         self.devices = parsed_info['devices'].split(';')
         self.vType = parsed_info['vType']
         self.speedFactor = float(parsed_info['speedFactor'])
@@ -58,14 +60,14 @@ def get_stats():
               lambda infos: max([info.timeLoss for info in infos])))
     l.append(('Minimum Time-Loss',
               lambda infos: min([info.timeLoss for info in infos])))
-    l.append(('Total waitSteps',
-              lambda infos: funcs.reduce(ops.add, [info.waitSteps for info in infos])))
-    l.append(('Average waitSteps',
-              lambda infos: funcs.reduce(ops.add, [info.waitSteps for info in infos]) / len(infos)))
-    l.append(('Max waitSteps',
-              lambda infos: max([info.waitSteps for info in infos])))
-    l.append(('Minimum waitSteps',
-              lambda infos: min([info.waitSteps for info in infos])))
+    l.append(('Total waitingTime',
+              lambda infos: funcs.reduce(ops.add, [info.waitingTime for info in infos])))
+    l.append(('Average waitingTime',
+              lambda infos: funcs.reduce(ops.add, [info.waitingTime for info in infos]) / len(infos)))
+    l.append(('Max waitingTime',
+              lambda infos: max([info.waitingTime for info in infos])))
+    l.append(('Minimum waitingTime',
+              lambda infos: min([info.waitingTime for info in infos])))
     l.append(('Total Duration',
               lambda infos: funcs.reduce(ops.add, [info.duration for info in infos])))
     l.append(('Average Duration',
@@ -90,7 +92,7 @@ def get_stats():
 def create_csv(statistics, tripinfo_files, output_filename):
     into_cvs = "Statistics,"
     for filename in tripinfo_files:
-        into_cvs += str(filename) + ","
+        into_cvs += str(filename.split('/')[-1]) + ","
     into_cvs = into_cvs[:len(into_cvs) - 1]+"\n"
     for stat in statistics.keys():
         into_cvs += str(stat)+","
@@ -102,9 +104,10 @@ def create_csv(statistics, tripinfo_files, output_filename):
     text_file.close()
 
 
-def create_statistics(to_csv=None, to_print=True, *tripinfo_files):
+def create_statistics(to_csv=None, to_print=True, *tripinfo_files, dest_folder=None):
     """
     create statistics for the tripinfo files received as parameters
+    :param dest_folder: where the output csv file should be written to
     :param to_csv: path to csv output file, default is None (no csv output)
     :param to_print: whether to print the statistics to stdout or not
     :param tripinfo_files: .xml files of simulation outputs
@@ -130,9 +133,12 @@ def create_statistics(to_csv=None, to_print=True, *tripinfo_files):
         printer = TablePrinter(tripinfo_files, statistics)
         printer.print()
     if to_csv is not None:
-        create_csv(statistics, tripinfo_files, to_csv)
+        path_to_write = to_csv
+        if dest_folder is not None:
+            path_to_write = dest_folder + '/' + to_csv
+        create_csv(statistics, tripinfo_files, path_to_write)
     return statistics
 
 
 if __name__ == '__main__':
-    create_statistics("output.csv", True, *sys.argv[1:])
+    create_statistics("output_tripinfo.csv", True, *sys.argv[1:], dest_folder=None)

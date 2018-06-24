@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>BTW - Light The Traffic</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="../node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css"/>
     <link rel="stylesheet" href="../css/style.css"/>
@@ -43,27 +44,38 @@
             <nav class="bg-white sidebar sidebar-offcanvas" id="sidebar">
                 <div class="user-info">
                     <img src="../images/face.jpg" alt="">
-                    <p class="name">Richard V.Welsh</p>
+                    <p class="name">Gal Sade</p>
                     <p class="designation">Traffic Manager</p>
                     <span class="online"></span>
                 </div>
                 <ul class="nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="../index.html">
-                            <img src="../images/icons/1.png" alt="">
-                            <span class="menu-title">Dashboard</span>
+                       <li class="nav-item active">
+                        <a class="nav-link" href="index.html">
+                            <img src="images/icons/1.png" alt="">
+                            <span class="menu-title">Simulation Zone</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-
+                      <a class="nav-link" href="scheduling.html">
+                        <img src="images/icons/6.png" alt="">
+                        <span class="menu-title">Scheduling Analysis</span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                       <a class="nav-link" href="team.html">
+                       <img src="images/icons/meet-team.png" alt="">
+                       <span class="menu-title">Our Team</span>
+                       </a>
                     </li>
                 </ul>
             </nav>
 
             <!-- partial -->
             <div class="content-wrapper">
-
+                <div align="right">
+                <form method="get" action="csv/stats.csv"> <button class="download-btn" href="csv/stats.csv"><i class="fa fa-download"></i> Export To CSV</button> </form></div>
+                
                 <br>
 
                 <h3 class="page-heading mb-4">
@@ -71,6 +83,9 @@
                     &nbsp;
 
                     Time Loss</h3>
+                    <p class="lead" style="font-size: 120%">The time lost due to driving below the ideal speed (different for each road and vehicle).<br>
+                    Scheduled stops do not count.<br><br>
+                    Unit: seconds</p>
 
                 <div class="progress progress-slim">
                     <div class="progress-bar bg-success-gadient" role="progressbar" style="width: 100%"
@@ -290,238 +305,6 @@
                 </div>
 
 
-                <br>
-                <br>
-
-                <h3 class="page-heading mb-4">
-                    <img src="images/icons/timer.png" alt="" height="40" width="40">
-                    &nbsp;
-
-                    Wait Steps</h3>
-
-                <div class="progress progress-slim">
-                    <div class="progress-bar bg-success-gadient" role="progressbar" style="width: 100%"
-                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <br>
-                <br>
-                <h4 class="page-heading mb-4">{{Algo_1}}</h4>
-                <div class="row">
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="clearfix">
-                                    <i class="fa fa-hourglass float-right icon-grey-big"></i>
-                                </div>
-                                <h4 class="card-title font-weight-normal text-success">{{TotalWaitSteps_1}}</h4>
-                                <h6 class="card-subtitle mb-4">Total</h6>
-                                <div class="progress progress-slim">
-                                    <div class="progress-bar bg-success-gadient" role="progressbar"
-                                         style="{{TotalWaitStepsBar_1}}" aria-valuenow="75" aria-valuemin="0"
-                                         aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="clearfix">
-                                    <i class="fa fa-hourglass-half float-right icon-grey-big"></i>
-                                </div>
-                                <h4 class="card-title font-weight-normal text-info">{{AverageWaitSteps_1}}</h4>
-                                <h6 class="card-subtitle mb-4">Average</h6>
-                                <div class="progress progress-slim">
-                                    <div class="progress-bar bg-info-gadient" role="progressbar"
-                                         style="{{AverageWaitStepsBar_1}}" aria-valuenow="40" aria-valuemin="0"
-                                         aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="clearfix">
-                                    <i class="fa fa-hourglass-start float-right icon-grey-big"></i>
-                                </div>
-                                <h4 class="card-title font-weight-normal text-warning">{{MaxWaitSteps_1}}</h4>
-                                <h6 class="card-subtitle mb-4">Max</h6>
-                                <div class="progress progress-slim">
-                                    <div class="progress-bar bg-warning-gadient" role="progressbar"
-                                         style="{{MaxWaitStepsBar_1}}" aria-valuenow="25" aria-valuemin="0"
-                                         aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="clearfix">
-                                    <i class="fa fa-hourglass-end float-right icon-grey-big"></i>
-                                </div>
-                                <h4 class="card-title font-weight-normal text-danger">{{MinimumWaitSteps_1}}</h4>
-                                <h6 class="card-subtitle mb-4">Min</h6>
-                                <div class="progress progress-slim">
-                                    <div class="progress-bar bg-danger-gadient" role="progressbar"
-                                         style="{{MinimumWaitStepsBar_1}}" aria-valuenow="65" aria-valuemin="0"
-                                         aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="{{AlgoNum_1}}">
-
-                <h4 class="page-heading mb-4">{{Algo_2}}</h4>
-                <div class="row">
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="clearfix">
-                                    <i class="fa fa-hourglass float-right icon-grey-big"></i>
-                                </div>
-                                <h4 class="card-title font-weight-normal text-success">{{TotalWaitSteps_2}}</h4>
-                                <h6 class="card-subtitle mb-4">Total</h6>
-                                <div class="progress progress-slim">
-                                    <div class="progress-bar bg-success-gadient" role="progressbar"
-                                         style="{{TotalWaitStepsBar_2}}" aria-valuenow="75" aria-valuemin="0"
-                                         aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="clearfix">
-                                    <i class="fa fa-hourglass-half float-right icon-grey-big"></i>
-                                </div>
-                                <h4 class="card-title font-weight-normal text-info">{{AverageWaitSteps_2}}</h4>
-                                <h6 class="card-subtitle mb-4">Average</h6>
-                                <div class="progress progress-slim">
-                                    <div class="progress-bar bg-info-gadient" role="progressbar"
-                                         style="{{AverageWaitStepsBar_2}}" aria-valuenow="40" aria-valuemin="0"
-                                         aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="clearfix">
-                                    <i class="fa fa-hourglass-start float-right icon-grey-big"></i>
-                                </div>
-                                <h4 class="card-title font-weight-normal text-warning">{{MaxWaitSteps_2}}</h4>
-                                <h6 class="card-subtitle mb-4">Max</h6>
-                                <div class="progress progress-slim">
-                                    <div class="progress-bar bg-warning-gadient" role="progressbar"
-                                         style="{{MaxWaitStepsBar_2}}" aria-valuenow="25" aria-valuemin="0"
-                                         aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="clearfix">
-                                    <i class="fa fa-hourglass-end float-right icon-grey-big"></i>
-                                </div>
-                                <h4 class="card-title font-weight-normal text-danger">{{MinimumWaitSteps_2}}</h4>
-                                <h6 class="card-subtitle mb-4">Min</h6>
-                                <div class="progress progress-slim">
-                                    <div class="progress-bar bg-danger-gadient" role="progressbar"
-                                         style="{{MinimumWaitStepsBar_2}}" aria-valuenow="65" aria-valuemin="0"
-                                         aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-</div>
-                    <!-- partial -->
-                </div>
-
-                <div style="{{AlgoNum_2}}">
-
-                    <h4 class="page-heading mb-4">{{Algo_3}}</h4>
-                    <div class="row">
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="clearfix">
-                                        <i class="fa fa-hourglass float-right icon-grey-big"></i>
-                                    </div>
-                                    <h4 class="card-title font-weight-normal text-success">{{TotalWaitSteps_3}}</h4>
-                                    <h6 class="card-subtitle mb-4">Total</h6>
-                                    <div class="progress progress-slim">
-                                        <div class="progress-bar bg-success-gadient" role="progressbar"
-                                             style="{{TotalWaitStepsBar_3}}" aria-valuenow="75" aria-valuemin="0"
-                                             aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="clearfix">
-                                        <i class="fa fa-hourglass-half float-right icon-grey-big"></i>
-                                    </div>
-                                    <h4 class="card-title font-weight-normal text-info">{{AverageWaitSteps_3}}</h4>
-                                    <h6 class="card-subtitle mb-4">Average</h6>
-                                    <div class="progress progress-slim">
-                                        <div class="progress-bar bg-info-gadient" role="progressbar"
-                                             style="{{AverageWaitStepsBar_3}}" aria-valuenow="40" aria-valuemin="0"
-                                             aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="clearfix">
-                                        <i class="fa fa-hourglass-start float-right icon-grey-big"></i>
-                                    </div>
-                                    <h4 class="card-title font-weight-normal text-warning">{{MaxWaitSteps_3}}</h4>
-                                    <h6 class="card-subtitle mb-4">Max</h6>
-                                    <div class="progress progress-slim">
-                                        <div class="progress-bar bg-warning-gadient" role="progressbar"
-                                             style="{{MaxWaitStepsBar_3}}" aria-valuenow="25" aria-valuemin="0"
-                                             aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="clearfix">
-                                        <i class="fa fa-hourglass-end float-right icon-grey-big"></i>
-                                    </div>
-                                    <h4 class="card-title font-weight-normal text-danger">{{MinimumWaitSteps_3}}</h4>
-                                    <h6 class="card-subtitle mb-4">Min</h6>
-                                    <div class="progress progress-slim">
-                                        <div class="progress-bar bg-danger-gadient" role="progressbar"
-                                             style="{{MinimumWaitStepsBar_3}}" aria-valuenow="65" aria-valuemin="0"
-                                             aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-
-                    <!-- partial -->
-                </div>
-
 
                 <br>
                 <br>
@@ -529,6 +312,10 @@
                     <img src="images/icons/icon.png" alt="" height="34" width="34">
                     &nbsp;
                     Duration</h3>
+                <p class="lead" style="font-size: 120%">
+                The time the vehicle needed to accomplish its route.<br><br>
+
+                Unit: seconds</p>    
 
                 <div class="progress progress-slim">
                     <div class="progress-bar bg-success-gadient" role="progressbar" style="width: 100%"
@@ -755,7 +542,10 @@
                     &nbsp;
 
                     Route Length</h3>
+                <p class="lead" style="font-size: 120%">
+                The length of the vehicle's route.<br><br>
 
+                Unit: meters</p>  
                 <div class="progress progress-slim">
                     <div class="progress-bar bg-success-gadient" role="progressbar" style="width: 100%"
                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>

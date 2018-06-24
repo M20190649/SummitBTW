@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 06/21/18 19:29:47 by Eclipse SUMO duarouter Version v0_32_0+1428-4ab3f27cbd
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
+
+    <input>
+        <net-file value="./New_York/New_York.net.xml"/>
+        <route-files value="./New_York/trips.trips.xml"/>
+    </input>
+
+    <output>
+        <output-file value="./New_York/routes.rou.xml"/>
+        <alternatives-output value="./New_York/routes.rou.alt.xml"/>
+    </output>
+
+    <processing>
+        <ignore-errors value="true"/>
+    </processing>
+
+    <time>
+        <begin value="0"/>
+        <end value="7.692307692307692"/>
+    </time>
+
+    <report>
+        <no-warnings value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+</configuration>
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <vehicle id="0" depart="2.00">
+        <route edges="5670366#0 5670366#1 5670366#2 5670366#3 5670366#4 5670084#3 5670084#4 5672321#0 5672321#1 5672321#2 5672321#3 5672321#4 420358890 420358893 5673316#9 5673316#10 5673316#11 5673316#12 5673316#13"/>
+    </vehicle>
+    <vehicle id="1" depart="3.00">
+        <route edges="496980201 351540632#0 439842836#2 439842836#3 439842835#0 439842835#1 439842835#2 194923786#0 194923786#1 194923786#2 194923786#3 112116234#1 420355078 -420354142 421827963 421827957 421827959 485165667#0 485165667#1 485165667#2 5669857 421827958 221687793 451954060 446864088 421827961 421827960 421827962 -194923768#2 -194923768#1 -194923768#0"/>
+    </vehicle>
+    <vehicle id="2" depart="5.00">
+        <route edges="5671400 112116235#0 112116235#1 112116235#2 112116235#3 112116235#4 112116235#5 112116235#6 221687789 221687794 524395517#0 524395517#1 524395517#2 524395517#3 420354140#0 420354140#1 457937087 454963832#0 454963832#1 40709918#0 40709918#1 165777255 5673316#0 5673316#1 5673316#2 5673316#3 5673316#4 5673316#5 5673316#6 5673316#7 5673316#8 5673316#9 5673316#10 5673316#11 5673316#12 5673316#13"/>
+    </vehicle>
+</routes>

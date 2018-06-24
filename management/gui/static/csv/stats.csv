@@ -1,0 +1,17 @@
+Statistics,AdvancedScheduler,MaxOccupancyScheduler
+Total Time-Loss,23165.35999999999,63219.44999999998
+Average Time-Loss,84.2376727272727,229.88890909090904
+Max Time-Loss,283.86,625.34
+Minimum Time-Loss,3.86,3.95
+Total waitingTime,16178.0,50396.0
+Average waitingTime,58.82909090909091,183.2581818181818
+Max waitingTime,245.0,534.0
+Minimum waitingTime,0.0,0.0
+Total Duration,36150.0,76173.0
+Average Duration,131.45454545454547,276.9927272727273
+Max Duration,327.0,715.0
+Minimum Duration,29.0,30.0
+Total routeLength,178798.81000000003,178798.80999999988
+Average routeLength,650.177490909091,650.1774909090905
+Max routeLength,1236.74,1236.74
+Minimum routeLength,347.68,347.68

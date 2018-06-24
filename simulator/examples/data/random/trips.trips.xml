@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generated on 2018-06-21 19:24:34.093694 by $Id: random_trips.py 25741 2017-08-30 11:58:01Z behrisch $
+  options: ./random 10
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <trip id="0" depart="1.00" from="-690" to="232"/>
+    <trip id="1" depart="2.00" from="-361" to="567"/>
+    <trip id="2" depart="2.00" from="-232" to="232"/>
+    <trip id="3" depart="3.00" from="-361" to="219"/>
+    <trip id="4" depart="3.00" from="-567" to="232"/>
+    <trip id="5" depart="4.00" from="-361" to="501"/>
+    <trip id="6" depart="5.00" from="-690" to="361"/>
+    <trip id="7" depart="6.00" from="-501" to="690"/>
+    <trip id="8" depart="7.00" from="-501" to="232"/>
+</routes>

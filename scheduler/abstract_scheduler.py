@@ -15,6 +15,7 @@ class AbstractScheduler(ABC):
 
         :param city: the City object of the current simulation.
         """
+
         pass
 
     @abstractmethod

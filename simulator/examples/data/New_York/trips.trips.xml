@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generated on 2018-06-21 19:29:47.739171 by $Id: random_trips.py 25741 2017-08-30 11:58:01Z behrisch $
+  options: ./New_York 10
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <trip id="0" depart="2.00" from="5670366#0" to="5673316#13"/>
+    <trip id="1" depart="3.00" from="496980201" to="-194923768#0"/>
+    <trip id="2" depart="5.00" from="5671400" to="5673316#13"/>
+</routes>

@@ -1,2 +1,0 @@
-Options: 
-CMake: 3.7.2@/media/gdor80/851a8b20-d038-4b5f-b834-0d9716e499c0/home/gdor80/Programs/JetBrains/clion-2016.3.2/bin/cmake/bin/cmake

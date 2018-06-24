@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 06/21/18 19:30:35 by Eclipse SUMO GUI Version v0_32_0+1428-4ab3f27cbd
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="./New_York/New_York.net.xml"/>
+        <route-files value="./New_York/routes.rou.alt.xml"/>
+        <additional-files value="./New_York/e2.add.xml"/>
+    </input>
+
+    <output>
+        <tripinfo-output value="./New_York/New_York_tripinfo-output_StaticScheduler.xml"/>
+    </output>
+
+    <traci_server>
+        <remote-port value="51352"/>
+    </traci_server>
+
+</configuration>
+-->
+
+<tripinfos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/tripinfo_file.xsd">
+    <tripinfo id="1" depart="3.00" departLane="496980201_0" departPos="5.10" departSpeed="0.00" departDelay="0.00" arrival="337.00" arrivalLane="-194923768#0_0" arrivalPos="111.34" arrivalSpeed="10.95" duration="334.00" routeLength="1664.55" waitingTime="151.00" waitingCount="5" stopTime="0.00" timeLoss="184.23" rerouteNo="0" devices="tripinfo_1" vType="DEFAULT_VEHTYPE" speedFactor="1.00" vaporized=""/>
+    <tripinfo id="0" depart="2.00" departLane="5670366#0_0" departPos="5.10" departSpeed="0.00" departDelay="0.00" arrival="377.00" arrivalLane="5673316#13_0" arrivalPos="153.15" arrivalSpeed="11.11" duration="375.00" routeLength="1616.53" waitingTime="185.00" waitingCount="7" stopTime="0.00" timeLoss="230.05" rerouteNo="0" devices="tripinfo_0" vType="DEFAULT_VEHTYPE" speedFactor="1.00" vaporized=""/>
+    <tripinfo id="2" depart="5.00" departLane="5671400_0" departPos="5.10" departSpeed="0.00" departDelay="0.00" arrival="647.00" arrivalLane="5673316#13_0" arrivalPos="153.15" arrivalSpeed="10.47" duration="642.00" routeLength="2077.41" waitingTime="377.00" waitingCount="14" stopTime="0.00" timeLoss="455.74" rerouteNo="0" devices="tripinfo_2" vType="DEFAULT_VEHTYPE" speedFactor="1.00" vaporized=""/>
+</tripinfos>
