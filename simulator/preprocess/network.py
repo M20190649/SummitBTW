@@ -7,7 +7,7 @@ from random import randint
 
 __author__ = "Eylon Shoshan"
 
-import subprocess
+import subprocess, os
 import logging
 from pathlib import Path
 
@@ -42,7 +42,7 @@ def fix_traffic_lights(sumo_network_path):
     net_file.close()
 
 
-def generate_net(sumo_network_path, size):
+def generate_net(sumo_network_path, size, **kwargs):
     """
     Generating .net.xml that represents the a city SUMO network for simulation.
     Size is configurable.
@@ -54,7 +54,8 @@ def generate_net(sumo_network_path, size):
 
     if size != 0:
         logging.info('Starting to generate SUMO network')
-        cmd = ['netgenerate',
+        netgen_bin = os.path.join(os.environ['SUMO_HOME'], 'bin', 'netgenerate.exe')
+        cmd = [netgen_bin,
                '-o', sumo_network_path,
                '--default-junction-type', 'traffic_light_right_on_red',
                '--rand',
@@ -69,7 +70,9 @@ def generate_net(sumo_network_path, size):
                '--rand.random-lanenumber',
                '--no-turnarounds',
                ]
-        out = subprocess.check_output(cmd)
+        out = subprocess.Popen(cmd, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        out.wait()
+        
         logging.info(out)
     logging.info('Starting to fix traffic_lights')
     fix_traffic_lights(sumo_network_path)
@@ -82,5 +85,5 @@ def generate_net(sumo_network_path, size):
 if __name__ == "__main__":
     path = Path(sys.argv[1])
     dir_name = path.parts[len(path.parts) - 1]
-    generate_net(sys.argv[1]+"/"+dir_name+".net.xml", sys.argv[2]+4)
+    generate_net(sys.argv[1]+"/"+dir_name+".net.xml", int(sys.argv[2])+4)
 

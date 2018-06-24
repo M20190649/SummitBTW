@@ -3,14 +3,15 @@ from re import finditer
 
 import pandas as pd
 # import pandas as pd
-import sys
+import sys, os, shutil, glob, subprocess
 sys.path.insert(0, 'D:\\home\\site\\wwwroot\\sumo-0.32.0\\tools')
+sys.path.insert(0, 'D:\\home\\site\\wwwroot\\sumo-0.32.0\\bin')
 
 from management.functionality.algorithm_compare import compare_algorithms, TEMP_OUT_DIR
 from management.gui.visual_statistics import load_statistics_widgets
 from scheduler.scheduler_constants import schedulers_name_map
 from simulator.simulate_tripinfo import run_simulation_example
-from statistics.get_statistics import create_statistics
+from statistics.resources.statistics_for_paper import create_statistics_for_paper
 
 __author__ = "Eylon Shoshan"
 
@@ -77,6 +78,56 @@ def scheduling_analysis():
     :return: Result statistics
     """
     return render_template('scheduling.html')
+
+
+@app.route('/team.html', methods=['GET', 'POST'])
+def team():
+    """
+    Present team memeber page
+    :return: Team page
+    """
+    return render_template('team.html')
+
+
+@app.route('/customize_map.html', methods=['GET', 'POST'])
+def customize_map():
+    """
+    Customize map & simulation
+    :return: Cutomization page
+    """
+    config = {'display_done': 'display: none;', 'num_junctions': '10', 'num_cars': '100'}
+    return render_template('customize_map.html', **config)
+
+
+def delete_dir_content(d):
+    for f in glob.glob(os.path.join(d, '*')):
+        if os.path.isdir(f):
+            shutil.rmtree(f) 
+        else:
+            os.remove(f)
+    
+
+@app.route('/create_customized_map.html', methods=['GET', 'POST'])
+def create_customized_map():
+    """
+    Customize map & simulation
+    :return: Cutomization page
+    """
+
+    num_junctions = request.args['junctions-slider']
+    num_cars = request.args['cars-slider']
+    config = {'num_junctions': str(num_junctions), 'num_cars': str(num_cars)}
+    num_junctions, num_cars = int(num_junctions), int(num_cars)
+
+    SIMULATOR_CUSTOM_EXAMPLE = './simulator/examples/data/custom/'
+    delete_dir_content(TEMP_OUT_DIR)
+    delete_dir_content(SIMULATOR_CUSTOM_EXAMPLE)
+
+    create_statistics_for_paper((num_junctions, num_junctions + 1, 1), (num_cars, num_cars + 1, 1), TEMP_OUT_DIR[:-1])   
+    [shutil.copyfile(f, SIMULATOR_CUSTOM_EXAMPLE + os.path.basename(f)) for f in glob.glob(TEMP_OUT_DIR + '/*/*/*/*.xml')]
+    [os.rename(f, f.replace(os.path.splitext(os.path.basename(f))[0], 'custom.sumocfg')) 
+                            for f in glob.glob(SIMULATOR_CUSTOM_EXAMPLE + '*') if 'sumocfg' in f ]
+    return render_template('customize_map.html', **config)
 
 
 if __name__ == "__main__":

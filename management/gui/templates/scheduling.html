@@ -76,6 +76,18 @@
                         <span class="menu-title">Scheduling Analysis</span>
                       </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="customize_map.html">
+                        <img src="images/icons/001-map.png" alt="">
+                        <span class="menu-title">Map Customization</span>
+                        </a>
+                     </li>
+                    <li class="nav-item">
+                       <a class="nav-link" href="team.html">
+                       <img src="images/icons/meet-team.png" alt="">
+                       <span class="menu-title">Our Team</span>
+                       </a>
+                    </li>
 
                 </ul>
 
@@ -85,20 +97,21 @@
             <!-- partial -->
             <div class="content-wrapper">
 
-
+                        <h4 class="card-title">
+                                <img src="images/icons/pie-chart.png" alt="" height="42" width="42">
+                                &nbsp;
+                                Compare Schedulers</h4>
 
 
                 <div class="card-deck">
                     <div class="card col-lg-12 px-0 mb-4">
                         <div class="card-body">
 
-                            <h4 class="card-title">
-                                <img src="images/icons/pie-chart.png" alt="" height="42" width="42">
-                                &nbsp;
-                                Compare Schedulers</h4>
+                     
                             <br>
-                            <p class="lead" style="font-size:130%;">Here you can compare the perforemance of the different scheduling algorithms on various maps.<br>
-                                    Just choose a map and one or more scheduling algorithms to see their performances on the chosen map!<br>
+                            <p class="lead" style="font-size:130%;">Here you can compare the performance of the different scheduling algorithms on various maps.<br>
+                                    Just choose a map and one or more scheduling algorithms to see their performances on the chosen map!<br><br>
+                                    <b><i>Note:</i></b> Choose your own configuration for <i><u>Customized Map</u></i> option, in the <i>Map Customization</i> page.
                             </p>
                             <br>
                            <h4 class="card-title" style="font-size: 150%">About The Algorithms:</h4>
@@ -145,6 +158,10 @@
                                         <label class="btn btn-primary">
                                             <input type="radio" autocomplete="off" value="city"
                                                    name="simulation_example"> Big City
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="radio" autocomplete="off" value="custom"
+                                                   name="simulation_example"> Customized Map
                                         </label>
                                     </div>
                                 </div>
