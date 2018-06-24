@@ -57,7 +57,8 @@ def generate_net(sumo_network_path, size):
         netgen_bin = os.path.join(os.environ['SUMO_HOME'], 'bin', 'netgenerate.exe')
         print(netgen_bin)
         print("is file here: ", netgen_bin)
-        print(subprocess.check_output(netgen_bin)
+        print(subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.DEVNULL))
+        print(subprocess.check_output(netgen_bin))
         cmd = [netgen_bin,
                '-o', sumo_network_path,
                '--default-junction-type', 'traffic_light_right_on_red',
