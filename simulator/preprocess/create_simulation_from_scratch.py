@@ -52,5 +52,5 @@ def prepare_simulation(size, **kwargs):
 
 
 if __name__ == '__main__':
-    prepare_simulation(int(sys.argv[3])+4, fringe_factor=10000, period=0.75, binomial=10000, end=int(sys.argv[2])/1.3) #equals to Poisson distribution
+    prepare_simulation(sys.argv[3]+4, fringe_factor=10000, period=0.75, binomial=10000, end=int(sys.argv[2])/1.3) #equals to Poisson distribution
 

@@ -42,7 +42,7 @@ def fix_traffic_lights(sumo_network_path):
     net_file.close()
 
 
-def generate_net(sumo_network_path, size):
+def generate_net(sumo_network_path, size, **kwargs):
     """
     Generating .net.xml that represents the a city SUMO network for simulation.
     Size is configurable.
@@ -70,8 +70,9 @@ def generate_net(sumo_network_path, size):
                '--rand.random-lanenumber',
                '--no-turnarounds',
                ]
-        # out = subprocess.check_output(cmd, stdin=subprocess.DEVNULL)
         out = subprocess.Popen(cmd, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        out.wait()
+        
         logging.info(out)
     logging.info('Starting to fix traffic_lights')
     fix_traffic_lights(sumo_network_path)

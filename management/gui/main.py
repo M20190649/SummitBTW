@@ -105,6 +105,7 @@ def delete_dir_content(d):
             shutil.rmtree(f) 
         else:
             os.remove(f)
+    
 
 @app.route('/create_customized_map.html', methods=['GET', 'POST'])
 def create_customized_map():
@@ -122,7 +123,7 @@ def create_customized_map():
     delete_dir_content(TEMP_OUT_DIR)
     delete_dir_content(SIMULATOR_CUSTOM_EXAMPLE)
 
-    create_statistics_for_paper((num_junctions, num_junctions + 1, 1), (num_cars, num_cars + 1, 1), TEMP_OUT_DIR)   
+    create_statistics_for_paper((num_junctions, num_junctions + 1, 1), (num_cars, num_cars + 1, 1), TEMP_OUT_DIR[:-1])   
     [shutil.copyfile(f, SIMULATOR_CUSTOM_EXAMPLE + os.path.basename(f)) for f in glob.glob(TEMP_OUT_DIR + '/*/*/*/*.xml')]
     [os.rename(f, f.replace(os.path.splitext(os.path.basename(f))[0], 'custom.sumocfg')) 
                             for f in glob.glob(SIMULATOR_CUSTOM_EXAMPLE + '*') if 'sumocfg' in f ]
