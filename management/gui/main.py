@@ -82,10 +82,19 @@ def scheduling_analysis():
 @app.route('/team.html', methods=['GET', 'POST'])
 def team():
     """
-    Compare scheduling algorithms and present results
-    :return: Result statistics
+    Present team memeber page
+    :return: Team page
     """
     return render_template('team.html')
+
+
+@app.route('/customize_map.html', methods=['GET', 'POST'])
+def customize_map():
+    """
+    Customize map & simulation
+    :return: Cutomization page
+    """
+    return render_template('customize_map.html')
 
 
 if __name__ == "__main__":
