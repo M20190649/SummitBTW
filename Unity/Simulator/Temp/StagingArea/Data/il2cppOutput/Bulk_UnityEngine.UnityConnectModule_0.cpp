@@ -156,8 +156,8 @@ extern const uint32_t RemoteSettings_RemoteSettingsUpdateCompleted_m2057218144_M
 
 
 
-#ifndef U3CMODULEU3E_T692745539_H
-#define U3CMODULEU3E_T692745539_H
+#ifndef U3CMODULEU3E_T692745540_H
+#define U3CMODULEU3E_T692745540_H
 #ifdef __clang__
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
@@ -165,7 +165,7 @@ extern const uint32_t RemoteSettings_RemoteSettingsUpdateCompleted_m2057218144_M
 #endif
 
 // <Module>
-struct  U3CModuleU3E_t692745539 
+struct  U3CModuleU3E_t692745540 
 {
 public:
 
@@ -175,7 +175,7 @@ public:
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif
-#endif // U3CMODULEU3E_T692745539_H
+#endif // U3CMODULEU3E_T692745540_H
 #ifndef RUNTIMEOBJECT_H
 #define RUNTIMEOBJECT_H
 #ifdef __clang__

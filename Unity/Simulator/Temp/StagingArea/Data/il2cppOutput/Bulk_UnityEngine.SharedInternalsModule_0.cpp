@@ -44,6 +44,8 @@ struct ArgumentException_t132251570;
 struct NativeNameAttribute_t3268151526;
 // UnityEngine.Bindings.NativePropertyAttribute
 struct NativePropertyAttribute_t1305929258;
+// UnityEngine.Bindings.NativeThrowsAttribute
+struct NativeThrowsAttribute_t1697526064;
 // UnityEngine.Bindings.NativeTypeAttribute
 struct NativeTypeAttribute_t2250406315;
 // UnityEngine.Bindings.NotNullAttribute
@@ -615,6 +617,35 @@ public:
 #pragma clang diagnostic pop
 #endif
 #endif // VOID_T1185182177_H
+#ifndef NATIVETHROWSATTRIBUTE_T1697526064_H
+#define NATIVETHROWSATTRIBUTE_T1697526064_H
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+
+// UnityEngine.Bindings.NativeThrowsAttribute
+struct  NativeThrowsAttribute_t1697526064  : public Attribute_t861562559
+{
+public:
+	// System.Boolean UnityEngine.Bindings.NativeThrowsAttribute::<ThrowsException>k__BackingField
+	bool ___U3CThrowsExceptionU3Ek__BackingField_0;
+
+public:
+	inline static int32_t get_offset_of_U3CThrowsExceptionU3Ek__BackingField_0() { return static_cast<int32_t>(offsetof(NativeThrowsAttribute_t1697526064, ___U3CThrowsExceptionU3Ek__BackingField_0)); }
+	inline bool get_U3CThrowsExceptionU3Ek__BackingField_0() const { return ___U3CThrowsExceptionU3Ek__BackingField_0; }
+	inline bool* get_address_of_U3CThrowsExceptionU3Ek__BackingField_0() { return &___U3CThrowsExceptionU3Ek__BackingField_0; }
+	inline void set_U3CThrowsExceptionU3Ek__BackingField_0(bool value)
+	{
+		___U3CThrowsExceptionU3Ek__BackingField_0 = value;
+	}
+};
+
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#endif // NATIVETHROWSATTRIBUTE_T1697526064_H
 #ifndef NATIVENAMEATTRIBUTE_T3268151526_H
 #define NATIVENAMEATTRIBUTE_T3268151526_H
 #ifdef __clang__
@@ -1354,6 +1385,8 @@ extern "C"  void NativeMethodAttribute__ctor_m2941746701 (NativeMethodAttribute_
 extern "C"  void NativeMethodAttribute_set_IsThreadSafe_m2457033065 (NativeMethodAttribute_t4187428193 * __this, bool ___value0, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // System.Void UnityEngine.Bindings.NativeNameAttribute::set_Name(System.String)
 extern "C"  void NativeNameAttribute_set_Name_m3579254766 (NativeNameAttribute_t3268151526 * __this, String_t* ___value0, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
+// System.Void UnityEngine.Bindings.NativeThrowsAttribute::set_ThrowsException(System.Boolean)
+extern "C"  void NativeThrowsAttribute_set_ThrowsException_m4039166389 (NativeThrowsAttribute_t1697526064 * __this, bool ___value0, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // System.Void UnityEngine.Bindings.NativeTypeAttribute::set_CodegenOptions(UnityEngine.Bindings.CodegenOptions)
 extern "C"  void NativeTypeAttribute_set_CodegenOptions_m3839252515 (NativeTypeAttribute_t2250406315 * __this, int32_t ___value0, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // System.Void UnityEngine.Bindings.NativeTypeAttribute::set_Header(System.String)
@@ -1746,6 +1779,32 @@ extern "C"  void NativePropertyAttribute__ctor_m2033094153 (NativePropertyAttrib
 	{
 		String_t* L_0 = ___name0;
 		NativeMethodAttribute__ctor_m2941746701(__this, L_0, /*hidden argument*/NULL);
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// System.Void UnityEngine.Bindings.NativeThrowsAttribute::.ctor()
+extern "C"  void NativeThrowsAttribute__ctor_m3216633458 (NativeThrowsAttribute_t1697526064 * __this, const RuntimeMethod* method)
+{
+	{
+		Attribute__ctor_m1529526131(__this, /*hidden argument*/NULL);
+		NativeThrowsAttribute_set_ThrowsException_m4039166389(__this, (bool)1, /*hidden argument*/NULL);
+		return;
+	}
+}
+// System.Void UnityEngine.Bindings.NativeThrowsAttribute::set_ThrowsException(System.Boolean)
+extern "C"  void NativeThrowsAttribute_set_ThrowsException_m4039166389 (NativeThrowsAttribute_t1697526064 * __this, bool ___value0, const RuntimeMethod* method)
+{
+	{
+		bool L_0 = ___value0;
+		__this->set_U3CThrowsExceptionU3Ek__BackingField_0(L_0);
 		return;
 	}
 }

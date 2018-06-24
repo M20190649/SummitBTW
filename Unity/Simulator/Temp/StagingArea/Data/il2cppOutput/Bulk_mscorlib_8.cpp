@@ -973,8 +973,6 @@ extern const RuntimeMethod* Single_Parse_m364357836_RuntimeMethod_var;
 extern const uint32_t Single_Parse_m364357836_MetadataUsageId;
 extern const RuntimeMethod* Single_Parse_m3840407583_RuntimeMethod_var;
 extern const uint32_t Single_Parse_m3840407583_MetadataUsageId;
-extern const RuntimeMethod* Single_Parse_m3793689340_RuntimeMethod_var;
-extern const uint32_t Single_Parse_m3793689340_MetadataUsageId;
 extern RuntimeClass* NumberFormatter_t1182924621_il2cpp_TypeInfo_var;
 extern const uint32_t Single_ToString_m3947131094_MetadataUsageId;
 extern const uint32_t Single_ToString_m3107811250_MetadataUsageId;
@@ -28798,7 +28796,7 @@ IL_0022:
 			IL2CPP_RUNTIME_CLASS_INIT(SecurityManager_t3383402582_il2cpp_TypeInfo_var);
 			Hashtable_t1853889766 * L_8 = ((SecurityManager_t3383402582_StaticFields*)il2cpp_codegen_static_fields_for(SecurityManager_t3383402582_il2cpp_TypeInfo_var))->get__declsecCache_1();
 			RuntimeObject * L_9 = V_2;
-			RuntimeObject * L_10 = VirtFuncInvoker1< RuntimeObject *, RuntimeObject * >::Invoke(25 /* System.Object System.Collections.Hashtable::get_Item(System.Object) */, L_8, L_9);
+			RuntimeObject * L_10 = VirtFuncInvoker1< RuntimeObject *, RuntimeObject * >::Invoke(21 /* System.Object System.Collections.Hashtable::get_Item(System.Object) */, L_8, L_9);
 			V_0 = ((PermissionSet_t223948603 *)CastclassClass((RuntimeObject*)L_10, PermissionSet_t223948603_il2cpp_TypeInfo_var));
 			PermissionSet_t223948603 * L_11 = V_0;
 			if (L_11)
@@ -28825,7 +28823,7 @@ IL_0045:
 			Hashtable_t1853889766 * L_19 = ((SecurityManager_t3383402582_StaticFields*)il2cpp_codegen_static_fields_for(SecurityManager_t3383402582_il2cpp_TypeInfo_var))->get__declsecCache_1();
 			RuntimeObject * L_20 = V_2;
 			PermissionSet_t223948603 * L_21 = V_0;
-			VirtActionInvoker2< RuntimeObject *, RuntimeObject * >::Invoke(28 /* System.Void System.Collections.Hashtable::Add(System.Object,System.Object) */, L_19, L_20, L_21);
+			VirtActionInvoker2< RuntimeObject *, RuntimeObject * >::Invoke(24 /* System.Void System.Collections.Hashtable::Add(System.Object,System.Object) */, L_19, L_20, L_21);
 		}
 
 IL_006f:
@@ -29915,48 +29913,6 @@ IL_0037:
 	{
 		double L_7 = V_0;
 		return (((float)((float)L_7)));
-	}
-}
-// System.Single System.Single::Parse(System.String,System.Globalization.NumberStyles,System.IFormatProvider)
-extern "C"  float Single_Parse_m3793689340 (RuntimeObject * __this /* static, unused */, String_t* ___s0, int32_t ___style1, RuntimeObject* ___provider2, const RuntimeMethod* method)
-{
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
-	{
-		il2cpp_codegen_initialize_method (Single_Parse_m3793689340_MetadataUsageId);
-		s_Il2CppMethodInitialized = true;
-	}
-	double V_0 = 0.0;
-	{
-		String_t* L_0 = ___s0;
-		int32_t L_1 = ___style1;
-		RuntimeObject* L_2 = ___provider2;
-		double L_3 = Double_Parse_m1135962389(NULL /*static, unused*/, L_0, L_1, L_2, /*hidden argument*/NULL);
-		V_0 = L_3;
-		double L_4 = V_0;
-		if ((!(((double)((double)il2cpp_codegen_subtract((double)L_4, (double)(3.4028234663852886E+38)))) > ((double)(3.6147112457961776E+29)))))
-		{
-			goto IL_0033;
-		}
-	}
-	{
-		double L_5 = V_0;
-		bool L_6 = Double_IsPositiveInfinity_m1245619811(NULL /*static, unused*/, L_5, /*hidden argument*/NULL);
-		if (L_6)
-		{
-			goto IL_0033;
-		}
-	}
-	{
-		OverflowException_t2020128637 * L_7 = (OverflowException_t2020128637 *)il2cpp_codegen_object_new(OverflowException_t2020128637_il2cpp_TypeInfo_var);
-		OverflowException__ctor_m4029085969(L_7, /*hidden argument*/NULL);
-		IL2CPP_RAISE_MANAGED_EXCEPTION(L_7, NULL, Single_Parse_m3793689340_RuntimeMethod_var);
-	}
-
-IL_0033:
-	{
-		double L_8 = V_0;
-		return (((float)((float)L_8)));
 	}
 }
 // System.String System.Single::ToString()

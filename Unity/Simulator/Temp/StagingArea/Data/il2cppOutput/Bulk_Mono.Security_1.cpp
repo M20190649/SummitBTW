@@ -21776,7 +21776,7 @@ extern "C"  ASN1_t2114160833 * PKCS12_CertificateSafeBag_m1505366012 (PKCS12_t41
 		ASN1__ctor_m1239252869(L_18, (uint8_t)((int32_t)49), /*hidden argument*/NULL);
 		V_4 = L_18;
 		RuntimeObject* L_19 = ___attributes1;
-		RuntimeObject* L_20 = InterfaceFuncInvoker0< RuntimeObject* >::Invoke(7 /* System.Collections.IDictionaryEnumerator System.Collections.IDictionary::GetEnumerator() */, IDictionary_t1363984059_il2cpp_TypeInfo_var, L_19);
+		RuntimeObject* L_20 = InterfaceFuncInvoker0< RuntimeObject* >::Invoke(3 /* System.Collections.IDictionaryEnumerator System.Collections.IDictionary::GetEnumerator() */, IDictionary_t1363984059_il2cpp_TypeInfo_var, L_19);
 		V_5 = L_20;
 		goto IL_0265;
 	}

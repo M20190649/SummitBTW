@@ -32757,7 +32757,7 @@ IL_000c:
 			IL2CPP_RUNTIME_CLASS_INIT(ClientSessionCache_t2353595803_il2cpp_TypeInfo_var);
 			Hashtable_t1853889766 * L_4 = ((ClientSessionCache_t2353595803_StaticFields*)il2cpp_codegen_static_fields_for(ClientSessionCache_t2353595803_il2cpp_TypeInfo_var))->get_cache_0();
 			String_t* L_5 = V_1;
-			RuntimeObject * L_6 = VirtFuncInvoker1< RuntimeObject *, RuntimeObject * >::Invoke(25 /* System.Object System.Collections.Hashtable::get_Item(System.Object) */, L_4, L_5);
+			RuntimeObject * L_6 = VirtFuncInvoker1< RuntimeObject *, RuntimeObject * >::Invoke(21 /* System.Object System.Collections.Hashtable::get_Item(System.Object) */, L_4, L_5);
 			V_2 = ((ClientSessionInfo_t1775821398 *)CastclassClass((RuntimeObject*)L_6, ClientSessionInfo_t1775821398_il2cpp_TypeInfo_var));
 			ClientSessionInfo_t1775821398 * L_7 = V_2;
 			if (L_7)
@@ -32775,7 +32775,7 @@ IL_002a:
 			ByteU5BU5D_t4116647657* L_11 = ___id1;
 			ClientSessionInfo_t1775821398 * L_12 = (ClientSessionInfo_t1775821398 *)il2cpp_codegen_object_new(ClientSessionInfo_t1775821398_il2cpp_TypeInfo_var);
 			ClientSessionInfo__ctor_m2436192270(L_12, L_10, L_11, /*hidden argument*/NULL);
-			VirtActionInvoker2< RuntimeObject *, RuntimeObject * >::Invoke(28 /* System.Void System.Collections.Hashtable::Add(System.Object,System.Object) */, L_8, L_9, L_12);
+			VirtActionInvoker2< RuntimeObject *, RuntimeObject * >::Invoke(24 /* System.Void System.Collections.Hashtable::Add(System.Object,System.Object) */, L_8, L_9, L_12);
 			goto IL_0080;
 		}
 
@@ -32806,14 +32806,14 @@ IL_005d:
 			IL2CPP_RUNTIME_CLASS_INIT(ClientSessionCache_t2353595803_il2cpp_TypeInfo_var);
 			Hashtable_t1853889766 * L_19 = ((ClientSessionCache_t2353595803_StaticFields*)il2cpp_codegen_static_fields_for(ClientSessionCache_t2353595803_il2cpp_TypeInfo_var))->get_cache_0();
 			String_t* L_20 = V_1;
-			VirtActionInvoker1< RuntimeObject * >::Invoke(32 /* System.Void System.Collections.Hashtable::Remove(System.Object) */, L_19, L_20);
+			VirtActionInvoker1< RuntimeObject * >::Invoke(28 /* System.Void System.Collections.Hashtable::Remove(System.Object) */, L_19, L_20);
 			Hashtable_t1853889766 * L_21 = ((ClientSessionCache_t2353595803_StaticFields*)il2cpp_codegen_static_fields_for(ClientSessionCache_t2353595803_il2cpp_TypeInfo_var))->get_cache_0();
 			String_t* L_22 = V_1;
 			String_t* L_23 = ___host0;
 			ByteU5BU5D_t4116647657* L_24 = ___id1;
 			ClientSessionInfo_t1775821398 * L_25 = (ClientSessionInfo_t1775821398 *)il2cpp_codegen_object_new(ClientSessionInfo_t1775821398_il2cpp_TypeInfo_var);
 			ClientSessionInfo__ctor_m2436192270(L_25, L_23, L_24, /*hidden argument*/NULL);
-			VirtActionInvoker2< RuntimeObject *, RuntimeObject * >::Invoke(28 /* System.Void System.Collections.Hashtable::Add(System.Object,System.Object) */, L_21, L_22, L_25);
+			VirtActionInvoker2< RuntimeObject *, RuntimeObject * >::Invoke(24 /* System.Void System.Collections.Hashtable::Add(System.Object,System.Object) */, L_21, L_22, L_25);
 		}
 
 IL_0080:
@@ -32878,7 +32878,7 @@ IL_000c:
 		{
 			IL2CPP_RUNTIME_CLASS_INIT(ClientSessionCache_t2353595803_il2cpp_TypeInfo_var);
 			Hashtable_t1853889766 * L_2 = ((ClientSessionCache_t2353595803_StaticFields*)il2cpp_codegen_static_fields_for(ClientSessionCache_t2353595803_il2cpp_TypeInfo_var))->get_cache_0();
-			RuntimeObject* L_3 = VirtFuncInvoker0< RuntimeObject* >::Invoke(24 /* System.Collections.ICollection System.Collections.Hashtable::get_Values() */, L_2);
+			RuntimeObject* L_3 = VirtFuncInvoker0< RuntimeObject* >::Invoke(20 /* System.Collections.ICollection System.Collections.Hashtable::get_Values() */, L_2);
 			RuntimeObject* L_4 = InterfaceFuncInvoker0< RuntimeObject* >::Invoke(0 /* System.Collections.IEnumerator System.Collections.IEnumerable::GetEnumerator() */, IEnumerable_t1941168011_il2cpp_TypeInfo_var, L_3);
 			V_2 = L_4;
 		}
@@ -33069,7 +33069,7 @@ IL_001f:
 		IL2CPP_RUNTIME_CLASS_INIT(ClientSessionCache_t2353595803_il2cpp_TypeInfo_var);
 		Hashtable_t1853889766 * L_7 = ((ClientSessionCache_t2353595803_StaticFields*)il2cpp_codegen_static_fields_for(ClientSessionCache_t2353595803_il2cpp_TypeInfo_var))->get_cache_0();
 		String_t* L_8 = V_1;
-		RuntimeObject * L_9 = VirtFuncInvoker1< RuntimeObject *, RuntimeObject * >::Invoke(25 /* System.Object System.Collections.Hashtable::get_Item(System.Object) */, L_7, L_8);
+		RuntimeObject * L_9 = VirtFuncInvoker1< RuntimeObject *, RuntimeObject * >::Invoke(21 /* System.Object System.Collections.Hashtable::get_Item(System.Object) */, L_7, L_8);
 		V_2 = ((ClientSessionInfo_t1775821398 *)CastclassClass((RuntimeObject*)L_9, ClientSessionInfo_t1775821398_il2cpp_TypeInfo_var));
 		ClientSessionInfo_t1775821398 * L_10 = V_2;
 		if (L_10)
@@ -33121,7 +33121,7 @@ IL_005c:
 		IL2CPP_RUNTIME_CLASS_INIT(ClientSessionCache_t2353595803_il2cpp_TypeInfo_var);
 		Hashtable_t1853889766 * L_21 = ((ClientSessionCache_t2353595803_StaticFields*)il2cpp_codegen_static_fields_for(ClientSessionCache_t2353595803_il2cpp_TypeInfo_var))->get_cache_0();
 		String_t* L_22 = V_1;
-		VirtActionInvoker1< RuntimeObject * >::Invoke(32 /* System.Void System.Collections.Hashtable::Remove(System.Object) */, L_21, L_22);
+		VirtActionInvoker1< RuntimeObject * >::Invoke(28 /* System.Void System.Collections.Hashtable::Remove(System.Object) */, L_21, L_22);
 		return (ClientSessionInfo_t1775821398 *)NULL;
 	}
 

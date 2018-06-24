@@ -1170,8 +1170,6 @@ extern const uint32_t Directory_CreateDirectoriesInternal_m3735342319_MetadataUs
 extern const uint32_t Directory_Exists_m1484791558_MetadataUsageId;
 extern const RuntimeMethod* Directory_GetCurrentDirectory_m219218555_RuntimeMethod_var;
 extern const uint32_t Directory_GetCurrentDirectory_m219218555_MetadataUsageId;
-extern String_t* _stringLiteral3452614534;
-extern const uint32_t Directory_GetFiles_m932257245_MetadataUsageId;
 extern RuntimeClass* SearchPattern_t3793128359_il2cpp_TypeInfo_var;
 extern RuntimeClass* DirectoryNotFoundException_t1220582502_il2cpp_TypeInfo_var;
 extern const RuntimeMethod* Directory_GetFileSystemEntries_m1684188607_RuntimeMethod_var;
@@ -1203,6 +1201,8 @@ extern RuntimeClass* FileStream_t4292183065_il2cpp_TypeInfo_var;
 extern const uint32_t File_Open_m664439378_MetadataUsageId;
 extern const uint32_t File_OpenRead_m2936789020_MetadataUsageId;
 extern const uint32_t File_OpenText_m196858847_MetadataUsageId;
+extern const uint32_t File_ReadAllText_m2815479134_MetadataUsageId;
+extern const uint32_t File_ReadAllText_m3275939702_MetadataUsageId;
 extern String_t* _stringLiteral3923874395;
 extern const uint32_t FileLoadException__ctor_m3879680456_MetadataUsageId;
 extern String_t* _stringLiteral3534888232;
@@ -13142,8 +13142,6 @@ extern "C"  bool MonoIO_ExistsDirectory_m2182482658 (RuntimeObject * __this /* s
 extern "C"  String_t* MonoIO_GetCurrentDirectory_m762333289 (RuntimeObject * __this /* static, unused */, int32_t* ___error0, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // System.Exception System.IO.MonoIO::GetException(System.IO.MonoIOError)
 extern "C"  Exception_t * MonoIO_GetException_m865954703 (RuntimeObject * __this /* static, unused */, int32_t ___error0, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
-// System.String[] System.IO.Directory::GetFiles(System.String,System.String)
-extern "C"  StringU5BU5D_t1281789340* Directory_GetFiles_m2624572368 (RuntimeObject * __this /* static, unused */, String_t* ___path0, String_t* ___searchPattern1, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // System.String[] System.IO.Directory::GetFileSystemEntries(System.String,System.String,System.IO.FileAttributes,System.IO.FileAttributes)
 extern "C"  StringU5BU5D_t1281789340* Directory_GetFileSystemEntries_m1684188607 (RuntimeObject * __this /* static, unused */, String_t* ___path0, String_t* ___searchPattern1, int32_t ___mask2, int32_t ___attrs3, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // System.String System.IO.Path::GetDirectoryName(System.String)
@@ -13188,6 +13186,12 @@ extern "C"  void UnauthorizedAccessException__ctor_m40101894 (UnauthorizedAccess
 extern "C"  bool MonoIO_DeleteFile_m3839141322 (RuntimeObject * __this /* static, unused */, String_t* ___path0, int32_t* ___error1, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // System.Void System.IO.FileStream::.ctor(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
 extern "C"  void FileStream__ctor_m2889718780 (FileStream_t4292183065 * __this, String_t* ___path0, int32_t ___mode1, int32_t ___access2, int32_t ___share3, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
+// System.Text.Encoding System.Text.Encoding::get_UTF8Unmarked()
+extern "C"  Encoding_t1523322056 * Encoding_get_UTF8Unmarked_m3350637783 (RuntimeObject * __this /* static, unused */, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
+// System.String System.IO.File::ReadAllText(System.String,System.Text.Encoding)
+extern "C"  String_t* File_ReadAllText_m3275939702 (RuntimeObject * __this /* static, unused */, String_t* ___path0, Encoding_t1523322056 * ___encoding1, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
+// System.Void System.IO.StreamReader::.ctor(System.String,System.Text.Encoding)
+extern "C"  void StreamReader__ctor_m448228252 (StreamReader_t4009935899 * __this, String_t* ___path0, Encoding_t1523322056 * ___encoding1, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // System.Void System.IO.IOException::.ctor()
 extern "C"  void IOException__ctor_m971599150 (IOException_t4088381929 * __this, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // System.Exception System.Exception::get_InnerException()
@@ -13400,8 +13404,6 @@ extern "C"  void TextReader__ctor_m605064712 (TextReader_t283511965 * __this, co
 extern "C"  void StreamReader__ctor_m2783219104 (StreamReader_t4009935899 * __this, Stream_t1273022909 * ___stream0, Encoding_t1523322056 * ___encoding1, bool ___detectEncodingFromByteOrderMarks2, int32_t ___bufferSize3, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // System.Void System.IO.StreamReader::Initialize(System.IO.Stream,System.Text.Encoding,System.Boolean,System.Int32)
 extern "C"  void StreamReader_Initialize_m3160193871 (StreamReader_t4009935899 * __this, Stream_t1273022909 * ___stream0, Encoding_t1523322056 * ___encoding1, bool ___detectEncodingFromByteOrderMarks2, int32_t ___bufferSize3, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
-// System.Text.Encoding System.Text.Encoding::get_UTF8Unmarked()
-extern "C"  Encoding_t1523322056 * Encoding_get_UTF8Unmarked_m3350637783 (RuntimeObject * __this /* static, unused */, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // System.Void System.IO.StreamReader::.ctor(System.String,System.Text.Encoding,System.Boolean,System.Int32)
 extern "C"  void StreamReader__ctor_m2637382018 (StreamReader_t4009935899 * __this, String_t* ___path0, Encoding_t1523322056 * ___encoding1, bool ___detectEncodingFromByteOrderMarks2, int32_t ___bufferSize3, const RuntimeMethod* method) IL2CPP_METHOD_ATTR;
 // System.IO.FileStream System.IO.File::OpenRead(System.String)
@@ -15790,7 +15792,7 @@ IL_003c:
 			int32_t L_9 = VirtFuncInvoker0< int32_t >::Invoke(6 /* System.Int32 System.Globalization.CultureInfo::get_LCID() */, L_8);
 			int32_t L_10 = L_9;
 			RuntimeObject * L_11 = Box(Int32_t2950945753_il2cpp_TypeInfo_var, &L_10);
-			RuntimeObject * L_12 = VirtFuncInvoker1< RuntimeObject *, RuntimeObject * >::Invoke(25 /* System.Object System.Collections.Hashtable::get_Item(System.Object) */, L_7, L_11);
+			RuntimeObject * L_12 = VirtFuncInvoker1< RuntimeObject *, RuntimeObject * >::Invoke(21 /* System.Object System.Collections.Hashtable::get_Item(System.Object) */, L_7, L_11);
 			__this->set_collator_5(((SimpleCollator_t2877834729 *)CastclassClass((RuntimeObject*)L_12, SimpleCollator_t2877834729_il2cpp_TypeInfo_var)));
 			SimpleCollator_t2877834729 * L_13 = __this->get_collator_5();
 			if (L_13)
@@ -15812,7 +15814,7 @@ IL_0067:
 			int32_t L_19 = L_18;
 			RuntimeObject * L_20 = Box(Int32_t2950945753_il2cpp_TypeInfo_var, &L_19);
 			SimpleCollator_t2877834729 * L_21 = __this->get_collator_5();
-			VirtActionInvoker2< RuntimeObject *, RuntimeObject * >::Invoke(26 /* System.Void System.Collections.Hashtable::set_Item(System.Object,System.Object) */, L_16, L_20, L_21);
+			VirtActionInvoker2< RuntimeObject *, RuntimeObject * >::Invoke(22 /* System.Void System.Collections.Hashtable::set_Item(System.Object,System.Object) */, L_16, L_20, L_21);
 		}
 
 IL_008e:
@@ -18615,12 +18617,12 @@ IL_001e:
 		int32_t L_6 = L_5;
 		RuntimeObject * L_7 = Box(Int32_t2950945753_il2cpp_TypeInfo_var, &L_6);
 		CultureInfo_t4157843068 * L_8 = ___c0;
-		VirtActionInvoker2< RuntimeObject *, RuntimeObject * >::Invoke(26 /* System.Void System.Collections.Hashtable::set_Item(System.Object,System.Object) */, L_3, L_7, L_8);
+		VirtActionInvoker2< RuntimeObject *, RuntimeObject * >::Invoke(22 /* System.Void System.Collections.Hashtable::set_Item(System.Object,System.Object) */, L_3, L_7, L_8);
 		Hashtable_t1853889766 * L_9 = ((CultureInfo_t4157843068_StaticFields*)il2cpp_codegen_static_fields_for(CultureInfo_t4157843068_il2cpp_TypeInfo_var))->get_shared_by_name_37();
 		CultureInfo_t4157843068 * L_10 = ___c0;
 		String_t* L_11 = L_10->get_m_name_17();
 		CultureInfo_t4157843068 * L_12 = ___c0;
-		VirtActionInvoker2< RuntimeObject *, RuntimeObject * >::Invoke(26 /* System.Void System.Collections.Hashtable::set_Item(System.Object,System.Object) */, L_9, L_11, L_12);
+		VirtActionInvoker2< RuntimeObject *, RuntimeObject * >::Invoke(22 /* System.Void System.Collections.Hashtable::set_Item(System.Object,System.Object) */, L_9, L_11, L_12);
 		return;
 	}
 }
@@ -18669,7 +18671,7 @@ IL_0016:
 			int32_t L_4 = ___culture0;
 			int32_t L_5 = L_4;
 			RuntimeObject * L_6 = Box(Int32_t2950945753_il2cpp_TypeInfo_var, &L_5);
-			RuntimeObject * L_7 = VirtFuncInvoker1< RuntimeObject *, RuntimeObject * >::Invoke(25 /* System.Object System.Collections.Hashtable::get_Item(System.Object) */, L_3, L_6);
+			RuntimeObject * L_7 = VirtFuncInvoker1< RuntimeObject *, RuntimeObject * >::Invoke(21 /* System.Object System.Collections.Hashtable::get_Item(System.Object) */, L_3, L_6);
 			V_0 = ((CultureInfo_t4157843068 *)IsInstClass((RuntimeObject*)L_7, CultureInfo_t4157843068_il2cpp_TypeInfo_var));
 			CultureInfo_t4157843068 * L_8 = V_0;
 			if (!L_8)
@@ -18785,7 +18787,7 @@ IL_0027:
 			IL2CPP_RUNTIME_CLASS_INIT(CultureInfo_t4157843068_il2cpp_TypeInfo_var);
 			Hashtable_t1853889766 * L_5 = ((CultureInfo_t4157843068_StaticFields*)il2cpp_codegen_static_fields_for(CultureInfo_t4157843068_il2cpp_TypeInfo_var))->get_shared_by_name_37();
 			String_t* L_6 = ___name0;
-			RuntimeObject * L_7 = VirtFuncInvoker1< RuntimeObject *, RuntimeObject * >::Invoke(25 /* System.Object System.Collections.Hashtable::get_Item(System.Object) */, L_5, L_6);
+			RuntimeObject * L_7 = VirtFuncInvoker1< RuntimeObject *, RuntimeObject * >::Invoke(21 /* System.Object System.Collections.Hashtable::get_Item(System.Object) */, L_5, L_6);
 			V_0 = ((CultureInfo_t4157843068 *)IsInstClass((RuntimeObject*)L_7, CultureInfo_t4157843068_il2cpp_TypeInfo_var));
 			CultureInfo_t4157843068 * L_8 = V_0;
 			if (!L_8)
@@ -24424,15 +24426,6 @@ extern "C"  bool Guid_op_Equality_m4289903222 (RuntimeObject * __this /* static,
 		Guid_t  L_0 = ___b1;
 		bool L_1 = Guid_Equals_m3683678873((Guid_t *)(&___a0), L_0, /*hidden argument*/NULL);
 		return L_1;
-	}
-}
-// System.Boolean System.Guid::op_Inequality(System.Guid,System.Guid)
-extern "C"  bool Guid_op_Inequality_m2302622814 (RuntimeObject * __this /* static, unused */, Guid_t  ___a0, Guid_t  ___b1, const RuntimeMethod* method)
-{
-	{
-		Guid_t  L_0 = ___b1;
-		bool L_1 = Guid_Equals_m3683678873((Guid_t *)(&___a0), L_0, /*hidden argument*/NULL);
-		return (bool)((((int32_t)L_1) == ((int32_t)0))? 1 : 0);
 	}
 }
 #ifdef __clang__
@@ -33811,21 +33804,6 @@ IL_0015:
 		return L_4;
 	}
 }
-// System.String[] System.IO.Directory::GetFiles(System.String)
-extern "C"  StringU5BU5D_t1281789340* Directory_GetFiles_m932257245 (RuntimeObject * __this /* static, unused */, String_t* ___path0, const RuntimeMethod* method)
-{
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
-	{
-		il2cpp_codegen_initialize_method (Directory_GetFiles_m932257245_MetadataUsageId);
-		s_Il2CppMethodInitialized = true;
-	}
-	{
-		String_t* L_0 = ___path0;
-		StringU5BU5D_t1281789340* L_1 = Directory_GetFiles_m2624572368(NULL /*static, unused*/, L_0, _stringLiteral3452614534, /*hidden argument*/NULL);
-		return L_1;
-	}
-}
 // System.String[] System.IO.Directory::GetFiles(System.String,System.String)
 extern "C"  StringU5BU5D_t1281789340* Directory_GetFiles_m2624572368 (RuntimeObject * __this /* static, unused */, String_t* ___path0, String_t* ___searchPattern1, const RuntimeMethod* method)
 {
@@ -34764,6 +34742,102 @@ extern "C"  StreamReader_t4009935899 * File_OpenText_m196858847 (RuntimeObject *
 		StreamReader_t4009935899 * L_1 = (StreamReader_t4009935899 *)il2cpp_codegen_object_new(StreamReader_t4009935899_il2cpp_TypeInfo_var);
 		StreamReader__ctor_m1616861391(L_1, L_0, /*hidden argument*/NULL);
 		return L_1;
+	}
+}
+// System.String System.IO.File::ReadAllText(System.String)
+extern "C"  String_t* File_ReadAllText_m2815479134 (RuntimeObject * __this /* static, unused */, String_t* ___path0, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_method (File_ReadAllText_m2815479134_MetadataUsageId);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		String_t* L_0 = ___path0;
+		IL2CPP_RUNTIME_CLASS_INIT(Encoding_t1523322056_il2cpp_TypeInfo_var);
+		Encoding_t1523322056 * L_1 = Encoding_get_UTF8Unmarked_m3350637783(NULL /*static, unused*/, /*hidden argument*/NULL);
+		String_t* L_2 = File_ReadAllText_m3275939702(NULL /*static, unused*/, L_0, L_1, /*hidden argument*/NULL);
+		return L_2;
+	}
+}
+// System.String System.IO.File::ReadAllText(System.String,System.Text.Encoding)
+extern "C"  String_t* File_ReadAllText_m3275939702 (RuntimeObject * __this /* static, unused */, String_t* ___path0, Encoding_t1523322056 * ___encoding1, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_method (File_ReadAllText_m3275939702_MetadataUsageId);
+		s_Il2CppMethodInitialized = true;
+	}
+	StreamReader_t4009935899 * V_0 = NULL;
+	String_t* V_1 = NULL;
+	Exception_t * __last_unhandled_exception = 0;
+	NO_UNUSED_WARNING (__last_unhandled_exception);
+	Exception_t * __exception_local = 0;
+	NO_UNUSED_WARNING (__exception_local);
+	int32_t __leave_target = 0;
+	NO_UNUSED_WARNING (__leave_target);
+	{
+		String_t* L_0 = ___path0;
+		Encoding_t1523322056 * L_1 = ___encoding1;
+		StreamReader_t4009935899 * L_2 = (StreamReader_t4009935899 *)il2cpp_codegen_object_new(StreamReader_t4009935899_il2cpp_TypeInfo_var);
+		StreamReader__ctor_m448228252(L_2, L_0, L_1, /*hidden argument*/NULL);
+		V_0 = L_2;
+	}
+
+IL_0008:
+	try
+	{ // begin try (depth: 1)
+		{
+			StreamReader_t4009935899 * L_3 = V_0;
+			String_t* L_4 = VirtFuncInvoker0< String_t* >::Invoke(11 /* System.String System.IO.StreamReader::ReadToEnd() */, L_3);
+			V_1 = L_4;
+			IL2CPP_LEAVE(0x26, FINALLY_0019);
+		}
+
+IL_0014:
+		{
+			; // IL_0014: leave IL_0026
+		}
+	} // end try (depth: 1)
+	catch(Il2CppExceptionWrapper& e)
+	{
+		__last_unhandled_exception = (Exception_t *)e.ex;
+		goto FINALLY_0019;
+	}
+
+FINALLY_0019:
+	{ // begin finally (depth: 1)
+		{
+			StreamReader_t4009935899 * L_5 = V_0;
+			if (!L_5)
+			{
+				goto IL_0025;
+			}
+		}
+
+IL_001f:
+		{
+			StreamReader_t4009935899 * L_6 = V_0;
+			InterfaceActionInvoker0::Invoke(0 /* System.Void System.IDisposable::Dispose() */, IDisposable_t3640265483_il2cpp_TypeInfo_var, L_6);
+		}
+
+IL_0025:
+		{
+			IL2CPP_END_FINALLY(25)
+		}
+	} // end finally (depth: 1)
+	IL2CPP_CLEANUP(25)
+	{
+		IL2CPP_JUMP_TBL(0x26, IL_0026)
+		IL2CPP_RETHROW_IF_UNHANDLED(Exception_t *)
+	}
+
+IL_0026:
+	{
+		String_t* L_7 = V_1;
+		return L_7;
 	}
 }
 #ifdef __clang__
@@ -44416,6 +44490,16 @@ extern "C"  void StreamReader__ctor_m1616861391 (StreamReader_t4009935899 * __th
 		String_t* L_0 = ___path0;
 		IL2CPP_RUNTIME_CLASS_INIT(Encoding_t1523322056_il2cpp_TypeInfo_var);
 		Encoding_t1523322056 * L_1 = Encoding_get_UTF8Unmarked_m3350637783(NULL /*static, unused*/, /*hidden argument*/NULL);
+		StreamReader__ctor_m2637382018(__this, L_0, L_1, (bool)1, ((int32_t)4096), /*hidden argument*/NULL);
+		return;
+	}
+}
+// System.Void System.IO.StreamReader::.ctor(System.String,System.Text.Encoding)
+extern "C"  void StreamReader__ctor_m448228252 (StreamReader_t4009935899 * __this, String_t* ___path0, Encoding_t1523322056 * ___encoding1, const RuntimeMethod* method)
+{
+	{
+		String_t* L_0 = ___path0;
+		Encoding_t1523322056 * L_1 = ___encoding1;
 		StreamReader__ctor_m2637382018(__this, L_0, L_1, (bool)1, ((int32_t)4096), /*hidden argument*/NULL);
 		return;
 	}
