@@ -5,7 +5,7 @@ import pandas as pd
 # import pandas as pd
 import sys, os, shutil, glob, subprocess
 sys.path.insert(0, 'D:\\home\\site\\wwwroot\\sumo-0.32.0\\tools')
-sys.path.insert(0, 'D:\\home\\site\\wwwroot\\sumo-0.32.0\\bin')
+# sys.path.insert(0, 'D:\\home\\site\\wwwroot\\sumo-0.32.0\\bin')
 
 from management.functionality.algorithm_compare import compare_algorithms, TEMP_OUT_DIR
 from management.gui.visual_statistics import load_statistics_widgets
@@ -23,14 +23,23 @@ app = Flask(__name__, static_url_path='')
 last_compare_stats = None
 
 
+
 @app.route('/')
 @app.route('/index.html')
-def root():
+def home():
     """
     Loading home page
     :return: html page of the dashboard
     """
     return render_template('index.html')
+
+@app.route('/simulation_zone.html')
+def simulation():
+    """
+    Loading home page
+    :return: html page of the dashboard
+    """
+    return render_template('simulation_zone.html')
 
 
 @app.route('/run_simulation', methods=['GET', 'POST'])
