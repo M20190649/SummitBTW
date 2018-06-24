@@ -94,7 +94,20 @@ def customize_map():
     Customize map & simulation
     :return: Cutomization page
     """
-    return render_template('customize_map.html')
+    config = {'display_done': 'display: none;', 'num_junctions': '10', 'num_cars': '100'}
+    return render_template('customize_map.html', **config)
+
+@app.route('/create_customized_map.html', methods=['GET', 'POST'])
+def create_customized_map():
+    """
+    Customize map & simulation
+    :return: Cutomization page
+    """
+
+    num_junctions = request.args['junctions-slider']
+    num_cars = request.args['cars-slider']
+    config = {'num_junctions': str(num_junctions), 'num_cars': str(num_cars)}
+    return render_template('customize_map.html', **config)
 
 
 if __name__ == "__main__":

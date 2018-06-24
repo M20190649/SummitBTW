@@ -93,26 +93,36 @@
                                 Then hit <i><b>create</b></i> button, and a customized simulation set is now ready for usage!<br> </p>
                                 <br>
                         </div>
+                        <form id="custom-map-form" action="/create_customized_map.html">
                         <div class="text-center">
                       
                        
                      <p id="junctions-amount" class="lead" style="font-size: 120%; text-indent: -5%;">
                         Junctions <br> </p>
-                        <input id="junctions-slider" data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="20" data-slider-step="1" data-slider-value="10" style="width: 30%; height: 60%;"/>
+                        <input name="junctions-slider" id="junctions-slider" data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="20" data-slider-step="1" data-slider-value="{{num_junctions}}" style="width: 30%; height: 60%;"/>
                         <br><br><br><br>
-                        <p id="cars-amount" class="lead" style="font-size: 120%; text-indent: -5%;"">
-                        Cars <br> </p>
-                        <input id="cars-slider" data-slider-id='ex2Slider' type="text" data-slider-min="10" data-slider-max="300" data-slider-step="1" data-slider-value="100" style="width: 30%; height: 60%;"/>
+                        <p id="cars-amount" class="lead" style="font-size: 120%; text-indent: -5%;">
+                        Cars <br>
+                         </p>
+                        <input name="cars-slider" id="cars-slider" data-slider-id='ex2Slider' type="text" data-slider-min="10" data-slider-max="300" data-slider-step="1" data-slider-value="{{num_cars}}" style="width: 30%; height: 60%;"/>
                         <br><br><br><br>
                           <button id="create-map" type="submit" class="btn btn-success btn-lg">
                                         <span class="caret"></span>
                                         Create 
                                     </button>
-                                    <br><br>
+                                    <br><br><br>
+
+                                    <div style="{{display_done}}"> <img src="http://www.stickpng.com/assets/images/5aa78e207603fc558cffbf19.png" alt="" width="5%"> <br> <br> </div>
+
+                                    <div id = "loading-bar" style="display:none" align="center">
+                                    <div><img id = "loading-gif" src = "images/loading.gif" height="220" width="220"></div>
+                                    <br><div style="font-size:200%">Loading...</div>
+                                </div><br>
                         
                      </div>
 
 
+                     </form>
                </div>
             </div>
          </div>
@@ -148,6 +158,22 @@
             }
          });
       </script>
+
+      <script type="text/javascript">
+         $( "#custom-map-form" ).submit(function( event ) {
+          document.getElementById("loading-bar").style.display = "block";
+      });</script>
+
+      <script type="text/javascript">
+         $( "#loading-gif" ).dblclick(function() {
+          var curr = document.getElementById("loading-gif").src;
+          if(curr.includes("fortnite")) {
+              document.getElementById("loading-gif").src = "images/loading.gif"
+          }
+          else{
+              document.getElementById("loading-gif").src = "images/fortnite_loading.gif" ;
+          }
+      }); </script>
 
 
    </body>
