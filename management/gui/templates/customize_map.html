@@ -70,12 +70,19 @@
                         <span class="menu-title">Scheduling Analysis</span>
                         </a>
                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="customize_map.html">
+                        <img src="images/icons/001-map.png" alt="">
+                        <span class="menu-title">Map Customization</span>
+                        </a>
+                     </li>
                      <li class="nav-item">
                         <a class="nav-link" href="team.html">
                         <img src="images/icons/meet-team.png" alt="">
                         <span class="menu-title">Our Team</span>
                         </a>
                      </li>
+                     
                   </ul>
                </nav>
                <!-- partial -->
@@ -112,7 +119,7 @@
                                     </button>
                                     <br><br><br>
 
-                                    <div style="{{display_done}}"> <img src="http://www.stickpng.com/assets/images/5aa78e207603fc558cffbf19.png" alt="" width="5%"> <br> <br> </div>
+                                    <div id="done-vi" style="{{display_done}}"> <img src="http://www.stickpng.com/assets/images/5aa78e207603fc558cffbf19.png" alt="" width="5%"> <br> <br> </div>
 
                                     <div id = "loading-bar" style="display:none" align="center">
                                     <div><img id = "loading-gif" src = "images/loading.gif" height="220" width="220"></div>
@@ -162,6 +169,7 @@
       <script type="text/javascript">
          $( "#custom-map-form" ).submit(function( event ) {
           document.getElementById("loading-bar").style.display = "block";
+          document.getElementById("done-vi").style.display = "none";
       });</script>
 
       <script type="text/javascript">
