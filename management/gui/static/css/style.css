@@ -14082,3 +14082,33 @@ if it's not present, don't show loader */
 #ex2Slider .slider-selection {
     background: #006666;
 }
+.ad-left {
+  float: left;
+}
+
+.ad-right {
+  float: right;
+  margin-left: 10px;
+}
+
+.entire-thing {
+  width: 650px;
+}
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.column-home {
+  float: left;
+  width: 40%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row-home::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.span {
+  display: inline-block;
+  vertical-align: middle;
+}
