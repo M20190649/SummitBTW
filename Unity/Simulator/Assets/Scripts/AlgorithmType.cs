@@ -9,5 +9,6 @@ public enum AlgorithmType {
     NULL = 0,
     STATIC,
     MAX_OCCUPANCY,
+    MIXED,
     DYNAMIC,
 }
