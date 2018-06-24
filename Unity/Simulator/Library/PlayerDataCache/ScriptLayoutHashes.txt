@@ -1,14 +1,16 @@
 WebGL
 PlayerPath?
-/Users/eylonsho/Nextcloud/Technion/YearlyProject/SummitBTW/Unity/test/test
+C:/Users/gdor8/Desktop/SummitBTW/Unity/final unity woohoo
 SceneListBegin?
 Assets/Scenes/MainScene.unity
 SceneListEnd?
-aaa86120f18ed4f95ba7047ed69f01c1 Assembly-CSharp.dll:.MapAndSimulationChangeButton
+5831f58ee19103afefc0dcfa5d51be7f Assembly-CSharp.dll:.MapAndSimulationChangeButton
 e4ae62a8ca479b83bd7074f4a1f19298 Assembly-CSharp.dll:.Vehicle
 322cb40e1e282f28af980cbef7922a90 UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsEventTracker
 dc07d7ad69b399a46e92c483bf1c04ca UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsTracker
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CheckMesh
 f04c25ed12c6c5b629229d624f7b8e2e Assembly-CSharp.dll:.MapXmlParser
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MapChooser
 b73396a577db483c5cd31448f54dfc61 Assembly-CSharp.dll:.SimulationXmlParser
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
@@ -149,6 +151,5 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MapChooser
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CheckMesh
 e9766676bc25c2f19d40bbccb2f9cee3 Assembly-CSharp.dll:AssemblyCSharp.Assets.Scripts.StreamingAssetsGetter
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PlayerMouse

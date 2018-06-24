@@ -17,8 +17,6 @@ public class SimulationXmlParser : MonoBehaviour {
 
     public bool parseCalled = false;
 
-    private float mouseSensitivity;
-
     XmlNodeList nodeList;   //contain every time frame of the simulation in a node list
     int readTime = -1;      //current timespace
 
@@ -28,13 +26,15 @@ public class SimulationXmlParser : MonoBehaviour {
         XmlDocument doc = new XmlDocument();
         doc.LoadXml(sim);
 
+        playButton.interactable = true;
+        nextButton.interactable = true;
+
         parseCalled = true;
 
         nodeList = doc.GetElementsByTagName("data");
 
         float camSize = 50;
         Camera.main.orthographicSize = camSize;
-        mouseSensitivity = 15;
 
         Button play = playButton.GetComponent<Button>();
         play.onClick.AddListener(playSimulation);
@@ -242,21 +242,7 @@ public class SimulationXmlParser : MonoBehaviour {
 
     void Update()
     {
-        //Camera Zoom
-        float camSize = Camera.main.orthographicSize;
-        camSize += Input.GetAxis("Mouse ScrollWheel") * -mouseSensitivity;
-        camSize = Mathf.Clamp(camSize, 1.0f, 10000.0f);
-        Camera.main.orthographicSize = camSize;
-
-        //Camera Move
-        float horizontalSpeed = 40.0f;
-        float verticalSpeed = 40.0f;
-        if (Input.GetButton("Fire1"))
-        {
-            float h = -horizontalSpeed * Input.GetAxis("Mouse Y");
-            float v = -verticalSpeed * Input.GetAxis("Mouse X");
-            Camera.main.transform.Translate(v, h, 0);
-        }
+        
     }
 
 }
