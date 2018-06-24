@@ -54,7 +54,9 @@ def generate_net(sumo_network_path, size):
 
     if size != 0:
         logging.info('Starting to generate SUMO network')
-        cmd = [os.path.join(os.environ['SUMO_HOME'], 'bin', 'netgenerate.exe'),
+        netgen_bin = os.path.join(os.environ['SUMO_HOME'], 'bin', 'netgenerate.exe')
+        print("is file here: ", os.path.isfile(os.path.join(os.environ['SUMO_HOME'], 'bin', 'netgenerate.exe')))
+        cmd = [netgen_bin,
                '-o', sumo_network_path,
                '--default-junction-type', 'traffic_light_right_on_red',
                '--rand',
