@@ -6,6 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>BTW - Light The Traffic</title>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.2/bootstrap-slider.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.2/bootstrap-slider.min.js"></script>
+      <link rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.2/css/bootstrap-slider.css"/>
+      <link rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.2/css/bootstrap-slider.min.css"/>
+
+
       <link rel="stylesheet"
          href="{{ url_for('static',  filename='node_modules/font-awesome/css/font-awesome.min.css') }}"/>
       <link rel="stylesheet"
@@ -71,20 +80,32 @@
                </nav>
                <!-- partial -->
                <div class="content-wrapper">
-
+                  <h4 class="card-title">
+                                <img src="images/icons/play-button.png" alt="" height="42" width="42">
+                                &nbsp; Map Customization</h4>
+                            <br>
                   <div class="card-deck">
                     <div class="card col-lg-12 px-0 mb-4">
                         <div class="card-body">
-                            <h4 class="card-title">
-                                <img src="images/icons/play-button.png" alt="" height="42" width="42">
-                                &nbsp; Simulation Zone</h4>
-                            <br>
+                            
                             <p class="lead" style="font-size:130%;">Here you can cutomize your own map & simulation.<br>
                                 Just choose amount of junctions and cars!<br> </p>
                                 <br>
                         </div>
+                        <div class="text-center">
+                      
+                       
+                     <p id="junctions-amount" class="lead" style="font-size: 120%" style="text-indent: 30%;">
+                        Junctions <br> </p>
+                        <input id="junctions-slider" data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="20" data-slider-step="1" data-slider-value="10" style="width: 30%; height: 60%;"/>
+                        <br><br><br><br>
+                        <p id="cars-amount" class="lead" style="font-size: 120%">
+                        Junctions <br> </p>
+                        <input id="cars-slider" data-slider-id='ex2Slider' type="text" data-slider-min="10" data-slider-max="300" data-slider-step="1" data-slider-value="100" style="width: 30%; height: 60%;"/>
+                        <br><br>
+                        
+                     
 
-                    </div>
                 </div>
 
 
@@ -105,5 +126,25 @@
       <script src="js/chart.js"></script>
       <script src="js/maps.js"></script>
       <script src="js/schedulers-comparing.js"></script>
+      <script>
+        // Without JQuery
+         var slider = new Slider('#junctions-slider', {
+            formatter: function(value) {
+               document.getElementById("junctions-amount").innerHTML = "Junctions: " + value;
+               return 'Current value: ' + value;
+            }
+         });
+      </script>
+       <script>
+        // Without JQuery
+         var slider = new Slider('#cars-slider', {
+            formatter: function(value) {
+               document.getElementById("cars-amount").innerHTML = "Cars: " + value;
+               return 'Current value: ' + value;
+            }
+         });
+      </script>
+
+
    </body>
 </html>
