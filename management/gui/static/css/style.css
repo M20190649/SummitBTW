@@ -14108,17 +14108,7 @@ if it's not present, don't show loader */
   display: table;
 }
 
-.bubble { 
-  position: absolute; 
-  left: 93px; 
-  top: 21px; 
-  width: 135px; 
-  height: 84px; 
-  display: table; 
-}
-
-.bubble p {
-  display: table-cell; 
-  vertical-align: middle; 
-  text-align: center; 
+.span {
+  display: inline-block;
+  vertical-align: middle;
 }

@@ -1,145 +1,134 @@
 <!--Author: Eylon Shoshan -->
-
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>BTW - Light The Traffic</title>
-    <link rel="stylesheet"
-          href="{{ url_for('static',  filename='node_modules/font-awesome/css/font-awesome.min.css') }}"/>
-    <link rel="stylesheet"
-          href="{{ url_for('static',  filename='node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css') }}"/>
-    <link rel="stylesheet"
-          href="{{ url_for('static',  filename='node_modules/flag-icon-css/css/flag-icon.min.css') }}"/>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
-    <link rel="shortcut icon" href="{{ url_for('static',  filename='images/favicon.png') }}"/>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script>
-      function resizeIframe(obj) {
-        obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-      }
-    </script>
-</head>
-
-<body>
-<div class=" container-scroller">
-    <!-- partial:partials/_navbar.html -->
-    <nav class="navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-        <div class="bg-white text-center navbar-brand-wrapper">
-            <a class="navbar-brand brand-logo" href="index.html"><img src="images/logo_star_black.png"/></a>
-            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo_star_mini.jpg" alt=""></a>
-        </div>
-        <div class="navbar-menu-wrapper d-flex align-items-center">
-            <button class="navbar-toggler navbar-toggler d-none d-lg-block navbar-dark align-self-center mr-3"
-                    type="button" data-toggle="minimize">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <ul class="navbar-nav ml-lg-auto d-flex align-items-center flex-row">
-
-            </ul>
-            <button class="navbar-toggler navbar-dark navbar-toggler-right d-lg-none align-self-center" type="button"
-                    data-toggle="offcanvas">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- partial -->
-    <div class="container-fluid">
-        <div class="row row-offcanvas row-offcanvas-right">
-            <!-- partial:partials/_sidebar.html -->
-            <nav class="bg-white sidebar sidebar-offcanvas" id="sidebar">
-                <div class="user-info">
-                    <img src="images/face.jpg" alt="">
-                    <p class="name">The Yaniv</p>
-                    <p class="designation">Traffic Manager</p>
-                    <span class="online"></span>
-                </div>
-                <ul class="nav">
-                    <li class="nav-item active">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>BTW - Light The Traffic</title>
+      <link rel="stylesheet"
+         href="{{ url_for('static',  filename='node_modules/font-awesome/css/font-awesome.min.css') }}"/>
+      <link rel="stylesheet"
+         href="{{ url_for('static',  filename='node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css') }}"/>
+      <link rel="stylesheet"
+         href="{{ url_for('static',  filename='node_modules/flag-icon-css/css/flag-icon.min.css') }}"/>
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+      <link rel="shortcut icon" href="{{ url_for('static',  filename='images/favicon.png') }}"/>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script>
+         function resizeIframe(obj) {
+           obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+         }
+      </script>
+   </head>
+   <body>
+      <div class=" container-scroller">
+         <!-- partial:partials/_navbar.html -->
+         <nav class="navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="bg-white text-center navbar-brand-wrapper">
+               <a class="navbar-brand brand-logo" href="index.html"><img src="images/logo_star_black.png"/></a>
+               <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo_star_mini.jpg" alt=""></a>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-center">
+               <button class="navbar-toggler navbar-toggler d-none d-lg-block navbar-dark align-self-center mr-3"
+                  type="button" data-toggle="minimize">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+               <ul class="navbar-nav ml-lg-auto d-flex align-items-center flex-row">
+               </ul>
+               <button class="navbar-toggler navbar-dark navbar-toggler-right d-lg-none align-self-center" type="button"
+                  data-toggle="offcanvas">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+            </div>
+         </nav>
+         <!-- partial -->
+         <div class="container-fluid">
+            <div class="row row-offcanvas row-offcanvas-right">
+               <!-- partial:partials/_sidebar.html -->
+               <nav class="bg-white sidebar sidebar-offcanvas" id="sidebar">
+                  <div class="user-info">
+                     <img src="images/face.jpg" alt="">
+                     <p class="name">The Yaniv</p>
+                     <p class="designation">Traffic Manager</p>
+                     <span class="online"></span>
+                  </div>
+                  <ul class="nav">
+                     <li class="nav-item active">
                         <a class="nav-link" href="index.html">
-                            <img src="images/icons/home_logo.png" alt="" style="width:20px;height:20px;">
-                            <span class="menu-title">Home</span>
+                        <img src="images/icons/home_logo.png" alt="" style="width:20px;height:20px;">
+                        <span class="menu-title">Home</span>
                         </a>
-                    </li>
-                    <li class="nav-item">
+                     </li>
+                     <li class="nav-item">
                         <a class="nav-link" href="simulation_zone.html">
-                            <img src="images/icons/1.png" alt="">
-                            <span class="menu-title">Simulation Zone</span>
+                        <img src="images/icons/1.png" alt="">
+                        <span class="menu-title">Simulation Zone</span>
                         </a>
-                    </li>
-
-                    <li class="nav-item">
-                      <a class="nav-link" href="scheduling.html">
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="scheduling.html">
                         <img src="images/icons/6.png" alt="">
                         <span class="menu-title">Scheduling Analysis</span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
+                        </a>
+                     </li>
+                     <li class="nav-item">
                         <a class="nav-link" href="customize_map.html">
                         <img src="images/icons/001-map.png" alt="">
                         <span class="menu-title">Map Customization</span>
                         </a>
                      </li>
-                    <li class="nav-item">
-                       <a class="nav-link" href="team.html">
-                       <img src="images/icons/meet-team.png" alt="">
-                       <span class="menu-title">Our Team</span>
-                       </a>
-                    </li>
-
-                </ul>
-
-
-            </nav>
-
-            <!-- partial -->
-            <div class="content-wrapper">
-
-                <h4 class="card-title">
-                                <img src="images/icons/home_logo.png" alt="" height="42" width="42">
-                                &nbsp; Home</h4><br>
-                <div class="card-deck">
-                    <div class="card col-lg-12 px-0 mb-4">
+                     <li class="nav-item">
+                        <a class="nav-link" href="team.html">
+                        <img src="images/icons/meet-team.png" alt="">
+                        <span class="menu-title">Our Team</span>
+                        </a>
+                     </li>
+                  </ul>
+               </nav>
+               <!-- partial -->
+               <div class="content-wrapper">
+                  <h4 class="card-title">
+                     <img src="images/icons/home_logo.png" alt="" height="42" width="42">
+                     &nbsp; Home
+                  </h4>
+                  <br>
+                  <div class="card-deck">
+                     <div class="card col-lg-12 px-0 mb-4">
                         <div class="card-body">
-                    <div class="row-home">
-                      <div class="column-home" style="width: 60%;">
-                        <img src="images/big_logo.png" alt="Forest" style="width:100%">
-                      </div>
-                      <div class="column-home">
-                        <p class="lead" style="font-size:150%;text-indent:0;vertical-align: middle; " align="center">
-                            <br>
-                                <justify><b>An entire system for smart city control!<br>
-                                Here you can simulate traffic using our <i><b>Simulation Zone</b></i>, perform <i><b>Scheduling Analysis</i></b> and specifically test our incredible advanced scheduling algorithm, on given maps, or customized by your choice.</b><br></justify></p>
-                      </div>
-                    </div>
-                </div>
+                           <div class="row-home">
+                              <div class="column-home" style="width: 50%;">
+                                 <img src="images/big_logo.png" alt="Forest" style="width:100%">
+                              </div>
+                              <div class="column-home" style="width: 50%;">
+                                 <p class="lead" style="font-size:150%;text-indent:0;vertical-align: middle; " align="center">
+                                    <br>
+                                    <span>
+                                    <b>An entire system for smart city control!<br>
+                                    Here you can simulate traffic using our <i><b>Simulation Zone</b></i>, perform <i><b>Scheduling Analysis</i></b> and specifically test our incredible advanced scheduling algorithm, on given maps, or customized by your choice.</b><br>
+                                    </span>
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </div>
-        </div>
-
-</div> </div> </div>
-</div>
-
-
-<script src="node_modules/jquery/dist/jquery.min.js"></script>
-<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
-<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="node_modules/chart.js/dist/Chart.min.js"></script>
-<script src="node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5NXz9eVnyJOA81wimI8WYE08kW_JMe8g&callback=initMap" async
-        defer></script>
-<script src="js/off-canvas.js"></script>
-<script src="js/hoverable-collapse.js"></script>
-<script src="js/misc.js"></script>
-<script src="js/chart.js"></script>
-<script src="js/maps.js"></script>
-<script src="js/schedulers-comparing.js"></script>
-
-</body>
-
+         </div>
+      </div>
+      <script src="node_modules/jquery/dist/jquery.min.js"></script>
+      <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+      <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+      <script src="node_modules/chart.js/dist/Chart.min.js"></script>
+      <script src="node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5NXz9eVnyJOA81wimI8WYE08kW_JMe8g&callback=initMap" async
+         defer></script>
+      <script src="js/off-canvas.js"></script>
+      <script src="js/hoverable-collapse.js"></script>
+      <script src="js/misc.js"></script>
+      <script src="js/chart.js"></script>
+      <script src="js/maps.js"></script>
+      <script src="js/schedulers-comparing.js"></script>
+   </body>
 </html>
