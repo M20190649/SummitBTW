@@ -17,9 +17,11 @@ public class MapAndSimulationChangeButton : MonoBehaviour {
     private Button btn;
 
     public GameObject playerControls;
+    public VideoPlayer loading;
 
     // Use this for initialization
     void Start () {
+        loading.Prepare();
         btn = GetComponent<Button>();
         btn.onClick.AddListener(onClick);
 	}
@@ -34,6 +36,7 @@ public class MapAndSimulationChangeButton : MonoBehaviour {
         m_mapDropdown.interactable = false;
         m_simDropdown.interactable = false;
         btn.interactable = false;
+        loading.Play();
 
         StartCoroutine(getter.DownloadMap(m_mapXmlParser.parseMap));
         StartCoroutine(getter.DownloadSim(m_simXmlParser.parseSimulation));
@@ -44,6 +47,7 @@ public class MapAndSimulationChangeButton : MonoBehaviour {
         if (m_mapXmlParser.parseCalled &&
            m_simXmlParser.parseCalled)
         {
+            loading.Stop();
             Instantiate(playerControls);
             m_mapXmlParser.parseCalled = false;
             m_simXmlParser.parseCalled = false;
