@@ -2,10 +2,8 @@ import os
 from re import finditer
 
 import pandas as pd
-# import pandas as pd
 import sys, os, shutil, glob, subprocess
 sys.path.insert(0, 'D:\\home\\site\\wwwroot\\sumo-0.32.0\\tools')
-# sys.path.insert(0, 'D:\\home\\site\\wwwroot\\sumo-0.32.0\\bin')
 
 from management.functionality.algorithm_compare import compare_algorithms, TEMP_OUT_DIR
 from management.gui.visual_statistics import load_statistics_widgets
@@ -138,12 +136,6 @@ def create_customized_map():
 
     sys.argv = [CUSTOM_PATH] * 2 # Things for using akward "create_from_scratch" script
     prepare_simulation(int(num_junctions), fringe_factor=10000, period=0.75, binomial=10000, end=int(num_cars)/1.3)
-
-    # cmd = ['python', '-m', 'simulator.preprocess.create_simulation_from_scratch',
-    #                                     CUSTOM_PATH, num_junctions, num_cars]
-    # os.system(' '.join(cmd))
-
-    # subprocess.Popen(cmd, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.STDOUT).wait()
     [shutil.copyfile(f, SIMULATOR_CUSTOM_EXAMPLE + os.path.basename(f)) for f in glob.glob(CUSTOM_PATH + '/*.xml')]
 
     return render_template('customize_map.html', **config)
