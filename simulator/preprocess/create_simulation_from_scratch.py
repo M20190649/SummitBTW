@@ -4,6 +4,7 @@ This script offers all necessary files for SUMO simulation,
 including SUMO network, traffic lights, detectors and vehicles trips.
 """
 import sys
+sys.path.insert(0, 'D:\\home\\site\\wwwroot\\sumo-0.32.0\\tools')
 
 __author__ = "Eylon Shoshan"
 import logging

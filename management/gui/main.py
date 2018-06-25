@@ -12,6 +12,7 @@ from management.gui.visual_statistics import load_statistics_widgets
 from scheduler.scheduler_constants import schedulers_name_map
 from simulator.simulate_tripinfo import run_simulation_example
 from statistics.resources.statistics_for_paper import create_statistics_for_paper
+from simulator.preprocess.create_simulation_from_scratch import prepare_simulation
 
 __author__ = "Eylon Shoshan"
 
@@ -104,7 +105,7 @@ def customize_map():
     Customize map & simulation
     :return: Cutomization page
     """
-    config = {'display_done': 'display: none;', 'num_junctions': '10', 'num_cars': '100'}
+    config = {'display_done': 'display: none;', 'num_junctions': '10', 'num_cars': '30'}
     return render_template('customize_map.html', **config)
 
 
@@ -126,16 +127,25 @@ def create_customized_map():
     num_junctions = request.args['junctions-slider']
     num_cars = request.args['cars-slider']
     config = {'num_junctions': str(num_junctions), 'num_cars': str(num_cars)}
-    num_junctions, num_cars = int(num_junctions), int(num_cars)
 
     SIMULATOR_CUSTOM_EXAMPLE = './simulator/examples/data/custom/'
+
     delete_dir_content(TEMP_OUT_DIR)
     delete_dir_content(SIMULATOR_CUSTOM_EXAMPLE)
+    os.mkdir(os.path.join(TEMP_OUT_DIR, 'custom'))
 
-    create_statistics_for_paper((num_junctions, num_junctions + 1, 1), (num_cars, num_cars + 1, 1), TEMP_OUT_DIR[:-1])   
-    [shutil.copyfile(f, SIMULATOR_CUSTOM_EXAMPLE + os.path.basename(f)) for f in glob.glob(TEMP_OUT_DIR + '/*/*/*/*.xml')]
-    [os.rename(f, f.replace(os.path.splitext(os.path.basename(f))[0], 'custom.sumocfg')) 
-                            for f in glob.glob(SIMULATOR_CUSTOM_EXAMPLE + '*') if 'sumocfg' in f ]
+    CUSTOM_PATH = os.path.join(TEMP_OUT_DIR, 'custom')
+
+    sys.argv = [CUSTOM_PATH] * 2 # Things for using akward "create_from_scratch" script
+    prepare_simulation(int(num_junctions), fringe_factor=10000, period=0.75, binomial=10000, end=int(num_cars)/1.3)
+
+    # cmd = ['python', '-m', 'simulator.preprocess.create_simulation_from_scratch',
+    #                                     CUSTOM_PATH, num_junctions, num_cars]
+    # os.system(' '.join(cmd))
+
+    # subprocess.Popen(cmd, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.STDOUT).wait()
+    [shutil.copyfile(f, SIMULATOR_CUSTOM_EXAMPLE + os.path.basename(f)) for f in glob.glob(CUSTOM_PATH + '/*.xml')]
+
     return render_template('customize_map.html', **config)
 
 
