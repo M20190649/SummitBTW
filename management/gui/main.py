@@ -103,7 +103,14 @@ def customize_map():
     Customize map & simulation
     :return: Cutomization page
     """
-    config = {'display_done': 'display: none;', 'num_junctions': '10', 'num_cars': '30'}
+    config = {}
+    if not os.path.isfile('last_run'):
+        config = {'display_done': 'display: none;', 'num_junctions': '10', 'num_cars': '30'}
+         
+    else:
+        with open('last_run', 'r') as f:
+            config = {'display_done': 'display: none;', 'num_junctions': f.readline(), 'num_cars': f.readline()}
+
     return render_template('customize_map.html', **config)
 
 
@@ -137,6 +144,10 @@ def create_customized_map():
     sys.argv = [CUSTOM_PATH] * 2 # Things for using akward "create_from_scratch" script
     prepare_simulation(int(num_junctions), fringe_factor=10000, period=0.75, binomial=10000, end=int(num_cars)/1.3)
     [shutil.copyfile(f, SIMULATOR_CUSTOM_EXAMPLE + os.path.basename(f)) for f in glob.glob(CUSTOM_PATH + '/*.xml')]
+
+    with open('last_run', 'w') as f:
+        f.write(num_junctions + '\n')
+        f.write(num_cars  + '\n')
 
     return render_template('customize_map.html', **config)
 
